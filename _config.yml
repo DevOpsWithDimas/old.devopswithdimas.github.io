@@ -7,8 +7,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari 
   suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain,
   Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.
-baseurl: "/bootcamp" # the subpath of your site, e.g. /blog
-url: "https://www.dimas-maryanto.com" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://youtube.dimas-maryanto.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown
