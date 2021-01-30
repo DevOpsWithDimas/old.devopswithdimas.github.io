@@ -29,7 +29,7 @@ plugins:
   - jekyll-sitemap
 
 jekyll-archives:
-  enabled: all
+  enabled: []
   layout: archive
   permalinks:
     year: '/archives/:year/'
@@ -46,9 +46,13 @@ titlecase: false
 exclude:
   - docker-compose.yml
   - vendor
-#   - Gemfile
+  - Gemfile
   - Gemfile.lock
   - package-lock.json
+  - package.json
+  - README.md
+  - CHANGELOG.md
+  - CONTRIBUTING.md
 #   - node_modules
 #   - vendor/bundle/
 #   - vendor/cache/
