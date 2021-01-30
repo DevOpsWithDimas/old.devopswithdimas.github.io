@@ -117,7 +117,7 @@
   messages:
     Temen-temen diharapkan mampu dan memahami fitur yang diberikan oleh ORM Hibernate seperti sebelumnya kita belajar JDBC yaitu CRUD, Transaction management, HQL, dan lain-lain.
   publish: 2017-10-26T20:59:50+07:00
-  github: https://github.com/dimMaryanto93/youtube-orm-hibernate
+  github: https://github.com/BootcampYoutubeChannel/belajar-orm-hibernate
   coming_soon: false
 
 - name: Reporting with JasperReport
