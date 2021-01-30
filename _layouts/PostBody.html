@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div id="postBody" class="row container">
+<div id="postBody" class="row container post-body">
     <div class="col s12 m12 l4 hide-on-med-and-down">
         <div class="row">
             <div>
@@ -154,18 +154,18 @@ layout: default
                 {% endif %}
             {% endfor %}
             
-            <ul class="pagination">
+            <ul class="pagination hide-on-med-and-down">
                 <!-- goto first page -->
                 {% if first_post and first_post.url != page.url %}
                 <li class="waves-effect">
-                    <a href="{{ first_post.url | prepend: site.baseurl }}" class="tooltipped btn" data-position="bottom" data-delay="50" data-tooltip="Ke halaman 1...">
-                        <i class="material-icons left">fast_rewind</i> First
+                    <a href="{{ first_post.url | prepend: site.baseurl }}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman 1...">
+                        <i class="material-icons">fast_rewind</i>
                     </a>
                 </li>
                 {% else %}
                 <li>
-                    <a href="#!" class="btn disabled">
-                        <i class="material-icons left">fast_rewind</i> First
+                    <a href="#!" class="disabled">
+                        <i class="material-icons">fast_rewind</i>
                     </a>
                 </li>
                 {% endif %}
@@ -173,14 +173,14 @@ layout: default
                 <!-- goto before page -->
                 {% if prev_post %}
                 <li class="waves-effect">
-                    <a href="{{ prev_post.url | prepend: site.baseurl }}" class="tooltipped btn" data-position="bottom" data-delay="50" data-tooltip="Ke artikel sebelumnya...">
-                        <i class="material-icons left">chevron_left</i> Before
+                    <a href="{{ prev_post.url | prepend: site.baseurl }}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke artikel sebelumnya...">
+                        <i class="material-icons">chevron_left</i>
                     </a>
                 </li>
                 {% else %}
                 <li>
-                    <a href="#!" class="btn disabled">
-                        <i class="material-icons left">chevron_left</i> Before
+                    <a href="#!" class="disabled">
+                        <i class="material-icons">chevron_left</i>
                     </a>
                 </li>
                 {% endif %}                
@@ -195,14 +195,14 @@ layout: default
                 <!-- goto next page -->
                 {% if next_post %}
                 <li class="waves-effect">
-                    <a href="{{ next_post.url | prepend: site.baseurl }}" class="tooltipped btn" data-position="bottom" data-delay="50" data-tooltip="Yuk lanjutin bacaanya...">
-                        <i class="material-icons right">chevron_right</i> Next
+                    <a href="{{ next_post.url | prepend: site.baseurl }}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Yuk lanjutin bacaanya...">
+                        <i class="material-icons">chevron_right</i>
                     </a>
                 </li>
                 {% else %}
                 <li class="disabled">
                     <a href="#!">
-                        <i class="material-icons right">chevron_right</i> Next
+                        <i class="material-icons">chevron_right</i>
                     </a>
                 </li>
                 {% endif %}
@@ -210,14 +210,14 @@ layout: default
                 <!-- goto last page -->
                 {% if last_post and last_post.url != page.url %}
                 <li class="waves-effect">
-                    <a href="{{ last_post.url | prepend: site.baseurl }}" class="tooltipped btn" data-position="bottom" data-delay="50" data-tooltip="Ke halaman terakhir...">
-                        <i class="material-icons left">fast_forward</i> Last
+                    <a href="{{ last_post.url | prepend: site.baseurl }}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman terakhir...">
+                        <i class="material-icons">fast_forward</i>
                     </a>
                 </li>
                 {% else %}
                 <li>
-                    <a href="#!" class="btn disabled">
-                        <i class="material-icons left">fast_forward</i> Last
+                    <a href="#!" class="disabled">
+                        <i class="material-icons">fast_forward</i>
                     </a>
                 </li>
                 {% endif %}
@@ -250,10 +250,75 @@ layout: default
             {% endif %}
         </div>
     </div>
-    <div class="fixed-action-btn click-to-toggle hide-on-large-only">
-        <a href="#" data-activates="slide-out-materi" class="btn-floating btn-large waves-effect waves-light red button-collapse">
-            <i class="large material-icons">apps</i>
+    <div class="fixed-action-btn click-to-toggle horizontal">
+        <a href="#" class="btn-floating btn-large waves-effect waves-light">
+            <i class="large material-icons">menu</i>
         </a>
+        <ul>
+            <li>
+                <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Show Menu">
+                    <i class="large material-icons">home</i>
+                </a>
+            </li>
+            <!-- goto first page -->
+            {% if first_post and first_post.url != page.url %}
+            <li>
+                <a href="{{ first_post.url | prepend: site.baseurl }}" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman 1...">
+                    <i class="material-icons">fast_rewind</i>
+                </a>
+            </li>
+            {% else %}
+            <li>
+                <a href="#!" class="tooltipped btn-floating yellow darken-1 waves-effect disabled">
+                    <i class="material-icons">fast_rewind</i>
+                </a>
+            </li>
+            {% endif %}
+            <!-- goto before page -->
+            {% if prev_post %}
+            <li>
+                <a href="{{ prev_post.url | prepend: site.baseurl }}" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman sebelumnya">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+            {% else %}
+            <li>
+                <a href="#!" class="tooltipped btn-floating yellow darken-1 waves-effect disabled">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+            {% endif %} 
+
+            <!-- goto next page -->
+            {% if next_post %}
+            <li>
+                <a href="{{ next_post.url | prepend: site.baseurl }}" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman selanjutnya">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+            {% else %}
+            <li>
+                <a href="#!" class="tooltipped btn-floating yellow darken-1 waves-effect disabled">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+            {% endif %}
+
+            <!-- goto last page -->
+            {% if last_post and last_post.url != page.url %}
+            <li>
+                <a href="{{ last_post.url | prepend: site.baseurl }}" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman terakhir">
+                    <i class="material-icons">fast_forward</i>
+                </a>
+            </li>
+            {% else %}
+            <li>
+                <a href="#!" class="tooltipped btn-floating yellow darken-1 waves-effect disabled">
+                    <i class="material-icons">fast_forward</i>
+                </a>
+            </li>
+            {% endif %}   
+          </ul>
     </div>
 </div>
 
