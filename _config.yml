@@ -18,12 +18,25 @@ kramdown:
   syntax_highlighter: rouge
 gist:
   noscript: false
-permalink: /:categories/:title
+permalink: /posts/:categories/:title
 plugins:
   - jekyll-gist
+  - jekyll-feed
   - kramdown
   - rouge
   - jekyll-youtube
+  - jekyll-archives
+  - jekyll-sitemap
+
+jekyll-archives:
+  enabled: all
+  layout: archive
+  permalinks:
+    year: '/archives/:year/'
+    month: '/archives/:year/:month/'
+    day: '/archives/:year/:month/:day/'
+    tag: '/archives/tag/:name/'
+    category: '/archives/category/:name/'
   
 titlecase: false
 

@@ -13,11 +13,18 @@ layout: default
 {% for page_modal in pages_list  %}
 {% assign modal_post_list = site.posts | where: "lang", page_modal.url | sort:"date" %}
 {% assign modal_post = modal_post_list.first %}
-<div id="modal-{{ page_modal.url }}" class="modal">
+<div id="modal-{{ page_modal.url }}" class="modal modal-fixed-footer">
     <div class="modal-content">
         <h4>{{ page_modal.name }}</h4>
         <hr>
-        <p>{{page_modal.messages }}</p>
+        <div class="row">
+            <div class="col m2">
+                <img class="responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{page_modal.url}}.png">
+            </div>
+            <div class="col m10">
+                <p>{{page_modal.messages }}</p>
+            </div>
+        </div>
         <div class="row">
             <div class="col s12 m5">
                 <ul class="collection with-header">
@@ -109,6 +116,7 @@ layout: default
         <div class="col s12 m4">
             <div class="card sticky-action large">
                 <div class="card-image waves-effect waves-block waves-light {{topic.color}}">
+                    <span class="new badge black white-text" data-badge-caption="materi">{{ post_list | size }}</span>
                     {% if topic.coming_soon == false %}
                     <img class="activator responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
                     {% else %}
@@ -122,21 +130,18 @@ layout: default
                     </p>
                 </div>
                 <div class="card-action">
-                    <span class="new badge black white-text" data-badge-caption="materi">{{ post_list | size }}</span>
-                    
                     <!-- show first page of content -->
                     {% if topic.coming_soon == false and a_post %}
-                        <a href="{{ a_post.url | prepend: site.baseurl }}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Start Learning">
+                        <a href="{{ a_post.url | prepend: site.baseurl }}" class="tooltipped btn blue-grey lighten-5" data-position="bottom" data-delay="50" data-tooltip="Start Learning">
                             <i class="material-icons green-text">play_arrow</i>
                         </a>
                     {% endif %}
 
                     <!-- show modal of content -->
-                    <a class="modal-trigger tooltipped" href="#modal-{{ topic.url }}" data-position="bottom" data-delay="50" data-tooltip="Preview">
-                        <i class="material-icons black-text">library_books</i>
+                    <a class="modal-trigger btn tooltipped blue-grey lighten-5" href="#modal-{{ topic.url }}" data-position="bottom" data-delay="50" data-tooltip="Preview">
+                        <i class="material-icons blue-grey-text lighten-4">library_books</i>
                     </a>
-
-                  </div>
+                </div>
                 {% if topic.coming_soon == false %}
                 <div class="card-reveal">
                     <!-- title of card reveal -->
