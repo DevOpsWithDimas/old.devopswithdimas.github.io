@@ -12,6 +12,8 @@ group :jekyll_plugins do
   gem "rouge"
   gem "titlecase"
   gem "jekyll-youtube"
+  gem "redcarpet", ">= 3.5.1"
+  gem "nokogiri", ">= 1.11.0"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
