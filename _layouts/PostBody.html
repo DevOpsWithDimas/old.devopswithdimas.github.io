@@ -26,15 +26,15 @@ layout: default
                 <ul class='collection with-header'>
                     <li class="collection-header">
                         <i class="material-icons green">account_balance_wallet</i>
-                        Donasi via:</li>
-                        {% for donasi in site.data.my-profile.donations %}      
-                            <li class="collection-item">
-                                <a href="{{ donasi.account }}" target="_blank">
-                                    {{ donasi.name }} a/n {{ donasi.owner }}
-                                </a>
-                            </li>              
-                        {% endfor %}
+                        Donasi via:
                     </li>
+                    {% for donasi in site.data.my-profile.donations %}      
+                    <li class="collection-item">
+                        <a href="{{ donasi.account }}" target="_blank">
+                            {{ donasi.name }} a/n {{ donasi.owner }}
+                        </a>
+                    </li>              
+                    {% endfor %}
                 </ul>
             </div>
         </div>
@@ -250,7 +250,7 @@ layout: default
             {% endif %}
         </div>
     </div>
-    <div class="fixed-action-btn click-to-toggle horizontal hide-on-med-and-up">
+    <div id="floating-button-menu" class="fixed-action-btn click-to-toggle horizontal hide-on-med-and-up">
         <a href="#" class="btn-floating btn-large waves-effect waves-light">
             <i class="large material-icons">menu</i>
         </a>

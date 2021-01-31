@@ -3,11 +3,25 @@
 <link rel="stylesheet" type="text/css"  href="{{ "/assets/devicons/css/devicons.min.css" | prepend: site.baseurl }}" />
 <link rel="stylesheet" type="text/css"  href="{{ "/assets/font-awesome/css/font-awesome.min.css" | prepend: site.baseurl }}" />
 <link rel="stylesheet" type="text/css" href="{{ "/assets/sintax.css" | prepend: site.baseurl }}" />
-<link rel="stylesheet" type="text/css" href="{{ "/assets/video-embed.css" | prepend: site.baseurl }}" />
 
 <script src="{{ "/assets/jquery.min.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/assets/materialize-css/js/materialize.min.js" | prepend: site.baseurl }} "></script>
+<script src="{{ "/assets/materialize-css/js/materialize.min.js" | prepend: site.baseurl }}"></script>
 <script src="{{ "/assets/responsive-content.js" | prepend: site.baseurl }}"></script>
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $(".button-collapse").sideNav({
+            menuWidth: 400
+        });
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+    })
+</script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
