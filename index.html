@@ -21,12 +21,12 @@ layout: default
             <div class="col m2">
                 <img class="responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{page_modal.url}}.png">
             </div>
-            <div class="col m10">
+            <div class="col m10 hide-on-med-and-down">
                 <p>{{page_modal.messages }}</p>
             </div>
         </div>
         <div class="row">
-            <div class="col s12 m5">
+            <div class="col s12 m5 hide-on-med-and-down">
                 <ul class="collection with-header">
                     <li class="collection-header">Daftar Materi</li>
                     {% if modal_post_list.size >= 1 %}
@@ -43,7 +43,7 @@ layout: default
             </div>
             <div class="col s12 m7">
                 <!-- youtube link -->
-                <div class="row">
+                <div class="row hide-on-med-and-down">
                     {% if modal_post and modal_post.youtube %}
                         {% include youtubePlayer.html id=modal_post.youtube %}
                     {% else %}
