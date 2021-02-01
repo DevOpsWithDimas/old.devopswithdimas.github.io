@@ -154,7 +154,7 @@ layout: default
                 {% endif %}
             {% endfor %}
             
-            <ul class="pagination hide-on-med-and-down">
+            <ul class="pagination hide-on-small-only">
                 <!-- goto first page -->
                 {% if first_post and first_post.url != page.url %}
                 <li class="waves-effect">
@@ -250,7 +250,7 @@ layout: default
             {% endif %}
         </div>
     </div>
-    <div id="floating-button-menu" class="fixed-action-btn click-to-toggle horizontal hide-on-med-and-up">
+    <div id="floating-button-menu" class="fixed-action-btn click-to-toggle horizontal hide-on-large-only">
         <a href="#" class="btn-floating btn-large waves-effect waves-light">
             <i class="large material-icons">menu</i>
         </a>
