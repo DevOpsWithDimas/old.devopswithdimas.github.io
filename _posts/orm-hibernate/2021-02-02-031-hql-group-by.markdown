@@ -16,7 +16,13 @@ gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate-031
 ---
 
-Hai di kesempatan kali ini saya mau membahas tentang `Group By` dan clausa `Having` dengan menggunakan Hibernate Query Language (HQL). ok langsung ja berikut adalah contoh implementasi dao:
+Hai di kesempatan kali ini saya mau membahas tentang `Group By` dan clausa `Having` dengan menggunakan Hibernate Query Language (HQL). 
+
+Sekarang kita buat modelnya dulu seperti berikut:
+
+{% gist page.gist "GroupByModel.java" %}
+
+Dan berikut adalah implementasi DAO:
 
 {% gist page.gist "HQLGroupByDao.java" %}
 
