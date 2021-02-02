@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Combine Predicate dengan HQL"
+date: 2021-02-02T14:57:44+07:00
 lang: orm-hibernate
 categories:
 - Java
