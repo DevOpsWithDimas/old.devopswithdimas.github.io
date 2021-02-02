@@ -12,6 +12,53 @@ refs:
 youtube: 
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-29r
+image_path: /resources/posts/orm-hibernate-031
 ---
 
+Hai di kesempatan kali ini saya mau membahas tentang `Group By` dan clausa `Having` dengan menggunakan Hibernate Query Language (HQL). ok langsung ja berikut adalah contoh implementasi dao:
+
+{% gist page.gist "HQLGroupByDao.java" %}
+
+Implementasi Unit Testing:
+
+{% gist page.gist "TestHQLGroupByDao.java" %}
+
+Berikut adalah contoh data yang saya gunakan:
+
+![select-tables]({{ page.image_path | prepend: site.baseurl }}/select-tables.png)
+
+Setelah itu coba jalankan unit testing pada method `testGroupBy()`, hasilnya seperti berikut:
+
+```bash
+Feb 02, 2021 4:03:35 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Hibernate: 
+    select
+        employeepa0_.job_id as col_0_0_,
+        sum(employeepa0_.salary) as col_1_0_ 
+    from
+        parentchild.employees employeepa0_ 
+    group by
+        employeepa0_.job_id
+[main] INFO com.maryanto.dimas.bootcamp.test.query.hql.TestHQLGroupByDao - data: [GroupByModel(jobName=Bisnis Analys, salary=6900000.00), GroupByModel(jobName=Chief Technology Officer, salary=10000000.00), GroupByModel(jobName=Software Engineer, salary=13000000.00), GroupByModel(jobName=Principal Software Engineer, salary=3500000.00)]
+[main] INFO com.maryanto.dimas.bootcamp.test.query.hql.TestHQLGroupByDao - destroy hibernate session!
+```
+
+dan yang terakhir coba jalankan method `testGroupByWithHaving()`, maka hasilnya berikut:
+
+```bash
+Feb 02, 2021 4:04:33 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Hibernate: 
+    select
+        employeepa0_.job_id as col_0_0_,
+        sum(employeepa0_.salary) as col_1_0_ 
+    from
+        parentchild.employees employeepa0_ 
+    group by
+        employeepa0_.job_id 
+    having
+        sum(employeepa0_.salary)>=?
+[main] INFO com.maryanto.dimas.bootcamp.test.query.hql.TestHQLGroupByDao - data: [GroupByModel(jobName=Bisnis Analys, salary=6900000.00), GroupByModel(jobName=Chief Technology Officer, salary=10000000.00), GroupByModel(jobName=Software Engineer, salary=13000000.00)]
+[main] INFO com.maryanto.dimas.bootcamp.test.query.hql.TestHQLGroupByDao - destroy hibernate session!
+```
