@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "LIMIT & OFFSET dengan HQL"
+date: 2021-02-02T18:09:23+07:00
 lang: orm-hibernate
 categories:
 - Java
