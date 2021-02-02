@@ -12,6 +12,55 @@ refs:
 youtube: 
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-29s
+image_path: /resources/posts/orm-hibernate-032
 ---
 
+Hai di kesempatan kali ini saya mau membahas tentang Ordering dengan HQL, ok sekarang langsung ja berikut adalah implementasi DAO:
+
+{% git page.gist "HQLOrderingDao.java" %}
+
+Implementasi Unit Testing:
+
+{% git page.gist "TestHQLOrdering.java" %}
+
+Nah setelah itu coba jalankan unit testing pada method `testOrderBySalaryAsc()`, maka hasilnya seperti berikut:
+
+```bash
+Feb 02, 2021 5:43:13 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Hibernate: 
+    select
+        employeepa0_.id as id1_33_,
+        employeepa0_.street_address as street_a2_33_,
+        employeepa0_.job_id as job_id3_33_,
+        employeepa0_.manager_id as manager_6_33_,
+        employeepa0_.full_name as full_nam4_33_,
+        employeepa0_.salary as salary5_33_ 
+    from
+        parentchild.employees employeepa0_ 
+    order by
+        employeepa0_.salary asc
+[main] INFO com.maryanto.dimas.bootcamp.test.query.hql.TestHQLOrdering - data: [3000000.00, 3100000.00, 3400000.00, 3400000.00, 3500000.00, 3500000.00, 3500000.00, 10000000.00]
+[main] INFO com.maryanto.dimas.bootcamp.test.query.hql.TestHQLOrdering - destroy hibernate session!
+```
+
+Dan yang terakhir coba jalankan method `testOrderBySalaryDesc()`, maka hasilnya seperti berikut:
+
+```bash
+Feb 02, 2021 5:43:53 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Hibernate: 
+    select
+        employeepa0_.id as id1_33_,
+        employeepa0_.street_address as street_a2_33_,
+        employeepa0_.job_id as job_id3_33_,
+        employeepa0_.manager_id as manager_6_33_,
+        employeepa0_.full_name as full_nam4_33_,
+        employeepa0_.salary as salary5_33_ 
+    from
+        parentchild.employees employeepa0_ 
+    order by
+        employeepa0_.salary desc
+[main] INFO com.maryanto.dimas.bootcamp.test.query.hql.TestHQLOrdering - data: [10000000.00, 3500000.00, 3500000.00, 3500000.00, 3400000.00, 3400000.00, 3100000.00, 3000000.00]
+[main] INFO com.maryanto.dimas.bootcamp.test.query.hql.TestHQLOrdering - destroy hibernate session!
+```
