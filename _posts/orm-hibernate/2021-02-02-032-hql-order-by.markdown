@@ -18,11 +18,11 @@ image_path: /resources/posts/orm-hibernate-032
 
 Hai di kesempatan kali ini saya mau membahas tentang Ordering dengan HQL, ok sekarang langsung ja berikut adalah implementasi DAO:
 
-{% git page.gist "HQLOrderingDao.java" %}
+{% gist page.gist "HQLOrderingDao.java" %}
 
 Implementasi Unit Testing:
 
-{% git page.gist "TestHQLOrdering.java" %}
+{% gist page.gist "TestHQLOrdering.java" %}
 
 Nah setelah itu coba jalankan unit testing pada method `testOrderBySalaryAsc()`, maka hasilnya seperti berikut:
 
