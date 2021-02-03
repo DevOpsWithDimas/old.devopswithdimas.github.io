@@ -11,8 +11,8 @@ refs:
 - http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html
 youtube: 
 comments: true
-image_path: 
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-30
+image_path: /resources/posts/orm-hibernate-035
 ---
 
+Setelah temen-temen mempelajari materi Hibernate Query Language (HQL) dan supaya lebih memahami materinya jadi kita langsung ja ke studi kasusnya ya.

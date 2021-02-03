@@ -18,11 +18,11 @@ gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 
 Hai pada kesempatan kali ini saya mau membahas tentang `Read Only Entity`, nah jadi klo kita misalnya pake query kemudian kita set nilai yang baru masih dalam session maka biasanya akan automatic update, contohnya berikut implementasi DAO:
 
-{% gist page.gist "ReadOnlyEntityDao.java" %}
+{% gist page.gist "HQLReadOnlyEntityDao.java" %}
 
 Berikut adalah Unit Testing
 
-{% gist page.gist "TestReadOnlyEntity.java" %}
+{% gist page.gist "TestHQLReadOnlyEntity.java" %}
 
 Sebagai contoh berikut adalah data yang saya gunakan 
 
