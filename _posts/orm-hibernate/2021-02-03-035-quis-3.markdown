@@ -55,7 +55,11 @@ Berdasarkan erd tersebut, buatlah project java dengan Apache Maven : `maven-arch
 
 2. Buatlah Perancangan ORM dan Implementasi Entity untuk masing-masing tabel berdasarkan erd tersebut.
 
-3. Buatlah Report untuk menampilkan daftar salary karyawan menggunakan Hibernate Query Language (HQL) seperti berikut:
+3. Buatlah Report untuk menampilkan daftar karyawan dengan `first_name` mengandung karacter `n` atau `salary` lebih kecil dari `5000` kemudian di urutkan berdasarkan `commission_pct` terbesar
+
+4. Update data karyawan, untuk field `commission_pct` bertambah `0.2` dari nilai sebelumnya berdasarkan `job_id` = `IT_PROG` dan `join_date` setelah 1 tahun bergabung
+
+5. Buatlah Report untuk menampilkan daftar salary karyawan menggunakan Hibernate Query Language (HQL) seperti berikut:
 
     ![no-02]({{ page.image_path | prepend: site.baseurl  }}/pertanyaan-2.png)
 
@@ -67,7 +71,7 @@ Berdasarkan erd tersebut, buatlah project java dengan Apache Maven : `maven-arch
     4. `Nama Jabatan`: dimabil dari kolom `job_title` di tabel `jobs`
     5. Diurutkan `manager_name` dan `nama_karyawan`
 
-4. Buatlah Report untuk menampilkan daftar nama karywan berserta managernya menggunakan Hibernate Query Language (HQL) seperti berikut:
+6. Buatlah Report untuk menampilkan daftar nama karywan berserta managernya menggunakan Hibernate Query Language (HQL) seperti berikut:
     
     ![no-01]({{ page.image_path | prepend: site.baseurl  }}/pertanyaan-1.png)
     
@@ -80,15 +84,18 @@ Berdasarkan erd tersebut, buatlah project java dengan Apache Maven : `maven-arch
     5. `gaji_terima`: Gaji yang harus diterima oleh karyawan tersebut setelah ditambakan dengan komisi.
     6. Tampilkan hanya yang status karyawan `ACTIVE` dan total pendapatan / gaji lebih besar dari sama dengan `4000`
 
-5. Buatlah Report untuk menampilkan data jumlah gaji karyawan yang `ACTIVE`, `LEAVE` per department menggunakan HQL, seperti berikut:
+7. Buatlah Report untuk menampilkan data jumlah gaji karyawan yang `ACTIVE`, `LEAVE` per department menggunakan HQL, seperti berikut:
 
     ![no-03]({{ page.image_path | prepend: site.baseurl  }}/pertanyaan-3.png)
 
 
-6. Buat Report untuk menampilkan daftar karyawan yang `memiliki komisi` dan `gajinya lebih besar dari gaji terkecil pada jabatan tertentu` yang di `urutkan berdasarkan nama jabatan dan salary`, berikut contohnya untuk jabatan `IT_PROG`:
+8. Buat Report untuk menampilkan daftar karyawan yang `memiliki komisi` dan `gajinya lebih besar dari gaji terkecil pada jabatan tertentu` yang di `urutkan berdasarkan nama jabatan dan salary`, berikut contohnya untuk jabatan `IT_PROG`:
 
     ![no-04]({{ page.image_path | prepend: site.baseurl  }}/pertanyaan-4.png)
 
-7. Buatlah Report untuk menampilkan daftar jabatan yang ada di karyawan secara unique kemudian di urutkan berdasarkan minimum salarynya, berikut contohnya:
+9. Buatlah Report untuk menampilkan daftar jabatan yang ada di karyawan secara unique kemudian di urutkan berdasarkan minimum salarynya, berikut contohnya:
 
     ![no-05]({{ page.image_path | prepend: site.baseurl  }}/pertanyaan-5.png)
+
+10. Buatlah Report untuk menampilkan daftar karyawan yang belum mengisi alamat.
+
