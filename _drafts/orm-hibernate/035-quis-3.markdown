@@ -16,3 +16,78 @@ image_path: /resources/posts/orm-hibernate-035
 ---
 
 Setelah temen-temen mempelajari materi Hibernate Query Language (HQL) dan supaya lebih memahami materinya jadi kita langsung ja ke studi kasusnya ya.
+
+Ok berikut adalah perancangan Entity Relational Diagramnya, 
+
+![erd]({{ page.image_path | prepend: site.baseurl }}/erd.jpg)
+
+Berdasarkan erd tersebut, buatlah project java dengan Apache Maven : `maven-archetype-quickstart`, artifactId: `quis3-hibernate`, groupId: `your.email.com`, version: `tanggal-pengerjaan`.
+
+1. Buatlah schama, dan table dengan menggunakan flyway migration
+    1. Tambahkan data pada table `provinces`, sebagai berikut
+
+        ![select-provinces]({{ page.image_path | prepend: site.baseurl  }}/select-provinces.png)
+    
+    2. Tambahkan data pada table `cities`, seperti berikut
+
+        ![select-cities]({{ page.image_path | prepend: site.baseurl  }}/select-cities.png)
+
+    3. Tambahkan data pada table `districts`, seperti berikut
+
+        ![select-districts]({{ page.image_path | prepend: site.baseurl  }}/select-districts.png)
+
+    4. Tambahkan data pada table `jobs`, seperti berikut
+
+        ![select-jobs]({{ page.image_path | prepend: site.baseurl  }}/select-jobs.png)
+
+    5. Tambahkan data pada table `departments`, seperti berikut
+        
+        ![select-departments]({{ page.image_path | prepend: site.baseurl  }}/select-departments.png)
+
+    6. Tambahkan data pada tabel `employees`, seperti berikut
+
+        ![select-employees]({{ page.image_path | prepend: site.baseurl  }}/select-employees.png)
+
+    7. Tambahkan data pada tabel `employee_addresses`, seperti berikut
+
+        ![select-employee-addresses]({{ page.image_path | prepend: site.baseurl  }}/select-employee-addresses.png)
+
+2. Buatlah Perancangan ORM dan Implementasi Entity untuk masing-masing tabel berdasarkan erd tersebut.
+
+3. Buatlah Report untuk menampilkan daftar salary karyawan menggunakan Hibernate Query Language (HQL) seperti berikut:
+
+    ![no-02]({{ page.image_path | prepend: site.baseurl  }}/pertanyaan-2.png)
+
+    Berikut adalah ketentuannya:
+
+    1. `nama_karyawan`: gabungkan ke dua kolom `fist_name` dan `last_name`
+    2. `Nama Bagian`: diambil dari kolom `depertment_name` di tabel `departments`
+    3. `manager_name`: diambil dari kolom `first_name` dan `last_name` berdasarkan `manager_id` di tabel `employees`, jika tidak punya manager tampilkan 'Saya tidak punya manager'
+    4. `Nama Jabatan`: dimabil dari kolom `job_title` di tabel `jobs`
+    5. Diurutkan `manager_name` dan `nama_karyawan`
+
+4. Buatlah Report untuk menampilkan daftar nama karywan berserta managernya menggunakan Hibernate Query Language (HQL) seperti berikut:
+    
+    ![no-01]({{ page.image_path | prepend: site.baseurl  }}/pertanyaan-1.png)
+    
+    Berikut adalah ketentuannya:
+
+    1. `Nama Lengkap`: pengabungan antara `first_name` dan `last_name` dari tabel `employees`
+    2. `Nama Department`: diambil dari table `departements`
+    3. `Gaji sebulan`: diabil dari colomn `salary` dalam table `employees` yang diformat dipisahkan dalam ribuan dengan `,` (koma)
+    4. `Mendapatkan Komisi`: Jika column `commission_pct` bernilai `null` tampilkan `Tidak punya komisi` tetapi jika memiliki komisi maka tampilkan berapa komisi yang karyawan tersebut dapatkan berdaksarkan `salary`.
+    5. `gaji_terima`: Gaji yang harus diterima oleh karyawan tersebut setelah ditambakan dengan komisi.
+    6. Tampilkan hanya yang status karyawan `ACTIVE` dan total pendapatan / gaji lebih besar dari sama dengan `4000`
+
+5. Buatlah Report untuk menampilkan data jumlah gaji karyawan yang `ACTIVE`, `LEAVE` per department menggunakan HQL, seperti berikut:
+
+    ![no-03]({{ page.image_path | prepend: site.baseurl  }}/pertanyaan-3.png)
+
+
+6. Buat Report untuk menampilkan daftar karyawan yang `memiliki komisi` dan `gajinya lebih besar dari gaji terkecil pada jabatan tertentu` yang di `urutkan berdasarkan nama jabatan dan salary`, berikut contohnya untuk jabatan `IT_PROG`:
+
+    ![no-04]({{ page.image_path | prepend: site.baseurl  }}/pertanyaan-4.png)
+
+7. Buatlah Report untuk menampilkan daftar jabatan yang ada di karyawan secara unique kemudian di urutkan berdasarkan minimum salarynya, berikut contohnya:
+
+    ![no-05]({{ page.image_path | prepend: site.baseurl  }}/pertanyaan-5.png)
