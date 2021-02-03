@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Read Only Entity dengan HQL"
+date: 2021-02-03T10:14:00+07:00
 lang: orm-hibernate
 categories:
 - Java
