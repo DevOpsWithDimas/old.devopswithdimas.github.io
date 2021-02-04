@@ -10,6 +10,7 @@ refs:
 - https://www.postgresql.org/docs/12/ddl-schemas.html
 youtube: https://www.youtube.com/watch?v=NMZrpBxkfRA&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=25
 comments: true
+image_path: /resources/posts/psql/psql-schema
 ---
 
 Schema pada Database PostgreSQL terdiri dari beberapa object yang diurutkan berdasarkan level seperti berikut:
@@ -20,7 +21,7 @@ Schema pada Database PostgreSQL terdiri dari beberapa object yang diurutkan berd
 
 Jika saya gambarkan maka seperti berikut ilustrasinya:
 
-![database schema]({{site.baseurl}}/resources/posts/psql-schema/postgresql-schema.png)
+![database schema]({{ page.image_path | prepend: site.baseurl }}/postgresql-schema.png)
 
 Jadi di postgresql itu, ketika kita membuat **Database** dan secara otomatis kita akan memiliki schema `public`, penggunaan schema biasanya untuk memisahkan object berdasarkan tujuan tertentu misalnya kita punya schema users yang isinya tentang user management, kemudian misalnya kita punya schema product disuatu bank misalnya isinya table tabungan, kredit, deposito dan lain-lain. 
 

@@ -13,6 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=V0dy9-sFFb8&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=5
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
+image_path: /resources/posts/orm-hibernate/
 ---
 
 Sama halnya dengan menggunakan JDBC, untuk menggunakan Hibernate kita harus setup dulu connectionnya. Untuk menghubungkan antara `Database <-> Hibernate` kita membutuhkan hibernate configurasi yaitu dengan cara membuat file `hibernate.cfg.xml` dalam classpath karena kita menggunakan Apache Maven jadi kita simpan file tersebut di `src/main/resources`.

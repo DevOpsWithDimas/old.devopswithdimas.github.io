@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&t=7235s
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-29h
+image_path: /resources/posts/orm-hibernate/orm-hibernate-29h
 ---
 
 Hai, pada kesempatan kali ini saya mau membahas tentang `case-when` Expresion menggunakan Hibernate Query Language (HQL). seperti biasa sebelum kita mulai kita check dulu data dan tabel misalnya saya punya data seperti berikut:

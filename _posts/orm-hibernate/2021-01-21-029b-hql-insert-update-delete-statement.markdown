@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&t=2462s
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-29b
+image_path: /resources/posts/orm-hibernate/orm-hibernate-29b
 ---
 
 Hai, pada materi kali ini saya mau membahas tentang Insert, Update, dan Delete Statement menggunakan HQL (Hibernate Query Language). Ok nah jadi kita masih pake entity yang sama yaitu 

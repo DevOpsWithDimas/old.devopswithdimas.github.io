@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=HMck_EQJ55Y&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=34
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 comments: true
-image_path: /resources/posts/java-web-031
+image_path: /resources/posts/java-web/java-web-031
 ---
 
 Halo, kali ini saya akan membahas tentang Deployment menggunakan Apache Tomcat. sebenarnya untuk Web Server sendiri di Servlet Container ada beberapa, diantaranya:
@@ -31,7 +31,7 @@ Nah sekarang kita akan belajar melakukan Deploy aplikasi Java Web ke Web Server 
 
 Untuk menginstall ada beberapa cara, oh ia ada yang lupa. disini os yang kita gunakan adalah `linux server` ya karena mostly operation system yang digunakan adalah linux jadi kita pake linux aja ya. tapi jangan khawatir untuk windows juga bisa kok hanya perlu penyesuaian saja. Untuk linux sebenarnya kita bisa dengan mudah menginstall menggunakan repository seperti apt, yum, dnf, zepper dan lain-lain. tpi kali ini kita akan menggunakan binary saja ya. ok pertama download dulu [Apache Tomcat versi 8.5.x](https://tomcat.apache.org/download-80.cgi)
 
-![Download apache tomcat]({{site.baseurl}}{{page.image_path}}/download.png)
+![Download apache tomcat]({{ page.image_path | prepend: site.baseurl }}/download.png)
 
 Pilih yang zip ja ya supaya portable.
 
@@ -133,13 +133,13 @@ firewall-cmd --zone=public --add-port=18080/tcp --permanent && firewall-cmd --re
 
 Sekarang kita bisa test dari laptop/pc kita menggunakan browser jika Web Server udah Jalan. dengan url [host:port](http://192.168.88.254:18080/) maka hasilnya seperti berikut:
 
-![Apache Tomcat Works!]({{site.baseurl}}{{page.image_path}}/tomcat-root.png)
+![Apache Tomcat Works!]({{ page.image_path | prepend: site.baseurl }}/tomcat-root.png)
 
 ## Struktur Directory Apache Tomcat
 
 Sekarang kita lihat dulu struktur directory pada Apache Tomcat `8.5.x` yaitu seperti berikut:
 
-![Structure Dir Tomcat 8.5]({{site.baseurl}}{{page.image_path}}/tomcat-dir.png)
+![Structure Dir Tomcat 8.5]({{ page.image_path | prepend: site.baseurl }}/tomcat-dir.png)
 
 Terdiri dari:
 

@@ -11,7 +11,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=rPZXEh5DfXY&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=8
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
-image_path: /resources/posts/java-web-009
+image_path: /resources/posts/java-web/java-web-009
 ---
 
 Setelah kita membuat project dengan maven menggunakan template `maven-archetype-webapp` berikut adalah struktur directory yang kita harus ketahui, berikut adalah folder dan file configurasinya:

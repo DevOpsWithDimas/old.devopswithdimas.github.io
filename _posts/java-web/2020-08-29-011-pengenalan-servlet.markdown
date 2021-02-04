@@ -11,7 +11,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=FV25oL8U3hs&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=10
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
-image_path: /resources/posts/java-web-011
+image_path: /resources/posts/java-web/java-web-011
 ---
 
 Sekarang saya mau membahas tentang basic pemograman Java Web yaitu Servlet. Apa itu Servlet?
@@ -67,6 +67,6 @@ http://localhost:8080/tutorial-javawebapp/selamat/datang
 
 maka hasilnya akan seperti berikut:
 
-![servelt pertama]({{ site.baseurl }}{{ page.image_path }}/selamat-datang.png)
+![servelt pertama]({{ page.image_path | prepend: site.baseurl }}/selamat-datang.png)
 
 Jadi penjelasanya adalah kita membuat ketika browser me-request alamat ```http://localhost:8080/tutorial-javawebapp/selamat/datang``` maka akan ditambkan oleh servlet dengan nama ```Halo``` yang mereferensi ke klass servlet yaitu ```belajar.java.web.controller.HaloController```. Ada pertanyaan silakan komentar.

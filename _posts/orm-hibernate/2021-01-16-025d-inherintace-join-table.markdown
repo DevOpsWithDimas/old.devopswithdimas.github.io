@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=dMhism_6dXc&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=27
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-25d
+image_path: /resources/posts/orm-hibernate/orm-hibernate-25d
 ---
 
 Hai di materi kali ini saya mau ngebahas Inherintance Mapping dengan metode Join Table. masih dalam contoh yang sama yaitu `kendaraan` yaitu `mobil` dan `motor` namun kali ini berikut adalah perancangan tabelnya:

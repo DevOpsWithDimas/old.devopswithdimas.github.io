@@ -12,7 +12,7 @@ refs:
 - http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html
 youtube: https://www.youtube.com/watch?v=3e3kZ-OKyp8&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=16
 comments: true
-image_path: /resources/posts/orm-hibernate-15
+image_path: /resources/posts/orm-hibernate/orm-hibernate-15
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 ---
 
@@ -68,7 +68,7 @@ Hibernate:
 
 Sekarang kalo kita check di table maka hasilnya seperti berikut:
 
-![select-enum-ordinal]({{site.baseurl}}{{page.image_path}}/select-enum-ordinal.png)
+![select-enum-ordinal]({{ page.image_path | prepend: site.baseurl }}/select-enum-ordinal.png)
 
 Nah terlihat bahwa column `employee_status` di simpan di table dalam bentuk numberic berdasarkan urutan Enum dari class `EmployeeStatus`
 
@@ -119,4 +119,4 @@ Hibernate:
 
 Sekarang kalo kita check di table maka hasilnya seperti berikut:
 
-![select-enum-ordinal]({{site.baseurl}}{{page.image_path}}/select-enum-string.png)
+![select-enum-ordinal]({{ page.image_path | prepend: site.baseurl }}/select-enum-string.png)

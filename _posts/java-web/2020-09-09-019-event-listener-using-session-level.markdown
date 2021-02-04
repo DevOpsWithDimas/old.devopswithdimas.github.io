@@ -12,7 +12,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=rPaGG6DYAZo&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=18
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
-image_path: /resources/posts/java-web-019
+image_path: /resources/posts/java-web/java-web-019
 ---
 
 Event Listeners using Session Level yaitu Event atau kejadian yang biasanya di catch ketika session dibuat atau di destroy. Biasanya penggunaanya untuk authentication, mendapatkan user/session yang active.
@@ -41,13 +41,13 @@ jika temen-temen arahkan ke url [host:port/context-path/listener/home](http://lo
 
 Maka akan terlihat seperti berikut:
 
-![home]({{site.baseurl}}{{page.image_path}}/01-home.png)
+![home]({{ page.image_path | prepend: site.baseurl }}/01-home.png)
 
 Setelah itu coba arahkan ke [host:port/context-path/listener/login](http://localhost:8080/bootcamp-java-webapp/listener/login)
 
 Input username dan password kemudian submit maka hasilnya seperti berikut:
 
-![home increment]({{site.baseurl}}{{page.image_path}}/02-home-result.png)
+![home increment]({{ page.image_path | prepend: site.baseurl }}/02-home-result.png)
 
 nilai `total user = 1` dan `current user = 1` 
 

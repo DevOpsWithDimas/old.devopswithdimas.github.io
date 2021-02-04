@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=mLC3DBBboTk&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=2
 comments: true
+image_path: /resources/posts/psql/psql-install-fedora
 ---
 
 _operation system_ yang berkaitan dengan Linux atau UNIX pasti tidak akan lepas dari yang namanya command line (terminal) so buka terminalnya kemudian masukan script berikut:
@@ -23,15 +24,15 @@ Setelah semuanya di install tahap selajutnya adalah melakukan inisialisasi confi
 sudo postgresql-setup initdb
 {% endhighlight %}
 
-![Init DB]({{ site.baseurl }}/resources/posts/psql-install-fedora/postgresql-setup-initdb.png)
+![Init DB]({{ page.image_path | prepend: site.baseurl }}/postgresql-setup-initdb.png)
 
 Jika berhasil maka hasilnya seperti berikut:
 
-![Successed init db]({{ site.baseurl }}/resources/posts/psql-install-fedora/postgresql-initdb-post.png)
+![Successed init db]({{ page.image_path | prepend: site.baseurl }}/postgresql-initdb-post.png)
 
 Tetapi jika menemukan error seperti berikut:
 
-![Error init DB]({{ site.baseurl }}/resources/posts/psql-install-fedora/postgresql-initdb-error.png)
+![Error init DB]({{ page.image_path | prepend: site.baseurl }}/postgresql-initdb-error.png)
 
 Solusinya adalah hapus folder `pgsql/data`
 

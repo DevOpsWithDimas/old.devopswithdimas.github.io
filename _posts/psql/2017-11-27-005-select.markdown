@@ -9,11 +9,12 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=Ws8ZVcer0Kw&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=3
 comments: true
+image_path: /resources/posts/psql/psql-select
 ---
 
 Perintah / klausa `select` pada dasarnya adalah perintah yang dilakukan _query_ terhadap _database_ untuk mengambil atau mendapatkan data berupa baris (_rows_) dan kolom (_columns_) dalam sebuah _table_ seperti berikut:
 
-![sql to db]({{ site.baseurl }}/resources/posts/psql-select/sql-to-db.jpg)
+![sql to db]({{ page.image_path | prepend: site.baseurl }}/sql-to-db.jpg)
 
 Nah seperti yang kita tahu kalo dalam **sebuah _database_** bisa terdiri dari **banyak _tables_**, dalam **sebuah _table_** terdiri **banyak _rows_ dan _colums_**, dalam **satu _row_ dan _column_** terdiri dari **sebuah nilai**.
 

@@ -11,14 +11,14 @@ refs: []
 youtube: https://www.youtube.com/watch?v=VvApkFldl4w&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=14
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
-image_path: /resources/posts/java-web-015
+image_path: /resources/posts/java-web/java-web-015
 ---
 
 Kita sudah memahami perbedaan tentang HTTP Method GET dan POST, sekarang saya mau membahas tentang mengirim multiple parameter ke sebuah servlet dengan method GET, kenapa menggunakan GET? jawabanya supaya kita tau apa yang dikirim ditampilkan di URL ya tapi klo digunakan untuk aplikasi sesunggunya disarankan menggunakan POST ya!!!.
 
 Jadi saya punya form seperti berikut:
 
-![multiple select]({{ site.baseurl }}{{ page.image_path }}/multiselect.png)
+![multiple select]({{ page.image_path | prepend: site.baseurl }}/multiselect.png)
 
 Dan jika di submit maka URLnya paramenternya akan menampilkan seperti berikut:
 
@@ -36,7 +36,7 @@ Kemudian anda buat servletnya di dengan nama `MultipleValuesController.java` dal
 
 sekarang klo form tersebut di submit maka akan tampil seperti berikut:
 
-![hasil submit]({{ site.baseurl }}{{ page.image_path }}/getParamenterValues.png)
+![hasil submit]({{ page.image_path | prepend: site.baseurl }}/getParamenterValues.png)
 
 Nah jadi solusinya menggunakan method
 

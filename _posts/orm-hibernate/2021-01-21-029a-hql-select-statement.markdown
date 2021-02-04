@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&t=612s
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-29a
+image_path: /resources/posts/orm-hibernate/orm-hibernate-29a
 ---
 
 Hai, di materi kali ini saya mau ngebahas tentang Select Statement dengan menggunakan HQL. OK misalnya disini saya menggunakan entity yang udah pernah saya buat di materi sebelumnya yaitu:

@@ -13,12 +13,12 @@ refs:
 youtube: https://www.youtube.com/watch?v=TpY90QrAsIc&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=24
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-25a
+image_path: /resources/posts/orm-hibernate/orm-hibernate-25a
 ---
 
 Hai, di materi kali ini saya mau ngebahas tentang Inherintance Mapping dengan Metode MappedSuperclass. Untuk mencoba mapping ini, kita membutuhkan 2 tabel yang memiliki column yang hampir sama contohnya `mobil` sama `motor` berikut adalah perancangan databasenya:
 
-![erd]({{site.baseurl}}{{page.image_path}}/erd.png)
+![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 
 Implementasi Entity superclass:
 

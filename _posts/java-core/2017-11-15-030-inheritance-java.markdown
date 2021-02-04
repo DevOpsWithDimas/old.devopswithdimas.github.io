@@ -9,11 +9,12 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=c3JKsRiBgJA&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=28
 comments: true
+image_path: /resources/posts/java-core/java-konsep-oop
 ---
 
 Mungkin _inheritance_ di Java agak _anti-mainstream_ artinya beda dari teknologi pesaingnya seperti `.NET`, `PHP` dan lain-lain, yang menerapkan _single extends_. Seperti di konsep sebelumya yaitu seperti berikut:
 
-![Single extends]({{ site.baseurl }}/resources/posts/java-konsep-oop/inheritance.jpg)
+![Single extends]({{ page.image_path | prepend: site.baseurl }}/inheritance.jpg)
 
 Sedangkan untuk _multiple extends_ di Java digantikan dengan sistem _interface_ atau lebih dikenal dengan _abstract class_. Kalau digambarkan jadi seperti berikut:
 

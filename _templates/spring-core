@@ -1,0 +1,15 @@
+---
+layout: {{ layout }}
+title: "{{ title }}"
+lang: spring-core
+categories:
+- java
+- Spring Framework
+refs: 
+- https://spring.io/projects/spring-framework
+youtube: {{ youtube }}
+comments: true
+gist: {{ gist }}
+comments: true
+image_path: /resources/posts/spring-core/01-intro
+---

@@ -13,12 +13,12 @@ refs:
 youtube: https://www.youtube.com/watch?v=HWsGmSVMgKs&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=21
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-23
+image_path: /resources/posts/orm-hibernate/orm-hibernate-23
 ---
 
 Untuk menggunakan mapping @ManyToOne kita akan buat mapping baru yaitu `mahasiswa` dan `kelas`, berikut adalah perancangannya databasenya:
 
-![erd]({{site.baseurl}}{{page.image_path}}/erd.png)
+![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 
 contohnya seperti berikut:
 
@@ -115,7 +115,7 @@ Hibernate:
 
 Kemudian kita check ke tabel `kelas` dan `mahasiswa_manytoone` seperti berikut:
 
-![select-tables]({{site.baseurl}}{{page.image_path}}/select-tables.png)
+![select-tables]({{ page.image_path | prepend: site.baseurl }}/select-tables.png)
 
 Dan kemudian juga selain itu klo kita jalankan find by id, untuk yang mahasiswa maka hasilnya seperti berikut:
 

@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=dzEVXB5noo8&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=17
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-16
+image_path: /resources/posts/orm-hibernate/orm-hibernate-16
 ---
 
 Hai, di materi kali ini saya akan membahas embedded mapping, Embedded mapping ini biasanya digunakan untuk mapping sebuah entity dengan model yang terpisah kedalam sebuah single database table. contohnya seperti berikut:
@@ -84,4 +84,4 @@ Hibernate:
 
 Sekarang kita coba check di tabelnya hasilnya seperti berikut:
 
-![mahasiswa-embedded]({{site.baseurl}}{{page.image_path}}/mahasiswa_embedded.png)
+![mahasiswa-embedded]({{ page.image_path | prepend: site.baseurl }}/mahasiswa_embedded.png)

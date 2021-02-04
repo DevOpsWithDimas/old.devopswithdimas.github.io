@@ -10,11 +10,12 @@ refs:
 - https://www.postgresql.org/docs/9.5/functions-aggregate.html
 youtube: https://www.youtube.com/watch?v=z5mIVHXBEeE&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=13
 comments: true
+image_path: /resources/posts/psql/psql-group-by
 ---
 
 Pada dasarnya group function, akan memproses banyak data kemudian menterjemahkannya menjadi satu result seperti berikut ilustrasinya:
 
-![group function]({{site.baseurl}}/resources/posts/psql-group-by/konsep-group-funcation.png)
+![group function]({{ page.image_path | prepend: site.baseurl }}/konsep-group-funcation.png)
 
 Ada beberapa function yang kita bisa gunakan, diataranya seperti berikut:
 

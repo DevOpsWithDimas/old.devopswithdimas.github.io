@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=ZxGl2tU8Nyw&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=18
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-17
+image_path: /resources/posts/orm-hibernate/orm-hibernate-17
 ---
 
 Hai, di materi kali ini saya mau ngebahas tentang mapping Embedded Override Attribute dengan model dari yang sebelumnya yaitu 
@@ -91,4 +91,4 @@ Hibernate:
 
 Sekarang kita check di table, berikut hasilnya:
 
-![embbeded-mapping-override-att]({{site.baseurl}}{{page.image_path}}/embedded-override-attributes.png)
+![embbeded-mapping-override-att]({{ page.image_path | prepend: site.baseurl }}/embedded-override-attributes.png)

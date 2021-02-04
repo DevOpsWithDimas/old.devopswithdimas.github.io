@@ -12,18 +12,18 @@ youtube: https://www.youtube.com/watch?v=WV00jAIZCcQ&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 comments: true
-image_path: /resources/posts/java-web-034
+image_path: /resources/posts/java-web/java-web-034
 ---
 
 Setelah kita belajar materi Java Web, sekarang saatnya kita membuat aplikasi contohnya seperti Berikut:
 
-![master-nasabah]({{site.baseurl}}{{page.image_path}}/01-tambah-nasabah.png)
+![master-nasabah]({{ page.image_path | prepend: site.baseurl }}/01-tambah-nasabah.png)
 
-![list-nasabah]({{site.baseurl}}{{page.image_path}}/02-list-nasabah.png)
+![list-nasabah]({{ page.image_path | prepend: site.baseurl }}/02-list-nasabah.png)
 
-![aplikasi-deposito]({{site.baseurl}}{{page.image_path}}/03-tambah-deposito.png)
+![aplikasi-deposito]({{ page.image_path | prepend: site.baseurl }}/03-tambah-deposito.png)
 
-![kartu-deposito]({{site.baseurl}}{{page.image_path}}/04-kartu-deposito.png)
+![kartu-deposito]({{ page.image_path | prepend: site.baseurl }}/04-kartu-deposito.png)
 
 Nah jadi di real live-nya untuk membuat aplikasi developer/programer akan diberikan berupa tampilan atau bahasa keren nya FSD (Function Specification Design) seperti diatas yang kemudian di terjemahkan ke sebuah program. Nah untuk latihan berikut adalah soalnya:
 

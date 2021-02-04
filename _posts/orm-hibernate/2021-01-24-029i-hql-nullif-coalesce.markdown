@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&t=8137s
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-29i
+image_path: /resources/posts/orm-hibernate/orm-hibernate-29i
 ---
 
 Hai, pada kesempatan kali ini saya mau membahas tentang function `coalesce` dan `nullif` menggunakan Hibernate Query Language. ok seperti biasa kita siapkan dulu datanya. contohnya saya punya tabel dan data seperti berikut:

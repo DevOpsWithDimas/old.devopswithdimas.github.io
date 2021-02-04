@@ -9,11 +9,12 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=2xUzXkLf_fA&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=14
 comments: true
+image_path: /resources/posts/psql/psql-group-by
 ---
 
 Lanjutan dari group function, yaitu group by. fungsi group by adalah untuk membreak down atau mengkatagerikan kemudian di buatlah group function. Seperti berikut ilustrasinya:
 
-![group by]({{site.baseurl}}/resources/posts/psql-group-by/konsep-group-by.png)
+![group by]({{ page.image_path | prepend: site.baseurl }}/konsep-group-by.png)
 
 Biasanya query ini akan berguna untuk aplikasi yang bermotif penjualan karena kita bisa mengkategirikan penjualan produk berdasarkan kategori tertentu contohnya jumlah penjulaan produk A per bulan, pertahun dan lain-lain. Ok sekarang saya contohkan studi kasusnya. 
 

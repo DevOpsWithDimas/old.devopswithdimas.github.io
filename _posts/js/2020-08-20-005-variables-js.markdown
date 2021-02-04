@@ -11,7 +11,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=585UnqgtLr4&list=PLV1-tdmPblvyDBVppluBbB_4ryZvjDWvv&index=5
 comments: true
 gist: dimMaryanto93/b956151354fb8a1454d3b36d22d61a63
-image_path: /resources/posts/js-2
+image_path: /resources/posts/js/js-2
 ---
 
  Kali ini saya mau membahas tentang variable di JavaScript diantaranya pembahasanya local & global variable, dan inisialisasi variable.
@@ -24,7 +24,7 @@ Membuat variable pada dasarnya sama seperti bahasa pemograman lainnya yaitu Java
 
 Jika di running di Firefox maka hasilnya seperti berikut:
 
-![membuat variable baru]({{site.baseurl}}{{ page.image_path }}/varBaru.png)
+![membuat variable baru]({{ page.image_path | prepend: site.baseurl }}/varBaru.png)
 
 Jadi penjelasanya dari koding diatas, kita membuat variable dengan nama `log` setelah itu kita memberikan nilai ke variable tersebut dengan nilai `Dimas Maryanto` setelah itu method `console.log()` digunakan untuk menampilkan ke console di firefox.
 
@@ -36,7 +36,7 @@ Di JavaScript seperti yang telah saya ceritakan di awal semua tipe data bisa dit
 
 Disini kita membuat variable dengan nama `log`, variable tersebut dapat digunakan untuk beberapa tipe data sekaligus contohnya pertama kita membuat variable dengan tipe data `String` kemudian yang kedua diinisialisasi kembali dengan tipe data `Number` setelah itu di inisialisasi kembali dengan `Boolean` dan yang terakhir diinisialisasi kembali dengan `Date` apakah dengan begitu menghasilkan error? tentu tidak nih hasil eksekusinya
 
-![var multi value]({{site.baseurl}}{{ page.image_path }}/variable-2.png)
+![var multi value]({{ page.image_path | prepend: site.baseurl }}/variable-2.png)
 
 Sekarang supaya lebih membuktikan bahwa hal tersebut benar coba modifikasi kodingnya menjadi seperti berikut:
 
@@ -56,7 +56,7 @@ console.log(log + "tipe datanya adalah "+ typeof(log));
 
 Hasilnya seperti berikut:
 
-![var hasilnya typeof]({{site.baseurl}}{{ page.image_path }}/variable-3.png)
+![var hasilnya typeof]({{ page.image_path | prepend: site.baseurl }}/variable-3.png)
 
 Jadi dengan kesimpulannya dengan menggunakan `typeof()` kita bisa mengetahui variable tersebut memilliki tipe data apa.
 
@@ -68,7 +68,7 @@ Di javascript juga sama seperti bahasa pemograman lain yaitu mengenal local dan 
 
 diatas saya membuat sebuah function dengan nama `halo` kemudian di dalamnya saya membuat lagi variable dengan nama `local` yang di inisialisasi dengan value `Dimas Maryanto` setelah itu saya panggil method halo tersebut untuk di jalankan. setelah method `halo` dijalakan saya memanggil variable `local` dari luar dan hasilnya adalah `undefined`
 
-![local variable ]({{site.baseurl}}{{ page.image_path }}/variable-4.png)
+![local variable ]({{ page.image_path | prepend: site.baseurl }}/variable-4.png)
 
 Setelah itu sekarang saya jelaskan tentang global variable seperti berikut:
 

@@ -10,7 +10,7 @@ refs:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 youtube: https://www.youtube.com/watch?v=AU6ijEN19fQ&list=PLV1-tdmPblvyDBVppluBbB_4ryZvjDWvv&index=3
 comments: true
-image_path: /resources/posts/js-1
+image_path: /resources/posts/js/js-1
 ---
 
 Untuk memulai belajar Javascript, kita perlu setup development environment. Tidak seperti Java, C++, Python. JavaScript tidak perlu menginstall software SDK karena **by default sudah tertanam di Browser** seperti (Internet Expoler, Mozilla Firefox, Google Chrome dll). yang perlu di install adalah **Text Editor**. Ada banyak text editor untuk JavaScript dari yang paling cangih seperti IDE [Netbeans](https://netbeans.org/), [InteliJIDE](https://www.jetbrains.com/idea/), [Eclipse](https://www.eclipse.org/) sampe ke text editor biasa seperti Nodepad, Gedit dll selain itu juga ada banyak pilihan lain diantaranya:
@@ -29,11 +29,11 @@ Sedangkan untuk runtime environmentnya saya menggunakan [Firefox Web Developer E
 
 Didalam Firefox Developer Edition ini memiliki tools untuk menulis koding JavaScript namanya Scratchpad.
 
-![Scratchpad]({{site.baseurl}}{{page.image_path}}/scratchpad.png)
+![Scratchpad]({{ page.image_path | prepend: site.baseurl }}/scratchpad.png)
 
 Nah satu lagi yang paling penting adalah melihat consolenya, karena kedepanya saya akan membahasnya secara console di Browser.
 
-![firefox console]({{site.baseurl}}{{page.image_path}}/firefox-console.png)
+![firefox console]({{ page.image_path | prepend: site.baseurl }}/firefox-console.png)
 
 Sekarang kita coba memulai koding, sekarang coba menampilkan `halo dunia, nama saya dimas maryanto`
 

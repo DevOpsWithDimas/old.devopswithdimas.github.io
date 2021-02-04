@@ -9,11 +9,12 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=ytKK6l698Wk&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=4
 comments: true
+image_path: /resources/posts/psql/psql-concatenation/
 ---
 
 Apa itu concatenation?, Concatenation biasanya digunakan untuk mengkombinasikan, menyambungkan beberapa kolom dalam suatu query menjadi satu. seperti berikut ilustrasinya:
 
-![konsep]({{site.baseurl}}/resources/posts/psql-concatenation/konsep-concatenation.png)
+![konsep]({{ page.image_path | prepend: site.baseurl }}/konsep-concatenation.png)
 
 Ok misalnya saya punya struktur tabel seperti berikut:
 

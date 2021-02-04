@@ -10,11 +10,12 @@ refs:
 - https://www.postgresql.org/docs/9.1/functions-string.html
 youtube: https://www.youtube.com/watch?v=-Y7ASnS5bX8&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=12
 comments: true
+image_path: /resources/posts/psql/psql-single-row
 ---
 
 Single row function, yaitu digunakan untuk memformat data per baris. Berikut ilustrasinya:
 
-![single row funcation]({{site.baseurl}}/resources/posts/psql-single-row/konsep-single-row-funcation.png)
+![single row funcation]({{ page.image_path | prepend: site.baseurl }}/konsep-single-row-funcation.png)
 
 Beberapa fungsi yang dapat digunakan untuk memformat data di single row, di antarnya dikategorikan sebagai berikut:
 

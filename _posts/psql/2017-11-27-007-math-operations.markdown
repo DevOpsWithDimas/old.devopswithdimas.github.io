@@ -31,7 +31,6 @@ Operasi pada bilangan pada dasarnya sama seperti operasi matematika biasa, seper
 | ^ 	    |   exponentiation 	| 2.0 ^ 3.0     |        8  |
 | ! 	    |   factorial 	    | 5 !           |       120 |
 | @ 	    |   absolute value  | @ -5.0        | 	      5 |
-{:.table .striped .bordered }
 
 ### Contoh sederhana
 

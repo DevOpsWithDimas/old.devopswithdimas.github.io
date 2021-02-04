@@ -11,7 +11,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=eEEZedZIwCw&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=33
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
-image_path: /resources/posts/java-web-030
+image_path: /resources/posts/java-web/java-web-030
 ---
 
 Berikut adalah implementasi konsep MVC dengan Java Web, 
@@ -46,4 +46,4 @@ Dan sekarang coba jalankan kemudian akses url [http://localhost:8080/bootcamp-ja
 
 Hasilnya maka akan menampilkan seperti berikut:
 
-![mvc-jsp-servlet]({{site.baseurl}}{{page.image_path}}/servlet-jsp-mvc-impl.png)
+![mvc-jsp-servlet]({{ page.image_path | prepend: site.baseurl }}/servlet-jsp-mvc-impl.png)

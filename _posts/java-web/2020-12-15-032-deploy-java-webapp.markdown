@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=ibo3BmOI1iQ&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=36
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 comments: true
-image_path: /resources/posts/java-web-032
+image_path: /resources/posts/java-web/java-web-032
 ---
 
 Setelah kita install Apache Tomcat `8.x`, sekarang kita akan mendeploy aplikasi Java Web kita dengan menggunakan Automate Deployment Approach dengan bantuan plugin `cargo-maven-plugin` jadi kita perlu tambahkan plugin dulu di file `pom.xml` seperti berikut:
@@ -84,4 +84,4 @@ Setelah itu outputnya akan seperti berikut:
 
 Sekarang kita coba test dari web browser hasilnya seperti berikut:
 
-![browser]({{site.baseurl}}{{page.image_path}}/test-deploy.png)
+![browser]({{ page.image_path | prepend: site.baseurl }}/test-deploy.png)

@@ -14,6 +14,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=HlLrTQMX0E0&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=2
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
+image_path: /resources/posts/orm-hibernate/
 ---
 
 Halo kali ini saya mau membahas salah satu framework yang sifatnya ORM (Object Relational Mapping) yaitu Hibernate Framework. Tapi sebelum kita mulai belajar koding saya mau cerita dulu nih. Jadi...

@@ -10,5 +10,5 @@ youtube: {{ youtube }}
 comments: true
 gist: {{ gist}}
 comments: true
-image_path: {{ image_path }}
+image_path: /resources/posts/js/
 ---

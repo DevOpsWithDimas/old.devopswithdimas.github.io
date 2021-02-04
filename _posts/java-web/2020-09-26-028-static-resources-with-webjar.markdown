@@ -12,7 +12,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=jarxlARpL9w&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=31
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
-image_path: /resources/posts/java-web-026
+image_path: /resources/posts/java-web/java-web-026
 ---
 
 Update your `pom.xml` dengan menambahkan [webjars](https://www.webjars.org/) library contohnya seperti [jQuery](https://jquery.com/), [Bootstrap](https://getbootstrap.com/), [DataTables](https://datatables.net/) seperti berikut:
@@ -96,7 +96,7 @@ Update your `pom.xml` dengan menambahkan [webjars](https://www.webjars.org/) lib
 
 Sekarang kita akan coba untuk test, apakah resources yang kita tambahkan sudah bisa di access melalui web contohnya seperti resource `bootstrap:4.5.2` yang kita tambahkan sebagai dependency coba access dengan url [http://localhost:8080/bootcamp-java-webapp/webjars/bootstrap/4.5.2/css/bootstrap.min.js](http://localhost:8080/bootcamp-java-webapp/webjars/bootstrap/4.5.2/css/bootstrap.min.js) jika berhasil maka outputnya seperti berikut:
 
-![bootstrap loaded]({{site.baseurl}}{{page.image_path}}/bootstrap-css-resources.png)
+![bootstrap loaded]({{ page.image_path | prepend: site.baseurl }}/bootstrap-css-resources.png)
 
 Setelah itu, kita bisa menggunakan di halaman html atau jsp contohnya seperti berikut:
 
@@ -104,12 +104,12 @@ Setelah itu, kita bisa menggunakan di halaman html atau jsp contohnya seperti be
 
 Hasilnya seperti berikut:
 
-![hasil]({{site.baseurl}}{{page.image_path}}/jsp-webjars-resources-jstl.png)
+![hasil]({{ page.image_path | prepend: site.baseurl }}/jsp-webjars-resources-jstl.png)
 
 Mungkin dari temen-temen bertanya? bang itu kok tau lokasi file css atau js. itu di ambil dari mana ya?
 
 jawabanya: nih lokasinya ada di lib/dependency seperti berikut:
 
-![location lib]({{site.baseurl}}{{page.image_path}}/location-resource.png)
+![location lib]({{ page.image_path | prepend: site.baseurl }}/location-resource.png)
 
 dan coba [baca ini](https://www.webjars.org/documentation#servlet3)

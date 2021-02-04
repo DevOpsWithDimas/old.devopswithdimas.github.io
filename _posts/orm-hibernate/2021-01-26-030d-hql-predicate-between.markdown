@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&t=11889s
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-030d
+image_path: /resources/posts/orm-hibernate/orm-hibernate-030d
 ---
 
 Hai pada kesempatan kali ini saya mau membahas tantang between dengan menggunakan Hibernate Query Language (HQL). berikut adalah contoh implementasi DAO:

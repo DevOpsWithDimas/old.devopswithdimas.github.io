@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&t=3349s
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-29c
+image_path: /resources/posts/orm-hibernate/orm-hibernate-29c
 ---
 
 Hai, di materi kali ini saya mau membahas tentang Join Entity menggunakan ORM Hiberate, Untuk join pada dasarnya ada 2 jenis yaitu 

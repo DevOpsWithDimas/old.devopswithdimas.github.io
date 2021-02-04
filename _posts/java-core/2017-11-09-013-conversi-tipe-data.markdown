@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: 
 comments: true
+image_path: /resources/posts/java-core/java-convert-data
 ---
 
 Untuk konversi tipe data di Java, pada dasarnya otomatis tpi ada beberapa syarat seperti berikut:
@@ -16,7 +17,7 @@ Untuk konversi tipe data di Java, pada dasarnya otomatis tpi ada beberapa syarat
 1. Sesuai dengan hirarki tipe data tersebut
 2. Sesuai dengan tipe data, contohnya jika tipe data `Byte` tidak bisa di konversi ke `boolean` jadi harus ke tipe data yang sifatnya number dan hirarcki yang lebih tinggi seperti gambar berikut:
 
-![Flow conversi otomatis]({{ site.baseurl}}/resources/posts/java-convert-data/konsep-auto-converted.png)
+![Flow conversi otomatis]({{ page.image_path | prepend: site.baseurl }}/konsep-auto-converted.png)
 
 Implementasinya seperti berikut:
 

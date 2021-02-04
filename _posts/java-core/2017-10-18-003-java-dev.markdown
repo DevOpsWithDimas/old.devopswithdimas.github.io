@@ -9,10 +9,11 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=hTKaYzh8OMM&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=4
 comments: true
+image_path: /resources/posts/java-core/java-intro
 ---
 Sebelum kita koding dengan bahasa pemograman berorientasi object ini (Java), kita harus install dulu Software Development Kit atau SDK yaitu JDK kependekan dari _Java Development Kit_. JDK bertujuan untuk menyediakan sekumpulan tools handal yang disediakan oleh para insyinyur Java (gelar) contoh diantarnya sebagai berikut
 
-![JDK vs JRE]({{ site.baseurl }}/resources/posts/java-intro/java-arc.png)
+![JDK vs JRE]({{ page.image_path | prepend: site.baseurl }}/java-arc.png)
 
 ### Level Tools & Tools APIs
 1. `javac` untuk melakukan compilasi

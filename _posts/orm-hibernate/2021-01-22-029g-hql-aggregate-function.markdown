@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&t=6532s
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-29g
+image_path: /resources/posts/orm-hibernate/orm-hibernate-29g
 ---
 
 Hai, pada kesempatan kali ini saya mau membahas tentang Aggregation Function dengan menggunakan HQL. Aggregation pada dasarnya ada beberapa function yang kita bisa gunakan yaitu 

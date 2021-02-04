@@ -13,12 +13,12 @@ refs:
 youtube: https://www.youtube.com/watch?v=ulhVCds7sHI&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=25
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-25b
+image_path: /resources/posts/orm-hibernate/orm-hibernate-25b
 ---
 
 Hai, di materi kali ini akan membahas Inherintance menggunakan metode Single Table. Untuk mencobanya disini masih menggunakan contoh kasus yang sama yaitu kendaran yang terdiri dari mobil dan motor. berikut adalah perancangan tabelnya:
 
-![erd]({{site.baseurl}}{{page.image_path}}/erd.png)
+![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 
 contoh implementasinya seperti berikut
 
@@ -88,4 +88,4 @@ Hibernate:
 
 Jika kita check ke table, hasilnya seperti berikut:
 
-![select-table]({{site.baseurl}}{{page.image_path}}/select-tables.png)
+![select-table]({{ page.image_path | prepend: site.baseurl }}/select-tables.png)

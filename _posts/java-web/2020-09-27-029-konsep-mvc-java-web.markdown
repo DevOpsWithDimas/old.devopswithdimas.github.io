@@ -11,7 +11,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=IdVjNkxaJnI&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=32
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
-image_path: /resources/posts/java-web-029
+image_path: /resources/posts/java-web/java-web-029
 ---
 
 Ada beberapa konsep design pattern yang popular dan membawa atau memberikan effect besar pada pengembangan aplikasi contohnya MVC (Model View Controller). MVC yaitu mecahkan masalah dengan membagi menjadi 2 kompenent yaitu 
@@ -34,7 +34,7 @@ Controller merupakan mengendalikan request dan respose dari HTTP.
 
 View dan Model saling berkomunikasi dengan Controller, jika saya gambarkan kedalam diagram sequance maka jadi seperti berikut flow interaksinya:
 
-![flow mvc using jsp/servlet]({{site.baseurl}}{{page.image_path}}/flow-mvc-servlet-jsp.png)
+![flow mvc using jsp/servlet]({{ page.image_path | prepend: site.baseurl }}/flow-mvc-servlet-jsp.png)
 
 
 ## Keuntungan MVC Design Pattern

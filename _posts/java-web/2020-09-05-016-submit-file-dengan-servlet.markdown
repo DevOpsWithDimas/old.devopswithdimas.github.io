@@ -15,7 +15,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=DDMH5jV7bOI&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=15
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
-image_path: /resources/posts/java-web-016
+image_path: /resources/posts/java-web/java-web-016
 ---
 
 Setelah kita belajar mengirimkan data berupa text, sekarang kita akan membahas mengirimkan file menggunakan servlet dan attribute `enctype="multipart/form-data"`. Untuk menggunakan **attribute enctype hanya bisa digunakan dengan menggunakan `HTTP Method POST`** selain itu juga untuk meng-upload file ada beberapa kondisi yaitu 
@@ -28,7 +28,7 @@ Karena servlet spec yang kita gunakan masih menggunakan `Tomcat7` sebagai develo
 
 Ok sekarang kita akan buat form seperti berikut:
 
-![design form]({{site.baseurl}}{{page.image_path}}/form-input-file.PNG)
+![design form]({{ page.image_path | prepend: site.baseurl }}/form-input-file.PNG)
 
 Berikut adalah file html nya, save di `/src/main/webapp/example/request-file.html`:
 
@@ -40,8 +40,8 @@ Untuk memproses file upload berikut adalah servlet nya:
 
 dan hasilnya seperti berikut:
 
-![result]({{site.baseurl}}{{page.image_path}}/result-file-upload.PNG)
+![result]({{ page.image_path | prepend: site.baseurl }}/result-file-upload.PNG)
 
 Dan berikut adalah lokasi filenya setelah di pindahkan:
 
-![file-saved]({{site.baseurl}}{{page.image_path}}/file-save-system.PNG)
+![file-saved]({{ page.image_path | prepend: site.baseurl }}/file-save-system.PNG)

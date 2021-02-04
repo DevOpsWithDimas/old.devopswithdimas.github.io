@@ -9,11 +9,12 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=aewpT6Y6_yk&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=16
 comments: true
+image_path: /resources/posts/psql/psql-join
 ---
 
 Klausa `join` pada dasarnya untuk menghubungkan tabel yang terpisah menjadi satu berdasarkan `foreign key` contoh ilustrasinya seperti berikut:
 
-![ilustrasi join]({{site.baseurl}}/resources/posts/psql-join/join-tables.png)
+![ilustrasi join]({{ page.image_path | prepend: site.baseurl }}/join-tables.png)
 
 Perintah join bisa di lakukan dengan beberapa cara yaitu
 

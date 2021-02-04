@@ -10,7 +10,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=uzJQXYBqDco&list=PLV1-tdmPblvyDBVppluBbB_4ryZvjDWvv&index=10
 comments: true
 gist: dimMaryanto93/b956151354fb8a1454d3b36d22d61a63
-image_path: /resources/posts/js-5
+image_path: /resources/posts/js/js-5
 ---
 
 Tipe **data array** seperti yang anda ketahui kalo array ini pada dasarnya adalah sebuah variable yang bisa menampung data lebih dari satu.
@@ -21,7 +21,7 @@ Ok langsung aja kita lihat bagaimana array ini bekerja, jadi contohnya disini sa
 
 Coba jika anda running di console firefox atau chrome maka hasilnya seperti berikut:
 
-![array basic]({{site.baseurl}}{{ page.image_path }}/array-1.png)
+![array basic]({{ page.image_path | prepend: site.baseurl }}/array-1.png)
 
 Jadi kalo anda perhatikan dari output diatas variable `values` memiliki 2 element yaitu **index** dan **value**, **index dimulai dari 0** sedangkan value nilainya yang kita definisikan. tahap selanjutnya kita akan menampilkan array tersebut dengan menggunakan perulangan `for` seperti berikut kodingnya:
 

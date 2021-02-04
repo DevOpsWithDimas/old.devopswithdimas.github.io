@@ -15,7 +15,7 @@ youtube: https://www.youtube.com/watch?v=jXJvyNVWsEM&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 comments: true
-image_path: /resources/posts/java-web-033
+image_path: /resources/posts/java-web/java-web-033
 ---
 
 Automation deployment / delivery object sebetulnya ada beberapa cara dan tools contohnya seperti:
@@ -42,7 +42,7 @@ Image yang digunakan untuk melakukan build project ini yaitu [maven:3.6.3-jdk-8]
 
 Variables, ada beberapa variable yang kita perlu set di `Setttings` -> `CI/CD` ->` Variables` seperti berikut:
 
-![gitlab ci/cd]({{site.baseurl}}{{page.image_path}}/gitlab-ci-cd-variables.png)
+![gitlab ci/cd]({{ page.image_path | prepend: site.baseurl }}/gitlab-ci-cd-variables.png)
 
 dan untuk property `only` => `/-release/` ini tujuannya adalah ketika kita push pada branch / membuat tag dengan prefix tersebut akan automatis di jalankan command script nya.
 
@@ -67,4 +67,4 @@ git push --tags
 
 Kemudian kita coba check pada menu `Pipeline` hasilnya seperti berikut:
 
-![git build]({{site.baseurl}}{{page.image_path}}/gitlab-build-success.png)
+![git build]({{ page.image_path | prepend: site.baseurl }}/gitlab-build-success.png)

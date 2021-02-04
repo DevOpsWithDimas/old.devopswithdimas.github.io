@@ -13,12 +13,12 @@ refs:
 youtube: https://www.youtube.com/watch?v=ZXzHw6emrZo&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=20
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-22
+image_path: /resources/posts/orm-hibernate/orm-hibernate-22
 ---
 
 Untuk mencoba mapping OneToMany kita membutuhkan 3 table, contohnya `mahasiswa`, `alamat`, relasi antara `mahasiswa` dan `alamat` misal namanya kita sebut `mahasiswa_alamat_list`, berikut adalah perancangan tabelnya:
 
-![erd]({{site.baseurl}}{{page.image_path}}/erd.png)
+![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 
 Untuk alamat kita masih menggunakan class yang sebelunya yaitu 
 
@@ -144,7 +144,7 @@ Hibernate:
 
 Kemudian kita check di tabel `mahasiswa`, `alamat` dan `mahasiswa_alamat_list` berikut:
 
-![select-tables]({{site.baseurl}}{{page.image_path}}/select-tables.png)
+![select-tables]({{ page.image_path | prepend: site.baseurl }}/select-tables.png)
 
 ## Summary 
 

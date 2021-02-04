@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=MCjohxKO8Tk&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 image_path: 
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
+image_path: /resources/posts/orm-hibernate/
 ---
 
 Untuk generator sebetulnya sama halnya yang telah saya tulis materinya [di sini]({{site.baseurl}}{% post_url psql/2020-01-03-035-ddl-primary-key-generator-value %}) yaitu 

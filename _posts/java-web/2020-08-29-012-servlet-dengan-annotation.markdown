@@ -11,7 +11,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=HjMOCEqbx8Q&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=11
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
-image_path: /resources/posts/java-web-012
+image_path: /resources/posts/java-web/java-web-012
 ---
 
 Sebelumnya kita telah membuat servlet dengan menggunakan **xml-mapping**, jaman sekarang configurasi di xml udah usang atau jarang dipake. Sekarang udah **Zamannya Annotation** maka dari itu saya bakalan membahas tentang servlet dengan annotation.

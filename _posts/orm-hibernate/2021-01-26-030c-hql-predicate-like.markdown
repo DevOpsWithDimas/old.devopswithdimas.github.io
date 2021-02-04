@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&t=11385s
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-030c
+image_path: /resources/posts/orm-hibernate/orm-hibernate-030c
 ---
 
 Hai pada kesempatan kali ini saya mau membahas tentang operator like menggunakan Hibernate Query Language (HQL). pada dasarnya operator like di terapkan pada tipe data varchar atau String. selain itu juga jika kita biasa menggunakan escape character, string expression seperti `%` dan `_`.

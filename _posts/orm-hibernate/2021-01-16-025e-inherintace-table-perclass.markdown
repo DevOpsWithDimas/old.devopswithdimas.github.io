@@ -13,7 +13,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=9X-DHQcFc38&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=28
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
-image_path: /resources/posts/orm-hibernate-25e
+image_path: /resources/posts/orm-hibernate/orm-hibernate-25e
 ---
 
 Hai di materi kali ini kita akan membahas tentang Inherintance metode `TABLE_PER_CLASS` dengan perancangan tabel seperti berikut:

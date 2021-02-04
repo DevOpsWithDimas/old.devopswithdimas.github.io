@@ -10,6 +10,7 @@ categories:
 refs: []
 youtube: 
 comments: true
+image_path: /resources/posts/pgplsql/
 ---
 
 Hi, di materi ini 'pg/plSQL' temen-temen akan belajar tentang bahasa pemograman menggunakan database PostgreSQL

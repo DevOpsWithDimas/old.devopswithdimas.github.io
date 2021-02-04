@@ -9,11 +9,12 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=DBa_GdGBvd8&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=19
 comments: true
+image_path: /resources/posts/psql/psql-join
 ---
 
 Selain `inner join`, `natural join` dan `outter join` ada juga `self join` yaitu merelasikan ke tabel dirinya sendiri, berikut ilustrasinya:
 
-![gambar self join]({{site.baseurl}}/resources/posts/psql-join/self-join.png)
+![gambar self join]({{ page.image_path | prepend: site.baseurl }}/self-join.png)
 
 Contoh kasusnya, saya ingin mencari semua karyawan dan berserta nama managernya. Berikut querynya:
 
