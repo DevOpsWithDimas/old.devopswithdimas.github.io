@@ -20,9 +20,8 @@ Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
     1. Install Database PostgreSQL Engine
     2. Install [PgAdmin3 / PgAdmin4](https://www.pgadmin.org/download/)
 3. Pengenalan perintah Structural Query Language (SQL)
-4. Aturan Penulisan SQL
-5. Persiapan membuat Role / User, membuat Schema, membuat Database dan membuat table
-6. Menampilkan informasi data Table
+4. Persiapan membuat Role / User, membuat Schema, membuat Database dan membuat table
+5. Menampilkan informasi data Table
     1. Perintah `SELECT`
     2. Operasi Matematika di SQL.
     3. Column Alias
@@ -33,18 +32,39 @@ Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
     8. Logical Condition
     9. Sorting Data dengan `ORDER BY`
 <!--more-->
-7. SQL Function
+6. SQL Function
     1. Single Row Function
     2. Menglompokan data dengan `GROUP BY`
-8. Join Table
-9. Subquery
-10. Manipulasi Data
+7. Join Table
+    1. Natural Join
+    2. Inner Join
+    3. Outer Join
+    4. Self Join
+8. Subquery
+9. Manipulasi Data
     1. Data Manipulation Language
     2. Transaction Control Language
-11. Object dalam PostgreSQL
+10. Object dalam PostgreSQL
     1. Sequance
-    2. View
-    3. Routine
-12. Advanced Query
+    2. View Table
+    3. Trigger
+    4. Store Precedure
+11. Index
+    1. B-Tree Index
+    2. Function Based Index
+    3. Bitmap Index
+    4. Drop Index
+11. Advanced Query
     1. Menggabungkan data dengan `UNION`
     2. Menggabungkan data dengan `MERGE`
+12. PL/pgSQL
+    1. Variables
+    2. Constanta
+    3. Functions
+    4. Flow Control
+    5. Cursor
+    6. Store Procedure
+13. User/Schema Management
+    1. User Management
+    2. Privileges Management
+    3. Role Management
