@@ -47,8 +47,6 @@ Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
 10. Object dalam PostgreSQL
     1. Sequance
     2. View Table
-    3. Trigger
-    4. Store Precedure
 11. Indexing
     1. B-Tree Index
     2. Function Based Index
@@ -64,6 +62,7 @@ Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
     4. Flow Control
     5. Cursor
     6. Store Procedure
+    7. Trigger
 13. User/Schema Management
     1. User Management
     2. Privileges Management
