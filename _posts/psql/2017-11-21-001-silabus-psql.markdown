@@ -49,7 +49,7 @@ Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
     2. View Table
     3. Trigger
     4. Store Precedure
-11. Index
+11. Indexing
     1. B-Tree Index
     2. Function Based Index
     3. Bitmap Index
