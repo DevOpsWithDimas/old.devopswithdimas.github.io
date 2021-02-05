@@ -31,7 +31,6 @@ Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
     7. Filter data dengan perintah `WHERE`
     8. Logical Condition
     9. Sorting Data dengan `ORDER BY`
-<!--more-->
 6. SQL Function
     1. Single Row Function
     2. Menglompokan data dengan `GROUP BY`
@@ -44,6 +43,7 @@ Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
 9. Manipulasi Data
     1. Data Manipulation Language
     2. Transaction Control Language
+<!--more-->
 10. Object dalam PostgreSQL
     1. Sequance
     2. View Table
