@@ -10,6 +10,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=jf6O6g0MaZc&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=15
 comments: true
 image_path: /resources/posts/psql/psql-group-by
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 ---
 
 Untuk filter data dengan klausa `where` di dalam `group by` secara ilustrasi bisa digambarkan seperti berikut:

@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=mLC3DBBboTk&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=2
 comments: true
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 ---
 
 Data relational yaitu salah satu konsep atau teknik _how to store the data_ dengan menggunakan _database_ atau Basis Data. _Database_ itu sebenarnya software yang bertujuan untuk memudahkan proses manipulasi data dan pencarian secara cepat dengandingkan menggunakan _file_.

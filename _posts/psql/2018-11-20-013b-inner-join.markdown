@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=GmUPKx353TI&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=17
 comments: true
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 ---
 
 Selain menggunakan `Natural join` kita bisa menggunakan klausa `on` dan juga `where` atau lebih dikenal dengan **Inner JOIN**. Dengan menggunakan klausa `on` atau `whare` kita bisa bebas menentukan column mana yang akan di relasikan contohnya seperti berikut:

@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=ZzXOMSeExHA&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=20
 comments: true
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 ---
 
 Di sql juga, bisa melakukan seleksi sama halnya dengan bahasa pemograman dengan `if/else` berikut contoh perintahnya:

@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=tQHfL3lpBz8&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=24
 comments: true
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 ---
 
 Transaction Control atau singkatan dari TCL yaitu perintah untuk kendali terhadap suatu perubahan data di Database contoh menginpan data secara permanent yang kita kenal sebagai `commit` dan untuk mengembalikan ke kondisi sebelumnya yaitu `rollback` dalam suatu transaksi.

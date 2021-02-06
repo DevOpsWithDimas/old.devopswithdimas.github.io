@@ -11,6 +11,7 @@ refs:
 - https://www.postgresql.org/docs/9.5/sql-createsequence.html
 youtube: https://www.youtube.com/watch?v=WFGyithp2SE&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=28
 comments: true
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 ---
 
 Untuk membuat unique value ada 2 type yang kita bisa gunakan yaitu dengan Sequence Method dan Unique Identifier Method. 

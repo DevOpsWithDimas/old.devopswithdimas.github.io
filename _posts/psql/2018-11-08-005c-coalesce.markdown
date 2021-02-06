@@ -10,6 +10,7 @@ refs:
 - https://www.postgresql.org/docs/current/functions-conditional.html#FUNCTIONS-COALESCE-NVL-IFNULL
 youtube: https://www.youtube.com/watch?v=idlj5ox2cvU&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=6
 comments: true
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 ---
 
 Nilai `NULL` bukan berarti tanpa karater, begitu pula sebaliknya. Kenapa saya bilang gitu karena berikut dari data hasil query ini:

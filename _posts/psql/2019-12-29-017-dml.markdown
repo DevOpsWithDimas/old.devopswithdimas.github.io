@@ -10,6 +10,7 @@ refs:
 - https://www.postgresql.org/docs/9.2/dml.html
 youtube: https://www.youtube.com/watch?v=S4CrEAgfLz0&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=23
 comments: true
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 ---
 
 Data Manipulation atau singkatan dari DML yaitu sebuah statement yang digunakan untuk memanipulasi data dalam sebuah tabel di Database. Perintah DML terdiri dari 3 bagian yaitu

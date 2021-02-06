@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=WgABoubjQdY&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=1
 comments: true
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 ---
 
 Hi, di materi ini 'PostgreSQL' temen-temen akan belajar menggunakan Relational Database Management Sistem dengan menggunakan Database PostgreSQL.

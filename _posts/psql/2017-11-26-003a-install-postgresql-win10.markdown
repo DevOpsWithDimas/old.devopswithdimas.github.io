@@ -10,6 +10,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=mLC3DBBboTk&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=2
 comments: true
 image_path: /resources/posts/psql/psql-install-win10
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 ---
 
 Ok langsung aja kita download softwarenya dari [Official Website](https://www.postgresql.org/download/windows/), Sebenarnya ada 2 cara untuk menginstall database PostgreSQL di Windows

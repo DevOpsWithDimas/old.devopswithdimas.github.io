@@ -11,6 +11,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=z5mIVHXBEeE&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=13
 comments: true
 image_path: /resources/posts/psql/psql-group-by
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 ---
 
 Pada dasarnya group function, akan memproses banyak data kemudian menterjemahkannya menjadi satu result seperti berikut ilustrasinya:

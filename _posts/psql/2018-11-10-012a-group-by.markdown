@@ -10,6 +10,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=2xUzXkLf_fA&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=14
 comments: true
 image_path: /resources/posts/psql/psql-group-by
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 ---
 
 Lanjutan dari group function, yaitu group by. fungsi group by adalah untuk membreak down atau mengkatagerikan kemudian di buatlah group function. Seperti berikut ilustrasinya:
