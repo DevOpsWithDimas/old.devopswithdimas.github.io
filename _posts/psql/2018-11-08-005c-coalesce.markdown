@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Using coalesce to handle Null value on PostgreSQL"
-date: 2018-11-08T22:39:10+07:00
+date: 2017-11-27T11:05:11+07:00
 lang: psql
 categories:
 - RDBMS
@@ -43,14 +43,7 @@ Coba anda perhatikan pada kolom `komisi_persen` yang tidak ada nilanya itu adala
 
 Kasusnya gini klo nilai `null` dikalikan berapapun pasti hasilnya `nan` atau `null` jadi solusinya gimana?, Salah satu cara untuk meng-handle nilai null yaitu dengan meggunakan fungsi `coalese` di PostgreSQL, sedangkan untuk di database engine lain seperti oracle, mysql menggunakan `NVL` ini tergantung dari speck databasenya so baca dokumentasinya dulu ya~.
 
-{% highlight sql linenos %}
-select 
-    first_name                                      as name, 
-    COALESCE(commission_pct,0)                      as komisi_persen, 
-    salary                                          as gaji_sebulan,
-    salary + (salary * COALESCE(commission_pct,0))  as gaji_net
-from employees;
-{% endhighlight %}
+{% gist page.gist "select-coalesce.sql" %}
 
 Berikut hasilnya:
 

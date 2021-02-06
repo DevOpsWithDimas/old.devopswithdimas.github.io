@@ -22,11 +22,7 @@ Dari gambar ilustrasi diatas, kita bisa simpulkan kalo klasa `limit` itu ya sepe
 
 Berikut contoh query penggunannya:
 
-{% highlight sql linenos %}
-select employee_id as kode, first_name as nama
-from employees
-limit 5 offset 5;
-{% endhighlight %}
+{% gist page.gist "select-limit-offset.sql" %}
 
 Berikut hasilnya:
 
@@ -43,18 +39,8 @@ Berikut hasilnya:
 
 Klausa `limit` dan `offset` bisa di run secara terpisah ya, tidak harus di pasang dua duanya, berikut querynya:
 
-{% highlight sql linenos %}
--- tampilkan data sebanyak 5 baris
-select employee_id as kode, first_name as nama
-from employees
-limit 5;
-{% endhighlight %}
+{% gist page.gist "select-limit.sql" %}
 
 
-{% highlight sql linenos %}
--- tampilkan data dari baris ke 5
-select employee_id as kode, first_name as nama
-from employees
-offset 5;
-{% endhighlight %}
+{% gist page.gist "select-offset.sql" %}
 

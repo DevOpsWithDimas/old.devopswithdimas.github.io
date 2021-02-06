@@ -31,14 +31,7 @@ Untuk pengurutan ini ada 2 jenis yaitu
 
 Contoh kasusnya saya mau menampilkan data karyawan berdasarkan gaji yang terbesar terlebih dahulu, berarti kita menggunakan `desc` berikut querynya:
 
-{% highlight sql linenos %}
-select
-    employee_id as kode,
-    first_name as nama_depan,
-    salary as gaji
-from employees
-order by salary desc;
-{% endhighlight %}
+{% gist page.gist "select-order-desc.sql" %}
 
 Berikut hasilnya:
 
@@ -70,15 +63,7 @@ Berikut hasilnya:
 
 Selain itu juga kita bisa mengurutkan lebih dari 1 kolom, contohnya diurutkan berdasarkan nama depan dan salary. Berikut querynya:
 
-
-{% highlight sql linenos %}
-select
-    employee_id as kode,
-    first_name as nama_depan,
-    salary as gaji
-from employees
-order by (first_name, salary) asc;
-{% endhighlight %}
+{% gist page.gist "select-order-multiple-columns.sql" %}
 
 berikut hasilnya:
 

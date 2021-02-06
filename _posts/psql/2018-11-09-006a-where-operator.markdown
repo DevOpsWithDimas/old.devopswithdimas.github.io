@@ -33,11 +33,7 @@ Ok sekarang kita bahas satu persatu operator-operator yang telah saya jabarkan d
 
 Berikut contoh kasus, untuk mencari data pegawai dengan kode yang sama dengan `100` berikut querynya:
 
-{% highlight sql linenos %}
-select employee_id, first_name, last_name, email, phone_number, job_id, salary
-from employees 
-where employee_id = 100;
-{% endhighlight %}
+{% gist page.gist "select-where-eq.sql" %}
 
 Berikut ini hasilnya:
 
@@ -54,19 +50,11 @@ Berikut contoh kasus, untuk mencari data pegawai dengan jabatan yang bukan merup
 
 Menggunakan operator `<>`
 
-{% highlight sql linenos %}
-select employee_id, first_name, last_name, email, phone_number, job_id, salary
-from employees 
-where job_id <> 'IT_PROG';
-{% endhighlight %}
+{% gist page.gist "select-where-not-same.sql" %}
 
 Menggunakan operator `!=`
 
-{% highlight sql linenos %}
-select employee_id, first_name, last_name, email, phone_number, job_id, salary
-from employees 
-where job_id != 'IT_PROG';
-{% endhighlight %}
+{% gist page.gist "select-where-not-eq.sql" %}
 
 Berikut ini hasilnya:
 
@@ -96,11 +84,7 @@ Berikut ini hasilnya:
 
 Berikut contoh kasus, untuk mencari data pegawai dengan gaji yang lebih besar dari `12000`. berikut querynya:
 
-{% highlight sql linenos %}
-select employee_id, first_name, last_name, email, phone_number, job_id, salary
-from employees 
-where salary > 12000;
-{% endhighlight %}
+{% gist page.gist "select-where-higher.sql" %}
 
 Berikut hasilnya:
 
@@ -120,11 +104,7 @@ Berikut hasilnya:
 
 Berikut contoh kasus, untuk mencari data pegawai dengan gaji yang lebih besar dari `24000`. in case gaji `24000` adalah gaji paling besar jika di cari dengan menggunakan operator `>` maka hasilnya `(0 rows)` berikut querynya:
 
-{% highlight sql linenos %}
-select employee_id, first_name, last_name, email, phone_number, job_id, salary
-from employees 
-where salary >= 24000;
-{% endhighlight %}
+{% gist page.gist "select-where-bigger-eq.sql" %}
 
 Berikut hasilnya:
 
@@ -148,11 +128,7 @@ Operator like biasanya digunakan untuk tipe data `varchar` atau string, ada 2 ex
 
 Contoh kasus untuk expresion `%`, saya ingin mencari nama depan karyawan yang diawali oleh huruf `A`. Berikut querynya:
 
-{% highlight sqll linenos %}
-select employee_id, first_name, last_name, email, phone_number, job_id, salary
-from employees 
-where last_name like 'A%;
-{% endhighlight %}
+{% gist page.gist "select-where-like-percent-el.sql" %}
 
 Berikut hasilnya:
 
@@ -170,11 +146,7 @@ hr=#
 
 Contoh kasus untuk expresion `_`, saya ingin mencari huruf ke 2 dari kolom `job_id` di tabel `jobs` mengadung `T`. Berikut querynya:
 
-{% highlight sql linenos %}
-select * 
-from jobs 
-where job_id like '_T%';
-{% endhighlight %}
+{% gist page.gist "select-where-like-underscore-el.sql" %}
 
 Berikut hasilnya:
 
@@ -191,11 +163,7 @@ Berikut hasilnya:
 
 Operator ini, agak berbeda dari sebelumnya jadi membandingkan banyak nilai contoh kasusnya seperti berikut, Jadi saya ingin mencari data karyawan yang bekerja di `department_id = [10, 20, 90]` biasanya cara simple untuk solusi seperti dilakuan satu persatu yaitu dengan `select .... where departement_id = 10`, kemudian `select ... where departement_id = 20` dan seterusnya. Alangkah baiknya kita menggunakan operator `IN` seperti berikut:
 
-{% highlight sql linenos %}
-select employee_id, first_name, last_name, email, phone_number, job_id, salary, department_id
-from employees 
-where department_id IN (10, 20, 90);
-{% endhighlight %}
+{% gist page.gist "select-where-in.sql" %}
 
 Berikut hasilnya:
 
@@ -215,11 +183,7 @@ Berikut hasilnya:
 
 Operator `BETWEEN` digunakan untuk memfilter dengan interval/rentang tertentu diantar nilai terkecil dan terbesar. contoh kasusnya, Saya mau menampilkan data yang karywan yang memiliki gaji dari `4000` s/d `6000`. Berikut querynya:
 
-{% highlight sql linenos %}
-select employee_id, first_name, last_name, email, phone_number, job_id, salary, department_id
-from employees 
-where salary between 4000 and 6000;
-{% endhighlight %}
+{% gist page.gist "select-where-between.sql" %}
 
 Berikut hasilnya:
 
@@ -243,11 +207,7 @@ Berikut hasilnya:
 
 Operator `IS NULL` digunakan untuk memfiter data yang bernilai null. Contoh kasusnya, saya mau menampilkan data karywan yang tidak memiliki manager. Berikut querynya:
 
-{% highlight sql linenos %}
-select employee_id, first_name, last_name, email, phone_number, job_id, salary, department_id
-from employees 
-where manager_id is null;
-{% endhighlight %}
+{% gist page.gist "select-where-is-null.sql" %}
 
 Berikut hasilnya:
 

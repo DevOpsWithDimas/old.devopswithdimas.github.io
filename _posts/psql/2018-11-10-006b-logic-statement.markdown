@@ -58,15 +58,7 @@ Operator logika tersebut bisa digunakan di klausa `where` statement, contoh kasu
 
 Kasusnya saya mau mencari data karyawan yang berkerja di `department_id = 90` dan yang `manager_id = 100`, berikut querynya:
 
-{% highlight sql linenos %}
-select
-    employee_id as kode,
-    first_name as nama_depan
-from employees
-where 
-    department_id = 90 and 
-    manager_id = 100;
-{% endhighlight %}
+{% gist page.gist "select-where-combine-and.sql" %}
 
 Berikut hasilnya:
 
@@ -82,16 +74,7 @@ Berikut hasilnya:
 
 Kasusnya saya mau mencari data karyawan yang memiliki `salary >= 12000` atau karyawan yang berkerja di `department_id = 90`, berikut querynya:
 
-{% highlight sql linenos %}
-select
-    employee_id as kode,
-    first_name as nama_depan,
-    salary as gaji_bulanan
-from employees
-where 
-    department_id = 90 or 
-    salary >= 12000;
-{% endhighlight %}
+{% gist page.gist "select-where-combine-or.sql" %}
 
 Berikut hasilnya:
 
@@ -114,16 +97,7 @@ Berikut hasilnya:
 
 Kasusnya saya mau mencari data department selain yang `department_id = 90`, berikut querynya:
 
-{% highlight sql linenos %}
-select
-    employee_id as kode,
-    first_name as nama_depan,
-    department_id as divisi,
-    salary as gaji_bulanan
-from employees
-where 
-    NOT(department_id = 90);
-{% endhighlight %}
+{% gist page.gist "select-where-combine-not.sql" %}
 
 Berikut hasilnya:
 
@@ -158,19 +132,7 @@ Berikut hasilnya:
 
 Selain itu kita bisa kombinansikan semua logika, contoh kasusnya seperti berikut. Saya mau mancari data karyawan yang bekerja di `department_id = 100` atau yang `manager_id = 108` dan memiliki `salary >= 9000` dan yang `first_name` bukan `Daniel`. Berikut querynya:
 
-{% highlight sql linenos %}
-select
-    employee_id as kode,
-    first_name as nama_depan,
-    department_id as divisi,
-    salary as gaji_bulanan,
-    manager_id as manager
-from employees
-where 
-    (department_id = 100 or manager_id = 108) and 
-    salary >= 9000 and 
-    NOT(first_name = 'Daniel'); 
-{% endhighlight %}
+{% gist page.gist "select-where-combine-all.sql" %}
 
 Berikut hasilnya;
 

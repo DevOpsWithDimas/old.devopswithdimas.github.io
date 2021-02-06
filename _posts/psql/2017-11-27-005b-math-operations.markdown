@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Operasi matematika di PostgreSQL"
-date: 2017-11-27T11:06:09+07:00
+date: 2017-11-27T11:05:10+07:00
 lang: psql
 categories:
 - RDBMS

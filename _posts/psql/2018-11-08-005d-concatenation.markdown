@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Perintah select dengan Concatenation"
-date: 2018-11-08T20:46:52+07:00
+date: 2017-11-27T11:05:12+07:00
 lang: psql
 categories:
 - RDBMS

@@ -52,13 +52,7 @@ Ok, nah sekarang kita ke contoh query sqlnya. Berikut saya punya data dari table
 
 Sekarang saya mau menampilkan yang kolom `region_id` sama dengan `1` berikut contoh querynya:
 
-{% highlight sql linenos %}
-select 
-    country_id      as id,
-    country_name    as name
-from countries
-where region_id = 1;
-{% endhighlight %}
+{% gist page.gist "select-where.sql" %}
 
 Berikut hasilnya:
 

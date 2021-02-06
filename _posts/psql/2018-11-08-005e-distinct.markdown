@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Klausa distinct pada SQL"
-date: 2018-11-08T21:45:31+07:00
+date: 2017-11-27T11:05:13+07:00
 lang: psql
 categories:
 - RDBMS
@@ -51,11 +51,7 @@ hr=# select job_id from employees;
 ```
 Dari hasil query yang didapatkan udah benar tetapi data yang tampilkan tidak unique. kurang lebih ada `(107 rows)` sedangkan data master `jobs` jumlahnya tidak melibihi itu. Nah sekarang jika kita menggunakan klausa `distinct` seperti berikut:
 
-{% highlight sql linenos %}
-select 
-   distinct job_id
-from employees;
-{% endhighlight %}
+{% gist page.gist "select-distinct-column.sql" %}
 
 Berikut hasilnya:
 
@@ -86,13 +82,7 @@ Berikut hasilnya:
 
 Jadi kesimpulannya adalah dengan menggunakan klausa `distinct` ini kita bisa meng-eleminasi data yang redudansi. Nilai distinct ini juga bisa digunakan untuk multple column berikut contoh penggunaan
 
-{% highlight sql linenos %}
-select 
-   distinct (job_id, salary) as job_by_salary,
-    job_id,
-    salary
-from employees;
-{% endhighlight %}
+{% gist page.gist "select-distinct-multiple-columns.sql" %}
 
 Berikut hasilnya:
 
