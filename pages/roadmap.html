@@ -7,40 +7,52 @@ icon: assessment
 {% assign topics = site.data.roadmap %}
 <link rel="stylesheet" type="text/css" href="{{ "/assets/timeline.css" | prepend: site.baseurl }}" />
 <div class="container">
-    {% for topic in topics %}
-    <h3 class="center">{{ topic.name }}</h3>
-    <p class="">
-        {{ topic.description }}
-    </p>
-    <div class="timeline">
-        {% for course in topic.courses %}
-        {% assign article = site.data.topics | where: 'url', course | first %}
-        {% if article %}
-        {% assign a_post = site.posts | where: 'lang', course | sort: 'date' | first %}
-        <div class="timeline-event">
-            <div class="timeline-content">
-                <ul class="collection z-depth-3">
-                    <li class="collection-item avatar">
-                        {% if article.coming_soon == true %}
-                        <span class="new badge yellow black-text" data-badge-caption="">Coming Soon</span>
-                        {% endif %}
-                        <img class="responsive-img circle" src="{{ "/resources/images/" | prepend: site.baseurl }}{{course}}.png">
-                        <span class="title"><b>{{article.name}}</b></span>
-                        <p class="grey-text text-lighten-1">{{ article.descriptions | truncate: 150 }}</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="timeline-badge blue white-text">
-                <!-- show first page of content -->
-                {% if article.coming_soon == false and a_post %}
-                <a href="{{ a_post.url | prepend: site.baseurl }}" class="tooltipped white-text waves-effect waves-block waves-light" data-position="left" data-delay="50" data-tooltip="Start Learning">
-                    <i class="material-icons">launch</i>
-                </a>
-                {% endif %}
-            </div>
+    <div class="row">
+        <div class="col m3 s12">
+            <ul class="collection  with-header">
+                <li class="collection-header"><h4>Topics</h4></li>
+                {% for topic in topics %}
+                <li class="collection-item"><a href="#{{ topic.name }}">{{ topic.name }}</a></li>
+                {% endfor %}
+            </ul>
         </div>
-        {% endif %} 
-        {% endfor %}       
+        <div class="col m9 s12">
+            {% for topic in topics %}
+            <h3 id="{{ topic.name }}" class="center">{{ topic.name }}</h3>
+            <p class="">
+                {{ topic.description }}
+            </p>
+            <div class="timeline">
+                {% for course in topic.courses %}
+                {% assign article = site.data.topics | where: 'url', course | first %}
+                {% if article %}
+                {% assign a_post = site.posts | where: 'lang', course | sort: 'date' | first %}
+                <div class="timeline-event">
+                    <div class="timeline-content">
+                        <ul class="collection z-depth-3">
+                            <li class="collection-item avatar">
+                                {% if article.coming_soon == true %}
+                                <span class="new badge yellow black-text" data-badge-caption="">Coming Soon</span>
+                                {% endif %}
+                                <img class="responsive-img circle" src="{{ "/resources/images/" | prepend: site.baseurl }}{{course}}.png">
+                                <span class="title"><b>{{article.name}}</b></span>
+                                <p class="grey-text text-lighten-1">{{ article.descriptions | truncate: 150 }}</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="timeline-badge blue white-text">
+                        <!-- show first page of content -->
+                        {% if article.coming_soon == false and a_post %}
+                        <a href="{{ a_post.url | prepend: site.baseurl }}" class="tooltipped white-text waves-effect waves-block waves-light" data-position="left" data-delay="50" data-tooltip="Start Learning">
+                            <i class="material-icons">launch</i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %} 
+                {% endfor %}       
+            </div>
+            {% endfor %}
+        </div>
     </div>
-    {% endfor %}
 </div>
