@@ -16,7 +16,7 @@ image_path: /resources/posts/orm-hibernate/orm-hibernate-030g
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 ---
 
-Hai di materi kali ini saya mau membahas tantang Sub Query Qualifier, yap seperti yang kita tau klo kita juga bisa menggunakan where clause sebagai pembandingnya adalah sub query seperti halnya pada sql di [materi postgresql]({% post_url psql/2018-11-20-025-subquery %}). Untuk operator yang kita bisa gunakan di hibernate yaitu 
+Hai di materi kali ini saya mau membahas tantang Sub Query Qualifier, yap seperti yang kita tau klo kita juga bisa menggunakan where clause sebagai pembandingnya adalah sub query seperti halnya pada sql di [materi postgresql]({% post_url psql/2018-11-20-014-subquery %}). Untuk operator yang kita bisa gunakan di hibernate yaitu 
 
 1. `IN`
 2. `ANY`

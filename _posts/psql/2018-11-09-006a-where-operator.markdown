@@ -25,7 +25,6 @@ Operator kondisi pada where di PostgreSQL teridiri dari:
 | `IN`                          | Melakukan perbandingan terhadap multi data  |
 | `BETWEEN ... AND ...`         | Melakukan perbandingan diantara nilai terbesar dan terkecil |
 | `IS NULL`                     | Mencari nilai yang **bernilai null** |
-{:.bordered .striped}
 
 Ok sekarang kita bahas satu persatu operator-operator yang telah saya jabarkan diatas untuk memperjelas dan cara bagimana contoh kasusnya.
 
