@@ -12,6 +12,7 @@ youtube: https://www.youtube.com/watch?v=2vHlPb47eUA&list=PLV1-tdmPblvypZXSk2GC9
 comments: true
 image_path: /resources/posts/psql/psql-limit-offset
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+downloads: []
 ---
 
 Untuk klausa `offset` dan `limit` ini juga sama pentingnya ketika data growing up di database. Ketika kita hit query yang datanya bisa sampe ratusan juta itu brati processor dan memori akan bekerja untuk meload semuanya. Nah untuk itu kita butuh pembatas agar pemakaian memori dan cpu dapat di maksimalkan. Berikut konsep limit dan offset:

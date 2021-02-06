@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=mzyk0xI3HLI&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-023
+downloads: []
 ---
 
 JavaServet Page API mengijinkan untuk kita mendefinisikan custom JSP tag dengan format XML atau HTML, yang artinya kita bisa buat sendiri tag atau menggunakan lib yang sudah di define seperti JSTL atau JavaServer Pages Standard Tag Libaray. 

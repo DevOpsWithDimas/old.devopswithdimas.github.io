@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=a2kzu0VBrWA&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=31
 comments: true
+downloads: []
 ---
 
 Secara _default_ di Java constuktor akan dibuatkan otomatis ketika kita tidak mendefinisikan construktor di _class_ yang kita buat. Yang mungkin jadi pertanyaan, apa itu construktor?

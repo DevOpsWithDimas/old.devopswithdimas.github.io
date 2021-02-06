@@ -11,6 +11,7 @@ youtube: https://www.youtube.com/watch?v=uzJQXYBqDco&list=PLV1-tdmPblvyDBVppluBb
 comments: true
 gist: dimMaryanto93/b956151354fb8a1454d3b36d22d61a63
 image_path: /resources/posts/js/js-5
+downloads: []
 ---
 
 Tipe **data array** seperti yang anda ketahui kalo array ini pada dasarnya adalah sebuah variable yang bisa menampung data lebih dari satu.

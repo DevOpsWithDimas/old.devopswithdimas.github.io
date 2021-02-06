@@ -11,6 +11,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=XI2EFI0pfJI&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=27
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+downloads: []
 ---
 
 Sebuah **Constraint** digunakan untuk memvalidasi / mengontrol data yang dapat di simpan pada sebuah table / kolom. **Constraint** dibagi menjadi beberapa macam yaitu:

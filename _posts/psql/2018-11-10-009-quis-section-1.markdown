@@ -10,6 +10,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=e027zp1nCdM&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=11
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+downloads: []
 ---
 
 1. Buatlah _query_ untuk menampilkan seluruh data karyawan dari **table employees** yang **diurutkan berdasarkan email** paling terakhir.

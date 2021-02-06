@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=DtucedMOSts&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=5
 comments: true
+downloads: []
 ---
 
 Setelah install di Windows 10, sekarang saya mau install di Sistem Operation Linux Debian based dengan distro `Ubuntu 16.04` . Kalo di ubuntu sih sebenernya gampang kita bisa install via ppa dengan menambahkan ```ppa:webupd8team/java``` berikut perintahnya

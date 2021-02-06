@@ -13,6 +13,7 @@ youtube: https://www.youtube.com/watch?v=jarxlARpL9w&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-026
+downloads: []
 ---
 
 Update your `pom.xml` dengan menambahkan [webjars](https://www.webjars.org/) library contohnya seperti [jQuery](https://jquery.com/), [Bootstrap](https://getbootstrap.com/), [DataTables](https://datatables.net/) seperti berikut:

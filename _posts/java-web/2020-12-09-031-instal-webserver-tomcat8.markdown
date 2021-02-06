@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=HMck_EQJ55Y&list=PLV1-tdmPblvyaCTcYR9u7
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 comments: true
 image_path: /resources/posts/java-web/java-web-031
+downloads: []
 ---
 
 Halo, kali ini saya akan membahas tentang Deployment menggunakan Apache Tomcat. sebenarnya untuk Web Server sendiri di Servlet Container ada beberapa, diantaranya:

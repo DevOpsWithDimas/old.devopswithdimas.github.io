@@ -12,6 +12,7 @@ youtube: https://www.youtube.com/watch?v=7hwhXRghcUE&list=PLV1-tdmPblvyDBVppluBb
 comments: true
 gist: dimMaryanto93/b956151354fb8a1454d3b36d22d61a63
 image_path: /resources/posts/js/js-6
+downloads: []
 ---
 
 JavaScript is Object Oriented Programming. Untuk menulis object di JavaScript ada banyak cara yaitu cara paling sederhana adalah seperti berikut:

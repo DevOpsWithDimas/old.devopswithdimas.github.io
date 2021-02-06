@@ -10,6 +10,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=Bdu7I6Z2KPo&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=37
 comments: true
 image_path: /resources/posts/java-core/java-quis-5
+downloads: []
 ---
 
 1. Buatlah sebuah _map_ untuk menyimpan data mahasiswa seperti berikut:

@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=GrVi4TX_Q64&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=34
 comments: true
+downloads: []
 ---
 
 Sebelumya kita udah mengenal array single dimentions, sekarang kita akan buat array dengan multidimention atau orang-orang sering menggunakan istilah kordinal `xy` jika 2 dimention dan untuk tiga dimention `xyz` conthnya seperti berikut:

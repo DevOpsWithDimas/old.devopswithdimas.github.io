@@ -12,6 +12,7 @@ youtube: https://www.youtube.com/watch?v=585UnqgtLr4&list=PLV1-tdmPblvyDBVppluBb
 comments: true
 gist: dimMaryanto93/b956151354fb8a1454d3b36d22d61a63
 image_path: /resources/posts/js/js-2
+downloads: []
 ---
 
  Kali ini saya mau membahas tentang variable di JavaScript diantaranya pembahasanya local & global variable, dan inisialisasi variable.

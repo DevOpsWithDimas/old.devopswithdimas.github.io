@@ -11,6 +11,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=GAXGBJKZxnU&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=1
 comments: true
 image_path: /resources/posts/java-web/java-ee-intro
+downloads: []
 ---
 
 ![java web logo]({{ page.image_path | prepend: site.baseurl }}/logo.png){:width="500px"}

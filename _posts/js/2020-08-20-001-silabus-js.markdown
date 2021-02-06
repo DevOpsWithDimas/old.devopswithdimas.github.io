@@ -10,6 +10,7 @@ refs:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 youtube: https://www.youtube.com/watch?v=btu5MnTKJDk&list=PLV1-tdmPblvyDBVppluBbB_4ryZvjDWvv&index=1
 comments: true
+downloads: []
 ---
 
 Hi, di materi kali ini 'JavaScript' membahas bahasa pemograman yang bersifat scriptiong language / bahasa pemograman yang berjalan di sisi client side, yang biasanya digunakan untuk menjadikan HTML dynamic atau kita bisa rubah DOM nya menggunakan bahasa pemograman Javascript.

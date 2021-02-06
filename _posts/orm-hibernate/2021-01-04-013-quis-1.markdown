@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Time is your practice part 1"
+title: "Time is your practice"
 lang: orm-hibernate
 date: 2021-01-04T08:36:52+07:00
 categories:
@@ -15,6 +15,7 @@ comments: true
 image_path: 
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/
+downloads: []
 ---
 
 Hi, setelah kita belajar materi tentang hibernate supaya temen-temen lebih memahami dan meresap kita akan latihan dulu ya... ok berikut soal latihannya

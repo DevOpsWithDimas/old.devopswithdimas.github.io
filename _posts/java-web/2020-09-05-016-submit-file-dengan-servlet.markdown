@@ -16,6 +16,7 @@ youtube: https://www.youtube.com/watch?v=DDMH5jV7bOI&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-016
+downloads: []
 ---
 
 Setelah kita belajar mengirimkan data berupa text, sekarang kita akan membahas mengirimkan file menggunakan servlet dan attribute `enctype="multipart/form-data"`. Untuk menggunakan **attribute enctype hanya bisa digunakan dengan menggunakan `HTTP Method POST`** selain itu juga untuk meng-upload file ada beberapa kondisi yaitu 

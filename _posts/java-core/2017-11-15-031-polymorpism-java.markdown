@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=LtuX0g5mrNo&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=29
 comments: true
+downloads: []
 ---
 
 Di materi sebelumya kita tau klo _polymorpism_ ini merupakan salah satu fitur _Object Oriented Programming_. Beberapa fitur diataranya yaitu _Override_ dan _Overload_

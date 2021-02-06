@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: 
 comments: true
+downloads: []
 ---
 
 Dibandingkan kita harus menggunakan perulangan dengan `for` biasa seperti berikut contohnya

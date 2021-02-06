@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=ZXzHw6emrZo&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/orm-hibernate-22
+downloads: []
 ---
 
 Untuk mencoba mapping OneToMany kita membutuhkan 3 table, contohnya `mahasiswa`, `alamat`, relasi antara `mahasiswa` dan `alamat` misal namanya kita sebut `mahasiswa_alamat_list`, berikut adalah perancangan tabelnya:

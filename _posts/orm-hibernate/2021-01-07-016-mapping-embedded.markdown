@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=dzEVXB5noo8&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/orm-hibernate-16
+downloads: []
 ---
 
 Hai, di materi kali ini saya akan membahas embedded mapping, Embedded mapping ini biasanya digunakan untuk mapping sebuah entity dengan model yang terpisah kedalam sebuah single database table. contohnya seperti berikut:

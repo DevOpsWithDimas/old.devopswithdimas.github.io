@@ -12,6 +12,7 @@ youtube:
 comments: true
 image_path: 
 gist:
+downloads: []
 ---
 
 Hi in this section `JasperReport`, temen-temen akan belajar membuat Reporting dengan JasperReport Studio untuk Java dan menggunakan Database PostgreSQL. Adapun materi yang akan kita bahas yaitu:

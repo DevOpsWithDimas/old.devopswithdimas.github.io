@@ -17,6 +17,7 @@ refs:
 - https://www.oracle.com/technetwork/java/dataaccessobject-138824.html
 youtube: https://www.youtube.com/watch?v=DhF8cOc_1ww&list=PLV1-tdmPblvxVAb1P-CRsPraIv3ks3A16&index=6
 comments: true
+downloads: []
 ---
 
 Hi, setelah kita membuat connection, menyiapkan database schema dengan menggunakan flyway database migration. Sekarang kita akan mengambil data dari table yang ada di database. Tapi sebelum itu ada beberapa yang harus kita siapkan karena disini saya menggunakan Design pattern. Nah temen-temen mungkin binggung apa itu design pattern ya khan?...

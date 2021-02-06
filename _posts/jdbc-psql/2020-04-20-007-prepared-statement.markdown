@@ -12,6 +12,7 @@ refs:
 - https://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html
 youtube: https://www.youtube.com/watch?v=QPo5D_XaK5Y&list=PLV1-tdmPblvxVAb1P-CRsPraIv3ks3A16&index=8
 comments: true
+downloads: []
 ---
 
 Hai, [sebelumnya]({{site.baseurl}}{% post_url jdbc-psql/2020-04-19-006-statement %}) kita udah bisa mengambil data dengan menggunakan API class `Statement` sekarang kita bahas kaka-nya yaitu API class `java.sql.PreparedStatement`. Penggunaan API `PreparedStatement` biasanya digunakan untuk melakukan Insert, Update, Delete, Find By id, atau query yang membutuhkan parameter.

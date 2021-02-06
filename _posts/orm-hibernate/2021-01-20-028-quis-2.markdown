@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=wrGK84lU0XE&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/orm-hibernate-28
+downloads: []
 ---
 
 Hai setelah temen-temen mempelajari mapping dengan ORM Hibernate, sekarang saatnya untuk temen-temen latihan ya supaya memahami semua materi yang telah kita bahas. Berikut adalah soalnya.

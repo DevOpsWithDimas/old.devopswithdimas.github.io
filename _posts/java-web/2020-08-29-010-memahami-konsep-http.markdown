@@ -16,6 +16,7 @@ youtube: https://www.youtube.com/watch?v=Y0BIHTtNF_4&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-010
+downloads: []
 ---
 
 Hypertext Transper Protocol atau yang sering di singkat HTTP yaitu sebuah protocol untuk distributed, collaboration, hypermedia information system. Http biasanya digunakan untuk bertukar data melalui World Wide Web.

@@ -12,6 +12,7 @@ youtube: https://www.youtube.com/watch?v=FV25oL8U3hs&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-011
+downloads: []
 ---
 
 Sekarang saya mau membahas tentang basic pemograman Java Web yaitu Servlet. Apa itu Servlet?

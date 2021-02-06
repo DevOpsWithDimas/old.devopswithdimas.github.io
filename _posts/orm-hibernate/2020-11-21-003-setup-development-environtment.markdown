@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=Uc34EfF6LT8&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/
+downloads: []
 ---
 
 Halo di [postingan sebelumnya]({% post_url orm-hibernate/2020-11-21-002-pengenalan-jpa-with-hibernate %}) kita udah berkenalan nih dengan Hibernate Framework, jadi sekarang kita akan mulai untuk persiapan-persiapan apa aja yang perlu di setup sebelum memulai koding dengan Hibernate.

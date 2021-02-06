@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=ZxGl2tU8Nyw&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/orm-hibernate-17
+downloads: []
 ---
 
 Hai, di materi kali ini saya mau ngebahas tentang mapping Embedded Override Attribute dengan model dari yang sebelumnya yaitu 

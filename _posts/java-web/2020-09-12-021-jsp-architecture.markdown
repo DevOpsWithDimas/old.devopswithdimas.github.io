@@ -13,6 +13,7 @@ youtube: https://www.youtube.com/watch?v=442-W6LvC-8&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-021
+downloads: []
 ---
 
 JSP membutuhkan Web Server dengan spesifikasi JSP Proccessing tertentu, Contohnya seperti Apache Tomcat 7 yang kita gunakan yaitu memiliki spesifikasi servlet version `3.0`, JSP version `2.2` dan JDK yang disupport yaitu `7 or later`.

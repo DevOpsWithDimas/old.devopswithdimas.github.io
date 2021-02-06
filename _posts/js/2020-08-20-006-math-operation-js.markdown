@@ -11,6 +11,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=RhGx1tx4YRU&list=PLV1-tdmPblvyDBVppluBbB_4ryZvjDWvv&index=6
 comments: true
 gist: dimMaryanto93/b956151354fb8a1454d3b36d22d61a63
+downloads: []
 ---
 
 Operator pada dasarnya dibagi 3 yaitu 

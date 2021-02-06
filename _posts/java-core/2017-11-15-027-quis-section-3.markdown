@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=t9S2eMxaPo4&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=26
 comments: true
+downloads: []
 ---
 
 1. Buatlah file `LatihanNo1`, `LatihanNo2` dan `LatihanNo3` dengan struktur directory dan tempat menyipan _source code_ seperti berikut

@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=CDTnXtjCHWM&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-022
+downloads: []
 ---
 
 JSP Action digunakan untuk meng-control servlet melalui XML syntax, contohnya seperti berikut:

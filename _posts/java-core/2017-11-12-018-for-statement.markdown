@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=yYTpwet7V9M&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=21
 comments: true
+downloads: []
 ---
 
 Mungkin temen-temen dulu pernah mengalami kejadian dihukum sama guru atau dosen kita harus menulis di papan tulis atau di kertas selembar

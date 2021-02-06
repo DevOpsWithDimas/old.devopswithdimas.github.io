@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=bedipDRIBWM&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=24
 comments: true
+downloads: []
 ---
 
 Coba kalo temen-temen perhatikan dari materi-materi sebelumya sampe sekarang mungkin klo kita gabungkan kemungkinan _source code_ yang kita tulis udah lumayan banyak ya dan lumayan besar juga khan. Karena topik kita dari materi sebelumya yaitu modularisasi. 

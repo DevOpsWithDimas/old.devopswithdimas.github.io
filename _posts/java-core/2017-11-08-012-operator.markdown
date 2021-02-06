@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=ZEG-sTkyFE8&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=17
 comments: true
+downloads: []
 ---
 
 Operator pada dasarnya perintah untuk melakukan proses komputasi seperti pengelolaan data aritmatika, Operator terdiri dari 

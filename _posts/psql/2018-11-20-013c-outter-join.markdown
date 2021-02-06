@@ -11,6 +11,7 @@ youtube: https://www.youtube.com/watch?v=NC8InrBko54&list=PLV1-tdmPblvypZXSk2GC9
 comments: true
 image_path: /resources/posts/psql/psql-join
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+downloads: []
 ---
 
 Dengan klausa `join` ada juga kondisi lain, jika sebelumnya menggunakan `inner join` hanya mendapatkan data yang ada di antara kedua tabel atau istilahnya irisan. Ada juga kodisi yaitu dengan `outter join` seperti berikut ilustrasinya:

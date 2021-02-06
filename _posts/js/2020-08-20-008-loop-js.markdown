@@ -11,6 +11,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=IkvAmcfCnuQ&list=PLV1-tdmPblvyDBVppluBbB_4ryZvjDWvv&index=8
 comments: true
 gist: dimMaryanto93/b956151354fb8a1454d3b36d22d61a63
+downloads: []
 ---
 
 perulangan sebenarnya juga gak ada yang aneh kurang lebih sama seperti bahasa pemograman yang lain contohnya perulangan menggunakan `for`, `do-while`, `while` dan `for-in`.

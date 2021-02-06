@@ -10,6 +10,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=Ws8ZVcer0Kw&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=3
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+downloads: []
 ---
 
 Secara _default_ kalau kita melakukan perintah `select` terhadap suatu _table_ contohnya misalnya `departments`, di _table_ `departments` ada _columns_ diataranya `department_id, department_name, manager_id, location_id` jika saya melakukan perintah `select` seperti berikut:

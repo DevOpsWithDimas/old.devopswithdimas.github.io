@@ -11,6 +11,7 @@ refs:
 - https://github.com/dimMaryanto93/jdbc-psql-example
 youtube: https://www.youtube.com/watch?v=uA-APNWRXtA&list=PLV1-tdmPblvxVAb1P-CRsPraIv3ks3A16&index=14
 comments: true
+downloads: []
 ---
 
 Hai pada pembahasan kali ini kita akan mempelajari tentang transactional di JDBC. seperti yang kita tau klo untuk mengaktifkan transaksi dengan cara sebagai berikut:

@@ -10,6 +10,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=NMZrpBxkfRA&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=25
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+downloads: []
 ---
 
 Data Definition Language, atau singkatan dari DDL yaitu perintah sql yang digunakan untuk membuat, memodifikasi struktur data pada object dalam Database. DDL dibagi menjadi 5 yaitu

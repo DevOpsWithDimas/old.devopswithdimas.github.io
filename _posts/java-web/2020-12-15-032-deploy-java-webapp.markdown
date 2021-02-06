@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=ibo3BmOI1iQ&list=PLV1-tdmPblvyaCTcYR9u7
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 comments: true
 image_path: /resources/posts/java-web/java-web-032
+downloads: []
 ---
 
 Setelah kita install Apache Tomcat `8.x`, sekarang kita akan mendeploy aplikasi Java Web kita dengan menggunakan Automate Deployment Approach dengan bantuan plugin `cargo-maven-plugin` jadi kita perlu tambahkan plugin dulu di file `pom.xml` seperti berikut:

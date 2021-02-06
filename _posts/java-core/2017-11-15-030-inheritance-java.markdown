@@ -10,6 +10,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=c3JKsRiBgJA&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=28
 comments: true
 image_path: /resources/posts/java-core/java-konsep-oop
+downloads: []
 ---
 
 Mungkin _inheritance_ di Java agak _anti-mainstream_ artinya beda dari teknologi pesaingnya seperti `.NET`, `PHP` dan lain-lain, yang menerapkan _single extends_. Seperti di konsep sebelumya yaitu seperti berikut:

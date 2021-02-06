@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/orm-hibernate-29e
+downloads: []
 ---
 
 Hai, pada kesempatan kali ini saya mau ngebahas tentang operator arithmetic pada ORM Hibernate menggunakan HQL. Pada dasarnya Operator Aritmetic bisa di terapkan pada `select [operator] from ...` dan `select ... from ... where [operator]`

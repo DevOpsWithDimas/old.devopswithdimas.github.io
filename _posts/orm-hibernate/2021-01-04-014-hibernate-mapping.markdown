@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=0kKbp6bLwLE&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/
+downloads: []
 ---
 
 Sekarang kita akan membahas macam-macam mapping yang kita bisa gunakan pada framework Hibernate ini.

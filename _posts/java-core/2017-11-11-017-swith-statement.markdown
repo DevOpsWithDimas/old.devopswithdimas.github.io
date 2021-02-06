@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=zVnOuxXZ3CY&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=20
 comments: true
+downloads: []
 ---
 
 Percabagan ```switch-case``` sebenarnya tidak jauh berbeda tpi disini kita akan lihat bagaimana cara kerja dari percabagan ini, berikut adalah contoh kasus sederhaan dari kodingnya sering kita jumpai yaitu seperti berikut:

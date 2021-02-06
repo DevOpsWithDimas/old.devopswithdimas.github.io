@@ -14,6 +14,7 @@ comments: true
 youtube: https://www.youtube.com/watch?v=PIs1-hBSnsg&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=32 
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/orm-hibernate-27b
+downloads: []
 ---
 
 Hai, di materi kali ini saya mau membahas tentang element collection dengan embedded type. Berikut adalah perancangan tabelnya:

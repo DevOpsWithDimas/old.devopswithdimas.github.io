@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=4u4y67jo-cA&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-022
+downloads: []
 ---
 
 ## 1. JSP Scriptlet

@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=lBVGCTdllQo&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=25
 comments: true
+downloads: []
 ---
 
 Semakin lama, aplikasi yang kita develop khan pasti semakin besar dan semakin banyak file _class_. Nah untuk itu kita bisa organisasi _source code_ kita dengan _package_ atau _file class_ dimasukan kedalam folder. Jadi sebelum-sebelumnya struktur direktor kita seperti berikut:

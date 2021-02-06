@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=Bxwcv9IB5fQ&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=12
 comments: true
+downloads: []
 ---
 
 Ok pembahasan selanjutnya adalah variable dan tipe data di bahasa pemograman Java. Pembahasan pertama yaitu variable.

@@ -12,6 +12,7 @@ youtube: https://www.youtube.com/watch?v=IdVjNkxaJnI&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-029
+downloads: []
 ---
 
 Ada beberapa konsep design pattern yang popular dan membawa atau memberikan effect besar pada pengembangan aplikasi contohnya MVC (Model View Controller). MVC yaitu mecahkan masalah dengan membagi menjadi 2 kompenent yaitu 

@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=MXc5tbjgXUA&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=23
 comments: true
+downloads: []
 ---
 
 Function atau method, mungkin dari temen-temen masih aneh apa itu function atau method. Function atau method itu sebenarnya salah satu cara untuk mengelompokan suatu blok atau sekumpulan perintah dengan tujuan _reuseable_, _easy to debuging_, dan _readable_.

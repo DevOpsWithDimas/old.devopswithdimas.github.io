@@ -13,6 +13,7 @@ refs:
 - https://docs.oracle.com/javase/tutorial/jdbc/basics/connecting.html
 youtube: https://www.youtube.com/watch?v=6LmohNreU74&list=PLV1-tdmPblvxVAb1P-CRsPraIv3ks3A16&index=4
 comments: true
+downloads: []
 ---
 
 Hi, di materi kali kita akan menghubungkan antara Java dengan Database dengann menggunakan teknologi JDBC atau Java Database Connectivity setelah sebelumnya kita membuat project dengan Apache Maven. Object `connection` yang kita buat kali ini menggunakan framework/library connection pooling yaitu [HikariCP](https://github.com/brettwooldridge/HikariCP).

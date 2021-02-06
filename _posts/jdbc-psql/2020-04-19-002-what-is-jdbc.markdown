@@ -11,6 +11,7 @@ refs:
 - https://github.com/dimMaryanto93/jdbc-psql-example
 youtube: https://www.youtube.com/watch?v=MFma_LXBFME&list=PLV1-tdmPblvxVAb1P-CRsPraIv3ks3A16&index=2
 comments: true
+downloads: []
 ---
 
 JDBC atau Java Database Connectivity itu berfungsi sebagai jembatan atau penghubung antara Bahasa Pemograman Java dengan software Database, Dengan JDBC kita bisa terhubung dengan RDBMS atau Relational Database Management seperti PostgreSQL, Microsoft SQL Server, MySQL, Oracle dan lain-lain.

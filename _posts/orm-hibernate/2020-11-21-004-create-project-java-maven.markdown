@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=L_oNrqci8_A&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/
+downloads: []
 ---
 
 Hi, di materi kali ini kita akan membuat project java dengan Apache Maven dengan kebutuhan CRUD (Create Read Update Delete) database dari Java Application dengan menggunakan framework ORM yaitu Hibernate. berikut stepnya:

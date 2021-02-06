@@ -16,6 +16,7 @@ comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 comments: true
 image_path: /resources/posts/java-web/java-web-033
+downloads: []
 ---
 
 Automation deployment / delivery object sebetulnya ada beberapa cara dan tools contohnya seperti:

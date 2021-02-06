@@ -13,6 +13,7 @@ youtube: https://www.youtube.com/watch?v=qGuTo25YZr4&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-018
+downloads: []
 ---
 
 Servlet Context Event Listener yaitu melakukan notifikasi terhadap suatu event web application procces dimulai (deployed) atau di shutdown (un-deployed). Contohnya biasanya digunakan untuk melakukan init database ketika web application startup kemudian objectnya disimpan di serlet context setelah berakhir kita bisa destroy connection-nya. Berikut adalah implementasinya:

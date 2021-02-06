@@ -11,6 +11,7 @@ refs:
 youtube: 
 comments: true
 gist: dimMaryanto93/b956151354fb8a1454d3b36d22d61a63
+downloads: []
 ---
 
 Kita sekarang akan membahas object dalam object kemudian mengaksesnya contohnya seperti berikut:

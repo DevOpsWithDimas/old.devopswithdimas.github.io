@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=PfdJKKzJV5Q&list=PLV1-tdmPblvyDBVppluBbB_4ryZvjDWvv&index=4
 comments: true
+downloads: []
 ---
 
 pada dasarnya tipe data di JavaScript terdiri dari:

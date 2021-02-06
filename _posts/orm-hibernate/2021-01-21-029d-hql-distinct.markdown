@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/orm-hibernate-29d
+downloads: []
 ---
 
 Hai, di materi kali ini saya mau membahas tentang clause `DISTINCT`. clausa distinct sendiri pada dasarnya untuk meng-eliminasi nilai yang redudant. Nah jadi clausa distinct ini di ORM Hibernate terdiri dari 

@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=XceBjKui3xQ&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-022
+downloads: []
 ---
 
 JSP Directive biasanya digunakan untuk merubah struktural pada servlet class yang akan di generate setelah di render. JSP Directive terdiri dari beberapa tag diantaranya `page`, `include` dan `taglib`.

@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=SRyj2j_TDOc&list=PLV1-tdmPblvygcbSOaThIuBcAuvaubiOj&index=1
 comments: true
+downloads: []
 ---
 
 Hi, in this section 'Java Core' ini temen-temen akan berkenalan dengan salah satu Bahasa Pemograman yang sedang Hits saat ini `(Oktober/2017)` Nah langsung aja jadi di BAB ini kita belajar tentang:

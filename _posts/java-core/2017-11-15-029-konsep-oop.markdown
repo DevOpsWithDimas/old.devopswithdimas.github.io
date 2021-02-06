@@ -10,6 +10,7 @@ refs: []
 youtube: 
 comments: true
 image_path: /resources/posts/java-core/java-konsep-oop
+downloads: []
 ---
 
 Object Oriented Approach pada dasarnya ada 3 konsep yang bisa diimplementasikan. yaitu seperti berikut:

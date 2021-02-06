@@ -11,6 +11,7 @@ youtube: https://www.youtube.com/watch?v=aewpT6Y6_yk&list=PLV1-tdmPblvypZXSk2GC9
 comments: true
 image_path: /resources/posts/psql/psql-join
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+downloads: []
 ---
 
 Klausa `join` pada dasarnya untuk menghubungkan tabel yang terpisah menjadi satu berdasarkan `foreign key` contoh ilustrasinya seperti berikut:

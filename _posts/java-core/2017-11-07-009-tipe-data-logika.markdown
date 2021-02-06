@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html
 youtube: https://www.youtube.com/watch?v=YiVCDgStS_Q&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=14
 comments: true
+downloads: []
 ---
 
 Tipe data logika ini pada dasarnya adalah yang mengembalikan nilai boolean. Boolean hanya bernilai `true` or `false`. contohnya basicnya 

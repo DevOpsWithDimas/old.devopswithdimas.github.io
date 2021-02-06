@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=ErQylfvo654&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/orm-hibernate-21
+downloads: []
 ---
 
 Untuk mencoba mapping OneToOne kita perlu 2 table, contohnya disini kita buat antara `mahasiswa` dan `alamat`, berikut adalah contoh perancangan tablenya:

@@ -12,6 +12,7 @@ youtube: https://www.youtube.com/watch?v=VvApkFldl4w&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-015
+downloads: []
 ---
 
 Kita sudah memahami perbedaan tentang HTTP Method GET dan POST, sekarang saya mau membahas tentang mengirim multiple parameter ke sebuah servlet dengan method GET, kenapa menggunakan GET? jawabanya supaya kita tau apa yang dikirim ditampilkan di URL ya tapi klo digunakan untuk aplikasi sesunggunya disarankan menggunakan POST ya!!!.

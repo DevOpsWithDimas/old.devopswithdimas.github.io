@@ -17,6 +17,7 @@ comments: true
 image_path: 
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/
+downloads: []
 ---
 
 terkadang didalam struktur sebuah tabel, tidak hanya memiliki 1 primary key tetapi juga bisa lebih dari 2 primary key itu dinamakan Composite Primary Key. apakah hibernate bisa handle composite primary key???

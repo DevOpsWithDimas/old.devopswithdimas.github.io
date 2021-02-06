@@ -11,6 +11,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=QYSFwa5LjHk&list=PLV1-tdmPblvyDBVppluBbB_4ryZvjDWvv&index=7
 comments: true
 gist: dimMaryanto93/b956151354fb8a1454d3b36d22d61a63
+downloads: []
 ---
 
 Percabangan sendiri dari dulu ada 3 yaitu `?` ,`if` dan `switch`. Ok sekarang kita akan lihat 1 per 1 bagaimana sifat atau prilaku dari ketiga percabangan tersebut. yang pertama kita akan bahas dulu selection yang paling sedarhana yaitu dengan menggunakan `?`. seperti berikut:

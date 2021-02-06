@@ -13,6 +13,7 @@ youtube: https://www.youtube.com/watch?v=sc-MwxNg_wI&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-004
+downloads: []
 ---
 
 Internet yang kita akses itu berisi document media type `application/html`, HTML (Hypertext Markup Language) yaitu dokument web yang static yang berisi text, image, video dan media lain-nya.

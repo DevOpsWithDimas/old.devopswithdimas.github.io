@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=yd47rKvbBjM&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=27
 comments: true
+downloads: []
 ---
 
 Mungkin dari temen-tement masih bingung apa itu _class_, klo misalnya kita googling pasti jawabanya

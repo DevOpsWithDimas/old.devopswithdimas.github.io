@@ -10,6 +10,7 @@ refs: []
 youtube: 
 comments: true
 image_path: /resources/posts/java-core/java-convert-data
+downloads: []
 ---
 
 Untuk konversi tipe data di Java, pada dasarnya otomatis tpi ada beberapa syarat seperti berikut:

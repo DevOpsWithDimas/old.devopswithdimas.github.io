@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 image_path: /resources/posts/orm-hibernate/orm-hibernate-030f
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
+downloads: []
 ---
 
 Hai, di materi kali ini saya mau membahas tentang operation `Empty Collection` menggunakan HQL. pada dasarnya operator empty collection terdiri dari `is empty` dan `is not empty` seperti berikut contoh implementasi DAO:

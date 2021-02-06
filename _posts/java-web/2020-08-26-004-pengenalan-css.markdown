@@ -13,6 +13,7 @@ youtube: https://www.youtube.com/watch?v=Vw2EUQOFHcM&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-004
+downloads: []
 ---
 
 Untuk memberikan warna berbeda pada halaman HTML kita bisa melakukan styling menggunakan CSS atau **Cascade Style Sheets**. Dalam menggunakan CSS harus tau dulu apa itu **selector** dan jenis dari **selector**

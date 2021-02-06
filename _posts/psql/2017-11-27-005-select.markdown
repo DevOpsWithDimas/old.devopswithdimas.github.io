@@ -11,6 +11,7 @@ youtube: https://www.youtube.com/watch?v=Ws8ZVcer0Kw&list=PLV1-tdmPblvypZXSk2GC9
 comments: true
 image_path: /resources/posts/psql/psql-select
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+downloads: []
 ---
 
 Perintah / klausa `select` pada dasarnya adalah perintah yang dilakukan _query_ terhadap _database_ untuk mengambil atau mendapatkan data berupa baris (_rows_) dan kolom (_columns_) dalam sebuah _table_ seperti berikut:

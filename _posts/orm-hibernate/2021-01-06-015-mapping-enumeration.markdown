@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=3e3kZ-OKyp8&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 image_path: /resources/posts/orm-hibernate/orm-hibernate-15
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
+downloads: []
 ---
 
 Sekarang kita membahas mapping yang paling mudah dulu ya yaitu ENUM Ordinal & String. Enum mapping ini biasanya digunakan untuk status atau bahasa kerennya flaging. nah sebuah flag biasanya tidak hanya bersifat boolean saja tetepi juga bisa custome seperti contohnya `ON | OFF`, `ACTIVE, PASSIVE, INACTIVE` dan lain-lain. contohnya disini saya punya enum seperti berikut:

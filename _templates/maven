@@ -12,4 +12,5 @@ comments: true
 gist: {{ gist}}
 comments: true
 image_path: /resources/posts/maven/
+downloads: []
 ---

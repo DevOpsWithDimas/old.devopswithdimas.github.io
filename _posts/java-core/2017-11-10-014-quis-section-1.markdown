@@ -10,6 +10,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=m5G9UEE_DfY&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=18
 comments: true
 image_path: 
+downloads: []
 ---
 
 1. Buat project Java dengan nama `java-core-quis1`, yang didalamnya terdapat folder `src` dan `out`. Kemudian didalam folder `src` buat package `com/tabledata/bootcamp/java/core`

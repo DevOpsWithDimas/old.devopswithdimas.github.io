@@ -16,6 +16,7 @@ refs:
 - https://projectlombok.org
 youtube: https://www.youtube.com/watch?v=E3VWQssyf0Y&list=PLV1-tdmPblvxVAb1P-CRsPraIv3ks3A16&index=3
 comments: true
+downloads: []
 ---
 
 Hi, di materi kali ini kita akan membuat project java dengan Apache Maven dengan kebutuhan CRUD (Create Read Update Delete) database dari Java Application. berikut stepnya:

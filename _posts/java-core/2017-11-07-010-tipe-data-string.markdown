@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/javase/7/docs/api/java/lang/String.html
 youtube: https://www.youtube.com/watch?v=ybiHWl9KNEI&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=15
 comments: true
+downloads: []
 ---
 
 Tipe data untuk karakter diaktegorikan ada 2 jenis yaitu single karakter dan multiple karakter (String).

@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: 
 comments: true
+downloads: []
 ---
 
 Mungkin dari sebagian dari temen-temen tanya kenapa sih di bahasa pemograman Java ada aturannya segala? gak seperti basaha pemograman yang lain `feel free`. Sebenanya klo temen-temen baca dokumentasi dari setiap bahasa pemograman yang temen-temen pelajari, semuanya punya aturan main (bagaimana coding seharunya ditulis, bagaimana best practicenya, dll). Nah di bahasa pemograman Java juga sama, ada aturan mainnya yang mengacu ke JSR (Java Spesification Request) di [link berikut](https://jcp.org/en/jsr/overview).

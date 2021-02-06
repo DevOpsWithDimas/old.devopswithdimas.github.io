@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/javase/tutorial/java/generics/types.html
 youtube: https://www.youtube.com/watch?v=6TasUzsbQ90&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=36
 comments: true
+downloads: []
 ---
 
 Dari materi sebelumnya temen-temen ada yang bingung? tentang di materi _element collection_ kok beda cara penulisannya dengan _array_ biasa yaitu seperti berikut:

@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=4E4BoDpgN1A&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=30
 comments: true
+downloads: []
 ---
 
 Mungkin dari temen-temen masih agak bingung apa sih yang membedakan antara _super_ dan _this_ dan juga mungkin melihat dari materi sebelumnya bagian inherintace dan bagian encapsulation tapi belum dijelaskan apa magsud dan tujuannya. Ok nah masilnya saya punya contoh seperti berikut:

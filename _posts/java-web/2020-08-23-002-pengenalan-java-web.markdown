@@ -13,6 +13,7 @@ youtube: https://www.youtube.com/watch?v=M_Fxiotj9WY&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-002
+downloads: []
 ---
 
 Platform Java Enterpice Edition, menyediakan API dan lingkungan runtime untuk mengembangkan dan menjalankan aplikasi Enterpice grade, multi-tier, scalable, aplikasi jaringan yang handal.

@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=yYTpwet7V9M&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=21
 comments: true
+downloads: []
 ---
 
 Tidak jauh berbeda dengan perulangan dengan `for` statement di materi sebelumnya. Sekarang kita lihat cara bekerja untuk perulangan menggunakan `do-while` terlebih dahulu. berikut contohnya:

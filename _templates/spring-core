@@ -11,5 +11,6 @@ youtube: {{ youtube }}
 comments: true
 gist: {{ gist }}
 comments: true
-image_path: /resources/posts/spring-core/01-intro
+image_path: /resources/posts/spring-core/
+downloads: []
 ---

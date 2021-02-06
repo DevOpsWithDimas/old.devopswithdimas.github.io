@@ -15,6 +15,7 @@ youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 image_path: /resources/posts/orm-hibernate/orm-hibernate-030i
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
+downloads: []
 ---
 
 Hai kesempatan kali ini saya mau membahas tentang Combine Predicate dengan menggunakan Hibernate Query Language (HQL). Combine predicate terdiri dari 

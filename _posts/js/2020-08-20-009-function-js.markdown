@@ -11,6 +11,7 @@ refs:
 youtube: https://www.youtube.com/watch?v=5g3QQZvA_p4&list=PLV1-tdmPblvyDBVppluBbB_4ryZvjDWvv&index=9
 comments: true
 gist: dimMaryanto93/b956151354fb8a1454d3b36d22d61a63
+downloads: []
 ---
 
 seperti yang ketahui JavaScript ini tidak mengenal yang namanya `Class` sebagai gantinya kita bisa menggunakan function sebagai pembungkusnya.

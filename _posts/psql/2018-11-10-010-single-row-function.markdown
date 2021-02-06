@@ -12,6 +12,7 @@ youtube: https://www.youtube.com/watch?v=-Y7ASnS5bX8&list=PLV1-tdmPblvypZXSk2GC9
 comments: true
 image_path: /resources/posts/psql/psql-single-row
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+downloads: []
 ---
 
 Single row function, yaitu digunakan untuk memformat data per baris. Berikut ilustrasinya:

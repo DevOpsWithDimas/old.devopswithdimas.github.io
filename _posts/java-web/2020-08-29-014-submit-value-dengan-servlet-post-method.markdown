@@ -12,6 +12,7 @@ youtube: https://www.youtube.com/watch?v=rNeiN6Pw5sY&list=PLV1-tdmPblvyaCTcYR9u7
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-014
+downloads: []
 ---
 
 Sebelumnya kita udah meng-submit request dengan menggunakan `HTTP Method GET` nah sekarang kita akan menggunakan `HTTP Method POST` dan sekalian kita akan membaningkan perbedaan kedua HTTP Method tersebut.

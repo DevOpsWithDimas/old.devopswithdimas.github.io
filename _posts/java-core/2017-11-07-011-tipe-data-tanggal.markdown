@@ -14,6 +14,7 @@ refs:
 - https://docs.oracle.com/javase/8/docs/api/java/util/Date.html
 youtube: https://www.youtube.com/watch?v=p3bgdxugicA&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=16
 comments: true
+downloads: []
 ---
 
 Tipe data yang tidak terlupakan adalah untuk mengimpan tanggal dan waktu, di Java tipe data Tanggal ini ada beberapa macem mulai dari bawaan JDK Java bahkan library atau dependency.

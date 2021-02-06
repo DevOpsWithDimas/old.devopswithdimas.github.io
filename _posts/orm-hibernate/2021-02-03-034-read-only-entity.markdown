@@ -14,6 +14,7 @@ youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&list=PLV1-tdmPblvxHxNh867D1
 comments: true
 image_path: /resources/posts/orm-hibernate/orm-hibernate-034
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
+downloads: []
 ---
 
 Hai pada kesempatan kali ini saya mau membahas tentang `Read Only Entity`, nah jadi klo kita misalnya pake query kemudian kita set nilai yang baru masih dalam session maka biasanya akan automatic update, contohnya berikut implementasi DAO:

@@ -10,4 +10,5 @@ youtube: {{ youtube }}
 comments: true
 image_path: /resources/posts/psql/
 gist: {{ gist }}
+downloads: []
 ---

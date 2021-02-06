@@ -9,6 +9,7 @@ categories:
 refs: []
 youtube: https://www.youtube.com/watch?v=9QfQJ31f3ZI&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=19
 comments: true
+downloads: []
 ---
 
 Setelah mengelesaikan latihan pertama, materi selajutnya adalah tentang flow atau alur control. Flow Control ini pada dasarnya ada 2 macem yaitu

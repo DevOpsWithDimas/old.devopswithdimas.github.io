@@ -10,6 +10,7 @@ refs: []
 youtube: https://www.youtube.com/watch?v=ytKK6l698Wk&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=4
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+downloads: []
 ---
 
 Dalam SQL, kita juga bisa melakukan operasi matematika seperti pertambahan, pengurangan, pembagian, dan perkalian. Operasi tersebut dibagi-bagi lagi menjadi beberapa tipe yaitu

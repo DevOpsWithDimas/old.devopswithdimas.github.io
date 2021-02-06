@@ -14,4 +14,5 @@ youtube: {{ youtube }}
 comments: true
 image_path: /resources/posts/orm-hibernate/
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
+downloads: []
 ---

@@ -12,6 +12,7 @@ refs:
 - https://docs.oracle.com/javase/7/docs/api/java/util/Set.html
 youtube: https://www.youtube.com/watch?v=RIRgyGkEd7g&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=35
 comments: true
+downloads: []
 ---
 
 Di materi sebelumnya kita udah membuat _array_, nah kita tau kalo _array_ itu untuk menyimpan data yang lebih dari satu dalam sebuah _variable_, Tetapi dengan menggunakan _array_ tersebut memiliki kekurangan yaitu agak susah untuk menambahkan dan menghapus suatu _element_ dalam array tersebut
