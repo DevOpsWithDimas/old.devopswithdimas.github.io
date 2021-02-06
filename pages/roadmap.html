@@ -4,10 +4,40 @@ title: ROADMAP
 permalink: /pages/roadmap.html
 icon: assessment
 ---
-
+{% assign topics = site.data.roadmap %}
+<link rel="stylesheet" type="text/css" href="{{ "/assets/timeline.css" | prepend: site.baseurl }}" />
 <div class="container">
-    <h1>404</h1>
-
-    <p><strong>Page not found :(</strong></p>
-    <p>The requested page could not be found.</p>
+    {% for topic in topics %}
+    <h3 class="center">{{ topic.name }}</h3>
+    <div class="timeline">
+        {% for course in topic.courses %}
+        {% assign article = site.data.topics | where: 'url', course | first %}
+        {% if article %}
+        {% assign a_post = site.posts | where: 'lang', course | sort: 'date' | first %}
+        <div class="timeline-event">
+            <div class="card timeline-content small">
+                <div class="card-image {{article.color}}">
+                    <img class="responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl }}{{course}}.png">
+                    <span class="card-title grey darken-4 white-text">{{article.name}}</span>
+                </div>
+                <div class="card-content">
+                    {% if article.coming_soon == true %}
+                    <span class="new badge yellow black-text" data-badge-caption="">Coming Soon</span>
+                    {% endif %}
+                    <p>{{ article.descriptions }}</p>
+                </div>           
+            </div>
+            <div class="timeline-badge blue white-text">
+                <!-- show first page of content -->
+                {% if article.coming_soon == false and a_post %}
+                <a href="{{ a_post.url | prepend: site.baseurl }}" class="tooltipped white-text waves-effect waves-block waves-light" data-position="left" data-delay="50" data-tooltip="Start Learning">
+                    <i class="material-icons">launch</i>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %} 
+        {% endfor %}       
+    </div>
+    {% endfor %}
 </div>

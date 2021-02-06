@@ -23,7 +23,7 @@
   - PostgreSQL
   - Database
   descriptions:
-    Temen-temen akan belajar menggunakan database PostgreSQL diantaranya, berinteraksi dengan database menggunakan perintah SQL seperti Data manipulation language (DML), Data Definition Language (DDL), dan Transaction Control Language (TCL) 
+    Temen-temen akan belajar Relational Database Management System (RDBC) dengan menggunakan PostgreSQL. 
   messages:
     Temen-temen akan di pandu untuk menguasai perintah SQL dengan salah satu Relational Database Management System (RDBMS) yaitu dengan PostgreSQL. Dengan menggunakan Relational Database Management Sistem kita dengan mudah dapat melakukan baca-tulis data dengan mudah dan cepat tidak seperti menggunakan baca-tulis di file.
   publish: 2017-10-16T20:50:50+07:00
@@ -42,7 +42,7 @@
   - jdbc
   - PostgreSQL
   descriptions: 
-    Temen-teman akan belajar tentang bagaimana koneksi ke database, interaksi dengan database menggunakan Java Database Connectivity (JDBC)
+    Temen-teman akan belajar Java Database dengan JDBC Technology menggunakan PostgreSQL Database
   messages:
     Temen-temen diharapkan mampu dan memahami fitur jdbc seperti fungsi-fungsi statement, prepared-statement, result-set, batch prcessiong, transactional dan lain-lain.
   publish: 2017-10-23T20:50:50+07:00
@@ -77,7 +77,7 @@
   - servlet
   - jsp
   descriptions:
-    Temen-teman akan belajar tentang Pemograman Web dengan Java, diantaranya yang akan di pelajari yaitu pemograman servlet, jsp, http request & response, http method, form submit handler, dan lain-lain.
+    Temen-teman akan belajar tentang Pemograman Web dengan Java, diantaranya yaitu pemograman servlet, jsp, dan lain-lain.
   messages:
     Temen-temen diharapkan memahami konsep dan implementasi pemograman web dengan Java, seperti membuat page dengan jsp atau servlet, mengirimkan request, menerima request, dan lain-lain.
   publish: 2017-10-25T20:50:50+07:00
@@ -122,7 +122,7 @@
   github: 
   coming_soon: true
 
-- name: Springframework Core
+- name: Spring Framework
   url: spring-core
   icon: "devicons devicons-java"
   language: Java
@@ -133,7 +133,7 @@
   - dependency-injection
   - inversion-of-control
   descriptions:
-    Temen-teman akan belajar salah satu pattern yaitu Dependency Injection dan Inversion of Control dengan menggunakan framework namanya Spring Framework.
+    Temen-teman akan belajar suatu Design Pattern yaitu Dependency Injection (DI) dan Inversion of Control (IoC).
   messages:
   publish: 2017-10-28T20:50:50+07:00
   github: 

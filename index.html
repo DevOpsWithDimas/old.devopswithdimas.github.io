@@ -97,9 +97,6 @@ layout: default
 <div class="row container">
     <br>
     {% assign pages_list_count = pages_list.size %}
-    {% assign count_divided = pages_list_count | divided_by: 3 %}
-    {% assign count_divided = count_divided | plus: 1 %}
-
     <h5 class="container center">
         <span class="new badge" data-badge-caption="topic">{{pages_list_count}}</span>
         Explore
@@ -108,9 +105,9 @@ layout: default
     </h5>
     <br>
 
-    {% for i in (1..count_divided) %}
     <div class="row">
-        {% for topic in pages_list limit:3 offset: counter %}
+        {% assign topics = pages_list | sort:"publish" | reverse  %}
+        {% for topic in topics limit:3 %}
         {% assign post_list = site.posts | where: "lang", topic.url | sort:"date" %}
         {% assign a_post =  post_list.first %}
         <div class="col s12 m4">
@@ -164,5 +161,4 @@ layout: default
         {% endfor %}
         {% assign counter = i | times: 3 %}
     </div>
-    {% endfor %}
 </div>

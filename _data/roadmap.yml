@@ -1,0 +1,31 @@
+- name: Database Administrator (DBA)
+  description: 
+  courses: 
+  - psql
+
+- name: Java Web Developer (Fundamental)
+  description: 
+  courses: 
+  - java-core
+  - psql
+  - java-jdbc-psql
+  - java-web
+
+- name: Front-End Developer (FE)
+  description: 
+  courses: 
+  - js
+  - ts
+  - angular
+  - react
+  - vue
+
+- name: Back-End Developer (BE)
+  description: 
+  courses: 
+  - java-core  
+  - orm-hibernate
+  - spring-core
+  - spring-webservice
+  - spring-security
+  - spring-oauth2
