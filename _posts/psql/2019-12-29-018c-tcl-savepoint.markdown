@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Savepoint Transaction di PostgreSQL"
-date: 2019-12-29T20:07:46+07:00
+title: "TCL - Savepoint Transaction di PostgreSQL"
+date: 2019-12-29T20:10:46+07:00
 lang: psql
 categories:
 - RDBMS

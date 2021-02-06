@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Mamahami perintah Natural Join di PostgreSQl"
+title: "Natural Join di PostgreSQl"
 date: 2018-11-19T21:14:34+07:00
 lang: psql
 categories:

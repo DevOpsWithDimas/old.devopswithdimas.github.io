@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Rollback Transaction di PostgreSQL"
-date: 2019-12-29T20:07:46+07:00
+title: "TCL - Rollback Transaction di PostgreSQL"
+date: 2019-12-29T20:09:46+07:00
 lang: psql
 categories:
 - RDBMS
