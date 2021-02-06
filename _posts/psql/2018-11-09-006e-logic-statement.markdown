@@ -44,14 +44,12 @@ Atau klo kita gambarin ke tabel seperti ini:
 |:----------|:--------------|:--------------|:--------------|
 | AND       | false         | false         | true          |
 | OR        | true          | false         | true          |
-{:.bordered .striped}
 
 <hr/>
 
 | Operator  | false         | true          |
 |:----------|:--------------|:--------------|
 | NOT       | true          | false         |
-{:.bordered .striped}
 
 Operator logika tersebut bisa digunakan di klausa `where` statement, contoh kasusnya seperti berikut:
 
@@ -128,8 +126,6 @@ Berikut hasilnya:
   123 | Shanta      |     50 |      6500.00
 (103 rows)  
 ```
-
-# Kombinasi AND, OR, dan NOT
 
 Selain itu kita bisa kombinansikan semua logika, contoh kasusnya seperti berikut. Saya mau mancari data karyawan yang bekerja di `department_id = 100` atau yang `manager_id = 108` dan memiliki `salary >= 9000` dan yang `first_name` bukan `Daniel`. Berikut querynya:
 

@@ -13,9 +13,6 @@ gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 downloads: []
 ---
 
-
-# Operator between
-
 Operator `BETWEEN` digunakan untuk memfilter dengan interval/rentang tertentu diantar nilai terkecil dan terbesar. contoh kasusnya, Saya mau menampilkan data yang karywan yang memiliki gaji dari `4000` s/d `6000`. Berikut querynya:
 
 {% gist page.gist "select-where-between.sql" %}
