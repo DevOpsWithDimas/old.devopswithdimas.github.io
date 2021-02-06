@@ -19,14 +19,14 @@ icon: assessment
         {% assign a_post = site.posts | where: 'lang', course | sort: 'date' | first %}
         <div class="timeline-event">
             <div class="timeline-content">
-                <ul class="collection">
+                <ul class="collection z-depth-3">
                     <li class="collection-item avatar">
                         {% if article.coming_soon == true %}
                         <span class="new badge yellow black-text" data-badge-caption="">Coming Soon</span>
                         {% endif %}
                         <img class="responsive-img circle" src="{{ "/resources/images/" | prepend: site.baseurl }}{{course}}.png">
-                        <span class="title">{{article.name}}</span>
-                        <p>{{ article.descriptions | truncate: 150 }}</p>
+                        <span class="title"><b>{{article.name}}</b></span>
+                        <p class="grey-text text-lighten-1">{{ article.descriptions | truncate: 150 }}</p>
                     </li>
                 </ul>
             </div>
