@@ -29,3 +29,9 @@
   - spring-webservice
   - spring-security
   - spring-oauth2
+
+- name: Data Engineer
+  description: 
+  courses: 
+  - psql  
+  - jasper-report
