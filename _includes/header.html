@@ -3,12 +3,24 @@
 
 <nav class="red darken-3">
     <div class="nav-wrapper container">
-        <a href="{{ " /" | prepend : site.baseurl }}" class="brand-logo">
+        <a href="{{ "/" | prepend : site.baseurl }}" class="brand-logo">
             <i class="material-icons left">home</i> <span class="hide-on-small-only">{{ site.title }}</span>
         </a>
         <a href="#" data-activates="slide-out" class="button-collapse">
             <i class="material-icons">menu</i>
         </a>
+        <ul class="right hide-on-med-and-down">
+            {% for other-link in site.pages | sort: 'title' %}
+            {% if other-link.url contains "/pages/" %}
+            <li>
+                <a href="{{ other-link.url }}">
+                    {% if other-link.icon %}<i class="material-icons left">{{ other-link.icon }}</i>{% endif %}
+                    {{ other-link.title }}
+                </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
     </div>
 </nav>
 
@@ -23,12 +35,18 @@
         {% include side-nav/profile.html %}
     </li>
     <li>
-        <a href="{{ " /" | prepend : site.baseurl }}">
+        <a href="{{ "/" | prepend : site.baseurl }}">
             <i class="material-icons left">home</i> {{site.title}}
         </a>
     </li>
 
     {% include side-nav/categories.html %}
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    {% include side-nav/pages.html %}
 
     <li>
         <div class="divider"></div>

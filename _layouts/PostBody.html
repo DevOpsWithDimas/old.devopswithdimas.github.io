@@ -281,11 +281,6 @@ layout: default
             <i class="large material-icons">playlist_play</i>
         </a>
         <ul>
-            <li>
-                <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Show Menu">
-                    <i class="large material-icons">toc</i>
-                </a>
-            </li>
             <!-- goto first page -->
             {% if first_post and first_post.url != page.url %}
             <li>
@@ -344,6 +339,12 @@ layout: default
                 </a>
             </li>
             {% endif %}   
+
+            <li>
+                <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Show Menu">
+                    <i class="large material-icons">toc</i>
+                </a>
+            </li>
           </ul>
     </div>
 </div>
@@ -385,6 +386,13 @@ layout: default
         </li>
         {% endfor %}
     {% endif %}   
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    {% include side-nav/pages.html %}
+
     <li>
         <div class="divider"></div>
     </li>

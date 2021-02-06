@@ -1,0 +1,11 @@
+<li><a class="subheader">Pages</a></li>
+{% for other-link in site.pages | sort: 'title' %}
+{% if other-link.url contains "/pages/" %}
+<li>
+    <a href="{{ other-link.url }}">
+        {% if other-link.icon %}<i class="material-icons">{{ other-link.icon }}</i>{% endif %}
+        {{ other-link.title }}
+    </a>
+</li>
+{% endif %}
+{% endfor %}
