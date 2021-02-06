@@ -14,7 +14,7 @@ gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 downloads: []
 ---
 
-Penggunaan klausa `whare` digunakan untuk melakukan filter berdasarkan kolom dan operator tertentu contoh paling basic adalah operator `equals` atau `=`, Kasusnya saya punya beberapa nah kemudian saya cuman mau data yang ditampilkan berdasarkan criteria tertentu contohnya ilustrasi seperti berikut:
+Penggunaan klausa `where` digunakan untuk melakukan filter berdasarkan kolom dan operator tertentu contoh paling basic adalah operator `equals` atau `=`, Kasusnya saya punya beberapa nah kemudian saya cuman mau data yang ditampilkan berdasarkan criteria tertentu contohnya ilustrasi seperti berikut:
 
 ![where basic]({{ page.image_path | prepend: site.baseurl }}/konsep-where.png)
 
@@ -72,3 +72,13 @@ Berikut hasilnya:
 ```
 
 Nah sekarang tinggal anda check aja, benar gak atau sesuaikan datanya dengan data diatas klo `region_id = 1`?
+
+## Predicates / Conditional
+
+Predicate / Conditional ada beberapa operator yang bisa digunakan diantaranya
+
+1. Relational Predicate
+2. Like Predicate
+3. Like Predicate
+4. Nulless Predicate
+5. Logical Statement

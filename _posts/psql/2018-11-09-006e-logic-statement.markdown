@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Logical statement di PostgreSQl"
-date: 2018-11-10T09:24:44+07:00
+date: 2018-11-09T20:40:12+07:00
 lang: psql
 categories:
 - RDBMS
