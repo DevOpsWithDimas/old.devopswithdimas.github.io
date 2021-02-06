@@ -58,10 +58,7 @@ hr=# \dt
 
 Untuk menampilkan semua data / semua column yang dipilih dalam sebuah tabel kita bisa menggunakan spesial karakter `*` (asteric / bintang) dalam perintah _select_ seperti berikut:
 
-{% highlight postgresql-console linenos %}
-select * 
-from departments;
-{% endhighlight %}
+{% gist page.gist "select-all-department.sql" %}
 
 Maka akan tampil datanya seperti berikut:
 
@@ -78,13 +75,7 @@ Maka akan tampil datanya seperti berikut:
 
 Selain menggunakan menampilkan semua kolom dengan `*`, kita juga bisa sebutkan nama kolomnya secara langsung contohnya seperti berikut:
 
-{% highlight postgresql-console linenos %}
-select 
-    departement_id,
-    departement_name
-from 
-    departments;
-{% endhighlight %}
+{% gist page.gist "select-specific-columns-department.sql" %}
 
 Maka akan tampil datanya seperti berikut:
 

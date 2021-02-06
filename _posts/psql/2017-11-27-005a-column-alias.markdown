@@ -14,9 +14,7 @@ gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 
 Secara _default_ kalau kita melakukan perintah `select` terhadap suatu _table_ contohnya misalnya `departments`, di _table_ `departments` ada _columns_ diataranya `department_id, department_name, manager_id, location_id` jika saya melakukan perintah `select` seperti berikut:
 
-{% highlight postgresql linenos %}
-select * from departments
-{% endhighlight %}
+{% gist page.gist "select-all-department.sql" %}
 
 Maka secara default nama _columns_ yang ditampilkan akan sesuai dengan nama asli dari _column_ yang ada di tabel `departments` seperti berikut:
 
@@ -36,16 +34,7 @@ Maka secara default nama _columns_ yang ditampilkan akan sesuai dengan nama asli
 
 Dengan menggunakan _column alias_ kita bisa memberikan nama kolomnya sesuai yang kita inginkan, contohnya seperti berikut:
 
-{% highlight postgresql linenos %}
-select 
-    -- menggunakan keyword as, untuk mendefinisikan sebagai variable
-    department_id as kode_divisi,
-    -- tanpa menggunakan keyword as
-    department_name nama_department,
-    -- menggunakan nama kolom custome
-    manager_id as "Kode Manager"  
-from departments
-{% endhighlight %}
+{% gist page.gist "select-alias-column-departments.sql" %}
 
 Maka hasilnya seperti berikut:
 

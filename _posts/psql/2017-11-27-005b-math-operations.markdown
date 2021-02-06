@@ -37,13 +37,7 @@ Operasi pada bilangan pada dasarnya sama seperti operasi matematika biasa, seper
 
 Contoh penggunaan dalam SQL seperti berikut:
 
-{% highlight postgresql linenos %}
-select 
-    2 + 2 as jumlah,
-    2 * 2 as kali,
-    2 / 2 as bagi,
-    2 ^ 3 as pangkat
-{% endhighlight %}
+{% gist page.gist "select-math-operation.sql" %}
 
 Jika di running maka hasilnya seperti berikut:
 
@@ -58,12 +52,7 @@ Jika di running maka hasilnya seperti berikut:
 
 Contoh lainnya, menggunakan penjumlahan dalam table, seperti berikut:
 
-{% highlight postgresql linenos %}
-select 
-    first_name, 
-    salary + 1000 as gaji_plus 
-from employees;
-{% endhighlight %}
+{% gist page.gist "select-math-column-operation.sql" %}
 
 Jika dijalankan hasilnya seperti berikut:
 
@@ -85,10 +74,7 @@ Jika dijalankan hasilnya seperti berikut:
 
 Untuk operator di string atau karakter pada dasarnya cuman ada operator concat dengan simbol `||` cara penggunaannya seperti berikut:
 
-{% highlight postgresql linenos %}
-select 
-    'Dimas ' || 'Maryanto' as nama_lengkap;
-{% endhighlight %}
+{% gist page.gist "select-concat-double-pipe.sql" %}
 
 Jika di jalankan maka hasilnya sebagai berikut:
 
@@ -105,13 +91,7 @@ Operasi matematika pada tanggal juga bisa dilakukan, diantaranya seperti berikut
 
 ### Date
 
-{% highlight postgresql linenos %}
-select 
-    date '2017-03-28' - 2 as lusa, 
-    date '2017-03-28' - interval '2 hour' as waktu, 
-    date '2017-03-28' + 1 as besok,
-    date '2017-03-30' - date '2017-03-15' as jumlah_hari_kerja;
-{% endhighlight %}
+{% gist page.gist "select-date-operation.sql" %}
 
 Jika dijalankan maka hasilnya seperti berikut:
 
@@ -124,12 +104,7 @@ Jika dijalankan maka hasilnya seperti berikut:
 
 ### Timestamp
 
-{% highlight postgresql linenos %}
-select 
-    timestamp '2017-03-28 18:20:00' - interval '15 hour' as waktu, 
-    date '2017-03-28' + interval '26 day' as deadline, 
-    timestamp '2017-03-02 00:04:30' + interval '5 minutes' as makan_siang;
-{% endhighlight %}
+{% gist page.gist "select-timestamp-operation.sql" %}
 
 Jika dijalankan maka hasilnya seperti berikut:
 
@@ -144,11 +119,7 @@ Jika dijalankan maka hasilnya seperti berikut:
 
 Operasi yang tidak diperbolehkan di tanggal yaitu melakukan pertambahan antara tanggal dengan tanggal contohnya seperti berikut:
 
-{% highlight postgresql linenos %}
-select 
-    date '2017-03-28' + 
-    date '2017-05-28' as hari_kerja;
-{% endhighlight %}
+{% gist page.gist "select-date-operation-cant-handle.sql" %}
 
 Jika dijalankan maka hasilnya seperti berikut:
 
