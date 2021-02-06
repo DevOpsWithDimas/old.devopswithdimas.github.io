@@ -23,7 +23,7 @@
   - PostgreSQL
   - Database
   descriptions:
-    Temen-temen akan belajar Relational Database Management System (RDBC) dengan menggunakan PostgreSQL. 
+    Temen-temen akan belajar Relational Database Management System (RDBMS) dengan menggunakan PostgreSQL. 
   messages:
     Temen-temen akan di pandu untuk menguasai perintah SQL dengan salah satu Relational Database Management System (RDBMS) yaitu dengan PostgreSQL. Dengan menggunakan Relational Database Management Sistem kita dengan mudah dapat melakukan baca-tulis data dengan mudah dan cepat tidak seperti menggunakan baca-tulis di file.
   publish: 2017-10-16T20:50:50+07:00
