@@ -13,14 +13,14 @@ icon: assessment
                 <li class="collection-header"><h4>Topics</h4></li>
                 {% for topic in topics %}
                 <li class="collection-item">
-                    <a href="#{{ topic.name }}">{{ topic.name }}</a>
+                    <a href="#{{ topic.code }}">{{ topic.name }}</a>
                 </li>
                 {% endfor %}
             </ul>
         </div>
         <div class="col m9 s12">
             {% for topic in topics %}
-            <h3 id="{{ topic.name }}" class="center">{{ topic.name }}</h3>
+            <h3 id="{{ topic.code }}" class="center">{{ topic.name }}</h3>
             <p class="">
                 {{ topic.description }}
             </p>
