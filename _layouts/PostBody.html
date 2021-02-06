@@ -8,7 +8,7 @@ layout: default
             <div>
                 <ul class='collection with-header'>
                     <li class="collection-header">
-                        <i class="material-icons blue">person</i> Penulis:
+                        <i class="material-icons blue-text">person</i> Penulis:
                         <span>
                             <span class="badge new" data-badge-caption="">
                                 <time datetime="{{page.date | date_to_xmlschema}}" itemscope="datePublished">
@@ -25,7 +25,7 @@ layout: default
             <div>
                 <ul class='collection with-header'>
                     <li class="collection-header">
-                        <i class="material-icons green">account_balance_wallet</i>
+                        <i class="material-icons teal-text">account_balance_wallet</i>
                         Donasi via:
                     </li>
                     {% for donasi in site.data.my-profile.donations %}      
@@ -37,6 +37,28 @@ layout: default
                     {% endfor %}
                 </ul>
             </div>
+            {% if page.downloads %}
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons green-text lighten-1">cloud_download</i>
+                        Downloads
+                    </li>
+                    {% for download in page.downloads %}      
+                    <li class="collection-item">
+                        <a href="{{ download.url | prepend: site.baseurl }}" download>
+                            {% if download.type %}
+                            <span>
+                                <span class="badge new black white-text" data-badge-caption="">{{download.type}}</span>
+                            </span>
+                            {% endif %}
+                            {{ download.name }}
+                        </a>
+                    </li>              
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
         </div>
         {% assign post_list = site.posts | sort:"date" | where: "lang", page.lang %}
         {% assign post_list_size = post_list.size %}
@@ -54,10 +76,13 @@ layout: default
                     </p>
                 </li>
                 {% for post in post_list %}
-                {% assign post_title = post.title | truncate: 40 |  prepend: '. ' | prepend: forloop.index %}
+                {% assign post_title = post.title | truncate: 35 |  prepend: '. ' | prepend: forloop.index %}
                 <li class="collection-item">
                     {% if post.url == page.url %}
                     <div>
+                        <span class="badge" data-badge-caption="">
+                            <i class="material-icons">turned_in</i>
+                        </span>
                         {{post_title}}
                     </div>
                     {% else %}
@@ -77,7 +102,7 @@ layout: default
                     Lastest Posts
                 </li>
                 {% for post in post_list limit:10 %}
-                {% assign post_title = post.title | truncate: 40 %}
+                {% assign post_title = post.title | truncate: 35 %}
                 {% if post.lang %}
                 <li class="collection-item avatar">
                     <img src="{{ "/resources/images/" | prepend : site.baseurl }}{{post.lang}}.png" alt="" class="circle responsive-img">
@@ -252,12 +277,12 @@ layout: default
     </div>
     <div id="floating-button-menu" class="fixed-action-btn click-to-toggle horizontal hide-on-large-only">
         <a href="#" class="btn-floating btn-large waves-effect waves-light">
-            <i class="large material-icons">menu</i>
+            <i class="large material-icons">playlist_play</i>
         </a>
         <ul>
             <li>
                 <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Show Menu">
-                    <i class="large material-icons">home</i>
+                    <i class="large material-icons">toc</i>
                 </a>
             </li>
             <!-- goto first page -->
@@ -343,9 +368,12 @@ layout: default
 
         {% for post in post_list %}
         <li>
-            {% assign post_title = post.title | truncate: 40 |  prepend: '. ' | prepend: forloop.index %}    
+            {% assign post_title = post.title | truncate: 35 |  prepend: '. ' | prepend: forloop.index %}    
             {% if post.url == page.url %}      
             <a class="subheader">
+                <span class="badge" data-badge-caption="">
+                    <i class="material-icons">turned_in</i>
+                </span>                
                 {{ post_title }}
             </a>            
             {% else %}

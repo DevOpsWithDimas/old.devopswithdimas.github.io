@@ -10,6 +10,10 @@ refs: []
 youtube: https://www.youtube.com/watch?v=mLC3DBBboTk&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=2
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+downloads: 
+- name: "schema-hr"
+  type: "sql"
+  url: /resources/downloads/file/psql-schema.sql
 ---
 
 Setelah melakukan proses installasi _software_ PostgreSQL dan PgAdmin3 / PgAdmin4, tahap selanjutnya kita akan membuat scema atau role, berikut adalah caranya.
