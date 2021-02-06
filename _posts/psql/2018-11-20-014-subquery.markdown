@@ -16,15 +16,7 @@ SubQuery atau istilah nya query dalam query. SubQuery bisa diterapkan di `column
 
 **Penempatan pada `select ...`**
 
-{% highlight sql linenos %}
-select
-    e.employee_id as nik,
-    e.first_name as nama,
-    (select j.job_title from jobs j where j.job_id = e.job_id) as jabatan,
-    (select j2.min_salary from jobs j2 where j2.job_id = e.job_id) as minimun_salary
-from employees e
-limit 10;
-{% endhighlight %}
+{% gist page.gist "select-sub-query.sql" %}
 
 Berikut hasilnya:
 
@@ -46,17 +38,7 @@ Berikut hasilnya:
 
 **Penempatan pada `where ...`**
 
-{% highlight sql linenos %}
-select
-    e.employee_id as nik,
-    e.first_name as nama,
-    e.salary as gaji_sebulan
-from 
-    employees e
-where 
-    e.salary > (select avg(j.max_salary) from jobs j)
-limit 10;
-{% endhighlight %}
+{% gist page.gist "select-sub-query-where.sql" %}
 
 Berikut hasilnya:
 
@@ -111,21 +93,7 @@ Akan menghasilkan data berikut:
 (19 rows)
 ```
 
-{% highlight sql linenos %}
-select
-    e.employee_id as nik,
-    e.first_name as nama,
-    e.salary as gaji_sebulan
-from 
-    employees e
-where 
-    e.salary = any (
-        select 
-            round(avg(j.max_salary)) as gaji_rata 
-        from jobs j 
-        group by j.job_id
-    );
-{% endhighlight %}
+{% gist page.gist "select-sub-query-eq-any.sql" %}
 
 Berikut hasilnya:
 
@@ -186,22 +154,7 @@ Berikut hasilquerynya;
 (16 rows)
 ```
 
-{% highlight sql linenos %}
-select
-    e.employee_id as nik,
-    e.first_name as nama,
-    e.salary as gaji_sebulan
-from 
-    employees e
-where 
-    e.salary > any (
-        select 
-            round(avg(j.max_salary)) as gaji_rata 
-        from jobs j 
-        group by j.job_id
-        having avg(j.max_salary) < 20000
-    );
-{% endhighlight %}
+{% gist page.gist "select-sub-query-higher-any.sql" %}
 
 Berikut hasilnya:
 

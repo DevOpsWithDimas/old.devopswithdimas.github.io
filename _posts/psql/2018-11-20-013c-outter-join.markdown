@@ -25,15 +25,7 @@ Berikut contoh penggunaan,
 
 **Menggunakan `left join`**
 
-{% highlight sql linenos %}
-select
-    d.department_id as kode_department,
-    d.department_name as nama_department,
-    l.location_id as kode_lokasi,
-    l.street_address as alamat
-from 
-    locations l left join departments d on (l.location_id = d.location_id);
-{% endhighlight %}
+{% gist page.gist "select-join-left.sql" %}
 
 Berikut hasilnya:
 
@@ -67,15 +59,7 @@ Berikut hasilnya:
 
 **Menggunakan `right join`**
 
-{% highlight sql linenos %}
-select
-    d.department_id as kode_department,
-    d.department_name as nama_department,
-    l.location_id as kode_lokasi,
-    l.street_address as alamat
-from 
-    locations l right join departments d on (l.location_id = d.location_id);
-{% endhighlight %}
+{% gist page.gist "select-join-right.sql" %}
 
 Berikut hasilnya:
 
@@ -104,16 +88,7 @@ Berikut hasilnya:
 
 **Menggunakan `inner join`**
 
-{% highlight sql linenos %}
-select
-    d.department_id as kode_department,
-    d.department_name as nama_department,
-    e.employee_id as kode_karyawan,
-    concat(e.first_name, ' ', e.last_name) as nama_karyawan
-from 
-    employees e inner join departments d on (e.department_id = d.department_id);
-{% endhighlight %}
-
+{% gist page.gist "select-join-inner.sql" %}
 
 Berikut hasilnya:
 

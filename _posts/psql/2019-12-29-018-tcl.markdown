@@ -20,18 +20,7 @@ Fungsi utama menggunakan transaction pada Database adalah terkadang jika kita me
 
 Penggunaan rollback, contohnya seperit berikut, masih di table yang sama yaitu `regions`
 
-```sql
-begin;
--- insert new data
-INSERT INTO regions (region_id ,region_name) VALUES (6, 'Asia Tenggara');
--- select * from regions to show data
-
--- then rollback
-rollback;
-
--- select * from regions to show data after rollback
-select * from regions
-```
+{% gist page.gist "tcl-rollback.sql" %}
 
 hasilnya seperti berikut:
 
@@ -69,15 +58,4 @@ bootcamp=# select * from regions;
 
 Penggunaan commit, contohnya seperit berikut masih di table yang sama yaitu `regions`
 
-```sql
-begin;
--- insert new data
-INSERT INTO regions (region_id ,region_name) VALUES (6, 'Asia Tenggara');
--- select * from regions to show data
-
--- then commit / end;
-COMMIT;
-
--- select * from regions to show data after commit
-select * from regions;
-```
+{% gist page.gist "tcl-commit.sql" %}

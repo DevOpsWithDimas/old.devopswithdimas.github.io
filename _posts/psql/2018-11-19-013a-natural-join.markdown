@@ -19,15 +19,7 @@ Natural join, query yang paling mudah untuk menerapkan join tetapi ada syaratnya
 
 Contohnya saya ingin menampilakan. selurauh data location  yang ditampilkan adalah `location_id`, `city`, `state_province`, `country_name` yang diambil dari table `countries`. Berikut querynya:
 
-{% highlight sql linenos %}
-select 
-    l.location_id kode_lokasi,
-    l.city as kota,
-    l.state_province as provinsi,
-    c.country_name as negara
-from 
-    locations l natural join countries c;
-{% endhighlight %}
+{% gist page.gist "select-join-natural.sql" %}
 
 Berikut hasilnya:
 

@@ -18,28 +18,11 @@ Contoh kasusnya, saya mau mencari data setiap department dan tampilkan siapa nam
 
 **Menggunakan klausa `on`**
 
-{% highlight sql linenose %}
-select
-    d.department_id as kode,
-    d.department_name as nama_divisi,
-    d.manager_id as kode_manager,
-    concat(e.first_name, ' ', e.last_name) as nama_manager
-from 
-    departments d join employees e on (d.manager_id = e.employee_id); 
-{% endhighlight %}
+{% gist page.gist "select-inner-join-on.sql" %}
 
 **Menggunakan klausa `where`**
 
-{% highlight sql linenose %}
-select
-    d.department_id as kode,
-    d.department_name as nama_divisi,
-    d.manager_id as kode_manager,
-    concat(e.first_name, ' ', e.last_name) as nama_manager
-from 
-    departments d, employees e 
-where d.manager_id = e.employee_id; 
-{% endhighlight %}
+{% gist page.gist "select-join-inner-where.sql" %}
 
 Berikut hasilnya:
 

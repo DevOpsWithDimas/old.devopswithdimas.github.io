@@ -21,7 +21,7 @@ Data Definition Lanagement pada Table, pada dasarnya terbagi menjadi seperti ber
 
 Tapi sebelum kita membahas tentang membuat table, saya juga mau bahas dulu tipe data di PostgreSQL. Tipe data pada kolom terdiri dari 4 kategori yaitu
 
-|                   | Data Type in PostgreSQL           | Descriptions  |
+|                   | Data Type                         | Descriptions  |
 |-------------------|-----------------------------------|---------------|
 | 1.Char            | - `char`                          |               |
 |                   | - `character varying(n)`          | karaketer yang ditentukan max length-nya yaitu `255` |
@@ -36,12 +36,10 @@ Tapi sebelum kita membahas tentang membuat table, saya juga mau bahas dulu tipe 
 |                   | - `bigserial`                     | large autoincrementing integer `1 to 9_223_372_036_854_775_807` |
 |-------------------|-----------------------------------|---------------|
 | 3.Date & Time     | - `date`                          |               |
-|                   | - `datetime`                      |               |
 |                   | - `timestamp`                     |               |
 |-------------------|-----------------------------------|---------------|
 | 5.Dan lain-lain   | - `boolean`                       | hanya bernilai `true` atau `false` |
 |                   | - [Other Data Type in PostgreSQL](https://www.postgresql.org/docs/9.5/datatype.html) | |
-{:.table .bordered }
 
 Ok, nah sekarang kita balik lagi ketopic utama yaitu Data Definition Language pada Table di PostgreSQL.
 

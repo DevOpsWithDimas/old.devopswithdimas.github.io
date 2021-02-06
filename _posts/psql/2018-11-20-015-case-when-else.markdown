@@ -23,19 +23,7 @@ END
 
 Berikut contoh,
 
-{% highlight sql linenos %}
-select
-    employee_id as kode_karyawan,
-    commission_pct as besar_komisi,
-    case    
-        when COALESCE(commission_pct, 0) = 0 
-            then 'Tidak memiliki komisi'
-        else 
-            concat('Memiliki komisi sebesar ', commission_pct)
-    end as deskripsi
-from 
-    employees;
-{% endhighlight %}
+{% gist page.gist "select-case-when.sql" %}
 
 Berikut hasilnya:
 

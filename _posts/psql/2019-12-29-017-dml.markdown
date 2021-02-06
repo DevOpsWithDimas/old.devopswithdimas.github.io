@@ -38,9 +38,7 @@ Contoh penggunaanya adalah sebagai berikut, contohnya saya menambahkan data baru
 
 Maka berikut querynya:
 
-```sql
-INSERT INTO regions (region_name) VALUES ('Asia Tenggara ');
-```
+{% gist page.gist "dml-insert.sql" %}
 
 berikut hasilnya:
 
@@ -76,11 +74,7 @@ WHERE column_key = <valueKey>
 
 Contoh penggunaanya adalah sebagai berikut, contohnya saya mau update data pada table `regions` kolom `region_name` yang valuenya `Asia Tenggara` menjadi `Oceania`, maka berikut querynya:
 
-```sql
-UPDATE regions 
-SET region_name = 'Oceania'
-WHERE region_id = 5;
-```
+{% gist page.gist "dml-update.sql" %}
 
 berikut hasilnya:
 
@@ -118,10 +112,7 @@ WHERE column_key = <valueKey>
 
 Contoh penggunaanya adalah sebagai berikut, contohnya saya mau menghapus data yang telah saya insert tadi, yaitu dengan `region_id = 5`, maka berikut querynya:
 
-```sql
-delete from regions
-where region_id = 5;
-```
+{% gist page.gist "dml-delete.sql" %}
 
 berikut hasilnya:
 

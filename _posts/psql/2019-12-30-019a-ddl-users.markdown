@@ -27,9 +27,7 @@ Contoh penggunaan:
 
 Perintah `create` digunakan Untuk membuat user yang digunakan untuk login dari Database client editor seperti `psql`, `DataGrip`, `PgAdmin`, dan lain-lain. Kita bisa menggunakan perintah:
 
-```sql
-CREATE USER role_name WITH LOGIN PASSWORD 'your-password' CREATEDB;
-```
+{% gist page.gist "ddl-create-user.sql" %}
 
 Dengan perintah tersebut kita membuat user dengan nama `role_name` dan passwordnya `your-password` hanya dapat login dan membuat database saja.
 
@@ -37,9 +35,7 @@ Dengan perintah tersebut kita membuat user dengan nama `role_name` dan passwordn
 
 Perintah `drop` digunakan untuk menghapus data user, kita bisa menggunakan perintah: 
 
-```sql
-DROP USER role_name
-```
+{% gist page.gist "ddl-drop-user.sql" %}
 
 dengan perintah tersebut kita menghapus user dengan username `role_name`.
 
@@ -47,9 +43,7 @@ dengan perintah tersebut kita menghapus user dengan username `role_name`.
 
 Perintah `alter` digunakan untuk merubah role dari user tersebut contohnya merubah password
 
-```sql
-ALTER USER role_name identified by 'your-new-password`
-```
+{% gist page.gist "ddl-user-alter.sql" %}
 
 ## GRANT
 
@@ -116,22 +110,7 @@ LINE 1: select * from bootcamp.employees;
 
 Untuk mengijikan melihat, menulis, dan update data ke semua table yang ada di database `bootcamp` kita berikan ijin menggunakan user superuser yaitu `postgres` seperti berikut perintahnya:
 
-```sql
--- ijikan untuk akses database ke user
-grant connect on database bootcamp to role_name;
-
--- ijinkan untuk akses schema ke user
-grant usage on schema bootcamp to role_name;
-
--- ijinkan select, insert, update, delete, REFERENCES semua table ke user
-grant all privileges on all tables in schema bootcamp to role_name;
-
--- ijiknan USAGE | SELECT | UPDATE  semua sequence ke user
-grant all privileges on all sequences in schema bootcamp to role_name;
-
--- ijinkan EXECUTE semua function ke user
-grant all privileges on all functions in schema bootcamp to role_name;
-```
+{% gist page.gist "ddl-user-grant-privileges.sql" %}
 
 berikut hasilnya;
 

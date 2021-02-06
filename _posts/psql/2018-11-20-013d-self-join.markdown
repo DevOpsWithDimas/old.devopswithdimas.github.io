@@ -19,15 +19,7 @@ Selain `inner join`, `natural join` dan `outter join` ada juga `self join` yaitu
 
 Contoh kasusnya, saya ingin mencari semua karyawan dan berserta nama managernya. Berikut querynya:
 
-{% highlight sql linenos %}
-select 
-    e.employee_id as kode_karyawan,
-    concat(e.first_name, ' ', e.last_name) as nama_karyawan,
-    m.employee_id as kode_manager,
-    concat(m.first_name, ' ', m.last_name) as nama_manager
-from 
-    employees e left join employees m on (e.manager_id = m.employee_id);
-{% endhighlight %}
+{% gist page.gist "select-join-self.sql" %}
 
 Berikut hasilnya:
 
