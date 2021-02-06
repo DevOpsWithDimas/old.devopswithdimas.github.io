@@ -1,4 +1,4 @@
-- name: Java Core
+- name: Java Essentials
   url: java-core
   icon: "devicons devicons-java"
   language: Java
@@ -65,7 +65,7 @@
   github: http://repository.dimas-maryanto.com/youtube/bootcamp-2019/js-basic
   coming_soon: false
 
-- name: Java Web
+- name: Java Web (Servlet & JSP)
   url: java-web
   icon: "devicons devicons-java"
   language: Java
