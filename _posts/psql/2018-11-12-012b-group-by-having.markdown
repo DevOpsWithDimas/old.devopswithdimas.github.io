@@ -19,15 +19,7 @@ Untuk filter data dengan klausa `where` di dalam `group by` secara ilustrasi bis
 
 Jadi klausa dengan `whare` dia prosesnya akan melakukan filter terlebih dahulu sebelum dilakukan proses `group by`. berikut contoh kasusnya, Tampilkan jumlah karyawan yang memiliki gaji perbulan lebih sebesar sama dengan `5000` kemudian kategorikan berdasarkan `manager_id`. Berikut querynya:
 
-{% highlight sql linenos %}
-select 
-    manager_id, 
-    count(*) as jumlah_karyawan
-from employees
-    where salary >= 5000
-group by manager_id
-order by manager_id;
-{% endhighlight %}
+{% gist page.gist "select-filter-where-group-by.sql" %}
 
 Berikut hasilnya:
 
@@ -56,15 +48,7 @@ Sekarang, bagaimana jika saya mau filternya setelah di `group by` maka gunakan `
 
 contoh kasusnya seperti berikut. Tampilkan jumlah karyawan per `manager_id` kemudian filter data karyawan yang jumlahnya lebih dari sama dengan `5`. Berikut querynya:
 
-{% highlight sql linenos %}
-select 
-    manager_id,
-    count(*) as jumlah_karyawan
-from employees
-group by manager_id
-    having count(*) >= 5
-order by manager_id;
-{% endhighlight %}
+{% gist page.gist "select-filter-having-group-by.sql" %}
 
 Berikut hasilnya:
 
@@ -90,16 +74,7 @@ Berikut hasilnya:
 
 Selain itu juga kita gunakan filter `having` dan `whare` secara bersamaan contohnya seperti berikut:
 
-{% highlight sql linenos %}
-select 
-    manager_id, 
-    count(*) as jumlah_karyawan
-from employees
-    where salary >= 5000
-group by manager_id
-    having count(*) >= 5
-order by manager_id;
-{% endhighlight %}
+{% gist page.gist "select-filter-having-and-where-group-by.sql" %}
 
 Berikut hasilnya:
 

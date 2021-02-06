@@ -30,15 +30,7 @@ Ada beberapa function yang kita bisa gunakan, diataranya seperti berikut:
 
 Lebih lengkapnya bisa baca dokumentasi [agregate function](https://www.postgresql.org/docs/9.5/functions-aggregate.html). Dan berikut contoh implementasinya:
 
-{% highlight sql linenos %}
-select
-    round(avg(salary), 2) as rata2_gaji,
-    count(*) as jml_baris,
-    max(salary) as max_salary,
-    min(salary) as min_salary,
-    sum(salary) as total_salary
-from employees;
-{% endhighlight %}
+{% gist page.gist "select-group-function.sql" %}
 
 Berikut hasilnya:
 

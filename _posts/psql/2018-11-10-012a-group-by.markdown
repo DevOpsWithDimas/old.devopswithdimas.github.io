@@ -21,15 +21,7 @@ Biasanya query ini akan berguna untuk aplikasi yang bermotif penjualan karena ki
 
 Saya mau mencari jumlah setiap karyawan dan total `salary` setahun per `department_id`. Berikut querynya:
 
-{% highlight sql linenos %}
-select 
-    department_id as kode,
-    count(*) as jumlah_karyawan,
-    (sum(salary) * 12) as total_salary
-from employees
-group by kode
-order by kode;
-{% endhighlight %}
+{% gist page.gist "select-group-by-function.sql" %}
 
 Berikut hasilnya:
 
@@ -53,16 +45,7 @@ Berikut hasilnya:
 
 Kasus lainnya, yaitu multiple kategories seperti per `department_id` dan `manager_id`
 
-{% highlight sql linenos %}
-select 
-    department_id as divisi,
-    manager_id as manager,
-    count(*) as jumlah_karyawan,
-    (sum(salary) * 12) as total_salary
-from employees
-group by divisi, manager
-order by divisi;
-{% endhighlight %}
+{% gist page.gist "select-group-by-columns.sql" %}
 
 Berikut hasilnya:
 

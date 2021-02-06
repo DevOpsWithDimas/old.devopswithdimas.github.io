@@ -47,16 +47,7 @@ Untuk lebih lengkapnya lagi bisa check [dokumentasi](https://www.postgresql.org/
 
 Berikut adalah contoh salah satu penggunaannya, saya mau memformat data karyawan `first_name` di jadikan huruf kapital, sedangkan untuk `last_name` saya mau hitung jumlahnya berapa, gabungkan column `first_name` dan `last_name`. Berikut querynya:
 
-{% highlight sql linenos %}
-select 
-    employee_id as kode,
-    upper(first_name) as nama_depan_kapital,
-    last_name as nama_belakang,
-    length(last_name) as jumlah,
-    concat(first_name, ' ', last_name) as nama_lengkap
-from employees
-limit 10;
-{% endhighlight %}
+{% gist page.gist "select-single-row-func-string.sql" %}
 
 Berikut hasilnya:
 
@@ -94,16 +85,7 @@ Ada beberapa function yang kita bisa gunakan untuk memformat number:
 
 Berikut beberapa contoh penggunakan function di number, berikut querynya:
 
-{% highlight sql linenos %}
-select 
-    coalesce(commission_pct, 0) as commision_pct,
-    salary as gaji,
-    mod(2, 4) as sisa_bagi,
-    power((salary / 1000), 2) as pangkat,
-    sqrt(50) as akar
-from employees
-limit 10;
-{% endhighlight %}
+{% gist page.gist "select-single-row-func-number.sql" %}
 
 Berikut hasilnya:
 

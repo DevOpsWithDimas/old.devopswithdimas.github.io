@@ -41,6 +41,5 @@ Klausa `limit` dan `offset` bisa di run secara terpisah ya, tidak harus di pasan
 
 {% gist page.gist "select-limit.sql" %}
 
-
 {% gist page.gist "select-offset.sql" %}
 
