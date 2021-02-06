@@ -37,7 +37,8 @@ layout: default
                     {% endfor %}
                 </ul>
             </div>
-            {% if page.downloads %}
+            {% assign download_size = page.downloads.size %}
+            {% if download_size >= 1 %}
             <div>
                 <ul class='collection with-header'>
                     <li class="collection-header">
