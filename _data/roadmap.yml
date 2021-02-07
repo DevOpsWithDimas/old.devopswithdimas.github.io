@@ -3,6 +3,7 @@
   description: 
   courses: 
   - psql
+  - oracle12c
 
 - name: Java Web Developer (Fundamental)
   code: java-web-developer

@@ -13,6 +13,7 @@
   publish: 2017-10-15T20:50:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-java8
   coming_soon: false
+  visible: true
 
 - name: PostgreSQL
   url: psql
@@ -29,6 +30,7 @@
   publish: 2017-10-16T20:50:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-postgresql-query
   coming_soon: false
+  visible: true
 
 - name: JDBC with Postgresql
   url: java-jdbc-psql
@@ -48,6 +50,7 @@
   publish: 2017-10-23T20:50:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-jdbc-postgresql
   coming_soon: false
+  visible: true
 
 - name: Javascript
   url: js
@@ -64,6 +67,7 @@
   publish: 2017-10-24T20:50:50+07:00
   github: http://repository.dimas-maryanto.com/youtube/bootcamp-2019/js-basic
   coming_soon: false
+  visible: true
 
 - name: Java Web (Servlet & JSP)
   url: java-web
@@ -83,6 +87,7 @@
   publish: 2017-10-25T20:50:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-java-web
   coming_soon: false
+  visible: true
 
 - name: ORM dengan Hibernate
   url: orm-hibernate
@@ -102,6 +107,7 @@
   publish: 2017-10-26T20:59:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-orm-hibernate
   coming_soon: false
+  visible: true
 
 - name: Reporting with JasperReport
   url: jasper-report
@@ -121,6 +127,7 @@
   publish: 2017-10-27T20:59:50+07:00
   github: 
   coming_soon: true
+  visible: false
 
 - name: Spring Framework
   url: spring-core
@@ -138,3 +145,20 @@
   publish: 2017-10-28T20:50:50+07:00
   github: 
   coming_soon: true
+  visible: false
+
+- name: Oracle 12c
+  url: oracle12c
+  icon: "devicons devicons-java"
+  language: Database
+  color: blue lighten-5
+  tags:
+  - Oracle
+  - Database
+  descriptions:
+    Temen-teman akan belajar Relational Database Management System (RDBMS) dengan Oracle yang sifatnya Big Data.
+  messages:
+  publish: 2021-02-07T12:26:00+07:00
+  github: 
+  coming_soon: true
+  visible: true
