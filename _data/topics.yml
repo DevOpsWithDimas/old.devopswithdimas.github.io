@@ -147,8 +147,8 @@
   coming_soon: true
   visible: false
 
-- name: Oracle 12c
-  url: oracle12c
+- name: Oracle 18c
+  url: oracle18c
   icon: "devicons devicons-java"
   language: Database
   color: blue lighten-5

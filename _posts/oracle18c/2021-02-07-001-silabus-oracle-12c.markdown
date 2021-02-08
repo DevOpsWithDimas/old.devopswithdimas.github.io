@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Silabus Belajar RDBMS Oracle 12c"
+title: "Silabus Belajar RDBMS Oracle 18c"
 date: 2021-02-07T13:18:37+07:00
-lang: oracle12c
+lang: oracle18c
 categories:
 - RDBMS
 - Oracle12c
