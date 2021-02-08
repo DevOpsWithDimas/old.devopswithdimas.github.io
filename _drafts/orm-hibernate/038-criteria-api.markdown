@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "020-criteria-api"
+title: "Hibernate Criteria API"
 lang: orm-hibernate
 categories:
 - Java

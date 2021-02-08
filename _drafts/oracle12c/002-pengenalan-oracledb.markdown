@@ -8,6 +8,7 @@ categories:
 refs: 
 - https://docs.oracle.com/database/121/index.htm
 - https://docs.oracle.com/en/bigdata/index.html
+- https://db-engines.com/en/ranking
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/
