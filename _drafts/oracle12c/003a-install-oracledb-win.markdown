@@ -10,7 +10,7 @@ refs:
 - https://docs.oracle.com/en/bigdata/index.html
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/
+image_path: /resources/posts/oracle12c/003a-install-win
 gist: 
 downloads: []
 ---

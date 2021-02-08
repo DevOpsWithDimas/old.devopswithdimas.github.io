@@ -1,7 +1,75 @@
 ---
-layout: page
-title: "Archives"
+layout: default
+title: Archives
 permalink: /pages/archives.html
 icon: archive
 ---
 
+<div class="row">
+    <div class="container">
+        <div class="col m12 l3">
+            <ul class="collection">
+                <li class="collection-item with-header"> 
+                    Archives by Year-Month          
+                </li>
+                {% for post in site.posts %} 
+                    {% unless post.next %}
+                        <li class="collection-item"> 
+                            <a href="#{{ post.date | date: '%B %Y' }}"> {{ post.date | date: '%B %Y' }}</a>                      
+                        </li>
+                    {% else %} 
+                    {% capture year %}
+                        {{ post.date | date: '%Y - %B' }}
+                    {% endcapture %} 
+                    {% capture nyear %}
+                        {{ post.next.date | date: '%Y - %B' }}
+                    {% endcapture %} 
+                    {% if year != nyear %}
+                        <li  class="collection-item">
+                            <a href="#{{ post.date | date: '%B %Y' }}"> {{ post.date | date: '%B %Y' }}</a>
+                        </li>
+                    {% endif %}                 
+                    {% endunless %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col m12 l9">
+            <ul class="collection with-header">
+                {% for post in site.posts %} 
+                    {% unless post.next %}
+                        <li id="{{ post.date | date: '%B %Y' }}" class="collection-header">
+                            <i class="material-icons">date_range</i>
+                            <span id="{{ post.date | date: '%Y-%b' }}" class="post-list-header"></span>
+                                {{ post.date | date: '%B %Y' }}
+                            </span>
+                        </li>
+                    {% else %} 
+                    {% capture year %}
+                        {{ post.date | date: '%Y - %B' }}
+                    {% endcapture %} 
+                    {% capture nyear %}
+                        {{ post.next.date | date: '%Y - %B' }}
+                    {% endcapture %} 
+                    {% if year != nyear %}
+                        <li id="{{ post.date | date: '%B %Y' }}" class="collection-header">
+                            <i class="material-icons">date_range</i>
+                            <span id="{{ post.date | date: '%Y-%b' }}" class="post-list-header"></span>
+                                {{ post.date | date: '%B %Y' }}
+                            </span>
+                        </li>
+                    {% endif %} 
+                    
+                    {% endunless %}
+        
+                    <li class="collection-item avatar">
+                        <img src="{{ "/resources/images/" | prepend: site.baseurl }}{{ post.lang | append: '.png' }}" alt="" class="circle">
+                        <span class="new badge yellow black-text" data-badge-caption="">{{ post.date | date: "%A, %d"}}</span>
+                        <a href="{{ post.url | prepend: site.baseurl }}">
+                            <span class="title">{{ post.title }}</span>                        
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
