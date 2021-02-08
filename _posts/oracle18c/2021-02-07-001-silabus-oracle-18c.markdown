@@ -5,7 +5,7 @@ date: 2021-02-07T13:18:37+07:00
 lang: oracle18c
 categories:
 - RDBMS
-- Oracle12c
+- Oracle18c
 refs: 
 - https://docs.oracle.com/database/121/index.htm
 - https://docs.oracle.com/en/bigdata/index.html

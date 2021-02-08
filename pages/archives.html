@@ -8,7 +8,7 @@ icon: archive
 <div class="row">
     <div class="container">
         <div class="col m12 l3">
-            <ul class="collection">
+            <ul class="collection section table-of-contents">
                 <li class="collection-item with-header"> 
                     Archives by Year-Month          
                 </li>
@@ -39,7 +39,7 @@ icon: archive
                     {% unless post.next %}
                         <li id="{{ post.date | date: '%B %Y' }}" class="collection-header">
                             <i class="material-icons">date_range</i>
-                            <span id="{{ post.date | date: '%Y-%b' }}" class="post-list-header"></span>
+                            <span id="{{ post.date | date: '%Y-%b' }}" class="section scrollspy"></span>
                                 {{ post.date | date: '%B %Y' }}
                             </span>
                         </li>
@@ -53,7 +53,7 @@ icon: archive
                     {% if year != nyear %}
                         <li id="{{ post.date | date: '%B %Y' }}" class="collection-header">
                             <i class="material-icons">date_range</i>
-                            <span id="{{ post.date | date: '%Y-%b' }}" class="post-list-header"></span>
+                            <span id="{{ post.date | date: '%Y-%b' }}" class="section scrollspy"></span>
                                 {{ post.date | date: '%B %Y' }}
                             </span>
                         </li>
@@ -65,7 +65,14 @@ icon: archive
                         <img src="{{ "/resources/images/" | prepend: site.baseurl }}{{ post.lang | append: '.png' }}" alt="" class="circle">
                         <span class="new badge yellow black-text" data-badge-caption="">{{ post.date | date: "%A, %d"}}</span>
                         <a href="{{ post.url | prepend: site.baseurl }}">
-                            <span class="title">{{ post.title }}</span>                        
+                            <span class="title">{{ post.title }}</span>
+                            <p>
+                                {% for tag in post.categories %}
+                                <div class="chip">
+                                    {{ tag }}
+                                </div>                        
+                                {% endfor %}
+                            </p>
                         </a>
                     </li>
                 {% endfor %}

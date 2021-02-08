@@ -4,7 +4,7 @@ title: "Oracle 18c Database Version"
 lang: oracle18c
 categories:
 - RDBMS
-- Oracle12c
+- Oracle18c
 refs: 
 - https://docs.oracle.com/database/121/index.htm
 - https://docs.oracle.com/en/bigdata/index.html

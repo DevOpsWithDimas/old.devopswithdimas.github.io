@@ -4,7 +4,7 @@ title: "Install Database Editor untuk Oracle 18c"
 lang: oracle18c
 categories:
 - RDBMS
-- Oracle12c
+- Oracle18c
 refs: 
 - https://docs.oracle.com/database/121/index.htm
 - https://docs.oracle.com/en/bigdata/index.html
