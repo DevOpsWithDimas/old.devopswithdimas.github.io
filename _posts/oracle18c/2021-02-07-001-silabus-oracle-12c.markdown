@@ -17,14 +17,14 @@ gist:
 downloads: []
 ---
 
-Hi, di materi ini 'Oracle 12c' temen-temen akan belajar menggunakan Relational Database Management Sistem dengan menggunakan Database Oracle 12c untuk BigData.
+Hi, di materi ini 'Oracle 18c' temen-temen akan belajar menggunakan Relational Database Management Sistem dengan menggunakan Database Oracle 18c untuk BigData.
 
 Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
 
-1. Pengenalan SQL dengan Oracle 12c Express Edition
+1. Pengenalan SQL dengan Oracle 18c Express Edition
 2. Setup Development Environtment
-    1. Install Database Oracle 12c Express Edition
-    2. Install Database Editor (DataGrid, SQL/Plus, Navicate, dll)
+    1. Install Database Oracle 18c Express Edition
+    2. Install Database Editor (DataGrid, SQL/Plus, Oracle Database Developer, Navicate, dll)
 3. Pengenalan perintah Structural Query Language (SQL)
 4. Persiapan membuat Role / User, membuat Schema, membuat Database dan membuat table
 5. Menampilkan informasi data Table
