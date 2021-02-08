@@ -17,7 +17,7 @@ gist:
 downloads: []
 ---
 
-Hi, di materi ini 'Oracle 18c' temen-temen akan belajar menggunakan Relational Database Management Sistem dengan menggunakan Database Oracle 18c untuk BigData.
+Hai di materi kali ini saya mau membahas 'Oracle 18c', temen-temen akan belajar menggunakan Relational Database Management Sistem dengan menggunakan Database Oracle 18c untuk BigData.
 
 Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
 
