@@ -2,5 +2,6 @@
 layout: {{ layout }}
 title: "{{ title }}"
 refs: []
-permalink: /pages/{{ title }}
+permalink: /pages/{{ title }}.html
+icon: pages
 ---

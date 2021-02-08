@@ -8,6 +8,7 @@ categories:
 refs: 
 - https://docs.oracle.com/database/121/index.htm
 - https://docs.oracle.com/en/bigdata/index.html
+- https://github.com/oracle/docker-images/tree/main/OracleDatabase
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/

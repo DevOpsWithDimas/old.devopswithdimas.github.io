@@ -7,7 +7,7 @@ layout: default
         height="100%">
 </div>
 
-{% assign pages_list = site.data.topics | sort:"publish" %}
+{% assign pages_list = site.data.topics | where: 'coming_soon', false | sort:"publish" %}
 
 <!-- Modal Structure -->
 {% for page_modal in pages_list  %}
@@ -111,8 +111,8 @@ layout: default
         {% assign post_list = site.posts | where: "lang", topic.url | sort:"date" %}
         {% assign a_post =  post_list.first %}
         <div class="col s12 m4">
-            <div class="card sticky-action large">
-                <div class="card-image waves-effect waves-block waves-light {{topic.color}}">
+            <div class="card z-depth-3 sticky-action large">
+                <div class="card-image {{topic.color}}">
                     <span class="new badge black white-text" data-badge-caption="materi">{{ post_list | size }}</span>
                     {% if topic.coming_soon == false %}
                     <img class="activator responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
