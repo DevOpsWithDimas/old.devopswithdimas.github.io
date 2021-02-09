@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "004c-berinteraksi-dengan-database"
+title: "002c-interaction-oracle-database-sql"
 lang: oracle18c
 categories:
 - RDBMS
