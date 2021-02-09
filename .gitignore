@@ -9,6 +9,7 @@ rafts/
 
 # visual paradigm
 *.bak*
+*.vpp.lck
 
 sources
 

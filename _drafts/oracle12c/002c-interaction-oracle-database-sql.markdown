@@ -7,7 +7,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
+- https://docs.oracle.com/cd/E11882_01/appdev.112/e12137/getconn.htm#TDPJD127
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/
