@@ -17,7 +17,7 @@ services:
     image: boxfuse/flyway
     command: -url=jdbc:postgresql://postgresql:5432/bootcamp -schemas=bootcamp -user=bootcamp -password=bootcamp -connectRetries=60 migrate
     volumes:
-      - ./resources/sql:/flyway/sql
+      - ./db/migration:/flyway/sql
     depends_on:
       - postgresql
 volumes:
