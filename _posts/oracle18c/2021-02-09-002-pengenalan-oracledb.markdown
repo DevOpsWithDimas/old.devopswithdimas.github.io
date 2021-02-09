@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Pengenalan Oracle Database 18c"
+date: 2021-02-09T11:40:06+07:00
 lang: oracle18c
 categories:
 - RDBMS
@@ -51,4 +52,4 @@ Pada dasarnya semua bahasa pemograman support, berikut adalah beberapa connector
 5. [oci-ruby-sdk](https://github.com/oracle/oci-ruby-sdk) for Ruby
 6. [npm oracledb](https://www.npmjs.com/package/oracledb) for Javascript
 
-Selain untuk penyimpanan data, Oracle Database juga sebetulnya memiliki bahasa pemograman dalam Database Enginenya mereka menamai dengan sebutan `Pl/SQL` atau  _Procedural Language and SQL_
+Selain untuk penyimpanan data, Oracle Database juga sebetulnya memiliki bahasa pemograman dalam Database Enginenya mereka dinamai dengan sebutan `Pl/SQL` atau  _Procedural Language and SQL_
