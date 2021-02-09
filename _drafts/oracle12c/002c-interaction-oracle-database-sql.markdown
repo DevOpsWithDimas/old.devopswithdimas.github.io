@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "002c-interaction-oracle-database-sql"
+title: "Database Interaction dengan SQL"
 lang: oracle18c
 categories:
 - RDBMS
@@ -16,14 +16,34 @@ downloads: []
 ---
 
 
-description...
+Untuk berinteraksi dengan Database Management System khususnya pada Relational Database Management System (RDBMS) di Oracle Database kita bisa menggunakan SQL (Structural Query Language)
 
-Materi: 
+## Perintah SQL
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+SQL atau Struktural Query Language yaitu bahasa yang digunakan untuk membaca, mengubah, hapus data di dalam Database dengan mengikuti spesifikasi ANSI/ISO Standard, artinya tidak hanya digunakan di oracle saja tpi bisa juga di gunakan di semua relational database contohnya seperti PostgreSQL, MySQL, MariaDB, Microsoft Access dan lain-lain.
+
+Perintah SQL terdiri:
+
+1. `Select` Statement
+2. Data Manipulation Language (DML)
+    1. `Insert`
+    2. `Update`
+    3. `Delete`
+    4. `Merge`
+3. Data Definition Language (DDL)
+    1. `Create`
+    2. `Alter`
+    3. `Drop`
+    4. `Truncate`
+    5. `Rename`
+4. Transaction Control Language (TCL)
+    1. `Commit`
+    2. `Rollback`
+    3. `Savepoint`
+5. Data Control Language (DCL)
+    1. `Grant`
+    2. `Revoke`
+
+## Query Execute
+
+Jadi kesimpulannya kita bisa menggunakan SQL untuk berinteraksi dengan database melalui tools seperti SQL*Plus, SQL Developer dan lain-lain yang di koneksikan lewat network ke Database Engine.
