@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Oracle 18c Database Version"
+title: "Persiapan install Oracle Database 18c"
 lang: oracle18c
 categories:
 - RDBMS
@@ -15,15 +15,20 @@ gist:
 downloads: []
 ---
 
+Untuk keberhasilan belajar, jadi temen-temen diharapkan untuk install Oracle Database 18c di komputer juga ya. Nah jadi ada beberapa yang harus di siapkan, jadi berikut adalah spesifikasi yang di perlukan untuk melakukan installasi Oracle Database 18c Express Edition.
 
-description...
+## Hardware Requirement
 
-Materi: 
+Berikut adalah spesifikasi minimum:
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+- RAM: `2Gb`
+- CPU: `2 core 2 thread`
+- Storage: `12Gb`
+
+## Operation System
+
+Oracle ini bisa digunakan di berbagai operation system (OS), diataranya:
+
+- Microsoft Windows 
+- Linux RPM (Rekomendasi Solari OS)
+- Virtualization (VirtualBox, Docker dll)
