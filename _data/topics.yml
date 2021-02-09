@@ -160,5 +160,5 @@
   messages:
   publish: 2021-02-07T12:26:00+07:00
   github: 
-  coming_soon: true
+  coming_soon: false
   visible: true
