@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Install Oracle 18c Express Edition (Windows 10)"
+date: 2021-02-09T15:46:03+07:00
 lang: oracle18c
 categories:
 - RDBMS
