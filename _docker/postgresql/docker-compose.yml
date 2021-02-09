@@ -1,15 +1,18 @@
 version: '3.6'
 services:
-  postgresql:
-    image: repository.dimas-maryanto.com:8086/postgres:12.1
+  postgres:
+    image: ${PRIVATE_REPOSITORY}postgres:${POSTGRES_VERSION}
+    environment:
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+      - POSTGRES_DB
+      - POSTGRES_HOST_AUTH_METHOD
     ports:
-      - 5432:5432
+      - 5432:${POSTGRES_PORT}
     volumes:
       - pg_data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=bootcamp
-      - POSTGRES_USER=bootcamp
-      - POSTGRES_DB=bootcamp
+    networks:
+      - postgres-network
   flyway: 
     image: boxfuse/flyway
     command: -url=jdbc:postgresql://postgresql:5432/bootcamp -schemas=bootcamp -user=bootcamp -password=bootcamp -connectRetries=60 migrate
