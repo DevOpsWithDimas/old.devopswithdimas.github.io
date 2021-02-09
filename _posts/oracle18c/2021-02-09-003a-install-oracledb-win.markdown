@@ -17,7 +17,7 @@ gist:
 downloads: []
 ---
 
-Hai pada kesempatan kali ini saya mau membahas cara install Oracle Database 18c Express Edition, Pertama kita perlu download dulu installernya dari website resminya oracle database [disini](https://www.oracle.com/database/technologies/appdev/xe.html). Untuk mendownload software oracle database ini kita perlu punya **account oracle**, silahkan temen-temen daftar saja free kok. 
+Hai pada kesempatan kali ini saya mau membahas cara install Oracle Database 18c Express Edition pada sistem operasi Windows 10
 
 ## Install Oracle 18c Express Edition
 

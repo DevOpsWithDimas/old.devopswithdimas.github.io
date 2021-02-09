@@ -33,3 +33,7 @@ Oracle ini bisa digunakan di berbagai operation system (OS), diataranya:
 - Microsoft Windows 
 - Linux RPM (Rekomendasi Solari OS)
 - Virtualization (VirtualBox, Docker dll)
+
+## Software
+
+Pertama kita perlu download dulu installernya dari website resminya oracle database [disini](https://www.oracle.com/database/technologies/appdev/xe.html) kemudian silahkan pilih sesuai platform temen-temen ya apakah windows atau linux. Untuk mendownload software oracle database ini kita perlu punya **account oracle**, silahkan temen-temen daftar saja free kok. 
