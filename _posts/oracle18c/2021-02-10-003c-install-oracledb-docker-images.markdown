@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Install Oracle 18c Express Edition (Build Docker Images)"
+date: 2021-02-10T15:08:43+07:00
 lang: oracle18c
 categories:
 - RDBMS
@@ -13,12 +14,14 @@ youtube:
 comments: true
 image_path: /resources/posts/oracle12c/003c-install-docker
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
-downloads: []
+downloads: 
+- name: "Docker Image Builder"
+  url: https://github.com/oracle/docker-images/archive/main.zip
 ---
 
 ## Preparation
 
-Sekarang kita download docker image buildenya [disini](https://github.com/oracle/docker-images/archive/main.zip) kemudian buka Command Promnt/ Terminal kemudian arahkan ke folder `OracleDatabase/SingleInstance/dockerfiles`.
+Sekarang kita download docker image buildenya [disini](https://github.com/oracle/docker-images/archive/main.zip) kemudian buka Command Promnt atau Terminal kemudian arahkan ke folder `OracleDatabase/SingleInstance/dockerfiles`.
 
 Kemudian masukin installer `oracle-database-xe-18c.x.x.rpm` ke folder `18.4.0` seperti berikut:
 
