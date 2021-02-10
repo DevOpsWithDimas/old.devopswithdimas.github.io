@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Install Database Editor untuk Oracle 18c"
+date: 2021-02-10T17:12:11+07:00
 lang: oracle18c
 categories:
 - RDBMS
