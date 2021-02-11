@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Handle Null value dengan Coalesce"
+date: 2021-02-11T14:52:26+07:00
 lang: oracle18c
 categories:
 - RDBMS
