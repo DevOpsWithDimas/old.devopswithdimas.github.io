@@ -72,7 +72,7 @@ Berikut outputnya:
 
 Untuk menampilkan semua column yang dipilih dalam sebuah tabel kita bisa menggunakan spesial karakter `*` (asteric / bintang) dalam perintah _select_ seperti berikut:
 
-{% gist page.gist "select-all-department.sql" %}
+{% gist page.gist "005-select-all-departments.sql" %}
 
 Maka akan tampil datanya seperti berikut:
 
