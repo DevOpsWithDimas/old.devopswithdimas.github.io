@@ -26,29 +26,39 @@ Contoh kasus untuk expresion `%`, saya ingin mencari nama depan karyawan yang di
 
 Berikut hasilnya:
 
-```postgresql-console
- employee_id | first_name | last_name |  email   |    phone_number    |  job_id  |  salary  
--------------+------------+-----------+----------+--------------------+----------+----------
-         105 | David      | Austin    | DAUSTIN  | 590.423.4569       | IT_PROG  |  4800.00
-         130 | Mozhe      | Atkinson  | MATKINSO | 650.124.6234       | ST_CLERK |  2800.00
-         166 | Sundar     | Ande      | SANDE    | 011.44.1346.629268 | SA_REP   |  6400.00
-         174 | Ellen      | Abel      | EABEL    | 011.44.1644.429267 | SA_REP   | 11000.00
-(4 rows)
-
-hr=# 
-```
+{% highlight sql %}
+EMPLOYEE_ID LAST_NAME                 JOB_ID         SALARY
+----------- ------------------------- ---------- ----------
+        174 Abel                      SA_REP          11000
+        166 Ande                      SA_REP           6400
+        130 Atkinson                  ST_CLERK         2800
+        105 Austin                    IT_PROG          4800
+{% endhighlight %}
 
 Contoh kasus untuk expresion `_`, saya ingin mencari huruf ke 2 dari kolom `job_id` di tabel `jobs` mengadung `T`. Berikut querynya:
 
-{% gist page.gist "select-where-like-underscore-el.sql" %}
+{% gist page.gist "006b-select-where-like-underscore-el.sql" %}
 
 Berikut hasilnya:
 
-```postgresql-console
-  job_id  |   job_title   | min_salary | max_salary 
-----------+---------------+------------+------------
- ST_MAN   | Stock Manager |       5500 |       8500
- ST_CLERK | Stock Clerk   |       2000 |       5000
- IT_PROG  | Programmer    |       4000 |      10000
-(3 rows)
-```
+{% highlight sql %}
+JOB_ID     JOB_TITLE
+---------- -----------------------------------
+ST_MAN     Stock Manager
+ST_CLERK   Stock Clerk
+IT_PROG    Programmer
+{% endhighlight %}
+
+Selain itu juga kita bisa menggunakan Regex Expression, menggunakan operator `regexp_like` seperti berikut querynya:
+
+{% gist page.gist "006b-select-where-regexp_like.sql" %}
+
+Berikut hasilnya:
+
+{% highlight sql %}
+FIRST_NAME           LAST_NAME
+-------------------- -------------------------
+Steven               King
+Steven               Markle
+Stephen              Stiles
+{% endhighlight %}
