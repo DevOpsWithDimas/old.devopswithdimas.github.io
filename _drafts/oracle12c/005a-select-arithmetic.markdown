@@ -6,8 +6,7 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Arithmetic-Operators.html#GUID-46CD9FD8-FC94-44BA-AA62-30A16063EAAE
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/
