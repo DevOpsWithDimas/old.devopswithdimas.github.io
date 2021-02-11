@@ -50,9 +50,6 @@ MK_MAN
 MK_REP
 PR_REP
 PU_CLERK
-
-JOB_ID
-----------
 PU_CLERK
 PU_CLERK
 PU_CLERK
@@ -106,9 +103,6 @@ Jadi kesimpulannya adalah dengan menggunakan klausa `distinct` ini kita bisa men
 Berikut hasilnya:
 
 {% highlight sql %}
-SQL> select distinct job_id, salary
-from employees;
-
 JOB_ID         SALARY
 ---------- ----------
 AC_ACCOUNT       8300
