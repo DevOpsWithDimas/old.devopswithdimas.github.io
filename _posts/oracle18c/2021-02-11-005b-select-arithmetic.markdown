@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Operation Arithmetic di Oracle"
+date: 2021-02-11T14:05:24+07:00
 lang: oracle18c
 categories:
 - RDBMS
