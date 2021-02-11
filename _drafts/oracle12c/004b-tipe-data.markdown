@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Macam Macam Tipe Data pada Oracle 18c"
+title: "Data Types di Oracle Database"
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Data-Types.html#GUID-A3C0D836-BADB-44E5-A5D4-265BA5968483
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/004b-tipe-data
@@ -14,15 +14,48 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Setiap database management system memiliki spesifikasi tipe data tersendiri, ada beberapa tipe data di oracle database diantaranya
 
-description...
+1. Build-in Oracle Data Types
+2. ANSI, SQL Data Type
+3. User-Defined Type
 
-Materi: 
+## Build-in Oracle Data Type
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Build-in Data Type ini pada dasarnya tipe data yang dibuat untuk optimisasi value yang disimpan sesuai dengan ketentuan Oracle Database, diantaranya seperti berikut
+
+1. Character
+    1. `VARCHAR2(n)`, tipe data ini maximum length bisa sampai `4000` bytes atau character
+    2. `CHAR(n)`, tipe data ini fixed length character.
+2. Numberic
+    1. `NUMBER(n, s)`, tipe data ini digunakan untuk menyimpan value number yang biasanya untuk perhitungan.
+    2. `float(s)`, tipe data ini bagian dari number tetapi khusus untuk menyimpan data dalam bentuk pecahan
+    3. `long`, tipe data ini khusus untuk menyimpan data dalam bentuk bilangan bulat yang sangat besar bisa sampai `2 gigabytes`
+3. Date & Time
+    1. `DATE`,
+    2. `TIMESTAMP`,
+4. Binary
+    1. `CLOB`, tipe data ini untuk menyimpan data binary character max lenght `4 gigabytes`
+    2. `BLOB`, tipe data ini untuk menyimpan binary large object
+    3. `BFILE`. tipe data ini untuk menyimpan locator large binary object sama seperti `BLOB` + Enables byte stream I/O access to external LOBs residing on the database server
+
+## User Defined Type
+
+Untuk tipe data ini, jadi di Oracle kita di ijinkan untuk membuat object type sendiri bisa berupa 
+
+1. trigger
+2. function
+3. tables
+4. arrays
+
+nanti akan kita bahas lebih lanjut di materi PL/SQL
+
+## ANSI, SQL Data Type
+
+SQL Data Type specification dari ANSI ini pada dasarnya nanti akan di convert ke ORACLE Database
+
+| ANSI                  | Oracle Database       |
+| :---                  | :---                  |
+| character varying(n)  | varchar2(n)           |
+| numberic(p, s)        | number(p, s)          |
+| integer               | number(38)            |
