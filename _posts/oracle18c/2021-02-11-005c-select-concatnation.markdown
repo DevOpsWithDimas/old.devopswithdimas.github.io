@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Perintah select dengan Concatenation"
+title: "Menggabungkan column dengan concatnation"
+date: 2021-02-11T14:34:11+07:00
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Concatenation-Operator.html#GUID-08C10738-706B-4290-B7CD-C279EBC90F7E
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/
