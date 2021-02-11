@@ -1,16 +1,15 @@
 ---
 layout: post
-title: "004b-aturan-penulisan"
+title: "Macam Macam Tipe Data pada Oracle 18c"
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
 - https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/
+image_path: /resources/posts/oracle12c/004b-tipe-data
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
