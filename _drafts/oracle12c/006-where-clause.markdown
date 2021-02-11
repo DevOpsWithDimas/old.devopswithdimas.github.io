@@ -6,24 +6,27 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Conditions.html#GUID-C2E3ED44-16E7-4924-9125-E1693B1022A8
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/
+image_path: /resources/posts/oracle12c/006-where
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Penggunaan klausa `where` digunakan untuk melakukan filter berdasarkan kolom dan operator tertentu contoh paling basic adalah operator `equals` atau `=`, Kasusnya saya punya beberapa nah kemudian saya cuman mau data yang ditampilkan berdasarkan criteria tertentu contohnya ilustrasi seperti berikut:
 
-description...
+![where basic]({{ page.image_path | prepend: site.baseurl }}/konsep-where.png)
 
-Materi: 
+## Predicates / Conditional
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Predicate / Conditional ada beberapa operator yang bisa digunakan diantaranya
+
+1. Comparison Predicate
+2. Floating Point Condition
+3. Like Predicate
+4. Between Predicate
+5. Nulless Predicate
+6. Exist Condition
+7. In Condition
+8. Logical Statement
