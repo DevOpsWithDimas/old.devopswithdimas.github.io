@@ -78,7 +78,7 @@ EMPLOYEE_ID EMAIL                     JOB_ID         SALARY
         101 NKOCHHAR                  AD_VP           17000
 
 107 rows selected.
-{% endhighligth %}
+{% endhighlight %}
 
 # Operator more than
 
