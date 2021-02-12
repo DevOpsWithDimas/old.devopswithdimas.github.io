@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Not Predicate di Oracle"
+title: "Not Predicate pada klausa where di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
