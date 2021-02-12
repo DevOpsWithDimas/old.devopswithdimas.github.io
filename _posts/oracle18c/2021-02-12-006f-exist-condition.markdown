@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Exists Condition di Oracle"
+date: 2021-02-12T20:06:51+07:00
 lang: oracle18c
 categories:
 - RDBMS
