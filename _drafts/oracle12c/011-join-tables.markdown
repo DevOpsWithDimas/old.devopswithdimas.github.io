@@ -6,8 +6,7 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html#GUID-39081984-8D38-4D64-A847-AA43F515D460
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/
