@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "006f-not-predicate"
+title: "Not Predicate di Oracle"
 lang: oracle18c
 categories:
 - RDBMS

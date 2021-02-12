@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "In Predicates di Oracle"
+date: 2021-02-12T19:43:04+07:00
 lang: oracle18c
 categories:
 - RDBMS
