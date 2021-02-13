@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "009c-date-function"
+title: "Data & Time Single Row Function di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
