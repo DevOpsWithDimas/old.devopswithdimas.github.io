@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "009a-character-function"
+title: "Character Single Row Function di Oracle"
 date: 2021-02-13T19:45:56+07:00
 lang: oracle18c
 categories:
