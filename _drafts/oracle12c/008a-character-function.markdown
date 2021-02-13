@@ -33,9 +33,8 @@ Untuk fungsi text ini lumayan banyak, seperti berikut:
 | `TRIM`    | Memotong kalimat dari 2 sisi berdasarkan parameter |
 | `REPLACE` | Mengganti kalimat berdasarkan parameter |
 | `SUBSTR`  | Mengambil beberapa huruf berdasarkan posisi awal dan akhir |
-{:.bordered .striped}
 
-Untuk lebih lengkapnya lagi bisa check [dokumentasi](https://www.postgresql.org/docs/9.1/functions-string.html)
+Untuk lebih lengkapnya lagi bisa check [dokumentasi](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Single-Row-Functions.html#GUID-06062705-1EC8-44ED-89B8-0F0573B74EA2)
 
 Berikut adalah contoh salah satu penggunaannya, saya mau memformat data karyawan `first_name` di jadikan huruf kapital, sedangkan untuk `last_name` saya mau hitung jumlahnya berapa, gabungkan column `first_name` dan `last_name`. Berikut querynya:
 
@@ -43,19 +42,21 @@ Berikut adalah contoh salah satu penggunaannya, saya mau memformat data karyawan
 
 Berikut hasilnya:
 
-```postgresql-console
- kode | nama_depan_kapital | nama_belakang | jumlah |   nama_lengkap   
-------+--------------------+---------------+--------+------------------
-  100 | STEVEN             | King          |      4 | Steven King
-  101 | NEENA              | Kochhar       |      7 | Neena Kochhar
-  102 | LEX                | De Haan       |      7 | Lex De Haan
-  103 | ALEXANDER          | Hunold        |      6 | Alexander Hunold
-  104 | BRUCE              | Ernst         |      5 | Bruce Ernst
-  105 | DAVID              | Austin        |      6 | David Austin
-  106 | VALLI              | Pataballa     |      9 | Valli Pataballa
-  107 | DIANA              | Lorentz       |      7 | Diana Lorentz
-  108 | NANCY              | Greenberg     |      9 | Nancy Greenberg
-  109 | DANIEL             | Faviet        |      6 | Daniel Faviet
-(10 rows)
-```
+{% highlight sql %}
+NAMA_DEPAN_KAPITAL       JUMLAH NAMA
+-------------------- ---------- ----------------------------------------------
+ELLEN                         4 Ellen Abel
+SUNDAR                        4 Sundar Ande
+MOZHE                         8 Mozhe Atkinson
+DAVID                         6 David Austin
+HERMANN                       4 Hermann Baer
+SHELLI                        5 Shelli Baida
+AMIT                          5 Amit Banda
+ELIZABETH                     5 Elizabeth Bates
+SARAH                         4 Sarah Bell
+DAVID                         9 David Bernstein
+LAURA                         6 Laura Bissot
+
+107 rows selected.
+{% endhighlight %}
 
