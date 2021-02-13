@@ -15,14 +15,37 @@ downloads: []
 ---
 
 
-description...
+Ada beberapa function yang kita bisa gunakan untuk memformat number:
 
-Materi: 
+| Function  | Keterangan                        |
+|:----------|:----------------------------------|
+| `CEIL`    | Untuk pembulatan ke atas          |
+| `ABS`     | Untuk nilai selalu positif        |
+| `FLOOR`   | Untuk pembulatan ke bawah         |
+| `MOD`     | Untuk sisa bagi                   |
+| `POWER`   | Untuk pangkat                     |
+| `ROUND`   | Untuk pembulatan pecahan          |
+| `SQRT`    | Untuk menghitung akar             |
+| `coalese` | Nilai null dengan default value   |
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Berikut beberapa contoh penggunakan function di number, berikut querynya:
+
+{% gist page.gist "008b-single-row-function-number.sql" %}
+
+Berikut hasilnya:
+
+```postgresql-console
+ commision_pct |   gaji   | sisa_bagi |       pangkat        |       akar       
+---------------+----------+-----------+----------------------+------------------
+             0 | 24000.00 |         2 | 576.0000000000000000 | 7.07106781186548
+             0 | 17000.00 |         2 | 289.0000000000000000 | 7.07106781186548
+             0 | 17000.00 |         2 | 289.0000000000000000 | 7.07106781186548
+             0 |  9000.00 |         2 |  81.0000000000000000 | 7.07106781186548
+             0 |  6000.00 |         2 |  36.0000000000000000 | 7.07106781186548
+             0 |  4800.00 |         2 |  23.0400000000000000 | 7.07106781186548
+             0 |  4800.00 |         2 |  23.0400000000000000 | 7.07106781186548
+             0 |  4200.00 |         2 |  17.6400000000000000 | 7.07106781186548
+             0 | 12000.00 |         2 | 144.0000000000000000 | 7.07106781186548
+             0 |  9000.00 |         2 |  81.0000000000000000 | 7.07106781186548
+(10 rows)
+```
