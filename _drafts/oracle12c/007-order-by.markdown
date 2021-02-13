@@ -1,13 +1,12 @@
 ---
 layout: post
-title: "007-order-by"
+title: "Mengurutkan data dengan klausa ORDER BY di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/18/sqlrf/Sorting-Query-Results.html#GUID-E45EF993-20AC-4552-860C-4D74EADB5BF2
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/
@@ -15,15 +14,63 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Pengurutan data ini bagian yang bisa dibilang penting juga, karena di database itu bisa ada ribuan bahkan jutaan yang klo di `select` urutannya tidak tentu, jadi terkadang kita harus mengurutkan misalnya dari `a - z`, `1 - 100`, berdasarkan tanggal dan lain-lain. Dengan perintah `order by` kita bisa dengan mudah mengimplementasikan pengurutan ini.
 
-description...
+Order by biasanya di letakan setelah perintah `select` atau `where` seperti berikut contohnya:
 
-Materi: 
+```sql
+select ... from ... order by columns... [asc | desc]
+```
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Untuk pengurutan ini ada 2 jenis yaitu 
+
+1. `asc` atau ascending, dimulai dari yang terkecil ke besar
+2. `desc` atau descending, sebaliknya
+
+Contoh kasusnya saya mau menampilkan data karyawan berdasarkan gaji yang terbesar terlebih dahulu, berarti kita menggunakan `desc` berikut querynya:
+
+{% gist page.gist "007-order-column.sql" %}
+
+Berikut hasilnya:
+
+{% highlight sql %}
+      KODE NAMA_DEPAN                 GAJI
+---------- -------------------- ----------
+       100 Steven                    24000
+       101 Neena                     17000
+       102 Lex                       17000
+       145 John                      14000
+       146 Karen                     13500
+       201 Michael                   13000
+       205 Shelley                   12008
+       108 Nancy                     12008
+       147 Alberto                   12000
+       168 Lisa                      11500
+       148 Gerald                    11000
+
+107 rows selected.
+{% endhighlight %}
+
+Selain itu juga kita bisa mengurutkan lebih dari 1 kolom, contohnya diurutkan berdasarkan `job_id` dan `salary`. Berikut querynya:
+
+{% gist page.gist "007-order-columns.sql" %}
+
+berikut hasilnya:
+
+{% highlight sql %}
+      KODE NAMA_DEPAN           JOB              GAJI
+---------- -------------------- ---------- ----------
+       206 William              AC_ACCOUNT       8300
+       205 Shelley              AC_MGR          12008
+       200 Jennifer             AD_ASST          4400
+       100 Steven               AD_PRES         24000
+       102 Lex                  AD_VP           17000
+       101 Neena                AD_VP           17000
+       113 Luis                 FI_ACCOUNT       6900
+       111 Ismael               FI_ACCOUNT       7700
+       112 Jose Manuel          FI_ACCOUNT       7800
+       110 John                 FI_ACCOUNT       8200
+       109 Daniel               FI_ACCOUNT       9000
+
+107 rows selected.
+{% endhighlight %}

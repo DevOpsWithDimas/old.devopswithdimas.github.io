@@ -15,7 +15,7 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
-Relational Comparison pada where di PostgreSQL teridiri dari:
+Relational Comparison pada where di Oracle teridiri dari:
 
 | Symbol                        | Keterangan  |
 | :---                          | :---        |
