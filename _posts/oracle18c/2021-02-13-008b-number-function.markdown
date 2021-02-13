@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "009b-number-function"
+date: 2021-02-13T19:49:14+07:00
 lang: oracle18c
 categories:
 - RDBMS
