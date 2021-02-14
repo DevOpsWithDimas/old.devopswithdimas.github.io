@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "010a-group-by"
+title: "Klausa Group By di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -9,20 +9,56 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html#GUID-CFA006CA-6FF1-4972-821E-6996142A51C6
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/
+image_path: /resources/posts/oracle12c/009a-group-by
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Fungsi `group by` adalah untuk membreak down atau mengkatagerikan kemudian di buatlah group function. Seperti berikut ilustrasinya:
 
-description...
+![group by]({{ page.image_path | prepend: site.baseurl }}/konsep-group-by.png)
 
-Materi: 
+Biasanya query ini akan berguna untuk reporting karena kita bisa mengkategorikan berdasarkan kategori tertentu contohnya jika dalam studi kasus penjualan product maka kita bisa menghitung jumlah produk A yang terjual selama per bulan, pertahun dan lain-lain. 
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Ok sekarang saya contohkan studi kasusnya seperti berikut: 
+
+Saya mau mencari jumlah setiap karyawan dan total `salary` setahun per `department_id`. Berikut querynya:
+
+{% gist page.gist "009a-group-by.sql" %}
+
+Berikut hasilnya:
+
+{% highlight sql %}
+    DEP_ID COUNT_EMPLOYEES INCOME_IN_YEAR AVG_SALARY_PER_DEP MIN_SALARY_PER_DEP MAX_SALARY_PER_DEP MEDIAN_SALARY_PER_DEP STDDEV_SALARY_PER_DEP VARIANCE_SALARY_PER_DEP
+---------- --------------- -------------- ------------------ ------------------ ------------------ --------------------- --------------------- -----------------------
+        10               1          52800               4400               4400               4400                  4400                     0                       0
+        20               2         228000               9500               6000              13000                  9500               4949.75                24500000
+        30               6         298800               4150               2500              11000                  2850               3362.59                11307000
+        40               1          78000               6500               6500              6500                  6500                     0                        0
+
+12 rows selected
+{% endhighlight %}
+
+Kasus lainnya, yaitu multiple kategories seperti per `department_id` dan `manager_id`
+
+{% gist page.gist "009a-group-by-columns.sql" %}
+
+Berikut hasilnya:
+
+{% highlight sql %}
+    DEP_ID JOB_ID     COUNT_EMPLOYEES INCOME_IN_YEAR
+---------- ---------- --------------- --------------
+        10 AD_ASST                  1          52800
+        20 MK_MAN                   1         156000
+        20 MK_REP                   1          72000
+        30 PU_CLERK                 5         166800
+        30 PU_MAN                   1         132000
+        40 HR_REP                   1          78000
+        50 SH_CLERK                20         771600
+        50 ST_CLERK                20         668400
+        50 ST_MAN                   5         436800
+        60 IT_PROG                  5         345600
+        70 PR_REP                   1         120000
+
+20 rows selected.
+{% endhighlight %}
