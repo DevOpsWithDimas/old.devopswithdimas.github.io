@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "011-join-tables"
+title: "Join clause di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -9,20 +9,22 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html#GUID-39081984-8D38-4D64-A847-AA43F515D460
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/
+image_path: /resources/posts/oracle12c/010-joins
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Klausa `join` pada dasarnya untuk menghubungkan tabel yang terpisah menjadi satu berdasarkan column tertentu (_foreign key_) contoh ilustrasinya seperti berikut:
 
-description...
+![ilustrasi join]({{ page.image_path | prepend: site.baseurl }}/join-tables.png)
 
-Materi: 
+Perintah join bisa di lakukan dengan beberapa cara yaitu
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Natural JOIN
+2. Cartesian Products
+3. Inner JOIN
+4. Outter JOIN
+    1. Left outer join
+    2. Right outer join
+    3. Full outer join
+5. Self JOIN
