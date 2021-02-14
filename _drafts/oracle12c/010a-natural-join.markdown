@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "011a-natural-join"
+title: "Natural Join di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -16,14 +16,29 @@ downloads: []
 ---
 
 
-description...
+Natural join, query yang paling mudah untuk menerapkan join tetapi ada syaratnya yaitu:
 
-Materi: 
+1. Column name harus sama di antara ke dua tables
+2. Harus memiliki `constraint foreign key`
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Contohnya saya ingin menampilakan. selurauh data location  yang ditampilkan adalah `location_id`, `city`, `state_province`, `country_name` yang diambil dari table `countries`. Berikut querynya:
+
+{% gist page.gist "10a-natural-join.sql" %}
+
+Berikut hasilnya:
+
+{% highlight sql %}
+KODE_LOKASI KOTA                            PROVINSI                    NEGARA
+----------- ------------------------------  -------------------------   ---------------------------
+       1000 Roma                            <null>                      Italy
+       1100 Venice                          <null>                      Italy
+       1200 Tokyo                           Tokyo Prefecture            Japan
+       1300 Hiroshima                       <null>                      Japan
+       1400 Southlake                       Texas                       United States of America
+       1500 South San Francisco             California                  United States of America
+       1600 South Brunswick                 New Jersey                  United States of America
+       1700 Seattle                         Washington                  United States of America
+       1800 Toronto                         Ontario                     Canada
+
+23 rows selected.
+{% endhighlight %}
