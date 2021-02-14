@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Join clause di Oracle"
+date: 2021-02-15T06:29:16+07:00
 lang: oracle18c
 categories:
 - RDBMS
