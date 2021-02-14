@@ -1,13 +1,12 @@
 ---
 layout: post
-title: "009e-nested-function"
+title: "008-limit-offset"
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SELECT.html#GUID-CFA006CA-6FF1-4972-821E-6996142A51C6
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/
