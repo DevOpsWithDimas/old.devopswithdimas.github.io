@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "009d-conversion-function"
+title: "Conversion Single Row Function di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -14,15 +14,27 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Conversion function atau convert biasanya digunakan untuk memtransform nilai menjadi nilai lain, berikut contoh conversion function
 
-description...
+| Function              | Keterangan                                                    |
+|:----------            |:----------------------------------                            |
+| `ASCII`               | Melakukan conversi dari varchar ke asciii                     |
+| `ASCIISTR`            | Melakukan conversi dari ascii ke varchar                      |
+| `UNISTR`              | Melakukan conversi dari Unicode string literals ke varchar    |
+| `BIN_TO_NUM`          | Mengconversi dari binnary ke number / character               |
+| `TO_CHAR`             | Memformat dari tipe data tertentu ke varchar                  |
+| `TO_DATE`             | Memformat dari tipe data varchar ke date                      |
+| `TO_NUMBER`           | Memformat dari tipe data varchar ke Number                    |
+| `TO_TIMESTAMP`        | Digunakan untuk mengconversi dari varchar ke timestamp        |
 
-Materi: 
+Berikut adalah contoh penggunaannya:
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+{% gist page.gist "008d-conversion-single-row-function.sql" %}
+
+Berikut hasilnya:
+
+{% highlight sql %}
+ ASCII_FUN ASCIISTR_FUN    UNISTR_ BINTONUM_FUN TOCHAR_DATE_FUN               TOCHAR_CURRENCY_FUN       TONUMBER_FUN TODATE_FU
+---------- --------------- ------- ------------ ----------------------------- ------------------------- ------------ ---------
+        97 AB\FFFD\FFFDCDE AB??CDE           14 14/FEB/2021 10:11:06          $2,000,000.00                  2000000 14-FEB-21
+{% endhighlight %}
