@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Null-Related Single Row Function"
+date: 2021-02-14T22:08:50+07:00
 lang: oracle18c
 categories:
 - RDBMS
