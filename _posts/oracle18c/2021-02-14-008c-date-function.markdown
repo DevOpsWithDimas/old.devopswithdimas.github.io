@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Data & Time Single Row Function di Oracle"
+date: 2021-02-14T16:18:31+07:00
 lang: oracle18c
 categories:
 - RDBMS
@@ -37,4 +38,7 @@ Berikut adalah contoh penggunaanya:
 Berikut hasilnya:
 
 {% highlight sql %}
+ADD_MONTH CURRENT_D SYSDATE_F TO_CHAR_FU TO_DATE_F
+--------- --------- --------- ---------- ---------
+14-MAR-21 14-FEB-21 14-FEB-21 2021/02/14 14-FEB-21
 {% endhighlight %}
