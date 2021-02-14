@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Klausa Group By di Oracle"
+date: 2021-02-15T05:04:04+07:00
 lang: oracle18c
 categories:
 - RDBMS
