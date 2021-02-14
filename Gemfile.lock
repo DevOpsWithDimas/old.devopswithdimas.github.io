@@ -299,6 +299,7 @@ DEPENDENCIES
   jekyll-paginate
   jekyll-sitemap
   jekyll-youtube
+  jemoji
   kramdown
   kramdown-parser-gfm
   nokogiri (>= 1.11.0)
