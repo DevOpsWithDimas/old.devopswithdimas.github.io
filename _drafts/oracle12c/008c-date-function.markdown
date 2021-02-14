@@ -14,15 +14,27 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Berikut adalah beberapa function untuk tipe data Date & Time di Oracle:
 
-description...
+| Function              | Keterangan                                                            |
+|:----------            |:----------------------------------                                    |
+| `ADD_MONTHS`          | Mengembalikan tipe data tanggal dengan di tambah perameterize `int`   |
+| `CURRENT_DATE`        | Mengembalikan tipe data tanggal pada session saat ini                 |
+| `CURRENT_TIMESTAMP`   | Mengembalikan tipe data tanggal + time pada session saat ini          |
+| `EXTRACT`             | Mengembalikan tipe data datetime berdasarkan parameter tertentu       |
+| `MONTH_BETWEEN`       | Mengembalikan tipe data number dari rentang `date1` dan `date2`       |
+| `NEXT_DAY`            | Mengembalikan tipe data tanggal dari first weekday setelahnya         |
+| `SYSDATE`             | Mengembalikan tipe data tanggal dari System OS                        |
+| `SYSTIMESTAMP`        | Mengembalikan tipe data tanggal + waktu dari system OS                |
+| `TO_CHAR`             | Digunakan untuk memformat tanggal ke varchar                          |
+| `TO_TIMESTAMP`        | Digunakan untuk mengconversi dari varchar ke timestamp                |
+| `TO_DATE`             | Digunakan untuk mengconversi dari varchar ke date                     |
 
-Materi: 
+Berikut adalah contoh penggunaanya:
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+{% gist page.gist "008c-date-single-row-function.sql" %}
+
+Berikut hasilnya:
+
+{% highlight sql %}
+{% endhighlight %}
