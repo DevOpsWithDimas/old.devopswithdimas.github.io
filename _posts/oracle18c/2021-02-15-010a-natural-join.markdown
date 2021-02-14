@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Natural Join di Oracle"
+date: 2021-02-15T06:55:48+07:00
 lang: oracle18c
 categories:
 - RDBMS
