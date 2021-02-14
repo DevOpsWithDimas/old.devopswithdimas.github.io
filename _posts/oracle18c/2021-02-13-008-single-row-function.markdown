@@ -23,7 +23,8 @@ Single row function terdiri dari beberapa jenis berdasarkan tipe data:
 
 1. Character Function
 2. Number Function
-3. Date Function
+3. Date & Time Function
 4. Conversion Function
-5. Nested Function
-6. General Function
+5. Casting Build-in Data Type Function
+6. Null Related Function
+7. Dan lain-lain.
