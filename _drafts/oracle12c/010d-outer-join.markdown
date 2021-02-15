@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "011c-outer-join"
+title: "Outer Join di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -9,20 +9,89 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html#GUID-29A4584C-0741-4E6A-A89B-DCFAA222994A
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/
+image_path: /resources/posts/oracle12c/010d-outer-join
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Dengan klausa `join` ada juga kondisi lain, jika sebelumnya menggunakan `inner join` hanya mendapatkan data yang ada di antara kedua tabel. Ada juga kodisi lain yaitu dengan `outter join` seperti berikut ilustrasinya:
 
-description...
+![diagram join]({{ page.image_path | prepend: site.baseurl }}/outer-join-definision.png)
 
-Materi: 
+Berikut contoh kasus dalam bentuk gambar:
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+![contoh data right join]({{ page.image_path | prepend: site.baseurl }}/outer-join.png)
+
+Berikut contoh penggunaan, 
+
+**Menggunakan `left join`**
+
+{% gist page.gist "010d-left-join.sql" %}
+
+Berikut hasilnya:
+
+{% highlight sql %}
+KODE_DEPARTMENT NAMA_DEPARTMENT                KODE_LOKASI ALAMAT
+--------------- ------------------------------ ----------- ----------------------------------------
+                                                      1000 1297 Via Cola di Rie
+                                                      1100 93091 Calle della Testa
+                                                      1200 2017 Shinjuku-ku
+                                                      1300 9450 Kamiya-cho
+             60 IT                                    1400 2014 Jabberwocky Rd
+             50 Shipping                              1500 2011 Interiors Blvd
+                                                      1600 2007 Zagora St
+             30 Purchasing                            1700 2004 Charade Rd
+             10 Administration                        1700 2004 Charade Rd
+            140 Control And Credit                    1700 2004 Charade Rd
+            260 Recruiting                            1700 2004 Charade Rd
+            250 Retail Sales                          1700 2004 Charade Rd
+
+43 rows selected.
+{% endhighlight %}
+
+**Menggunakan `right join`**
+
+{% gist page.gist "010d-right-join.sql" %}
+
+Berikut hasilnya:
+
+{% highlight sql %}
+KODE_DEPARTMENT NAMA_DEPARTMENT                KODE_LOKASI ALAMAT
+--------------- ------------------------------ ----------- ----------------------------------------
+             60 IT                                    1400 2014 Jabberwocky Rd
+             50 Shipping                              1500 2011 Interiors Blvd
+             10 Administration                        1700 2004 Charade Rd
+             30 Purchasing                            1700 2004 Charade Rd
+             90 Executive                             1700 2004 Charade Rd
+            100 Finance                               1700 2004 Charade Rd
+            250 Retail Sales                          1700 2004 Charade Rd
+            260 Recruiting                            1700 2004 Charade Rd
+            270 Payroll                               1700 2004 Charade Rd
+             20 Marketing                             1800 147 Spadina Ave
+             40 Human Resources                       2400 8204 Arthur St
+             80 Sales                                 2500 Magdalen Centre, The Oxford Science Park
+             70 Public Relations                      2700 Schwanthalerstr. 7031
+
+27 rows selected.
+{% endhighlight %}
+
+**Menggunakan `inner join`**
+
+{% gist page.gist "010d-inner-join.sql" %}
+
+Berikut hasilnya:
+
+{% highlight sql %}
+KODE_DEPARTMENT NAMA_DEPARTMENT                KODE_KARYAWAN NAMA_KARYAWAN
+--------------- ------------------------------ ------------- ----------------------------------------------
+             10 Administration                           200 Jennifer Whalen
+             20 Marketing                                201 Michael Hartstein
+             20 Marketing                                202 Pat Fay
+             30 Purchasing                               114 Den Raphaely
+             30 Purchasing                               119 Karen Colmenares
+             30 Purchasing                               115 Alexander Khoo
+             30 Purchasing                               116 Shelli Baida
+             30 Purchasing                               117 Sigal Tobias
+
+106 rows selected.
+{% endhighlight %}
