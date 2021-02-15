@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Self Join di Oracle"
+date: 2021-02-15T08:22:30+07:00
 lang: oracle18c
 categories:
 - RDBMS
@@ -9,7 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html#GUID-B0F5C614-CBDD-45F6-966D-00BAD6463440
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/
+image_path: /resources/posts/oracle12c/010e-self-join
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
