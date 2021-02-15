@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "011d-self-join"
+title: "Self Join di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -14,15 +14,43 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Selain `inner join`, `natural join` dan `outter join` ada juga `self join` yaitu merelasikan ke tabel dirinya sendiri, berikut ilustrasinya:
 
-description...
+![gambar self join]({{ page.image_path | prepend: site.baseurl }}/self-join.png)
 
-Materi: 
+Contoh kasusnya, saya ingin mencari semua karyawan dan berserta nama managernya. Berikut querynya:
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+{% gist page.gist "010e-self-join.sql" %}
+
+Berikut hasilnya:
+
+{% highlight sql %}
+KODE_KARYAWAN NAMA_KARYAWAN                                  KODE_MANAGER NAMA_MANAGER
+------------- ---------------------------------------------- ------------ ----------------------------------------------
+          201 Michael Hartstein                                       100 Steven King
+          101 Neena Kochhar                                           100 Steven King
+          102 Lex De Haan                                             100 Steven King
+          114 Den Raphaely                                            100 Steven King
+          120 Matthew Weiss                                           100 Steven King
+          121 Adam Fripp                                              100 Steven King
+          122 Payam Kaufling                                          100 Steven King
+          123 Shanta Vollman                                          100 Steven King
+          124 Kevin Mourgos                                           100 Steven King
+          145 John Russell                                            100 Steven King
+          146 Karen Partners                                          100 Steven King
+          147 Alberto Errazuriz                                       100 Steven King
+          148 Gerald Cambrault                                        100 Steven King
+          149 Eleni Zlotkey                                           100 Steven King
+          200 Jennifer Whalen                                         101 Neena Kochhar
+          203 Susan Mavris                                            101 Neena Kochhar
+          204 Hermann Baer                                            101 Neena Kochhar
+          205 Shelley Higgins                                         101 Neena Kochhar
+          108 Nancy Greenberg                                         101 Neena Kochhar
+          103 Alexander Hunold                                        102 Lex De Haan
+          104 Bruce Ernst                                             103 Alexander Hunold
+          105 David Austin                                            103 Alexander Hunold
+          106 Valli Pataballa                                         103 Alexander Hunold
+          107 Diana Lorentz                                           103 Alexander Hunold
+
+107 rows selected.
+{% endhighlight %}
