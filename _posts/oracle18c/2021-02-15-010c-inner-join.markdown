@@ -15,7 +15,7 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
-Selain menggunakan `Natural join` kita bisa menggunakan klausa `on` dan juga `where` atau lebih dikenal dengan **Inner JOIN**. Dengan menggunakan klausa `on` kita bisa bebas menentukan column mana yang akan di relasikan contohnya seperti berikut:
+Inner Join, atau kebanyakan orang bilang **simple join** ini adalah table yang terdiri dari 2 atau lebih tabel yang di gabungkan menjadi satu tabel dengan menggunakan kriteria tertentu, Biasanya dengan menggunakan klausa `on` sebagai penghubungnya.
 
 Contoh kasusnya, saya mau mencari data setiap department dan tampilkan siapa nama managernya. Berikut querynya:
 
