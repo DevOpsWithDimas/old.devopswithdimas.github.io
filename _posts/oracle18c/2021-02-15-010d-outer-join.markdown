@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Outer Join di Oracle"
+date: 2021-02-15T08:16:24+07:00
 lang: oracle18c
 categories:
 - RDBMS
