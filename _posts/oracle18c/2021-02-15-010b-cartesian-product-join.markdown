@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Please be carefull using natural join di Oracle"
+date: 2021-02-15T07:22:13+07:00
 lang: oracle18c
 categories:
 - RDBMS
