@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "011a-natural-join"
+title: "Please be carefull using natural join di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -15,15 +15,53 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Jika ke dua table yang di join tidak memiliki kondisi (natural join) dan tidak memiliki relasi antara column `primary key` dan `foreign key` maka Oracle akan menghasilkan Cartesian Product.
 
-description...
+Cartesian Product yaitu Oracle akan menggabungkan data setiap baris dalam sebuah table dari semua table. contohnya klo kita punya table `departments` berisi `10 baris` dan table `countries` berisi `10 baris` maka akan menghasilkan `100 baris`
 
-Materi: 
+berikut contohnya:
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+{% highlight sql %}
+SQL> select count(*) as count_departments
+from DEPARTMENTS;
+
+COUNT_DEPARTMENTS
+-----------------
+               27
+
+SQL> select count(*) as count_countries
+from COUNTRIES;
+
+COUNT_COUNTRIES
+---------------
+             25
+
+SQL> select count(*)
+from DEPARTMENTS dep
+         natural join COUNTRIES loc;
+
+  COUNT(*)
+----------
+       675
+
+SQL> select dep.DEPARTMENT_ID       as dep_id,
+       dep.DEPARTMENT_NAME          as dep_name,
+       country.COUNTRY_ID           as country_id,
+       country.COUNTRY_NAME         as country_name
+from DEPARTMENTS dep
+         natural join COUNTRIES country;
+
+    DEP_ID DEP_NAME                       CO COUNTRY_NAME
+---------- ------------------------------ -- ----------------------------------------
+       270 Payroll                        NL Netherlands
+       270 Payroll                        SG Singapore
+       270 Payroll                        UK United Kingdom
+       270 Payroll                        US United States of America
+       270 Payroll                        ZM Zambia
+       270 Payroll                        ZW Zimbabwe
+        10 Administration                 AR Argentina
+        10 Administration                 AU Australia
+        10 Administration                 BE Belgium
+
+675 rows selected.
+{% endhighlight %}
