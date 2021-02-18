@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "012-subquery"
+title: "Sub Query di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -14,15 +14,23 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+SubQuery atau istilah nya query dalam query. SubQuery bisa diterapkan di `column` dan di `where` clause. 
 
-description...
+Untuk pembahasan kali ini, saya mau bahas yang sub query yang simple dulu ya, yaitu seperti berikut:
 
-Materi: 
+{% gist page.gist "011-select-sub-query.sql" %}
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Berikut hasilnya:
+
+{% highlight sql %}
+       NIK NAMA                 JABATAN                         MINIMUN_SALARY
+---------- -------------------- ------------------------------- ---------------
+       198 Donald               Shipping Clerk                  2500
+       199 Douglas              Shipping Clerk                  2500
+       200 Jennifer             Administration Assistant        3000
+       201 Michael              Marketing Manager               9000
+       202 Pat                  Marketing Representative        4000
+       203 Susan                Human Resources Representative  4000
+
+107 rows selected.
+{% endhighlight %}
