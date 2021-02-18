@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Handle Sub Query Multiple rows Result dengan where operator"
+title: "ALL Operator dengan Sub Query di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -13,10 +13,3 @@ image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
-
-| Operation | Keterangan    |
-| :---      | :---          |
-| `IN`      | -             |
-| `ANY`     | -             |
-| `SOME`    | -             |
-| `ALL`     | -             |

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Handle Sub Query Multiple rows Result dengan where operator"
+title: "In Predicates dengan Sub Query di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -14,9 +14,3 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
-| Operation | Keterangan    |
-| :---      | :---          |
-| `IN`      | -             |
-| `ANY`     | -             |
-| `SOME`    | -             |
-| `ALL`     | -             |

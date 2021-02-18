@@ -1,13 +1,12 @@
 ---
 layout: post
-title: "012c-subquery-multi-column"
+title: "Sub Query Correlate di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Using-Subqueries.html#GUID-53A705B6-0358-4E2B-92ED-A83DE83DFD20
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/
