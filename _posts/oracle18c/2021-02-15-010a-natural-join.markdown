@@ -24,7 +24,7 @@ Natural join, query yang paling mudah untuk menerapkan join tetapi ada syaratnya
 
 Contohnya saya ingin menampilakan. selurauh data location  yang ditampilkan adalah `location_id`, `city`, `state_province`, `country_name` yang diambil dari table `countries`. Berikut querynya:
 
-{% gist page.gist "10a-natural-join.sql" %}
+{% gist page.gist "010a-natural-join.sql" %}
 
 Berikut hasilnya:
 

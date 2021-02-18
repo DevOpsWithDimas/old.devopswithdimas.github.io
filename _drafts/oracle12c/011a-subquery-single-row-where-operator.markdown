@@ -21,7 +21,7 @@ downloads: []
 | `>`     | Melakukan perbandingna terhadap 2 variable apakah variable yang satu **lebih besar atau sama dengan** variable lainnya |
 | `<`     | Kebalikan dari symbol `>` yaitu **lebih kecil** |
 
-{% gist page.gist "011b-select-sub-query-where.sql" %}
+{% gist page.gist "011a-select-sub-query-where.sql" %}
 
 Berikut hasilnya:
 
