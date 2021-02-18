@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Pairwise Sub Query di Oracle"
+date: 2021-02-18T19:44:23+07:00
 lang: oracle18c
 categories:
 - RDBMS
