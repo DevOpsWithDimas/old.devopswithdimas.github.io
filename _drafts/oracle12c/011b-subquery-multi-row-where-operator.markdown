@@ -15,12 +15,17 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
-| Symbol  | Keterangan  |
-| :---    | :---        |
-| `= ANY` | - |
-| `= ALL` | - |
-| `ANY <` | - |
-| `ANY >` | - |
+| Operation     | Keterangan    |
+| :---          | :---          |
+| `IN`          | -             |
+| `= ANY`       | -             |
+| `= ALL`       | -             |
+| `ANY <`       | -             |
+| `ANY >`       | -             |
+
+## In Operator
+
+## ANY Operator
 
 **Penempatan pada `where ...` (lanjutan) menggunakan Operator = Any**
 
@@ -143,3 +148,5 @@ Berikut hasilnya:
  ...
 (58 rows)
 ```
+
+## ALL Operator
