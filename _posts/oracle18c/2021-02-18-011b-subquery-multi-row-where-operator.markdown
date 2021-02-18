@@ -42,4 +42,5 @@ Nah jadi untuk menghandle inner query yang menghasilkan banyak baris, berikut ad
 | `ANY`     | Nilai pembanding dari sekumpulan data yang ada, Operator terdiri dari `> ANY`, `< ANY` dan `= ANY` |
 | `SOME`    | sama seperti `any` |
 | `ALL`     | Nilai pembanding dari sekumpulan data yang ada, Operator terdiri dari `> ALL` dan `< ALL` |
+| `EXIST`     | Untuk melakukan check, data pada inner query ada kemudian dibandingkan dengan outer query |
 
