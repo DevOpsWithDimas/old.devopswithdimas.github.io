@@ -14,9 +14,31 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Multi row sub-query adalah sub-query yang menghasilkan lebih dari satu row pada inner query. contohnya seperti berikut:
+
+{% highlight sql %}
+SQL> select *
+from EMPLOYEES
+where DEPARTMENT_ID = (
+    select dep.DEPARTMENT_ID
+    from DEPARTMENTS dep
+);  
+
+
+select dep.DEPARTMENT_ID
+    *
+ERROR at line 4:
+ORA-01427: single-row subquery returns more than one row
+
+SQL>
+{% endhighlight %}
+
+Nah jadi untuk menghandle inner query yang menghasilkan banyak baris, berikut adalah predicates yang kita bisa gunakan:
+
 | Operation | Keterangan    |
 | :---      | :---          |
-| `IN`      | -             |
-| `ANY`     | -             |
-| `SOME`    | -             |
-| `ALL`     | -             |
+| `IN`      | Nilai pembanding sama dengan `=` tetapi kita bisa memberikan banyak nilai sebagai pembanding |
+| `ANY`     | Nilai pembanding dari sekumpulan data yang ada, Operator terdiri dari `> ANY`, `< ANY` dan `= ANY` |
+| `SOME`    | sama seperti `any` |
+| `ALL`     | Nilai pembanding dari sekumpulan data yang ada, Operator terdiri dari `> ALL` dan `< ALL` |
+
