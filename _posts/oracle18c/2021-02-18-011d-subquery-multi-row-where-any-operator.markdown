@@ -29,20 +29,6 @@ order by gaji_rata;
 ID          GAJI_RATA
 ---------- ----------
 ST_CLERK         5000
-PU_CLERK         5500
-SH_CLERK         5500
-AD_ASST          6000
-ST_MAN           8500
-AC_ACCOUNT       9000
-FI_ACCOUNT       9000
-HR_REP           9000
-MK_REP           9000
-IT_PROG         10000
-PR_REP          10500
-SA_REP          12008
-PU_MAN          15000
-MK_MAN          15000
-AC_MGR          16000
 FI_MGR          16000
 
 16 rows selected.
