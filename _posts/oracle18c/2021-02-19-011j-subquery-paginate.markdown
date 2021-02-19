@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Paginate dengan Sub Query di Oracle versi lama"
+date: 2021-02-19T20:33:44+07:00
 lang: oracle18c
 categories:
 - RDBMS
