@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "DML - Update Statement di Oracle"
+date: 2021-02-21T16:35:44+07:00
 lang: oracle18c
 categories:
 - RDBMS
