@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "013-dml"
+title: "Data Manipulation Language (DML)"
 lang: oracle18c
 categories:
 - RDBMS
@@ -16,14 +16,9 @@ downloads: []
 ---
 
 
-description...
+Data Manipulation atau singkatan dari DML yaitu sebuah statement yang digunakan untuk memanipulasi data dalam sebuah tabel di Database. Perintah DML terdiri dari 3 bagian yaitu
 
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Insert Data
+2. Update Data
+3. Delete Data
+4. Merge Data
