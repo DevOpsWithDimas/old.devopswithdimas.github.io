@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "008-limit-offset"
+title: "Limit data dengan fetch dan offset"
 lang: oracle18c
 categories:
 - RDBMS
