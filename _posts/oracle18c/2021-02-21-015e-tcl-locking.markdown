@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Transaction Locking di Oracle"
+date: 2021-02-21T21:49:18+07:00
 lang: oracle18c
 categories:
 - RDBMS
