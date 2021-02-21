@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Transaction Control Language (TCL)"
+date: 2021-02-21T19:17:02+07:00
 lang: oracle18c
 categories:
 - RDBMS
