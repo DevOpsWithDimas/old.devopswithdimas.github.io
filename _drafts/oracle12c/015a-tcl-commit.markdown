@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "014a-tcl-commit"
+title: "TCL - Commit Transaction di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -15,15 +15,61 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Di Oracle Database dari dulu sampe sekarang (18c) masih menggunakan manual commit, berbeda dengan database lainnya yang menggunakan auto commit. Nah sebelumnya kita kita melakukan insert kemudian kita close maka perubahannya akan hilang.
 
-description...
+Berikut adalah contoh penggunaanya:
 
-Materi: 
+{% gist page.gist "015a-single-commit.sql" %}
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Berikut hasilnya:
+
+{% highlight sql %}
+SQL> insert into DEPARTMENTS(DEPARTMENT_ID, DEPARTMENT_NAME, LOCATION_ID)
+values (DEPARTMENTS_SEQ.nextval, 'Development Operation', 1700);
+
+commit; 
+1 row created.
+
+SQL> SQL>
+
+Commit complete.
+
+SQL> select * from departments;
+
+DEPARTMENT_ID DEPARTMENT_NAME                MANAGER_ID LOCATION_ID
+------------- ------------------------------ ---------- -----------
+          290 Development Operation                            1700
+
+28 rows selected.
+{% endhighlight %}
+
+Selain itu juga kita bisa menggunakan block dengan `begin-end` clause seperti berikut:
+
+{% gist page.gist "015a-tcl-block-commit.sql" %}
+
+Berikut hasilnya:
+
+{% highlight sql %}
+SQL> begin
+--     insert new record
+    insert into DEPARTMENTS(DEPARTMENT_ID, DEPARTMENT_NAME, LOCATION_ID)
+    values (DEPARTMENTS_SEQ.nextval, 'Development Operation', 1700);
+
+-- update department id 10 set name = 'Admin'
+    update DEPARTMENTS
+    set DEPARTMENT_NAME = 'Admin'
+    where DEPARTMENT_ID = 10;
+
+--     commit query
+    commit;
+end;
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from departments;
+
+DEPARTMENT_ID DEPARTMENT_NAME                MANAGER_ID LOCATION_ID
+------------- ------------------------------ ---------- -----------
+          310 Development Operation                            1700
+           10 Admin                                 200        1700
+{% endhighlight %}
