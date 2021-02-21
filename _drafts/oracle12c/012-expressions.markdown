@@ -1,0 +1,46 @@
+---
+layout: post
+title: "Expressions di Oracle"
+lang: oracle18c
+categories:
+- RDBMS
+- Oracle18c
+refs: 
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Expressions.html#GUID-E7A5363C-AEE9-4809-99C1-1A9C6E3AE017
+youtube: 
+comments: true
+image_path: /resources/posts/oracle12c/012-expressions
+gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
+downloads: []
+---
+
+
+Materi kali ini kita akan bahas menggabungkan/meng-combine value, operator dan function menjadi expression. SQL Expression ada banyak sekali contohnya salah satunya adalah simple expression seperti berikut:
+
+{% highlight sql %}
+select (2 + 2)                                   as add_exp,           -- value expression
+       N'Dimas''s iPad Pro 2018'                 as str_exp,           -- string expression
+       'value with enter' || chr(13) || 'value from before' as str_with_enter_exp -- string with escape character expression
+from dual;
+
+   ADD_EXP STR_EXP               STR_WITH_ENTER_EXP
+---------- --------------------- ----------------------------------
+4          Dimas's iPad Pro 2018 value with enter
+value from befores
+{% endhighlight %}
+
+Selain itu juga expression di oracle, ada banyak sekali ya seperti
+
+1. [Single Expression](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Simple-Expressions.html#GUID-0E033897-60FB-40D7-A5F3-498B0FCC31B0)
+2. [Compound Expression](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Compound-Expressions.html#GUID-533C7BA0-C8B4-4323-81EA-1379657AF64A)
+3. [Case Expression](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CASE-Expressions.html#GUID-CA29B333-572B-4E1D-BA64-851FABDBAE96)
+4. [Column Expression](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Column-Expressions.html#GUID-B16B2D82-5D4B-485B-AE20-160EC0C7137A)
+5. https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CURSOR-Expressions.html#GUID-B28362BE-8831-4687-89CF-9F77DB3698D2
+6. [Date & Time Expression](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Datetime-Expressions.html#GUID-F72A753A-98A4-4EBD-84E9-C014CE058384)
+7. [Function Expression](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Function-Expressions.html#GUID-C47F0B7D-9058-481F-815E-A31FB21F3BD5)
+8. [Interval Expression](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Interval-Expressions.html#GUID-EB9B5B5D-357B-494C-A237-153A2CF8425C)
+9. [JSON Object Access Expression](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/JSON-Object-Access-Expressions.html#GUID-09D1A154-335D-484E-A7A2-DA1983CD511C)
+10. [Model Expression](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Model-Expressions.html#GUID-83D3FD56-8346-4D3F-A49E-5FE41FE19257)
+11. [Placeholder Expression](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Placeholder-Expressions.html#GUID-B98B5394-A573-4BF8-9EC3-7B1BB1130553)
+12. [Scalar Subquery Expression](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Scalar-Subquery-Expressions.html#GUID-475D80C3-C873-4475-AB1A-8837C5CF8CE4)
+13. dan lain-lain
