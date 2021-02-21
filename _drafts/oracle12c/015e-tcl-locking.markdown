@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "014e-tcl-locking"
+title: "Transaction Locking di Oracle"
 lang: oracle18c
 categories:
 - RDBMS

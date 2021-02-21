@@ -30,91 +30,85 @@ Misalnya seperti, coba buka dua windows sqlplus kemudian login dengan user yang 
 
 Berikut hasilnya:
 
-<div>
-    <div id="termina1" class="col m12 l6">
-        ### Session 1
+### Session 1
 
-        {% highlight sql %}
-        SQL> select DEPARTMENT_ID, DEPARTMENT_NAME
-        from DEPARTMENTS
-        where DEPARTMENT_ID in (10, 20);
+{% highlight sql %}
+SQL> select DEPARTMENT_ID, DEPARTMENT_NAME
+from DEPARTMENTS
+where DEPARTMENT_ID in (10, 20);
 
-        DEPARTMENT_ID DEPARTMENT_NAME
-        ------------- ------------------------------
-                10 Admin
-                20 Marketing
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------
+        10 Admin
+        20 Marketing
 
-        SQL> update DEPARTMENTS set DEPARTMENT_NAME = 'Administrator'
-        where DEPARTMENT_ID = 10;
+SQL> update DEPARTMENTS set DEPARTMENT_NAME = 'Administrator'
+where DEPARTMENT_ID = 10;
 
-        1 row updated.
+1 row updated.
 
-        SQL> select DEPARTMENT_ID, DEPARTMENT_NAME
-        from DEPARTMENTS
-        where DEPARTMENT_ID in (10, 20);
+SQL> select DEPARTMENT_ID, DEPARTMENT_NAME
+from DEPARTMENTS
+where DEPARTMENT_ID in (10, 20);
 
-        DEPARTMENT_ID DEPARTMENT_NAME
-        ------------- ------------------------------
-                10 Administrator
-                20 Marketing
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------
+        10 Administrator
+        20 Marketing
 
-        SQL> commit;
+SQL> commit;
 
-        Commit complete.
+Commit complete.
 
-        SQL> select DEPARTMENT_ID, DEPARTMENT_NAME
-        from DEPARTMENTS
-        where DEPARTMENT_ID in (10, 20);
+SQL> select DEPARTMENT_ID, DEPARTMENT_NAME
+from DEPARTMENTS
+where DEPARTMENT_ID in (10, 20);
 
-        DEPARTMENT_ID DEPARTMENT_NAME
-        ------------- ------------------------------
-                10 Administrator
-                20 Market
-        {% endhighlight %}
-    </div>
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------
+        10 Administrator
+        20 Market
+{% endhighlight %}
+    
+### Session 2
 
-    <div id="terminal2" class="col m12 l6">
-        ### Session 2
+{% highlight sql %}
+SQL> select DEPARTMENT_ID, DEPARTMENT_NAME
+from DEPARTMENTS
+where DEPARTMENT_ID in (10, 20);
 
-        {% highlight sql %}
-        SQL> select DEPARTMENT_ID, DEPARTMENT_NAME
-        from DEPARTMENTS
-        where DEPARTMENT_ID in (10, 20);
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------
+        10 Admin
+        20 Marketing
 
-        DEPARTMENT_ID DEPARTMENT_NAME
-        ------------- ------------------------------
-                10 Admin
-                20 Marketing
+SQL> update DEPARTMENTS set DEPARTMENT_NAME = 'Market'
+where DEPARTMENT_ID = 20;
 
-        SQL> update DEPARTMENTS set DEPARTMENT_NAME = 'Market'
-        where DEPARTMENT_ID = 20;
+1 row updated.
 
-        1 row updated.
+SQL> select DEPARTMENT_ID, DEPARTMENT_NAME
+from DEPARTMENTS
+where DEPARTMENT_ID in (10, 20);
 
-        SQL> select DEPARTMENT_ID, DEPARTMENT_NAME
-        from DEPARTMENTS
-        where DEPARTMENT_ID in (10, 20);
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------
+        10 Admin
+        20 Market
 
-        DEPARTMENT_ID DEPARTMENT_NAME
-        ------------- ------------------------------
-                10 Admin
-                20 Market
+SQL> commit;
 
-        SQL> commit;
+Commit complete.
 
-        Commit complete.
+SQL> select DEPARTMENT_ID, DEPARTMENT_NAME
+from DEPARTMENTS
+where DEPARTMENT_ID in (10, 20);
 
-        SQL> select DEPARTMENT_ID, DEPARTMENT_NAME
-        from DEPARTMENTS
-        where DEPARTMENT_ID in (10, 20);
-
-        DEPARTMENT_ID DEPARTMENT_NAME
-        ------------- ------------------------------
-                10 Administrator
-                20 Market
-        {% endhighlight %}
-    </div>
-</div>
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------
+        10 Administrator
+        20 Market
+{% endhighlight %}
 
 Jadi kesimpulannya, selama session belum di commit maka oracle akan membuat isolate transaction artinya tidak akan berpengaruh ke session lain.
 
