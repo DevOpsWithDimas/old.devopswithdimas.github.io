@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "DML - Delete Statement di Oracle"
+date: 2021-02-21T16:49:49+07:00
 lang: oracle18c
 categories:
 - RDBMS
