@@ -15,15 +15,93 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Format penulisan insert statement terdiri dari 2 statement yaitu `insert into values` dan `insert from select`:
 
-description...
+## Insert into values
 
-Materi: 
+Pertama kita bahas dulu menggunakan `insert into values`, berikut adalah format penulisannya:
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+```sql
+INSERT INTO table_name (column1, column2, ...)
+VALUES (<value1>, <value2>, <value3>, ...);
+```
+
+Contoh penggunaanya adalah sebagai berikut, contohnya saya menambahkan data baru ke table `regions` dengan data seperti berikut:
+
+| region_id |      region_name       |
+|-----------+------------------------|
+|         5 | Asia Tenggara          |
+
+Maka berikut querynya:
+
+{% gist page.gist "014a-dml-insert-into-value.sql" %}
+
+atau menggunakan specific columns seperti berikut:
+
+{% gist page.gist "014a-dml-insert-specific-columns-into-value.sql" %}
+
+Berikut hasilnya:
+
+{% highlight sql %}
+SQL> insert into REGIONS(REGION_ID, REGION_NAME)
+values (15, 'Asia Tengara');  2
+
+1 row created.
+
+SQL> select * from regions;
+
+ REGION_ID REGION_NAME
+---------- -------------------------
+        15 Asia Tengara
+
+5 rows selected.
+{% endhighlight %}
+
+Selain itu juga kita bisa menggunakan expression, berikut contohnya:
+
+{% gist page.gist "014a-dml-insert-function-expression-into-value.sql" %}
+
+berikut hasilnya:
+
+{% highlight sql %}
+SQL> insert into DEPARTMENTS(DEPARTMENT_ID, DEPARTMENT_NAME, LOCATION_ID)
+values (DEPARTMENTS_SEQ.nextval, 'Core Banking', 1700);  2
+
+1 row created.
+
+SQL> select * from departments;
+
+DEPARTMENT_ID DEPARTMENT_NAME                MANAGER_ID LOCATION_ID
+------------- ------------------------------ ---------- -----------
+          280 Core Banking                                     1700
+
+28 rows selected.
+{% endhighlight %}
+
+## Insert from select
+
+```sql
+INSERT INTO target_migrate_table (column1, column2, ...)
+select <value1>, <value2>, <value3>, ... from migrate_from_table [where ...];
+```
+
+Berikut adalah contoh penggunaanya:
+
+{% gist page.gist "014a-dml-insert-from-select.sql" %}
+
+berikut hasilnya:
+
+{% highlight sql %}
+SQL> insert into REGIONS(REGION_ID, REGION_NAME)
+select 20, 'South-Eastern Asia ' from DUAL;  2
+
+1 row created.
+
+SQL> select * from regions;
+
+ REGION_ID REGION_NAME
+---------- -------------------------
+        15 Asia Tengara
+
+6 rows selected.
+{% endhighlight %}
