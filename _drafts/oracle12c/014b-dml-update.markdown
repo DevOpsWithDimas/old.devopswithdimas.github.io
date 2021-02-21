@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "013b-dml-update"
+title: "DML - Update Statement di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -15,15 +15,53 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Perintah update data, biasanya kita melakukan modifikasi data terhadap beberapa column dalam sebuah tabel di Database dengan / tanpa menggunakan where klausa.
 
-description...
+Format penulisan update statement yaitu sebagai berikut:
 
-Materi: 
+```sql
+UPDATE table_name SET 
+    column_update1 = <value1>, 
+    column_update2 = <value2>
+WHERE column_key = <valueKey>
+```
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Contoh penggunaanya adalah sebagai berikut, contohnya saya mau update data pada table `regions` kolom `region_name` yang valuenya `Asia Tenggara` menjadi `Oceania`, maka berikut querynya:
+
+{% gist page.gist "014b-dml-update.sql" %}
+
+berikut hasilnya:
+
+{% highlight sql %}
+-- data awal
+SQL> select * from regions;
+
+ REGION_ID REGION_NAME
+---------- -------------------------
+        15 Asia Tengara
+        20 South-Eastern Asia
+         1 Europe
+         2 Americas
+         3 Asia
+         4 Middle East and Africa
+
+SQL> UPDATE regions
+SET region_name = 'Oceania'
+WHERE region_id = 15;  2    3
+
+1 row updated.
+
+-- data setelah di update
+SQL> select * from regions;
+
+ REGION_ID REGION_NAME
+---------- -------------------------
+        15 Oceania
+        20 South-Eastern Asia
+         1 Europe
+         2 Americas
+         3 Asia
+         4 Middle East and Africa
+{% endhighlight %}
+
+**Note** jika kita tidak menggunakan where klausa, maka semua data akan terupdate!!
