@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "013a-dml-insert"
+date: 2021-02-21T16:24:30+07:00
 lang: oracle18c
 categories:
 - RDBMS
