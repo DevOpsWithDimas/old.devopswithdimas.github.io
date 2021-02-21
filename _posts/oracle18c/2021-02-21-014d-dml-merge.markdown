@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "DML - Merge Statement di Oracle"
+date: 2021-02-21T17:08:58+07:00
 lang: oracle18c
 categories:
 - RDBMS
