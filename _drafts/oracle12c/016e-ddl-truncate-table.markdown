@@ -1,13 +1,12 @@
 ---
 layout: post
-title: "015e-ddl-truncate-table"
+title: "DDL - Truncate Table"
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/TRUNCATE-TABLE.html#GUID-B76E5846-75B5-4876-98EC-439E15E4D8A4
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/

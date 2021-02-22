@@ -6,8 +6,7 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/PURGE.html#GUID-9257F773-E019-4464-80F4-F5AB61D7D9B6
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/

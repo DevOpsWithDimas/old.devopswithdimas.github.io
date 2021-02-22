@@ -7,7 +7,7 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://www.oracletutorial.com/oracle-basics/oracle-merge/
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/MERGE.html#GUID-5692CCB7-24D9-4C0E-81A7-A22436DC968F
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/
