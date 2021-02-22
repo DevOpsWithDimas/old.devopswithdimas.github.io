@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "015f-ddl-purge-table"
+title: "DDL - Purge Table & Recyclebin"
 lang: oracle18c
 categories:
 - RDBMS
