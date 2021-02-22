@@ -18,7 +18,7 @@ downloads: []
 
 Penggunaan `rollback` yaitu untuk mengembalikan data atau object ke commit terakhir, contohnya seperti berikut:
 
-{% gist page.gist "15b-tcl-rollback-single-query.sql" %}
+{% gist page.gist "015b-tcl-rollback-single-query.sql" %}
 
 hasilnya seperti berikut:
 
@@ -47,7 +47,7 @@ no rows selected
 
 Sekarang kita coba klo misalnya kita melakukan multiple query kemudian di rollback, seperti berikut:
 
-{% gist page.gist "15b-tcl-rollback-block-querys.sql" %}
+{% gist page.gist "015b-tcl-rollback-block-querys.sql" %}
 
 Maka berikut hasilnya:
 
