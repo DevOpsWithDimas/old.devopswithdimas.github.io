@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "015a-ddl-alter-table"
+title: "DDL - Merubah struktur table"
 lang: oracle18c
 categories:
 - RDBMS
@@ -15,15 +15,30 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Perintah ALTER table, digunakan untuk memodifikasi strukur object pada table contohnya 
 
-description...
+## Pada Table
 
-Materi: 
+1. Merubah nama tabel
+    {% gist page.gist "016c-ddl-rename-table.sql" %}
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+## Pada column
+
+1. Menambahkan kolom 
+    {% gist page.gist "016c-ddl-add-column.sql" %}
+2. Menghapus kolom
+    {% gist page.gist "016c-ddl-drop-column.sql" %}
+3. Merubah tipe data
+    {% gist page.gist "016c-ddl-change-data-type.sql" %}
+4. Mengubah nama kolom
+    {% gist page.gist "016c-ddl-rename-column.sql" %}
+
+## Default value options
+
+1. Merubah default value
+    {% gist page.gist "016c-ddl-modif-default-value.sql" %}
+
+## Pada Constraint
+
+Nanti akan di bahas pada materi selanjutnya.
+
