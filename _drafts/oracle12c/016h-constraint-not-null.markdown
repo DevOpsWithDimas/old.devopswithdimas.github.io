@@ -16,19 +16,74 @@ downloads: []
 
 Constraint **Not Null** diterapkan pada column tertentu dalam sebuah table, dengan tujuan untuk memvalidasi data yang kita entry tidak dapat bernilai null. Contoh penggunaanya seperti berikut:
 
-```sql
-CREATE TABLE products (
-    product_no integer NOT NULL,
-    name text NOT NULL,
-    price numeric
-);
-```
 
-Jadi dengan ddl untuk membuat table `products` seperti diatas, maka kita **harus mengisi nilai** pada kolom `product_no` dan `name`, tidak boleh `null`. Contohnya dengan perintah entry yang salah seperti berikut:
+{% gist page.gist "016h-constraint-notnull.sql" %}
 
-```sql
-insert into products (product_no, name, price)
-values (null, null, 0);
-```
+Coba execute dan commit, maka hasilnya seperti berikut:
 
-Bila di execute maka akan terjadi error: `error insert because constraint violence not null`
+{% highlight sql %}
+SQL> select * from test_constraint_notnull;
+
+PRODUCT_NO NAME                                                    PRICE
+---------- -------------------------------------------------- ----------
+         1 Macbook Pro 13" (2017)                                  25000
+
+{% endhighlight %}
+
+Jadi dengan ddl untuk membuat table seperti diatas, maka kita **harus mengisi nilai** pada kolom `product_no` dan `name`, tidak boleh `null`. Contohnya dengan perintah entry yang salah seperti berikut:
+
+{% highlight sql %}
+insert into test_constraint_notnull(product_no, name, price)
+values (2, null, 25000);
+{% endhighlight %}
+
+
+Bila di execute maka akan terjadi error:
+
+{% highlight sql %}
+values (2, null, 25000)
+           *
+ERROR at line 2:
+ORA-01400: cannot insert NULL into ("HR"."TEST_CONSTRAINT_NOTNULL"."NAME")
+{% endhighlight %}
+
+
+## Tambah dengan Alter Table
+
+Atau kalau misalnya tabel dan columnnya udah akan misalnya blum ada contraint `not null` kita bisa menggunakan alter table, seperti berikut:
+
+{% gist page.gist "016h-alter-table-add-notnull-constraint.sql" %}
+
+Sebelum kita exeucte `alter table` kita harus make sure dulu ya column yang mau di tambah constraint not null misalnya klo ada kita update ja columnya seperti diatas. Ok setelah itu coba execute maka hasilnya seperti berikut:
+
+{% highlight sql %}
+SQL> desc test_constraint_notnull;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PRODUCT_NO                                NOT NULL NUMBER(38)
+ NAME                                      NOT NULL VARCHAR2(50)
+ PRICE                                     NOT NULL NUMBER(8,2)
+ CATEGORY_ID                                        VARCHAR2(64)
+
+
+SQL> update test_constraint_notnull
+set category_id = ''
+where category_id is null;
+
+1 row updated.
+
+SQL> commit;
+
+SQL> alter table test_constraint_notnull
+    modify category_id varchar2(64) default '' not null;
+
+Table altered.
+
+SQL> desc test_constraint_notnull;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PRODUCT_NO                                NOT NULL NUMBER(38)
+ NAME                                      NOT NULL VARCHAR2(50)
+ PRICE                                     NOT NULL NUMBER(8,2)
+ CATEGORY_ID                               NOT NULL VARCHAR2(64)
+{% endhighlight %}
