@@ -49,7 +49,7 @@ ORA-01400: cannot insert NULL into ("HR"."TEST_CONSTRAINT_NOTNULL"."NAME")
 {% endhighlight %}
 
 
-## Tambah dengan Alter Table
+## Add Not null constraint dengan Alter Table
 
 Atau kalau misalnya tabel dan columnnya udah akan misalnya blum ada contraint `not null` kita bisa menggunakan alter table, seperti berikut:
 

@@ -16,53 +16,60 @@ downloads: []
 
 Constraint **Unique** diterapkan pada column tertentu dalam sebuah tabel, dengan tujuan untuk memvalidasi data yang kita entry tidak boleh sama dengan data yang telah tersedia di table pada kolom tersebut. Contoh pengguanya seperti berikut:
 
-```sql
-CREATE TABLE products (
-    product_no integer unique,
-    name text NOT NULL,
-    price numeric
-);
-```
+{% gist page.gist "016i-constraint-simple-unique.sql" %}
 
-Jadi dengan ddl untuk membuat table `products` seperti diatas, maka kita tidak boleh entry data pada kolom `product_no` dengan nilai yang sama atau sudah ada di table tersebut. Contoh dengan perintah entry yang salah seperti berikut:
+Jadi dengan ddl untuk membuat table diatas, maka kita tidak boleh entry data pada kolom `product_no` dengan nilai yang sama atau sudah ada di table tersebut. Contoh dengan perintah entry yang salah seperti berikut:
 
-```sql
-insert into products (product_no, name, price)
-values (1, 'Apple Macbook Pro 13" 2017', 28000000);
+{% highlight sql %}
+insert into test_constraint_unique (product_no, name, price)
+values (1, 'Apple Macbook Pro 13" (2019)', 25000);
+{% endhighlight %}
 
--- query ini error karena pada kolom product_no
-insert into products (product_no, name, price)
-values (1, 'Apple Ipad Pro 11" 2018', 15000000);
-```
+Bila di execute maka akan terjadi error: 
 
-Bila di execute maka akan terjadi error: `error insert because constraint violence unique`.
+{% highlight sql %}
+insert into test_constraint_unique (product_no, name, price)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (HR.SYS_C007465) violated
+{% endhighlight %}
+
+## Unique Constraint multiple columns
 
 Selain itu juga Constraint unique dapat di terapkan di beberapa kolom sekaligus, contohnya seperti berikut:
 
-```sql
-CREATE TABLE articles (
-    file_name character varying(60),
-    release_date date,
-    author character varying(20)
-);
+{% gist page.gist "016i-constraint-multiple-unique-columns.sql" %}
 
-ALTER TABLE articles
-ADD CONSTRAINT uq_article_release UNIQUE (file_name, release_date);
-```
+Sekarang coba execute query berikut:
 
-Jadi berikut adalah contoh query yang error:
+{% highlight sql %}
+insert into test_constraint_multi_unique(product_code, product_type, product_name, price, release_date)
+values (2, 'MBP13', 'Macbook Pro 13" (2019)', 24000, date '2018-03-01');
+{% endhighlight %}
 
-```sql
-insert into articles (file_name, release_date, author)
-values ('java-core-1', '2019-12-02', 'Dimas Maryanto');
+Maka berikut hasilnya:
 
-insert into articles (file_name, release_date, author)
-values ('java-core-1', null, 'Dimas Maryanto');
+{% highlight sql %}
+insert into test_constraint_multi_unique(product_code, product_type, product_name, price, release_date)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (HR.UQ_PRODUCT_ID) violated
+{% endhighlight %}
 
-insert into articles (file_name, release_date, author)
-values (null, '2019-12-02', 'Dimas Maryanto');
+## Add unique constraint dengan Alter Table
 
--- query ini error karena file_name dan release data sama seperti data sebelumnya
-insert into articles (file_name, release_date, author)
-values ('java-core-1', '2019-12-02', 'Dimas Maryanto');
-```
+Dan yang terakhir kita juga bisa menambahkan `unique constraint` dengan `alter table`, tpi jika udah ada datanya kita harus handle dulu sendiri jadi make sure ja gak ada yang sama untuk ngechecknya kita bisa pake sql group by contohnya seperti berikut:
+
+{% highlight sql %}
+SQL> select product_code, product_type, count(*) duplicate_count
+from test_constraint_multi_unique
+group by product_code, product_type
+having count(*) >= 2;
+
+no rows selected
+
+{% endhighlight %}
+
+Jika hasilnya aman seperti diatas, maka kita bisa tambahkan alter tabelnya seperti berikut:
+
+{% gist page.gist "016i-constraint-alter-add-unique.sql" %}
