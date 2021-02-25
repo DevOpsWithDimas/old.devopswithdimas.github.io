@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "DDL - Enabled & Disabled Constraints"
+title: "DDL - Deferrable Constraint"
 lang: oracle18c
 categories:
 - RDBMS
@@ -9,7 +9,7 @@ refs:
 - https://docs.oracle.com/database/121/index.htm
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/016n-disable-enable-constraints
+image_path: /resources/posts/oracle12c/016o-constraint-deferrable
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
