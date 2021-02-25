@@ -6,7 +6,7 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/indexes-and-index-organized-tables.html#GUID-DE7A95BC-6E4A-47EA-9FC5-B85B54F8CF41
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/019a-normal-index

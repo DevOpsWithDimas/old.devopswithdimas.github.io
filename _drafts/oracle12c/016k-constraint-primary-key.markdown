@@ -6,7 +6,7 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-integrity.html#GUID-E1033BB9-0F67-4E59-82AC-B8B572FD82BB
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/016k-constraint-primary-key
@@ -16,27 +16,16 @@ downloads: []
 
 Constraint **Primary Key** diterapkan pada sebuah kolom dalam table, dengan tujuan menjadikan data dalam satu baris tersebuh menjadi pegangan atau acuan karena sebuah primary key adalah gabungan dari constraint `not null` dan `unique`. Contoh penggunaanya seperti berikut:
 
-```sql
-CREATE TABLE products (
-    product_no integer primary key,
-    name text NOT NULL,
-    price numeric
-);
-```
-
-Setelah itu misalnya kita punya data seperti berikut:
-
-| product_no    | name                  | price         |
-|---------------|-----------------------|---------------|
-| 1             | Apple Macbook Pro 13" | 28_000_000    |
-| 2             | Apple Ipad Pro 11"    | 15_000_000    |
-| 3             | iPhone 7 Plus 36gb    | 8_999_000     |
-| 4             | Apple Airpod 2        | 2_150_000     |
-| 5             | Apple Pencil 2        | 2_500_000     |
-
+{% gist page.gist "016k-constraint-primarykey.sql" %}
 
 Nah dari data di atas, akan lebih mudah jika kita menggunakan kolom `product_no` untuk mendapatkan informasi contohnya untuk menghapus data dengan nama `Apple Macbook Pro 13"` jadi querynya seperti berikut:
 
 ```sql
 delete from products where product_no = 1;
 ```
+
+## Composite primary key
+
+Selain itu kita bisa menggunakan multiple column atau orang2 biasanya sebut composite primary key, berikut contohnya:
+
+{% gist page.gist "016k-constraint-composite-primarykeys.sql" %}

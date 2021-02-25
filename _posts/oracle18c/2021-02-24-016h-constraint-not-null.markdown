@@ -7,7 +7,7 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-integrity.html#GUID-CF2E06A6-6A35-46CE-808E-305A459457CC
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/016h-constraint-not-null
