@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "DDL - Check Constraint"
+date: 2021-02-25T15:43:59+07:00
 lang: oracle18c
 categories:
 - RDBMS
