@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "016o-drop-constraints"
+title: "DDL - Drop Constraint"
 lang: oracle18c
 categories:
 - RDBMS
