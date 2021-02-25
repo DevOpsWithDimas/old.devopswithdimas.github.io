@@ -16,23 +16,102 @@ downloads: []
 
 Constraint **Check** dapat diterapkan pada kolom tertentu dalam sebuah table, dengan tujuan memvalidasi data yang kita entry harus sesuai dengan criteria yang diterapkan pada constraint tersebut contohnya pada kolom `price` nilai minimal lebih besar dari `0`. Contoh penggunaanya seperti berikut:
 
-```sql
-CREATE TABLE products (
-    product_no integer unique,
-    name text NOT NULL,
-    price numeric
-);
+{% gist page.gist "016j-ddl-constraint-check.sql" %}
 
-ALTER TABLE products
-ADD CONSTRAINT check_price_must_be_greater_then_1 
-CHECK (price >= 1);
-```
+Jadi dengan ddl untuk membuat table seperti diatas, maka kita tidak boleh entry data pada kolom `saldo` dengan nilai lebih kecil dari `0` dan pada kolom `jenis_kelamin` nilainya harus `L` atau `P`, nah sekarang kita coba untuk case yang error contoh dengan perintah entry seperti berikut:
 
-Jadi dengan ddl untuk membuat table `products` seperti diatas, maka kita tidak boleh entry data pada kolom `price` dengan nilai lebih kecil dari `0` atau harus lebih besar dari `1`. Contoh dengan perintah entry yang salah seperti berikut:
+{% highlight sql %}
+insert into test_constraint_check(nik, nama, saldo, jenis_kelamin)
+values ('6201010104', 'Test Salah saldo null', null, 'P');
 
-```sql
-insert into products (product_no, name, price)
-values (1, 'Apple Ipad Pro 11" 2018', -15000000);
-```
+insert into test_constraint_check(nik, nama, saldo, jenis_kelamin)
+values ('6201010105', 'Test saldo minus', -1, 'P');
 
-Bila di execute maka akan terjadi error: `error insert because check constraint`.
+insert into test_constraint_check(nik, nama, saldo, jenis_kelamin)
+values ('6201010106', 'Test jenis kelamin null', 1, null);
+
+insert into test_constraint_check(nik, nama, saldo, jenis_kelamin)
+values ('6201010107', 'Test jenis kelamin salah', 0, 'l');
+{% endhighlight %}
+
+Bila di execute, maka hasilnya seperti berikut:
+
+{% highlight sql %}
+SQL> insert into test_constraint_check(nik, nama, saldo, jenis_kelamin)
+values ('6201010104', 'Test Salah saldo null', null, 'P');
+
+1 row created.
+
+SQL> insert into test_constraint_check(nik, nama, saldo, jenis_kelamin)
+values ('6201010105', 'Test saldo minus', -1, 'P');
+insert into test_constraint_check(nik, nama, saldo, jenis_kelamin)
+*
+ERROR at line 1:
+ORA-02290: check constraint (HR.CK_SALDO_ALWAYS_ABS) violated
+
+
+SQL> insert into test_constraint_check(nik, nama, saldo, jenis_kelamin)
+values ('6201010106', 'Test jenis kelamin null', 1, null);
+
+1 row created.
+
+SQL> insert into test_constraint_check(nik, nama, saldo, jenis_kelamin)
+values ('6201010107', 'Test jenis kelamin salah', 0, 'l'); 
+insert into test_constraint_check(nik, nama, saldo, jenis_kelamin)
+*
+ERROR at line 1:
+ORA-02290: check constraint (HR.CK_JK) violated
+
+SQL> select nik, saldo, jenis_kelamin
+from test_constraint_check;
+
+NIK         SALDO      JK
+----------- ---------- --
+6201010101           0 L
+6201010102           0 L
+6201010103           0 P
+6201010104             P
+6201010106           1
+{% endhighlight %}
+
+## Multiple column check constraint
+
+Selain itu juga kita bisa menggunakan untuk multiple column, contohnya seperti berikut
+
+{% gist page.gist "016j-ddl-constraint-check-multiple-columns.sql" %}
+
+Sekarang kita coba beberapa entry seperti berikut:
+
+{% highlight sql %}
+insert into test_constraint_check_multi_columns(product_id, name, price, discount)
+VALUES (1, 'Test discount null', 25000, null);
+
+insert into test_constraint_check_multi_columns(product_id, name, price, discount)
+VALUES (1, 'Test price lower than', 9000, .2);
+
+insert into test_constraint_check_multi_columns(product_id, name, price, discount)
+VALUES (1, 'Test price discount lower than', 10000, .01);
+{% endhighlight %}
+
+jika di jalankan maka hasilnya seperti berikut:
+
+{% highlight sql %}
+SQL> insert into test_constraint_check_multi_columns(product_id, name, price, discount)
+VALUES (1, 'Test discount null', 25000, null);
+
+1 row created.
+
+SQL> insert into test_constraint_check_multi_columns(product_id, name, price, discount)
+VALUES (1, 'Test price lower than', 9000, .2); 
+insert into test_constraint_check_multi_columns(product_id, name, price, discount)
+*
+ERROR at line 1:
+ORA-02290: check constraint (HR.CK_PRICE_AND_DISCOUNT) violated
+
+SQL> insert into test_constraint_check_multi_columns(product_id, name, price, discount)
+VALUES (1, 'Test price discount lower than', 10000, .01);
+insert into test_constraint_check_multi_columns(product_id, name, price, discount)
+*
+ERROR at line 1:
+ORA-02290: check constraint (HR.CK_PRICE_AND_DISCOUNT) violated
+{% endhighlight %}
