@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "DDL - Enabled & Disabled Constraints"
+title: "DDL - Enabled, Disabled & Drop Constraints"
 date: 2021-02-27T06:03:22+07:00
 lang: oracle18c
 categories:
@@ -180,3 +180,26 @@ C TEST_CONSTRAINT_CHECK_MULTI_CO CK_PRICE_AND_DISCOUN ENABLED  NOT VALIDATED
 
 1 row selected.
 ```
+
+## Drop Constraint
+
+Constraint yang telah di buat gak bisa di modifikasi, untuk mengubah rulenya kita harus drop dulu kemudian di buat baru lagi. Untuk menghapus constraint kit bisa menggunakan `drop constraint` seperti berikut:
+
+{% gist page.gist "016n-drop-constraint.sql" %}
+
+maka hasilnya seperti berikut:
+
+```sql
+SQL> alter table TEST_CONSTRAINT_CHECK_MULTI_COLUMNS
+    drop constraint CK_PRICE_AND_DISCOUNT;
+
+Table altered.
+
+select CONSTRAINT_TYPE, TABLE_NAME, CONSTRAINT_NAME, STATUS, VALIDATED
+from USER_CONSTRAINTS
+where CONSTRAINT_NAME = 'CK_PRICE_AND_DISCOUNT'
+  and OWNER = user;
+
+no rows selected
+```
+
