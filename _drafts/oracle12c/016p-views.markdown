@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "015h-ddl-view"
+title: "DDL - View di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -14,15 +14,174 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+View merupakan pendefinisian query yang menakses satu atau banyak tabel, atau lebih sering disebut select statement yang dikasih nama dengan tujuan memudahkan pemanggilan query tersebut. Seperti berikut contohnya:
 
-description...
+{% highlight sql %}
+select empl.EMPLOYEE_ID,
+       empl.FIRST_NAME,
+       empl.LAST_NAME,
+       empl.email,
+       empl.phone_number,
+       empl.hire_date,
+       job.job_id,
+       empl.salary,
+       coalesce(empl.commission_pct, 0) commission_pct,
+       empl.manager_id,
+       d.department_id,
+       d.department_name,
+       d.manager_id                     dep_manager_id,
+       d.location_id,
+       job.job_id,
+       job.job_title,
+       job.min_salary as                job_min_salary,
+       job.max_salary as                job_min_salary
+from EMPLOYEES empl
+         left join DEPARTMENTS D on empl.EMPLOYEE_ID = D.MANAGER_ID
+         left join JOBS job on empl.JOB_ID = job.JOB_ID
+where empl.DEPARTMENT_ID = 90;
+{% endhighlight %}
 
-Materi: 
+Sekarang kita akan buat view dengan sql tersebut:
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+{% gist page.gist "016p-create-view.sql" %}
+
+Kemudian kita bisa panggil query yang panjang tersebut dengan perintah select biasa seperti berikut:
+
+{% highlight sql %}
+select * from employee_on_dep90;
+{% endhighlight %}
+
+Jika di jalankan hasilnya seperti berikut:
+
+```sql
+SQL> create or replace view v_employee_on_dep90 as
+select empl.EMPLOYEE_ID,
+       empl.FIRST_NAME,
+       empl.LAST_NAME,
+       empl.FIRST_NAME || ' ' || empl.LAST_NAME as full_name,
+       empl.email,
+       empl.phone_number,
+       empl.hire_date,
+       empl.salary,
+       coalesce(empl.commission_pct, 0)         as commission_pct,
+       empl.manager_id,
+       d.department_id,
+       d.department_name,
+       d.manager_id                                dep_manager_id,
+       d.location_id,
+       job.job_id,
+       job.job_title,
+       job.min_salary                           as job_min_salary,
+       job.max_salary                           as job_max_salary
+from EMPLOYEES empl
+         left join DEPARTMENTS D on empl.EMPLOYEE_ID = D.MANAGER_ID
+         left join JOBS job on empl.JOB_ID = job.JOB_ID;
+
+View created.
+
+SQL> select empl.EMPLOYEE_ID,
+       empl.full_name,
+       empl.commission_pct,
+       empl.salary,
+       empl.manager_id,
+       empl.job_title
+from v_employee_on_dep90 empl;
+
+EMPLOYEE_ID FULL_NAME            COMMISSION_PCT     SALARY MANAGER_ID JOB_TITLE
+----------- -------------------- -------------- ---------- ---------- --------------------
+        100 Steven King                       0      24000            President
+        101 Neena Kochhar                     0      17000        100 Administration Vice
+                                                                      President
+        102 Lex De Haan                       0      17000        100 Administration Vice
+                                                                      President
+
+3 rows selected.
+```
+
+## Insert, Update dan Delete melalui view
+
+Jika di tanya view itu khan tabel banyangan, terus kita bisa insert, update atau delete lewat view?? jawabanya relative untuk beberapa view yang simple bisa dan untuk beberapa view yang komplex gak bisa sebagai contoh 
+
+{% highlight sql %}
+update v_employee_on_dep90
+set commission_pct = 0.1
+where EMPLOYEE_ID = 100;
+{% endhighlight %}
+
+jika di execute hasilnya seperti berikut:
+
+```sql
+SQL> update v_employee_on_dep90
+set commission_pct = 0.1
+where EMPLOYEE_ID = 100;
+
+set commission_pct = 0.1
+    *
+ERROR at line 2:
+ORA-01733: virtual column not allowed here
+```
+
+Tetapi jika kita buat view seperti berikut:
+
+{% gist page.gist "016p-create-simple-view.sql" %}
+
+Sekarang coba update dengan perintah berikut:
+
+{% highlight sql %}
+update v_simple_empl_on_dep90
+set commission_pct = 0.1
+where EMPLOYEE_ID = 100;
+{% endhighlight %}
+
+Jika di jalankan hasilnya seperti berikut:
+
+```sql
+SQL> create or replace view v_simple_empl_on_dep90 as
+select *
+from EMPLOYEES
+where DEPARTMENT_ID = 90;
+
+View created.
+
+SQL> update v_simple_empl_on_dep90
+set commission_pct = 0.1
+where EMPLOYEE_ID = 100;
+
+1 row updated.
+
+SQL> select EMPLOYEE_ID, COMMISSION_PCT, SALARY
+from v_simple_empl_on_dep90
+where EMPLOYEE_ID = 100;  2    3
+
+EMPLOYEE_ID COMMISSION_PCT     SALARY
+----------- -------------- ----------
+        100             .1      24000
+
+1 row selected.
+```
+
+## Read only mode
+
+Supaya view hanya bisa akses data saja alias read-only kita bisa tambahkan `read only constraint` seperti berikut:
+
+{% gist page.gist "016p-create-simple-view-read-only.sql" %}
+
+Sekarang coba update lagi dengan query 
+
+{% highlight sql %}
+update v_simple_empl_on_dep90
+set commission_pct = 0.1
+where EMPLOYEE_ID = 100;
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+```sql
+SQL> update v_simple_empl_on_dep90
+set commission_pct = 0.1
+where EMPLOYEE_ID = 100;  2    3
+set commission_pct = 0.1
+    *
+ERROR at line 2:
+ORA-42399: cannot perform a DML operation on a read-only view
+```
