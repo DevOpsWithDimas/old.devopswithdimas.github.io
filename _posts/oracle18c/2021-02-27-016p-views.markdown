@@ -186,3 +186,18 @@ set commission_pct = 0.1
 ERROR at line 2:
 ORA-42399: cannot perform a DML operation on a read-only view
 ```
+
+## Drop view
+
+Untuk menghapus view, kita bisa menggunakan perintah drop seperti berikut:
+
+{% gist page.gist "016p-drop-view.sql" %}
+
+jika di running seperti berikut:
+
+```sql
+SQL> drop view v_employee_on_dep90 
+CASCADE CONSTRAINTS;
+
+View dropped.
+```

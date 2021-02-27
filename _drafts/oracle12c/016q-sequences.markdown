@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "015g-ddl-sequence"
+title: "DDL - Sequences di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -14,15 +14,105 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Sequences yaitu object database yang digunakan untuk men-generate urutan nomor, Sequences bisa digunakan sebagai **default value untuk primary key**. Untuk membuat sequence kita bisa gunakan perintah berikut:
 
-description...
+{% highlight sql %}
+CREATE SEQUENCE [ schema. ] sequence
+  [ SHARING = { METADATA | DATA | NONE } ]
+  [ { INCREMENT BY | START WITH } integer
+  | { MAXVALUE integer | NOMAXVALUE }
+  | { MINVALUE integer | NOMINVALUE }
+  | { CYCLE | NOCYCLE }
+  | { CACHE integer | NOCACHE }
+  | { ORDER | NOORDER }
+  | { KEEP | NOKEEP }
+  | { SCALE {EXTEND | NOEXTEND} | NOSCALE }
+  | { SESSION | GLOBAL }
+  ]...
+;
+{% endhighlight %}
 
-Materi: 
+Sebagai contoh misalnya kita buat sequences seperti berikut:
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+{% gist page.gist "016q-create-sequence.sql" %}
+
+Untuk menggunakanya kita bisa mengunakan beberapa function 
+
+1. nextval, yaitu memanggil nilai selanjutnya. Ketika di panggil maka sequence update counter-nya
+2. currval, yaitu nilai saat ini
+
+Seperti berikut:
+
+{% highlight sql %}
+select seq_test_from_zero.currval sekarang,
+       seq_test_from_zero.nextval berikutnya
+from DUAL;
+{% endhighlight %}
+
+jika di jalankan hasilnya seperti berikut:
+
+```sql
+SQL> select seq_test_from_zero.nextval berikutnya,
+       seq_test_from_zero.currval nextval
+from DUAL;
+
+BERIKUTNYA    NEXTVAL
+---------- ----------
+         1          1
+
+1 row selected.
+```
+
+## Menggunakan sequance sebagai default value primary key
+
+Untuk menggunakan sequance sebagai default value pada primary key kita bisa menggunakan `nocache` ini bertujuan _indicate that values of the sequence are not preallocated_. seperti berikut contohnya:
+
+{% gist page.gist "016q-sequence-default-value.sql" %}
+
+Jika dijalankan seperti berikut:
+
+```sql
+SQL> create sequence seq_table_ex
+    start with 1
+    increment by 1
+    nocycle
+    nocache;
+
+Sequence created.
+
+SQL> create table test_using_seq
+(
+    id            integer default seq_table_ex.nextval,
+    nama          varchar2(50) not null,
+    jenis_kelamin char(1)
+        constraint ck_jk_test_seq check ( jenis_kelamin in ('L', 'P') ),
+    constraint pk_test_using_seq primary key (id)
+);
+
+Table created.
+
+SQL> insert into test_using_seq(id, nama, jenis_kelamin)
+values (default, 'Dimas Maryanto', 'L');
+
+1 row created.
+
+SQL> insert into test_using_seq(nama, jenis_kelamin)
+values ('Dimas Maryanto', 'L');
+
+1 row created.
+
+SQL> select * from test_using_seq;
+
+        ID NAMA                                               J
+---------- -------------------------------------------------- -
+         1 Dimas Maryanto                                     L
+         2 Dimas Maryanto                                     L
+
+2 rows selected.
+```
+
+## Drop sequance
+
+Untuk menhapus sequence kita bisa menggunakan perintah drop seperti berikut:
+
+{% gist page.gist "016q-drop-sequence.sql" %}
