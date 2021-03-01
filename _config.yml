@@ -13,6 +13,8 @@ url: "https://youtube.dimas-maryanto.com" # the base hostname & protocol for you
 # Build settings
 markdown: kramdown
 
+plugins_dir: ./_scripts
+
 kramdown:
   input: GFM
   syntax_highlighter: rouge
