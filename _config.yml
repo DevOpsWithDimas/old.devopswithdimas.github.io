@@ -21,6 +21,7 @@ kramdown:
 gist:
   noscript: false
 permalink: /posts/:categories/:title
+whitelist: [jekyll-analytics]
 plugins:
   - jekyll-gist
   - jekyll-feed
