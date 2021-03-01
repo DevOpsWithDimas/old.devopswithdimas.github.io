@@ -31,12 +31,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jemoji
-  - jekyll-terminal
-
-terminal:
-  tag_name: 'h3'  # the tag used for the Terminal's title
-  continuation_string: '/' # lines starting with this continue the previous $ line_
-
+  
 paginate: 5
 paginate_path: /archives/page-:num
 

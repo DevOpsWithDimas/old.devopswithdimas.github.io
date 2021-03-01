@@ -25,9 +25,13 @@ Setelah di download software `oracle-database-xe-18c-x.x.rpm`, Sekarang kita cob
 
 login as root ya...
 
-{% terminal %}
-$ yum -y localinstall oracle-database-xe-18c-1.0-1.x86_64.rpm
+{% highlight bash %}
+yum -y localinstall oracle-database-xe-18c-1.0-1.x86_64.rpm
+{% endhighlight %}
 
+Jika menampilkan error seperti berikut:
+
+```bash
 Loaded plugins: fastestmirror, langpacks
 Examining oracle-database-xe-18c-1.0-1.x86_64.rpm: oracle-database-xe-18c-1.0-1.x86_64
 Marking oracle-database-xe-18c-1.0-1.x86_64.rpm to be installed
@@ -38,31 +42,33 @@ Resolving Dependencies
 Loading mirror speeds from cached hostfile
  * base: mirror.papua.go.id
  * extras: mirror.buana.web.id
+ * updates: mirror.biznetgio.com
 --> Finished Dependency Resolution
 Error: Package: oracle-database-xe-18c-1.0-1.x86_64 (/oracle-database-xe-18c-1.0-1.x86_64)
            Requires: `oracle-database-preinstall-18c`
  You could try using --skip-broken to work around the problem
  You could try running: rpm -Va --nofiles --nodigest
-
-{% endterminal %}
+```
 
 Coba install dulu dependency `oracle-database-preinstall-18c`, jika temen-temen menggunakan `Oracle Linux` temen-temen bisa langsung menggunakan repo dengan cara 
 
-{% terminal %}
-$ yum install oracle-database-preinstall-18c
-{% endterminal %}
+{% highlight bash %}
+yum install oracle-database-preinstall-18c
+{% endhighlight %}
 
 Sedangkan jika menggunakan distro linux lain seperti RHEL7, Centos 7, Fedora kita bisa download manual kemudian install:
 
 {% highlight bash %}
+# download file
 curl -o oracle-database-preinstall-18c-1.0-1.el7.x86_64.rpm https://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/getPackage/oracle-database-preinstall-18c-1.0-1.el7.x86_64.rpm
+
+# install requirement & oracle database
+yum -y localinstall oracle-database-preinstall-18c-1.0-1.el7.x86_64.rpm oracle-database-xe-18c-1.0-1.x86_64.rpm
 {% endhighlight %}
 
-Setelah di download, kita install seperti berikut:
+Berikut outputnya:
 
-{% terminal %}
-$ yum -y localinstall oracle-database-preinstall-18c-1.0-1.el7.x86_64.rpm oracle-database-xe-18c-1.0-1.x86_64.rpm
-
+```bash
 Dependencies Resolved
 
 ================================================================================
@@ -104,7 +110,7 @@ Installed:
   oracle-database-xe-18c.x86_64 0:1.0-1
 
 Complete!
-{% endterminal %}
+```
 
 ## Configuring Listener
 
@@ -128,9 +134,13 @@ Setelah itu jika instalasi gagal, coba periksa file pada file `/opt/oracle/produ
 
 Setelah semuanya sesuai, coba configure ulang
 
-{% terminal %}
-$ /etc/init.d/oracle-xe-18c configure
+{% highlight bash %}
+/etc/init.d/oracle-xe-18c configure
+{% endhighlight %}
 
+Jika semuanya lancar maka outputnya seperti berikut:
+
+```bash
 Configuring Oracle Listener.
 Listener configuration succeeded.
 Configuring Oracle Database XE.
@@ -172,7 +182,8 @@ Connect to Oracle Database using one of the connect strings:
      Pluggable database: sandbox.oraclexe-18c/XEPDB1
      Multitenant container database: sandbox.oraclexe-18c
 Use https://localhost:5500/em to access Oracle Enterprise Manager for Oracle Database XE
-{% endterminal %}
+[root@sandbox ~]#
+```
 
 ## Test connection to Database
 
@@ -182,8 +193,14 @@ Setelah itu, temen-temen bisa menggunakan user normal. kita perlu tambahkan env 
 
 Kemudian logout, login kembali kemudian coba buka 
 
-{% terminal %}
-$ sqlplus system@XE
+{% highlight bash %}
+sqlplus system
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+```bash
+[dimasm93@sandbox ~]$ sqlplus system
 
 SQL*Plus: Release 18.0.0.0.0 - Production on Wed Feb 10 01:21:35 2021
 Version 18.4.0.0.0
@@ -198,18 +215,18 @@ Oracle Database 18c Express Edition Release 18.0.0.0.0 - Production
 Version 18.4.0.0.0
 
 SQL>
-{% endterminal %}
+```
 
 ## Start/Stop Service Oracle Database 18c XE
 
 Untuk start service by default menggunakan script:
 
-{% terminal %}
-$ /etc/init.d/oracle-xe-18c start
-{% endterminal %}
+{% highlight bash %}
+/etc/init.d/oracle-xe-18c start
+{% endhighlight %}
 
 Untuk stop service bisa menggunakan script:
 
-{% terminal %}
-$ /etc/init.d/oracle-xe-18c stop
-{% endterminal %}
+{% highlight bash %}
+/etc/init.d/oracle-xe-18c stop
+{% endhighlight %}

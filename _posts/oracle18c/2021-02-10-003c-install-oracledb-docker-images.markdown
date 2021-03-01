@@ -33,9 +33,13 @@ Kemudian kita build, image dockernya.
 
 coba jalankan perintah berikut:
 
-{% terminal %}
-$ ./buildContainerImage.sh -v 18.4.0 -x -i
+{% highlight bash %}
+./buildContainerImage.sh -v 18.4.0 -x -i
+{% endhighlight %}
 
+berikut outputnya:
+
+```bash
 Building image 'oracle/database:18.4.0-xe' ...
 #2 [internal] load .dockerignore
 #2 sha256:82c746726f1c3ea1b1f2e1582360b55313692a0bc3b3b749ad8e9fadf198036f
@@ -118,17 +122,20 @@ Building image 'oracle/database:18.4.0-xe' ...
     --> oracle/database:18.4.0-xe
 
   Build completed in 1181 seconds.
-{% endterminal %}
-
+```
 
 Setelah itu coba check image docker menggunakan perintah
 
-{% terminal %}
-$ docker images
+{% highlight bash %}
+docker images
+{% endhighlight %}
 
+maka hasilnya seperti berikut:
+
+```docker
 REPOSITORY                                    TAG         IMAGE ID       CREATED              SIZE
 oracle/database                               18.4.0-xe   cbc35939ffbe   About a minute ago   6.03GB
-{% endterminal %}
+```
 
 ## Running Docker container Oracle 18c XE
 
@@ -138,19 +145,27 @@ Setelah itu kita bisa jalankan containernya dengan menggunakan `docker-compose`,
 
 Kemudian coba jalankan perintah berikut:
 
-{% terminal %}
-$ docker-compose -p bootcamp-oracle up -d
+{% highlight bash %}
+docker-compose -p bootcamp-oracle up -d
+{% endhighlight %}
 
+outputnya seperti berikut:
+
+```bash
 Creating network "bootcamp-oracle_oracle-network" with the default driver
 Creating volume "bootcamp-oracle_oracle-data" with default driver
 Creating bootcamp-oracle_oracle_1 ... done
-{% endterminal %}
+```
 
 Untuk meriksa lognya, jalankan perintah berikut:
 
-{% terminal %}
-$ docker-compose -p bootcamp-oracle logs --follow oracle
+{% highlight bash %}
+docker-compose -p bootcamp-oracle logs --follow oracle
+{% endhighlight %}
 
+Berikut adalah lognya kita sukses:
+
+```bash
 oracle_1  | ORACLE PASSWORD FOR SYS AND SYSTEM: passwordnyaOracle18c
 oracle_1  | Specify a password to be used for database accounts. Oracle recommends that the password entered should be at least 8 characters in length, contain at least 1 uppercase character, 1 lower case character and 1 digit [0-9]. Note that the same password will be used for SYS, SYSTEM and PDBADMIN accounts:
 oracle_1  | Confirm the password:
@@ -197,7 +212,7 @@ oracle_1  | XEPDB1(3):Completed: ALTER DATABASE DEFAULT TABLESPACE "USERS"
 oracle_1  | 2021-02-10T07:45:12.886261+00:00
 oracle_1  | ALTER PLUGGABLE DATABASE XEPDB1 SAVE STATE
 oracle_1  | Completed: ALTER PLUGGABLE DATABASE XEPDB1 SAVE STATE
-{% endterminal %}
+```
 
 ## Test connection dengan sql/plus
 
