@@ -7,8 +7,8 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/21/refrn/logical-database-limits.html#GUID-685230CF-63F5-4C5A-B8B0-037C566BDA76
+- https://docs.oracle.com/en/database/oracle/oracle-database/21/refrn/release-changes.html#GUID-49445F8B-96CD-4927-A3DB-FAC4BE077426
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/
