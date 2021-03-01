@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "019-indexes"
+title: "Pengenalan Index di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
@@ -15,15 +15,3 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
-
-description...
-
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
