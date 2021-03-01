@@ -17,13 +17,51 @@ downloads: []
 
 Sebuah index adalah optional structure yang dikaitkan ke table yang biasanya bisa mempercepat access data. Ketika kita membuat table dengan primary key by default kita otomatis akan di buatkan index b-tree berdasarkan column primary key tersebut. 
 
+## Benefit of Indexes
+
+Sebuah index bekerja dengan cara menyiapkan jalur tercepat untuk mentukan suatu baris dalam tabel. Jadi dengan begitu akan mempercepat _speed of execution_ bukan _fetching data_. yang jadi pertannyaan kapan kita harus pakai index?
+
+1. Column yang kita cari pada where clause sering digunakan dalam suatu query yang mengembalikan sebagian kecil dari seluruh data pada tabel tersebut. sebagai contoh menggunakan klausa `=`, `between`, `in` dan lain-lain.
+2. Ketika ada reference integrity constraint atau foreign key ke tabel lain dengan tujuan mencegah [full table lock](https://docs.oracle.com/en/database/oracle/oracle-database/18/cncpt/glossary.html#GUID-EFC35457-CEA1-4104-8E24-765B4F9FA615)
+3. ketika ada Unique Constraint, kita bisa membuat sendiri indexnya sesuai dengan kasus terntung (specify index atau all index option) tetepi unique constraint secara default sudah dibuatkan indexnya.
+
+## Keys and Columns
+
+Sebuah Key adalah set columns atau expression yang dapat dibuat sebuah index, Yang perlu di ingat adalah key dan juga index itu adalah hal yang berbeda. Index adalah structure store dalam database yang di manage oleh user dengan perintah sql, sedangkan keys adalah logical consept.
+
+Untuk membuat index berikut contohnya:
+
+{% highlight sql %}
+CREATE [ UNIQUE | BITMAP ] INDEX [ schema. ] index
+  ON { cluster_index_clause
+     | table_index_clause
+     | bitmap_join_index_clause
+     }
+[ USABLE | UNUSABLE ]
+[ { DEFERRED | IMMEDIATE } INVALIDATION ] ;
+{% endhighlight %}
+
+## Composite Indexes
+
+Selain itu, index bisa digunakan multiple columns atau disebut composite index atau concatenated index. Penempatan urutan sangat berpengaruh dalam composite index ini jika kita menggunakan where clauses `where (x, y, z)` maka kita harus membuat index juga dengan column `create index something_idx on tbl_name (x, y, x)`
+
+## Unique and Nonunique Index
+
+Index dapat bernilai unique dan juga bukan unique
+
+## Type of Indexes
+
 Index ada beberapa macam di Oracle, diantaranya:
 
 1. B-Tree Index
-2. Bitmap Index
-3. Function-Based Index
-4. Application Domain Index
-5. Index-Organized Table
+   1. [Index-Organized table](https://docs.oracle.com/en/database/oracle/oracle-database/18/cncpt/indexes-and-index-organized-tables.html#GUID-DAEC075B-C16D-4A57-898C-70EBCB364F0C)
+   2. [Reverse key indexes](https://docs.oracle.com/en/database/oracle/oracle-database/18/cncpt/indexes-and-index-organized-tables.html#GUID-2646BDA9-F776-4C98-9487-C7EBC2EECF0B)
+   3. [Descending Index](https://docs.oracle.com/en/database/oracle/oracle-database/18/cncpt/indexes-and-index-organized-tables.html#GUID-8C2EA2EC-18E5-4E4A-BF74-D1DE86D7F24A)
+   4. [B-Tree Cluster Index](https://docs.oracle.com/en/database/oracle/oracle-database/18/cncpt/indexes-and-index-organized-tables.html#GUID-8C2EA2EC-18E5-4E4A-BF74-D1DE86D7F24A)
+2. [Bitmap Index](https://docs.oracle.com/en/database/oracle/oracle-database/18/cncpt/indexes-and-index-organized-tables.html#GUID-B15C4817-7748-456D-9740-8B9628AF9F47)
+3. [Function-Based Index](https://docs.oracle.com/en/database/oracle/oracle-database/18/cncpt/indexes-and-index-organized-tables.html#GUID-9AD7651D-0F0D-4FC6-A984-5845F0224EE6)
+4. [Application Domain Index](https://docs.oracle.com/en/database/oracle/oracle-database/18/cncpt/indexes-and-index-organized-tables.html#GUID-9586EB86-4B84-4A43-A66D-958776FE558B)
+
 
 Sebelum kita mulai mencoba, kita siapkan dulu table dan datanya seperti berikut:
 
