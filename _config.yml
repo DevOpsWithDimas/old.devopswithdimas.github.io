@@ -31,7 +31,17 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jemoji
-  
+  - jekyll-minifier
+  - jekyll-analytics
+
+jekyll-minifier:
+  exclude: 'atom.xml' 
+
+jekyll_analytics:
+  GoogleAnalytics:          # Add, if you want to track with Google Analytics
+    id: UA-82058496-1       # Required - replace with your tracking id
+    anonymizeIp: false      # Optional - Default: false - set to true for anonymized tracking
+
 paginate: 5
 paginate_path: /archives/page-:num
 
