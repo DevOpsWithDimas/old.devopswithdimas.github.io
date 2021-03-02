@@ -62,20 +62,3 @@ Index ada beberapa macam di Oracle, diantaranya:
 2. [Bitmap Index](https://docs.oracle.com/en/database/oracle/oracle-database/18/cncpt/indexes-and-index-organized-tables.html#GUID-B15C4817-7748-456D-9740-8B9628AF9F47)
 3. [Function-Based Index](https://docs.oracle.com/en/database/oracle/oracle-database/18/cncpt/indexes-and-index-organized-tables.html#GUID-9AD7651D-0F0D-4FC6-A984-5845F0224EE6)
 4. [Application Domain Index](https://docs.oracle.com/en/database/oracle/oracle-database/18/cncpt/indexes-and-index-organized-tables.html#GUID-9586EB86-4B84-4A43-A66D-958776FE558B)
-
-
-Sebelum kita mulai mencoba, kita siapkan dulu table dan datanya seperti berikut:
-
-{% gist page.gist "017-preparation-indexes.sql" %}
-
-Kemudian coba execute, dan `commit`. Setelah itu coba tampilkan total datanya seperti berikut:
-
-```sql
-SQL> select to_char(count(*), '999G999G999') data
-from test_indexs;
-
-DATA
-------------
-   1,070,000
-SQL>
-```
