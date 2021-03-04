@@ -7,6 +7,7 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/partitions-views-and-other-schema-objects.html#GUID-29E19A46-D91F-4EEB-BD0C-E65A89F2F59B
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CREATE-SEQUENCE.html#GUID-E9C78A8C-615A-4757-B2A8-5E6EFB130571
 youtube: 
 comments: true
