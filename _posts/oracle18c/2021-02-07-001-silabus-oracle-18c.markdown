@@ -10,7 +10,7 @@ refs:
 - https://docs.oracle.com/database/121/index.htm
 - https://docs.oracle.com/en/bigdata/index.html
 - https://www.oracle.com/database/technologies/appdev/xe.html
-youtube: 
+youtube: https://www.youtube.com/watch?v=Va-DhT3W2nI&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=2
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: 

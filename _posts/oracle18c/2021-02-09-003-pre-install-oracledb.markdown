@@ -9,11 +9,12 @@ categories:
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/21/refrn/logical-database-limits.html#GUID-685230CF-63F5-4C5A-B8B0-037C566BDA76
 - https://docs.oracle.com/en/database/oracle/oracle-database/21/refrn/release-changes.html#GUID-49445F8B-96CD-4927-A3DB-FAC4BE077426
-youtube: 
+youtube: https://www.youtube.com/watch?v=GKahT6yeU2o&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=7
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: 
-downloads: []
+- name: "Oracle Installer"
+  url: https://www.oracle.com/database/technologies/appdev/xe.html
 ---
 
 Untuk keberhasilan belajar, jadi temen-temen diharapkan untuk install Oracle Database 18c di komputer juga ya. Nah jadi ada beberapa yang harus di siapkan, jadi berikut adalah spesifikasi yang di perlukan untuk melakukan installasi Oracle Database 18c Express Edition.

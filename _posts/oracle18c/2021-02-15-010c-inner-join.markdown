@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html#GUID-794F7DD5-FB18-4ADC-9E46-ADDA8C30C3C6
-youtube: 
+youtube: https://www.youtube.com/watch?v=J3_YdH97US0&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=45
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

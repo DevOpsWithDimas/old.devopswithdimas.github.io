@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/index.html
-youtube: 
+youtube: https://www.youtube.com/watch?v=LgEPlatwh9E&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=4
 comments: true
 image_path: /resources/posts/oracle12c/002a-user-schema
 gist: 

@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Comparison-Conditions.html#GUID-828576BF-E606-4EA6-B94B-BFF48B67F927
-youtube: 
+youtube: https://www.youtube.com/watch?v=Br1cmkdj6r4&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=22
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

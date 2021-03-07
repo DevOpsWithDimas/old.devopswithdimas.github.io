@@ -9,7 +9,7 @@ categories:
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/sqlrf/Database-Object-Names-and-Qualifiers.html#GUID-05F1B577-C08C-4DB9-925A-8799C76ADFF4
 - https://docs.oracle.com/database/121/SQLRF/sql_elements008.htm#SQLRF51129
-youtube: 
+youtube: https://www.youtube.com/watch?v=irDdMJSsAws&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=13
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

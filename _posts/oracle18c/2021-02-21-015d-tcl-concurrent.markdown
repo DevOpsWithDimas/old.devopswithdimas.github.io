@@ -9,7 +9,7 @@ categories:
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SET-TRANSACTION.html#GUID-F11E1E30-5871-48D1-8266-F80A1DF126A1
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-concurrency-and-consistency.html#GUID-7AD41DFA-04E5-4738-B744-C4407170411C
-youtube: 
+youtube: https://www.youtube.com/watch?v=GhyRV0ttoxE&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=71
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

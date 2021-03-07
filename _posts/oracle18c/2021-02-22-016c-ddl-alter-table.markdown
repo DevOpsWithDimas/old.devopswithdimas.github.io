@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/RENAME.html#GUID-573347CE-3EB8-42E5-B4D5-EF71CA06FAFC
-youtube: 
+youtube: https://www.youtube.com/watch?v=DL38CZIDr9M&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=76
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-integrity.html#GUID-7CD73D16-EA1A-4AA8-AA7D-4288557395B8
-youtube: 
+youtube: https://www.youtube.com/watch?v=hJG3pnsZUXg&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=85
 comments: true
 image_path: /resources/posts/oracle12c/016l-constraint-foreign-key
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

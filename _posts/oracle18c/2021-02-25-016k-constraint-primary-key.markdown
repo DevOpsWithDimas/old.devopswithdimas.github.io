@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-integrity.html#GUID-E1033BB9-0F67-4E59-82AC-B8B572FD82BB
-youtube: 
+youtube: https://www.youtube.com/watch?v=TOu8fgYxd8g&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=84
 comments: true
 image_path: /resources/posts/oracle12c/016k-constraint-primary-key
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

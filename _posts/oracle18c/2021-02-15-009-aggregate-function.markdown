@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Aggregate-Functions.html#GUID-62BE676B-AF18-4E63-BD14-25206FEA0848
-youtube: 
+youtube: https://www.youtube.com/watch?v=nRL6WqOcyH8&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=38
 comments: true
 image_path: /resources/posts/oracle12c/009-aggregate-function
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

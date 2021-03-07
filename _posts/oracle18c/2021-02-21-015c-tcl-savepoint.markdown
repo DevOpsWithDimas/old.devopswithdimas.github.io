@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/SAVEPOINT.html#GUID-78EEA746-0021-42E8-9971-3BA6DFFEE794
-youtube: 
+youtube: https://www.youtube.com/watch?v=Tu9uF7ajGVU&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=70
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

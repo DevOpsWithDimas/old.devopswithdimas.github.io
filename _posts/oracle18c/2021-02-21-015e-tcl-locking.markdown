@@ -10,7 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-concurrency-and-consistency.html#GUID-AD960556-7F7B-4242-8B91-6DA22AABA27D
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-concurrency-and-consistency.html#GUID-7F2C6927-5482-4144-B43B-5E90EF4E055B
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-concurrency-and-consistency.html#GUID-2A0FDFF0-5F72-4476-BFD2-060A20EA1685
-youtube: 
+youtube: https://www.youtube.com/watch?v=OK0kP6PdYBo&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=72
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

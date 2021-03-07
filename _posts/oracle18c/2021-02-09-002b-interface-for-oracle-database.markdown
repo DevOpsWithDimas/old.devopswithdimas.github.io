@@ -12,7 +12,7 @@ refs:
 - https://www.jetbrains.com/datagrip/
 - https://dbeaver.io/
 - https://www.oracle.com/database/technologies/appdev/sqldeveloper-landing.html
-youtube: 
+youtube: https://www.youtube.com/watch?v=MtENXELBI6w&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=5
 comments: true
 image_path: /resources/posts/oracle12c/002b-interface-database
 gist: 

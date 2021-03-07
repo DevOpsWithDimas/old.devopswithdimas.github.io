@@ -10,7 +10,7 @@ refs:
 - https://docs.oracle.com/database/121/index.htm
 - https://docs.oracle.com/en/bigdata/index.html
 - https://mikesmithers.wordpress.com/2019/01/03/installing-and-configuring-oracle-18cxe-on-centos/
-youtube: 
+youtube: https://www.youtube.com/watch?v=nHP4tx_PPyU&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=9
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

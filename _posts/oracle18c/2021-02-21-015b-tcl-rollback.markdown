@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/ROLLBACK.html#GUID-94551F0C-A47F-43DE-BC68-9B1C1ED38C93
-youtube: 
+youtube: https://www.youtube.com/watch?v=B7pC0kIv5ds&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=69
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

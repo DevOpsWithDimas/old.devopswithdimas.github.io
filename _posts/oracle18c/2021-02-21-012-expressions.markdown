@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Expressions.html#GUID-E7A5363C-AEE9-4809-99C1-1A9C6E3AE017
-youtube: 
+youtube: https://www.youtube.com/watch?v=ssjKIFYNt1g&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=60
 comments: true
 image_path: /resources/posts/oracle12c/012-expressions
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

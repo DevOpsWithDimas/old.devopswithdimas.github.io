@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/refrn/about-static-data-dictionary-views.html#GUID-10024282-6729-4C66-8679-FD653C9C7DE7
-youtube: 
+youtube: https://www.youtube.com/watch?v=7WILxJz2rUE&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=74
 comments: true
 image_path: /resources/posts/oracle12c/016a-dictionary-table
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

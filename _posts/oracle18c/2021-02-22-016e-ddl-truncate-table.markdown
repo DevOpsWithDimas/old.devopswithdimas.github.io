@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/TRUNCATE-TABLE.html#GUID-B76E5846-75B5-4876-98EC-439E15E4D8A4
-youtube: 
+youtube: https://www.youtube.com/watch?v=gcoopBx_XAo&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=78
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

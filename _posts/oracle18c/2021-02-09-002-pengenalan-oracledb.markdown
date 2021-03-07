@@ -11,7 +11,7 @@ refs:
 - https://docs.oracle.com/en/bigdata/index.html
 - https://db-engines.com/en/ranking
 - https://en.wikipedia.org/wiki/Oracle_Database
-youtube: 
+youtube: https://www.youtube.com/watch?v=iQHSROv3Imc&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=3
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: 
