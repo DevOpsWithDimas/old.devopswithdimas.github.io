@@ -1,15 +1,15 @@
 ---
 layout: post
-title: "017d-fuction-based-index"
+title: "Index - Function-Based"
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/indexes-and-index-organized-tables.html#GUID-9AD7651D-0F0D-4FC6-A984-5845F0224EE6
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/017d-fuction-based-index
+image_path: /resources/posts/oracle12c/017b-fuction-index
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---

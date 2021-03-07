@@ -10,7 +10,7 @@ categories:
 - PostgreSQL
 refs: 
 - https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html#hql-read-only-entities
-youtube: https://www.youtube.com/watch?v=Uk8EeL4YUr0&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=35&t=16572s
+youtube: https://www.youtube.com/watch?v=ULro1PJLcWg&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=58
 comments: true
 image_path: /resources/posts/orm-hibernate/orm-hibernate-034
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
