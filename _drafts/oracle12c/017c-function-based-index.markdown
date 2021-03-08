@@ -14,15 +14,4 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
-
-description...
-
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Function based index itu menghitung suatu nilai dari function atau expression dari satu dari banyak column dan kemudian disimpan dalam index. 
