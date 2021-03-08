@@ -25,3 +25,32 @@ Jadi pada table tersebut kita bisa gunakan index bitmap column `jenis_kelamin` k
 Untuk membuat index bitmap, berikut contohnya:
 
 {% gist page.gist "017b-create-index-bitmap.sql" %}
+
+Jadi jika kita ilustrasikan maka Oracle Database akan membuat seperti berikut:
+
+| Value | Row 1 | Row 2 | Row 3 | Row 4 | Row 5 |
+| :---  | :---  | :---  | :---  | :---  | :---  |
+| `L`   | 1     | 1     | 0     | 0     | 1     |
+| `P`   | 0     | 0     | 1     | 1     | 0     |
+
+## Bitmap for Two Columns
+
+Selain itu juga kita bisa menggunakan dua kolom atau lebih, contohnya seperti berikut:
+
+{% gist page.gist "017b-create-index-bitmap-multi-columns.sql" %}
+
+Jadi kita kita ilustrasikan maka Oracle Database akan membuat seperti berikut:
+
+| Value     | Row 1 | Row 2 | Row 3 | Row 4 | Row 5 |
+| :---      | :---  | :---  | :---  | :---  | :---  |
+| `L`       | 1     | 1     | 0     | 0     | 1     |
+| `P`       | 0     | 0     | 1     | 1     | 0     |
+| `single`  | 1     | 0     | 0     | 1     | 0     |
+| `menikah` | 0     | 1     | 1     | 0     | 1     |
+| `cerai`   | 0     | 0     | 0     | 0     | 0     |
+
+## Bitmap Join index
+
+Dan yang terakhir kita juga bisa membuat index jika query yang kita gunakan menggunakan join table, untuk membuatnya seperti berikut:
+
+{% gist page.gist "017b-create-index-bitmap-join-column.sql" %}
