@@ -1,0 +1,23 @@
+---
+layout: post
+title: "DDL - Menghapus Index"
+lang: oracle18c
+categories:
+- RDBMS
+- Oracle18c
+refs: 
+- https://docs.oracle.com/database/121/index.htm
+youtube: 
+comments: true
+image_path: /resources/posts/oracle12c/017f-drop-index
+gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
+downloads: []
+---
+
+Untuk mengetahui informasi tentang index, kita bisa menggunakan Static Data Dictionary View `USER_INDEXES` seperti berikut:
+
+{% gist page.gist "017d-select-all-user-indexes.sql" %}
+
+Misalnya kita akan menghapus index `IDX_BITMAP_JOIN_JK` jadi perintahnya seperti berikut:
+
+{% gist page.gist "017d-drop-index.sql" %}
