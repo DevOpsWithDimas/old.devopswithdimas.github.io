@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "DDL - Menghapus Index"
+date: 2021-03-08T15:15:04+07:00
 lang: oracle18c
 categories:
 - RDBMS
