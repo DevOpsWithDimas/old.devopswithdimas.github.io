@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Index - Bitmap"
+date: 2021-03-08T14:01:18+07:00
 lang: oracle18c
 categories:
 - RDBMS
