@@ -1,13 +1,12 @@
 ---
 layout: post
-title: "016-user-management"
+title: "Managing Users and Resource di Oracle"
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/18/admin/managing-users-and-securing-the-database.html#GUID-6ECD7474-E756-4B3E-B5CF-2B92B1BCACA1
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/
