@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "DDL - Create User Account"
+date: 2021-03-11T14:21:28+07:00
 lang: oracle18c
 categories:
 - RDBMS
