@@ -18,7 +18,18 @@ downloads: []
 Ketika temen-temen akan membuat Database User (Account), membutuhkan beberapa atribute seperti:
 
 1. Username
-2. Password (Optional)
+2. Password / No Authentication 
 3. Default, Temporary, Other Tablespace
 4. Quota, untuk me-limit storage
 5. User Profile
+
+## Create a New User Account
+
+Berikut adalah contoh untuk membuat user minimal atribute di Oracle database
+
+```sql
+CREATE USER <your-username> 
+ IDENTIFIED BY <your-password> 
+ DEFAULT TABLESPACE <your-tablespace> 
+ QUOTA 10M ON users;
+```
