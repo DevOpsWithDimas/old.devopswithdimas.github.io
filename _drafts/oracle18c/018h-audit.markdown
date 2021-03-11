@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "018g-audit"
+title: "Auditing Database Activity"
 lang: oracle18c
 categories:
 - RDBMS
@@ -9,7 +9,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/index.html
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/018g-audit
+image_path: /resources/posts/oracle12c/018h-audit
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---

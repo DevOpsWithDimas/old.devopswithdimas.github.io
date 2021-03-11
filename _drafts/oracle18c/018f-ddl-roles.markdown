@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "DDL - Roles"
+title: "DDL - Grouping Privileges dengan Roles"
 lang: oracle18c
 categories:
 - RDBMS

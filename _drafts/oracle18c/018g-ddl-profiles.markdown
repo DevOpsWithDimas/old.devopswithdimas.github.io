@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "018g-profiles"
+title: "DDL - Profiles Resource Parameters for User Accounts"
 lang: oracle18c
 categories:
 - RDBMS
