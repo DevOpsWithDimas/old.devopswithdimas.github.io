@@ -121,5 +121,3 @@ Ketika kita install Oracle Database, ini datang dengan beberapa User Secara Defa
 ## Who Can Create User Accounts?
 
 Jadi jika kita mau melakukan management user kita perlu account yang memiliki grant `CREATE USER`, atau dengan role `DBA` yaitu sebagai contoh `system`
-
-## About Common Users and Local Users
