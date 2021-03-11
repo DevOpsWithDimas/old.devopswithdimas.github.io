@@ -15,7 +15,7 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
-Jika di [materi sebelumnya]({% post_url oracle18c/2021-02-12-006e-in-predicate %}) kita udah menggunakan predicate in sebagai sekumpulan nilai, sekarang kita bisa juga menggunakan query yang menghasilkan banyak data, contohnya seperti berikut nilai pembandingnya:
+Jika di [materi sebelumnya]({% post_url oracle18c/03-where-clause/2021-02-12-006e-in-predicate %}) kita udah menggunakan predicate in sebagai sekumpulan nilai, sekarang kita bisa juga menggunakan query yang menghasilkan banyak data, contohnya seperti berikut nilai pembandingnya:
 
 {% highlight sql %}
 SQL> select min(empl.SALARY) min_salary
