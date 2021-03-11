@@ -1,6 +1,29 @@
 ---
 layout: default
 ---
+{% assign posts = site.posts | where: 'lang', page.lang | sort: 'date' %}
+{% assign current_idx = 1 %}
+{% assign next_post = null %}
+{% assign prev_post = null %}
+{% assign first_post = posts | first %}
+{% assign last_post = posts | last %}
+{% for post in posts %}
+    {% if post.url == page.url %}
+        {% assign current_idx = forloop.index  %}
+    {% endif %}
+{% endfor %}
+
+{% assign prev_index = current_idx | plus: 1 %}
+{% assign next_index = current_idx | minus: 1 %}
+
+{% for post in posts %}
+    {% if forloop.index == prev_index %}
+        {% assign next_post = post %}
+    {% endif %}
+    {% if forloop.index == next_index %}
+        {% assign prev_post = post %}
+    {% endif %}
+{% endfor %}
 
 <div id="postBody" class="row container post-body">
     <div class="col s12 m12 l4 hide-on-med-and-down">
@@ -40,7 +63,7 @@ layout: default
             {% assign download_size = page.downloads.size %}
             {% if download_size >= 1 %}
             <div>
-                <ul class='collection with-header'>
+                <ul class="collection with-header">
                     <li class="collection-header">
                         <i class="material-icons green-text lighten-1">cloud_download</i>
                         Downloads
@@ -61,7 +84,7 @@ layout: default
             </div>
             {% endif %}
         </div>
-        {% assign post_list = site.posts | sort:"date" | where: "lang", page.lang %}
+        <!-- {% assign post_list = site.posts | sort:"date" | where: "lang", page.lang %}
         {% assign post_list_size = post_list.size %}
         {% if post_list_size >= 1 %}
         <div class="row">
@@ -95,7 +118,7 @@ layout: default
                 {% endfor %}
             </ul>
         </div>
-        {% endif %}
+        {% endif %} -->
         <div class="row show-on-medium-and-down">
             {% assign post_list = site.posts | sort:"date" | reverse %}
             <ul class="collection with-header">
@@ -125,6 +148,18 @@ layout: default
         </div>
     </div>
     <div class="col s12 m12 l8">
+        <div id="paginate-top" class="right">
+            <ul class="pagination hide-on-small-only">
+                <!-- current page info -->
+                <li>
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        {{ current_idx }} to {{ posts | size }}
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+            </ul>
+            <br>
+        </div>
         <div>            
             <div>
                 {{content}}
@@ -155,31 +190,7 @@ layout: default
                 </div>
             {% endif %}
         </div>
-        <div id="paginate ">
-            {% assign posts = site.posts | where: 'lang', page.lang | sort: 'date' %}
-            {% assign current_idx = 1 %}
-            {% assign next_post = null %}
-            {% assign prev_post = null %}
-            {% assign first_post = posts | first %}
-            {% assign last_post = posts | last %}
-            {% for post in posts %}
-                {% if post.url == page.url %}
-                    {% assign current_idx = forloop.index  %}
-                {% endif %}
-            {% endfor %}
-
-            {% assign prev_index = current_idx | plus: 1 %}
-            {% assign next_index = current_idx | minus: 1 %}
-
-            {% for post in posts %}
-                {% if forloop.index == prev_index %}
-                    {% assign next_post = post %}
-                {% endif %}
-                {% if forloop.index == next_index %}
-                    {% assign prev_post = post %}
-                {% endif %}
-            {% endfor %}
-            
+        <div id="paginate">
             <ul class="pagination hide-on-small-only">
                 <!-- goto first page -->
                 {% if first_post and first_post.url != page.url %}
@@ -213,7 +224,8 @@ layout: default
                 
                 <!-- current page info -->
                 <li class="active">
-                    <a href="#!">{{ current_idx }} to {{ posts | size }}
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        {{ current_idx }} to {{ posts | size }}
                         <span class="badge new blue" data-badge-caption="pages"></span>
                     </a>
                 </li>
@@ -341,7 +353,7 @@ layout: default
             {% endif %}   
 
             <li>
-                <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Show Menu">
+                <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
                     <i class="large material-icons">toc</i>
                 </a>
             </li>
