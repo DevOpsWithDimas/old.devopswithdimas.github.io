@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "018e-ddl-object-privileges"
+title: "DDL - Object Privileges"
 lang: oracle18c
 categories:
 - RDBMS

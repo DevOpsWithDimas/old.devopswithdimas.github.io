@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "016b-ddl-privileges"
+title: "DDL - System Privileges"
 lang: oracle18c
 categories:
 - RDBMS

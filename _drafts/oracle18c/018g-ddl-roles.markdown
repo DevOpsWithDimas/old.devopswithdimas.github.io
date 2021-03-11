@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "016c-ddl-roles"
+title: "DDL - Roles"
 lang: oracle18c
 categories:
 - RDBMS
