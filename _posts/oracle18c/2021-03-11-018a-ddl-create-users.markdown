@@ -110,23 +110,23 @@ Setelah kita membahas semua attributenya, berikut adalah cara membuat user yang 
 
 1. Login sebagai `system` di PDB sebagai contoh `XEPDB1`
 
-{% highlight bash %}
-sqlplus system/passwordnyaOracle18c@XEPDB1
-{% endhighlight %}
+    {% highlight bash %}
+    sqlplus system/passwordnyaOracle18c@XEPDB1
+    {% endhighlight %}
 
 2. Kemudian buat user dengan perintah berikut:
 
-{% gist page.gist "018a-ddl-create-user.sql" %}
+    {% gist page.gist "018a-ddl-create-user.sql" %}
 
 3. Kemudian berikan access untuk login dengan perintah berikut:
 
-{% gist page.gist "018a-ddl-grant-session.sql" %}
+    {% gist page.gist "018a-ddl-grant-session.sql" %}
 
 4. Kemudian coba logout dari user `system@XEPDB1`, kemudian login lagi dengan user yang baru dibuat seperti berikut:
 
-{% highlight bash %}
-conn toko_online/toko@XEPDB1
-{% endhighlight %}
+    {% highlight bash %}
+    conn toko_online/toko@XEPDB1
+    {% endhighlight %}
 
 Maka hasilnya seperti berikut:
 
@@ -152,11 +152,7 @@ SQL> create user toko_online
 
 User created.
 
-SQL> grant   create session,
-        create table,
-        create sequence,
-        create view,
-        create procedure
+SQL> grant   create session
 to toko_online;
 
 Grant succeeded.
