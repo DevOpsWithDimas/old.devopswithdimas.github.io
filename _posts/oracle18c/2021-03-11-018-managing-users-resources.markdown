@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/admin/managing-users-and-securing-the-database.html#GUID-6ECD7474-E756-4B3E-B5CF-2B92B1BCACA1
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/admin/getting-started-with-database-administration.html#GUID-C7B90809-E930-44BF-B836-F760B0989BB0
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/admin/getting-started-with-database-administration.html#GUID-10287280-C2E4-4FB1-ABF9-993327419603
+- https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/managing-security-for-oracle-database-users.html#GUID-CEF9151B-624C-452E-95CC-D930CDABE8D6
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/
@@ -116,6 +117,6 @@ Ketika kita install Oracle Database, ini datang dengan beberapa User Secara Defa
 
     Selain itu ada beberapa juga User Account yang oracle buat untuk Oracle Database Feature atau Component yang tida bisa digunakan alias tidak bisa login.
 
-## Summary
+## Who Can Create User Accounts?
 
 Jadi jika kita mau melakukan management user kita perlu account yang memiliki grant `CREATE USER`, atau dengan role `DBA` yaitu sebagai contoh `system`

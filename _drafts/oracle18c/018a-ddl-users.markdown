@@ -1,29 +1,24 @@
 ---
 layout: post
-title: "016a-ddl-users"
+title: "DDL - Managing Users"
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
-- https://docs.oracle.com/en/bigdata/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/18/admin/managing-users-and-securing-the-database.html#GUID-B20E4AFB-592E-42BD-8485-36EEDA033035
+- https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/managing-security-for-oracle-database-users.html#GUID-4C383489-6BB4-439A-8293-42F9E6191C85
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/
+image_path: /resources/posts/oracle12c/018a-ddl-users
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Ketika temen-temen akan membuat Database User (Account), membutuhkan beberapa atribute seperti:
 
-description...
-
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Username
+2. Password (Optional)
+3. Default, Temporary, Other Tablespace
+4. Quota, untuk me-limit storage
+5. User Profile
