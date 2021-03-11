@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "DDL - Alter User"
+title: "DDL - Altering User Accounts"
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/managing-security-for-oracle-database-users.html#GUID-7CC7C467-0B16-4F18-881A-5BDC7F6BA0C7
+- https://blogs.oracle.com/sql/how-to-fix-ora-28002-the-password-will-expire-in-7-days-errors
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/018b-alter-user
@@ -14,15 +15,22 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Alter User yaitu Statement yang digunakan untuk memodifikasi User Account seperti ganti default tablespace atau profile, ganti password, dan juga unlock/lock Account pada User. Perintah `ALTER USER` akan berpengaruh pada session kedepan atau pada saat logout dan login kembali.
 
-description...
+Untuk melakukan memodifikasi user setting, account yang digunakan harus memiliki  `ALTER USER` privileges. Untuk implementasinya seperti berikut:
 
-Materi: 
+1. Locking user account
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+    {% gist page.gist "018b-ddl-alter-user-locked.sql" %}
+
+2. Merubah password & account unlock
+
+    {% gist page.gist "018b-ddl-alter-user-change-password.sql" %}
+
+3. Set password never expired
+
+    {% gist page.gist "018b-ddl-alter-user-password-never-expired.sql" %}
+
+4. Merubah Tablespace Quota
+
+    {% gist page.gist "018b-ddl-alter-user-default-tablespace.sql" %}
