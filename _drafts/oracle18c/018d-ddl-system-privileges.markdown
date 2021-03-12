@@ -6,7 +6,7 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/en/database/oracle/oracle-database/21/dbseg/configuring-privilege-and-role-authorization.html#GUID-6F401301-B5EA-482E-9615-21FD840CAF60
+- https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/configuring-privilege-and-role-authorization.html#GUID-6F401301-B5EA-482E-9615-21FD840CAF60
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/

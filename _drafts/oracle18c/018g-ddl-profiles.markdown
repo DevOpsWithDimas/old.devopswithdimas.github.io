@@ -6,7 +6,7 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/en/database/oracle/oracle-database/21/dbseg/managing-security-for-oracle-database-users.html#GUID-BB24B5D4-096E-4448-BC0F-4B126515220A
+- https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/managing-security-for-oracle-database-users.html#GUID-BB24B5D4-096E-4448-BC0F-4B126515220A
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/018g-profiles
