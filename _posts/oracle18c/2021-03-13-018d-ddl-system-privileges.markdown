@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "DDL - System Privileges"
+date: 2021-03-13T01:43:29+07:00
 lang: oracle18c
 categories:
 - RDBMS
