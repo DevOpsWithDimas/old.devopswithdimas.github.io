@@ -6,7 +6,7 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/en/database/oracle/oracle-database/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/21/dbseg/part_6.html
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/018h-audit

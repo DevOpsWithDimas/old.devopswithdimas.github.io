@@ -6,7 +6,7 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/en/database/oracle/oracle-database/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/21/dbseg/configuring-privilege-and-role-authorization.html#GUID-8AB43A10-FD9E-4B08-9C23-71C5A15DE1FC
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/018e-ddl-object-privileges
