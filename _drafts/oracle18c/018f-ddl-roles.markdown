@@ -9,20 +9,204 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/configuring-privilege-and-role-authorization.html#GUID-BB7E4BCA-C1EE-4614-BF36-5D9BFC3BC16E
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/
+image_path: /resources/posts/oracle12c/018f-ddl-roles
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Sebuah User Role yaitu kelompok dari privileges yang di terapkan ke user. Hal ini bisa mempermudah jika memiliki banyak user yang memiliki kesamaan privileges.
 
-description...
+## Functionality of Roles
 
-Materi: 
+Roles sangat berguna untuk mempercepat dan mempermudah memberikan hak akses kepada sebuah user atau kebeberapa user. berikut adalah kegunaan dari Roles:
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Suatu role bisa digunakan untuk system atau object privileges.
+2. Role bisa di terapkan kepada user/schema database
+3. Suatu role bisa di granted ke role lainnya, tetepi tidak bisa di terapkan ke role diri sendiri karena akan menyebabkan circular dependency.
+
+## Advantages using User Roles
+
+Keutungan menggunakan User Roles, diantaranya:
+
+1. Mengurangi administration privilages
+2. Dynamic privilages management
+
+## Oracle Database Predefined Roles
+
+Oracle Database juga telah menyediakan beberapa role yang predefined seperti:
+
+1. `AUDIT_ADMIN`. Digunakan untuk memberikan hak akses kepada user untuk melakukan monitoring database activity
+2. `CONNECT`. Digunakan untuk memberikan hak akses kepada user untuk bisa logged in ke system database
+3. `DBA`. `CDB_DBA` dan `PDB_DBA`, digunakan untuk memberikan user tersebut hak aksel level administration
+4. `IMP_FULL_DATABASE`, `EXP_FULL_DATABASE`. digunakan untuk memberikan user tersebut hak akses melakukan import dan export database
+5. `RESOURCES`. digunakan untuk memberikan hak akses seperti `CREATE CLUSTER`, `CREATE INDEXTYPE`, `CREATE OPERATOR`, `CREATE PROCEDURE`, `CREATE SEQUENCE`, `CREATE TABLE`, `CREATE TRIGGER`, and `CREATE TYPE`
+
+Dan masih banyak lagi, silahkan baca [disini](https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/configuring-privilege-and-role-authorization.html#GUID-A5B26A03-32CF-4F5D-A6BE-F2452AD8CB8A__G2199949)
+
+Menggunakan predefined role ke user:
+
+{% gist page.gist "018f-ddl-roles-predefined.sql" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```sql
+bash> sqlplus system/passwordnyaOracle18@XEPDB1
+
+SQL*Plus: Release 18.0.0.0.0 - Production on Sat Mar 13 13:20:21 2021
+Version 18.4.0.0.0
+
+Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+Last Successful login time: Sat Mar 13 2021 13:19:22 +00:00
+
+Connected to:
+Oracle Database 18c Express Edition Release 18.0.0.0.0 - Production
+Version 18.4.0.0.0
+
+SQL> create user sales
+    identified by sales2018
+    default tablespace users
+    quota 10 m on users
+    account unlock;
+
+User created.
+
+SQL> grant connect, resource, exp_full_database
+    to sales;
+
+Grant succeeded.
+
+SQL> select GRANTEE, GRANTED_ROLE, DEFAULT_ROLE
+from DBA_ROLE_PRIVS
+WHERE GRANTEE = 'SALES';
+
+GRANTEE    GRANTED_ROLE         DEF
+---------- -------------------- ---
+SALES      RESOURCE             YES
+SALES      CONNECT              YES
+SALES      EXP_FULL_DATABASE    YES
+
+SQL> conn sales/sales2018@XEPDB1
+Connected.
+
+SQL> create table test_table(
+    id varchar2(64) not null primary key,
+    nama varchar2(100)
+);
+
+Table created.
+
+SQL>
+```
+
+## Creation of Roles
+
+Untuk membuat role, membutuhkan `CREATE ROLE` pada system privileges-nya. Setelah role terbuat kita bisa assign ke user tertentu, sebagai contoh sebagai berikut:
+
+{% gist page.gist "018f-ddl-roles-create.sql" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```sql
+bash> sqlplus system/passwordnyaOracle18@XEPDB1
+
+SQL*Plus: Release 18.0.0.0.0 - Production on Sat Mar 13 13:20:21 2021
+Version 18.4.0.0.0
+
+Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+Last Successful login time: Sat Mar 13 2021 13:19:22 +00:00
+
+Connected to:
+Oracle Database 18c Express Edition Release 18.0.0.0.0 - Production
+Version 18.4.0.0.0
+
+SQL> create role app_developer NOT IDENTIFIED;
+
+Role created.
+
+SQL> grant connect, resource, exp_full_database, imp_full_database
+to app_developer;
+
+Grant succeeded.
+
+SQL> create user offices
+    identified by project2018
+    default tablespace users
+    quota 10 m on users
+    account unlock;
+
+User created.
+
+SQL> grant app_developer
+    to offices;
+
+Grant succeeded.
+```
+
+## Informasi privileges dalam Roles
+
+Untuk menampilkan informasi privileges dalam suatu roles, berikut contohnya
+
+{% gist page.gist "018f-ddl-roles-info.sql" %}
+
+Jika di jalankan, maka hasilnya seperti berikut:
+
+```sql
+SQL> select ROLE_ID, PASSWORD_REQUIRED, AUTHENTICATION_TYPE, ORACLE_MAINTAINED
+from DBA_ROLES
+where ROLE IN ('APP_DEVELOPER')
+ORDER BY ROLE;
+
+   ROLE_ID PASSWORD AUTHENTICAT O
+---------- -------- ----------- -
+       116 NO       NONE        N
+
+SQL> select GRANTEE, GRANTED_ROLE, DEFAULT_ROLE
+from DBA_ROLE_PRIVS
+WHERE GRANTEE = 'OFFICES';
+
+GRANTEE              GRANTED_ROLE         DEF
+-------------------- -------------------- ---
+OFFICES              APP_DEVELOPER        YES
+
+SQL> select GRANTED_ROLE, ADMIN_OPTION, DEFAULT_ROLE
+from DBA_ROLE_PRIVS
+where GRANTEE in ('APP_DEVELOPER');
+
+GRANTED_ROLE         ADM DEF
+-------------------- --- ---
+CONNECT              NO  YES
+IMP_FULL_DATABASE    NO  YES
+RESOURCE             NO  YES
+EXP_FULL_DATABASE    NO  YES
+
+SQL> select ROLE, PRIVILEGE
+from ROLE_SYS_PRIVS
+where ROLE in (select GRANTED_ROLE
+               from DBA_ROLE_PRIVS
+               where GRANTEE in ('APP_DEVELOPER'));
+
+ROLE                           PRIVILEGE
+------------------------------ ----------------------------------------
+CONNECT                        SET CONTAINER
+CONNECT                        CREATE SESSION
+IMP_FULL_DATABASE              ADMINISTER SQL MANAGEMENT OBJECT
+IMP_FULL_DATABASE              CREATE ANY SQL PROFILE
+IMP_FULL_DATABASE              ALTER PROFILE
+IMP_FULL_DATABASE              DROP ANY PROCEDURE
+
+105 rows selected.
+```
+
+## `REVOKE` role dari User
+
+Untuk mencabut role dari user, kita bisa menggunakan perintah seperti berikut:
+
+{% gist page.gist "018f-ddl-roles-revoke.sql" %}
+
+## Menghapus role
+
+Untuk menghapus role, kita bisa menggunakan perintah seperti berikut:
+
+{% gist page.gist "018f-ddl-roles-drop.sql" %}
