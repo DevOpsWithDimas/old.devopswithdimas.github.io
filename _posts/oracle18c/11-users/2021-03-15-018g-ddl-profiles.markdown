@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "DDL - Managing Resource & Password dengan Profiles"
+date: 2021-03-15T08:47:39+07:00
 lang: oracle18c
 categories:
 - RDBMS
@@ -274,11 +275,17 @@ ERROR:
 ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit
 ```
 
+## Merubah profile
+
+Untuk melakukan perubahan property dari profile, kita bisa menggunakan dengan perintah `ALTER PROFILE` seperti berikut:
+
+{% gist page.gist "018g-profile-alter-profile.sql" %}
+
 ## Menggunakan profile yang sudah ada
 
 Untuk mengunakan profile yang sudah ada, kita bisa menggunakan perintah `ALTER USER` seperti berikut:
 
-{% gist page.gist "018g-profile-alter.sql" %}
+{% gist page.gist "018g-profile-alter-user.sql" %}
 
 Jika di jalankan, maka hasilnya seperti berikut:
 
