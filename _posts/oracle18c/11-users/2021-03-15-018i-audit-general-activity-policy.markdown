@@ -50,6 +50,13 @@ noaudit POLICY {policy_name}
     [WHENEVER [NOT] SUCCESSFUL];
 {% endhighlight %}
 
+Untuk melihat bahwa, `audit policy` telah active kita bisa check di Static Data Dictionary View `AUDIT_UNIFIED_ENABLED_POLICIES`
+
+{% highlight sql %}
+select *
+from AUDIT_UNIFIED_ENABLED_POLICIES;
+{% endhighlight %}
+
 ## Audit Roles
 
 Untuk melakukan tracking pada role, kita bisa menggunakan audit policy seperti berikut:
