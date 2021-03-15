@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Auditing Activities with Unified Audit Policies"
+date: 2021-03-15T21:31:22+07:00
 lang: oracle18c
 categories:
 - RDBMS
