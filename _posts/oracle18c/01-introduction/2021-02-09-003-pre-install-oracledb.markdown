@@ -21,11 +21,12 @@ Untuk keberhasilan belajar, jadi temen-temen diharapkan untuk install Oracle Dat
 
 ## Hardware Requirement
 
-Berikut adalah spesifikasi minimum:
+Berikut adalah spesifikasi Minimum:
 
-- RAM: `2Gb`
-- CPU: `2 core 2 thread`
-- Storage: `12Gb`
+- RAM: up to `2Gb`
+- CPU: up to `2 core 2 thread`
+- Storage: up to`12Gb`
+- Pluggable Database: up to `3`
 
 ## Operation System
 

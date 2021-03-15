@@ -1,0 +1,44 @@
+---
+layout: post
+title: "Monitoring Database Activity dengan Audit"
+lang: oracle18c
+categories:
+- RDBMS
+- Oracle18c
+refs: 
+- https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/part_6.html
+youtube: 
+comments: true
+image_path: /resources/posts/oracle12c/018h-audit
+gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
+downloads: []
+---
+
+Auditing yaitu Recording & Monitoring yang dilakukan oleh user dan non-database user. Basicly dengan audit kita bisa melakukan tracking SQL Statement yang di execute baik yang statusnya Success maupun Failed.
+
+Dari Oracle 12c, Audition enabled by default. Semua audit record di tulis ke `UNIFIED_AUDIT_TRAIL` view dalam `AUDSYS` schema dan `SYSAUX` Tablespace. 
+
+## Why Is Auditing Used?
+
+Beberapa manfaat dari system audit, diantaranya:
+
+1. Semua action yang dilakukan bisa di pertanggung jawabkan kebenarannya. sebagai contoh melakukan perubahan data, menghapus data dan lain-lain.
+2. Pencegahan supaya tidak ada account penyusup (interuders)
+3. Auditor mengetahui user account yang digunakan apakah sesuai dengan Authorization (roles)
+4. Memantau (Monitoring) dan mengumpulkan data (gather data) pada spesifik database activity, sebagai contoh melakukan tuning terkait performa database tersebut.
+5. Mendeteksi masalah dengan authorization atau access control pada user account.
+
+## Selecting an Auditing Type
+
+Ada beberapa method dalam system audit:
+
+1. Auditing SQL Statement, Privileges, and Other General Activities
+2. Auditing Commonly Used Security-Relevant Activities
+3. Auditing Sepcifi, Fine-Grained Activities
+
+## Who Can Perform Auditing?
+
+Oracle Database memiliki 2 roles untuk user yang bisa menggunakan audition yaitu `AUDIT_ADMIN` dan `AUDIT_VIEWER`
+
+1. **Audit Admin**, digunakan untuk membuat unified dan fine-grained audit prolicies, meng-enabled, disabled, archive, dan juga purge audit policies serta melihat record audit.
+2. **Audit Viewer**, hanya bisa melihat record audit saja
