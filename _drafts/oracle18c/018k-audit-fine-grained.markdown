@@ -6,7 +6,7 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/en/database/oracle/oracle-database/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/configuring-audit-policies.html#GUID-B706FF6F-13A6-4944-AFCB-29971F5076FD
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/018k-audit-fine-grained

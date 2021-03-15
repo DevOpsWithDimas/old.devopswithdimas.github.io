@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "018j-audit-predefined-unified-policy"
+title: "Predefined Unified Audit Policies"
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/en/database/oracle/oracle-database/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/configuring-audit-policies.html#GUID-C43651C6-A35C-4EEF-BEA7-EADA408BFF67
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/018j-audit-predefined-unified-policy
