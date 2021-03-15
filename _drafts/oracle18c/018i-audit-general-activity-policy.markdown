@@ -15,14 +15,140 @@ downloads: []
 ---
 
 
-description...
+Activities yang kita bisa audit yaitu diantaranya
 
-Materi: 
+1. User Accounts, Roles, and Privileges
+2. Object Actions
+3. Application Context Value
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Berikut adalah syntax untuk membuat unified audit policy
+
+{% highlight sql %}
+CREATE AUDIT POLICY policy_name
+    { {privilege_audit_clause [action_audit_clause ] [role_audit_clause ]}
+        | { action_audit_clause  [role_audit_clause ] } 
+        | { role_audit_clause }
+     }        
+    [WHEN audit_condition EVALUATE PER {STATEMENT|SESSION|INSTANCE}] 
+    [CONTAINER = {CURRENT | ALL}];
+{% endhighlight %}
+
+Untuk mengaktifkan audit policy, gunakan perintah seperti berikut:
+
+{% highlight sql %}
+AUDIT POLICY {policy_name} 
+    [by { usernames | USERS with granted roles role_names }] 
+    [WHENEVER [NOT] SUCCESSFUL];
+{% endhighlight %}
+
+Untuk me-disabled audit policy, gunakan perintah berikut:
+
+{% highlight sql %}
+noaudit POLICY {policy_name} 
+    [by { usernames | USERS with granted roles role_names }] 
+    [WHENEVER [NOT] SUCCESSFUL];
+{% endhighlight %}
+
+## Audit Roles
+
+Untuk melakukan tracking pada role, kita bisa menggunakan audit policy seperti berikut:
+
+{% gist page.gist "018i-audit-roles.sql" %}
+
+jika di jalankan maka hasilnya seperti berikut:
+
+```sql
+BASH> sqlplus system/passwordnyaOracle18@XEPDB1
+
+SQL*Plus: Release 18.0.0.0.0 - Production on Mon Mar 15 13:02:29 2021
+Version 18.4.0.0.0
+
+Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+Last Successful login time: Mon Mar 15 2021 13:02:22 +00:00
+
+Connected to:
+Oracle Database 18c Express Edition Release 18.0.0.0.0 - Production
+Version 18.4.0.0.0
+
+SQL> CREATE AUDIT POLICY aud_roles
+    ROLES APP_DEVELOPER;  2
+
+Audit policy created.
+
+SQL> audit policy aud_roles;
+
+Audit succeeded.
+
+SQL> grant connect to app_developer;
+
+Grant succeeded.
+
+SQL> select OS_USERNAME, CLIENT_PROGRAM_NAME, ACTION_NAME, UNIFIED_AUDIT_POLICIES, SQL_TEXT
+from UNIFIED_AUDIT_TRAIL
+where DBUSERNAME = 'SYSTEM' and ACTION_NAME in ('GRANT', 'REVOKE')
+order by EVENT_TIMESTAMP desc;
+
+OS_USERN CLIENT_PRO ACTION_NAME          UNIFIED_AUDIT_POLICI SQL_TEXT
+-------- ---------- -------------------- -------------------- ------------------------------
+dimasm93 DataGrip   GRANT                ORA_SECURECONFIG     grant connect to app_developer
+```
+
+## Auditing Object Action
+
+Audit object action yaitu tracking object pada database seperti table, view, sequances dan lain-lain, Contoh penggunaanya jika mau track update statement pada table `hr.employees` seperti berikut:
+
+{% gist page.gist "018i-audit-object-action.sql" %}
+
+Jika di jalan maka hasilnya seperti berikut:
+
+```sql
+BASH> sqlplus system/passwordnyaOracle18@XEPDB1
+
+SQL*Plus: Release 18.0.0.0.0 - Production on Mon Mar 15 13:02:29 2021
+Version 18.4.0.0.0
+
+Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+Last Successful login time: Mon Mar 15 2021 13:02:22 +00:00
+
+Connected to:
+Oracle Database 18c Express Edition Release 18.0.0.0.0 - Production
+Version 18.4.0.0.0
+
+SQL> conn offices/project2018@XEPDB1
+Connected.
+
+SQL> update hr.employees set
+commission_pct = 0.1
+where employee_id = 100;
+
+1 row updated.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select employee_id, commission_pct
+  2  from hr.employees
+  3  where employee_id = 100;
+
+EMPLOYEE_ID COMMISSION_PCT
+----------- --------------
+        100             .1
+
+SQL> conn system/passwordnyaOracle18@XEPDB1
+Connected.
+
+SQL> select OS_USERNAME, ACTION_NAME, UNIFIED_AUDIT_POLICIES, SQL_TEXT, OBJECT_NAME, OBJECT_SCHEMA
+from UNIFIED_AUDIT_TRAIL
+where lower(UNIFIED_AUDIT_POLICIES) in ('aud_update_hr_employees')
+order by EVENT_TIMESTAMP desc;
+
++-----------+-----------+-----------------------+--------------------------+-----------+----------+
+|OS_USERNAME|ACTION_NAME|UNIFIED_AUDIT_POLICIES |SQL_TEXT                  |OBJECT_NAME|OBJ_SCHEMA|
++-----------+-----------+-----------------------+--------------------------+-----------+----------+
+|root       |UPDATE     |AUD_UPDATE_HR_EMPLOYEES|update hr.employees set   |EMPLOYEES  |HR        |
+|           |           |                       |commission_pct = 0.1      |           |          |
+|           |           |                       |where employee_id = 100   |           |          |
+```
