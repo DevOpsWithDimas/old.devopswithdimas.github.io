@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "018i-audit-general-activity"
+title: "Auditing Activities with Unified Audit Policies"
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/en/database/oracle/oracle-database/index.html
+- https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/configuring-audit-policies.html#GUID-A215CCAF-4AFF-448A-909C-736EBDED5A8A
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/018i-audit-general-activity
