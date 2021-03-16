@@ -45,3 +45,57 @@ Audit `ORA_DATABASE_PARAMETER` melakukan tracking terhadap perubahan parameter d
 Audit `ORA_ACCOUNT_MGMT` melakukan tracking terhadap user management seperti membuat user, alter user, drop user, grant privileges dan lain-lain. Berikut adalah scriptnya:
 
 {% gist page.gist "018j-audit-user-privileges-management.sql" %}
+
+Berikut adalah object Unified Predefined Policy yang ada di Oracle 18c:
+
+{% gist page.gist "018j-audit-predefined-select.sql" %}
+
+Berikut hasilnya:
+
+```sql
+-- login as adminstration oracle user
+bash-4.2# su oracle
+[oracle@b0fc5cd60df4 /]$ sqlplus / as sysdba
+
+SQL*Plus: Release 18.0.0.0.0 - Production on Tue Mar 16 12:56:43 2021
+Version 18.4.0.0.0
+
+Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+Connected to:
+Oracle Database 18c Express Edition Release 18.0.0.0.0 - Production
+Version 18.4.0.0.0
+
+SQL> select distinct POLICY_NAME
+from AUDIT_UNIFIED_POLICIES
+where POLICY_NAME like 'ORA%';
+
+POLICY_NAME
+--------------------------------------------------------------------------------
+ORA_DV_AUDPOL2
+ORA_CIS_RECOMMENDATIONS
+ORA_ACCOUNT_MGMT
+ORA_DATABASE_PARAMETER
+ORA_LOGON_FAILURES
+ORA_DV_AUDPOL
+ORA_SECURECONFIG
+ORA_RAS_SESSION_MGMT
+ORA_RAS_POLICY_MGMT
+
+9 rows selected.
+
+SQL>
+
+SQL> col user_name format a10;
+SQL> col policy_name format a25;
+SQL> col entity_name format a20;
+
+SQL> select USER_NAME, POLICY_NAME, ENABLED_OPT, ENTITY_NAME, ENTITY_TYPE
+from AUDIT_UNIFIED_ENABLED_POLICIES
+where POLICY_NAME like 'ORA%';
+
+USER_NAME  POLICY_NAME               ENABLED ENTITY_NAME          ENTITY_
+---------- ------------------------- ------- -------------------- -------
+ALL USERS  ORA_SECURECONFIG          BY      ALL USERS            USER
+ALL USERS  ORA_LOGON_FAILURES        BY      ALL USERS            USER
+```
