@@ -57,51 +57,6 @@ select *
 from AUDIT_UNIFIED_ENABLED_POLICIES;
 {% endhighlight %}
 
-## Audit Roles
-
-Untuk melakukan tracking pada role, kita bisa menggunakan audit policy seperti berikut:
-
-{% gist page.gist "018i-audit-roles.sql" %}
-
-jika di jalankan maka hasilnya seperti berikut:
-
-```sql
-BASH> sqlplus system/passwordnyaOracle18@XEPDB1
-
-SQL*Plus: Release 18.0.0.0.0 - Production on Mon Mar 15 13:02:29 2021
-Version 18.4.0.0.0
-
-Copyright (c) 1982, 2018, Oracle.  All rights reserved.
-
-Last Successful login time: Mon Mar 15 2021 13:02:22 +00:00
-
-Connected to:
-Oracle Database 18c Express Edition Release 18.0.0.0.0 - Production
-Version 18.4.0.0.0
-
-SQL> CREATE AUDIT POLICY aud_roles
-    ROLES APP_DEVELOPER;  2
-
-Audit policy created.
-
-SQL> audit policy aud_roles;
-
-Audit succeeded.
-
-SQL> grant connect to app_developer;
-
-Grant succeeded.
-
-SQL> select OS_USERNAME, CLIENT_PROGRAM_NAME, ACTION_NAME, UNIFIED_AUDIT_POLICIES, SQL_TEXT
-from UNIFIED_AUDIT_TRAIL
-where DBUSERNAME = 'SYSTEM' and ACTION_NAME in ('GRANT', 'REVOKE')
-order by EVENT_TIMESTAMP desc;
-
-OS_USERN CLIENT_PRO ACTION_NAME          UNIFIED_AUDIT_POLICI SQL_TEXT
--------- ---------- -------------------- -------------------- ------------------------------
-dimasm93 DataGrip   GRANT                ORA_SECURECONFIG     grant connect to app_developer
-```
-
 ## Auditing Object Action
 
 Audit object action yaitu tracking object pada database seperti table, view, sequances dan lain-lain, Contoh penggunaanya jika mau track update statement pada table `hr.employees` seperti berikut:
@@ -111,7 +66,7 @@ Audit object action yaitu tracking object pada database seperti table, view, seq
 Jika di jalan maka hasilnya seperti berikut:
 
 ```sql
-BASH> sqlplus system/passwordnyaOracle18@XEPDB1
+Bash> sqlplus system/passwordnyaOracle18@XEPDB1
 
 SQL*Plus: Release 18.0.0.0.0 - Production on Mon Mar 15 13:02:29 2021
 Version 18.4.0.0.0
