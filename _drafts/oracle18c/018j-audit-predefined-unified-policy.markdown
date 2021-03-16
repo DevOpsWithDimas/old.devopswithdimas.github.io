@@ -14,15 +14,34 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Oracle Database, menyediakan beberapa unified audit policies tentang User Security Settings, diantaranya
 
-description...
+1. Logon Failures
+2. Secure Options
+3. Oracle Database Parameter Changes
+4. User Account and Privilege Management
+5. dan Masih banyak lagi... silahkan baca [disini](https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/configuring-audit-policies.html#GUID-C43651C6-A35C-4EEF-BEA7-EADA408BFF67)
 
-Materi: 
+## Logon Failures Predefined Unified Audit Policy
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Audit `ORA_LOGON_FAILURES` melakukan tracking terhadap user yang mencoba login tetapi gagal authentication. Untuk Oracle Database 18c secara default `enabled` tetapi di versi sebelumnya belum aktif. Untuk Mengaktifkannya menggunakan perintah berikut:
+
+{% gist page.gist "018j-audit-logon-enabled.sql" %}
+
+## Secure Options Predefined Unified Audit Policy
+
+Audit `ORA_SECURECONFIG` melakukan tracking terhadap perubahan user privileges, roles, dan lain-lain. Untuk Oracle Database 18c secara default statusnya `enabled` tetapi di versi sebelumnya ada beberapa yang sudah aktif dan ada juga yang belum. Berikut adalah scriptnya:
+
+{% gist page.gist "018j-audit-secure-option.sql" %}
+
+## Oracle Database Parameter Changes Predefined Unified Audit Policy
+
+Audit `ORA_DATABASE_PARAMETER` melakukan tracking terhadap perubahan parameter database, perubahan database
+
+{% gist page.gist "018j-audit-database-parameter-changes.sql" %}
+
+## User Account and Privilege Management Predefined Unified Audit Policy
+
+Audit `ORA_ACCOUNT_MGMT` melakukan tracking terhadap user management seperti membuat user, alter user, drop user, grant privileges dan lain-lain. Berikut adalah scriptnya:
+
+{% gist page.gist "018j-audit-user-privileges-management.sql" %}
