@@ -55,7 +55,11 @@ Basicly kita bisa menghapus audit trail dengan beberapa cara seperti:
 
 Kita akan bahas pake cara manual dulu ya. Jadi berikut adalah perintahnya:
 
-{% gist page.gist "018k-manage-audit-purge.sql" %}
+{% gist page.gist "018k-manage-audit-purge-cdb.sql" %}
+
+atau
+
+{% gist page.gist "018k-manage-audit-purge-pdb.sql" %}
 
 jika di jalankan maka hasilnya seperti berikut:
 
