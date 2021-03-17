@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "018k-audit-fine-grained"
+title: "Auditing Specific Activities with Fine-Grained Auditing"
 lang: oracle18c
 categories:
 - RDBMS
