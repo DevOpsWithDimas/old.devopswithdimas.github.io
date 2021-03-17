@@ -99,4 +99,47 @@ USER_NAME  POLICY_NAME               ENABLED ENTITY_NAME          ENTITY_
 ---------- ------------------------- ------- -------------------- -------
 ALL USERS  ORA_SECURECONFIG          BY      ALL USERS            USER
 ALL USERS  ORA_LOGON_FAILURES        BY      ALL USERS            USER
+
+SQL> audit policy ORA_ACCOUNT_MGMT;
+
+SQL> select USER_NAME, POLICY_NAME
+from AUDIT_UNIFIED_ENABLED_POLICIES
+where POLICY_NAME like 'ORA%';  2    3
+
+USER_NAME            POLICY_NAME
+-------------------- ------------------------------
+ALL USERS            ORA_LOGON_FAILURES
+ALL USERS            ORA_ACCOUNT_MGMT
+ALL USERS            ORA_SECURECONFIG
+
+3 rows selected.
+
+SQL> SET LONG 20000 LONGCHUNKSIZE 20000 PAGESIZE 0 LINESIZE 1000 FEEDBACK OFF VERIFY OFF TRIMSPOOL ON
+SQL> SET PAGESIZE 14 LINESIZE 100 FEEDBACK ON VERIFY ON
+SQL> col os_username format a20
+SQL> col object_name format a20
+SQL> col dbusername format a15
+SQL> col client_program_name format a20
+SQL> col action_name format a10
+SQL> col sql_text format a30
+
+
+SQL> select to_char(EVENT_TIMESTAMP, 'dd/MM/yy HH:mm') as executed,
+       DBUSERNAME,
+       ACTION_NAME,
+       SQL_TEXT,
+       OBJECT_NAME
+from UNIFIED_AUDIT_TRAIL
+where cast(EVENT_TIMESTAMP as DATE) between current_date - 1 and current_date
+order by EVENT_TIMESTAMP desc
+    fetch next 10 ROWS ONLY;
+
+EXECUTED       DBUSERNAME      ACTION_NAM SQL_TEXT                       OBJECT_NAME
+-------------- --------------- ---------- ------------------------------ --------------------
+17/03/21 05:03 SYS             ALTER USER alter user hr identified by *  HR
+                                          account unlock
+17/03/21 05:03 SYSTEM          LOGON
+17/03/21 05:03 SYS             LOGON
+
+10 rows selected.
 ```
