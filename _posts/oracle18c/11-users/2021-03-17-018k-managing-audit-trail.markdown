@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Administering the Audit Trail"
+date: 2021-03-17T15:34:03+07:00
 lang: oracle18c
 categories:
 - RDBMS
