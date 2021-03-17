@@ -85,8 +85,6 @@ ORA_RAS_POLICY_MGMT
 
 9 rows selected.
 
-SQL>
-
 SQL> col user_name format a10;
 SQL> col policy_name format a25;
 SQL> col entity_name format a20;
@@ -104,7 +102,7 @@ SQL> audit policy ORA_ACCOUNT_MGMT;
 
 SQL> select USER_NAME, POLICY_NAME
 from AUDIT_UNIFIED_ENABLED_POLICIES
-where POLICY_NAME like 'ORA%';  2    3
+where POLICY_NAME like 'ORA%';
 
 USER_NAME            POLICY_NAME
 -------------------- ------------------------------
