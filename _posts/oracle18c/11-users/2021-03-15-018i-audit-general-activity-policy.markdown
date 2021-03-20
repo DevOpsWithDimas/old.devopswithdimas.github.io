@@ -79,6 +79,13 @@ Connected to:
 Oracle Database 18c Express Edition Release 18.0.0.0.0 - Production
 Version 18.4.0.0.0
 
+SQL> create audit policy aud_update_hr_employees
+actions update on hr.EMPLOYEES,
+delete on hr.EMPLOYEES;
+
+SQL> audit policy aud_update_hr_employees
+by TOKO_ONLINE, SALES;
+
 SQL> conn offices/project2018@XEPDB1
 Connected.
 
