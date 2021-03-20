@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Auditing Specific Activities with Fine-Grained Auditing"
+date: 2021-03-20T17:24:21+07:00
 lang: oracle18c
 categories:
 - RDBMS
