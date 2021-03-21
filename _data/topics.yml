@@ -200,6 +200,25 @@
   coming_soon: true
   visible: false
 
+- name: Database Administrator - Oracle 18c
+  url: dba-oracle18c
+  icon: "devicons devicons-java"
+  language: Database
+  color: blue lighten-5
+  tags:
+  - Oracle
+  - Database
+  - DBA
+  descriptions:
+    Temen-teman akan belajar Relational Database Management System (RDBMS) dengan Oracle yang sifatnya Big Data.
+  messages:
+  publish: 2021-02-08T13:26:00+07:00
+  github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
+  youtube:
+  udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
+  coming_soon: true
+  visible: false
+
 - name: Object Oriented - Oracle 18c
   url: ordb-oracle18c
   icon: "devicons devicons-java"

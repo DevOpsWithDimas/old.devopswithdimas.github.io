@@ -4,6 +4,7 @@
   courses: 
   - oracle18c
   - plsql-oracle18c
+  - dba-oracle18c
   - ordb-oracle18c
 
 - name: Java Web Developer (Fundamental)

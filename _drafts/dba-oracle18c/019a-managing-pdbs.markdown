@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Managing PDBs dan Application Containers"
-lang: oracle18c
+lang: dba-oracle18c
 categories:
 - RDBMS
 - Oracle18c
