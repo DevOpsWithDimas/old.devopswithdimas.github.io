@@ -14,16 +14,18 @@
                     <li>
                         {% assign posts = site.posts | where: 'lang', page.url | sort: 'date' %}
                         {% assign post = posts.first %}
+                        {% assign page_title = page.name | truncate: 25 %}
                         {% if post %}
                             <a href="{{ post.url | prepend: site.baseurl }}">
                                 <i class="material-icons">pageview</i>
                                 <span class="new badge" data-badge-caption="materi">{{ posts | size }}</span>
-                                {{ page.name }}
+                                {{ page_title }}
                             </a>
                         {% else %}
                             <a href="#!">
                                 <i class="material-icons">pageview</i>
-                                <span class="new badge" data-badge-caption="materi"> {{ posts | size }}</span> {{ page.name }}
+                                <span class="new badge" data-badge-caption="materi"> {{ posts | size }}</span> 
+                                {{ page_title }}
                             </a>
                         {% endif %}
                     </li>
