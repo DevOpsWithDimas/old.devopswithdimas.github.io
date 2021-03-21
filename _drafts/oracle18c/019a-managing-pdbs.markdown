@@ -161,11 +161,17 @@ Version 18.4.0.0.0
 SQL> select sys_context('userenv', 'con_name')
 from dual;
 
-+---------------------------------+
-|SYS_CONTEXT('USERENV','CON_NAME')|
-+---------------------------------+
-|ECOMMERCE_PDB                    |
-+---------------------------------+
+SYS_CONTEXT('USERENV','CON_NAME')
+---------------------------------
+ECOMMERCE_PDB        
+
+SQL> create user catalog identified by catalog2021
+default tablespace data
+quota 10 m on data
+account unlock;
+
+SQL> grant connect, resource, RESTRICTED SESSION 
+  to catalog;
 ```
 
 Penjelasan dari membuat plugedable database diatabase, seperti berikut:
