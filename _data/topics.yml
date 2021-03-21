@@ -147,7 +147,7 @@
   coming_soon: true
   visible: false
 
-- name: Oracle 18c
+- name: SQL Fundamental - Oracle 18c
   url: oracle18c
   icon: "devicons devicons-java"
   language: Database
@@ -162,3 +162,38 @@
   github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
   coming_soon: false
   visible: true
+
+- name: PL/SQL - Oracle 18c
+  url: plsql-oracle18c
+  icon: "devicons devicons-java"
+  language: Database
+  color: blue lighten-5
+  tags:
+  - Oracle
+  - Database
+  - PL-SQL
+  descriptions:
+    Temen-teman akan belajar Relational Database Management System (RDBMS) dengan Oracle yang sifatnya Big Data.
+  messages:
+  publish: 2021-02-08T12:26:00+07:00
+  github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
+  coming_soon: true
+  visible: false
+
+- name: Object Oriented - Oracle 18c
+  url: ordb-oracle18c
+  icon: "devicons devicons-java"
+  language: Database
+  color: blue lighten-5
+  tags:
+  - Oracle
+  - Database
+  - PL-SQL
+  - Object-Orited
+  descriptions:
+    Temen-teman akan belajar Relational Database Management System (RDBMS) dengan Oracle yang sifatnya Big Data.
+  messages:
+  publish: 2021-02-08T13:26:00+07:00
+  github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
+  coming_soon: true
+  visible: false

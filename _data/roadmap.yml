@@ -2,8 +2,9 @@
   code: dba
   description: 
   courses: 
-  - psql
   - oracle18c
+  - plsql-oracle18c
+  - ordb-oracle18c
 
 - name: Java Web Developer (Fundamental)
   code: java-web-developer
