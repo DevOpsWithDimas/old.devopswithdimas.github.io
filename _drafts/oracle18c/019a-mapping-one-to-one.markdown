@@ -1,12 +1,11 @@
 ---
 layout: post
-title: "018a-mapping-one-to-one"
+title: "Database Mapping One To One"
 lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
 youtube: 
 comments: true
 image_path: /resources/posts/oracle12c/019a-mapping-one-to-one

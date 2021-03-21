@@ -37,39 +37,47 @@ Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
     7. Filter data dengan perintah `WHERE`
     8. Logical Condition
     9. Sorting Data dengan `ORDER BY`
-6. SQL Function
+6. Expressions
+7. SQL Function
     1. Single Row Function
     2. Menglompokan data dengan `GROUP BY`
-7. Join Table
+8. Join Table
     1. Natural Join
     2. Inner Join
     3. Outer Join
     4. Self Join
-8. Subquery
-9. Manipulasi Data
+9. Subquery
+10. Manipulasi Data
     1. Data Manipulation Language
     2. Transaction Control Language
 <!--more-->
-10. Object dalam Oracle DB
+11. Object dalam Oracle DB
     1. Sequance
     2. View Table
-11. Indexing
+12. Indexing
     1. B-Tree Index
     2. Function Based Index
     3. Bitmap Index
     4. Drop Index
-11. Advanced Query
-    1. Menggabungkan data dengan `UNION`
-    2. Menggabungkan data dengan `MERGE`
-12. PL/SQL
-    1. Variables
-    2. Constanta
-    3. Functions
-    4. Flow Control
-    5. Cursor
-    6. Store Procedure
-    7. Trigger
 13. User/Schema Management
     1. User Management
     2. Privileges Management
     3. Role Management
+14. Monitoring Database Activity
+    1. Unified Audit Trail
+    2. Pre-defined Unified Audit Trail
+    3. Fine-grained Audit Trail
+15. Database Design
+    1. One To One Mapping
+    2. One To Many Mapping
+    3. Many To One Mapping
+    4. Many To Many Mapping
+    5. Parent Child Mapping (Self Join)
+    6. Partition Mapping
+    7. Inherintance Mapping
+16. Advanced Query
+    1. Menggabungkan data dengan `UNION`
+    2. Menggabungkan data dengan `MERGE`
+    3. Batch Insert
+    4. Pivot/Unpivot
+    5. Fungsi Analytics
