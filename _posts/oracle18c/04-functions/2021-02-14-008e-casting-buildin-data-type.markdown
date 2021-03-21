@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CAST.html#GUID-5A70235E-1209-4281-8521-B94497AAEF75
-youtube: https://www.youtube.com/watch?v=4uuJg9ZdvSc&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=36
+youtube: 4uuJg9ZdvSc
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

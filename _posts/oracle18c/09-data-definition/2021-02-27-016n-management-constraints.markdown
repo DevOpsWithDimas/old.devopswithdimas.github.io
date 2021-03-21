@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/constraint.html#GUID-1055EA97-BA6F-4764-A15F-1024FD5B6DFE
-youtube: https://www.youtube.com/watch?v=8Eq9Yj6Q7Pw&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=87
+youtube: 8Eq9Yj6Q7Pw
 comments: true
 image_path: /resources/posts/oracle12c/016n-disable-enable-constraints
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

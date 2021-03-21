@@ -9,7 +9,7 @@ categories:
 refs: 
 - https://franckpachot.medium.com/uuid-aka-guid-vs-oracle-sequence-number-ab11aa7dbfe7
 - https://oracle-base.com/articles/9i/uuid-9i
-youtube: https://www.youtube.com/watch?v=TqIrc32qXxU&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=91
+youtube: TqIrc32qXxU
 comments: true
 image_path: /resources/posts/oracle12c/016r-default-value-pk
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

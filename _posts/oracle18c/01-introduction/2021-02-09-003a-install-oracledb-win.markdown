@@ -10,7 +10,7 @@ refs:
 - https://docs.oracle.com/database/121/index.htm
 - https://docs.oracle.com/en/bigdata/index.html
 - https://www.oracle.com/database/technologies/appdev/xe.html
-youtube: https://www.youtube.com/watch?v=Fg54WPc3Oek&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=8
+youtube: Fg54WPc3Oek
 comments: true
 image_path: /resources/posts/oracle12c/003a-install-win
 gist: 

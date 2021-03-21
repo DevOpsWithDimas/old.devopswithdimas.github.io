@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/database/121/index.htm
-youtube: https://www.youtube.com/watch?v=UOgv3xDLqUI&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=55
+youtube: UOgv3xDLqUI
 comments: true
 image_path: /resources/posts/oracle12c/011f-subquery-exist-predicate
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-integrity.html#GUID-1C9665AD-A444-4AFB-984F-6385FCBEA64E
-youtube: https://www.youtube.com/watch?v=xGWqqWj3S5U&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=80
+youtube: xGWqqWj3S5U
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

@@ -9,7 +9,7 @@ categories:
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/img_text/row_limiting_clause.html
 - https://www.oracletutorial.com/oracle-basics/oracle-fetch/
-youtube: https://www.youtube.com/watch?v=6xbixjzTQlw&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=59
+youtube: 6xbixjzTQlw
 comments: true
 image_path: /resources/posts/oracle12c/013-fetch-offset
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

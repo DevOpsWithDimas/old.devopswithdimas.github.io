@@ -12,6 +12,8 @@
     Temen-temen akan dipandu untuk mulai belajar bahasa pemograman Java dari nol sampai mahir untuk membuat aplikasi Java, selain itu juga sedikit-demi-sedikit akan belajar algoritma seleksi dan perulangan dan yang terakhir temen-temen di akhir materi akan diberikan soal yang harus dikerjakan agar materi yang diberikan dapat diserap dengan baik.
   publish: 2017-10-15T20:50:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-java8
+  youtube:
+  udemy:
   coming_soon: false
   visible: true
 
@@ -29,6 +31,8 @@
     Temen-temen akan di pandu untuk menguasai perintah SQL dengan salah satu Relational Database Management System (RDBMS) yaitu dengan PostgreSQL. Dengan menggunakan Relational Database Management Sistem kita dengan mudah dapat melakukan baca-tulis data dengan mudah dan cepat tidak seperti menggunakan baca-tulis di file.
   publish: 2017-10-16T20:50:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-postgresql-query
+  youtube:
+  udemy:
   coming_soon: false
   visible: true
 
@@ -49,6 +53,8 @@
     Temen-temen diharapkan mampu dan memahami fitur jdbc seperti fungsi-fungsi statement, prepared-statement, result-set, batch prcessiong, transactional dan lain-lain.
   publish: 2017-10-23T20:50:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-jdbc-postgresql
+  youtube:
+  udemy:
   coming_soon: false
   visible: true
 
@@ -66,6 +72,8 @@
     Temen-temen diharapkan memahami dan mengimplementasikan pemograman Javascript di sebuah website yang teman-teman akan buat, sesuai dengan materi ini.
   publish: 2017-10-24T20:50:50+07:00
   github: http://repository.dimas-maryanto.com/youtube/bootcamp-2019/js-basic
+  youtube:
+  udemy:
   coming_soon: false
   visible: true
 
@@ -86,6 +94,8 @@
     Temen-temen diharapkan memahami konsep dan implementasi pemograman web dengan Java, seperti membuat page dengan jsp atau servlet, mengirimkan request, menerima request, dan lain-lain.
   publish: 2017-10-25T20:50:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-java-web
+  youtube:
+  udemy:
   coming_soon: false
   visible: true
 
@@ -106,6 +116,8 @@
     Temen-temen diharapkan mampu dan memahami fitur yang diberikan oleh ORM Hibernate seperti sebelumnya kita belajar JDBC yaitu CRUD, Transaction management, HQL, dan lain-lain.
   publish: 2017-10-26T20:59:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-orm-hibernate
+  youtube:
+  udemy:
   coming_soon: false
   visible: true
 
@@ -126,6 +138,8 @@
     Temen-temen diharapkan mampu membuat reporting dengan menggunakan JasperReport Studio
   publish: 2017-10-27T20:59:50+07:00
   github: 
+  youtube:
+  udemy:
   coming_soon: true
   visible: false
 
@@ -144,6 +158,8 @@
   messages:
   publish: 2017-10-28T20:50:50+07:00
   github: 
+  youtube:
+  udemy:
   coming_soon: true
   visible: false
 
@@ -160,6 +176,8 @@
   messages:
   publish: 2021-02-07T12:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
+  youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV
+  udemy:
   coming_soon: false
   visible: true
 
@@ -177,6 +195,8 @@
   messages:
   publish: 2021-02-08T12:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
+  youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvy6l51feh7ABmyyufPLnA6n
+  udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
   coming_soon: true
   visible: false
 
@@ -195,5 +215,7 @@
   messages:
   publish: 2021-02-08T13:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
+  youtube:
+  udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
   coming_soon: true
   visible: false

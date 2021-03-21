@@ -9,7 +9,7 @@ categories:
 refs: 
 - https://docs.oracle.com/database/121/index.htm
 - https://docs.oracle.com/en/bigdata/index.html
-youtube: https://www.youtube.com/watch?v=bAV4YzM7D4w&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=19
+youtube: bAV4YzM7D4w
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

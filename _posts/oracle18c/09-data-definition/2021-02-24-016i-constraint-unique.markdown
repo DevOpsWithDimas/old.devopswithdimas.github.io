@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-integrity.html#GUID-077C26A1-49C3-4E72-AE1D-7CEDD997917A
-youtube: https://www.youtube.com/watch?v=0W3UpXUyO5k&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=82
+youtube: 0W3UpXUyO5k
 comments: true
 image_path: /resources/posts/oracle12c/016i-constraint-unique
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

@@ -12,7 +12,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/admin/getting-started-with-database-administration.html#GUID-10287280-C2E4-4FB1-ABF9-993327419603
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/managing-security-for-oracle-database-users.html#GUID-CEF9151B-624C-452E-95CC-D930CDABE8D6
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/managing-security-for-oracle-database-users.html#GUID-BBBD9904-F2F3-442B-9AFC-8ACDD9A588D8
-youtube: 
+youtube: 5Hkq5fVKIZc
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

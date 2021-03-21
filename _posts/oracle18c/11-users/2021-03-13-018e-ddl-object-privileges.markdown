@@ -9,7 +9,7 @@ categories:
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/configuring-privilege-and-role-authorization.html#GUID-1592480B-9EFC-4C3F-B84F-F518A5B80CF9
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/sqlrf/GRANT.html#GUID-20B4E2C0-A7F8-4BC8-A5E8-BE61BDC41AC3__BGBCIIEG
-youtube: 
+youtube: fNpkoWwmEi4
 comments: true
 image_path: /resources/posts/oracle12c/018e-ddl-object-privileges
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

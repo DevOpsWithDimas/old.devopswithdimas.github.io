@@ -12,7 +12,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/managing-security-for-oracle-database-users.html#GUID-81D0494C-E838-4DD9-AC82-B56473F98D06
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/managing-security-for-oracle-database-users.html#GUID-E7CA1DB2-54E2-427D-A69A-BF53DA74FCE1
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/cncpt/logical-storage-structures.html#GUID-3502CA78-FBC9-4927-B455-0ECB22E53066
-youtube: 
+youtube: ggqK5JxqQ8s
 comments: true
 image_path: /resources/posts/oracle12c/018a-ddl-users
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

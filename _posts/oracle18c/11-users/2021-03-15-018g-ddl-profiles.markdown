@@ -10,7 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/managing-security-for-oracle-database-users.html#GUID-967DDBF5-0F22-411B-B291-96594CA0E646
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/managing-security-for-oracle-database-users.html#GUID-BB24B5D4-096E-4448-BC0F-4B126515220A
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/configuring-authentication.html#GUID-CF1A8C33-5342-4257-AE8F-CF0BA437F65C
-youtube: 
+youtube: 14Wok69W4ks
 comments: true
 image_path: /resources/posts/oracle12c/018g-profiles
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

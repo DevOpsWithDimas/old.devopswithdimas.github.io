@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-integrity.html#GUID-5AF9C206-0139-4506-96DE-F6AD1D41CD41
-youtube: https://www.youtube.com/watch?v=2lfj8T3FM0U&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=83
+youtube: 2lfj8T3FM0U
 comments: true
 image_path: /resources/posts/oracle12c/016j-constraint-check
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

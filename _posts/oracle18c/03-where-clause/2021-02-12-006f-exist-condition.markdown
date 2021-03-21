@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/EXISTS-Condition.html#GUID-20259A83-C42B-4E0D-8DF4-9A2A66ACA8E7
-youtube: https://www.youtube.com/watch?v=U_48PcoIhd0&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=27
+youtube: U_48PcoIhd0
 comments: true
 image_path: /resources/posts/oracle12c/006f-exist-condition
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

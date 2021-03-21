@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Single-Row-Functions.html#GUID-C4201DFA-90C5-46DA-B528-0B6D4E8C647A
-youtube: https://www.youtube.com/watch?v=R3C4VoDcIBo&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=37
+youtube: R3C4VoDcIBo
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

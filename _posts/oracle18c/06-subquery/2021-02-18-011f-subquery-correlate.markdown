@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Using-Subqueries.html#GUID-53A705B6-0358-4E2B-92ED-A83DE83DFD20
-youtube: https://www.youtube.com/watch?v=JKwIjV4bPlw&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=54
+youtube: JKwIjV4bPlw
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

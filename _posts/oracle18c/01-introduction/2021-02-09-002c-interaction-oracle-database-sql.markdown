@@ -9,7 +9,7 @@ categories:
 refs: 
 - https://docs.oracle.com/database/121/index.htm
 - https://docs.oracle.com/cd/E11882_01/appdev.112/e12137/getconn.htm#TDPJD127
-youtube: https://www.youtube.com/watch?v=3bCCqh4LXDo&list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV&index=6
+youtube: 3bCCqh4LXDo
 comments: true
 image_path: /resources/posts/oracle12c/
 gist: 
