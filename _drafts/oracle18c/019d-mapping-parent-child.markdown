@@ -14,7 +14,11 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Dalam perancangan tabel, suatu tabel bisa merujuk ke dirinya sendiri (parent child). Berikut adalah ilustrasinya:
+
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.jpg)
+
+Berdasarkan ERD tersebut, berikut adalah implementasi menggunakan Oracle Database:
 
 {% gist page.gist "019d-parentchild-mapping.sql" %}
 
