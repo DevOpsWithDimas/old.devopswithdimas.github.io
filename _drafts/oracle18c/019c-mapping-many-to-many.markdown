@@ -54,4 +54,28 @@ mbp13-touc Macbook Pro 13 inch  Personal Computer
 hbar       (Touchbar)
 
 SQL>
+
+SQL> col category_id format a5
+SQL> col category_name format a20
+SQL> col item_name format a30
+
+SQL> select to_char(c.id) as category_id,
+       c.nama        as category_name,
+       i.nama        as item_name
+from categories c
+         left join item_categories ic on c.id = ic.category_id
+         left join items i on ic.item_id = i.id
+order by category_id;
+
+CATEG CATEGORY_NAME        ITEM_NAME
+----- -------------------- ------------------------------
+10    Smartphone           iPhone 7 Plus
+10    Smartphone           Apple Watch 5th gen
+10    Smartphone           iPad Pro 11 inch
+20    Personal Computer    iPad Pro 11 inch
+20    Personal Computer    Macbook Pro 13 inch (Touchbar)
+21    Component Computer
+22    Accessories Computer
+
+7 rows selected.
 ```
