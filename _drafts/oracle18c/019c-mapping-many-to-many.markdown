@@ -14,7 +14,11 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Suatu Mapping dikatakan Many To Many Relationship yaitu dengan memiliki syarat cardinalitas dengan table yang saling merujuk menggunakan minilal 2 tabel master dan 1 table penghubung. Contohnya seperti pada ilustrasi seperti berikut: 
+
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.jpg)
+
+Berdasarkan ERD tersebut, berikut adalah implementasi menggunakan Oracle Database:
 
 {% gist page.gist "019c-manytomany-mapping.sql" %}
 
