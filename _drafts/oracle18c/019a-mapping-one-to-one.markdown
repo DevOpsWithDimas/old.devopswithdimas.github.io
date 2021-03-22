@@ -14,10 +14,19 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Dalam perancangan tabel **One-To-One Relationship** yaitu adalah salah satu dari jenis cardinality yang merujuk ke relationship diantara ke dua table. Contohnya seperti pada ERD seperti berikut:
+
+![erd]({{ page.image_path | prepend: site.baseurl }}/erd.jpg)
+
+Maka implementasi menggunakan Oracle Database Seperti Berikut:
 
 {% gist page.gist "019a-onetoone-mapping.sql" %}
 
-Jadi pada dasarnya one-to-one mapping ini, kita tidak bisa menggunakan `id` yang sudah ada pada tabel detail untuk digunakan lagi, Sebagai contoh seperti berikut:
+Jadi pada dasarnya one-to-one mapping ini, kita tidak bisa menggunakan `id` yang sudah ada pada tabel detail untuk digunakan lagi, Atau kalau di terjemahkan seperti berikut
+
+> Dalam satu row pada tabel `seller` hanya ada satu `alamat`, dan dalam satu `alamat` ada di satu row dalam tabel `seller`
+
+Sebagai contoh seperti berikut:
 
 ```sql
 sqlplus toko_online/toko_online@xepdb1

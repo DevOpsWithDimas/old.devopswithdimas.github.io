@@ -14,6 +14,8 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+![erd]({{ page.image_path | prepend: site.baseurl }}/erd.jpg)
+
 {% gist page.gist "019c-manytomany-mapping.sql" %}
 
 Jadi untuk Many To Many Relationship ini minimal harus memiliki 2 table master (`categories`, dan `items`) dan 1 tabel penghubung (`item_categories`), Jika kita check maka hasilnya seperti berikut:

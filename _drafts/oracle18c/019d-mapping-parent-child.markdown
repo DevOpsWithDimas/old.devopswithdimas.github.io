@@ -9,10 +9,12 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Hierarchical-Queries.html#GUID-0118DF1D-B9A9-41EB-8556-C6E7D6A5A84E
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/019e-mapping-parent-child
+image_path: /resources/posts/oracle12c/019d-parent-child
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
+
+![erd]({{ page.image_path | prepend: site.baseurl }}/erd.jpg)
 
 {% gist page.gist "019d-parentchild-mapping.sql" %}
 

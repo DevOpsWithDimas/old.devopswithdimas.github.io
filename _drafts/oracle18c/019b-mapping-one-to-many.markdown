@@ -14,6 +14,8 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+![erd]({{ page.image_path | prepend: site.baseurl }}/erd.jpg)
+
 {% gist page.gist "019b-onetomany-mapping.sql" %}
 
 Jadi untuk One To Many Relationship kita membutuhkan setidaknya 2 table (sama seperti one-to-one tanpa unique constraint pada column yang menjadi ref). Jika di jalankan maka hasilnya seperti berikut:
