@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Perancangan / Design Table (Relationship)"
+date: 2021-03-22T14:49:26+07:00
 lang: oracle18c
 categories:
 - RDBMS
@@ -51,3 +52,21 @@ dan juga di beberapa database mengenali fitur tambahan, seperti di Oracle Databa
 1. Inherintance Mapping
 2. Partition Table
 3. Table as Json Column
+
+## Database-Design Methos
+
+Untuk mendesign ada beberapa pilihan yaitu Traditional Method atau Object Oriented Method
+
+1. Traditional Method, biasanya melakukan analisa dari dokument kemudian di normalisasi yang hasil akhirnya adalah suatu Entity Relational Diagram (ERD)
+
+2. Object Orieted Method, biasanya melakukan analisa berdasarkan object yang ditemui dilapangan kemudian di terjemahkan ke dalam suatu entities / class dan hasil akhirnya menjadi Object Relational Mapping (ORM)
+
+## Database-Design Tools
+
+Untuk tools mendesign ada banyak sekali mulai yang free dan berbayar. salah satu contohnya
+
+1. [VisualParadign](https://www.visual-paradigm.com/)
+2. [SqlDBM](https://sqldbm.com/Home/)
+3. [Oracle Data Modeler](https://www.oracle.com/database/technologies/appdev/datamodeler.html)
+4. [Lucidchart online](https://www.lucidchart.com/pages/er-diagrams)
+5. Dan masih banyak lagi...
