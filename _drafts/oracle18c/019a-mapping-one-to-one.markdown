@@ -6,9 +6,10 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
+- https://en.wikipedia.org/wiki/One-to-one_(data_model)
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/019a-mapping-one-to-one
+image_path: /resources/posts/oracle12c/019a-onetoone
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
@@ -16,7 +17,7 @@ downloads: []
 
 {% gist page.gist "019a-onetoone-mapping.sql" %}
 
-Jadi pada dasarnya one-to-one mapping ini, kita gak bisa menggunakan `id` yang sudah ada pada tabel sebrangnya untuk digunakan lagi, Sebagai contoh seperti berikut:
+Jadi pada dasarnya one-to-one mapping ini, kita tidak bisa menggunakan `id` yang sudah ada pada tabel detail untuk digunakan lagi, Sebagai contoh seperti berikut:
 
 ```sql
 sqlplus toko_online/toko_online@xepdb1

@@ -6,15 +6,15 @@ categories:
 - RDBMS
 - Oracle18c
 refs: 
-- https://docs.oracle.com/database/121/index.htm
+- https://en.wikipedia.org/wiki/Many-to-many_(data_model)
 youtube: 
 comments: true
-image_path: /resources/posts/oracle12c/019b-mapping-many-to-many
+image_path: /resources/posts/oracle12c/019c-manytomany
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
-{% gist page.gist "019d-manytomany-mapping.sql" %}
+{% gist page.gist "019c-manytomany-mapping.sql" %}
 
 Jadi untuk Many To Many Relationship ini minimal harus memiliki 2 table master (`categories`, dan `items`) dan 1 tabel penghubung (`item_categories`), Jika kita check maka hasilnya seperti berikut:
 
