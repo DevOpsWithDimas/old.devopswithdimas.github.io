@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Perancangan/Design Table (Mapping Tables)"
+title: "Perancangan / Design Table (Relationship)"
 lang: oracle18c
 categories:
 - RDBMS
