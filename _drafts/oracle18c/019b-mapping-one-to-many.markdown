@@ -14,11 +14,19 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Suatu Relationship dikatakan sebagai One To Many yaitu jika tabel yang merujuk di antara dua table, sebagai ilustrasi coba perhatikan gambar berikut:
+
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.jpg)
+
+Jika di perhatikan sama ya seperti One To One?? yapp betul secara assosiasi entity memang sama tapi secara data berbeda. artinya 
+
+> Di satu row `order` dalam tabel bisa memiliki banyak `order_details` dan di satu row pada table `order_details` hanya ada di satu `order`
+
+Berikut adalah implementasi menggunakan Oracle Database:
 
 {% gist page.gist "019b-onetomany-mapping.sql" %}
 
-Jadi untuk One To Many Relationship kita membutuhkan setidaknya 2 table (sama seperti one-to-one tanpa unique constraint pada column yang menjadi ref). Jika di jalankan maka hasilnya seperti berikut:
+Jadi untuk One To Many Relationship kita membutuhkan setidaknya 2 table. Jika di jalankan maka hasilnya seperti berikut:
 
 ```sql
 sqlplus toko_online/toko_online@xepdb1
