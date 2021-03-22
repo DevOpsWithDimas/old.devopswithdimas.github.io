@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "018b-mapping-many-to-many"
+title: "Many To Many Relationship Tables"
 lang: oracle18c
 categories:
 - RDBMS
@@ -14,15 +14,44 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+{% gist page.gist "019d-manytomany-mapping.sql" %}
 
-description...
+Jadi untuk Many To Many Relationship ini minimal harus memiliki 2 table master (`categories`, dan `items`) dan 1 tabel penghubung (`item_categories`), Jika kita check maka hasilnya seperti berikut:
 
-Materi: 
+```sql
+sqlplus toko_online/toko_online@xepdb1
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+SQL*Plus: Release 18.0.0.0.0 - Production on Mon Mar 22 02:04:31 2021
+Version 18.4.0.0.0
+
+Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+Last Successful login time: Mon Mar 22 2021 02:04:07 +00:00
+
+Connected to:
+Oracle Database 18c Express Edition Release 18.0.0.0.0 - Production
+Version 18.4.0.0.0
+
+SQL> col item_id format a10;
+SQL> col item_name format a20;
+SQL> col category_name format a20;
+
+SQL> select i.id   as item_id,
+       i.nama as item_name,
+       c.nama as category_name
+from items i
+         left join item_categories it on i.id = it.item_id
+         left join categories c on it.category_id = c.id
+order by i.id;
+
+ITEM_ID    ITEM_NAME            CATEGORY_NAME
+---------- -------------------- --------------------
+ipn7+      iPhone 7 Plus        Smartphone
+ipp11      iPad Pro 11 inch     Smartphone
+ipp11      iPad Pro 11 inch     Personal Computer
+iwatch     Apple Watch 5th gen  Smartphone
+mbp13-touc Macbook Pro 13 inch  Personal Computer
+hbar       (Touchbar)
+
+SQL>
+```

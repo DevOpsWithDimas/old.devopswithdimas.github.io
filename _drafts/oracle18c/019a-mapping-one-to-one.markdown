@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "One To One Mapping Tables"
+title: "One To One Relationship Tables"
 lang: oracle18c
 categories:
 - RDBMS
