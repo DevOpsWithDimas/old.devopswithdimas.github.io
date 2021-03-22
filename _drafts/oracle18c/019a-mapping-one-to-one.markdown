@@ -45,7 +45,6 @@ SQL> select id, domain, alamat_id
          3 nvidia.co.id
          4 msi.co.id
 
-SQL>
 SQL> update sellers set
   2  alamat_id = 'ibox'
   3  where id = 4;
