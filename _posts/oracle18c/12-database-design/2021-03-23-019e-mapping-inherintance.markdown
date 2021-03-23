@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Inherintance Mapping (OODMBS)"
+date: 2021-03-23T09:47:31+07:00
 lang: oracle18c
 categories:
 - RDBMS
@@ -110,3 +111,5 @@ Untuk menghapus object table, sama seperti kita menghapus table bisa dengan meng
 Untuk menghapus object type, kita bisa menggunakan perintah seperti berikut:
 
 {% gist page.gist "019e-drop-object-type.sql" %}
+
+Untuk pembahasan lebih lanjut, nanti kita akan bahas lebih detail di serie Object Oriented Database dengan Oracle Database.
