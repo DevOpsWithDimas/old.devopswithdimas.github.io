@@ -112,4 +112,4 @@ Untuk menghapus object type, kita bisa menggunakan perintah seperti berikut:
 
 {% gist page.gist "019e-drop-object-type.sql" %}
 
-Untuk pembahasan lebih lanjut, nanti kita akan bahas lebih detail di serie Object Oriented Database dengan Oracle Database.
+Untuk pembahasan lebih lanjut, nanti kita akan bahas lebih detail di series **Object Oriented Database dengan Oracle Database**.
