@@ -238,3 +238,42 @@
   udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
   coming_soon: true
   visible: false
+
+- name: Docker
+  url: docker
+  icon: "devicons devicons-java"
+  language: DevOps
+  color: blue lighten-5
+  tags:
+  - DevOps
+  - Docker
+  - Container
+  descriptions:
+    Temen-teman akan belajar Containerization dengan Docker.
+  messages:
+  publish: 2021-03-25T13:26:00+07:00
+  github: 
+  youtube:
+  udemy: 
+  coming_soon: true
+  visible: false
+
+- name: Openshift
+  url: k8s-openshift
+  icon: "devicons devicons-java"
+  language: DevOps
+  color: white
+  tags:
+  - DevOps
+  - Docker
+  - Kubernates
+  - Container
+  descriptions:
+    Temen-teman akan belajar Management Containerization dengan Openshift Kubernetes.
+  messages:
+  publish: 2021-03-26T13:26:00+07:00
+  github: 
+  youtube:
+  udemy: 
+  coming_soon: true
+  visible: false

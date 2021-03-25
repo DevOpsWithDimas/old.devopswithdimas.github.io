@@ -43,3 +43,10 @@
   courses: 
   - psql  
   - jasper-report
+
+- name: DevOps
+  code: devops
+  description: 
+  courses: 
+  - docker 
+  - k8s-openshift
