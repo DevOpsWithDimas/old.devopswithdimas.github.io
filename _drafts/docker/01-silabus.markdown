@@ -1,0 +1,63 @@
+---
+layout: post
+title: "Silabus Belajar Containerization dengan Docker"
+lang: docker
+categories:
+- DevOps
+- Containerization
+- Docker
+refs: 
+- https://docs.docker.com/
+youtube: 
+comments: true
+image_path: /resources/posts/docker/01-silabus
+gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
+downloads: []
+---
+
+Hai semuanya, di materi kali ini kita akan membahas tentang Containerization dengan Docker.
+
+1. Docker Overview
+2. Docker Architecture
+3. Why Docker so popular?
+4. Installing Docker
+    1. Install on Windows 10
+    2. Install on Linux
+    3. Install on Mac ARM/Intel Based
+5. Getting Started with Docker
+    1. PULL Image from registry
+    2. Test Run docker container
+6. Docker CLI
+    1. Docker `images` command
+    2. Docker `container` command
+    3. Docker `logs` / `ps` command
+    4. Docker `inspect` command
+    5. Docker `rm` command
+    6. Docker `exec` command
+    7. Docker Network
+    8. Docker Volume
+7. Docker Daemon CLI
+8. Dockerfile
+    1. Build your own image
+    2. Publish your image to [hub.docker.com](https://hub.docker.com/)
+    3. publish your image to private registry (nexus oss)
+9. Docker Compose CLI
+    1. Overview
+    2. Getting started dengan Docker Compose
+    3. Communication between containers
+    4. Environtment Variables
+    5. Build image
+10. Build images from external applications
+    1. Build using Maven (for springboot application)
+    2. Build using js (for angular application)
+    3. Build using js (for react application)
+11. Docker Dashboard
+12. Orcestration container dengan Swarm
+    1. Swarm Node
+    2. Swarm Stack
+    7. Docker Service Logging Commnad
+    8. Docker Service Inspact Command
+    9. Docker Service Update Command
+    6. Docker Service Rollback 
+    5. Limiting Resources
+    4. Scaling Container

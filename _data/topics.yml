@@ -243,7 +243,7 @@
   url: docker
   icon: "devicons devicons-java"
   language: DevOps
-  color: blue lighten-5
+  color: amber lighten-2
   tags:
   - DevOps
   - Docker
@@ -253,10 +253,10 @@
   messages:
   publish: 2021-03-25T13:26:00+07:00
   github: 
-  youtube:
+  youtube: https://github.com/BootcampYoutubeChannel/belajar-docker.git
   udemy: 
-  coming_soon: true
-  visible: false
+  coming_soon: false
+  visible: true
 
 - name: Openshift
   url: k8s-openshift
