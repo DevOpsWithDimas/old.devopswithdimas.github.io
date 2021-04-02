@@ -49,4 +49,5 @@
   description: 
   courses: 
   - docker 
+  - k8s
   - k8s-openshift

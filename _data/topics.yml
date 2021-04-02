@@ -251,12 +251,31 @@
   descriptions:
     Temen-teman akan belajar Containerization dengan Docker.
   messages:
-  publish: 2021-03-25T13:26:00+07:00
+  publish: 2021-04-02T13:26:00+07:00
   github: 
   youtube: https://github.com/BootcampYoutubeChannel/belajar-docker.git
   udemy: 
   coming_soon: false
   visible: true
+
+- name: Kubernetes (k8s)
+  url: k8s
+  icon: "devicons devicons-java"
+  language: DevOps
+  color: white
+  tags:
+  - DevOps
+  - Kubernetes
+  - Container
+  descriptions:
+    Temen-teman akan belajar Managing Contrainer dengan Kubernates.
+  messages:
+  publish: 2021-05-01T13:26:00+07:00
+  github: 
+  youtube: 
+  udemy: 
+  coming_soon: true
+  visible: false
 
 - name: Openshift
   url: k8s-openshift

@@ -48,6 +48,7 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Containerization den
     3. Communication between containers
     4. Environtment Variables
     5. Build image
+<!--more-->
 10. Build images from external applications
     1. Build using Maven (for springboot application)
     2. Build using js (for angular application)
