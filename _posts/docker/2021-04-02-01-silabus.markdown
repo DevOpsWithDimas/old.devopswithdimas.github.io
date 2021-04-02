@@ -35,26 +35,28 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Containerization den
     4. Docker `inspect` command
     5. Docker `rm` command
     6. Docker `exec` command
-    7. Docker Network
-    8. Docker Volume
-7. Docker Daemon CLI
-8. Dockerfile
+    8. Docker `cp` command
+    7. Docker `save` & `load` command
+7. Docker Network
+8. Docker Volume
+9. Docker Daemon CLI
+10. Dockerfile
     1. Build your own image
     2. Publish your image to [hub.docker.com](https://hub.docker.com/)
     3. publish your image to private registry (nexus oss)
-9. Docker Compose CLI
+11. Docker Compose CLI
     1. Overview
     2. Getting started dengan Docker Compose
     3. Communication between containers
     4. Environtment Variables
     5. Build image
 <!--more-->
-10. Build images from external applications
+12. Build images from external applications
     1. Build using Maven (for springboot application)
     2. Build using js (for angular application)
     3. Build using js (for react application)
-11. Docker Dashboard
-12. Orcestration container dengan Swarm
+13. Docker Dashboard
+14. Orcestration container dengan Swarm
     1. Swarm Node
     2. Swarm Stack
     7. Docker Service Logging Commnad
