@@ -16,15 +16,40 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Enterprice Applications khususnya data warehouse, biasanya memeliki jumlah datanya sangat besar bisa sampai ribuan gigabtypes atau bahkan sampai satuan terabytes data. Dari data sebanyak itu biasanya performa database akan semakin lambat dalam melakukan membaca (select) dan menulis (insert, update, dan delete). Salah satu pemecahan masalahnya yaitu dengan Database Scaling menggunakan Partitioning.
+
+Partitioning yaitu membagi Object Stored Database seperti (table, dan index) menjadi bagian yang kecil dan more manageable pieces. Contoh ilustrasinya seperti berikut
+
 ![partitioned-tables](https://docs.oracle.com/en/database/oracle/oracle-database/18/vldbg/img/vldbg008.gif)
 
-Sebagai contoh berikut adalah manual partition:
+## Non Partitioned Table
+
+Dalam beberapa kasus di perusahaan-perusahaan besar masih menggunakan schema design seperti berikut:
 
 ![non-partitioned-tables]({{ page.image_path | prepend: site.baseurl }}/erd-non-partitioned.png)
+
+Dalam design schema seperti berikut, memiliki kekurangan diantaranya:
+
+1. Kita harus pilih mau simpan ke table apa?
+2. Mau ambil semua data kita harus menggunakan union
+3. Data gak manageable, jika ada perubahan
+4. Dan masih banyak lagi
+
+## Partitioned Tables
+
 
 Sedangkan jika menggunakan partition table berikut adalah Entity Relational Diagramnya:
 
 ![partitioned-tables]({{ page.image_path | prepend: site.baseurl }}/erd-partitioned-table.jpg)
+
+Sebuah partitioned table memilki strategy yang terdiri dari:
+
+1. Single Level
+    1. Range Partitioning
+    2. Hash Partitioning
+    3. List Partitioning
+2. Composite Level
+3. Partitioning Extensions
 
 Berikut adalah impementasi Partitioned Table menggunakan schenario List:
 
