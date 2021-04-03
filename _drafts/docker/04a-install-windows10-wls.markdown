@@ -8,9 +8,10 @@ categories:
 - Docker
 refs: 
 - https://docs.microsoft.com/en-us/windows/wsl/install-win10
+- https://www.docker.com/products/docker-desktop
 youtube: 
 comments: true
-image_path: /resources/posts/docker/04a-install-windows10-wls
+image_path: /resources/posts/docker/04a-install-windows10
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
@@ -84,4 +85,111 @@ Jika temen-temen mengalami error seperti `wsl not found`, silahkan restart dulu 
 
 Setelah kita mengaktifikan virtualization / Windows Subsystem for Linux, kita bisa install Docker Desktop, kita download dulu dari [websitenya](https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe) 
 
-Kemudian kita install
+Kemudian kita install, maka akan muncul dialog seperti berikut:
+
+![installing]({{ page.image_path | prepend: site.baseurl }}/01-setup.png)
+
+Kemudian klick OK, selanjutnya installing dimulai 
+
+![loading]({{ page.image_path | prepend: site.baseurl }}/02-installing.png)
+
+Jika telah selesai, maka akan tampil seperti berikut:
+
+![finish]({{ page.image_path | prepend: site.baseurl }}/03-finish.png)
+
+Kemudian Close dan buka aplikasi Docker Desktop, nanti akan muncul tampilan dashboard seperti berikut:
+
+![starting docker-engine]({{ page.image_path | prepend: site.baseurl }}/04-starting.png)
+
+Kemudian tunggu sampai, logo docker di bawah berwarna hijau seperti berikut:
+
+![started docker-engine]({{ page.image_path | prepend: site.baseurl }}/05-started.png)
+
+Untuk settingan-nya, saya biasanya dibuat manual startup seperti berikut:
+
+1. General Settings
+    ![general settings]({{ page.image_path | prepend: site.baseurl }}/06a-settings-general.png)
+
+2. WSL Integration
+    ![wsl integration]({{ page.image_path | prepend: site.baseurl }}/06b-settings-wsl.png)
+
+3. Docker Engine Config
+    ![docker engine]({{ page.image_path | prepend: site.baseurl }}/06c-settings-docker-engine.png)
+
+
+## Configure Resources
+
+Jika temen-temen lihat di Task Manager kadang ada proses seperti `vmmem` menggunakan memory yang sangat besar, kita bisa limit resourcenya dengan membuat config `.wslconfig` yang di simpan di User Home seperti berikut:
+
+{% gist page.gist ".wslconfig" %}
+
+Karena disini saya pake prosessor 8 core dan RAM 32 GB, saya masih cukup sih tpi saya mau limit aja prosesnya jadi 4 core dan 4 GB RAM khusus untuk Windows Subsystem for Linuxnya a.k.a WSL
+
+## Testing
+
+Sekarang coba buka PowerShell sebagai user biasa, kemudian jalankan perintah berikut:
+
+{% gist page.gist "docker-info.bash" %}
+
+Hasilnya seperti berikut:
+
+```powershell
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\dimasm93> docker info
+Client:
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  app: Docker App (Docker Inc., v0.9.1-beta3)
+  buildx: Build with BuildKit (Docker Inc., v0.5.1-docker)
+  scan: Docker Scan (Docker Inc., v0.5.0)
+
+Server:
+ Containers: 0
+  Running: 0
+  Paused: 0
+  Stopped: 0
+ Images: 0
+ Server Version: 20.10.5
+ Storage Driver: overlay2
+  Backing Filesystem: extfs
+  Supports d_type: true
+  Native Overlay Diff: true
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 1
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 io.containerd.runtime.v1.linux runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 269548fa27e0089a8b8278fc4fc781d7f65a939b
+ runc version: ff819c7e9184c13b7c2607fe6c30ae19403a7aff
+ init version: de40ad0
+ Security Options:
+  seccomp
+   Profile: default
+ Kernel Version: 4.19.128-microsoft-standard
+ Operating System: Docker Desktop
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 4
+ Total Memory: 3.842GiB
+ Name: docker-desktop
+ ID: 5RI6:EEMB:7S5I:U27G:NMR7:TSAR:C3P6:KCOA:6BGL:I2DZ:OJFC:4TX7
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ Registry: https://index.docker.io/v1/
+ Labels:
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+```
