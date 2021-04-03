@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Partitioning Table (Very Large Databases)"
+date: 2021-04-03T11:59:24+07:00
 lang: oracle18c
 categories:
 - RDBMS
