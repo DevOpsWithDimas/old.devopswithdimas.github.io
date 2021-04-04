@@ -15,15 +15,11 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-
-description...
-
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+- Linux
+- Mac Os Sierra or lastest
+    - Mac hardware must be a 2010 or newer model, with Intel’s hardware support for memory management unit (MMU) virtualization, including Extended Page Tables (EPT) and Unrestricted Mode
+    - macOS El Capitan 10.11 and newer macOS releases are supported
+    - At least 4GB of RAM
+- your machine must have a 64-bit operating system running Windows 7 
+    - Docker for Windows requires Microsoft Hyper-V to run
+    - Virtualization must be enabled in BIOS and CPU SLAT-capable
