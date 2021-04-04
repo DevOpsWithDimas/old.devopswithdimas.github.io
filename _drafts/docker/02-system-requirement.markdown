@@ -7,7 +7,7 @@ categories:
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install
 youtube: 
 comments: true
 image_path: /resources/posts/docker/04-system-requirement
