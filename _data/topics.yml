@@ -296,3 +296,24 @@
   udemy: 
   coming_soon: true
   visible: false
+
+- name: Gitlab CI/CD
+  url: gitlab-ci-cd
+  icon: "devicons devicons-java"
+  language: DevOps
+  color: amber lighten-2
+  tags:
+  - DevOps
+  - Docker
+  - Gitlab
+  - Continues Integration
+  - Delivery
+  descriptions:
+    Temen-teman akan belajar Deployment Automation dengan Gitlab CI/CD.
+  messages:
+  publish: 2021-04-02T13:26:00+07:00
+  github: 
+  youtube: 
+  udemy: 
+  coming_soon: true
+  visible: false
