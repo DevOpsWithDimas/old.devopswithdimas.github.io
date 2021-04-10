@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "04c-install-mac"
+title: "How to install Docker on Mac OS"
 lang: docker
 categories:
 - Containerization

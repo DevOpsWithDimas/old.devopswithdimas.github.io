@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Install Docker on Linux Centos 8"
+title: "How to install Docker on Linux Centos 8"
 lang: docker
 categories:
 - Containerization

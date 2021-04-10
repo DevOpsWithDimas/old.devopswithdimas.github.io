@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "04e-setup-docker"
+title: "Setup Development Env for Docker"
 lang: docker
 categories:
 - Containerization

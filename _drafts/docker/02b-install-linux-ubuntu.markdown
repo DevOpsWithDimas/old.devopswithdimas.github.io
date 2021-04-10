@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "04a-install-linux"
+title: "How to install Docker on Linux Ubuntu/Debian"
 lang: docker
 categories:
 - Containerization

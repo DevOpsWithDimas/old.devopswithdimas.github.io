@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Install Docker di Windows 10 Home Edition"
+title: "How to install Docker on Windows 10 with WSL"
 lang: docker
 categories:
 - Containerization
