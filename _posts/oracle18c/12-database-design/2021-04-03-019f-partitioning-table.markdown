@@ -10,7 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/vldbg/partition-intro.html#GUID-FBA59FA7-7F42-4039-96D1-ACEC71A07DD5
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/vldbg/partition-create-tables-indexes.html#GUID-D3E92FD8-5FE4-4CEA-9CB8-CC9277A74429
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/vldbg/view-info-partition-tables-indexes.html#GUID-2D424638-511C-4CC3-9BDE-53FFB1686ECD
-youtube: 
+youtube: b27gwC7loeA
 comments: true
 image_path: /resources/posts/oracle12c/019f-partitioned-table
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

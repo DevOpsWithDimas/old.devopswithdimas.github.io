@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://en.wikipedia.org/wiki/One-to-many_(data_model)
-youtube: 
+youtube: 3uJDNGAgxuY
 comments: true
 image_path: /resources/posts/oracle12c/019b-onetomany
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

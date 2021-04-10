@@ -8,7 +8,7 @@ categories:
 - Oracle18c
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Hierarchical-Queries.html#GUID-0118DF1D-B9A9-41EB-8556-C6E7D6A5A84E
-youtube: 
+youtube: FgTmPNkaq3E
 comments: true
 image_path: /resources/posts/oracle12c/019d-parent-child
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0

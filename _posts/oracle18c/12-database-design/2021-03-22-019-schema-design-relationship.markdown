@@ -9,7 +9,7 @@ categories:
 refs: 
 - https://docs.oracle.com/en/database/oracle/oracle-database/index.html
 - https://www.xplenty.com/blog/complete-guide-to-database-schema-design-guide/
-youtube: 
+youtube: RSsW2uo0Cc0
 comments: true
 image_path: /resources/posts/oracle12c/018-database-mappings
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
