@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "02-docker-architecture"
+title: "Docker Alternatives"
 lang: docker
 categories:
 - Containerization
@@ -10,7 +10,7 @@ refs:
 - https://docs.docker.com/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/02-docker-architecture
+image_path: /resources/posts/docker/01d-docker-alternative
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
