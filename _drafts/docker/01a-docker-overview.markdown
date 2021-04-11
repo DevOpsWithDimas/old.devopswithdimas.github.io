@@ -45,3 +45,48 @@ Solusinya ada beberapa cara mulai dari install ulang OS, Virtualization, dan Con
 
 > Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications. 
 By taking advantage of Docker’s methodologies for shipping, testing, and deploying code quickly, you can significantly reduce the delay between writing code and running it in production.
+
+## The Docker platform
+
+Docker bisa melakukan packaging dan me-running application di isolation envirotnment di atas Operation System nah itu di sebut container. Dengan isolation dan security, jadi bisa menjalakan banyak aplikasi dalam suatu host. Containers yaitu lightweight dan mengandung apapun yang dibutuhkan untuk menjalankan aplikasi. jadi kita gak perlu menginstall dependency dari software yang kita buat dalam containernya, Contohnya klo kita jalankan container `PostgreSQL Database` nah untuk editornya (`psql`) kita tidak perlu diinstall pada host kita. 
+
+## What can I use Docker for?
+
+Docker ini 3 s/d 4 tahun lalu, saya hanya gunakan docker hanya sebagai Development Env karena saya sering dan banyak sekali gonta-ganti software seperti database, web server dan lain-lain. Jadi karena storage agak kecil jadi begitu selesai project harus hapus software dulu, jadi agak ribet aja. Dengan docker ini menjadi solusi saya jadi begitu project yang saya kerjakan selesai jadi saya bisa aman untuk hapus dan install lagi dengan mudah, jadi kesimpulannya di laptop saya hanya install software yang betul-betul digunakan saja.
+
+Sekarang docker ini makin terkenal, yang awalnya cuman sebagai support Development sekarang malahan dipake untuk Production. 
+berikut adalah beberapa scenario kegunaan dari Docker:
+
+1. Your developers write code locally and share their work with their colleagues using Docker containers.
+2. They use Docker to push their applications into a test environment and execute automated and manual tests.
+3. When developers find bugs, they can fix them in the development environment and redeploy them to the test environment for testing and validation.
+4. When testing is complete, getting the fix to the customer is as simple as pushing the updated image to the production environment.
+
+
+### Responsive deployment and scaling
+
+Docker’s container-based platform allows for highly portable workloads. Docker containers can run on a developer’s local laptop, on physical or virtual machines in a data center, on cloud providers, or in a mixture of environments.
+
+## Docker Architecture
+
+Docker menggunakan _client-server architecture_. The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers. The Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface. Another Docker client is Docker Compose, that lets you work with applications consisting of a set of containers.
+
+![docker-architecture](https://docs.docker.com/engine/images/architecture.svg)
+
+## Docker interfaces
+
+Ketika docker di install pada host, kita di sediakan beberapa interfaces:
+
+1. Docker Daemon (`dockerd`), yaitu Docker API dan untuk memanage Docker Objects seperti images, containers, networks, volumes.
+2. Docker Client (`docker` dan `docker-compose`), yaitu Program Interface yang berkomunikasi dengan Docker Daemon  
+3. Docker Registries, yaitu untuk menyimpan docker image (`push`) secara public dan private, selain itu juga kita mengambil image yang telah tersedia (`pull`).
+
+## Docker Objects
+
+Ketika kita menggunakan docker, kita akan menggunakan beberapa object diantaranya:
+
+1. Docker Images, An image is a read-only template with instructions for creating a Docker container.
+2. Docker Containers, A container is a runnable instance of an image.
+3. Docker Volumes, A volume is object storage relateable with containers
+4. Docker Networks, A network is object interaction between containers
+
