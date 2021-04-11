@@ -12,7 +12,7 @@ refs:
 - https://www.docker.com/products/docker-desktop
 youtube: 
 comments: true
-image_path: /resources/posts/docker/04a-install-windows10
+image_path: /resources/posts/docker/02a-install-windows10
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---

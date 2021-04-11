@@ -7,10 +7,10 @@ categories:
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/engine/install/ubuntu/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/04a-install-linux
+image_path: /resources/posts/docker/02b-install-linux
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
