@@ -28,15 +28,15 @@ Nah karena untuk yang Hyper-V membutuhkan Windows 10 versi mahal, jadi kita pake
 
 Sebelum kita menginstall Docker, kita siapkan dulu Windows Subsystem for Linux menggunakan wsl dengan menggunakan PowerShell yang di jalankan dengan Adminsitration permision, kemudian jalankan perintah berikut:
 
-{% gist page.gist "04a-enabled-wsl.cmd" %}
+{% gist page.gist "02a-enabled-wsl.cmd" %}
 
 Setelah itu kita aktifkan virtualizationnya, dengan perintah berikut dan sesuaikan dengan Windows build teman2
 
-{% gist page.gist "04a-enabled-virtual-machine-platform.cmd" %}
+{% gist page.gist "02a-enabled-virtual-machine-platform.cmd" %}
 
 Setelah itu saya mau set, wsl menjadi v2 karena ada beberapa feature yang dibutuhkan oleh Docker
 
-{% gist page.gist "04a-set-wsl2-as-default.cmd" %}
+{% gist page.gist "02a-set-wsl2-as-default.cmd" %}
 
 Jika di jalankan, hasilnya seperti berikut:
 

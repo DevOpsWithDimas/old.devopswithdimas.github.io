@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to install Docker on Linux Centos 8"
+title: "How to install Docker on Linux CentOS"
 lang: docker
 categories:
 - Containerization
@@ -12,12 +12,17 @@ refs:
 - https://success.docker.com/article/how-do-i-enable-the-remote-api-for-dockerd
 youtube: 
 comments: true
-image_path: /resources/posts/docker/04b-install-linux-centos8
+image_path: /resources/posts/docker/04b-install-linux-centos
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Docker di centos 8, belum sepenuhnya support oleh docker.io masih ada beberapa package yang belum compatible seperti versi dari `containerd.io > 1.2.0-3.el7` karena sebetulnya di centos memiliki containerization yang ikut dari turunanya Redhad yaitu [podman](https://podman.io/) dan ada beberapa problem lagi yaitu `firewalld` akan memblock comunication antar container, bagaimana cara menghandlenya. ok sekarang langsung ja kita install.
+Hai semuanya, di materi kali ini kita akan membahas tentang, bagaimana install Docker di Linux CentOS Platform dengan menggunakan CentOS Repository, Ada pun tahapannya 
+
+1. Setting Selinux
+2. Add Repository Docker
+3. Install Docker
+4. Expose Docker Daemon `http://localhost:2375` without TLS
 
 ## Set selinux = `permissive`
 
@@ -49,11 +54,11 @@ dnf install dnf-utils device-mapper-persistent-data lvm2 fuse-overlayfs wget
 
 ## Add docker-ce repository for centos
 
+Untuk CentOS pada dasarnya memiliki container platform yang diwariskan dari RedHat Container Platform yaitu [podman](https://podman.io/), tetepi jika mau install Docker kita perlu tambahkan repository seperti berikut:
+
 Kemudian kita tambahkan repository docker-ce untuk centos dengan perintah seperti berikut:
 
-```bash
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-```
+{% gist page.gist "02b-add-repository-docker-centos.bash" %}
 
 hasilnya seperti berikut:
 
@@ -72,19 +77,9 @@ gpgkey=https://download.docker.com/linux/centos/gpg
 
 ## Install Docker CE
 
-Setelah itu kita [Downloads](https://download.docker.com/linux/centos/7/x86_64/stable/Packages/) dan Install dulu package `containerd.io` dengan perintah berikut:
+Setelah kita menambahkan repository, kita install docker-ce package dengan perintah seperti berikut:
 
-```bash
-dnf install containerd.io-1.2.13-3.2.el7.x86_64
-```
-
-Setelah terinstall baru kita, install package `docker-ce`
-
-```bash
-dnf install docker-ce docker-ce-cli
-```
-
-## Start service docker
+{% gist page.gist "02b-instal-docker-ce.bash" %}
 
 Kemudian kita jalankan service dockernya dengan perintah seperti berikut:
 
@@ -92,7 +87,7 @@ Kemudian kita jalankan service dockernya dengan perintah seperti berikut:
 systemctl enable --now docker
 ```
 
-Ok di tahap ini install docker udah selesai, sekarang kita setting supaya `DNS (Domain Names Server)` bisa dikenali routenya dengan cara disable firewald atau  dengan cara berikut:
+Ok di tahap ini install docker udah selesai, sekarang kita setting firewald untuk membuka port `2375/tcp` dengan cara berikut:
 
 ```bash
 # Allows container to container communication, the solution to the problem
@@ -103,4 +98,21 @@ firewall-cmd --zone=public --add-port=2375/tcp --permanent
 
 # reload the firewall
 firewall-cmd --reload
+```
+
+## Expose Docker Daemon
+
+Dengan kita meng-expose docker-daemon kita akan diijinkan untuk membuat / build image dari external tools seperti 
+
+1. [`maven-dockerfile-plugin`](https://github.com/spotify/dockerfile-maven)
+2. dan lain-lain.
+
+Edit file `/lib/systemd/system/docker.service` tambahkan `-H tcp://0.0.0.0:2375` seperti berikut:
+
+{% gist page.gist "docker.service" %}
+
+Setelah itu coba di restart service dockernya dengan perintah berikut:
+
+```sql
+systemctl restart docker.service
 ```
