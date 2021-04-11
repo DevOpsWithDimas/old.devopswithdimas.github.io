@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "How to install Docker on Linux CentOS"
+date: 2021-04-11T22:16:33+07:00
 lang: docker
 categories:
 - Containerization
@@ -9,7 +10,6 @@ categories:
 refs: 
 - https://stackoverflow.com/a/63067436/6685789
 - https://linuxhint.com/install_docker_ce_centos8/
-- https://success.docker.com/article/how-do-i-enable-the-remote-api-for-dockerd
 youtube: 
 comments: true
 image_path: /resources/posts/docker/04b-install-linux-centos
@@ -48,9 +48,8 @@ Kemudian restart / reboot servernya, setelah itu baru install dependency
 
 Sebelum kita install docker-ce package kita install dulu dependencynya seperti berikut:
 
-```bash
-dnf install dnf-utils device-mapper-persistent-data lvm2 fuse-overlayfs wget
-```
+{% gist page.gist "02b-install-dependency-docker.bash" %}
+
 
 ## Add docker-ce repository for centos
 
@@ -83,26 +82,15 @@ Setelah kita menambahkan repository, kita install docker-ce package dengan perin
 
 Kemudian kita jalankan service dockernya dengan perintah seperti berikut:
 
-```bash
-systemctl enable --now docker
-```
+{% gist page.gist "02b-service-auto-startup.bash" %}
 
 Ok di tahap ini install docker udah selesai, sekarang kita setting firewald untuk membuka port `2375/tcp` dengan cara berikut:
 
-```bash
-# Allows container to container communication, the solution to the problem
-firewall-cmd --zone=public --add-masquerade --permanent
-
-# Allow port 2375 expose to outside network
-firewall-cmd --zone=public --add-port=2375/tcp --permanent
-
-# reload the firewall
-firewall-cmd --reload
-```
+{% gist page.gist "02b-firewall-allow-access-from-outside.bash" %}
 
 ## Expose Docker Daemon
 
-Dengan kita meng-expose docker-daemon kita akan diijinkan untuk membuat / build image dari external tools seperti 
+Dengan kita meng-expose docker-daemon kita akan di-ijinkan untuk membuat / build image dari external tools seperti 
 
 1. [`maven-dockerfile-plugin`](https://github.com/spotify/dockerfile-maven)
 2. dan lain-lain.
@@ -113,6 +101,16 @@ Edit file `/lib/systemd/system/docker.service` tambahkan `-H tcp://0.0.0.0:2375`
 
 Setelah itu coba di restart service dockernya dengan perintah berikut:
 
-```sql
-systemctl restart docker.service
-```
+{% gist page.gist "02b-service-restart.bash" %}
+
+## Execute docker from normal user
+
+Secara default hanya user `root` dan user yang memiliki group `docker` yang bisa meng-execute docker command, jika kita menggunakan normal user kita harus tambahkan user tersebut ke docker group dengan perintah berikut:
+
+{% gist page.gist "02b-add-user-to-docker-user-group.bash" %}
+
+## Testing
+
+Seperti biasa, kita bisa coba test dengan menggunakan perintah seperti berikut:
+
+{% gist page.gist "docker-info.bash" %}
