@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "05-getting-started"
+title: "Getting Started with Docker"
 lang: docker
 categories:
 - Containerization
