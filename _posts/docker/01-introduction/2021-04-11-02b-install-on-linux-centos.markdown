@@ -114,3 +114,59 @@ Secara default hanya user `root` dan user yang memiliki group `docker` yang bisa
 Seperti biasa, kita bisa coba test dengan menggunakan perintah seperti berikut:
 
 {% gist page.gist "docker-info.bash" %}
+
+Maka dijalankan maka hasilnya seperti berikut:
+
+```bash
+[dimasm93@dev01 ~]$ docker info
+Client:
+ Debug Mode: false
+
+Server:
+ Containers: 0
+  Running: 0
+  Paused: 0
+  Stopped: 0
+ Images: 0
+ Server Version: 19.03.14
+ Storage Driver: overlay2
+  Backing Filesystem: xfs
+  Supports d_type: true
+  Native Overlay Diff: true
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 7ad184331fa3e55e52b890ea95e65ba581ae3429
+ runc version: dc9208a3303feef5b3839f4323d9beb36df0a9dd
+ init version: fec3683
+ Security Options:
+  seccomp
+   Profile: default
+ Kernel Version: 4.18.0-240.15.1.el8_3.x86_64
+ Operating System: CentOS Linux 8
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 4
+ Total Memory: 15.34GiB
+ Name: dev01.dimas-maryanto.com
+ ID: 5HY3:XYFW:AIWA:XFA6:6YO7:M6BT:5BVK:BCUN:CVUZ:V25A:AHNX:HBXC
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: true
+  File Descriptors: 24
+  Goroutines: 38
+  System Time: 2021-04-12T08:23:09.210620353+07:00
+  EventsListeners: 0
+ Registry: https://index.docker.io/v1/
+ Labels:
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+```
