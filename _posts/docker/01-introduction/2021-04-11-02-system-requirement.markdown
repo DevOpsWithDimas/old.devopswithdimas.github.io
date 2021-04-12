@@ -31,10 +31,10 @@ Untuk linux users, temen-temen diharuskan untuk memiliki laptop dengan spesifika
 
 Untuk mac users, temen-temen diharuskan untuk memiliki spesifikasi minimum seperti berikut:
 
-1. Mac Os Sierra or lastest
-2. Mac hardware must be a 2010 or newer model, with Intel’s hardware support for memory management unit (MMU) virtualization, including Extended Page Tables (EPT) and Unrestricted Mode
-3. macOS El Capitan 10.11 and newer macOS releases are supported
-4. At least 4GB of RAM
+1. macOS must be version 10.14 or newer. That is, Mojave, Catalina, or Big Sur. We recommend upgrading to the latest version of macOS.
+2. At least 4GB of RAM
+3. VirtualBox prior to version 4.3.30 must not be installed as it is not compatible with Docker Desktop.
+4. Mac hardware must be a 2010 or newer model, with Intel’s hardware support for memory management unit (MMU) virtualization, including Extended Page Tables (EPT) and Unrestricted Mode
 
 ## Pengguna Windows
 
