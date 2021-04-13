@@ -83,3 +83,5 @@ Dengan default settings seperti berikut:
     ]
 }
 ```
+
+Kemudian setelah itu, klo temen-temen mau menggunakan autocompleate untuk docker command, bisa pasang [post-docker Module](https://github.com/samneirinck/posh-docker)
