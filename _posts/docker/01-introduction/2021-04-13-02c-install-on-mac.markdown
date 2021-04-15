@@ -22,6 +22,7 @@ Hai semuanya di materi kali ini, kita akan membahas bagaimana cara install Docke
 1. Download Docker Desktop
 2. Installing
 3. Configure
+4. Setup development env
 
 ## Donwloading Docker Desktop
 
@@ -123,3 +124,11 @@ Server:
 ```
 
 Dengan begitu, yang telah kita install & configure sudah betul, dan berjalan dengan baik.
+
+## Setup Development Env
+
+Untuk mac user, kita bisa menggunakan Terminal bawaan OS atau aplikasi external seperti `iTerm2` dan juga plugin seperti berikut
+
+1. [iTerm2](https://iterm2.com/)
+2. [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
+3. [Docker Command-line completion](https://docs.docker.com/compose/completion/)

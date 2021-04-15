@@ -170,3 +170,10 @@ Server:
   127.0.0.0/8
  Live Restore Enabled: false
 ```
+
+## Setup Development Env
+
+Untuk linux user, kita bisa menggunakan Terminal bawaan OS dan juga kita bisa install plugin
+
+1. [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
+2. [Docker Command-line completion](https://docs.docker.com/compose/completion/)

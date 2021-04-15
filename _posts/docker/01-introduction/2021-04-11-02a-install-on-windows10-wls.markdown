@@ -17,6 +17,14 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya di materi kali ini kita akan meng-install Docker di platform Windows, ada beberapa step
+
+1. Install & Configure Backend for Docker Engine
+2. Install Docker Desktop
+3. Setup Development Env
+
+## Backend for Docker Engine
+
 Untuk menggunakan docker di Windows kita perlu menggunakan virtualization, ada beberapa cara yaitu 
 
 1. Hyper-V (required Windows 10 Enterprise, Pro, or Education)
@@ -194,3 +202,29 @@ Server:
   127.0.0.0/8
  Live Restore Enabled: false
 ```
+
+## Setup development env
+
+Untuk belajar docker kita bisa menggunakan `cmd.exe` atau `powershell.exe` tapi disini saya mau menggunakan [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) yang bisa di install melalui Microsoft Store.
+
+Dengan default settings seperti berikut:
+
+{% gist page.gist "02d-windows-terminal-setting.json" %}
+
+Dengan setting di atas, saya menggunakan PowerShell sebagai default command line dalam belajar docker. Selain itu juga kita bisa pasang plugin seperti:
+
+1. [Powerline Theme for PowerShell](https://docs.microsoft.com/en-us/windows/terminal/tutorials/powerline-setup)
+2. [Font Cascadia Code](https://github.com/microsoft/cascadia-code)
+3. [Auto Compleation for docker command](https://github.com/samneirinck/posh-docker)
+
+Buka Powershell, kita akan memasang plugin tersebut dengan perintah seperti berikut:
+
+{% gist page.gist "02d-powershell-install-plugin.powershell" %}
+
+Setelah itu kita include ke profile dengan menjalankan perintah `notepad $profile` kemudian masukan script berikut ke notepad: 
+
+{% gist page.gist "02d-powershell-include.config" %}
+
+Maka hasilnya seperti berikut:
+
+![windows terminal]({{ page.image_path | prepand: site.baseurl }}/windows-terminal-docker.gif)
