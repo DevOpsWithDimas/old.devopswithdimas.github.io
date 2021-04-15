@@ -9,6 +9,7 @@ categories:
 - Docker
 refs: 
 - https://www.docker.com/resources/what-container
+- https://www.docker.com/products/container-runtime
 youtube: 
 comments: true
 image_path: /resources/posts/docker/01b-container-overview

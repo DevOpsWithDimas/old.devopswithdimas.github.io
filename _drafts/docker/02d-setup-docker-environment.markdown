@@ -10,6 +10,7 @@ refs:
 - https://docs.microsoft.com/en-us/windows/terminal/tutorials/powerline-setup
 - https://ohmyposh.dev/docs/themes/
 - https://github.com/microsoft/cascadia-code
+- https://docs.docker.com/compose/completion/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/02d-setup-env
@@ -29,46 +30,41 @@ Hai semuanya di materi kali ini kita akan membahas tentang Setup Development Env
 
 ## Setup Command prompt for windows user
 
-Untuk windows user kita bisa menggunakan `cmd.exe` atau `powershell.exe` tapi disini saya mau menggunakan [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) yang bisa di install melalui Microsoft Store. Tampilanya seperti berikut:
-
-![windows terminal]({{ page.image_path | prepand: site.baseurl }}/windows-terminal.png)
+Untuk windows user kita bisa menggunakan `cmd.exe` atau `powershell.exe` tapi disini saya mau menggunakan [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) yang bisa di install melalui Microsoft Store.
 
 Dengan default settings seperti berikut:
 
-```json
-{
-    "$schema": "https://aka.ms/terminal-profiles-schema",
-    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-    "copyOnSelect": false,
-    "copyFormatting": false,
-    "profiles":
-    {
-        "defaults": {},
-        "list":
-        [
-            {
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "name": "Windows PowerShell",
-                "commandline": "powershell.exe",
-                "colorScheme": "One Half Dark",
-                "fontFace": "Cascadia Code",
-                "hidden": false
-            }
-        ]
-    },
-    "schemes": [],
-    "actions":
-    [
-        { "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+c" },
-        { "command": "paste", "keys": "ctrl+v" },
-        { "command": "find", "keys": "ctrl+shift+f" },
-        { "command": { "action": "splitPane", "split": "auto", "splitMode": "duplicate" }, "keys": "alt+shift+d" }
-    ]
-}
-```
+{% gist page.gist "02d-windows-terminal-setting.json" %}
 
 Dengan setting di atas, saya menggunakan PowerShell sebagai default command line dalam belajar docker. Selain itu juga kita bisa pasang plugin seperti:
 
 1. [Powerline Theme for PowerShell](https://docs.microsoft.com/en-us/windows/terminal/tutorials/powerline-setup)
-2. [Cascadia Code](https://github.com/microsoft/cascadia-code)
+2. [Font Cascadia Code](https://github.com/microsoft/cascadia-code)
 3. [Auto Compleation for docker command](https://github.com/samneirinck/posh-docker)
+
+Buka Powershell, kita akan memasang plugin tersebut dengan perintah seperti berikut:
+
+{% gist page.gist "02d-powershell-install-plugin.powershell" %}
+
+Setelah itu kita include ke profile dengan menjalankan perintah `notepad $profile` kemudian masukan script berikut ke notepad: 
+
+{% gist page.gist "02d-powershell-include.config" %}
+
+Maka hasilnya seperti berikut:
+
+![windows terminal]({{ page.image_path | prepand: site.baseurl }}/windows-terminal-docker.gif)
+
+## Setup Terminal for linux
+
+Untuk linux user, kita bisa menggunakan Terminal bawaan OS dan juga kita bisa install plugin
+
+1. [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
+2. [Docker Command-line completion](https://docs.docker.com/compose/completion/)
+
+## Setup Terminal for Mac
+
+Untuk mac user, kita bisa menggunakan Terminal bawaan OS atau aplikasi external seperti `iTerm2` dan juga plugin seperti berikut
+
+1. [iTerm2](https://iterm2.com/)
+2. [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
+3. [Docker Command-line completion](https://docs.docker.com/compose/completion/)
