@@ -141,7 +141,7 @@
   youtube:
   udemy:
   coming_soon: true
-  visible: true
+  visible: false
 
 - name: Spring Framework
   url: spring-core
@@ -161,7 +161,7 @@
   youtube:
   udemy:
   coming_soon: true
-  visible: true
+  visible: false
 
 - name: SQL Fundamental - Oracle 18c
   url: oracle18c
@@ -198,7 +198,7 @@
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvy6l51feh7ABmyyufPLnA6n
   udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
   coming_soon: true
-  visible: true
+  visible: false
 
 - name: Database Administrator - Oracle 18c
   url: dba-oracle18c
@@ -217,7 +217,7 @@
   youtube:
   udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
   coming_soon: true
-  visible: true
+  visible: false
 
 - name: Object Oriented - Oracle 18c
   url: ordb-oracle18c
@@ -237,7 +237,7 @@
   youtube:
   udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
   coming_soon: true
-  visible: true
+  visible: false
 
 - name: Docker
   url: docker
@@ -275,7 +275,7 @@
   youtube: 
   udemy: 
   coming_soon: true
-  visible: true
+  visible: false
 
 - name: Openshift
   url: k8s-openshift
@@ -295,7 +295,7 @@
   youtube:
   udemy: 
   coming_soon: true
-  visible: true
+  visible: false
 
 - name: Gitlab CI/CD
   url: gitlab-ci-cd
@@ -316,4 +316,4 @@
   youtube: 
   udemy: 
   coming_soon: true
-  visible: true
+  visible: false
