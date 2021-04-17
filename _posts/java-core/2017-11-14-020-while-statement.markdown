@@ -7,7 +7,7 @@ categories:
 - Java
 - Core
 refs: []
-youtube: https://www.youtube.com/watch?v=yYTpwet7V9M&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=21
+youtube: yYTpwet7V9M
 comments: true
 downloads: []
 ---

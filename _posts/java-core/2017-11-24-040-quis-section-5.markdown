@@ -7,7 +7,7 @@ categories:
 - Java
 - Core
 refs: []
-youtube: https://www.youtube.com/watch?v=Bdu7I6Z2KPo&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=37
+youtube: Bdu7I6Z2KPo
 comments: true
 image_path: /resources/posts/java-core/java-quis-5
 downloads: []

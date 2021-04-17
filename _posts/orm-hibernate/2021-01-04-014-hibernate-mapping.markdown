@@ -10,7 +10,7 @@ categories:
 - PostgreSQL
 refs: 
 - http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html
-youtube: https://www.youtube.com/watch?v=0kKbp6bLwLE&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=15
+youtube: 0kKbp6bLwLE
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/

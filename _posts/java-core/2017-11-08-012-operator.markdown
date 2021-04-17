@@ -7,7 +7,7 @@ categories:
 - Java
 - Core
 refs: []
-youtube: https://www.youtube.com/watch?v=ZEG-sTkyFE8&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=17
+youtube: ZEG-sTkyFE8
 comments: true
 downloads: []
 ---

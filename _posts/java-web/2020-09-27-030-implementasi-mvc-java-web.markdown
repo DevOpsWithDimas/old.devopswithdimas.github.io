@@ -8,7 +8,7 @@ categories:
 - web
 - war
 refs: []
-youtube: https://www.youtube.com/watch?v=eEEZedZIwCw&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=33
+youtube: eEEZedZIwCw
 comments: true
 gist: dimMaryanto93/c0a51e92e23ada4ecb71f9c18c803fea
 image_path: /resources/posts/java-web/java-web-030

@@ -7,7 +7,7 @@ categories:
 - Java
 - Core
 refs: []
-youtube: https://www.youtube.com/watch?v=c3JKsRiBgJA&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=28
+youtube: c3JKsRiBgJA
 comments: true
 image_path: /resources/posts/java-core/java-konsep-oop
 downloads: []

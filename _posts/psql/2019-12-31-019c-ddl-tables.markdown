@@ -8,7 +8,7 @@ categories:
 - PostgreSQL
 refs: 
 - https://www.postgresql.org/docs/8.4/ddl-basics.html
-youtube: https://www.youtube.com/watch?v=15aBbkvbHZ8&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=26
+youtube: 15aBbkvbHZ8
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 downloads: []

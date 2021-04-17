@@ -8,7 +8,7 @@ categories:
 - web
 - war
 refs: []
-youtube: https://www.youtube.com/watch?v=GAXGBJKZxnU&list=PLV1-tdmPblvyaCTcYR9u7k4G24uVDZT0v&index=1
+youtube: GAXGBJKZxnU
 comments: true
 image_path: /resources/posts/java-web/java-ee-intro
 downloads: []

@@ -8,7 +8,7 @@ categories:
 - PostgreSQL
 refs: 
 - https://www.postgresql.org/docs/9.5/functions-aggregate.html
-youtube: https://www.youtube.com/watch?v=z5mIVHXBEeE&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=13
+youtube: z5mIVHXBEeE
 comments: true
 image_path: /resources/posts/psql/psql-group-by
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2

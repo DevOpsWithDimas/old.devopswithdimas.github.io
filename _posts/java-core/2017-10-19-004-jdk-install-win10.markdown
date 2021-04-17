@@ -7,7 +7,7 @@ categories:
 - java
 - core
 refs: []
-youtube: https://www.youtube.com/watch?v=DtucedMOSts&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=5
+youtube: DtucedMOSts
 comments: true
 image_path: /resources/posts/java-core/java-jdk-win10
 downloads: []

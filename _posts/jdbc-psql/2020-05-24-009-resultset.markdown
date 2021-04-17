@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://github.com/dimMaryanto93/jdbc-psql-example
 - https://docs.oracle.com/javase/7/docs/api/java/sql/ResultSet.html
-youtube: https://www.youtube.com/watch?v=5EGEMW839yw&list=PLV1-tdmPblvxVAb1P-CRsPraIv3ks3A16&index=13
+youtube: 5EGEMW839yw
 comments: true
 image_path: /resources/posts/java-jdbc/jdbc-resultset
 downloads: []

@@ -10,7 +10,7 @@ categories:
 - PostgreSQL
 refs: 
 - https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html#hql-conditional-expressions
-youtube: https://www.youtube.com/watch?v=t3TLekjsqeI&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=45
+youtube: t3TLekjsqeI
 comments: true
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/orm-hibernate-30

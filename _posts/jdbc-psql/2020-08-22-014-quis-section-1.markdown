@@ -5,7 +5,8 @@ date: 2020-08-22T12:00:33+07:00
 lang: java-jdbc-psql
 categories:
 - Java
-- Core
+- JDBC
+- Postgresql
 refs: 
 - https://github.com/dimMaryanto93/jdbc-psql-example
 youtube: 

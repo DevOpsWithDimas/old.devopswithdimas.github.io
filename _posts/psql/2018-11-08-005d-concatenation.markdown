@@ -7,7 +7,7 @@ categories:
 - RDBMS
 - PostgreSQL
 refs: []
-youtube: https://www.youtube.com/watch?v=ytKK6l698Wk&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=4
+youtube: ytKK6l698Wk
 comments: true
 image_path: /resources/posts/psql/psql-concatenation/
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2

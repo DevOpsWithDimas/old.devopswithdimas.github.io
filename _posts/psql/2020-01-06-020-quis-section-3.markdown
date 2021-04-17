@@ -7,7 +7,7 @@ categories:
 - RDBMS
 - PostgreSQL
 refs: []
-youtube: https://www.youtube.com/watch?v=enh3vegBch0&list=PLV1-tdmPblvypZXSk2GC932nludT345xk&index=29
+youtube: enh3vegBch0
 comments: true
 image_path: /resources/posts/psql/psql-quis-3
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2

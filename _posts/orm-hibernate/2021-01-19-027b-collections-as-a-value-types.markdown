@@ -11,7 +11,7 @@ categories:
 refs: 
 - https://docs.jboss.org/hibernate/stable/orm/userguide/html_single/Hibernate_User_Guide.html#collections-value
 comments: true
-youtube: https://www.youtube.com/watch?v=PIs1-hBSnsg&list=PLV1-tdmPblvxHxNh867D1JR4u52LgzeIr&index=32 
+youtube: PIs1-hBSnsg 
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/orm-hibernate-27b
 downloads: []

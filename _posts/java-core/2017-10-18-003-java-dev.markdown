@@ -7,7 +7,7 @@ categories:
 - java
 - core
 refs: []
-youtube: https://www.youtube.com/watch?v=hTKaYzh8OMM&list=PLV1-tdmPblvz0NCFYgVQaQEOTWJCjjucO&index=4
+youtube: hTKaYzh8OMM
 comments: true
 image_path: /resources/posts/java-core/java-intro
 downloads: []
