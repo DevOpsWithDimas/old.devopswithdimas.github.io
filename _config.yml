@@ -28,7 +28,6 @@ plugins:
   - kramdown
   - rouge
   - jekyll-youtube
-  - jekyll-archives
   - jekyll-sitemap
   - jekyll-paginate
   - jemoji
@@ -45,16 +44,6 @@ jekyll_analytics:
 
 paginate: 5
 paginate_path: /archives/page-:num
-
-jekyll-archives:
-  enabled: []
-  layout: archive
-  permalinks:
-    year: '/archives/:year/'
-    month: '/archives/:year/:month/'
-    day: '/archives/:year/:month/:day/'
-    tag: '/archives/tag/:name/'
-    category: '/archives/category/:name/'
   
 titlecase: false
 

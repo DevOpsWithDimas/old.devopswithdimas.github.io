@@ -1,0 +1,60 @@
+---
+layout: default
+title: Cources
+permalink: /pages/courses.html
+icon: library_books
+---
+
+{% assign languages = site.data.topics | where: 'coming_soon', 'false' | map: 'language' | join: ',' | split: ',' | uniq %}
+<div class="row">
+    <div class="container">
+        <div class="col m12 l3 hide-on-med-and-down">
+            <ul class="collection section table-of-contents">
+                <li class="collection-item with-header"> 
+                    Archives by Category         
+                </li>
+                {% for lang in languages %}
+                <li class="collection-item">
+                    <a href="#{{ lang }}"> {{lang}}</a>                      
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col m12 l9">
+            {% for lang in languages %}          
+            <div id="{{ lang }}" class="section scrollspy">
+                {% assign pages = site.data.topics | where: 'visible', true | where: 'language', lang | sort: "publish" %}
+                <ul class="collection with-header">
+                    <li class="collection-header"><h4>{{ lang }}</h4></li>
+                    {% for page in pages %}
+                    <li class="collection-item avatar">
+                        <img class="responsive-img circle" src="{{ "/resources/images/" | prepend: site.baseurl }}{{page.url}}.png">
+                        {% assign posts = site.posts | where: 'lang', page.url | sort: 'date' %}
+                        {% assign post = posts.first %}
+                        {% assign page_title = page.name %}
+                        {% if post and page.coming_soon == false  %}
+                            <a href="{{ post.url | prepend: site.baseurl }}">
+                                <span class="new badge" data-badge-caption="Pages">{{ posts | size }}</span>
+                                <span class="title">{{ page_title }}</span>
+                                <p class="grey-text text-lighten-1">{{ page.descriptions | truncate: 150 }}</p>
+                            </a>
+                        {% elsif post and page.coming_soon == true %}
+                            <div>
+                                <span class="new badge yellow black-text" data-badge-caption="Comming soon"></span>
+                                <span class="title">{{ page_title }}</span>
+                                <p class="grey-text text-lighten-1">{{ page.descriptions | truncate: 150 }}</p>
+                            </div>  
+                        {% else %}  
+                            <div>
+                                <span class="new badge red" data-badge-caption="Pages">{{ posts | size }}</span>
+                                <span class="title">{{ page_title }}</span>
+                                <p class="grey-text text-lighten-1">{{ page.descriptions | truncate: 150 }}</p>
+                            </div>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+    </div>
+</div>

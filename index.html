@@ -8,6 +8,7 @@ layout: default
 </div>
 
 {% assign pages_list = site.data.topics | where: 'coming_soon', false | sort:"publish" %}
+{% assign post_list_size = site.posts | size %}
 
 <!-- Modal Structure -->
 {% for page_modal in pages_list  %}
@@ -98,7 +99,12 @@ layout: default
     <br>
     {% assign pages_list_count = pages_list.size %}
     <h5 class="container center">
-        <span class="new badge" data-badge-caption="topic">{{pages_list_count}}</span>
+        <a href="{{ '/pages/roadmap.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
+            <span class="new badge" data-badge-caption="Cources">{{pages_list_count}}</span>
+        </a>
+        <a href="{{ '/pages/archives.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
+            <span class="new badge" data-badge-caption="Pages">{{post_list_size}}</span>
+        </a>
         Explore
         <br />
         <small>Browse by topic and view available courses</small>
@@ -113,7 +119,7 @@ layout: default
         <div class="col s12 m4">
             <div class="card z-depth-3 sticky-action large">
                 <div class="card-image {{topic.color}}">
-                    <span class="new badge black white-text" data-badge-caption="materi">{{ post_list | size }}</span>
+                    <span class="new badge black white-text" data-badge-caption="Pages">{{ post_list | size }}</span>
                     {% if topic.coming_soon == false %}
                     <img class="activator responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
                     {% else %}
@@ -160,5 +166,10 @@ layout: default
         </div>
         {% endfor %}
         {% assign counter = i | times: 3 %}
+        <div class="col s12" >
+            <a class="btn waves-effect waves-light blue darken-4" href="{{ '/pages/roadmap.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
+                View more courses...
+            </a>
+        </div>
     </div>
 </div>

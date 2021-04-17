@@ -18,13 +18,13 @@
                         {% if post %}
                             <a href="{{ post.url | prepend: site.baseurl }}">
                                 <i class="material-icons">pageview</i>
-                                <span class="new badge" data-badge-caption="materi">{{ posts | size }}</span>
+                                <span class="new badge" data-badge-caption="Pages">{{ posts | size }}</span>
                                 {{ page_title }}
                             </a>
                         {% else %}
                             <a href="#!">
                                 <i class="material-icons">pageview</i>
-                                <span class="new badge" data-badge-caption="materi"> {{ posts | size }}</span> 
+                                <span class="new badge" data-badge-caption="Pages"> {{ posts | size }}</span> 
                                 {{ page_title }}
                             </a>
                         {% endif %}
