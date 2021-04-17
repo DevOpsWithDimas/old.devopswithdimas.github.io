@@ -1,5 +1,4 @@
-{% assign languages = site.data.topics | where: 'coming_soon', 'false' | map: 'language' | join: ',' | split: ',' | uniq
-%}
+{% assign languages = site.data.topics | where: 'coming_soon', 'false' | map: 'language' | join: ',' | split: ',' | uniq %}
 
 <nav class="red darken-3">
     <div class="nav-wrapper container">
