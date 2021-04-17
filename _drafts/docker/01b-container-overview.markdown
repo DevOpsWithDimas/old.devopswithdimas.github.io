@@ -10,22 +10,12 @@ categories:
 refs: 
 - https://www.docker.com/resources/what-container
 - https://www.docker.com/products/container-runtime
+- https://en.wikipedia.org/wiki/Docker_(software)
 youtube: 
 comments: true
-image_path: /resources/posts/docker/01b-container-overview
+image_path: /resources/posts/docker/01b-container
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-
-description...
-
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Hai semuanya di materi kali ini, kita akan membahas `Apa itu Container?`, tpi sebelum itu saya mau ceritain dulu sejarahnya Docker. Docker container technology was launched in 2013 as an open source
