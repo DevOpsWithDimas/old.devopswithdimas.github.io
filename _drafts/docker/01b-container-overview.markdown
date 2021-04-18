@@ -20,7 +20,17 @@ downloads: []
 
 Hai semuanya di materi kali ini, kita akan membahas `Apa itu Container?`, tpi sebelum itu saya mau ceritain dulu sejarahnya Docker. 
 
-Docker container technology was launched in 2013 as an open source
+> Docker Inc. was founded by Kamel Founadi, Solomon Hykes, and Sebastien Pahl during the Y Combinator Summer 2010 startup incubator group and launched in 2011. The startup was also one of the 12 startups in Founder's Den first cohort. Hykes started the Docker project in France as an internal project within dotCloud, a platform-as-a-service company. Docker debuted to the public in Santa Clara at PyCon in 2013. It was released as open-source in March 2013.
+
+Adoption:
+
+1. **September 19, 2013**: Red Hat and Docker announced a collaboration around Fedora, Red Hat Enterprise Linux (RHEL), and OpenShift.
+2. **October 15, 2014**: Microsoft announced the integration of the Docker engine into Windows Server
+3. **November 2014**: Docker container services were announced for the Amazon Elastic Compute Cloud (EC2)
+4. **December 4, 2014**: IBM announced a strategic partnership with Docker that enables Docker to integrate more closely with the IBM Cloud.
+5. **June 8, 2016**: Microsoft announced that Docker could now be used natively on Windows 10.
+6. **May 6, 2019**: Microsoft announced the second version of Windows Subsystem for Linux (WSL). Docker, Inc. announced that it has started working on a version of Docker for Windows that runs on WSL 2.[59] In particular, this means Docker can run on Windows 10 Home (previously it was limited to Windows Pro and Enterprise since it used Hyper-V).
+7. **August 2020**: Microsoft announced backport of WSL2 to Windows 10 versions 1903 and 1909 (previously WSL2 was available only on version 2004)
 
 ## Virtualization container terminology
 
