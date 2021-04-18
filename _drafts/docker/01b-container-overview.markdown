@@ -34,7 +34,11 @@ Adoption:
 
 ## Virtualization container terminology
 
+Sebelum era container, Virtual-machine sangat merajai dunia infrastructure mulai dari Oracle Virtualbox, VMware, QEMU ,Citrix Hypervisor, Microsoft Hyper-V dan lain-lain. Jika digambarkan maka seperti berikut kurang-lebih architecturenya:
+
 ![vm-containers]({{ page.image_path | prepend: site.baseurl }}/vm.png)
+
+> Virtual machines (VMs) are an abstraction of physical hardware turning one server into many servers. The hypervisor allows multiple VMs to run on a single machine. Each VM includes a full copy of an operating system, the application, necessary binaries and libraries - taking up tens of GBs. VMs can also be slow to boot.
 
 ## Docker Container terminology
 
