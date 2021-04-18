@@ -43,3 +43,19 @@ Sebelum era container, Virtual-machine sangat merajai dunia infrastructure mulai
 ## Docker Container terminology
 
 ![container]({{ page.image_path | prepend: site.baseurl }}/container.png)
+
+> Containers are an abstraction at the app layer that packages code and dependencies together. Multiple containers can run on the same machine and share the OS kernel with other containers, each running as isolated processes in user space. Containers take up less space than VMs (container images are typically tens of MBs in size), can handle more applications and require fewer VMs and Operating systems.
+
+> Containers and virtual machines have similar resource isolation and allocation benefits, but function differently because containers virtualize the operating system instead of hardware. Containers are more portable and efficient.
+
+Docker containers that run on Docker Engine:
+
+1. **Standard**: Docker created the industry standard for containers, so they could be portable anywhere
+2. **Lightweight**: Containers share the machine’s OS system kernel and therefore do not require an OS per application, driving higher server efficiencies and reducing server and licensing costs
+3. **Secure**: Applications are safer in containers and Docker provides the strongest default isolation capabilities in the industry
+
+## Docker Engine
+
+![docker-engine]({{ page.image_path | prepend: site.baseurl }}/docker-runtime.png)
+
+> Docker Engine is the industry’s de facto container runtime that runs on various Linux (CentOS, Debian, Fedora, Oracle Linux, RHEL, SUSE, and Ubuntu) and Windows Server operating systems. Docker creates simple tooling and a universal packaging approach that bundles up all application dependencies inside a container which is then run on Docker Engine. Docker Engine enables containerized applications to run anywhere consistently on any infrastructure, solving “dependency hell” for developers and operations teams, and eliminating the “it works on my laptop!” problem.
