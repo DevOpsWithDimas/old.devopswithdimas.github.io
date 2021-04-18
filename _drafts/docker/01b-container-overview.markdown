@@ -18,4 +18,14 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Hai semuanya di materi kali ini, kita akan membahas `Apa itu Container?`, tpi sebelum itu saya mau ceritain dulu sejarahnya Docker. Docker container technology was launched in 2013 as an open source
+Hai semuanya di materi kali ini, kita akan membahas `Apa itu Container?`, tpi sebelum itu saya mau ceritain dulu sejarahnya Docker. 
+
+Docker container technology was launched in 2013 as an open source
+
+## Virtualization container terminology
+
+![vm-containers]({{ page.image_path | prepend: site.baseurl }}/vm.png)
+
+## Docker Container terminology
+
+![container]({{ page.image_path | prepend: site.baseurl }}/container.png)
