@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cloud Based Env: try with Play with Docker"
+title: "Cloud Based Env: Play with Docker"
 lang: docker
 categories:
 - Containerization
