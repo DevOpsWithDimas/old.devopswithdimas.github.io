@@ -15,19 +15,26 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya, sekarang saatnya kita mulai belajar perintah-perintah docker. Basicly kita akan membahas yang paling penting yaitu 
 
-## Docker Image
+1. Pull image from registry
+2. Show list of docker image
+3. Running docker image
+4. Accessing container
+5. View logs
+6. Cleanup
 
-Docker images adalah ibaratnya installer aplikasi, aplikasi yang akan kita install kita harus pull dulu dari [docker-hub](https://hub.docker.com/) konsep nya sama seperti git jadi kita pull, contohnya kalo kita mau install postgresql dalam **docker container** jadi kita pull dulu coba ke docker hub kemudian cara official repository untuk postgresql atau kita juga bisa menggunakan yang unofficial repository. bedanya klo yang official ada mark **official** atau di urlnya seperti berikut [official postgres](https://hub.docker.com/_/postgres/) repository tapi sebelum itu kita harus login dulu klo belum punya akun daftar aja gratis kok dan tidak butuh kartu kredit :)
+## Pulling image from registry
 
-```git
-docker pull postgres
-```
+{% gist page.gist "03-docker-pull-image.bash" %}
 
-Setelah tadi kita pull maka daftar aplikasi yang telah siap digunakan atau di pasang di **Docker container** seperti berikut:
+Setelah kita pull image dari public registry, maka image docker akan di simpan di local pc kita, untuk mengetahui image apa saja yang telah kita pull berikut adalah perintahnya:
+
+{% gist page.gist "03-docker-list-images.bash" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
 
 ```bash
-docker image ls
 ## output
 # REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE
 # mysql                          5.7                 563a026a1511        2 weeks ago         372MB
@@ -35,46 +42,47 @@ docker image ls
 # microsoft/mssql-server-linux   2017-latest         e254a7681c2f        5 weeks ago         1.44GB
 ```
 
-<br/>
+## Running docker image
 
-## Docker Container
+Untuk menjalankan docker image, kita menggunakan perintah seperti berikut:
 
-Docker container, itu ibaratnya applikasi yang telah terinstall dari **Docker image**. Misalnya kita mau install postgresql, kita bisa baca2 dokumentasinya dulu properties apa aja yang harus di pasang contohnya seperti berikut:
-
-```bash
-docker container run \
-    --name postgres_db \
-    -p 5432:5432 \
-    -v /var/lib/postgresql/data \
-    -e POSTGRES_PASSWORD=postgres \
-    -e POSTGRES_DB=data_db \
-    -d \
-    postgres:9.6
-```
+{% gist page.gist "03-docker-run-image.bash" %}
 
 Artinya dari perintah tersebut:
 
-- service_name : `postgres_db` untuk argument `--name postgres_db`
-- port yang di expose : `5432` untuk argument `-p 5432:5432`
-- password untuk user postgres : `postgres` untuk argument `-e POSTGRES_PASSWORD=postgres`
-- database name : `data_db` untuk argument `-e POSTGRES_DB=data_db`
-- postgresql version : `9.6` 
-- jalankan di background, untuk argument `-d`
+1. Service_name : `postgres_db` untuk argument `--name postgres_db`
+2. Port yang di expose : `5432` untuk argument `-p 5432:5432`
+3. Password untuk user postgres : `postgres` untuk argument `-e POSTGRES_PASSWORD=postgres`
+4. Database name : `data_db` untuk argument `-e POSTGRES_DB=data_db`
+5. Jalankan di background, untuk argument `-d`
+6. Argument `-v /var/lib/postgresql/data` artinya lokasi tersebut akan di simpan dalam suatu volume
+
+## Accessing container
 
 Nah sekarang kita bisa check containernya apakah udah run dengan cara perintah berikut:
 
+{% gist page.gist "03-docker-list-container.bash" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
 ```bash
-docker container ls
 ## output console
 #CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
 #b91d16813041        postgres:9.6        "docker-entrypoint.s…"   2 minutes ago       Up 45 seconds       0.0.0.0:5432->5432/tcp   postgres_db
 ```
 
-Setelah itu kita bisa connect ke postgresql dalam docker container, caranya sama seperti biasa:
+Setelah itu kita bisa connect ke postgresql dalam docker container, dengan menggunakan perintah berikut:
 
-```bash
-docker exec -it <container-name> psql -U postgres data_db
-```
+{% gist page.gist "03-docker-exec.bash" %}
 
-Hanya bedanya kita tidak menggunakan database yang di install di host kita. Nah mungkin dari temen-teman buat apa nanti datanya hilang donk. Eitssss tenang klo datanya mau di keep ada fiturnya kok namanya **docker volume** nanti akan saya jelaskan yang pasti ini akan memudahkan developer dalam develop app apalagi untuk barang branded seperti Oracle Database, Centos os, JBoss eap dan masih banyak lagi.
+## View logs container
 
+Selain itu, kita juga bisa lihat lognya bila terjadi error pada container yang sedang dijalankan tiba2 mati, dengan menggunakan perintah berikut:
+
+{% gist page.gist "03-docker-logs.bash" %}
+
+## Cleanup
+
+Jika kita sudah selesai, kita bisa cleanup mulai dari container, images, volume, network yang digunakan dengan perintah seperti berikut:
+
+{% gist page.gist "03-docker-prune.bash" %}
