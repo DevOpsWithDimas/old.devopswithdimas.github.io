@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Docker Registry"
+title: "Docker Public Registry (hub.docker.com)"
 lang: docker
 categories:
 - Containerization
