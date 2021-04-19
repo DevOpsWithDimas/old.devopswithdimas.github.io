@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Cloud Based Env: Play with Docker"
+date: 2021-04-19T08:00:24+07:00
 lang: docker
 categories:
 - Containerization
