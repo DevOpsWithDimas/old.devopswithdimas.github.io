@@ -20,7 +20,18 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Hai semuanya, di materi kali ini kita akan membahas tentang private registry. Private Registry untuk docker ada banyak diantaranya:
+Hai semuanya di materi kali ini kita akan membahas tentang private registry, diantaranya:
+
+1. Macam-Macam private registry
+2. Proxy for saving bandwidth
+3. Setup private registry
+4. Authenticate to private registry
+5. Pulling image from proxy repository
+6. Push to Hosted Repository
+
+## Macam Macam Private Registry
+
+Private Registry untuk docker ada banyak diantaranya:
 
 1. [JFrog](https://jfrog.com/container-registry/)
 2. [Google Cloud Registry](https://cloud.google.com/container-registry)
