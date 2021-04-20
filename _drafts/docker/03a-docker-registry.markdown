@@ -20,4 +20,5 @@ halo semuanya, dimateri kali ini kita akan membahas tentang [default registry](h
 
 1. Official docker images
 2. Public docker images
-3. your own images
+3. Signup to [hub.docker.com](https://hub.docker.com)
+4. Store your own images
