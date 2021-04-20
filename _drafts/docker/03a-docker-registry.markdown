@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Docker Public Registry (hub.docker.com)"
+title: "Docker Default Registry (hub.docker.com)"
 lang: docker
 categories:
 - Containerization
@@ -16,14 +16,8 @@ downloads: []
 ---
 
 
-description...
+halo semuanya, dimateri kali ini kita akan membahas tentang [default registry](hub.docker.com) yaitu
 
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Official docker images
+2. Public docker images
+3. your own images
