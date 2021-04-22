@@ -50,10 +50,13 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Containerization den
     4. Environtment Variables
     5. Build image
 <!--more-->
-12. Build images from external applications
-    1. Build using Maven (for springboot application)
-    2. Build using js (for angular application)
-    3. Build using js (for react application)
+12. Build images for specific programming language
+    1. Build for Java Web Application
+    2. Build for Springboot Application
+    3. Build for Angular
+    4. Build for ReactJS
+    5. Build for PHP Native
+    6. Build for PHP framework like Laravel, CakePHP dll
 13. Docker Dashboard
 14. Orcestration container dengan Swarm
     1. Swarm Node
