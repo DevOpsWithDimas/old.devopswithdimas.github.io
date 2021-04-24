@@ -20,7 +20,7 @@ halo semuanya, dimateri kali ini kita akan membahas tentang [default registry](h
 
 1. Official docker images
 2. Public docker images
-3. Signup to [hub.docker.com](https://hub.docker.com)
+3. Sign-up & Sign-in to [hub.docker.com](https://hub.docker.com)
 4. Store your own images
 
 <!--more-->
@@ -37,3 +37,5 @@ The Docker Official Images are a curated set of Docker repositories hosted on Do
 Docker, Inc. sponsors a dedicated team that is responsible for reviewing and publishing all content in the Official Images. This team works in collaboration with upstream software maintainers, security experts, and the broader Docker community. If you are new to Docker, we recommend that you use the Official Images in your projects. These images have clear documentation, promote best practices, and are designed for the most common use cases. Advanced users can review the Official Images as part of your Dockerfile learning process.
 
 A common rationale for diverging from Official Images is to optimize for image size. For instance, many of the programming language stack images contain a complete build toolchain to support installation of modules that depend on optimized code. An advanced user could build a custom image with just the necessary pre-compiled libraries to save space.
+
+## Public docker images
