@@ -25,7 +25,7 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Containerization den
     2. Install on Linux
     3. Install on Mac ARM/Intel Based
 5. Getting Started with Docker
-    1. PULL Image from registry
+    1. Pull Image from registry
     2. Test Run docker container
 6. Docker CLI
     1. Docker `images` command
