@@ -7,7 +7,7 @@ categories:
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/engine/reference/commandline/image/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/06a-docker-image-command
