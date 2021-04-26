@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "06a-docker-image-command"
+title: "Management Docker Images"
 lang: docker
 categories:
 - Containerization
