@@ -11,7 +11,7 @@ refs:
 - https://www.docker.com/resources/what-container
 - https://www.docker.com/products/container-runtime
 - https://en.wikipedia.org/wiki/Docker_(software)
-youtube: 
+youtube: tKeSqHp57Uc
 comments: true
 image_path: /resources/posts/docker/01b-container
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
