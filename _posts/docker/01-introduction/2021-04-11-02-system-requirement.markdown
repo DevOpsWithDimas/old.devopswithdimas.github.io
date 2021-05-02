@@ -9,7 +9,7 @@ categories:
 - Docker
 refs: 
 - https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install
-youtube: 
+youtube: q43Ev6R-RVA
 comments: true
 image_path: /resources/posts/docker/04-system-requirement
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524

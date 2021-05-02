@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://docs.microsoft.com/en-us/windows/wsl/install-win10
 - https://www.docker.com/products/docker-desktop
-youtube: 
+youtube: 3XWF1l6BEv8
 comments: true
 image_path: /resources/posts/docker/02a-install-windows10
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
