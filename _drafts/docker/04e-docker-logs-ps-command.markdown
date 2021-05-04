@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "06e-docker-exec-command"
+title: "06c-docker-logs-ps-command"
 lang: docker
 categories:
 - Containerization
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/engine/reference/commandline/logs/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/06e-docker-exec-command
+image_path: /resources/posts/docker/06c-docker-logs-ps-command
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
