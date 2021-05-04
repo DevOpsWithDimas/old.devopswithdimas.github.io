@@ -117,7 +117,7 @@
   publish: 2017-10-26T20:59:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-orm-hibernate
   youtube:
-  udemy:
+  udemy: https://www.udemy.com/course/hibernate-orm-bahasa-indonesia
   coming_soon: false
   visible: true
 
@@ -177,7 +177,7 @@
   publish: 2021-02-07T12:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV
-  udemy:
+  udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia
   coming_soon: false
   visible: true
 
@@ -214,7 +214,7 @@
   messages:
   publish: 2021-02-08T13:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
-  youtube:
+  youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvw3_SjMKQlKRlGdBiRr_1dh
   udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
   coming_soon: true
   visible: false
@@ -234,7 +234,7 @@
   messages:
   publish: 2021-02-08T13:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
-  youtube:
+  youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvzvSZm8AZ_IAec0MJuxP3GR
   udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
   coming_soon: true
   visible: false
