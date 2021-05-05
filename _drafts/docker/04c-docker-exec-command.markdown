@@ -57,3 +57,107 @@ Options:
                              <name|uid>[:<group|gid>])
   -w, --workdir string       Working directory inside the container
 ```
+
+## Start bash session
+
+Kita bisa jalankan dulu containernya, dengan perintah seperti berikut:
+
+{% highlight powershell %}
+docker run --name ubuntu_bash -d -i -t ubuntu:21.04
+{% endhighlight %}
+
+Berikut hasilnya:
+
+```powershell
+➜ ~  docker run --name ubuntu_bash -d -i -t ubuntu:21.04
+51416e0e051f719667d3596596574338ff2badbec340ca346672761422f2a1d7
+
+➜ ~  docker container ls
+CONTAINER ID   IMAGE          COMMAND       CREATED        STATUS         PORTS     NAMES
+51416e0e051f   ubuntu:21.04   "/bin/bash"   1 second ago   Up 3 seconds             ubuntu_bash
+```
+
+Sekarang kita coba jalankan perintah untuk membuat file sebagai contoh seperti berikut:
+
+{% gist page.gist "04c-docker-exec-touch-exist.bash" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ ~ ✗  docker exec ubuntu_bash bash -c "mkdir -p /contoh && echo 'Halo saya Dimas Maryanto, sedang belajar docker' > /contoh/test.txt"
+
+➜ ~ ✗  docker exec ubuntu_bash ls -a /contoh
+.
+..
+test.txt
+```
+
+## Run Interactive command
+
+Atau kita juga bisa login ke dalam containernya dengan perintah berikut:
+
+{% gist page.gist "04c-docker-exec-ubuntu-bash.bash" %}
+
+Maka hasilnya seperti berikut:
+
+```powershell
+➜ ~  docker exec -it ubuntu_bash bash
+root@51416e0e051f:/# ls contoh/
+test.txt
+
+root@51416e0e051f:/# cat /contoh/test.txt
+Halo saya Dimas Maryanto, sedang belajar docker
+```
+
+## Working with option args
+
+Option argument, ini sangat berguna contohnya 
+
+1. `--workdir` untuk menentukan lokasi ketika command di execute
+2. `--user` untuk menetukan siapa yang mengexecute
+
+Sebagai contoh seperti berikut implementasinya:
+
+{% gist page.gist "04c-docker-exec-option-args.bash" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ ~  docker exec -i -t -w /contoh -u root ubuntu_bash bash
+
+root@51416e0e051f:/contoh# pwd
+/contoh
+
+root@51416e0e051f:/contoh# cat test.txt
+Halo saya Dimas Maryanto, sedang belajar docker
+
+root@51416e0e051f:/contoh#
+```
+
+Contoh lainnya, kita coba start container nginx seperti berikut:
+
+{% highlight powershell %}
+docker run -d --name webapp nginx
+{% endhighlight %}
+
+Kemudian kita coba jalankan perintah berikut:
+
+{% gist page.gist "04c-docker-exec-normal-user-args.bash" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ ~  docker exec -it -u www-data -w /usr/share/nginx webapp bash
+
+www-data@71a009a4f00c:/usr/share/nginx$ pwd
+/usr/share/nginx
+
+www-data@9dc0cbceed40:/usr/share/nginx$ ls html/
+50x.html  index.html
+```
+
+## Cleanup
+
+Sekarang kita stop semua service yang jalan, dengan perintah seperti berikut:
+
+{% gist page.gist "04c-docker-exec-cleanup.bash" %}
