@@ -156,6 +156,47 @@ www-data@9dc0cbceed40:/usr/share/nginx$ ls html/
 50x.html  index.html
 ```
 
+## Run External program provided by image
+
+Sekarang kita akan mencoba, menjalankan program/aplikasi contohnya jika menggunakan container maka kita akan mengakses database dengan editor commandline seperti berikut:
+
+Sekarnag kita start dulu, container `postgres:9.6` seperti berikut:
+
+{% highlight powershell %}
+docker run --name postgres_db -it -u postgres -d -e POSTGRES_PASSWORD=passwordnya postgres:9.6
+{% endhighlight %}
+
+Kemudian kita coba login, ke dalam database dengan user `postgres` dan menggunakan editor `psql`
+
+{% gist page.gist "04c-docker-exec-psql.bash" %}
+
+Jika kita coba jalankan, maka hasilnya seperti berikut:
+
+```powershell
+➜ ~  docker exec -u postgres -it postgres_db psql
+psql (9.6.21)
+Type "help" for help.
+
+postgres=#
+```
+
+Jika kita coba menggunakan user lain, seperti berikut hasilnya:
+
+```powershell
+➜ ~ ✗ docker exec -u root -it postgres_db psql
+psql: FATAL:  role "root" does not exist
+```
+
+Atau juga kita bisa menggunakan user default wichis `root`, yang memparsing user pada user database seperti berikut:
+
+```powershell
+➜ ~  docker exec -it postgres_db psql -U postgres postgres
+psql (9.6.21)
+Type "help" for help.
+
+postgres=#
+```
+
 ## Cleanup
 
 Sekarang kita stop semua service yang jalan, dengan perintah seperti berikut:
