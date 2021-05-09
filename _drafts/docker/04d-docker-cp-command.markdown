@@ -10,7 +10,7 @@ refs:
 - https://docs.docker.com/engine/reference/commandline/cp/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/06h-docker-cp-command
+image_path: /resources/posts/docker/06d-docker-cp-command
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Expose services to outside a container"
+title: "Expose services to outside using ports"
 lang: docker
 categories:
 - Containerization
@@ -10,7 +10,7 @@ refs:
 - https://docs.docker.com/config/containers/container-networking/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/04g-expose-service-outside
+image_path: /resources/posts/docker/04e-expose-service-outside
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
