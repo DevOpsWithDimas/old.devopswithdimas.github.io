@@ -49,6 +49,7 @@ a0dc5482893666989812710242b7be3ed9c9b7ef8fded9d9812879b4cda1f09a
 
 ➜ nginx  docker container ls
 CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                         NAMES
+69cfe157ed9c   nginx     "/docker-entrypoint.…"   2 minutes ago    Up 2 minutes    80/tcp                        nginx-private
 966a5752b45b   nginx     "/docker-entrypoint.…"   21 seconds ago   Up 21 seconds   127.0.0.1:80->80/tcp          nginx-localhost
 a0dc54828936   nginx     "/docker-entrypoint.…"   27 seconds ago   Up 26 seconds   192.168.88.254:8080->80/tcp   nginx-localnetwork
 18daccdafc85   nginx     "/docker-entrypoint.…"   51 seconds ago   Up 50 seconds   0.0.0.0:8090->80/tcp          nginx-worldwide
