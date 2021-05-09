@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Copying files/content into a running container"
+title: "Copying files/content between container and filesystem"
 lang: docker
 categories:
 - Containerization
