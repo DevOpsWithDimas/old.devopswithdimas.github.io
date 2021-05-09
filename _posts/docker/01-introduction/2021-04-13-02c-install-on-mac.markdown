@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://docs.docker.com/docker-for-mac/install/
 - https://docs.docker.com/docker-for-mac/apple-m1/
-youtube: 
+youtube: 2ZjsrxcyZ34
 comments: true
 image_path: /resources/posts/docker/02c-install-mac
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524

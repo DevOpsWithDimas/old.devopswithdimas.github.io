@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://docs.docker.com/docker-hub/official_images/
 - https://www.docker.com/products/docker-hub
-youtube: 
+youtube: QETglsbCnfo
 comments: true
 image_path: /resources/posts/docker/03a-docker-hub
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
