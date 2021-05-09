@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Expose services to outside using ports"
+date: 2021-05-10T06:17:49+07:00
 lang: docker
 categories:
 - Containerization
@@ -37,11 +38,13 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 Try the new cross-platform PowerShell https://aka.ms/pscore6
 
-➜ nginx  docker container run --name nginx-worldwide -d -p 8090:80 nginx
+➜ docker container run --name nginx-private -d nginx
+69cfe157ed9ce0399551ec385748054f5e5a12e9d7873a443ba5ee6a7fb1f87e
+➜ docker container run --name nginx-worldwide -d -p 8090:80 nginx
 18daccdafc85e222b0855fcd753d4c3d57f01c0ee5238ddb8e6ba3ac4b11ea66
-➜ nginx  docker container run --name nginx-localnetwork -d -p 192.168.88.254:8080:80 nginx
+➜ docker container run --name nginx-localnetwork -d -p 192.168.88.254:8080:80 nginx
 a0dc5482893666989812710242b7be3ed9c9b7ef8fded9d9812879b4cda1f09a
-➜ nginx  docker container run --name nginx-localhost -d -p 127.0.0.1:80:80 nginx
+➜ docker container run --name nginx-localhost -d -p 127.0.0.1:80:80 nginx
 966a5752b45b115489444682d881a039c497a57542fd7f1f3b7b4f91db6d3f03
 
 ➜ nginx  docker container ls
@@ -55,6 +58,7 @@ Sekarang kita coba scenario berikut:
 
 | Ports     | `localhost`                               | `192.168.88.254`                          | from outside                                              |
 | :---      | :---                                      | :---                                      | :---                                                      |
-| `80`      | `StatusDescription : OK`                  | `Unable to connect to the remote server`  | `Unable to reach`                                         |
+| `-`       | `Unable to connect to the remote server`  | `Unable to connect to the remote server`  | `Unable to connect to the remote server`                  |
+| `80`      | `StatusDescription : OK`                  | `Unable to connect to the remote server`  | `Unable to connect to the remote server`                  |
 | `8080`    | `Unable to connect to the remote server`  | `StatusDescription : OK`                  | `StatusDescription : OK` ***note if firewall allowed**    |
 | `8090`    | `StatusDescription : OK`                  | `StatusDescription : OK`                  | `StatusDescription : OK` ***note if firewall allowed**    |
