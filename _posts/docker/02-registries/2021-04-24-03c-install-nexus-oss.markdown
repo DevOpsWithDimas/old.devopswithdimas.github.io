@@ -1,19 +1,13 @@
 ---
 layout: post
-title: "insecure Docker Registry"
-date: 2021-04-24T16:44:03+07:00
+title: "Installing Nexus OSS"
+date: 2021-04-24T16:45:03+07:00
 lang: docker
 categories:
 - Containerization
 - DevOps
 - Docker
 refs: 
-- https://jfrog.com/container-registry/
-- https://cloud.google.com/container-registry
-- https://www.sonatype.com/products/repository-oss
-- https://docs.gitlab.com/ce/user/packages/container_registry/
-- https://docs.github.com/en/packages/guides/about-github-container-registry
-- https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation
 - https://help.sonatype.com/repomanager3/installation
 - https://help.sonatype.com/repomanager3/system-requirements
 youtube: 
@@ -23,36 +17,20 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Hai semuanya di materi kali ini kita akan membahas tentang private registry, diantaranya:
+Hai semuanya, di materi kali ini kita akan membahas Insecure Registry dengan menggunakan [Nexus OSS](https://www.sonatype.com/products/repository-oss), diantaranya yang akan kita bahas yaitu
 
-1. Macam-Macam private registry
-2. Proxy for saving bandwidth
-3. Setup private registry
-4. Authenticate to private registry
-5. Pulling image from proxy repository
-6. Push to Hosted Repository
+1. System requirement to install Nexus OSS
+2. Installing Nexus OSS
+    1. Setup Proxy Repository Docker from Docker HUB
+    2. Setup Proxy Repository Docker from other registry
+    3. Setup Hosted Repository Docker
+    4. Setup Public Group Repository Docker
+3. How to Push & Pull Docker images from Insecure Registry
+    1. Pulling docker image from Docker Hub using Proxy
+    2. Pulling docker image from an other registry using proxy repository
+    3. Push own docker image to hosted registry.
 
-## Macam Macam Private Registry
-
-Private Registry untuk docker ada banyak diantaranya:
-
-1. [JFrog](https://jfrog.com/container-registry/)
-2. [Google Cloud Registry](https://cloud.google.com/container-registry)
-3. [Sonatype Nexus OSS](https://www.sonatype.com/products/repository-oss)
-4. [Gitlab Registry](https://docs.gitlab.com/ce/user/packages/container_registry/)
-5. [Github Registry](https://docs.github.com/en/packages/guides/about-github-container-registry)
-6. [Redhat Registry](https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation)
-7. Dan masih banyak lagi registry-registry lainnya...
-
-Kali ini kita akan membahas menggunakan **Nexus OSS**, Dengan nexus kita bisa membuat proxy, store registry dan lain-lain di on-premise. 
-
-![proxy](https://www.sonatype.com/hs-fs/hubfs/Nexus_Repo_SDLC@2x.png?width=956&name=Nexus_Repo_SDLC@2x.png)
-
-Nexus Repository Manager OSS support Docker registries as the Docker repository format for hosted and proxy repositories. You can expose these repositories to the client-side tools directly or as a repository group, which is a repository that merges and exposes the contents of multiple repositories in one convenient URL. This allows you to reduce time and bandwidth usage for accessing Docker images in a registry as well as share your images within your organization in a hosted repository.
-
-So jadi kita install dlu di local network kita. 
-
-## Installing Nexus OSS
+## System Requirement
 
 Untuk install Nexus OSS, kita bisa install di Windows, Mac, atau Linux dengan system required seperti berikut
 
@@ -60,6 +38,8 @@ Untuk install Nexus OSS, kita bisa install di Windows, Mac, atau Linux dengan sy
 2. RAM, The default JRE min and max heap size of NXRM3 is pre-configured to be 1200MB, which should be considered an absolute minimum. The codebase will consume approximately another 1GB.  So factoring in operating system overhead you will need at least 4GB of RAM on a dedicated NXRM host, assuming no other large applications are running on the machine.
 3. CPU, NXRM performance is primarily bounded by IO (disk and network) rather than CPU.  So any reasonably modern 4 core (or better) CPU will generally be sufficient for normal uses of NXRM. 
 4. Storage, Nexus Repository Manager 3 installed consumes around 500 MB.
+
+## Installing Nexus OSS
 
 Sekarang kita install, karena disini saya menggunakan Server Linux Centos 8, berikut adalah cara installnya
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Docker Default Registry (Docker HUB)"
+title: "Docker Registry (Docker HUB)"
 date: 2021-04-24T16:43:49+07:00
 lang: docker
 categories:
@@ -17,13 +17,14 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+halo semuanya, di materi kali ini kita akan membahas tentang Docker Registry, The Registry is a stateless, highly scalable server side application that stores and lets you distribute Docker images. 
+The Registry is open-source, under the permissive Apache license. Secara default, Docker Registry menggunakan [Docker Hub](hub.docker.com). Ok nah jadi sekarang kita akan membahas:
 
-halo semuanya, dimateri kali ini kita akan membahas tentang [Docker Hub](hub.docker.com) yaitu
-
-1. Official docker images
-2. Public docker images
-3. Sign-up & Sign-in to [hub.docker.com](https://hub.docker.com)
-4. Store your own images
+1. Apa itu Official Images
+2. Apa itu Public Images
+3. Docker Hub Repository (Public/Private repository)
+4. How to Sign-up & Sign-in to [hub.docker.com](https://hub.docker.com)
+5. How to Store your own images to [hub.docker.com](https://hub.docker.com)
 
 <!--more-->
 
@@ -46,7 +47,7 @@ Berikut adalah contoh official image, jika kita search di halaman [hub.docker.co
 
 ## Public docker images
 
-Selain official docker image, di public registry [hub.docker.com](https://hub.docker.com/search?q=mysql&type=image) juga ada public image juga yang kita bisa coba, Jadi public docker image ini adalah docker image yang di publish oleh semua orang di seluruh dunia, sebagai contoh klo temen-temen search image `mysql` maka yang tampil ada banyak sekali. biasanya public image diawali dengan `username/<image-name:tag>` seperti berikut:
+Selain official docker image, di [hub.docker.com](https://hub.docker.com/search?q=mysql&type=image) ada juga public image yang kita bisa coba, Jadi public docker image ini adalah docker image yang di publish oleh semua orang di seluruh dunia, sebagai contoh klo temen-temen search image `mysql` maka yang tampil ada banyak sekali. biasanya public image diawali dengan `username/<image-name:tag>` seperti berikut:
 
 ![docker public image]({{ page.image_path | prepend: site.baseurl }}/public-images.png)
 
