@@ -130,3 +130,9 @@ d-----         5/10/2021   4:59 AM                conf.d
 -a----         4/13/2021  10:13 PM            664 uwsgi_params
 -a----         4/13/2021  10:13 PM           3610 win-utf
 ```
+
+## Cleanup
+
+Nah sekarang kita bersihkan-bersih dulu ya. berikut perintahnya:
+
+{% gist page.gist "04e-cleanup.bash" %}

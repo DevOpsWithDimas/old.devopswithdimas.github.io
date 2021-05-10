@@ -63,3 +63,9 @@ Sekarang kita coba scenario berikut:
 | `80`      | `StatusDescription : OK`                  | `Unable to connect to the remote server`  | `Unable to connect to the remote server`                  |
 | `8080`    | `Unable to connect to the remote server`  | `StatusDescription : OK`                  | `StatusDescription : OK` ***note if firewall allowed**    |
 | `8090`    | `StatusDescription : OK`                  | `StatusDescription : OK`                  | `StatusDescription : OK` ***note if firewall allowed**    |
+
+## Cleanup
+
+Sekarang, kita bersihkan dulu ya semua containernya yang berjalan. dengan perintah seperti berikut:
+
+{% gist page.gist "04d-cleanup.bash" %}
