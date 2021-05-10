@@ -501,3 +501,9 @@ Jika dijalankan maka hasilnya seperti berikut:
     }
 ]
 ```
+
+## Cleanup
+
+Setelah selesai, sekarang saatnya kita bersih-bersih dulu. berikut adalah perintahnya:
+
+{% gist page.gist "04f-cleanup.bash" %}
