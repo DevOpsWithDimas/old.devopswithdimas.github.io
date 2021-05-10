@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Logging, Inspect, & Resource Usage Statistics Container"
+date: 2021-05-10T09:09:41+07:00
 lang: docker
 categories:
 - Containerization
