@@ -14,7 +14,7 @@ refs:
 - https://docs.gitlab.com/ce/user/packages/container_registry/
 - https://docs.github.com/en/packages/guides/about-github-container-registry
 - https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation
-youtube: 
+youtube: -FSutpLEEWc
 comments: true
 image_path: /resources/posts/docker/03b-private-registry
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
