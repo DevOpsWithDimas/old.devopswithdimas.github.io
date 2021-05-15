@@ -83,7 +83,13 @@ Untuk menyimpan image ke Docker Hub, kita bisa menyimpan as Public atau Private 
 
 Untuk mempublish suatu image ke Docker Hub dari image yang telah tersedia atau yang kita build sendiri. kita harus menggunakan Docker ID sebagai identified dalam penamaan imagenya seperti `<your-username>/<image-name>:<tag>` Contoh implementasinya seperti berikut:
 
+For Bash script:
+
 {% gist page.gist "03a-publish-image.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "03a-publish-image.ps1" %}
 
 Jika dijalankan seperti berikut:
 

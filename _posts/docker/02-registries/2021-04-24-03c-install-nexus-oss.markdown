@@ -167,7 +167,13 @@ Setelah itu, kita contohnya kita akan pull image `postgresql:9.3` dari private r
 
 Dan sekarang kita coba push back ke private registry
 
+For Bash script:
+
 {% gist page.gist "03b-docker-push-private-registry.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "03b-docker-push-private-registry.ps1" %}
 
 berikut hasilnya:
 

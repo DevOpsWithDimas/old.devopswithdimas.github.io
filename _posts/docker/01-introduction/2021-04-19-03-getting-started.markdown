@@ -47,7 +47,13 @@ Jika di jalankan maka hasilnya seperti berikut:
 
 Untuk menjalankan docker image, kita menggunakan perintah seperti berikut:
 
+For Bash script:
+
 {% gist page.gist "03-docker-run-image.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "03-docker-run-image.ps1" %}
 
 Artinya dari perintah tersebut:
 
@@ -63,6 +69,7 @@ Artinya dari perintah tersebut:
 Nah sekarang kita bisa check containernya apakah udah run dengan cara perintah berikut:
 
 {% gist page.gist "03-docker-list-container.bash" %}
+
 
 Jika di jalankan maka hasilnya seperti berikut:
 

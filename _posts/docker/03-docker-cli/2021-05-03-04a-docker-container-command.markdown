@@ -269,7 +269,13 @@ Di antara sekian banyak argument, biasanya yang paling sering saya gunakan adala
 
 Sebagai contoh penggunaanya, seperti berikut
 
+For Bash script:
+
 {% gist page.gist "04a-docker-run-args.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "04a-docker-run-args.ps1" %}
 
 Jika di jalankan maka hasilnya seperti berikut:
 
