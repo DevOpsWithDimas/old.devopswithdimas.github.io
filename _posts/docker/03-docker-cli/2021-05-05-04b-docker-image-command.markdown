@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://docs.docker.com/engine/reference/commandline/image/
 - https://docs.docker.com/engine/reference/commandline/images/
-youtube: 
+youtube: KPGHfMQjBNw
 comments: true
 image_path: /resources/posts/docker/06a-docker-image-command
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524

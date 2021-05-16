@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://docs.docker.com/engine/reference/commandline/container/
 - https://docs.docker.com/engine/reference/commandline/ps/
-youtube: 
+youtube: 8rJHARK5cbo
 comments: true
 image_path: /resources/posts/docker/06b-docker-container-command
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
