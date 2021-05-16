@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "04h-docker-run-env-file"
+title: "Run a Container using Environtment File"
 lang: docker
 categories:
 - Containerization
