@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Legacy container links"
+date: 2021-05-22T16:03:31+07:00
 lang: docker
 categories:
 - Containerization
@@ -19,7 +20,7 @@ downloads: []
 Hai semuanya, di materi kali ini kita akan membahas tentang Simple Networking dengan Docker Network Link.
 
 1. Connecting another container using intenal ip-address
-2. Connecting another containers using link system
+2. Connecting another container using link system
 
 Before the Docker networks feature, you could use the Docker link feature to allow containers to discover each other and securely transfer information about one container to another container.
 
