@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "05b-docker-brige-network"
+title: "Use bridge networks"
 lang: docker
 categories:
 - Containerization
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/network/bridge/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/05b-docker-brige-network
