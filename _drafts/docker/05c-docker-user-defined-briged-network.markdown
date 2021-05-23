@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Use bridge networks"
+title: "Use user-defined bridge networks"
 lang: docker
 categories:
 - Containerization
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/network/bridge/
+- https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks
 youtube: 
 comments: true
-image_path: /resources/posts/docker/05b-docker-brige-network
+image_path: /resources/posts/docker/05c-docker-user-defined-briged-network
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
