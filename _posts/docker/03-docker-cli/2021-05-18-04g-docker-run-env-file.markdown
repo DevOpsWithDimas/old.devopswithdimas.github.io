@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://docs.docker.com/compose/env-file/
 - https://en.wikipedia.org/wiki/Environment_variable
-youtube: rwZ5to3_u_Q
+youtube: yziLpra32U4
 comments: true
 image_path: /resources/posts/docker/04h-docker-run-env-file
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524

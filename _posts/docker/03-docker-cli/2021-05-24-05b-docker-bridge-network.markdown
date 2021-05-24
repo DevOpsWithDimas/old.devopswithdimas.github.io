@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Use default bridge networks"
+date: 2021-05-24T20:43:02+07:00
 lang: docker
 categories:
 - Containerization
