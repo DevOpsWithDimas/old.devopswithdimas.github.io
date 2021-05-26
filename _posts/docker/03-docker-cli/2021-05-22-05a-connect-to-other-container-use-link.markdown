@@ -9,7 +9,7 @@ categories:
 - Docker
 refs: 
 - https://docs.docker.com/network/links/
-youtube: 
+youtube: oEuqbHQuq8Y
 comments: true
 image_path: /resources/posts/docker/04g-docker-container-link
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524

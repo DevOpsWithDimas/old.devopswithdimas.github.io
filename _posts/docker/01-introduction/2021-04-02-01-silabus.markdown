@@ -37,6 +37,11 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Containerization den
     8. Docker `cp` command
     7. Docker `save` & `load` command
 7. Docker Network
+    1. Legacy Container Links
+    2. Use Default bridge Network
+    3. Create user-defined from bridge Network
+    4. Host Networks
+    5. None Network
 8. Docker Volume
 9. Docker Daemon CLI
 10. Dockerfile
