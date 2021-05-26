@@ -186,3 +186,71 @@ bridge -> {"Driver":"default","Options":null,"Config":[{"Subnet":"172.17.0.0/16"
 ```
 
 ## How to connect containers each other in user-defined bridge network
+
+
+For Bash script:
+
+{% gist page.gist "05c-create-multi-container-backend-network.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "05c-create-multi-container-backend-network.ps1" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ ~  docker container run `
+>> --name webapp `
+>> -p 8080:80 `
+>> --network backend_bridge `
+>> -d nginx `
+>> | `
+>> docker container run `
+>> --name postgresdb `
+>> -e POSTGRES_PASSWORD=password `
+>> -p 5432:5432 `
+>> --network backend_bridge `
+>> -d postgres:12.6 `
+>> | `
+>> docker container run `
+>> --name centos7 `
+>> --network backend_bridge `
+>> -it `
+>> -d centos:7 bash
+c374148946e8c5c073e5c11e0c75c4457f99c7aeaa8bcfdb9572072f8a16032f
+
+➜ ~  docker container ls
+CONTAINER ID   IMAGE           COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+c374148946e8   centos:7        "bash"                   15 seconds ago   Up 14 seconds                                               centos7
+a22ff7c66400   postgres:12.6   "docker-entrypoint.s…"   16 seconds ago   Up 14 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   postgresdb
+8b756747082e   nginx           "/docker-entrypoint.…"   17 seconds ago   Up 16 seconds   0.0.0.0:8080->80/tcp, :::8080->80/tcp       webapp
+
+➜ ~  docker network inspect bridge backend_bridge --format '{% raw %}{{ .Name }}  ==> {{json .Containers}}{% endraw %}'
+bridge  ==> {}
+backend_bridge  ==> 
+{
+   "08d9210b39c8f78296a10ab5ea4c00d6a5d705ef689575057a5f3ed960a7a762":{
+      "Name":"postgresdb",
+      "EndpointID":"8b220c8947d5e6fc4ec5e353963b948a0b815b6c8827ecbfac2341f9139b5b89",
+      "MacAddress":"02:42:ac:15:00:03",
+      "IPv4Address":"172.21.0.3/16",
+      "IPv6Address":""
+   },
+   "d9a000b91856d10c84de4fd24079241deb7249f152f7f858b9b8f6ca4d9141ac":{
+      "Name":"webapp",
+      "EndpointID":"411c23b907e75f54be1abe44e961653bc81dfbe9092d8932dfd75e2317ea89df",
+      "MacAddress":"02:42:ac:15:00:04",
+      "IPv4Address":"172.21.0.4/16",
+      "IPv6Address":""
+   },
+   "e4f9e041acf0a89c44f1849e55d4b55bee86d628822b2c099470709b1163a4dd":{
+      "Name":"centos7",
+      "EndpointID":"7c345d7dc17c76dc1c8d4bf32ee05f6a2b8064d0568ed058c8ecc089454b2d5e",
+      "MacAddress":"02:42:ac:15:00:02",
+      "IPv4Address":"172.21.0.2/16",
+      "IPv6Address":""
+   }
+}
+```
+
+Berbeda dengan default `bridge` network, pada user-defined bridge network jika suatu container mau komumikasi antara container maka kita bisa panggil dengan  **Internal IP-Address atau Container Name**
