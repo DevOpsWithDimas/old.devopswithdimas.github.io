@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "05c-docker-host-network"
+title: "Docker Network - Host"
 lang: docker
 categories:
 - Containerization
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/network/host/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/05c-docker-host-network
