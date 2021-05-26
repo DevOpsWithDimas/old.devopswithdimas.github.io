@@ -24,7 +24,7 @@ Hai semuanya, sebelumnya kita udah mempelajari tentang default bridge network se
 
 ## Management Docker Network
 
-Untuk me-manage Docker Network kita bisa menggunakan perintah `docker network COMMAND`. Dengan perintah tersebut kita bisa `create`, `inspect`, `list`, `remove`, `prune`, `connect` dan `disconnect` pada suatu network. Untuk lebih detailnya kita bisa lihat dokumentasinya.
+Untuk me-manage Docker Network kita bisa menggunakan perintah `docker network COMMAND`. Untuk lebih detailnya kita bisa lihat dokumentasinya.
 
 {% gist page.gist "05c-docker-network-help.bash" %}
 
