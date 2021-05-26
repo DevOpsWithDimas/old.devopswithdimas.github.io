@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Use user-defined bridge networks"
+date: 2021-05-27T03:32:57+07:00
 lang: docker
 categories:
 - Containerization
@@ -19,8 +20,7 @@ Hai semuanya, sebelumnya kita udah mempelajari tentang default bridge network se
 
 1. Management Docker Network
 2. Create multiple containers in same user-defined bridge network and how to connected each other
-3. What the bridge network does to your containers?
-4. Create multiple bridge network and containers, can a container connected each other between same and different network?
+3. Cleanup
 
 ## Management Docker Network
 
@@ -293,8 +293,11 @@ Commercial support is available at
 [root@e4f9e041acf0 /]# ping -c 2 postgresdb
 PING postgresdb (172.21.0.3) 56(84) bytes of data.
 64 bytes from postgresdb.backend_bridge (172.21.0.3): icmp_seq=1 ttl=64 time=0.078 ms
-64 bytes from postgresdb.backend_bridge (172.21.0.3): icmp_seq=2 ttl=64 time=0.037 ms
+64 bytes from postgresdb.backend_bridge (172.21.0.3): icmp_seq=2 ttl=64 time=0.038 ms
+
 --- postgresdb ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1037ms
+rtt min/avg/max/mdev = 0.038/0.058/0.078/0.020 ms
 
 [root@e4f9e041acf0 /]# yum install postgresql -y
 Installed:
@@ -372,7 +375,7 @@ postgres=# \q
    }
 }
 
-➜ ~  docker container inspect webapp -f '{{json .NetworkSettings.Networks }}'
+➜ ~  docker container inspect webapp -f '{% raw %}{{json .NetworkSettings.Networks }}{% endraw %}'
 {}
 
 ➜ ~  docker exec -it centos7 bash
@@ -382,5 +385,26 @@ ping: webapp: Name or service not known
 [root@e4f9e041acf0 /]# curl webapp
 curl: (6) Could not resolve host: webapp; Unknown error
 
+➜ ~  docker exec -it centos7 bash
+[root@e4f9e041acf0 /]# ping -c 2 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=37 time=22.1 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=37 time=21.6 ms
+
+--- 8.8.8.8 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+
 [root@e4f9e041acf0 /]# exit
 ```
+
+## Cleanup
+
+Setelah kita mencoba, saatnya kita bersih-bersih dulu. Berikut adalah perintahnya:
+
+For Bash script:
+
+{% gist page.gist "05c-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "05c-cleanup.ps1" %}
