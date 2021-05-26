@@ -18,7 +18,7 @@ downloads: []
 Hai semuanya, sebelumnya kita udah mempelajari tentang default bridge network selanjutnya kita bahas tentang user-defined bridge network, Diantaranya meliputi:
 
 1. Management Docker Network
-2. Create multiple containers in same bridge network and how to connected each other
+2. Create multiple containers in same user-defined bridge network and how to connected each other
 3. What the bridge network does to your containers?
 4. Create multiple bridge network and containers, can a container connected each other between same and different network?
 
