@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Advanced user-defined bridge network"
+date: 2021-05-27T22:04:45+07:00
 lang: docker
 categories:
 - Containerization
@@ -26,6 +27,12 @@ Hai semuanya di materi sebelumnya kita udah membahas tentang user-defined bridge
 3. Cleanup
 
 <!--more-->
+
+Ok lansung aja kepembahasan yang pertama yaitu membuat multiple user-defined bridge network
+
+## Multiple user-defined bridge network in same host
+
+Nah sekarang kita akan membuat 2 network terlebih dahulu yaitu `sandbox` dan `dev` menggunakan `--driver=bridge` seperti berikut perintahnya:
 
 For Bash script:
 
@@ -426,3 +433,13 @@ Commercial support is available at
 </body>
 </html>
 ```
+
+## Cleanup
+
+Ok setelah kita mencoba, kita bersih-bersih dulu ya berikut perintahnya untuk Bash script:
+
+{% gist page.gist "05d-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "05d-cleanup.ps1" %}
