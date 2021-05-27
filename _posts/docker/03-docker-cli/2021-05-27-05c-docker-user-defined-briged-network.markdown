@@ -408,3 +408,12 @@ For Bash script:
 For Powershell script:
 
 {% gist page.gist "05c-cleanup.ps1" %}
+
+## the conclusion
+
+Bridge networks are isolated networks on a single Engine installation. Differences between user-defined bridges and the default bridge:
+
+1. User-defined bridges provide automatic DNS resolution between containers.
+2. User-defined bridges provide better isolation.
+3. Containers can be attached and detached from user-defined networks on the fly.
+4. Each user-defined network creates a configurable bridge.
