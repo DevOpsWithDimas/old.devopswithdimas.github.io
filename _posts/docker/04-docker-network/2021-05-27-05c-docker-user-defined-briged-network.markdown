@@ -330,7 +330,7 @@ postgres=# select 1 + 2 as tambah;
 postgres=# \q
 [root@e4f9e041acf0 /]# exit
 
-➜ ~  docker container inspect webapp -f '{{json .NetworkSettings.Networks }}'
+➜ ~  docker container inspect webapp -f '{% raw %}{{json .NetworkSettings.Networks }}{% endraw %}'
 {
    "backend_bridge":{
       "IPAMConfig":{

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "06h-docker-volume"
+title: "Docker Volume Overview"
 lang: docker
 categories:
 - Containerization
