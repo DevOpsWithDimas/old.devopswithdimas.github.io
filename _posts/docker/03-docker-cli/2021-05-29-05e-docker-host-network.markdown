@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Use host networking"
+date: 2021-05-29T07:13:15+07:00
 lang: docker
 categories:
 - Containerization
@@ -66,7 +67,7 @@ a7b5ec793fd4bc3df307b717069ce62d2afc0053a0263ac78686dfca7458c74c
 CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
 a7b5ec793fd4   nginx     "/docker-entrypoint.…"   15 seconds ago   Up 14 seconds             webapp
 
-➜  ~ docker container inspect webapp -f '{{json .NetworkSettings }}' | python -m json.tool
+➜  ~ docker container inspect webapp -f '{% raw %}{{json .NetworkSettings }}{% endraw %}' | python -m json.tool
 {
     "GlobalIPv6PrefixLen": 0,
     "HairpinMode": false,
@@ -131,4 +132,31 @@ AH00558: httpd: Could not reliably determine the server\'s fully qualified domai
 (98)Address already in use: AH00072: make_sock: could not bind to address 0.0.0.0:80
 no listening sockets available, shutting down
 AH00015: Unable to open logs
+
+➜  ~ docker run --name mysql_db --network host -e MYSQL_ROOT_PASSWORD=password -d mysql:5.7
+7c5379e92ccaeb5af3b7848eadeb896cf2675cbd8dafa25a157374ea91cad398
+
+➜  ~ docker network inspect host -f '{% raw %}{{json .Containers}}{% endraw %}' | python -m json.tool
+{
+    "7c5379e92ccaeb5af3b7848eadeb896cf2675cbd8dafa25a157374ea91cad398": {
+        "EndpointID": "f7e7501a9dae6a509240a5bb68634b83947280307d02473ae537c5a8266a838a",
+        "IPv4Address": "",
+        "IPv6Address": "",
+        "MacAddress": "",
+        "Name": "mysql_db"
+    },
+    "a7b5ec793fd4bc3df307b717069ce62d2afc0053a0263ac78686dfca7458c74c": {
+        "EndpointID": "6241273f3ca305c3ddbf2452bb3453002f140bc634dd71761dd96e75e963378e",
+        "IPv4Address": "",
+        "IPv6Address": "",
+        "MacAddress": "",
+        "Name": "webapp"
+    }
+}
 ```
+
+## Cleanup
+
+Ok setelah kita mencoba, sekarang kita akan cleanup. berikut adalah perintahnya:
+
+{% gist page.gist "05e-cleanup.bash" %}
