@@ -8,7 +8,6 @@ categories:
 - Docker
 refs: 
 - https://docs.docker.com/storage/volumes/
-- https://docs.docker.com/storage/storagedriver/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/06h-docker-volume
