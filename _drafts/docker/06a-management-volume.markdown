@@ -22,8 +22,7 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Management Volume di
 1. List Volume
 2. Create Container with explicit volume
 3. Inspecting Volume
-4. Remove Volume
-5. Cleanup
+4. Cleanup
 
 Sebelum itu, kita lihat dulu dokumentasi dari docker volume dengan perintah berikut:
 
@@ -270,3 +269,135 @@ exampledb=# select * from example_table;
 
 exampledb=#
 ```
+
+## Inspecting Volume
+
+Inspecting object docker volume, kita bisa menggunakan perintah berikut:
+
+{% gist page.gist "06a-inspect-volume.bash" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ ~  docker volume inspect pgdata_volume e8b3d53fb7fd4
+[
+    {
+        "CreatedAt": "2021-06-03T14:07:47Z",
+        "Driver": "local",
+        "Labels": {
+            "app": "database"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/pgdata_volume/_data",
+        "Name": "pgdata_volume",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+```
+
+Nah jika temen-temen menggunakan linux, kita bisa access secara langsung `Mountpont` witchis `/var/lib/docker/volumes/pgdata_volume/_data` tapi jika menggunakan Docker Desktop baik itu di Windows atau Mac itu gak bisa secara langsung ya berikut contohnya:
+
+```bash
+[dimasm93@dev01 ~]$ docker info
+Client:
+ Debug Mode: false
+
+Server:
+ Containers: 0
+  Running: 0
+  Paused: 0
+  Stopped: 0
+ Images: 6
+ Server Version: 19.03.14
+ Storage Driver: overlay2
+  Backing Filesystem: xfs
+  Supports d_type: true
+  Native Overlay Diff: true
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Kernel Version: 4.18.0-240.22.1.el8_3.x86_64
+ Operating System: CentOS Linux 8
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 4
+ Total Memory: 15.34GiB
+ Docker Root Dir: /var/lib/docker
+ Registry: https://index.docker.io/v1/
+ Labels:
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+
+[dimasm93@dev01 ~]$ docker volume create exampledb
+
+[dimasm93@dev01 ~]$ docker run --name postgresdb \
+> -v exampledb:/var/lib/postgresql/data \
+> -e POSTGRES_PASSWORD=password \
+> -d postgres:12.6
+dc50ae72c03fb2e536dcc33b5b12b62c1fb9e50616d8dcf981df86929ac06d85
+
+[dimasm93@dev01 ~]$ docker volume ls
+DRIVER              VOLUME NAME
+local               exampledb
+
+[dimasm93@dev01 ~]$ docker volume inspect exampledb
+[
+    {
+        "CreatedAt": "2021-06-03T21:59:21+07:00",
+        "Driver": "local",
+        "Labels": {},
+        "Mountpoint": "/var/lib/docker/volumes/exampledb/_data",
+        "Name": "exampledb",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+
+[dimasm93@dev01 ~]$ sudo -i
+[root@dev01 ~]# cd /var/lib/docker/volumes/exampledb/_data
+
+[root@dev01 _data]# ll -h
+total 60K
+drwx------. 5 systemd-coredump input   41 Jun  3 21:59 base
+drwx------. 2 systemd-coredump input 4.0K Jun  3 22:00 global
+drwx------. 2 systemd-coredump input    6 Jun  3 21:59 pg_commit_ts
+drwx------. 2 systemd-coredump input    6 Jun  3 21:59 pg_dynshmem
+-rw-------. 1 systemd-coredump input 4.7K Jun  3 21:59 pg_hba.conf
+-rw-------. 1 systemd-coredump input 1.6K Jun  3 21:59 pg_ident.conf
+drwx------. 4 systemd-coredump input   68 Jun  3 21:59 pg_logical
+drwx------. 4 systemd-coredump input   36 Jun  3 21:59 pg_multixact
+drwx------. 2 systemd-coredump input   18 Jun  3 21:59 pg_notify
+drwx------. 2 systemd-coredump input    6 Jun  3 21:59 pg_replslot
+drwx------. 2 systemd-coredump input    6 Jun  3 21:59 pg_serial
+drwx------. 2 systemd-coredump input    6 Jun  3 21:59 pg_snapshots
+drwx------. 2 systemd-coredump input    6 Jun  3 21:59 pg_stat
+drwx------. 2 systemd-coredump input   63 Jun  3 22:01 pg_stat_tmp
+drwx------. 2 systemd-coredump input   18 Jun  3 21:59 pg_subtrans
+drwx------. 2 systemd-coredump input    6 Jun  3 21:59 pg_tblspc
+drwx------. 2 systemd-coredump input    6 Jun  3 21:59 pg_twophase
+-rw-------. 1 systemd-coredump input    3 Jun  3 21:59 PG_VERSION
+drwx------. 3 systemd-coredump input   60 Jun  3 21:59 pg_wal
+drwx------. 2 systemd-coredump input   18 Jun  3 21:59 pg_xact
+-rw-------. 1 systemd-coredump input   88 Jun  3 21:59 postgresql.auto.conf
+-rw-------. 1 systemd-coredump input  27K Jun  3 21:59 postgresql.conf
+-rw-------. 1 systemd-coredump input   36 Jun  3 21:59 postmaster.opts
+-rw-------. 1 systemd-coredump input   94 Jun  3 21:59 postmaster.pid
+[root@dev01 _data]#
+```
+
+## Cleanup
+
+Untuk menghapus suatu volume, kita bisa menggunakan perintah `rm` atau `prune`. Setelah kita mencoba studi kasus diatas kita hapus dulu semua containernya yang sedang berjalan setelah itu kita bisa hapus semua volumenya, Seperti berikut:
+
+For Bash script:
+
+{% gist page.gist "06a-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "06a-cleanup.ps1" %}
