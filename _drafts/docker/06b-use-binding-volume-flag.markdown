@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "06a-use-binding-volume-flag"
+title: "Use Bind Mounts"
 lang: docker
 categories:
 - Containerization
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/storage/bind-mounts/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/06a-use-binding-volume-flag
@@ -16,14 +16,8 @@ downloads: []
 ---
 
 
-description...
+Hai semuanya, di video kali ini kita akan membahas tentang binding volume di Docker, diantaranya yang akan kita bahas yaitu
 
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Binding volume using `--volume` flag
+2. Biding volume using `--mount` flag
+3. Readonly Volume
