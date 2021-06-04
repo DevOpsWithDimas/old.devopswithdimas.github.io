@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "06d-share-volume"
+title: "Share volume among container and machine"
 lang: docker
 categories:
 - Containerization

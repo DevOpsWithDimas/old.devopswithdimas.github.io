@@ -18,6 +18,7 @@ downloads: []
 
 Hai semuanya, di video kali ini kita akan membahas tentang binding volume di Docker, diantaranya yang akan kita bahas yaitu
 
-1. Binding volume using `--volume` flag
-2. Biding volume using `--mount` flag
-3. Readonly Volume
+1. What is bind volume?
+2. Binding volume using `--volume` flag
+3. Binding volume using `--mount` flag
+4. Readonly Volume
