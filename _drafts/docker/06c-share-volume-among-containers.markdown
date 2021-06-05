@@ -17,8 +17,14 @@ downloads: []
 
 Hai semuanya, di materi kali ini kita akan membahas tentang share volume diantaranya:
 
-1. Share data among containers
-2. Share data among machine
+1. Isolate volume each container
+2. Share data among containers
+    1. Use volume
+    2. Use bind mount
+3. Cleanup
+
+
+## Isolate volume each container
 
 Sepertinya kita ketahui ya, setiap container memiliki volume masing-masing (isolation) baik menjalankan image yang sama ataupun berbeda. Contohnya seperti berikut:
 
@@ -284,3 +290,15 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS       
 Sekarang klo kita coba browser dengan alamat [http://localhost:9090](http://localhost:9090) dan [http://localhost:9091](http://localhost:9091) maka hasilnya pasti sama seperti berikut:
 
 ![index.html]({{ page.image_path | prepend: site.baseurl }}/index-html.png)
+
+## Cleanup
+
+Nah seperti biasa, setelah kita mencoba kita bersihin sampahnya ya berikut perintahnya:
+
+For Bash script:
+
+{% gist page.gist "06c-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "06c-cleanup.ps1" %}
