@@ -32,13 +32,10 @@ Sepertinya kita ketahui ya, setiap container memiliki volume masing-masing (isol
 
 ➜ web  docker exec -it webapp bash -c "cat > /usr/share/nginx/html/index.html <<EOF
 <html>
-        <head>
-                <title>Belajar HTML</title>
-        </head>
-        <body>
-                <h3>Saya sedang belajar HTML</h3>
-                <p>ini adalah paragraf tambahan</p>
-        </body>
+    <head><title>Belajar HTML</title></head>
+    <body>
+        <h3>Saya sedang belajar HTML</h3><p>ini adalah paragraf tambahan</p>
+    </body>
 </html>
 EOF
 "
