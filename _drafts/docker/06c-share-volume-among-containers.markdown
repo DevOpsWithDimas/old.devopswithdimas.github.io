@@ -82,4 +82,14 @@ Commercial support is available at
 <p><em>Thank you for using nginx.</em></p>
 </body>
 </html>
+
+➜ web  docker container rm -f $(docker container ls -aq)
+c58f515e6a27
+e1e93eef5730
+3262bb8de64d
+➜ web  docker volume prune -f
+Deleted Volumes:
+public_html
+
+Total reclaimed space: 717B
 ```
