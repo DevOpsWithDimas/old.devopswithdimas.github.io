@@ -243,3 +243,9 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS       
 ➜ web  docker exec -it webapp_readonly bash -c "cat 'halo ini text baru' > /var/www/html/index.html"
 bash: /var/www/html/index.html: Read-only file system
 ```
+
+## Cleanup
+
+Setelah kita mecoba beberapa secenario diatas, sekarang kita bersih-bersih dulu ya. berikut perintahnya:
+
+{% gist page.gist "06b-cleanup.bash" %}
