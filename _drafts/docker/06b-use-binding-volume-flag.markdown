@@ -21,7 +21,7 @@ Hai semuanya, di video kali ini kita akan membahas tentang binding volume di Doc
 1. What is bind volume?
 2. Binding volume using `--volume` flag
 3. Binding volume using `--mount` flag
-4. Readonly Volume
+4. Use a read-only bind mount
 
 ## What is bind volume
 
@@ -189,4 +189,57 @@ server {
 
 Jadi dengan begitu, kita sudah bisa meng-override config yang ada pada image `nginx` seperti serve location public html awalnya di `/usr/share/nginx/html` sekarnag kita pindah ke `/var/www/html`
 
-## Readonly Volume
+## Use a read-only bind mount
+
+For some development applications, the container needs to write into the bind mount, so changes are propagated back to the Docker host. At other times, the container only needs read access.
+
+This example modifies the one above but mounts the directory as a read-only bind mount, by adding ro to the (empty by default) list of options, after the mount point within the container. Where multiple options are present, separate them by commas.
+
+Ok sekarang kita coba buat containernya dengan perintah seperti berikut:
+
+For Bash script:
+
+{% gist page.gist "06b-bind-mount-readonly.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "06b-bind-mount-readonly.ps1" %}
+
+Jika kita coba jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ web  docker container run `
+>> --name webapp_readonly `
+>> --mount type=bind,source="$(pwd)"\html,destination=/var/www/html,readonly `
+>> --mount type=bind,source="$(pwd)"\conf\default.conf,destination=/etc/nginx/conf.d/default.conf `
+>> -p 9080:80 `
+>> -d nginx
+
+➜ web  docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                   NAMES
+91f4b112377d   nginx     "/docker-entrypoint.…"   7 minutes ago    Up 7 minutes    0.0.0.0:9080->80/tcp, :::9080->80/tcp   webapp_readonly
+426356f8d566   nginx     "/docker-entrypoint.…"   30 minutes ago   Up 30 minutes   0.0.0.0:9090->80/tcp, :::9090->80/tcp   webapp_public
+
+➜ web  docker container inspect webapp_readonly -f '{% raw %}{{json .Mounts}}{% endraw %}'
+[
+   {
+      "Type":"bind",
+      "Source":"C:\\Users\\dimasm93\\Workspaces\\youtube\\docker\\06-docker-volume\\web\\conf\\default.conf",
+      "Destination":"/etc/nginx/conf.d/default.conf",
+      "Mode":"",
+      "RW":true,
+      "Propagation":"rprivate"
+   },
+   {
+      "Type":"bind",
+      "Source":"C:\\Users\\dimasm93\\Workspaces\\youtube\\docker\\06-docker-volume\\web\\html",
+      "Destination":"/var/www/html",
+      "Mode":"",
+      "RW":false,
+      "Propagation":"rprivate"
+   }
+]
+
+➜ web  docker exec -it webapp_readonly bash -c "cat 'halo ini text baru' > /var/www/html/index.html"
+bash: /var/www/html/index.html: Read-only file system
+```
