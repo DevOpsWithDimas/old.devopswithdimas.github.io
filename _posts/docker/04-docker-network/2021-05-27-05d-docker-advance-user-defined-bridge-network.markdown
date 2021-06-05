@@ -12,7 +12,7 @@ refs:
 - https://docs.docker.com/engine/reference/commandline/network_create/
 - https://docs.docker.com/engine/reference/commandline/network_connect/
 - https://docs.docker.com/engine/reference/commandline/network_rm/
-youtube: 
+youtube: oEfLvIk1z9E
 comments: true
 image_path: /resources/posts/docker/05d-more-bridge
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
