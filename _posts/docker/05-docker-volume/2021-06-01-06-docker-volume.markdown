@@ -9,7 +9,7 @@ categories:
 - Docker
 refs: 
 - https://docs.docker.com/storage/volumes/
-youtube: 
+youtube: 5L-ngkZ1D8k
 comments: true
 image_path: /resources/posts/docker/06h-docker-volume
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524

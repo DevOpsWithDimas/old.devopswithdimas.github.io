@@ -9,7 +9,7 @@ categories:
 - Docker
 refs: 
 - https://docs.docker.com/storage/bind-mounts/
-youtube: 
+youtube: gv1OgVl0I7U
 comments: true
 image_path: /resources/posts/docker/06b-use-bind-volume
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
