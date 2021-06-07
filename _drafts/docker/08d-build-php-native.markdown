@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "10-dockerfile"
+title: "08d-php-native"
 lang: docker
 categories:
 - Containerization
@@ -10,7 +10,7 @@ refs:
 - https://docs.docker.com/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/10-dockerfile
+image_path: /resources/posts/docker/08d-php-native
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
