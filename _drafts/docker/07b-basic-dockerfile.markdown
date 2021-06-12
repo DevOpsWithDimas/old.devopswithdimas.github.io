@@ -25,7 +25,35 @@ Hai semuanya di materi kali ini kita akan membahas tentang Dockerfile references
 3. `LABEL` instruction
 4. `EXPOSE` instruction
 5. `ENV` instruction
-6. `ADD` instruction
-7. `COPY` instruction
-8. `USER` instruction
-9. `WORKDIR` instruction
+6. Copy resources
+    1. `ADD` instruction
+    2. `COPY` instruction
+    3. Dockeringore
+7. `USER` instruction
+8. `WORKDIR` instruction
+9. `HEALTHCHECK` intruction
+
+Ok sekarang kita bahas satu-per-satu ya.
+
+## `FROM` instruction
+
+The `FROM` instruction initializes a new build stage and sets the [Base Image](https://docs.docker.com/glossary/#base_image) for subsequent instructions. As such, a valid `Dockerfile` must start with a `FROM` instruction. Berikut adalah format penulisan `FROM` instrustion
+
+{% highlight docker %}
+FROM [--platform=<platform>] <image> [AS <name>]
+{% endhighlight %}
+
+{% highlight docker %}
+FROM [--platform=<platform>] <image>[:<tag>] [AS <name>]
+{% endhighlight %}
+
+{% highlight docker %}
+FROM [--platform=<platform>] <image>[@<digest>] [AS <name>]
+{% endhighlight %}
+
+The image can be any valid image – it is especially easy to start by pulling an image from the [Public Repositories](https://docs.docker.com/docker-hub/repos/).
+
+1. `ARG` is the only instruction that may precede FROM in the Dockerfile. See [Understand how ARG and FROM interact](https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact).
+2. `FROM` can appear multiple times within a single `Dockerfile` to create multiple images or use one build stage as a dependency for another. Simply make a note of the last image ID output by the commit before each new `FROM` instruction. Each `FROM` instruction clears any state created by previous instructions.
+3. Optionally a name can be given to a new build stage by adding `AS name` to the `FROM` instruction. The name can be used in subsequent `FROM` and `COPY --from=<name>` instructions to refer to the image built in this stage.
+4. The `tag` or `digest` values are optional. If you omit either of them, the builder assumes a `latest` tag by default. The builder returns an error if it cannot find the `tag` value.
