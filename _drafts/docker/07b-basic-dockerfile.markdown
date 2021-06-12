@@ -57,3 +57,28 @@ The image can be any valid image – it is especially easy to start by pulling a
 2. `FROM` can appear multiple times within a single `Dockerfile` to create multiple images or use one build stage as a dependency for another. Simply make a note of the last image ID output by the commit before each new `FROM` instruction. Each `FROM` instruction clears any state created by previous instructions.
 3. Optionally a name can be given to a new build stage by adding `AS name` to the `FROM` instruction. The name can be used in subsequent `FROM` and `COPY --from=<name>` instructions to refer to the image built in this stage.
 4. The `tag` or `digest` values are optional. If you omit either of them, the builder assumes a `latest` tag by default. The builder returns an error if it cannot find the `tag` value.
+
+Contoh penggunaanya seperti berikut:
+
+{% gist page.gist "07b-dockerfile-from-instruction.bash" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ 07-dockerfile  docker build -t dimmaryanto93/centos:0.1 .
+[+] Building 0.1s (6/6) FINISHED
+ => [internal] load build definition from Dockerfile                                          0.0s 
+ => => transferring dockerfile: 31B                                                           0.0s 
+ => [internal] load .dockerignore                                                             0.0s 
+ => => transferring context: 2B                                                               0.0s 
+ => [internal] load metadata for docker.io/library/centos:7                                   0.0s 
+ => [1/2] FROM docker.io/library/centos:7                                                     0.0s 
+ => CACHED [2/2] RUN echo "halo semuanya, ini adalah contoh text" > /var/halo.txt             0.0s 
+ => exporting to image                                                                        0.0s 
+ => => exporting layers                                                                       0.0s 
+ => => writing image sha256:53126b30ada3ad85fb6215503e2022bd264f0ef1a7ceac213a6e08e19afdf191  0.0s 
+ => => naming to docker.io/dimmaryanto93/centos:0.1
+
+➜ 07-dockerfile  docker run --rm dimmaryanto93/centos:0.1
+halo semuanya, ini adalah contoh text
+```
