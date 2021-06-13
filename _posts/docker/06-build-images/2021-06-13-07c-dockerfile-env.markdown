@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Basic Dockerfile - Environtment Replacement"
+date: 2021-06-13T15:31:06+07:00
 lang: docker
 categories:
 - Containerization

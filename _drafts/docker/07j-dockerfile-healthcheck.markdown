@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Basic Docker - Health Check Instruction"
+title: "Basic Dockerfile - Health Check Instruction"
 lang: docker
 categories:
 - Containerization
