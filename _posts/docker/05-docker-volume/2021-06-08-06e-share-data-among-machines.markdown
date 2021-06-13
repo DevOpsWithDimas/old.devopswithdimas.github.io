@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://docs.docker.com/storage/volumes/
 - https://github.com/vieux/docker-volume-sshfs
-youtube: 
+youtube: nIBzQZ4Vqqs
 comments: true
 image_path: /resources/posts/docker/06e-share-data-among-machines
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524

@@ -19,17 +19,17 @@ Hai semuanya di materi kali ini kita akan membahas tentang Dockerfile references
 
 1. `FROM` instruction
 2. Environment replacement
-3. Execute commands
-    1. `RUN` instruction
-    2. `CMD` instruction
-    3. `Entrypoint` instruction
-4. `LABEL` instruction
-5. `EXPOSE` instruction
-6. Environtment `ARGS` instruction
-7. Copy resources
+3. Copy resources
     1. `ADD` instruction
     2. `COPY` instruction
     3. Dockeringore
+4. Execute commands
+    1. `RUN` instruction
+    2. `CMD` instruction
+    3. `Entrypoint` instruction
+5. `LABEL` instruction
+6. `EXPOSE` instruction
+7. Environtment `ARGS` instruction
 8. `USER` instruction
 9. `WORKDIR` instruction
 10. `HEALTHCHECK` intruction
@@ -103,7 +103,7 @@ Contoh penggunaanya seperti berikut:
 Jika di jalankan maka hasilnya seperti berikut:
 
 ```powershell
-➜ 07-dockerfile ✗  docker build -t dimmaryanto93/centos:0.2 .
+➜ 07-dockerfile  docker build -t dimmaryanto93/centos:0.2 .
 [+] Building 0.1s (6/6) FINISHED
  => [internal] load build definition from Dockerfile                                                                   0.0s 
  => => transferring dockerfile: 281B                                                                                   0.0s 
@@ -120,3 +120,4 @@ Jika di jalankan maka hasilnya seperti berikut:
 ➜ 07-dockerfile  docker run --rm dimmaryanto93/centos:0.2  
 <html><head><title>Halo World</title></head><body><h3>it''s Works!</h3></body></html>
 ```
+

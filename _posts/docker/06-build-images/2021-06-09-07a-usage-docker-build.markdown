@@ -11,7 +11,7 @@ refs:
 - https://docs.docker.com/get-started/02_our_app/
 - https://docs.docker.com/engine/reference/builder/
 - https://docs.docker.com/engine/reference/commandline/build/
-youtube: 
+youtube: iVhdYcUXBBQ
 comments: true
 image_path: /resources/posts/docker/07a-use-docker-build
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
