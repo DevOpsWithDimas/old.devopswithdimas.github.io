@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Basic Dockerfile - Copying Resources"
+date: 2021-06-13T15:32:24+07:00
 lang: docker
 categories:
 - Containerization
@@ -15,9 +16,6 @@ image_path: /resources/posts/docker/07d-dockerfile-copy
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
-
-
-## Copy resources
 
 Copies new files/directory into image, kita bisa menggunakan perintah `ADD` dan `COPY`.
 
