@@ -184,6 +184,15 @@ Jika kita jalankan, maka hasilnya seperti berikut:
  => => writing image sha256:1ab6d8ba36cea2afc13a3c86e01b5bf623db697ee70a9d39db3dbace8  0.0s
  => => naming to docker.io/dimmaryanto93/centos:0.8                                    0.0s
 
+## will call psql
+➜ 07-dockerfile  docker run -it `
+>> --network postgres_net `
+>> --rm dimmaryanto93/centos:0.8
+psql: could not connect to server: No such file or directory
+        Is the server running locally and accepting
+        connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?
+
+## will call psql -h postgresdb -U postgres -W
 ➜ 07-dockerfile  docker run -it `                                                           
 >> --network postgres_net `                                                                 
 >> --rm dimmaryanto93/centos:0.8 -h postgresdb -U postgres -W
@@ -193,14 +202,6 @@ WARNING: psql version 9.2, server version 12.0.
 Some psql features might not work.                                                 
 Type "help" for help.                                      
 postgres=# \q 
-
-## will call psql
-➜ 07-dockerfile  docker run -it `
->> --network postgres_net `
->> --rm dimmaryanto93/centos:0.8
-psql: could not connect to server: No such file or directory
-        Is the server running locally and accepting
-        connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?
 
 ## can't call bash
 ➜ 07-dockerfile ✗  docker run -it `
