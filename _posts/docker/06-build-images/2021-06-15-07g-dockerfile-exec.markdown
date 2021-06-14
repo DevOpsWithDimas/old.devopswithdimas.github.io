@@ -17,10 +17,11 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Hai semuanya, di video kali ini kita akan membahas tantang Dockerfile Execute Instruction diantaranya:
+Hai semuanya, di materi kali ini kita akan membahas tantang `Dockerfile` Execute Instruction diantaranya:
 
 1. `RUN` Instruction
 2. `CMD` Instruction
+3. `ENTRYPOINT` Instruction
 3. Cleanup
 
 Ok langsung ja, kita akan membahasnya satu-per-satu. Yang pertama kita bahas dulu `RUN` Instruction 
@@ -151,6 +152,70 @@ WARNING: psql version 9.2, server version 12.0.
 Type "help" for help.
 
 postgres=#
+```
+
+## `ENTRYPOINT` Instruction
+
+An ENTRYPOINT allows you to configure a container that will run as an executable. 
+
+The CMD instruction has two forms:
+
+1. `ENTRYPOINT  ["executable","param1","param2"]` (The exec form, which is the preferred form)
+3. `ENTRYPOINT command param1 param2` (shell form)
+
+Contoh penggunaanya, masih sama seperti contoh di atas tpi kita tambahkan perintah `ENTRYPOINT` dan hapus perintah `CMD` seperti berikut:
+
+{% gist page.gist "07g-dockerfile-entrypoint" %}
+
+Jika kita jalankan, maka hasilnya seperti berikut:
+
+```powershell
+➜ 07-dockerfile  docker build -t dimmaryanto93/centos:0.8 .
+[+] Building 0.1s (6/6) FINISHED
+ => [internal] load build definition from Dockerfile                                   0.0s
+ => => transferring dockerfile: 315B                                                   0.0s
+ => [internal] load .dockerignore                                                      0.0s
+ => => transferring context: 34B                                                       0.0s
+ => [internal] load metadata for docker.io/library/centos:7                            0.0s
+ => [1/2] FROM docker.io/library/centos:7                                              0.0s
+ => CACHED [2/2] RUN yum install postgresql -y                                         0.0s
+ => exporting to image                                                                 0.0s
+ => => exporting layers                                                                0.0s
+ => => writing image sha256:1ab6d8ba36cea2afc13a3c86e01b5bf623db697ee70a9d39db3dbace8  0.0s
+ => => naming to docker.io/dimmaryanto93/centos:0.8                                    0.0s
+
+➜ 07-dockerfile  docker run -it `                                                           
+>> --network postgres_net `                                                                 
+>> --rm dimmaryanto93/centos:0.8 -h postgresdb -U postgres -W
+Password for user postgres:
+psql (9.2.24, server 12.6 (Debian 12.6-1.pgdg100+1))                                        
+WARNING: psql version 9.2, server version 12.0.                                                      
+Some psql features might not work.                                                 
+Type "help" for help.                                      
+postgres=# \q 
+
+## will call psql
+➜ 07-dockerfile  docker run -it `
+>> --network postgres_net `
+>> --rm dimmaryanto93/centos:0.8
+psql: could not connect to server: No such file or directory
+        Is the server running locally and accepting
+        connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?
+
+## can't call bash
+➜ 07-dockerfile ✗  docker run -it `
+>> --network postgres_net `
+>> --rm dimmaryanto93/centos:0.8 bash
+psql: could not connect to server: No such file or directory
+        Is the server running locally and accepting
+        connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?
+
+## override command with --entrypoint
+➜ 07-dockerfile  docker run -it `
+>> --network postgres_net `
+>> --entrypoint /bin/bash `
+>> -it  dimmaryanto93/centos:0.8
+[root@46ad94c2031b /]#
 ```
 
 ## Cleanup
