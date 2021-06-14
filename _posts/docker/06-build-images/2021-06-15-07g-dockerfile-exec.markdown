@@ -214,7 +214,7 @@ psql: could not connect to server: No such file or directory
 ➜ 07-dockerfile  docker run -it `
 >> --network postgres_net `
 >> --entrypoint /bin/bash `
->> -it  dimmaryanto93/centos:0.8
+>> --rm  dimmaryanto93/centos:0.8
 [root@46ad94c2031b /]#
 ```
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "07h-dockerfile-cmd-vs-entrypoint"
+title: "Basic Dockerfile - CMD vs ENTRYPOINT?"
 lang: docker
 categories:
 - Containerization
