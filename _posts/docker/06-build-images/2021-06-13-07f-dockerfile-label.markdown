@@ -16,6 +16,7 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas tentang Labeling pada suatu image yang kita build yaitu sebagai berikut:
 
 The `LABEL` instruction adds metadata to an image. A `LABEL` is a key-value pair. To include spaces within a `LABEL` value, use quotes and backslashes as you would in command-line parsing. A few usage examples:
 
@@ -83,3 +84,9 @@ dimmaryanto93/centos   0.1       53126b30ada3   19 hours ago    204MB
    "version":"0.5"
 }
 ```
+
+## Cleanup
+
+Seperti biasa, setelah kita mencoba praktikan kita bersih-bersih dulu ya. berikut perintahnya:
+
+{% gist page.gist "07b-cleanup.bash" %}

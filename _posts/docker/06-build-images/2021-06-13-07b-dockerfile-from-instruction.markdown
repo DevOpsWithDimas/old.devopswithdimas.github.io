@@ -16,6 +16,8 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas secara lebih mendalam tentang `Dockerfile` perintah `FROM` sebagai berikut:
+
 The `FROM` instruction initializes a new build stage and sets the [Base Image](https://docs.docker.com/glossary/#base_image) for subsequent instructions. As such, a valid `Dockerfile` must start with a `FROM` instruction. Berikut adalah format penulisan `FROM` instrustion
 
 {% highlight docker %}
@@ -61,3 +63,9 @@ Jika di jalankan maka hasilnya seperti berikut:
 ➜ 07-dockerfile  docker run --rm dimmaryanto93/centos:0.1
 halo semuanya, ini adalah contoh text
 ```
+
+## Cleanup
+
+Seperti biasa, setelah kita mencoba kita bersih-bersih dulu ya berikut perintahnya:
+
+{% gist page.gist "07b-cleanup.bash" %}

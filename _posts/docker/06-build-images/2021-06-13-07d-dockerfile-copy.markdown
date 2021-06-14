@@ -17,6 +17,12 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas tentang Copying Resource ke dalam image yang akan kita build. diantaranya menggunakan 
+
+1. `COPY` Instruction
+2. `ADD` Instruction
+3. Cleanup
+
 Copies new files/directory into image, kita bisa menggunakan perintah `ADD` dan `COPY`.
 
 The `ADD` instruction copies new files, directories or remote file URLs from <src> and adds them to the filesystem of the image at the path <dest>. The `COPY` instruction copies new files or directories from <src> and adds them to the filesystem of the container at the path <dest>. 
@@ -83,3 +89,9 @@ Jika di jalankan maka hasilnya seperti berikut:
 28K     /usr/share/nginx/html/
 28K     total
 ```
+
+## Cleaup
+
+Seperti biasa, setelah kita mencoba praktikan kita bersih-bersih dulu ya. berikut perintahnya:
+
+{% gist page.gist "07b-cleanup.bash" %}

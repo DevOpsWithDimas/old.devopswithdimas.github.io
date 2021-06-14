@@ -16,6 +16,8 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas lebih dalam tentang Env pada Dockerfile diantaranya seperti berikut:
+
 Environment variables (declared with the `ENV` statement) can also be used in certain instructions as variables to be interpreted by the `Dockerfile`. Escapes are also handled for including variable-like syntax into a statement literally.
 
 Environment variables are notated in the `Dockerfile` either with `$variable_name` or `${variable_name}`. They are treated equivalently and the brace syntax is typically used to address issues with variable names with no whitespace, like `${foo}_bar`.
@@ -50,3 +52,9 @@ Jika di jalankan maka hasilnya seperti berikut:
 ➜ 07-dockerfile  docker run --rm dimmaryanto93/centos:0.2  
 <html><head><title>Halo World</title></head><body><h3>it''s Works!</h3></body></html>
 ```
+
+## Cleanup
+
+Seperti biasa, setelah kita mencoba praktikan kita bersih-bersih dulu ya. berikut perintahnya:
+
+{% gist page.gist "07b-cleanup.bash" %}

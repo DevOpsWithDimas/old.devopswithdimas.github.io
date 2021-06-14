@@ -16,6 +16,8 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas tentang Include/Exclude Resources yang kita `COPY`/`ADD` pada `Dockerfile` menggunakan `.dockerignore` seperti berikut: 
+
 Before the docker CLI sends the context to the docker daemon, it looks for a file named `.dockerignore` in the root directory of the context. If this file exists, the CLI modifies the context to exclude files and directories that match patterns in it. This helps to avoid unnecessarily sending large or sensitive files and directories to the daemon and potentially adding them to images using `ADD` or `COPY`. The CLI interprets the .dockerignore file as a newline-separated list of patterns similar to git ignore
 
 This file causes the following build behavior:
@@ -80,3 +82,9 @@ d-----         6/13/2021   2:26 PM                .idea
 ➜ 07-dockerfile  docker run --rm -it dimmaryanto93/centos:0.4     
 Dockerfile  README.md  belajar-docker-07b-copy-resource.tar.gz
 ```
+
+## Cleanup
+
+Seperti biasa, setelah kita mencoba praktikan kita bersih-bersih dulu ya. berikut perintahnya:
+
+{% gist page.gist "07b-cleanup.bash" %}
