@@ -20,7 +20,7 @@ Hai semuanya, di video kali ini kita akan membahas tantang Dockerfile Execute In
 
 1. `RUN` Instruction
 2. `CMD` Instruction
-3. `Entrypoint` Instruction
+3. Cleanup
 
 Ok langsung ja, kita akan membahasnya satu-per-satu. Yang pertama kita bahas dulu `RUN` Instruction 
 
@@ -151,3 +151,15 @@ Type "help" for help.
 
 postgres=#
 ```
+
+## Cleanup
+
+Seperti biasa, setelah kita mencoba kita bersih-bersih dulu ya, berikut perintahnya:
+
+For Bash script:
+
+{% gist page.gist "07g-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "07g-cleanup.ps1" %}
