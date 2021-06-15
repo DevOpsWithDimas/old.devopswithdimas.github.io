@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Basic Dockerfile - CMD vs ENTRYPOINT?"
+date: 2021-06-16T05:20:30+07:00
 lang: docker
 categories:
 - Containerization
