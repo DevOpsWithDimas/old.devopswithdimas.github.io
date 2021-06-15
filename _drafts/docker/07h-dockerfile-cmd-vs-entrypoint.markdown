@@ -7,7 +7,7 @@ categories:
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/engine/reference/builder/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/07h-dockerfile-cmd-vs-entrypoint
