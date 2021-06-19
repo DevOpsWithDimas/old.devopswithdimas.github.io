@@ -67,7 +67,7 @@ dimmaryanto93/centos   0.3       e4e14fbbd628   5 hours ago     204MB
 dimmaryanto93/centos   0.2       22b22460babc   7 hours ago     204MB
 dimmaryanto93/centos   0.1       53126b30ada3   19 hours ago    204MB
 
-➜ bootcamp docker image inspect dimmaryanto93/centos:0.5 -f '{% raw %}{{json .Config.Labels}} {% endraw %}'
+➜ bootcamp docker image inspect dimmaryanto93/centos:0.5 -f '{% raw %}{{json .Config.Labels}}{% endraw %}'
 {
    "com.maryanto.dimas.image.authors":"software.dimas_m@icloud.com",
    "com.maryanto.dimas.vendor":"PT. Tabeldata Informatika",
