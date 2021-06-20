@@ -161,3 +161,85 @@ bash-4.2$ pwd
 
 bash-4.2$ exit
 ```
+
+## `VOLUME` Instruction for persistence data
+
+The `VOLUME` instruction creates a mount point with the specified name and marks it as holding externally mounted volumes from native host or other containers. The value can be a JSON array, `VOLUME ["/var/log/"]`, or a plain string with multiple arguments, such as `VOLUME /var/log` or `VOLUME /var/log /var/db`.
+
+{% highlight docker %}
+VOLUME ["/data"]
+{% endhighlight %}
+
+Notes about specifying volumes
+
+Keep the following things in mind about volumes in the `Dockerfile`.
+1. **Volumes on Windows-based containers**: When using Windows-based containers, the destination of a volume inside the container must be one of:
+    1. a non-existing or empty directory
+    2. a drive other than `C:`
+2. **Changing the volume from within the Dockerfile**: If any build steps change the data within the volume after it has been declared, those changes will be discarded.
+3. **JSON formatting**: The list is parsed as a JSON array. You must enclose words with double quotes (`"`) rather than single quotes (`'`).
+4. **The host directory is declared at container run-time**: The host directory (the mountpoint) is, by its nature, host-dependent. This is to preserve image portability, since a given host directory can’t be guaranteed to be available on all hosts. For this reason, you can’t mount a host directory from within the Dockerfile. The `VOLUME` instruction does not support specifying a `host-dir` parameter. You must specify the mountpoint when you create or run the container.
+
+Contoh penggunaanya seperti berikut:
+
+{% gist page.gist "07j-dockerfile-volume" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ 07-dockerfile  docker build -t dimmaryanto93/centos:1.5 .
+[+] Building 0.1s (7/7) FINISHED
+ => [internal] load build definition from Dockerfile                                   0.0s
+ => => transferring dockerfile: 497B                                                   0.0s
+ => [internal] load .dockerignore                                                      0.0s
+ => => transferring context: 35B                                                       0.0s
+ => [internal] load metadata for docker.io/library/centos:7                            0.0s
+ => [1/3] FROM docker.io/library/centos:7                                              0.0s
+ => CACHED [2/3] RUN groupadd www-data && adduser -r -g www-data www-data              0.0s
+ => CACHED [3/3] WORKDIR /usr/share/nginx/html                                         0.0s
+ => exporting to image                                                                 0.0s
+ => => exporting layers                                                                0.0s
+ => => writing image sha256:fe55d15c79bef80b7cbf98e7042b26e089f9229725212d1d6c37bbdcc  0.0s
+ => => naming to docker.io/dimmaryanto93/centos:1.5
+
+➜ 07-dockerfile ✗  docker image inspect dimmaryanto93/centos:1.5 -f '{% raw %}{{json .Config.Volumes}}{% endraw %}'
+{"/usr/share/nginx/html":{}}
+
+➜ 07-dockerfile  docker run -v savefile:/usr/share/nginx/html --rm -it dimmaryanto93/centos:1.5 bash
+bash-4.2$ echo "Halo ini file yang saya simpan dari container sebelumnya" >> /usr/share/nginx/html/halo.txt
+
+bash-4.2$ cat /usr/share/nginx/html/halo.txt
+Halo ini file yang saya simpan dari container sebelumnya
+
+bash-4.2$ exit
+
+➜ 07-dockerfile  docker container ls
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+➜ 07-dockerfile  docker volume ls
+DRIVER    VOLUME NAME
+local     savefile
+
+➜ 07-dockerfile  docker run -v savefile:/usr/share/nginx/html --rm -it dimmaryanto93/centos:1.5
+www-data
+
+/usr/share/nginx/html
+
+total 12
+-rw-r--r-- 1 www-data www-data   57 Jun 20 13:50 halo.txt
+
+➜ 07-dockerfile  docker run -v savefile:/usr/share/nginx/html --rm -it dimmaryanto93/centos:1.5 cat /usr/share/nginx/html/halo.txt
+Halo ini file yang saya simpan dari container sebelumnya
+```
+
+## Cleanup
+
+Seperti biasa, setelah kita mencoba schenario di atas. sekarang kita bersih-bersih, berikut perintahnya:
+
+For Bash script:
+
+{% gist page.gist "07j-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "07j-cleanup.ps1" %}
