@@ -16,7 +16,13 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Hai semuanya, di materi kali ini kita akan membahas tentang `Expose` Instruction pada Dockerfile.
+Hai semuanya, di materi kali ini kita akan membahas tentang `Expose` Instruction pada Dockerfile, diantaranya yang akan kita bahas yaitu
+
+1. Expose default port by sevice
+2. Custom port
+3. Multiple port in same image
+
+## Expose default port
 
 The `EXPOSE` instruction informs Docker that the container listens on the specified network ports at runtime. You can specify whether the port listens on `TCP` or `UDP`, and the default is `TCP` if the protocol is not specified.
 
@@ -69,7 +75,6 @@ Jika dijalankan maka hasilnya seperti berikut:
 ➜ 07-dockerfile  docker run --name webapp -p 80:80 -d dimmaryanto93/centos:1.0
 c62bc7a6e61e8abb0b56a3f4ac86b312c9d6ba8b13f5fb147ccafd21c0105207
 
-
 ➜ 07-dockerfile  curl localhost
 StatusCode        : 200
 StatusDescription : OK
@@ -109,6 +114,8 @@ RawContentLength  : 3105
 Jika coba akses dari browser dengan alamat [localhost](http://localhost), maka hasilnya seperti berikut:
 
 ![hasilnya]({{ page.image_path | prepend: site.baseurl }}/index-html.png)
+
+## Expose custom port
 
 Atau selain itu kita juga bisa custom port, misalnya masih pada `Dockerfile` sebelumnya kita coba edit `Listen 80` pada `/etc/nginx/nginx.conf`
 
@@ -182,6 +189,8 @@ RawContentLength  : 3105
 Jika coba akses dari browser dengan alamat [localhost:8080](http://localhost:8080), maka hasilnya seperti berikut:
 
 ![hasilnya]({{ page.image_path | prepend: site.baseurl }}/index-html-port-8080.png)
+
+## Expose multiple ports
 
 Atau kita juga bisa menggunakan multiple port, contohnya jika kita aktifkan module ssl pada nginx seperti berikut:
 
