@@ -30,7 +30,7 @@ Environment variables (declared with the `ENV` statement) can also be used in ce
 
 Environment variables are notated in the `Dockerfile` either with `$variable_name` or `${variable_name}`. They are treated equivalently and the brace syntax is typically used to address issues with variable names with no whitespace, like `${foo}_bar`.
 
-The ${variable_name} syntax also supports a few of the standard bash modifiers as specified below:
+The `${variable_name}` syntax also supports a few of the standard bash modifiers as specified below:
 1. `${variable:-word}` indicates that if `variable` is set then the result will be that value. If `variable` is not set then word will be the result.
 2. `${variable:+word}` indicates that if `variable` is set then word will be the result, otherwise the result is the empty string.
 
