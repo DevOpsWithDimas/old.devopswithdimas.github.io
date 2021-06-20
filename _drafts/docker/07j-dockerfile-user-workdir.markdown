@@ -55,3 +55,42 @@ USER patrick
 Contoh penggunaanya, seperti berikut:
 
 {% gist page.gist "07j-dockerfile-run-non-root" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ 07-dockerfile  docker build -t dimmaryanto93/centos:1.4 .
+[+] Building 0.1s (8/8) FINISHED
+ => [internal] load build definition from Dockerfile                                   0.0s
+ => => transferring dockerfile: 518B                                                   0.0s
+ => [internal] load .dockerignore                                                      0.0s
+ => => transferring context: 35B                                                       0.0s
+ => [internal] load metadata for docker.io/library/centos:7                            0.0s
+ => [1/3] FROM docker.io/library/centos:7                                              0.0s
+ => [internal] load build context                                                      0.0s
+ => => transferring context: 32B                                                       0.0s
+ => CACHED [2/3] RUN groupadd www-data && adduser -r -g www-data www-data              0.0s
+ => CACHED [3/3] COPY --chown=www-data:www-data index.html /usr/share/nginx/html/inde  0.0s
+ => exporting to image                                                                 0.0s
+ => => exporting layers                                                                0.0s
+ => => writing image sha256:dfd217de06f44d9d2a33808dcf9d77510bc2b05734d08e1830374c1e1  0.0s
+ => => naming to docker.io/dimmaryanto93/centos:1.4
+
+➜ 07-dockerfile  docker run --rm dimmaryanto93/centos:1.3
+www-data
+total 12
+drwxr-xr-x 2 www-data www-data 4096 Jun 20 12:49 .
+drwxr-xr-x 3 www-data www-data 4096 Jun 20 12:49 ..
+-rwxr-xr-x 1 www-data www-data 3105 Jun  5 09:08 index.html
+
+➜ 07-dockerfile  docker run --rm -it  dimmaryanto93/centos:1.3 bash
+bash-4.2$ pwd
+/
+
+bash-4.2$ whoami
+www-data
+
+bash-4.2$ ls -l /usr/share/nginx/html
+total 4
+-rwxr-xr-x 1 www-data www-data 3105 Jun  5 09:08 index.html
+```
