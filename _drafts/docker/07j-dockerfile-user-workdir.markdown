@@ -94,3 +94,70 @@ bash-4.2$ ls -l /usr/share/nginx/html
 total 4
 -rwxr-xr-x 1 www-data www-data 3105 Jun  5 09:08 index.html
 ```
+
+## Using `WORKDIR` Instruction
+
+The `WORKDIR` instruction sets the working directory for any `RUN`, `CMD`, `ENTRYPOINT`, `COPY` and `ADD` instructions that follow it in the `Dockerfile`. If the `WORKDIR` doesn’t exist, it will be created even if it’s not used in any subsequent `Dockerfile` instruction.
+
+The `WORKDIR` instruction can be used multiple times in a `Dockerfile`. If a relative path is provided, it will be relative to the path of the previous `WORKDIR` instruction. For example:
+
+{% highlight docker %}
+WORKDIR /a
+WORKDIR b
+WORKDIR c
+RUN pwd
+{% endhighlight %}
+
+The output of the final `pwd` command in this `Dockerfile` would be `/a/b/c`.
+
+The `WORKDIR` instruction can resolve environment variables previously set using `ENV`. You can only use environment variables explicitly set in the `Dockerfile`. For example:
+
+{% highlight docker %}
+ENV DIRPATH=/path
+WORKDIR $DIRPATH/$DIRNAME
+RUN pwd
+{% endhighlight %}
+
+The output of the final `pwd` command in this `Dockerfile` would be `/path/$DIRNAME`
+
+Contoh penggunaanya seperti berikut:
+
+{% gist page.gist "07j-dockerfile-workdir" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ 07-dockerfile  docker build -t dimmaryanto93/centos:1.4 .
+[+] Building 0.2s (9/9) FINISHED
+ => [internal] load build definition from Dockerfile                                   0.0s
+ => => transferring dockerfile: 519B                                                   0.0s
+ => [internal] load .dockerignore                                                      0.0s
+ => => transferring context: 35B                                                       0.0s
+ => [internal] load metadata for docker.io/library/centos:7                            0.0s
+ => [1/4] FROM docker.io/library/centos:7                                              0.0s
+ => [internal] load build context                                                      0.0s
+ => => transferring context: 32B                                                       0.0s
+ => CACHED [2/4] RUN groupadd www-data && adduser -r -g www-data www-data              0.0s
+ => [3/4] WORKDIR /usr/share/nginx/html                                                0.0s
+ => [4/4] COPY --chown=www-data:www-data index.html .                                  0.0s
+ => exporting to image                                                                 0.1s
+ => => exporting layers                                                                0.0s
+ => => writing image sha256:cd868f8e9a60ae8cddb15b75496d1978530581fa7cdf85b9a3a3074f3  0.0s
+ => => naming to docker.io/dimmaryanto93/centos:1.4
+
+➜ 07-dockerfile  docker run --rm -it  dimmaryanto93/centos:1.4
+www-data
+
+/usr/share/nginx/html
+
+total 16
+drwxr-xr-x 1 www-data www-data 4096 Jun 20 13:11 .
+drwxr-xr-x 1 www-data www-data 4096 Jun 20 13:11 ..
+-rwxr-xr-x 1 www-data www-data 3105 Jun  5 09:08 index.html
+
+➜ 07-dockerfile  docker run --rm -it  dimmaryanto93/centos:1.4 bash
+bash-4.2$ pwd
+/usr/share/nginx/html
+
+bash-4.2$ exit
+```
