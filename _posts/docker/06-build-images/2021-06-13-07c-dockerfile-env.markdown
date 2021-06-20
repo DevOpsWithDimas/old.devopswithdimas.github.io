@@ -9,7 +9,7 @@ categories:
 - Docker
 refs: 
 - https://docs.docker.com/engine/reference/builder/
-youtube: 
+youtube: lEA1NfTjHZ4
 comments: true
 image_path: /resources/posts/docker/07c-dockerfile-env
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524

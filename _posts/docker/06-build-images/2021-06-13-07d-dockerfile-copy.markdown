@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://docs.docker.com/engine/reference/builder/
 - https://nickjanetakis.com/blog/docker-tip-2-the-difference-between-copy-and-add-in-a-dockerile
-youtube: 
+youtube: 7GjEAvwu6sQ
 comments: true
 image_path: /resources/posts/docker/07d-dockerfile-copy
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
