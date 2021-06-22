@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://docs.docker.com/engine/reference/builder/
 - https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
-youtube: 
+youtube: 7Q3j_b9feGI
 comments: true
 image_path: /resources/posts/docker/07g-dockerfile-exec
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
