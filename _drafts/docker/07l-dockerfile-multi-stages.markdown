@@ -204,3 +204,65 @@ CONTAINER ID   IMAGE                   COMMAND                  CREATED         
 ➜ 07-dockerfile  docker exec webapp-php-composer composer --version
 Composer version 2.1.3 2021-06-09 16:31:20
 ```
+
+## Use a previous stage as a new stage
+
+You can pick up where a previous stage left off by referring to it when using the `FROM` directive. For example:
+
+{% gist page.gist "07l-previous-stage-dockerfile" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ 07-dockerfile  docker build -t dimmaryanto93/php:2.0 .
+[+] Building 2.9s (16/16) FINISHED
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 903B                                                                               0.0s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 35B                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/node:14-alpine3.10                                              1.3s
+ => [internal] load metadata for docker.io/library/php:7.3-apache                                                  1.2s
+ => [node_install 1/4] FROM docker.io/library/node:14-alpine3.10@sha256:1400e88875bdb087737c5a18dbd1bb21744776fd1  0.0s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 64B                                                                                   0.0s
+ => CACHED [php_composer 1/2] FROM docker.io/library/php:7.3-apache@sha256:05c7b53bb94d20c21ac57f94735f340aef4a90  0.0s
+ => CACHED FROM docker.io/library/composer:latest                                                                  0.0s
+ => => resolve docker.io/library/composer:latest                                                                   1.1s
+ => CACHED [node_install 2/4] WORKDIR /var/www/html                                                                0.0s
+ => CACHED [node_install 3/4] COPY package.json .                                                                  0.0s
+ => CACHED [node_install 4/4] RUN npm install --prod                                                               0.0s
+ => [php_composer 2/2] COPY --from=composer:latest /usr/bin/composer /usr/bin/composer                             0.1s
+ => [stage-2 1/3] WORKDIR /var/www/html                                                                            0.0s
+ => [stage-2 2/3] COPY --from=node_install /var/www/html/node_modules node_modules                                 0.1s
+ => [stage-2 3/3] COPY index.html .                                                                                0.0s
+ => exporting to image                                                                                             0.1s
+ => => exporting layers                                                                                            0.1s
+ => => writing image sha256:1e0ef4b6d18e229de58a4123696ff91d81358f394e05699bfcc83fc076ba737a                       0.0s
+ => => naming to docker.io/dimmaryanto93/php:2.0
+
+➜ 07-dockerfile  docker run -p 9080:80 -d --name webapp-php dimmaryanto93/php:2.0
+e93bd3ee16c7d264008eb57e3b60c6fac9bc7d19ad20dd42a1336bd45d98f2d8
+
+➜ 07-dockerfile  docker exec webapp-php composer --version
+Composer version 2.1.3 2021-06-09 16:31:20
+
+➜ 07-dockerfile  docker container ls
+CONTAINER ID   IMAGE                   COMMAND                  CREATED          STATUS                    PORTS                                   NAMES
+e93bd3ee16c7   dimmaryanto93/php:2.0   "docker-php-entrypoi…"   39 seconds ago   Up 38 seconds (healthy)   0.0.0.0:9080->80/tcp, :::9080->80/tcp   webapp-php
+
+➜ 07-dockerfile  docker images dimmaryanto93/php:2.0
+REPOSITORY          TAG       IMAGE ID       CREATED         SIZE
+dimmaryanto93/php   2.0       1e0ef4b6d18e   3 minutes ago   417MB
+```
+
+## Cleanup
+
+Seperti biasa, setela kita mencoba schenario di atas kita bersih-bersih dulu ya. berikut perintahnya:
+
+For Bash script:
+
+{% gist page.gist "07l-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "07l-cleanup.ps1" %}
