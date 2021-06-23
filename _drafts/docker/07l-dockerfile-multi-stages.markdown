@@ -8,6 +8,8 @@ categories:
 - Docker
 refs: 
 - https://docs.docker.com/develop/develop-images/multistage-build/
+- https://hub.docker.com/_/composer
+- https://hub.docker.com/_/php
 youtube: 
 comments: true
 image_path: /resources/posts/docker/07l-docker-multi-stage
@@ -102,7 +104,7 @@ d-----         6/23/2021   7:06 AM                materialize-css
  => => writing image sha256:4b276a4282bb75e31df4b443e6b1b5e33bc86c792d4f22a157f458b513733f8f                       0.0s
  => => naming to docker.io/dimmaryanto93/centos:1.7
 
-➜ 07-dockerfile  docker run -p 80:80 -d dimmaryanto93/centos:1.7
+➜ 07-dockerfile  docker run -p 80:80 --name webapp -d dimmaryanto93/centos:1.7
 95c1f56835ab2b8227422ab688045defbb700c5913dcfc73f89ad05e640f8122
 
 ➜ 07-dockerfile  docker images dimmaryanto93/centos:1.7
@@ -146,12 +148,12 @@ Jika dijalankan maka hasilnya seperti berikut:
  => => writing image sha256:2d29aa14fd2295100c999514616a8b8e4a61509e7661f5f34557d38d6825e297                       0.0s
  => => naming to docker.io/dimmaryanto93/nginx:1.8                                                                 0.0s
 
-➜ 07-dockerfile  docker run -p 8080:80 -d dimmaryanto93/nginx:1.8
+➜ 07-dockerfile  docker run -p 8080:80 --name webapp-nginx -d dimmaryanto93/nginx:1.8
 93f9c18127372f261d6eb53ddf3c72817534f11548fc24f17975f3d3927b1e66
 
 ➜ 07-dockerfile  docker container ls
 CONTAINER ID   IMAGE                     COMMAND                  CREATED              STATUS                        PORTS                                   NAMES
-93f9c1812737   dimmaryanto93/nginx:1.8   "/docker-entrypoint.…"   About a minute ago   Up About a minute (healthy)   0.0.0.0:8080->80/tcp, :::8080->80/tcp   keen_varahamihira
+93f9c1812737   dimmaryanto93/nginx:1.8   "/docker-entrypoint.…"   About a minute ago   Up About a minute (healthy)   0.0.0.0:8080->80/tcp, :::8080->80/tcp   webapp-nginx
 
 ➜ 07-dockerfile  docker images dimmaryanto93/nginx
 REPOSITORY            TAG       IMAGE ID       CREATED         SIZE
@@ -159,3 +161,46 @@ dimmaryanto93/nginx   1.8       2d29aa14fd22   4 minutes ago   138MB
 ```
 
 Jadi dengan menggunakan ref `COPY --from=builder` tersebut kita bisa copy resource dari build-stage sebelumnya, selain menggunakan image alias `FROM base-image as <alias>` kita bisa menggunakan `index` contohnya `COPY --from=0`.
+
+## Use an external image as a “stage”
+
+When using multi-stage builds, you are not limited to copying from stages you created earlier in your Dockerfile. You can use the `COPY --from` instruction to copy from a separate image, either using the local image name, a tag available locally or on a Docker registry, or a tag ID. The Docker client pulls the image if necessary and copies the artifact from there. The syntax is:
+
+{% highlight docker %}
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+{% endhighlight %}
+
+Contoh penggunaanya:
+
+{% gist page.gist "07l-external-stage-dockerfile" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ 07-dockerfile  docker build -t dimmaryanto93/php:1.9 .
+[+] Building 2.5s (8/8) FINISHED
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 32B                                                                                0.0s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 35B                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/php:7.2-apache                                                  1.3s
+ => FROM docker.io/library/composer:latest                                                                         1.1s
+ => => resolve docker.io/library/composer:latest                                                                   1.1s
+ => [stage-0 1/3] FROM docker.io/library/php:7.2-apache@sha256:4dc0f0115acf8c2f0df69295ae822e49f5ad5fe849725847f1  0.0s
+ => CACHED [stage-0 2/3] WORKDIR /var/www/html                                                                     0.0s
+ => CACHED [stage-0 3/3] COPY --from=composer:latest /usr/bin/composer /usr/bin/composer                           0.0s
+ => exporting to image                                                                                             0.0s
+ => => exporting layers                                                                                            0.0s
+ => => writing image sha256:8e570cb1db5460b433b4120296301f1b2077d7ca44788459712e129fb58d3f0a                       0.0s
+ => => naming to docker.io/dimmaryanto93/php:1.9
+
+➜ 07-dockerfile  docker run -p 9090:80 --name webapp-php-composer -d dimmaryanto93/php:1.9
+7d6e5f657e72c353e9f45bfea2d67bdcfa90f7132221e45045a8831269a979af
+
+➜ 07-dockerfile  docker container ls
+CONTAINER ID   IMAGE                   COMMAND                  CREATED          STATUS                      PORTS                                   NAMES
+7d6e5f657e72   dimmaryanto93/php:1.9   "docker-php-entrypoi…"   16 seconds ago   Up 15 seconds (unhealthy)   0.0.0.0:9090->80/tcp, :::9090->80/tcp   webapp-php-composer
+
+➜ 07-dockerfile  docker exec webapp-php-composer composer --version
+Composer version 2.1.3 2021-06-09 16:31:20
+```
