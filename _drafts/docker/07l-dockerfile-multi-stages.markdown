@@ -157,3 +157,5 @@ CONTAINER ID   IMAGE                     COMMAND                  CREATED       
 REPOSITORY            TAG       IMAGE ID       CREATED         SIZE
 dimmaryanto93/nginx   1.8       2d29aa14fd22   4 minutes ago   138MB
 ```
+
+Jadi dengan menggunakan ref `COPY --from=builder` tersebut kita bisa copy resource dari build-stage sebelumnya, selain menggunakan image alias `FROM base-image as <alias>` kita bisa menggunakan `index` contohnya `COPY --from=0`.
