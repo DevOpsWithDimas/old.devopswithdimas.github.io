@@ -11,7 +11,7 @@ refs:
 - https://docs.docker.com/develop/develop-images/multistage-build/
 - https://hub.docker.com/_/composer
 - https://hub.docker.com/_/php
-youtube: 
+youtube: w3VrfWaVAiM
 comments: true
 image_path: /resources/posts/docker/07l-docker-multi-stage
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
