@@ -1,16 +1,18 @@
 ---
 layout: post
-title: "08f-push-default-registry"
+title: "Studi Kasus: Build Java Web using maven-docker-plugin"
 lang: docker
 categories:
 - Containerization
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://github.com/fabric8io/docker-maven-plugin
+- https://github.com/spotify/docker-maven-plugin
+- https://github.com/spotify/dockerfile-maven
 youtube: 
 comments: true
-image_path: /resources/posts/docker/08f-push-default-registry
+image_path: /resources/posts/docker/08b-using-maven-docker-plugin
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "08f-push-insecure-registry"
+title: "08f-build-react"
 lang: docker
 categories:
 - Containerization
@@ -10,7 +10,7 @@ refs:
 - https://docs.docker.com/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/08f-push-insecure-registry
+image_path: /resources/posts/docker/08f-build-react
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
