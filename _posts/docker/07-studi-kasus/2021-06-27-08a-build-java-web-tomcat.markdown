@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Studi Kasus: Build Docker Image for Java Webapp"
+date: 2021-06-27T18:39:39+07:00
 lang: docker
 categories:
 - Containerization
