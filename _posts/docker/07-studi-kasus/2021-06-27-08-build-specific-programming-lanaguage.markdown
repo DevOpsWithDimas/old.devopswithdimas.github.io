@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Studi Kasus: Build specific docker image by programming languages"
+date: 2021-06-27T14:10:15+07:00
 lang: docker
 categories:
 - Containerization
