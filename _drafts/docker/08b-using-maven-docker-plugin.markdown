@@ -217,3 +217,94 @@ Jika kita jalankan maka outputnya seperti berikut:
 Berikut hasilnya:
 
 ![docker-hub]({{ page.image_path | prepend: site.baseurl }}/docker-io.png)
+
+Selain itu juga kita bisa push ke insecure registry dengan meng-override properties nya seperti berikut:
+
+{% highlight bash %}
+mvn -s ~/.m2/settings.xml \
+ -Ddocker-registry-host-push=private.registry:8087 \
+ -Ddocker-registry-group=udemy/javaweb \
+ dockerfile:build \
+ dockerfile:push
+{% endhighlight %}
+
+Jika di jalankan maka outputnya seperti berikut:
+
+```powershell
+➜ docker-javaweb  mvn -s C:\Users\dimasm93\.m2\settings.xml `
+-Ddocker-registry-host-push="repository.dimas-maryanto.com:8087" `
+-Ddocker-registry-group="udemy/javaweb" `
+dockerfile:build dockerfile:push
+[WARNING]
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------< com.maryanto.dimas.udemy:docker-javaweb >---------------
+[INFO] Building docker-javaweb Maven Webapp 1.0.0-release
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO]
+[INFO] --- dockerfile-maven-plugin:1.4.13:build (default-cli) @ docker-javaweb ---
+[INFO] dockerfile: C:\Users\dimasm93\Workspaces\youtube\docker\08-studi-kasus\docker-javaweb\Dockerfile
+[INFO] contextDirectory: C:\Users\dimasm93\Workspaces\youtube\docker\08-studi-kasus\docker-javaweb
+[INFO] Building Docker context C:\Users\dimasm93\Workspaces\youtube\docker\08-studi-kasus\docker-javaweb
+[INFO] Path(dockerfile): C:\Users\dimasm93\Workspaces\youtube\docker\08-studi-kasus\docker-javaweb\Dockerfile
+[INFO] Path(contextDirectory): C:\Users\dimasm93\Workspaces\youtube\docker\08-studi-kasus\docker-javaweb
+[INFO]
+[INFO] Image will be built as repository.dimas-maryanto.com:8087/udemy/javaweb/docker-javaweb:1.0.0-release
+[INFO]
+[INFO] Step 1/5 : ARG WAR_FILE_NAME=ROOT.war
+[INFO]
+[INFO] Step 2/5 : FROM tomcat:8.5-jdk8-openjdk-slim
+[INFO]
+[INFO] Pulling from library/tomcat
+[INFO] Digest: sha256:1277012ddf6c005ffbaf88c8807d1128ed93679a51111746f95badc364f897e6
+[INFO] Status: Image is up to date for tomcat:8.5-jdk8-openjdk-slim
+[INFO]  ---> de9773520e0d
+[INFO] Step 3/5 : ADD target/${WAR_FILE_NAME} webapps/
+[INFO]
+[INFO]  ---> Using cache
+[INFO]  ---> b218a1ffd95c
+[INFO] Step 4/5 : EXPOSE 8080/tcp
+[INFO]
+[INFO]  ---> Using cache
+[INFO]  ---> 3cda4392daf6
+[INFO] Step 5/5 : CMD ["catalina.sh", "run"]
+[INFO]
+[INFO]  ---> Using cache
+[INFO]  ---> 7b082058a00a
+[INFO] Successfully built 7b082058a00a
+[INFO] Successfully tagged repository.dimas-maryanto.com:8087/udemy/javaweb/docker-javaweb:1.0.0-release
+[INFO]
+[INFO] Detected build of image with id 7b082058a00a
+[INFO] Building jar: C:\Users\dimasm93\Workspaces\youtube\docker\08-studi-kasus\docker-javaweb\target\docker-javaweb-1.0.0-release-docker-info.jar
+[INFO] Successfully built repository.dimas-maryanto.com:8087/udemy/javaweb/docker-javaweb:1.0.0-release
+[INFO]
+[INFO] --- dockerfile-maven-plugin:1.4.13:push (default-cli) @ docker-javaweb ---
+[INFO] The push refers to repository [repository.dimas-maryanto.com:8087/udemy/javaweb/docker-javaweb]
+[INFO] Image bed956dce53e: Preparing
+[INFO] Image eb4d0db4a187: Waiting
+[INFO] Image aa7d6f60014a: Pushing
+[INFO] Image 220d02abd73d: Pushed
+[INFO] 1.0.0-release: digest: sha256:a1b3a118469e9ddedba14da5dc95f9366b616ef0bcd5bd90108cc9762b01a187 size: 1997
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  29.712 s
+[INFO] Finished at: 2021-06-29T04:22:03+07:00
+[INFO] ------------------------------------------------------------------------
+```
+
+Berikut hasilnya:
+
+![docker-hub]({{ page.image_path | prepend: site.baseurl }}/private-registry.png)
+
+## Cleanup
+
+Seperti biasa, setelah kita mencoba schenario tersebut. Sekarang kita bersih-bersih ya berikut perintahnya:
+
+For Bash script:
+
+{% gist page.gist "08b-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "08b-cleanup.ps1" %}
