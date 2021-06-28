@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "08a-build-springboot"
+title: "Studi Kasus: Build docker image for spring-boot"
 lang: docker
 categories:
 - Containerization
@@ -10,20 +10,14 @@ refs:
 - https://docs.docker.com/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/08a-build-springboot
+image_path: /resources/posts/docker/08c-build-springboot
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas studi kasus menggunakan Java Framework yaitu [spring-boot](https://spring.io/projects/spring-boot). Java spring-boot framework ini udah menjadi mature di beberapa corporate/startup di indonesia, jadi saya putuskan untuk membahas juga untuk dibuatkan containerization-nya. Berikut yang akan kita bahas yaitu
 
-description...
-
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Create project spring-boot
+2. Build docker image
+3. Development lifecycle and Containerization
+4. Cleanup
