@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Studi Kasus: Build Java Web using maven-docker-plugin"
+date: 2021-06-29T04:35:37+07:00
 lang: docker
 categories:
 - Containerization
