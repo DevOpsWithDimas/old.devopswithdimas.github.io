@@ -278,6 +278,18 @@ Jika dijalankan maka outputnya seperti berikut:
 [INFO] Finished at: 2021-06-29T09:05:15+07:00
 [INFO] ------------------------------------------------------------------------
 
+➜ docker-springboot git:(master) docker scan --file .\Dockerfile dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT
+
+Testing dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT...
+Package manager:   rpm
+Target file:       .\Dockerfile
+Project name:      docker-image|dimmaryanto93/udemy-springboot-docker
+Docker image:      dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT
+Platform:          linux/amd64
+Base image:        openjdk:11-oraclelinux8
+✓ Tested 112 dependencies for known vulnerabilities, no vulnerable paths found.
+According to our scan, you are currently using the most secure version of the selected base image
+
 ➜ docker-springboot git:(master) docker run --name springweb -p 8080:8080 -d dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT
 626e8559d34fa5279b263c03ad0394d3e8aa94e84fc203032de9bfcdca727735
 
