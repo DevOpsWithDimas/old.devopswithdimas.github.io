@@ -306,4 +306,14 @@ UID                 PID                 PPID                C                   
 999                 1615                1595                11                  02:06               ?                   00:00:05            java -jar -Djava.security.egd=file:/dev/./urandom application.jar
 ```
 
-## Development lifecycle and Containerization
+## Cleanup
+
+Seperti biasa, setelah kita mencoba schenario tersebut kita bersih-bersih dulu ya. Berikut scriptnya:
+
+For Bash script:
+
+{% gist page.gist "08c-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "08c-cleanup.ps1" %}
