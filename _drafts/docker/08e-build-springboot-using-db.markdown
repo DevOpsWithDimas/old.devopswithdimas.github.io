@@ -15,3 +15,8 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas studi kasus menggunakan Database pada framework Springboot, serta best practice dalam membuat aplikasi berbasis Containers. Diantaranya yang akan kita bahas yaitu
+
+1. External Configuration for connection
+2. Database Migration
+3. Cleanup
