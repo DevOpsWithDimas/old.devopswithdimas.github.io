@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "08f-build-react"
+title: "08f-build-springboot-upload-file"
 lang: docker
 categories:
 - Containerization
@@ -10,7 +10,7 @@ refs:
 - https://docs.docker.com/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/08f-build-react
+image_path: /resources/posts/docker/08f-build-springboot-upload-file
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
