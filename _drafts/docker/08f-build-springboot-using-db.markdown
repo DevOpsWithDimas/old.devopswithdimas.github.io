@@ -18,6 +18,7 @@ downloads: []
 
 Hai semuanya, di materi kali ini kita akan membahas studi kasus menggunakan Database pada framework Springboot, serta best practice dalam membuat aplikasi berbasis Containers. Diantaranya yang akan kita bahas yaitu
 
-1. External Configuration for connection
-2. Database Migration
-3. Cleanup
+1. Best practice for local development and containerization
+2. Using Database migration for automation & versioning
+3. Don't Store Database Credential in your source-code
+4. Cleanup
