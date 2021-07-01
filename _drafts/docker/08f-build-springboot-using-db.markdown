@@ -7,7 +7,8 @@ categories:
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-access
+- https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization
 youtube: 
 comments: true
 image_path: /resources/posts/docker/08d-
