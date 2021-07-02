@@ -440,3 +440,19 @@ Sekarang kita coba execute http request untuk file `MahasiswaController.http` se
     ![mahasiswa list]({{ page.image_path | prepend: site.baseurl }}/04-list.png)
 
 ## Best practice for local development and containerization
+
+Untuk **best practice dalam development** aplikasi, biasanya menggunakan service seperti database atau service springboot lain itu biasanya akan aku jalankan dalam container tetapi jika memunkinkan adanya perubahan code biasanya akan saya jalankan seperti development biasanya yaitu dengan perintahah `mvn clean spring-boot:run`
+
+Untuk **best practice dalam membuat docker image**, seperti yang telah saya sampaikan pada [materi sebelumnya]({% post_url docker/06-build-images/2021-06-24-07m-best-practice-dockerfile %}) sebaikanya kita memfokuskan pada satu program saja. Jadi dari contoh kasus di atas, kita menjalankan aplikasi Java springboot dan menggunakan database, Nah database postgresql ini akan menjadi dependency (required), apakah harus kita install dalam satu image?? tergantung kalo saya lebih seneng untuk di pisah karena lebih scaleable, portable dan masih banyak alasan lainnya. 
+
+## Cleanup
+
+Seperti biasa, setelah kita mencoba schenario diatas kita bersih-bersih dulu ya berikut scriptnya:
+
+For Bash script:
+
+{% gist page.gist "08f-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "08f-cleanup.ps1" %}
