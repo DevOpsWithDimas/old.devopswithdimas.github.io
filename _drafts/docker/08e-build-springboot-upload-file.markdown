@@ -18,7 +18,7 @@ downloads: []
 Hai semuanya, pada studi kasus kali ini kita akan membahas salah satu syarat menggunakan container yaitu dimana kita menyimpan data seperti files, media dan lain-lain. Diantaranya yang akan kita bahas yaitu
 
 1. Don't store data inside containers
-2. Using External storage
+2. Using External storage provider
 3. Using local volume
 4. Using bind-mount
 5. Using shared volume
@@ -188,3 +188,187 @@ Kemudian kita coba upload untuk container `spring-upload2`
 Kemudian kita liat isinya pada container `spring-upload2` seperti berikut:
 
 ![upload-first-container]({{ page.image_path | prepend: site.baseurl }}/01-no-volume-list2.png)
+
+Jadi Solusinya seperti apa?
+
+1. Using external storage provider
+2. Using local volume
+3. Using bind-mount
+4. Using Shared volume
+
+Yukk kita bahas satu-per-satu mulai dari external storage provider
+
+## Using External storage provider
+
+Salah satu solusi untuk mepermudah manage content adalah menggunakan External storage provider seperti 
+
+1. [amazon s3](https://aws.amazon.com/products/storage/?hp=tile&tile=solutions), 
+2. [cloudinary.com](https://cloudinary.com/)
+3. [imagekit.io](https://imagekit.io/)
+4. Masih banyak lagi provider-provider lainnya
+
+Jadi pada dasarnya kita nanti akan di sediankan API baik free, berbayar atau langganan, kita refactor codenya untuk diarakan ke provider tersebut masalah selesai!.
+
+## Using local volume
+
+Tetapi sometime and some cases, kita perlu store data di internal network. how to deal with that?
+
+Menggunakan volume adalah salah satu solusi untuk menghandle share data tetapi disini untuk menghandle single node/machine. yap let's try it then modified file `Dockerfile` :
+
+{% gist page.gist "08e-volume-dockerfile" %}
+
+Kemudian kita build docker imagenya, dengan perintah:
+
+{% highlight bash %}
+mvn clean -DskipTests package dockerfile:build
+{% endhighlight %}
+
+Jika di jalankan berikut outputnya:
+
+```powershell
+➜ docker-springboot git:(master) mvn clean -DskipTests package dockerfile:build
+[INFO] --- dockerfile-maven-plugin:1.4.13:build (default-cli) @ udemy-springboot-docker ---
+[INFO] dockerfile: C:\Users\dimasm93\Workspaces\youtube\docker\08-studi-kasus\docker-springboot\Dockerfile
+[INFO] contextDirectory: C:\Users\dimasm93\Workspaces\youtube\docker\08-studi-kasus\docker-springboot
+[INFO] Building Docker context C:\Users\dimasm93\Workspaces\youtube\docker\08-studi-kasus\docker-springboot
+[INFO] Path(dockerfile): C:\Users\dimasm93\Workspaces\youtube\docker\08-studi-kasus\docker-springboot\Dockerfile
+[INFO] Path(contextDirectory): C:\Users\dimasm93\Workspaces\youtube\docker\08-studi-kasus\docker-springboot
+[INFO]
+[INFO] Image will be built as docker.io/dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT
+[INFO]
+[INFO] Step 1/19 : ARG JDK_VERSION=11-oraclelinux8
+[INFO]
+[INFO] Step 2/19 : FROM openjdk:${JDK_VERSION}
+[INFO]
+[INFO] Pulling from library/openjdk
+[INFO] Digest: sha256:ddb1de39c73130e1df9da5877abbe23aff0564e7383ce02700196dcbe1d6dc8c
+[INFO] Status: Image is up to date for openjdk:11-oraclelinux8
+[INFO]  ---> 95cfb60ac29c
+[INFO] Step 3/19 : LABEL maintainer="Dimas Maryanto <software.dimas_m@icloud.com>"
+[INFO]
+[INFO]  ---> Using cache
+[INFO]  ---> a4f895b3bf2f
+[INFO] Step 4/19 : RUN groupadd www-data && adduser -r -g www-data www-data
+[INFO]
+[INFO]  ---> Using cache
+[INFO]  ---> 1d880f93b0ef
+[INFO] Step 5/19 : ENV FILE_UPLOAD_STORED=/var/lib/spring-boot/data
+[INFO]
+[INFO]  ---> Running in e089b8bf7cf3
+[INFO] Removing intermediate container e089b8bf7cf3
+[INFO]  ---> d5352e3149b1
+[INFO] Step 6/19 : RUN mkdir -p ${FILE_UPLOAD_STORED} && chmod -R 777 ${FILE_UPLOAD_STORED}/
+[INFO]
+[INFO]  ---> Running in 087266023bac
+[INFO] Removing intermediate container 087266023bac
+[INFO]  ---> fd407a853df4
+[INFO] Step 7/19 : WORKDIR /usr/local/share/applications
+[INFO]
+[INFO]  ---> Running in 55dda47c736a
+[INFO] Removing intermediate container 55dda47c736a
+[INFO]  ---> 8d3930cf7cfe
+[INFO] Step 8/19 : USER www-data
+[INFO]
+[INFO]  ---> Running in ec6a7bb1a929
+[INFO] Removing intermediate container ec6a7bb1a929
+[INFO]  ---> 1138fe60ab72
+[INFO] Step 9/19 : ARG JAR_FILE="udemy-springboot-docker-0.0.1-SNAPSHOT.jar"
+[INFO]
+[INFO]  ---> Running in 0c52b6a9be73
+[INFO] Removing intermediate container 0c52b6a9be73
+[INFO]  ---> 6c92058c3bc9
+[INFO] Step 10/19 : ADD --chown=www-data:www-data target/$JAR_FILE spring-boot.jar
+[INFO]
+[INFO]  ---> 9d5090afb679
+[INFO] Step 11/19 : ENV APPLICATION_PORT=80
+[INFO]
+[INFO]  ---> Running in 39f98f886b92
+[INFO] Removing intermediate container 39f98f886b92
+[INFO]  ---> 6f02d9434959
+[INFO] Step 12/19 : ENV PROFILE=default
+[INFO]
+[INFO]  ---> Running in c3c175b2b5b8
+[INFO] Removing intermediate container c3c175b2b5b8
+[INFO]  ---> ec906b273d2f
+[INFO] Step 13/19 : ENV DATABASE_USER=mysql
+[INFO]
+[INFO]  ---> Running in 1c9f989f9c77
+[INFO] Removing intermediate container 1c9f989f9c77
+[INFO]  ---> 7c9302f098e1
+[INFO] Step 14/19 : ENV DATABASE_PASSWORD=testing
+[INFO]
+[INFO]  ---> Running in 0967b0a5782b
+[INFO] Removing intermediate container 0967b0a5782b
+[INFO]  ---> 9811aaf100df
+[INFO] Step 15/19 : VOLUME ${FILE_UPLOAD_STORED}/
+[INFO]
+[INFO]  ---> Running in 034818d0badf
+[INFO] Removing intermediate container 034818d0badf
+[INFO]  ---> 0cde1ce1f983
+[INFO] Step 16/19 : ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "spring-boot.jar"]
+[INFO]
+[INFO]  ---> Running in f95dd22923fd
+[INFO] Removing intermediate container f95dd22923fd
+[INFO]  ---> 447321b3a636
+[INFO] Step 17/19 : CMD ["--server.port=${APPLICATION_PORT}", "--spring.profiles.active=${PROFILE}"]
+[INFO]
+[INFO]  ---> Running in 4107c6ca6c5f
+[INFO] Removing intermediate container 4107c6ca6c5f
+[INFO]  ---> 04845cc1caf4
+[INFO] Step 18/19 : EXPOSE ${APPLICATION_PORT}
+[INFO]
+[INFO]  ---> Running in 59171386e7a9
+[INFO] Removing intermediate container 59171386e7a9
+[INFO]  ---> f8fad5c84d73
+[INFO] Step 19/19 : HEALTHCHECK --interval=5m --timeout=3s   CMD curl -f http://localhost:${APPLICATION_PORT}/actuator || exit 1
+[INFO]
+[INFO]  ---> Running in 5b586a6a2e3f
+[INFO] Removing intermediate container 5b586a6a2e3f
+[INFO]  ---> 754a978158fa
+[INFO] Successfully built 754a978158fa
+[INFO] Successfully tagged dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT
+[INFO]
+[INFO] Detected build of image with id 754a978158fa
+[INFO] Building jar: C:\Users\dimasm93\Workspaces\youtube\docker\08-studi-kasus\docker-springboot\target\udemy-springboot-docker-0.0.1-SNAPSHOT-docker-info.jar
+[INFO] Successfully built docker.io/dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:03 min
+[INFO] Finished at: 2021-07-02T11:23:35+07:00
+[INFO] ------------------------------------------------------------------------
+
+➜ docker-springboot git:(master) docker image inspect dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT -f '{% raw %}{{json .Config.Volumes}}{% endraw %}'
+{"/var/lib/spring-boot/data/":{}}
+
+➜ docker-springboot git:(master) docker run -p 80:80 -v spring-upload:/var/lib/spring-boot/data --name spring-upload3 -d dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT
+7bdfef7ab8da5463a63738611da06d45601a0e40be01e6cfd1bf74e06e1ae9c3
+
+➜ docker-springboot git:(master)✗  docker run -p 8080:80 -v spring-upload:/var/lib/spring-boot/data --name spring-upload4 -d dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT
+1571c831b3b549bd2952094f2505330356dea49e775a20c284018b10c81a7a31
+
+➜ docker-springboot git:(master) docker volume ls
+DRIVER    VOLUME NAME
+local     spring-upload
+
+➜ docker-springboot git:(master) docker container ls
+CONTAINER ID   IMAGE                                                  COMMAND                  CREATED         STATUS                            PORTS                                   NAMES
+1571c831b3b5   dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT   "java -Djava.securit…"   4 seconds ago   Up 4 seconds (health: starting)   0.0.0.0:8080->80/tcp, :::8080->80/tcp   spring-upload4
+814130132d5f   dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT   "java -Djava.securit…"   4 minutes ago   Up 4 minutes (health: starting)   0.0.0.0:80->80/tcp, :::80->80/tcp       spring-upload3
+```
+
+Sekarang kita coba untuk test Rest API yang telah kita buat untuk endpoint `/api/media/upload` dan `/api/media/list` dengan menjalankan http-request file `UploadFileController.http`
+
+![upload-first-container]({{ page.image_path | prepend: site.baseurl }}/02-volume-upload.png)
+
+Kemudian kita coba liat sekarang isinya pada container `spring-upload3`, seperti berikut:
+
+![upload-first-container]({{ page.image_path | prepend: site.baseurl }}/02-volume-list.png)
+
+Kemudian kita coba upload untuk container `spring-upload2`
+
+![upload-first-container]({{ page.image_path | prepend: site.baseurl }}/02-volume-upload2.png)
+
+Kemudian kita liat isinya pada container `spring-upload2` seperti berikut:
+
+![upload-first-container]({{ page.image_path | prepend: site.baseurl }}/02-volume-list2.png)
