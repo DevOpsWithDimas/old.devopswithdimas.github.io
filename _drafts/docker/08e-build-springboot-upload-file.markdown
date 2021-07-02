@@ -21,7 +21,7 @@ Hai semuanya, pada studi kasus kali ini kita akan membahas salah satu syarat men
 2. Using External storage provider
 3. Using local volume
 4. Using bind-mount
-5. Using shared volume
+5. Cleanup
 
 Ok langsung aja kita ke pembahasan yang pertama
 
@@ -194,9 +194,8 @@ Jadi Solusinya seperti apa?
 1. Using external storage provider
 2. Using local volume
 3. Using bind-mount
-4. Using Shared volume
 
-Yukk kita bahas satu-per-satu mulai dari external storage provider
+Yuk kita bahas satu-per-satu mulai dari external storage provider
 
 ## Using External storage provider
 
@@ -408,3 +407,15 @@ Kemudian kita coba liat sekarang isinya pada container `spring-upload5`, seperti
 Sekarang kita check di local file menggunakan exploler seperti berikut:
 
 ![upload-first-container]({{ page.image_path | prepend: site.baseurl }}/03-bind-mount-list2.png)
+
+## Cleanup
+
+Seperti biasa, setelah kita mencoba schenario diatas sekarang kita bersih-bersih dulu ya, berikut perintahnya:
+
+For Bash script:
+
+{% gist page.gist "08e-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "08e-cleanup.ps1" %}
