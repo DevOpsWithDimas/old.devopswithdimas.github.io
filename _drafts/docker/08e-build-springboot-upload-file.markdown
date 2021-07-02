@@ -369,6 +369,42 @@ Kemudian kita coba upload untuk container `spring-upload2`
 
 ![upload-first-container]({{ page.image_path | prepend: site.baseurl }}/02-volume-upload2.png)
 
-Kemudian kita liat isinya pada container `spring-upload2` seperti berikut:
+Kemudian kita liat isinya pada container `spring-upload4` seperti berikut:
 
 ![upload-first-container]({{ page.image_path | prepend: site.baseurl }}/02-volume-list2.png)
+
+## Using bind-mount
+
+Selain menggunakan local volume kita juga menggunakan bind-mount volume, jalankan image yang telah kita build sebelumnya. yaitu dengan perintah berikut:
+
+For Bash script:
+
+{% gist page.gist "08e-docker-run-bind-mount.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "08e-docker-run-bind-mount.ps1" %}
+
+Jika dijalankan maka outputnya seperti berikut:
+
+```powershell
+➜ docker-springboot git:(master) docker run --name spring-upload5 `
+>> -p 80:80 `
+>> --mount type=bind,source="$(pwd)"/files,destination=/var/lib/spring-boot/data `
+>> -d dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT
+8a8638663c4fdf6cbc967a7018a1dade6c20466c0b26c119fa936ac2bdd84043
+
+➜ docker-springboot git:(master) ls .\files\
+```
+
+Sekarang kita coba untuk test Rest API yang telah kita buat untuk endpoint `/api/media/upload` dan `/api/media/list` dengan menjalankan http-request file `UploadFileController.http`
+
+![upload-first-container]({{ page.image_path | prepend: site.baseurl }}/03-bind-mount-upload.png)
+
+Kemudian kita coba liat sekarang isinya pada container `spring-upload5`, seperti berikut:
+
+![upload-first-container]({{ page.image_path | prepend: site.baseurl }}/03-bind-mount-list.png)
+
+Sekarang kita check di local file menggunakan exploler seperti berikut:
+
+![upload-first-container]({{ page.image_path | prepend: site.baseurl }}/03-bind-mount-list2.png)
