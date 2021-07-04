@@ -9,7 +9,7 @@ categories:
 - Docker
 refs: 
 - https://docs.docker.com/
-youtube: 
+youtube: 8daiyW8p-0Y
 comments: true
 image_path: /resources/posts/docker/08-buid-by-language
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524

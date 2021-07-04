@@ -11,7 +11,7 @@ refs:
 - https://github.com/fabric8io/docker-maven-plugin
 - https://github.com/spotify/docker-maven-plugin
 - https://github.com/spotify/dockerfile-maven
-youtube: 
+youtube: ukR7clTSPm0
 comments: true
 image_path: /resources/posts/docker/08b-mvn-dockerfile
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
