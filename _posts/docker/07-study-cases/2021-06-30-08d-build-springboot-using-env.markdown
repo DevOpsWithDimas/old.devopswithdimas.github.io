@@ -9,7 +9,7 @@ categories:
 - Docker
 refs: 
 - https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config
-youtube: 
+youtube: 3huDmWMI2hs
 comments: true
 image_path: /resources/posts/docker/08d-springboot-env
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
