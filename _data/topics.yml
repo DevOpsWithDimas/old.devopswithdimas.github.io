@@ -117,7 +117,7 @@
   publish: 2017-10-26T20:59:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-orm-hibernate
   youtube:
-  udemy: https://www.udemy.com/course/hibernate-orm-bahasa-indonesia
+  udemy: https://www.udemy.com/course/hibernate-orm-bahasa-indonesia/?referralCode=8DA27E06BF0BA6935CCC
   coming_soon: false
   visible: true
 
@@ -177,7 +177,7 @@
   publish: 2021-02-07T12:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV
-  udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia
+  udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/?referralCode=D1F375D96C53FC20DB42
   coming_soon: false
   visible: true
 
@@ -196,7 +196,7 @@
   publish: 2021-02-08T12:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvy6l51feh7ABmyyufPLnA6n
-  udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
+  udemy: 
   coming_soon: true
   visible: false
 
@@ -215,7 +215,7 @@
   publish: 2021-02-08T13:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvw3_SjMKQlKRlGdBiRr_1dh
-  udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
+  udemy: 
   coming_soon: true
   visible: false
 
@@ -235,7 +235,7 @@
   publish: 2021-02-08T13:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvzvSZm8AZ_IAec0MJuxP3GR
-  udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
+  udemy: 
   coming_soon: true
   visible: false
 
@@ -254,7 +254,7 @@
   publish: 2021-04-02T13:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-docker.git
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvztpGmVOoRU4Sp1gUr2H72B
-  udemy: 
+  udemy: https://www.udemy.com/course/docker-pemula-sampai-mahir/?referralCode=8D13D85D4D34027B76BE
   coming_soon: false
   visible: true
 

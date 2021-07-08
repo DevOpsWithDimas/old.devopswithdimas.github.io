@@ -144,6 +144,12 @@ layout: default
                     <a class="modal-trigger btn tooltipped blue-grey lighten-5" href="#modal-{{ topic.url }}" data-position="bottom" data-delay="50" data-tooltip="Preview">
                         <i class="material-icons blue-grey-text lighten-4">library_books</i>
                     </a>
+
+                    {% if topic.udemy %}
+                        <a href="{{ topic.udemy }}" class="tooltipped btn red accent-1" data-position="bottom" data-delay="50" data-tooltip="Join Premium Members">
+                            <i class="material-icons white-text">lock_open</i>
+                        </a>
+                    {% endif %}
                 </div>
                 {% if topic.coming_soon == false %}
                 <div class="card-reveal hide-on-med-and-down">

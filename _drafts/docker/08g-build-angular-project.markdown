@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "08g-build-angular-project"
+title: "Study Kasus: Build docker image for Angular Project"
 lang: docker
 categories:
 - Containerization
@@ -16,14 +16,14 @@ downloads: []
 ---
 
 
-description...
+Hai semuanya, di materi kali kita akan membahas tentang Build Docker image untuk salah satu teknologi yang paling sering digunakan pada Frontend Web aplikasi yaitu [Angular](https://angular.io/). Diantaranya yang kita akan bahas yaitu
 
-Materi: 
+1. Setup Software Development Environtment
+2. Create project
+3. Create examples UI seperti layout, form input dan lain-lain.
+4. Build docker image
+5. Run container
+6. Cleanup
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+## Setup SDK
+

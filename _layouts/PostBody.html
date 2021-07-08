@@ -25,6 +25,8 @@ layout: default
     {% endif %}
 {% endfor %}
 
+{% assign topic = site.data.topics | where: 'url', page.lang | first %}
+
 <div id="postBody" class="row container post-body">
     <div class="col s12 m12 l4 hide-on-med-and-down">
         <div class="row">
@@ -60,6 +62,24 @@ layout: default
                     {% endfor %}
                 </ul>
             </div>
+            <!-- edit this for multiple premium members -->
+            {% if topic.udemy %}
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">lock_open</i>
+                        Join Premium Members:
+                    </li>
+                    {% if topic.udemy %}
+                    <li class="collection-item">
+                        <a href="{{ topic.udemy }}">
+                            Udemy.com
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
             {% assign download_size = page.downloads.size %}
             {% if download_size >= 1 %}
             <div>
