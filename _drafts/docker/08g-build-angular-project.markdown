@@ -554,3 +554,156 @@ Root folder pada linux secara default jika menggunakan `/usr/share/nginx/html` t
 ![angular-deployed]({{ page.image_path | prepend: site.baseurl }}/03-angular-nginx.png)
 
 ## Build docker images
+
+Ok setelah kita mengetahui, workflow untuk deploymentnya. sekarang kita buat Docker Imagenya ya, seperti biasa yang kita butuhkan adalah 
+
+1. `Dockerfile`, seperti berikut
+    {% gist page.gist "08g-dockerfile" %}
+2. `.dockerignore`, seperti berikut:
+    {% gist page.gist "08g-dockerignore" %}
+
+Setelah itu kita coba build dengan perintah seperti berikut:
+
+{% gist page.gist "08g-docker-build.bash" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```powershell
+➜ docker-angular  docker build -t dimmaryanto93/docker-angular:2021.07.09.06.54-release .
+[+] Building 93.2s (15/15) FINISHED
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 1.13kB                                                                             0.0s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 34B                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/node:14.15-alpine                                               4.8s
+ => [internal] load metadata for docker.io/library/nginx:latest                                                    0.0s
+ => [auth] library/node:pull token for registry-1.docker.io                                                        0.0s
+ => [npm_install 1/5] FROM docker.io/library/node:14.15-alpine@sha256:5edad160011cc8cfb69d990e9ae1cb2681c0f280178  0.0s
+ => CACHED [stage-1 1/3] FROM docker.io/library/nginx:latest                                                       0.0s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 2.19kB                                                                                0.0s
+ => CACHED [npm_install 2/5] WORKDIR /var/www                                                                      0.0s
+ => [npm_install 3/5] COPY . .                                                                                     0.0s
+ => [npm_install 4/5] RUN npm install --prod --silent && npm install @angular-devkit/build-angular --silent       60.9s
+ => [npm_install 5/5] RUN ./node_modules/@angular/cli/bin/ng build --aot --build-optimizer --common-chunk --opti  27.0s
+ => [stage-1 2/3] COPY --from=npm_install /var/www/dist/docker-angular /var/www/html                               0.0s
+ => [stage-1 3/3] RUN sed -i 's|/usr/share/nginx/html|/var/www/html|g' /etc/nginx/conf.d/default.conf              0.2s
+ => exporting to image                                                                                             0.1s
+ => => exporting layers                                                                                            0.1s
+ => => writing image sha256:5a455d5e37e3dc69d5b8b82b5b3e81a1249bc2978575d97bc9ab8aed19388e28                       0.0s
+ => => naming to docker.io/dimmaryanto93/docker-angular:2021.07.09.06.54-release
+
+➜ docker-angular  docker image inspect dimmaryanto93/docker-angular:2021.07.09.06.54-release
+[
+    {
+        "Id": "sha256:5a455d5e37e3dc69d5b8b82b5b3e81a1249bc2978575d97bc9ab8aed19388e28",
+        "RepoTags": [
+            "dimmaryanto93/docker-angular:2021.07.09.06.54-release"
+        ],
+        "Created": "2021-07-08T23:57:05.3086715Z",
+        "Author": "",
+        "Config": {
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.21.1",
+                "NJS_VERSION=0.6.1",
+                "PKG_RELEASE=1~buster",
+                "APPLICATION_PORT=80"
+            ],
+            "Cmd": [
+                "nginx",
+                "-g",
+                "daemon off;"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "curl -f http://localhost:${APPLICATION_PORT} || exit 1"
+                ],
+                "Interval": 120000000000,
+                "Timeout": 3000000000
+            },
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": [
+                "/docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "MAINTAINER": "Dimas Maryanto <software.dimas_m@icloud.com>",
+                "dependency.node.version": "^14.15",
+                "maintainer": "NGINX Docker Maintainers <docker-maint@nginx.com>",
+                "org.framework.name": "angular.io",
+                "org.framework.version": "12.1.1"
+            },
+            "StopSignal": "SIGQUIT"
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 137959273,
+        "Metadata": {
+            "LastTagTime": "2021-07-08T23:57:05.4052456Z"
+        }
+    }
+]
+```
+
+Setelah kita build, sekarang kita jalankan containernya dengan perintah seperti berikut:
+
+For Bash script:
+
+{% gist page.gist "08g-docker-run.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "08g-docker-run.ps1" %}
+
+Hasilnya seperti berikut:
+
+```powershell
+➜ docker-angular   docker run `
+>>  -p 80:80 `
+>>  --name angular-nginx `
+>>  -d dimmaryanto93/docker-angular:2021.07.09.06.54-release
+ac8f48b7fd312deeb4766308841cfb7060e7107bd818ad35fa89f4473d093879
+
+➜ docker-angular  docker container ls
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED          STATUS                             PORTS                               NAMES
+ac8f48b7fd31   dimmaryanto93/docker-angular:2021.07.09.06.54-release   "/docker-entrypoint.…"   16 seconds ago   Up 16 seconds (health: starting)   0.0.0.0:80->80/tcp, :::80->80/tcp   angular-nginx
+
+➜ docker-angular  docker top angular-nginx
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+root                5285                5263                0                   00:02               ?
+00:00:00            nginx: master process nginx -g daemon off;
+uuidd               5338                5285                0                   00:02               ?
+00:00:00            nginx: worker process
+uuidd               5339                5285                0                   00:02               ?
+00:00:00            nginx: worker process
+
+➜ docker-angular  docker stats angular-nginx --no-stream
+CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O     BLOCK I/O   PIDS
+ac8f48b7fd31   angular-nginx   0.00%     3.238MiB / 3.842GiB   0.08%     906B / 0B   0B / 0B     3
+```
+
+Jika akses melalui browser, maka hasilnya seperti berikut:
+
+![angular-docker-iamge]({{ page.image_path | prepend: site.baseurl }}/02-nginx.png)
+
+## Cleanup
+
+Seperti biasa, setelah kita mencoba schenario diatas. saatnya kita bersih-bersih dulu ya. Berikut perintahnya:
+
+For Bash script:
+
+{% gist page.gist "08g-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "08g-cleanup.ps1" %}
