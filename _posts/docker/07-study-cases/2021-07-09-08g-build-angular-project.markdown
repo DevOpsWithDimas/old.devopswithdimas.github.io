@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Study Kasus: Build docker image for Angular Project"
+date: 2021-07-09T07:13:20+07:00
 lang: docker
 categories:
 - Containerization
