@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-access
 - https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization
-youtube: 
+youtube: HO_gGVu7V7I
 comments: true
 image_path: /resources/posts/docker/08f-spring-boot-db
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
