@@ -156,3 +156,103 @@ nginx
 Sekarang klo kita coba akses service, harusnya udah jalan proxynya seperti berikut:
 
 ![angular-nginx-proxy]({{ page.image_path | prepend: site.baseurl }}/02-nginx-reverse-proxy.png)
+
+## Run reverse proxy from container
+
+Setelah kita mencoba manual developmentnya, sekarang kita coba build menggunakan docker. Yang perlu kita siapkan adalah `default.conf` untuk melakukan proxy ke backend. Tetapi disini saya gak mau hard-code endpointnya seperti pada config sebelumnya yaitu menggunakan `proxy_pass http://localhost:8080/;` tapi disini kita mau menggunakan Environtment dalam nginxnya. Sebetulnya udah ada yang pernah bahas juga [disini](https://github.com/docker-library/docs/tree/master/nginx#using-environment-variables-in-nginx-configuration-new-in-119)
+
+Sekarang kita buat template conf nya dulu seperti berikut:
+
+{% gist page.gist "08i-nginx-template.conf" %}
+
+Setelah itu kita modif / edit file `Dockerfile` seperti berikut:
+
+{% gist page.gist "08i-dockerfile" %}
+
+Setelah itu kita build docker image, dengan perintah seperti berikut:
+
+{% highlight bash %}
+docker build -t dimmaryanto93/docker-angular:0.0.1-SNAPSHOT .
+{% endhighlight %}
+
+Jika di jalankan hasilnya seperti berikut:
+
+```powershell
+➜ docker-angular  docker build -t dimmaryanto93/docker-angular:0.0.1-SNAPSHOT .
+[+] Building 107.4s (16/16) FINISHED
+ => [internal] load build definition from Dockerfile                                                       0.0s
+ => => transferring dockerfile: 1.28kB                                                                     0.0s
+ => [internal] load .dockerignore                                                                          0.0s
+ => => transferring context: 34B                                                                           0.0s
+ => [internal] load metadata for docker.io/library/node:14.15-alpine                                       4.8s
+ => [internal] load metadata for docker.io/library/nginx:latest                                            0.0s
+ => [auth] library/node:pull token for registry-1.docker.io                                                0.0s
+ => [npm_install 1/5] FROM docker.io/library/node:14.15-alpine@sha256:5edad160011cc8cfb69d990e9ae1cb2681c  0.0s
+ => [internal] load build context                                                                          0.0s
+ => => transferring context: 4.20kB                                                                        0.0s
+ => CACHED [stage-1 1/4] FROM docker.io/library/nginx:latest                                               0.0s
+ => [stage-1 2/4] WORKDIR /var/www/html                                                                    0.0s
+ => CACHED [npm_install 2/5] WORKDIR /var/www                                                              0.0s
+ => [npm_install 3/5] COPY . .                                                                             0.0s
+ => [npm_install 4/5] RUN npm install --prod --silent && npm install @angular-devkit/build-angular --sil  72.7s
+ => [npm_install 5/5] RUN ./node_modules/@angular/cli/bin/ng build --aot --build-optimizer --configurati  29.4s
+ => [stage-1 3/4] COPY --from=npm_install /var/www/dist/docker-angular .                                   0.1s
+ => [stage-1 4/4] COPY .nginx/default.template.conf /etc/nginx/templates/default.conf.template             0.0s
+ => exporting to image                                                                                     0.1s
+ => => exporting layers                                                                                    0.1s
+ => => writing image sha256:8cb61351f167b0f002842f25ebf7d3d1290a4075a0e80cf18a78c66d1881609f               0.0s
+ => => naming to docker.io/dimmaryanto93/docker-angular:0.0.1-SNAPSHOT
+
+➜ docker-angular  docker run --name angular-nginx-proxy `
+>> -p 80:80 `
+>> -e BACKEND_HOST=spring-db `
+>> -e BACKEND_PORT=80 `
+>> -e BACKEND_CONTEXT_PATH=/ `
+>> --network backend `
+>> -d dimmaryanto93/docker-angular:0.0.1-SNAPSHOT
+1160ae87ea485d95c9f89b0134cd6623ffe558adb65e211cb19cdf9d1d3f2dc8
+
+➜ docker-angular  docker container ls
+CONTAINER ID   IMAGE                                                         COMMAND                  CREATED
+       STATUS                             PORTS                                   NAMES
+1160ae87ea48   dimmaryanto93/docker-angular:0.0.1-SNAPSHOT                   "/docker-entrypoint.…"   13 seconds
+ ago   Up 12 seconds (health: starting)   0.0.0.0:80->80/tcp, :::80->80/tcp       angular-nginx-proxy
+22835ba3d9f9   dimmaryanto93/udemy-springboot-docker:2021.07.05.00-release   "java -Djava.securit…"   5 minutes
+ago    Up 5 minutes (healthy)             0.0.0.0:8080->80/tcp, :::8080->80/tcp   spring-db
+4ffaa6d947ff   postgres:12.6                                                 "docker-entrypoint.s…"   5 minutes
+ago    Up 5 minutes                       5432/tcp                                postgresdb
+
+➜ docker-angular  docker exec angular-nginx-proxy cat /etc/nginx/conf.d/default.conf
+server {
+    listen       80;
+    server_name  localhost;
+
+    location / {
+      root   /var/www/html;
+      index  index.html;
+    }
+
+    location /spring-boot/ {
+      proxy_pass                      http://spring-db:80/;
+      proxy_set_header Host           $host;
+      proxy_set_header X-Real-IP      $remote_addr;
+    }
+
+}
+```
+
+Sekarang kalo kita coba access dari browser, menggunakan alamat [http://localhost](http://localhost:80) hasilnya akan sama seperti pada deploy di nginx. seperti berikut:
+
+![angular-nginx-proxy]({{ page.image_path | prepend: site.baseurl }}/02-nginx-reverse-proxy.png)
+
+## Cleanup
+
+Seperti biasa setelah kita mencoba schenario studi kasus tersebut. sekarang kita bersih-bersih dulu ya berikut perintahnya:
+
+For Bash script:
+
+{% gist page.gist "08i-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "08i-cleanup.ps1" %}
