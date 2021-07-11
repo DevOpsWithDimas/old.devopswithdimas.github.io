@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Study Cases: Angular proxy to backend"
+title: "Study Kasus: Angular proxy to backend"
 date: 2021-07-11T21:10:26+07:00
 lang: docker
 categories:

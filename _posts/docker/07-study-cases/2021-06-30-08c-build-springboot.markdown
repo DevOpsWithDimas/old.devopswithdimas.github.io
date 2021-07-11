@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Studi Kasus: Build docker image for spring-boot"
+title: "Study Kasus: Build docker image for spring-boot"
 date: 2021-06-30T19:58:16+07:00
 lang: docker
 categories:
