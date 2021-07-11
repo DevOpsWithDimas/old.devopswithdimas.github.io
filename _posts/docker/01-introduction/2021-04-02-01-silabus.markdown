@@ -43,25 +43,29 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Containerization den
     4. Host Networks
     5. None Network
 8. Docker Volume
+    1. Using volume
+    2. Using bind-mount
+    3. Using share data among containers
+    4. Using share data among machine `vieux/docker-volume-sshfs`
 9. Dockerfile
     1. Build your own image
     2. Publish your image to [hub.docker.com](https://hub.docker.com/)
     3. publish your image to private registry (nexus oss)
-10. Docker Compose CLI
-    1. Overview
-    2. Getting started dengan Docker Compose
-    3. Communication between containers
-    4. Environtment Variables
-    5. Build image
-<!--more-->
-11. Docker Daemon CLI
-12. Build images for specific programming language
+10. Study Cases: Build images for specific programming language
     1. Build for Java Web Application
     2. Build for Springboot Application
     3. Build for Angular
     4. Build for ReactJS
     5. Build for PHP Native
     6. Build for PHP framework like Laravel, CakePHP dll
+<!--more-->
+11. Docker Compose CLI
+    1. Overview
+    2. Getting started dengan Docker Compose
+    3. Communication between containers
+    4. Environtment Variables
+    5. Build image
+12. Docker Daemon CLI
 13. Docker Dashboard
 14. Orcestration container dengan Swarm
     1. Swarm Node
