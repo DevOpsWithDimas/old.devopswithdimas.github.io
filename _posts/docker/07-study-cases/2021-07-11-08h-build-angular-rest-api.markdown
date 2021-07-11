@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Study Cases: Angular project access Rest API"
+date: 2021-07-11T14:00:50+07:00
 lang: docker
 categories:
 - Containerization
