@@ -8,6 +8,7 @@ categories:
 - Docker
 refs: 
 - https://angular.io/guide/build#proxying-to-a-backend-server
+- https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/08i-angular-proxy
@@ -92,3 +93,66 @@ Sekarang kita bisa coba, dari browser dengan mengakses [http://localhost:4200](h
 
 
 ## Setup reverse proxy pada nginx
+
+Untuk deployment ke nginx, pertama kita perlu build ulang sourcenya dan copy sourcenya ke root folder dari nginx tersebut, dengan perintah seperti berikut:
+
+{% highlight bash %}
+ng build --stats-json --source-map --optimization --common-chunk --build-optimizer --aot
+{% endhighlight %}
+
+Seperti berikut outputnya:
+
+```powershell
+➜ docker-angular  ng build --stats-json --source-map --optimization --common-chunk --build-optimizer --aot
+√ Browser application bundle generation complete.
+√ Copying assets complete.
+√ Index html generation complete.
+
+Initial Chunk Files               | Names         |      Size
+main.abd551167fb9b2ff3fbc.js      | main          | 243.38 kB
+polyfills.66a6ee27a5b4801e3d29.js | polyfills     |  36.03 kB
+runtime.5694b417c6f4c412fb7a.js   | runtime       |   1.07 kB
+styles.31d6cfe0d16ae931b73c.css   | styles        |   0 bytes
+
+                                  | Initial Total | 280.48 kB
+
+Build at: 2021-07-11T12:51:09.367Z - Hash: d6ee461f7275c011e9a8 - Time: 19014ms
+
+## remove old build
+➜ docker-angular  rm -Force C:\tools\nginx-1.20.1\html\*
+
+## deploy new application
+➜ docker-angular  cp -Recurse .\dist\docker-angular\* C:\tools\nginx-1.20.1\html\
+```
+
+Kalau kita jalankan, nginxnya ini tidak akan melakukan proxy to backend pada saat menggunakan development mode `ng serve`. Kita perlu setting reverse proxy pada `nginx.conf` seperti berikut:
+
+{% gist page.gist "08i-nginx-reverse-proxy.conf" %}
+
+Sekarang kita coba test dulu dengan perintah 
+
+{% highlight bash %}
+nginx -t
+{% endhighlight %}
+
+Hasilnya seperti berikut:
+
+```powershell
+➜ nginx-1.20.1  .\nginx.exe -t
+nginx: the configuration file C:\tools\nginx-1.20.1/conf/nginx.conf syntax is ok
+nginx: configuration file C:\tools\nginx-1.20.1/conf/nginx.conf test is successful
+```
+
+Setelah itu kita coba jalankan service nginx, dengan menggunakan perintah 
+
+{% highlight bash %}
+## stop service if running
+nginx -s stop
+
+## then start
+nginx
+{% endhighlight %}
+
+Sekarang klo kita coba akses service, harusnya udah jalan proxynya seperti berikut:
+
+![angular-nginx-proxy]({{ page.image_path | prepend: site.baseurl }}/02-nginx-reverse-proxy.png)
