@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Overview of Docker Compose"
+title: "08j-build-php"
 lang: docker
 categories:
 - Containerization
@@ -10,7 +10,7 @@ refs:
 - https://docs.docker.com/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/11-docker-compose-cli
+image_path: /resources/posts/docker/08j-build-php
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
