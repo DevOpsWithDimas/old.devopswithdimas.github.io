@@ -7,7 +7,8 @@ categories:
 - DevOps
 - Docker
 refs: 
-- https://angular.io/guide/deployment
+- https://angular.io/guide/http
+- https://angular.io/guide/build#configuring-application-environments
 youtube: 
 comments: true
 image_path: /resources/posts/docker/08h-angular-httpclient
@@ -127,3 +128,118 @@ ng serve --disable-host-check
 Kemudian access browser ke alamat [localhost:4200](http://localhost:4200), hasilnya seperti berikut:
 
 ![access-rest-api]({{ page.image_path | prepend: site.baseurl }}/access-rest-api.png)
+
+## Using Environment
+
+Untuk menjalankan pada container, kita tidak bisa meng-access HttpClient dengan menembak `localhost:8080` seperti pada service tersebut, jadi kita harus membuatnya url tersebut secara dynamic. Salah satu solusinya adalah dengan menggunakan Environtment bawaan dari Angular.
+
+By default, kita diberikan environtment `environments/environment.ts` dan `environtments/environtment.prod.ts`. Jadi ketika filenya di build akan menggunakan env `environment/prod.ts` terlihat dari file `angular.json` pada configurasi seperti berikut:
+
+{% highlight json %}
+{
+    "projects" : {
+        "docker-angular": {
+            "architect" : {
+                "build" : {
+                    "configurations" : {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+{% endhighlight %}
+
+Nah untuk deploy ke docker container, kita bisa tambahkan satu profile lagi misalkan nama profilenya `docker` jadi kita buat dan modifikasi file seperti berikut
+
+1. Buat file baru dengan nama `environtments/environment.docker.ts` seperti berikut:
+    {% gist page.gist "08h-environment.docker.ts" %}
+2. Edit file `environments/environment.ts` seperti berikut:
+    {% gist page.gist "08h-environment.ts" %}
+3. Edit file `environments/environment.prod.ts` seperti berikut:
+    {% gist page.gist "08h-environment.prod.ts" %}
+4. Kita edit file `service/mahasiswa.service.ts` seperti berikut:
+    {% gist page.gist "08h-env-mahasiswa.service.ts" %}
+5. Yang terakhir kita buat confignya di `angular.json` seperti berikut:
+    {% gist page.gist "08h-docker-env-angular.json" %}
+
+Setelah itu kita edit file `Dockerfile` untuk membuild angular dengan profile `docker` seperti berikut:
+
+{% gist page.gist "08h-angular-env-dockerfile" %}
+
+Setelah itu kita bisa coba, untuk build docker imagenya menggunakan perintah:
+
+{% highlight bash %}
+docker build -t dimmaryanto93/docker-angular:0.0.1-SNAPSHOT .
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```powershell
+➜ docker-angular  docker build -t dimmaryanto93/docker-angular:0.0.1-SNAPSHOT .
+[+] Building 103.3s (16/16) FINISHED
+ => [internal] load build definition from Dockerfile                                                       0.0s
+ => => transferring dockerfile: 1.15kB                                                                     0.0s
+ => [internal] load .dockerignore                                                                          0.0s
+ => => transferring context: 34B                                                                           0.0s
+ => [internal] load metadata for docker.io/library/nginx:latest                                            4.5s
+ => [internal] load metadata for docker.io/library/node:14.15-alpine                                       3.3s
+ => [auth] library/nginx:pull token for registry-1.docker.io                                               0.0s
+ => [auth] library/node:pull token for registry-1.docker.io                                                0.0s
+ => [npm_install 1/5] FROM docker.io/library/node:14.15-alpine@sha256:5edad160011cc8cfb69d990e9ae1cb2681c  0.0s
+ => CACHED [stage-1 1/3] FROM docker.io/library/nginx:latest@sha256:353c20f74d9b6aee359f30e8e4f69c3d7eaea  0.0s
+ => => resolve docker.io/library/nginx:latest@sha256:353c20f74d9b6aee359f30e8e4f69c3d7eaea2f610681c4a9584  0.0s
+ => [internal] load build context                                                                          0.0s
+ => => transferring context: 12.47kB                                                                       0.0s
+ => CACHED [npm_install 2/5] WORKDIR /var/www                                                              0.0s
+ => [npm_install 3/5] COPY . .                                                                             0.0s
+ => [npm_install 4/5] RUN npm install --prod --silent && npm install @angular-devkit/build-angular --sil  69.6s
+ => [npm_install 5/5] RUN ./node_modules/@angular/cli/bin/ng build --aot --build-optimizer --configurati  28.5s
+ => [stage-1 2/3] COPY --from=npm_install /var/www/dist/docker-angular /var/www/html                       0.1s
+ => [stage-1 3/3] RUN sed -i 's|/usr/share/nginx/html|/var/www/html|g' /etc/nginx/conf.d/default.conf      0.3s
+ => exporting to image                                                                                     0.1s
+ => => exporting layers                                                                                    0.1s
+ => => writing image sha256:b66da521e8365803a540579b62ed04430c04e5b57e92751dbfd5fc02df18dc59               0.0s
+ => => naming to docker.io/dimmaryanto93/docker-angular:0.0.1-SNAPSHOT
+```
+
+Sekarang kita bisa coba test jalankan containernya, dengan perintah seperti berikut:
+
+{% gist page.gist "08h-angular-env-docker-run.bash" %}
+
+Hasilnya seperti berikut:
+
+```powershell
+➜ docker-angular ✗  docker run -p 80:80 --name angular-nginx --network backend -d dimmaryanto93/docker-angular:0.0.1-SNAPSHOT
+cd0827fa8fa771164ce8df9b6b1fa405ce7ca6af761a3615027f2606ebd7828d
+
+➜ docker-angular  docker container ls
+CONTAINER ID   IMAGE                                                  COMMAND                  CREATED             STATUS                             PORTS                                   NAMES
+daf395365d71   dimmaryanto93/docker-angular:0.0.1-SNAPSHOT            "/docker-entrypoint.…"   33 seconds ago      Up 32 seconds (health: starting)   0.0.0.0:80->80/tcp, :::80->80/tcp       angular-nginx
+7f536ecdead1   dimmaryanto93/udemy-springboot-docker:0.0.1-SNAPSHOT   "java -Djava.securit…"   About an hour ago   Up About an hour (healthy)         0.0.0.0:8080->80/tcp, :::8080->80/tcp   spring-db
+0705865b827b   postgres:12.6                                          "docker-entrypoint.s…"   About an hour ago   Up About an hour                   5432/tcp                                postgresdb
+```
+
+Kemudian coba access dengan browser [http://localhost](http://localhost:80) hasilnya seperti berikut:
+
+![access-api]({{ page.image_path | prepend: site.baseurl }}/access-env.png)
+
+## Cleanup
+
+Seperti biasa, setelah kita mencoba schenario di atas sekarang kita bersih-bersih dulu ya. Berikut perintahnya:
+
+For Bash script:
+
+{% gist page.gist "08h-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "08h-cleanup.ps1" %}
