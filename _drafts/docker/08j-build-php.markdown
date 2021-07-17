@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "08j-build-php"
+title: "Study Kasus: Build docker image for PHP"
 lang: docker
 categories:
 - Containerization
@@ -8,6 +8,7 @@ categories:
 - Docker
 refs: 
 - https://docs.docker.com/
+- https://www.php.net/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/08j-build-php
@@ -16,14 +17,11 @@ downloads: []
 ---
 
 
-description...
+Hai semuanya, di materi kali ini kita akan membahas Build Docker image untuk bahasa pemograman sejuta umat yaitu [PHP](https://www.php.net/). Jadi kita akan bagi-bagi menjadi beberapa section diantaranya:
 
-Materi: 
+1. Setup Software Development on local environment
+2. Deployment using Apache2/Httpd
+3. Build Docker image
+4. Cleanup
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+## Setup SDK on local environment

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "08k-build-laravel-apps"
+title: "Study Kasus: Build Docker image for Laravel Framework"
 lang: docker
 categories:
 - Containerization
@@ -8,6 +8,7 @@ categories:
 - Docker
 refs: 
 - https://docs.docker.com/
+- https://laravel.com/docs/8.x/deployment
 youtube: 
 comments: true
 image_path: /resources/posts/docker/08k-build-laravel-apps

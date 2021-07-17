@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "08l-build-laravel-using-db"
+title: "Study Kasus: Laravel using Database"
 lang: docker
 categories:
 - Containerization
