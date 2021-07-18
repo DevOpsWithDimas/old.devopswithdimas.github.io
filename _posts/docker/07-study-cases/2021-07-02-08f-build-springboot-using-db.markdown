@@ -13,7 +13,7 @@ refs:
 youtube: HO_gGVu7V7I
 comments: true
 image_path: /resources/posts/docker/08f-spring-boot-db
-gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
+gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
 
