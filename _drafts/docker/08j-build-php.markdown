@@ -119,3 +119,108 @@ Setelah semuanya terupload, nanti hasilnya seperti berikut:
 ![deploy-php-info]({{ page.image_path | prepend: site.baseurl }}/03-deploy-php-info.png)
 
 ## Build & Running Docker image
+
+Setelah kita mengetahui workflow manual deploymentnya, sekarang kita bisa tarik kesimpulan untuk mendeploy PHP aplikasi kita membutuhkan
+
+1. PHP Execution
+2. Web Server, bisa menggunakan Httpd atau Nginx
+
+Seperti biasa, untuk membuat Docker image. kita pilih dulu base image dockernya, sebagai contoh disini menggunakan [official docker image php](https://hub.docker.com/_/php)
+
+Di official image, kita bisa pilih versinya ada yang hanya `php-cli`, ada yang include web server seperti `php-apache` atau `php-fpm`. Karena kita butuh menggunakan web-server jadi kita bisa menggunakan versi `8.0-apache` seperti berikut Dockerfilenya:
+
+{% gist page.gist "08j-dockerfile" %}
+
+Dan satu lagi yaitu `.dockerignore` seperti berikut:
+
+{% gist page.gist "08j-dockerignore" %}
+
+Setelah itu kita coba build docker image, menggunakan perintah berikut:
+
+{% highlight bash %}
+docker build -t dimmaryanto93/docker-php:1.0.0-SNAPSHOT .
+{% endhighlight %}
+
+Jika di jalankan hasilnya seperti berikut:
+
+```powershell
+➜ docker-php ✗  docker build -t dimmaryanto93/docker-php:1.0.0-SNAPSHOT .
+[+] Building 10.6s (9/9) FINISHED
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 435B                                                                               0.0s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 34B                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/php:8.0-apache                                                  1.4s
+ => CACHED [1/4] FROM docker.io/library/php:8.0-apache@sha256:1a69e0b19f5e2d006bec4d985e678733bf452ce76bf558d1553  0.0s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 123B                                                                                  0.0s
+ => [2/4] RUN apt-get update && apt-get install -y     curl                                                        8.9s
+ => [3/4] WORKDIR /var/www/html                                                                                    0.0s
+ => [4/4] COPY . .                                                                                                 0.0s
+ => exporting to image                                                                                             0.1s
+ => => exporting layers                                                                                            0.1s
+ => => writing image sha256:35c8cf4586da19b75e230372dfa80c0c891da066f191dd276e2292dfe9bb9192                       0.0s
+ => => naming to docker.io/dimmaryanto93/docker-php:1.0.0-SNAPSHOT
+
+➜ docker-php  docker images dimmaryanto93/docker-php
+REPOSITORY                 TAG              IMAGE ID       CREATED         SIZE
+dimmaryanto93/docker-php   1.0.0-SNAPSHOT   35c8cf4586da   5 minutes ago   435MB
+```
+
+Sekarang kita coba running containernya, dengan menggunakan perintah berikut:
+
+{% highlight bash %}
+docker run --name php-apache -p 80:80 -d dimmaryanto93/docker-php:1.0.0-SNAPSHOT
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ docker-php  docker run --name php-apache -p 80:80 -d dimmaryanto93/docker-php:1.0.0-SNAPSHOT
+a37041a4ec43d7d434f3ed5693dbcede94ba01e4f51517f9174fca66f931ec04
+
+➜ docker-php  curl localhost
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : <!doctype html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport"
+                              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,
+                    minimum..."
+RawContent        : HTTP/1.1 200 OK
+                    Vary: Accept-Encoding
+                    Keep-Alive: timeout=5, max=100
+                    Connection: Keep-Alive
+                    Content-Length: 389
+                    Content-Type: text/html; charset=UTF-8
+                    Date: Sun, 18 Jul 2021 08:07:40 GMT
+                    Server...
+Headers           : {[Vary, Accept-Encoding], [Keep-Alive, timeout=5, max=100], [Connection, Keep-Alive],
+                    [Content-Length, 389]...}
+ParsedHtml        : System.__ComObject
+RawContentLength  : 389
+
+➜ docker-php  docker exec php-apache php -v
+PHP 8.0.8 (cli) (built: Jul  1 2021 22:32:03) ( NTS )
+Copyright (c) The PHP Group
+Zend Engine v4.0.8, Copyright (c) Zend Technologies
+```
+
+Sekarang coba akses dari browser ke alamat [localhost/system/info.php](http://localhost/system/info.php) hasilnya seperti berikut:
+
+![php-info]({{ page.image_path | prepend: site.baseurl }}/04-docker-php-info.png)
+
+## Cleanup
+
+Seperti biasa setelah kita mencoba schenario studi kasus tersebut. sekarang kita bersih-bersih dulu ya berikut perintahnya:
+
+For Bash script:
+
+{% gist page.gist "08j-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "08j-cleanup.ps1" %}
