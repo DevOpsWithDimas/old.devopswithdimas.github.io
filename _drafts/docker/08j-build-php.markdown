@@ -9,6 +9,7 @@ categories:
 refs: 
 - https://docs.docker.com/
 - https://www.php.net/
+- https://www.tecmint.com/install-php-8-on-centos/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/08j-php-native
@@ -21,7 +22,7 @@ Hai semuanya, di materi kali ini kita akan membahas Build Docker image untuk bah
 
 1. Setup Software Development on local environment
 2. Deployment using Apache2/Httpd
-3. Build Docker image
+3. Build & Run Docker image
 4. Cleanup
 
 Sedikit introduction tentang PHP (PHP: Hypertext Preprocessor) adalah widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML. 
@@ -86,4 +87,35 @@ Setelah menampilkan version dari PHP, sekarang kita bisa coba access [localhost:
 
 ## Deployment using Apache2/Httpd
 
-Jadi perintah `php -s <addr>:<port>` bisanya di gunakan untuk development mode. Nah sekarang kita akan bahas bagaimana cara deployment PHP di Server Linux.
+Jadi perintah `php -s <addr>:<port>` bisanya di gunakan untuk development mode. Nah sekarang kita akan bahas bagaimana cara deployment PHP di Server Linux. Linux server yang saya akan gunakan adalah CentOS 7 kemudian software yang kita perlu install yaitu
+
+1. Apache2 / Apache Httpd
+2. PHP 8 (`php`, `php-cli`, `php-common`, `php-fpm`)
+
+Install PHP 8.0 as Default version (Only recommended for GA release) Seperti berikut:
+
+{% highlight bash %}
+yum update -y && \
+yum install -y yum-utils epel-release && \
+yum-config-manager --disable 'remi-php*' && \
+yum-config-manager --enable remi-php80 && \
+yum -y install httpd php php-{cli,fpm,zip,devel,curl,pear,json} && \
+## allow to access public
+firewall-cmd --add-service=http --zone=public --permanent && \
+firewall-cmd --reload && \
+## enable service 
+systemctl enable --now httpd && \
+chmod -R 777 /var/www/html
+{% endhighlight %}
+
+Setelah kita install, sekarang kita upload source-code yang telah kita buat tadi ke Root Httpd Document. by default biasanya menggunakan `/var/www/html` menggunakan perintah berikut:
+
+{% highlight bash %}
+scp -r your-folder-php your-user@your.hostname:/var/www/html
+{% endhighlight %}
+
+Setelah semuanya terupload, nanti hasilnya seperti berikut:
+
+![deploy-php-info]({{ page.image_path | prepend: site.baseurl }}/03-deploy-php-info.png)
+
+## Build & Running Docker image
