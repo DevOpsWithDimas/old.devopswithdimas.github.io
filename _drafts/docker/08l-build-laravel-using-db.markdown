@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Study Kasus: Laravel using Database"
+title: "Study Kasus: Laravel - Using Database"
 lang: docker
 categories:
 - Containerization
@@ -10,20 +10,18 @@ refs:
 - https://docs.docker.com/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/08l-build-laravel-using-db
+image_path: /resources/posts/docker/08l-laravel-db
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
 
+Hai semuanya, di materi study kasus kali ini kita akan membahas tentang menggunakan Database pada project Laravel. Diantaranya 
 
-description...
+1. Setup and Configure connection to Database
+2. Database Migration
+3. Build & Running Docker Image
+4. Cleanup
 
-Materi: 
+Ok langsung aja kita ke pembahasan yang pertama 
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+## Setup and Configure connection to Database
