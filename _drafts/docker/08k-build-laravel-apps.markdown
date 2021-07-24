@@ -48,12 +48,11 @@ Klo saya sendiri lebih sering menggunakan [Composer](https://laravel.com/docs/8.
 9. XML PHP Extension
 10. [mcrypt PHP Extension](https://pecl.php.net/package/mcrypt)
 
-Setelah kita configure engine PHP nya, selanjutnya kita install untuk package managernya yaitu menggunakan [Composer](https://getcomposer.org/doc/00-intro.md#system-requirements) dan NodeJS serta NPM. Setelah kita install selantutnya kita buat project dengan menggunakan perintah seperti berikut:
+Setelah kita configure engine PHP nya, selanjutnya kita install untuk package managernya yaitu menggunakan [Composer](https://getcomposer.org/doc/00-intro.md#system-requirements), Selantutnya kita buat project dengan menggunakan perintah seperti berikut:
 
 {% highlight bash %}
 composer create-project laravel/laravel docker-laravel && \
 cd docker-laravel && \
-npm install && \
 composer install
 {% endhighlight %}
 
@@ -61,7 +60,6 @@ Setelah itu kita bisa config dulu system Laravelnya seperti
 
 1. `Copy .env.example` menjadi `.env` menggunakan perintah berikut: `php -r "file_exists('.env') || copy('.env.example', '.env');"`
 2. Set `APP_KEY` dengan `php artisan package:discover --ansi && php artisan key:generate --ansi`
-3. Set `APP_URL` dengan empty string seperti berikut `APP_URL=""`
 
 Kemudian kita bisa jalankan sebagai development mode yaitu menggunakan perintah seperti berikut
 
@@ -80,3 +78,110 @@ Starting Laravel development server: http://127.0.0.1:8000
 Kemudian kita akses di browser dengan url di atas, hasilnya seperti berikut:
 
 ![laravel-artisan-serve]({{ page.image_path | prepend: site.baseurl }}/laravel-artisan-serve.png)
+
+## Deployment using Apache2/Httpd
+
+Ok setelah kita membuat project kemudian kita menjalankan development mode, sekarang kita akan deploy ke Server (Production Mode). Untuk deploy production mode ada beberapa cara yaitu
+
+1. Nginx ([PHP-FPM](https://www.php.net/manual/en/install.fpm.php))
+2. Httpd/Apache2
+
+Jadi kali ini kita akan menggunakan Web Server Httpd/Apache dan OS Ubuntu Server. Langsung aja berikut yang harus kita install di server
+
+{% highlight bash %}
+## install software dependency
+apt update && apt -y upgrade && \
+apt install -y software-properties-common \
+    apache2 \
+    curl \
+    git \
+    libicu-dev \
+    libpq-dev \
+    libmcrypt-dev \
+    openssl \
+    unzip \
+    vim \
+    zip \
+    zlib1g-dev \
+    libpng-dev \
+    libzip-dev 
+
+## install php 8.x
+export PHP_VERSION=8.0
+
+add-apt-repository -y ppa:ondrej/php && \
+apt update && \
+apt install -y php${PHP_VERSION} \
+    php${PHP_VERSION}-cli \
+    libapache2-mod-php${PHP_VERSION} && \
+systemctl restart apache2.service
+
+## install php-extension required by laravel
+apt install -y php${PHP_VERSION}-mcrypt \
+    php${PHP_VERSION}-fileinfo \
+    php${PHP_VERSION}-bcmath \
+    php${PHP_VERSION}-gd \
+    php${PHP_VERSION}-exif \
+    php${PHP_VERSION}-pdo \
+    php${PHP_VERSION}-mbstring \
+    php${PHP_VERSION}-curl \
+    php${PHP_VERSION}-xml \
+    php${PHP_VERSION}-json \
+    php${PHP_VERSION}-dom
+
+## install composer
+curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
+
+## allow write folder / file to /var/www/php
+mkdir -p /var/www/php && \
+chmod -R 777 /var/www/php
+{% endhighlight %}
+
+Setelah kita install, sekarang kita upload source-codenya ke server menggunakan tools seperti `scp` atau `git`. Berikut perintahnya:
+
+```bash
+scp -r * username@your-server.hostname:/var/www/php && \
+scp env.example username@your-server.hostname:/var/www/php
+
+```
+
+Setelah itu kita edit apache2 confignya pada file `/etc/apache2/sites-enabled/000-default.conf` untuk mengarahkan ROOT Document ke `/var/www/php/public` seperti berikut:
+
+```conf
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/php/public
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+Kemudian kita restart server apache2 dengan perintah seperti berikut:
+
+{% highlight bash %}
+systemctl restart apache2
+{% endhighlight %}
+
+Kemudian kita build sourcenya menjadi production mode sesuai dengan arahan dari [official website](https://laravel.com/docs/8.x/deployment#optimization) nya. seperti berikut
+
+{% highlight bash %}
+## build .env
+php -r "file_exists('.env') || copy('.env.example', '.env');" && \
+sed -i "s|APP_DEBUG=true|APP_DEBUG=false|g" .env && \
+sed -i "s|APP_URL=http://localhost|APP_URL=""|g" .env && \
+sed -i "s|APP_ENV=local|APP_ENV=production|g" .env
+
+## install production mode
+composer install --optimize-autoloader --no-dev && \
+php artisan config:cache && \
+php artisan route:cache && \
+php artisan view:cache && \
+php artisan package:discover --ansi && \
+php artisan key:generate --ansi
+
+{% endhighlight %}
+
+Sekarang kita coba access menggunakan browser ke [http://your-server.hostname](http://localhost) maka hasilnya seperti berikut:
+
+![laravel-apache2-prod]({{ page.image_path | prepend: site.baseurl }}/laravel-apache2-prod.png)
