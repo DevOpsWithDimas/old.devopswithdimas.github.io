@@ -15,15 +15,9 @@ gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
 
+Hai semuanya, di materi study kasus kali ini kita akan membahas menggunakan Frontend / Webapp atau API Resources (Rest API) dengan Laravel, diantaranya yaitu
 
-description...
-
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Using static Resource API
+2. Create Sample Frontend using jQuery
+3. Build & Run Docker images
+4. Cleanup
