@@ -174,14 +174,71 @@ sed -i "s|APP_ENV=local|APP_ENV=production|g" .env
 
 ## install production mode
 composer install --optimize-autoloader --no-dev && \
-php artisan config:cache && \
-php artisan route:cache && \
-php artisan view:cache && \
 php artisan package:discover --ansi && \
-php artisan key:generate --ansi
+php artisan key:generate --ansi && \
+php artisan optimize
 
 {% endhighlight %}
 
 Sekarang kita coba access menggunakan browser ke [http://your-server.hostname](http://localhost) maka hasilnya seperti berikut:
 
 ![laravel-apache2-prod]({{ page.image_path | prepend: site.baseurl }}/laravel-apache2-prod.png)
+
+## Build & Running docker image
+
+Ok setelah kita mencoba manual deployment menggunakan Apache2 di Ubuntu Server, sekarang kita buat Docker imagenya. Seperti biasanya untuk membuat docker image kita pilih dulu base image yang mau digunakan, jadi karena kita menggunakan Apache2 untuk web-servernya dan versi PHP 8 maka kita pilih `php:8.0-apache` jadi berikut adalah Dockerfile
+
+{% gist page.gist "08k-dockerfile" %}
+
+Serta berikut file `.dockerignore` nya:
+
+{% gist page.gist "08k-dockerignore" %}
+
+Jika di jalankan maka outputnya seperti berikut:
+
+```powershell
+➜ docker-laravel git:(master) docker build -t dimmaryanto93/docker-laravel:2021.07.24.19.43-release .
+[+] Building 13.2s (14/14) FINISHED
+ => [internal] load build definition from Dockerfile                                   0.0s
+ => => transferring dockerfile: 1.49kB                                                 0.0s
+ => [internal] load .dockerignore                                                      0.0s
+ => => transferring context: 35B                                                       0.0s
+ => [internal] load metadata for docker.io/library/php:8.0-apache                      3.2s
+ => [php_laravel 1/4] FROM docker.io/library/php:8.0-apache@sha256:bc3bf769aff70e8f81  0.0s
+ => [internal] load build context                                                      0.0s
+ => => transferring context: 19.75kB                                                   0.0s
+ => CACHED [php_laravel 2/4] RUN apt-get update && apt-get install -y   curl   git     0.0s
+ => CACHED [php_laravel 3/4] RUN pecl install mcrypt-1.0.4 &&   docker-php-ext-instal  0.0s
+ => CACHED [php_laravel 4/4] RUN curl -sS https://getcomposer.org/installer | php --   0.0s
+ => CACHED [executeable 1/5] WORKDIR /var/www/php                                      0.0s
+ => [executeable 2/5] RUN sed -i "s|DocumentRoot /var/www/html|DocumentRoot /var/www/  0.2s
+ => [executeable 3/5] COPY . .                                                         0.1s
+ => [executeable 4/5] RUN mkdir -p public/storage && chmod -R 777 storage/* && chmod   0.2s
+ => [executeable 5/5] RUN php -r "file_exists('.env') || copy('.env.example', '.env')  9.0s
+ => exporting to image                                                                 0.4s
+ => => exporting layers                                                                0.4s
+ => => writing image sha256:14d3276fc4f91d338994fc50c50261df00593d12688ea43ded32afab6  0.0s
+ => => naming to docker.io/dimmaryanto93/docker-laravel:2021.07.24.19.43-release
+```
+
+Sekarang jika kita jalankan containernya dengan perintah seperti berikut:
+
+{% highlight bash %}
+docker container run --name apache-laravel -p 80:80 -d dimmaryanto93/docker-laravel:2021.07.24.19.43-release
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+![laravel-docker]({{ page.image_path | prepend: site.baseurl }}/laravel-docker.png)
+
+## Cleanup
+
+Seperti biasa setelah kita mencoba schenario studi kasus tersebut. sekarang kita bersih-bersih dulu ya berikut perintahnya:
+
+For Bash script:
+
+{% gist page.gist "08k-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "08k-cleanup.ps1" %}
