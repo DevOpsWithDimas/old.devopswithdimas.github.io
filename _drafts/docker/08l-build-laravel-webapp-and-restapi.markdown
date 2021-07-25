@@ -154,3 +154,80 @@ systemctl restart apache2
 Sekarang kita coba access menggunakan browser, maka hasilnya seperti berikut:
 
 ![laravel-prod-deploy]({{ page.image_path | prepend: site.baseurl }}/laravel-prod-deploy.png)
+
+## Build & Run Docker images
+
+Setelah kita memahami manual deploymentnya ke production server, sekarang kita build docker imagenya. Untuk membuild docker image brati kita memiliki 2 environment yaitu `php` dan `node` nah jadi bagaimana solusinya
+
+1. Build custome image (include `node` dan `php-apache` )
+2. multiple stage
+
+Klo saya sendiri lebih sering menggunakan multiple stage, karena dari project tersebut tidak membutuhkan dependency `node` atau hanya sebagai compiler saja. Ok langsung ja kita edit file `Dockerfile`nya seperti berikut:
+
+{% gist page.gist "08l-dockerfile" %}
+
+Kemudian coba build dengan menggunakan perintah:
+
+{% highlight bash %}
+docker build -t dimmaryanto93/docker-laravel:2021.07.25.10.30-release .
+{% endhighlight %}
+
+Jika dijalankan outputnya seperti berikut:
+
+```powershell
+➜ docker-laravel git:(master) docker build -t dimmaryanto93/docker-laravel:2021.07.25.10.30-release .
+[+] Building 46.2s (25/25) FINISHED
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 32B                                                                                0.0s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 35B                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/node:14.15-alpine3.13                                           4.8s
+ => [internal] load metadata for docker.io/library/php:8.0-apache                                                  4.7s
+ => [auth] library/php:pull token for registry-1.docker.io                                                         0.0s
+ => [auth] library/node:pull token for registry-1.docker.io                                                        0.0s
+ => [php_laravel 1/4] FROM docker.io/library/php:8.0-apache@sha256:bc3bf769aff70e8f8183f087d9d855b492826aa94052c1  0.0s
+ => [internal] load build context                                                                                  0.1s
+ => => transferring context: 42.85kB                                                                               0.0s
+ => [frontend_builder 1/4] FROM docker.io/library/node:14.15-alpine3.13@sha256:03b86ea1f9071a99ee3de468659c9af95c  0.0s
+ => CACHED [php_laravel 2/4] RUN apt-get update && apt-get install -y   curl   git   libicu-dev   libpq-dev   lib  0.0s
+ => CACHED [php_laravel 3/4] RUN pecl install mcrypt-1.0.4 &&   docker-php-ext-install fileinfo exif pcntl bcmath  0.0s
+ => CACHED [php_laravel 4/4] RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --fi  0.0s
+ => CACHED [stage-2 1/9] WORKDIR /var/www/php                                                                      0.0s
+ => CACHED [stage-2 2/9] RUN sed -i "s|DocumentRoot /var/www/html|DocumentRoot /var/www/php/public|g" /etc/apache  0.0s
+ => [stage-2 3/9] COPY . .                                                                                         0.1s
+ => CACHED [frontend_builder 2/4] WORKDIR /var/www/php                                                             0.0s
+ => [frontend_builder 3/4] COPY . .                                                                                0.1s
+ => [frontend_builder 4/4] RUN npm install -q && npm run-script prod                                              33.9s
+ => [stage-2 4/9] COPY --from=frontend_builder /var/www/php/public/css public/css                                  0.0s
+ => [stage-2 5/9] COPY --from=frontend_builder /var/www/php/public/images public/images                            0.1s
+ => [stage-2 6/9] COPY --from=frontend_builder /var/www/php/public/fonts public/fonts                              0.1s
+ => [stage-2 7/9] COPY --from=frontend_builder /var/www/php/public/js public/js                                    0.0s
+ => [stage-2 8/9] RUN mkdir -p public/storage && chmod -R 777 storage/* && chmod -R 777 public/storage             0.3s
+ => [stage-2 9/9] RUN php -r "file_exists('.env') || copy('.env.example', '.env');" &&     composer install --no-  6.4s
+ => exporting to image                                                                                             0.5s
+ => => exporting layers                                                                                            0.4s
+ => => writing image sha256:495c681e18799790d476208b34c8318a766ca773a81441dbec6a2967adc0b3b4                       0.0s
+ => => naming to docker.io/dimmaryanto93/docker-laravel:2021.07.25.10.30-release
+```
+
+Selanjutnya kita bisa coba jalankan containernya dengan perintah seperti berikut:
+
+{% highlight bash %}
+docker run --name apache-laravel -p 80:80 -d dimmaryanto93/docker-laravel:2021.07.25.10.30-release
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+![laravel-docker-deploy]({{ page.image_path | prepend: site.baseurl }}/laravel-docker-deploy.png)
+
+## Cleanup
+
+Seperti biasa setelah kita mencoba schenario studi kasus tersebut. sekarang kita bersih-bersih dulu ya berikut perintahnya:
+
+For Bash script:
+
+{% gist page.gist "08k-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "08k-cleanup.ps1" %}
