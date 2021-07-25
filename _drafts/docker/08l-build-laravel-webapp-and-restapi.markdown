@@ -105,3 +105,52 @@ php artisan serve
 Sekarang kita coba access browsernya, maka hasilnya seperti berikut:
 
 ![laravel-jquery-datatables]({{ page.image_path | prepend: site.baseurl }}/laravel-jquery-datatables.png)
+
+## Deploy Production Mode
+
+Ok sekarang kita update deployment ke server production untuk tambahan feature Frontend dan Rest API. Tpi sebelum itu karena kita menggunakan NPM untuk menginstall depedencynya. jadi kita perlu install NodeJS dulu di Server dengan menggunakan perintah berikut:
+
+{% highlight bash %}
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+
+## install node version 14.15
+nvm install 14.15
+
+## set default node 14.15
+nvm use 14.15
+
+## install dependency dengan npm
+npm install
+
+## compile prod
+npm run-script prod
+{% endhighlight %}
+
+Kemudian kita upload source-code terbaru dengan menggunakan perintah `scp` seperti berikut:
+
+{% highlight bash %}
+scp -r * username@your-server.hostname:/var/www/php
+{% endhighlight %}
+
+Setelah kita upload, sekarang kita install dependencynya menggunakan perintah seperti berikut:
+
+{% highlight bash %}
+## install dependency dengan npm
+npm install
+
+## compile production mode
+npm run-script prod
+
+## remove dependency node_modules
+rm -rf node_modules
+
+## optimaze build
+php artisan optimize
+
+## restart server apache
+systemctl restart apache2
+{% endhighlight %}
+
+Sekarang kita coba access menggunakan browser, maka hasilnya seperti berikut:
+
+![laravel-prod-deploy]({{ page.image_path | prepend: site.baseurl }}/laravel-prod-deploy.png)
