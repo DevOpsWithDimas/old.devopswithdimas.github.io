@@ -130,6 +130,9 @@ apt install -y php${PHP_VERSION}-mcrypt \
     php${PHP_VERSION}-json \
     php${PHP_VERSION}-dom
 
+## enable rewrite apache2
+a2enmod rewrite
+
 ## install composer
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
@@ -152,6 +155,12 @@ Setelah itu kita edit apache2 confignya pada file `/etc/apache2/sites-enabled/00
 <VirtualHost *:80>
         ServerAdmin webmaster@localhost
         DocumentRoot /var/www/php/public
+
+        <Directory /var/www/php/public>
+            Options Indexes FollowSymLinks
+            AllowOverride All
+            Require all granted
+        </Directory>
 
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
