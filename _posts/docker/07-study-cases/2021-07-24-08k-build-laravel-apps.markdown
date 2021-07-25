@@ -221,10 +221,10 @@ Jika di jalankan maka outputnya seperti berikut:
  => CACHED [php_laravel 3/4] RUN pecl install mcrypt-1.0.4 &&   docker-php-ext-instal  0.0s
  => CACHED [php_laravel 4/4] RUN curl -sS https://getcomposer.org/installer | php --   0.0s
  => CACHED [executeable 1/5] WORKDIR /var/www/php                                      0.0s
- => [executeable 2/5] RUN sed -i "s|DocumentRoot /var/www/html|DocumentRoot /var/www/  0.2s
+ => [executeable 2/5] RUN sed -i "s|DocumentRoot /var/www/html|DocumentRoot /var/www/" 0.2s
  => [executeable 3/5] COPY . .                                                         0.1s
  => [executeable 4/5] RUN mkdir -p public/storage && chmod -R 777 storage/* && chmod   0.2s
- => [executeable 5/5] RUN php -r "file_exists('.env') || copy('.env.example', '.env')  9.0s
+ => [executeable 5/5] RUN php -r "file_exists('.env') || copy('.env.example', '.env')" 9.0s
  => exporting to image                                                                 0.4s
  => => exporting layers                                                                0.4s
  => => writing image sha256:14d3276fc4f91d338994fc50c50261df00593d12688ea43ded32afab6  0.0s
