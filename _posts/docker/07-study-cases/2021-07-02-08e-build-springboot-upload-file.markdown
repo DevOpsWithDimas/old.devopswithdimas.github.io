@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Study Kasus: Springboot where data such as files/images we stored?"
+title: "Study Kasus: Springboot - where data such as files/images we stored?"
 date: 2021-07-02T13:47:46+07:00
 lang: docker
 categories:
