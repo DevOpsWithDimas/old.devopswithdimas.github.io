@@ -61,4 +61,6 @@ Sekarang kita jalankan Http Requestnya menggunakan env `dev` yaitu `localhost:80
     ![api-dev-mahasiswa-list]({{ page.image_path | prepend: site.baseurl }}/api-dev-mahasiswa-list.png)
 
 2. Get Mahasiswa id
-    ![api-dev-mahasiswa-id]({{ page.image_path | prepend: site.baseurl }}/08l-laravel-webapp-restapi)
+    ![api-dev-mahasiswa-id]({{ page.image_path | prepend: site.baseurl }}/api-dev-mahasiswa-id.png)
+
+## 2. Create Sample Frontend
