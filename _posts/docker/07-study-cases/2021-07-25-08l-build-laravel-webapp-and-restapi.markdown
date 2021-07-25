@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Study Cases: Laravel - Using Frontend & Rest API"
+date: 2021-07-25T10:38:36+07:00
 lang: docker
 categories:
 - Containerization
