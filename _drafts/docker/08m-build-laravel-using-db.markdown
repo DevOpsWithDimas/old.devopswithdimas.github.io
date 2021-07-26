@@ -12,6 +12,8 @@ refs:
 - https://laravel.com/docs/8.x/queries
 - https://laravel.com/docs/8.x/migrations
 - https://laravel.com/docs/8.x/seeding#introduction
+- https://laravel.com/docs/8.x/controllers#introduction
+- https://laravel.com/docs/8.x/queries#introduction
 youtube: 
 comments: true
 image_path: /resources/posts/docker/08m-laravel-db
@@ -143,3 +145,46 @@ Kemudian coba check data di table `mahasiswa`, sekarang memiliki data seperti be
 Ok sekarang kita sudah success membuat database migration
 
 ## Basic CRUD using fluent query builder
+
+Setelah kita setup connection dan membuat migration table, sekarang kita buat simple CRUD yang di expose lewat Rest API. Sekarang kita buat controller baru menggunakan perintah seperti berikut:
+
+{% highlight bash %}
+php artisan make:controller MahasiswaDbController
+{% endhighlight %}
+
+Seperti berikut:
+
+{% gist page.gist "08m-mahasiswa-db-controller.php" %}
+
+Kemudian tambahkan config route seperti berikut pada file `routes/api.php`:
+
+{% gist page.gist "08m-route-api.php" %}
+
+Untuk melakukan testing kita buat file `tests/MahasiswaDbControler.http` seperti berikut:
+
+{% gist page.gist "08m-mahasiswa-db-controller.http" %}
+
+Setelah semuanya berjalan dengan baik, sekarang kita bisa buat UInya dengan membuat file pada folder `resources/views` misalnya dengan nama `mahasiswa.blade.php` seperti berikut:
+
+{% gist page.gist "08m-mahasiswa-blade.php" %}
+
+Tambahkan juga dependency pada client yaitu `jquery-serializejson` dengan perintah seperti berikut:
+
+{% highlight bash %}
+npm install --save jquery-serializejson && \
+npm run-script dev
+{% endhighlight %}
+
+Dan yang terakhir tambahakan route untuk viewnya pada file `routes/web.php` seperti berikut:
+
+{% gist page.gist "08m-mahasiswa-blade.php" %}
+
+Jika dijalankan dengan perintah seperti berikut:
+
+{% highlight bash %}
+php artisan serve
+{% endhighlight %}
+
+Kemudian akses dari browser dengan alamat [localhost:8000/db](http://localhost:8000/db) maka hasilnya seperti berikut:
+
+![laravel-db]({{ page.image_path | prepend: site.baseurl }}/laravel-db-local.png)
