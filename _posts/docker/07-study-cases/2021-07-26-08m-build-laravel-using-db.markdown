@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Study Kasus: Laravel - Using Database"
+date: 2021-07-26T23:54:47+07:00
 lang: docker
 categories:
 - Containerization
@@ -342,3 +343,15 @@ AH00558: apache2: Could not reliably determine the server''s fully qualified dom
 Sekarang coba akses dari browser, maka hasilnya seperti berikut:
 
 ![laravel-db-docker]({{ page.image_path | prepend: site.baseurl }}/laravel-db-docker.png)
+
+## Cleanup
+
+Seperti biasa setelah kita mencoba schenario studi kasus tersebut. sekarang kita bersih-bersih dulu ya berikut perintahnya:
+
+For Bash script:
+
+{% gist page.gist "08m-cleanup.bash" %}
+
+For Powershell script:
+
+{% gist page.gist "08m-cleanup.ps1" %}
