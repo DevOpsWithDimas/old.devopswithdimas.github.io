@@ -11,9 +11,10 @@ refs:
 - https://laravel.com/docs/8.x/database
 - https://laravel.com/docs/8.x/queries
 - https://laravel.com/docs/8.x/migrations
+- https://laravel.com/docs/8.x/seeding#introduction
 youtube: 
 comments: true
-image_path: /resources/posts/docker/08l-laravel-db
+image_path: /resources/posts/docker/08m-laravel-db
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
@@ -21,9 +22,10 @@ downloads: []
 Hai semuanya, di materi study kasus kali ini kita akan membahas tentang menggunakan Database pada project Laravel. Diantaranya 
 
 1. Setup and Configure connection to Database
-2. Basic CRUD using fluent query builder
-3. Build & Running Docker Image
-4. Cleanup
+2. Database: Migration
+3. Basic CRUD using fluent query builder
+4. Build & Running Docker Image
+5. Cleanup
 
 Ok langsung aja kita ke pembahasan yang pertama 
 
@@ -70,7 +72,7 @@ php artisan migrate
 Jika dijalankan maka hasilnya seperti berikut:
 
 ```powershell
-➜ docker-laravel git:(master)✗  php artisan migrate:install
+➜ docker-laravel git:(master) php artisan migrate:install
 Migration table created successfully.
 
 ➜ docker-laravel git:(master) php artisan migrate:status
@@ -101,3 +103,43 @@ Migrated:  2019_08_19_000000_create_failed_jobs_table (28.19ms)
 ```
 
 Dengan konfigurasi seperti berikut, kita sudah bisa connect antara PHP Laravel dengan Database MySQL v5.7
+
+## Database: Migration
+
+Migrations are like version control for your database, allowing your team to define and share the application's database schema definition.  The new migration will be placed in your `database/migrations` directory. Each migration filename contains a timestamp that allows Laravel to determine the order of the migrations:
+
+{% highlight bash %}
+php artisan make:migration create_mahasiswa_table
+{% endhighlight %}
+
+Seperti berikut
+
+{% gist page.gist "08m-create_mahasiswa_table.php" %}
+
+Selanjutnya kita akan mengisi table `mahasiswa` menggunakan Seeder, untuk membuat seeder kita bisa menggunakan perintah seperti berikut:
+
+{% highlight bash %}
+php artisan make:seeder MahasiswaSeeder
+{% endhighlight %}
+
+Seperti berikut:
+
+{% gist page.gist "08m-mahasiswa-seeder.php" %}
+
+Dan kita edit file `database/seeders/DatabaseSeeder.php` seperti berikut:
+
+{% gist page.gist "08m-database-seeder.php" %}
+
+Selanjutnya kita jalankan perintah berikut:
+
+{% highlight bash %}
+php artisan migrate --seed
+{% endhighlight %}
+
+Kemudian coba check data di table `mahasiswa`, sekarang memiliki data seperti berikut contohnya:
+
+![migrate-seeder]({{ page.image_path | prepend: site.baseurl }}/migrate-seeder.png)
+
+Ok sekarang kita sudah success membuat database migration
+
+## Basic CRUD using fluent query builder
