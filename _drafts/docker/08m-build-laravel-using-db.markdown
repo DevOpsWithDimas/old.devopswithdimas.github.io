@@ -26,8 +26,9 @@ Hai semuanya, di materi study kasus kali ini kita akan membahas tentang mengguna
 1. Setup and Configure connection to Database
 2. Database: Migration
 3. Basic CRUD using fluent query builder
-4. Build & Running Docker Image
-5. Cleanup
+4. Deploy Manualy ke Server
+5. Build & Running Docker Image
+6. Cleanup
 
 Ok langsung aja kita ke pembahasan yang pertama 
 
@@ -177,7 +178,7 @@ npm run-script dev
 
 Dan yang terakhir tambahakan route untuk viewnya pada file `routes/web.php` seperti berikut:
 
-{% gist page.gist "08m-mahasiswa-blade.php" %}
+{% gist page.gist "08m-route-mahasiswa-blade.php" %}
 
 Jika dijalankan dengan perintah seperti berikut:
 
@@ -188,3 +189,48 @@ php artisan serve
 Kemudian akses dari browser dengan alamat [localhost:8000/db](http://localhost:8000/db) maka hasilnya seperti berikut:
 
 ![laravel-db]({{ page.image_path | prepend: site.baseurl }}/laravel-db-local.png)
+
+## Deploy Manualy ke Server
+
+Setelah kita mendevelop feature CRUD ke Database MySQL di local kita, sekarang kita akan deploy ke Server. Jadi workflownya 
+
+1. Install Database MySQL
+2. Create User & Database
+3. Upload source-code terbaru ke folder `/var/www/php`
+4. Update configuration `.env`
+5. Install PHP Extension `mysqli`, `pdo_mysql`
+6. Jalankan perintah `php artisan migrate`
+7. Jalankan perintah `npm install && npm run-script prod && rm -rf node_modules`
+8. Restart service `apache2`
+
+Untuk installasi MySQL Database kita bisa install manual atau menggunakan Docker, jadi supaya simple kita buat di docker aja dengan menggunakan perintah yang tadi yaitu seperti berikut:
+
+{% gist page.gist "08m-docker-mysql-run.bash" %}
+
+Setelah itu install PHP Extension untuk module `mysql-client` dan `pdo_mysql` seperti berikut perintahnya:
+
+{% highlight bash %}
+export PHP_VERSION=8.0
+
+apt install -y php${PHP_VERSION}-mysql mysql-client && \
+systemctl restart apache2
+{% endhighlight %}
+
+Kemudian kita upload source-code terbaru dengan menggunakan perintah:
+
+{% highlight bash %}
+scp -r * username@your-server.hostname:/var/www/php
+{% endhighlight %}
+
+Setelah itu kita install kita lakukan migrate mengunakan perintah 
+
+{% highlight bash %}
+npm install && \
+npm run-script prod && \
+rm -rf node_modules && \
+php artisan migrate --force
+{% endhighlight %}
+
+Sekarang kita bisa coba akses, hasilnya seperti berikut:
+
+![laravel-db-server]({{ page.image_path | prepend: site.baseurl }}/laravel-db-server.png)
