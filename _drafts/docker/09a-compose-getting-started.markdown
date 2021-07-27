@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Overview of Docker Compose"
+title: "09a-compose-getting-started"
 lang: docker
 categories:
 - Containerization
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/compose/
+- https://docs.docker.com/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/09-docker-compose
+image_path: /resources/posts/docker/09a-compose-getting-started
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
