@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://angular.io/guide/build#proxying-to-a-backend-server
 - https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/
-youtube: 
+youtube: f7BHAKWQYCM
 comments: true
 image_path: /resources/posts/docker/08i-angular-proxy
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a

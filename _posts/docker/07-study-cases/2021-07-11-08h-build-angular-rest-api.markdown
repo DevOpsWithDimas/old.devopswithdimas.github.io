@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://angular.io/guide/http
 - https://angular.io/guide/build#configuring-application-environments
-youtube: 
+youtube: UZ6JjAokO2g
 comments: true
 image_path: /resources/posts/docker/08h-angular-httpclient
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
