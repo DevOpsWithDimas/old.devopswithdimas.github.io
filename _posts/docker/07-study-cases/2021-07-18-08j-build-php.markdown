@@ -11,7 +11,7 @@ refs:
 - https://docs.docker.com/
 - https://www.php.net/
 - https://www.tecmint.com/install-php-8-on-centos/
-youtube: 
+youtube: 2pHY6CXYjyE
 comments: true
 image_path: /resources/posts/docker/08j-php-native
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
