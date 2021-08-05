@@ -11,7 +11,7 @@ refs:
 - https://docs.docker.com/
 - https://laravel.com/docs/8.x#installation-via-composer
 - https://laravel.com/docs/8.x/deployment
-youtube: 
+youtube: ebk3yh4Lt8s
 comments: true
 image_path: /resources/posts/docker/08k-laravel-apps
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
