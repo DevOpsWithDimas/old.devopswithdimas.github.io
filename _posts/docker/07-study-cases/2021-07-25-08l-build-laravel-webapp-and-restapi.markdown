@@ -11,7 +11,7 @@ refs:
 - https://docs.docker.com/
 - https://laravel.com/docs/8.x/eloquent-resources#introduction
 - https://laravel.com/docs/8.x/mix
-youtube: 
+youtube: u4fk0ZudaAw
 comments: true
 image_path: /resources/posts/docker/08l-laravel-webapp-restapi
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
