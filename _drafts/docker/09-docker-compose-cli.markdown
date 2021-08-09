@@ -57,3 +57,11 @@ volumes:
 
 ## Features of Docker compose
 
+The features of Compose that make it effective are:
+
+1. **Multiple isolated environments on a single host**, Compose uses a project name to isolate environments from each other. The default project name is the basename of the project directory. You can set a custom project name by using the `-p` command line option.
+2. **Preserve volume data when containers are created**, Compose preserves all volumes used by your services. When `docker-compose up` runs, if it finds any containers from previous runs, it copies the volumes from the old container to the new container. This process ensures that any data you’ve created in volumes isn’t lost.
+3. **Only recreate containers that have changed**, Compose caches the configuration used to create a container. When you restart a service that has not changed, Compose re-uses the existing containers. Re-using containers means that you can make changes to your environment very quickly.
+4. **Variables and moving a composition between environments**, Compose supports variables in the Compose file. You can use these variables to customize your composition for different environments, or different users.
+
+## Common use cases
