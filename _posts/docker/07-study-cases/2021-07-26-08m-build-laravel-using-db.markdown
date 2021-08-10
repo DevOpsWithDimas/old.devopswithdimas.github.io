@@ -15,7 +15,7 @@ refs:
 - https://laravel.com/docs/8.x/seeding#introduction
 - https://laravel.com/docs/8.x/controllers#introduction
 - https://laravel.com/docs/8.x/queries#introduction
-youtube: 
+youtube: fnyYRDam72s
 comments: true
 image_path: /resources/posts/docker/08m-laravel-db
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
