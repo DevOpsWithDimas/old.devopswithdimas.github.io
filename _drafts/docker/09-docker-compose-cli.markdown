@@ -24,6 +24,9 @@ Hai semuanya di materi kali ini kita akan membahas tentang Docker Compose, diant
     3. only recreate containers tha have changed
     4. Variables and moving a composition between environments
 3. Common use cases
+  1. Development environments
+  2. Automated testing environment
+  3. Single host deployments
 
 ## Overview
 
@@ -65,3 +68,9 @@ The features of Compose that make it effective are:
 4. **Variables and moving a composition between environments**, Compose supports variables in the Compose file. You can use these variables to customize your composition for different environments, or different users.
 
 ## Common use cases
+
+Compose can be used in many different ways.
+
+1. **Development environments**, When you’re developing software, the ability to run an application in an isolated environment and interact with it is crucial. The Compose command line tool can be used to create the environment and interact with it.
+2. **Automated testing environments**, An important part of any Continuous Deployment or Continuous Integration process is the automated test suite. Automated end-to-end testing requires an environment in which to run tests. Compose provides a convenient way to create and destroy isolated testing environments for your test suite.
+3. **Single host deployments**, Compose has traditionally been focused on development and testing workflows, but with each release we’re making progress on more production-oriented features.
