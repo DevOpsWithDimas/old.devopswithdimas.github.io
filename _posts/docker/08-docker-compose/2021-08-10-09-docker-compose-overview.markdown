@@ -20,14 +20,7 @@ Hai semuanya di materi kali ini kita akan membahas tentang Docker Compose, diant
 
 1. Overview
 2. Features
-    1. Multiple isolated environment on single host
-    2. Preserve volume data when containers are created
-    3. only recreate containers tha have changed
-    4. Variables and moving a composition between environments
 3. Common use cases
-  1. Development environments
-  2. Automated testing environment
-  3. Single host deployments
 
 ## Overview
 
