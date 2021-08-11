@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Get started with Docker Compose"
+date: 2021-08-11T08:15:45+07:00
 lang: docker
 categories:
 - Containerization
@@ -9,6 +10,7 @@ categories:
 refs: 
 - https://docs.docker.com/compose/install/
 - https://docs.docker.com/compose/completion/
+- https://docs.docker.com/compose/gettingstarted/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/09a-compose-getting-started
