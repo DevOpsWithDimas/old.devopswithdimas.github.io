@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "09f-compose-networking"
+title: "Networking in Compose"
 lang: docker
 categories:
 - Containerization
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/compose/networking/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/09f-compose-networking

@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "09h-compose-volume"
+title: "Volume in Compose"
 lang: docker
 categories:
 - Containerization
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/compose/compose-file/compose-file-v3/#volume-configuration-reference
 youtube: 
 comments: true
 image_path: /resources/posts/docker/09h-compose-volume

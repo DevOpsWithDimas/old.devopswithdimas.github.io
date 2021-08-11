@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "09e-multiple-compose-files"
+title: "Share Compose configurations between files and projects"
 lang: docker
 categories:
 - Containerization
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/compose/extends/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/09e-multiple-compose-files

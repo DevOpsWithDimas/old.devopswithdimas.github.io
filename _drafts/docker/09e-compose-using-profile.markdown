@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "09d-compose-using-profile"
+title: "Using profiles with Compose"
 lang: docker
 categories:
 - Containerization
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/compose/profiles/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/09d-compose-using-profile
