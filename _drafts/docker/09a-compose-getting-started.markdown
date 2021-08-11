@@ -63,3 +63,5 @@ then add the following to your `~/.bash_profile`:
 Make sure you have installed [oh-my-zsh](https://ohmyz.sh/) on your computer. Add `docker` and `docker-compose` to the plugins list in `~/.zshrc` to run autocompletion within the oh-my-zsh shell.
 
 {% gist page.gist "09a-zshrc-docker-plugin" %}
+
+## Getting started
