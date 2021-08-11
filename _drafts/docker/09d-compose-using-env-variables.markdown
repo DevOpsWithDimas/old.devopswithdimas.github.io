@@ -100,6 +100,14 @@ version: '3.8'
 ➜ env-file  Remove-Item Env:NGINX_VERSION
 ```
 
+here’s the priority used by Compose to choose which value to use:
+
+1. Compose file
+2. Shell environment variables
+3. Environment file
+4. Dockerfile
+5. Variable is not defined
+
 ## Using the `--env-file` option
 
 By passing the file as an argument, you can store it anywhere and name it appropriately, for example, `.env.ci`, `.env.dev`, `.env.prod`. Passing the file path is done using the `--env-file` option:
@@ -180,3 +188,70 @@ The value of the `POSTGRES_DB` variable in the container is taken from the value
 ## The `env_file` configuration option
 
 You can pass multiple environment variables from an external file through to a service’s containers with the `env_file` option, just like with `docker run --env-file=FILE ...`:
+
+Buat file baru dengan nama `database.dev.env` seperti berikut:
+
+{% gist page.gist "09d-custome-env-file" %}
+
+Dan berikut adalah file `docker-compose.yaml` seperti berikut:
+
+{% gist page.gist "09d-custome-env-file.docker-compose.yaml" %}
+
+Jika kita coba validate maka hasilnya seperti berikut:
+
+```powershell
+➜ env-file-option  docker-compose config
+services:
+  db:
+    environment:
+      POSTGRES_DB: hr_db
+      POSTGRES_PASSWORD: dev_db
+      POSTGRES_USER: dev_db
+    image: postgres:12.6
+    ports:
+    - published: 5432
+      target: 5432
+version: '3.8'
+```
+
+## Set environment variables with `docker-compose run`
+
+Similar to `docker run -e`, you can set environment variables on a one-off container with `docker-compose run -e`:
+
+Berikut adalah `docker-compose.yaml` template:
+
+{% gist page.gist "09d-run.docker-compose.yaml" %}
+
+Kemudian coba jalan perintah berikut
+
+{% highlight bash %}
+docker-compose -f .\docker-compose.yaml run \
+-e POSTGRES_DB=hr_db \
+-e POSTGRES_USER=prod_db \
+db
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ docker-compose-run  docker-compose -f .\docker-compose.yaml run `
+>> -e POSTGRES_DB=hr_db `
+>> -e POSTGRES_USER=prod_db `
+>> -d db
+
+Creating docker-compose-run_db_run ... done
+docker-compose-run_db_run_bef93b57be79
+
+➜ docker-compose-run  docker-compose ps
+                 Name                               Command              State    Ports
+-----------------------------------------------------------------------------------------
+docker-compose-run_db_run_bef93b57be79   docker-entrypoint.sh postgres   Up      5432/tcp
+
+➜ docker-compose-run  docker container inspect docker-compose-run_db_run_bef93b57be79 -f '{% raw %}{{json .Config.Env}}{% endraw %}' | python.exe -m json.tool
+[
+    "POSTGRES_PASSWORD=hr_db",
+    "POSTGRES_DB=hr_db",
+    "POSTGRES_USER=prod_db",
+    "PGDATA=/var/lib/postgresql/data"
+]
+```
