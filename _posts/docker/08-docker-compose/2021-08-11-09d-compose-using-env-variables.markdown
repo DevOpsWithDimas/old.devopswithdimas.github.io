@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Environment variables in Compose"
+date: 2021-08-11T17:01:40+07:00
 lang: docker
 categories:
 - Containerization
