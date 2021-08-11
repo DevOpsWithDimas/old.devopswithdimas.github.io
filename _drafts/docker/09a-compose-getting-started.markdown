@@ -65,3 +65,62 @@ Make sure you have installed [oh-my-zsh](https://ohmyz.sh/) on your computer. Ad
 {% gist page.gist "09a-zshrc-docker-plugin" %}
 
 ## Getting started
+
+Untuk memulai kita akan membuat container menggunakan Docker compose, sebagai contoh menjalankan image `nginx` dan `postgresql` secara bersamaan. Tahapnya adalah
+
+1. Buat file dengan nama `docker-compose.yaml` seperti berikut:
+
+    {% gist page.gist "09a-docker-compose.yaml" %}
+
+2. Kemudian jalankan containernya dengan menggunakan perintah seperti berikut:
+
+    {% gist page.gist "09a-docker-compose-up.bash" %}
+
+3. Jika sudah kita bisa stop containernya dengan menggunakan perintah seperti berikut:
+
+    {% gist page.gist "09a-docker-compose-down.bash" %}
+
+Jika di jalankan maka outputnya seperti berikut:
+
+```powershell
+➜ 09-docker-compose  docker-compose pull
+Pulling webapp ... done
+Pulling db     ... done
+
+➜ 09-docker-compose  docker-compose up -d
+Creating 09-docker-compose_webapp_1 ... done
+Creating 09-docker-compose_db_1     ... done
+
+➜ 09-docker-compose  docker-compose ps
+           Name                         Command               State                    Ports
+--------------------------------------------------------------------------------------------------------------
+09-docker-compose_db_1       docker-entrypoint.sh postgres    Up      0.0.0.0:5432->5432/tcp,:::5432->5432/tcp
+09-docker-compose_webapp_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:80->80/tcp,:::80->80/tcp
+
+➜ 09-docker-compose  curl localhost
+
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : <!DOCTYPE html>
+                    <...
+RawContent        : HTTP/1.1 200 OK
+                    Connection: keep-alive
+                    Accept-Ranges: bytes
+                    Content-Length: 612
+                    Content-Type: text/html
+                    Date: Wed, 11 Aug 2021 01:13:48 GMT
+                    ETag: "60e46fc5-264"
+                    Last-Modified: Tue, 06 Jul 2021 ...
+Headers           : {[Connection, keep-alive], [Accept-Ranges, bytes], [Content-Length, 612], [Content-Type,
+                    text/html]...}
+ParsedHtml        : System.__ComObject
+RawContentLength  : 612
+
+➜ 09-docker-compose  docker-compose down
+Stopping 09-docker-compose_webapp_1 ... done
+Stopping 09-docker-compose_db_1     ... done
+Removing 09-docker-compose_webapp_1 ... done
+Removing 09-docker-compose_db_1     ... done
+Removing network 09-docker-compose_default
+```
