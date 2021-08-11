@@ -126,3 +126,9 @@ Removing 09-docker-compose_webapp_1 ... done
 Removing 09-docker-compose_db_1     ... done
 Removing network 09-docker-compose_default
 ```
+
+## Conclusion
+
+Jadi dengan menggunakan `docker-compose` kita bisa mempersingkat dan mendokumentasikan perintah yang kita jalankan, jika kita menggunakan `docker` command seperti biasa maka sama seperti kita menulis seperti berikut:
+
+{% gist page.gist "09a-docker-command-eq.bash" %}
