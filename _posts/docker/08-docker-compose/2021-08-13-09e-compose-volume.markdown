@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Volume in Compose"
+date: 2021-08-13T20:53:47+07:00
 lang: docker
 categories:
 - Containerization
