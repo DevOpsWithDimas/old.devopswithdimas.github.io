@@ -19,10 +19,6 @@ Hai semuanya di materi kali ini kita akan membahas tentang Docker Volume menggun
 
 1. Store data in volume
 2. Mount-Bind 
-3. Share data between containers and machine
-    1. using local driver
-    2. using sshfs
-    3. using nfs
 
 Ok langsung aja kita ke pembahasan yang pertama yaitu
 
@@ -47,5 +43,3 @@ You can mount a host path as part of a definition for a single service, and ther
 or you can use long format compose like this
 
 {% gist page.gist "09e-long-bind.docker-compose.yaml" %}
-
-## Share data between containers and machine
