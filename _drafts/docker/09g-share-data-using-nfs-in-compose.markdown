@@ -15,3 +15,4 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya di materi kali ini kita akan membahas tentang share data berbeda machine mengunakan [NFS (Network File System)](https://en.wikipedia.org/wiki/Network_File_System)
