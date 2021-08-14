@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Using volumes for share between containers and machine in Compose"
+title: "Share data between Containers in Compose"
+date: 2021-08-14T19:43:31+07:00
 lang: docker
 categories:
 - Containerization
@@ -15,17 +16,9 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Hai semuanya di materi kali ini kita akan membahas tentang share volume between containers and machine menggunakan docker compose, karena pembahasannya akan lumayan panjang saya bagi menjadi beberapa section ya diantaranya
+Hai semuanya di materi kali ini kita akan membahas tentang share volume between containers 
 
-1. Share data between containers
-2. Share data between machine Using NFS
-3. Share data between machine Using sshfs
-
-Ok langsung aja kita ke pembahasan yang pertama yaitu
-
-## Share data between containers
-
-Temen-temen masih ingat khan [materi sebelunya]({% post_url docker/05-docker-volume/2021-06-05-06c-share-data-among-containers %}) untuk share data between container??
+Temen-temen masih ingat khan [materi sebelumnya]({% post_url docker/05-docker-volume/2021-06-05-06c-share-data-among-containers %}) untuk share data between container??
 
 Jadi di materi tersebut kita membuat local volume (named volume) kemudian di terapkan pada beberapa container sekaligus dan juga memiliki mounting point yang sama pada containernya seperti berikut:
 
