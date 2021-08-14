@@ -8,7 +8,7 @@ categories:
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/storage/volumes/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/09f-compose-advanced-volume

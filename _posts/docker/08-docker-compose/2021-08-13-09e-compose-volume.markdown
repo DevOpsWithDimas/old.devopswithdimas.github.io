@@ -9,6 +9,7 @@ categories:
 - Docker
 refs: 
 - https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes
+- https://docs.docker.com/storage/volumes/#use-a-volume-with-docker-compose
 youtube: 
 comments: true
 image_path: /resources/posts/docker/09h-compose-volume
