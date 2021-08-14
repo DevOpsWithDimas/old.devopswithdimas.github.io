@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "09f-compose-advanced-volume"
+title: "Using volumes for share between containers and machine in Compose"
 lang: docker
 categories:
 - Containerization
@@ -15,15 +15,12 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya di materi kali ini kita akan membahas tentang share volume between containers and machine menggunakan docker compose, karena pembahasannya akan lumayan panjang saya bagi menjadi beberapa section ya diantaranya
 
-description...
+1. Share data between containers
+2. Share data between machine Using NFS
+3. Share data between machine Using sshfs
 
-Materi: 
+Ok langsung aja kita ke pembahasan yang pertama yaitu
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+## Share data between containers
