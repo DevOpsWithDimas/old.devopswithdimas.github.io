@@ -6,6 +6,7 @@ categories:
 - DevOps
 - Docker
 - Compose
+- Volume
 refs: 
 - https://docs.docker.com/storage/volumes/#create-a-service-which-creates-an-nfs-volume
 - https://www.howtoforge.com/nfs-server-and-client-on-centos-7

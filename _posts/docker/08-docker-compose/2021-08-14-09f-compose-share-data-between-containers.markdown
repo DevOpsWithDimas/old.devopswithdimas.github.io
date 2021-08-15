@@ -7,6 +7,7 @@ categories:
 - DevOps
 - Docker
 - Compose
+- Volume
 refs: 
 - https://docs.docker.com/storage/volumes/
 youtube: 

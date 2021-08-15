@@ -7,6 +7,7 @@ categories:
 - DevOps
 - Docker
 - Compose
+- Volume
 refs: 
 - https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes
 - https://docs.docker.com/storage/volumes/#use-a-volume-with-docker-compose

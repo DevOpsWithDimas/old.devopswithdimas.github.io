@@ -7,6 +7,7 @@ categories:
 - DevOps
 - Docker
 - Compose
+- Environtment
 refs: 
 - https://docs.docker.com/compose/environment-variables/
 youtube: 
