@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Using sshfs for share data in Compose"
+date: 2021-08-15T17:09:07+07:00
 lang: docker
 categories:
 - DevOps

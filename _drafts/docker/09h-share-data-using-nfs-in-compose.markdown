@@ -21,7 +21,7 @@ Hai semuanya di materi kali ini kita akan membahas tentang share data berbeda ma
 
 Nah jadi sekarang kita memerlukan NFS Server, sebagai contoh disini saya udah sediakan VM (Virtual Machine) yang udah ter-install CentOS 8 dan ssh-server. Sekarang yang perlu kita lakukan adalah install NFS Server di vm pada ip (`192.168.88.110`) dengan menggunakan perintah seperti berikut: 
 
-{% gist page.gist "09g-install-nfs-server.bash" %}
+{% gist page.gist "09h-install-nfs-server.bash" %}
 
 Setelah kita install kita bisa check dengan perintah `nfsstat -S` maka outputnya seperti berikut:
 
@@ -71,4 +71,4 @@ Export list for 192.168.88.110:
 
 Ok setup untuk NFS server sudah selesai, sekarang kita buat compose file untuk melakukan conneksi ke nfs server seperti berikut:
 
-{% gist page.gist "09g-share-nfs.docker-compose.yaml" %}
+{% gist page.gist "09h-share-nfs.docker-compose.yaml" %}
