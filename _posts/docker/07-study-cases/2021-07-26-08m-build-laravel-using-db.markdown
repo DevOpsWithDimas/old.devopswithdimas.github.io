@@ -4,9 +4,10 @@ title: "Study Kasus: Laravel - Using Database"
 date: 2021-07-26T23:54:47+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
+- Study-Cases
 refs: 
 - https://docs.docker.com/
 - https://laravel.com/docs/8.x/database

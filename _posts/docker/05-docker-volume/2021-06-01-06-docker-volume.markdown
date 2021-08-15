@@ -4,9 +4,9 @@ title: "Docker Volume Overview"
 date: 2021-06-01T04:17:45+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Volume
 refs: 
 - https://docs.docker.com/storage/volumes/
 youtube: 5L-ngkZ1D8k

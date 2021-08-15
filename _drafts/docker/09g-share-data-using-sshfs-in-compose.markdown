@@ -3,9 +3,9 @@ layout: post
 title: "Using NFS for share data in Compose"
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Compose
 refs: 
 - https://docs.docker.com/
 youtube: 

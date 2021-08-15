@@ -4,9 +4,9 @@ title: "Basic Dockerfile - CMD vs ENTRYPOINT?"
 date: 2021-06-16T05:20:30+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
 refs: 
 - https://docs.docker.com/engine/reference/builder/
 youtube: CxI8ZHckj6I

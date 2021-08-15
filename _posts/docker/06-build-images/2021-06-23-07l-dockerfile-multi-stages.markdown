@@ -4,9 +4,9 @@ title: "Basic Dockerfile - Multiple Stage Builds"
 date: 2021-06-23T09:42:54+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
 refs: 
 - https://docs.docker.com/develop/develop-images/multistage-build/
 - https://hub.docker.com/_/composer

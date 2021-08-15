@@ -4,9 +4,9 @@ title: "Advanced user-defined bridge network"
 date: 2021-05-27T22:04:45+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Network
 refs: 
 - https://docs.docker.com/network/bridge/
 - https://docs.docker.com/engine/reference/commandline/network_create/

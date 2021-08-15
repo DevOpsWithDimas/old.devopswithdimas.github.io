@@ -4,9 +4,9 @@ title: "Usage docker build"
 date: 2021-06-09T05:12:03+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
 refs: 
 - https://docs.docker.com/get-started/02_our_app/
 - https://docs.docker.com/engine/reference/builder/

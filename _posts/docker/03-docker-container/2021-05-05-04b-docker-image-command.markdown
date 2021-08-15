@@ -4,9 +4,9 @@ title: "Management Docker Images"
 date: 2021-05-05T05:00:17+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Container
 refs: 
 - https://docs.docker.com/engine/reference/commandline/image/
 - https://docs.docker.com/engine/reference/commandline/images/

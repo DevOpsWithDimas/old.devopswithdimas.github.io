@@ -4,9 +4,10 @@ title: "Study Kasus: Angular - Proxy to backend"
 date: 2021-07-11T21:10:26+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
+- Study-Cases
 refs: 
 - https://angular.io/guide/build#proxying-to-a-backend-server
 - https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/

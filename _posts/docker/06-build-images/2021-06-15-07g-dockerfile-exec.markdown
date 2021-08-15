@@ -4,9 +4,9 @@ title: "Basic Dockerfile - Execution Instruction"
 date: 2021-06-15T05:56:19+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
 refs: 
 - https://docs.docker.com/engine/reference/builder/
 - https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/

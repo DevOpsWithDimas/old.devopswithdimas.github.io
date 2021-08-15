@@ -4,9 +4,10 @@ title: "Study Kasus: Springboot - Using Database"
 date: 2021-07-02T21:22:13+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
+- Study-Cases
 refs: 
 - https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-access
 - https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization

@@ -4,9 +4,9 @@ title: "Expose services to outside using ports"
 date: 2021-05-10T06:17:49+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Container
 refs: 
 - https://docs.docker.com/config/containers/container-networking/
 youtube: 4DLxbdKtm_U

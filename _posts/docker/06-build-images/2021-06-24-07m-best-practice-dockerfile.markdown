@@ -4,9 +4,9 @@ title: "Best practices for writing Dockerfiles"
 date: 2021-06-24T20:06:46+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
 refs: 
 - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 youtube: 

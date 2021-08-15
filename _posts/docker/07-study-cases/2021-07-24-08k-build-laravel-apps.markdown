@@ -4,9 +4,10 @@ title: "Study Kasus: Build Docker image for Laravel Framework"
 date: 2021-07-24T20:42:46+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
+- Study-Cases
 refs: 
 - https://docs.docker.com/
 - https://laravel.com/docs/8.x#installation-via-composer

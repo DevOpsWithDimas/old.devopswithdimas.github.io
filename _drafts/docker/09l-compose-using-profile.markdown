@@ -3,9 +3,9 @@ layout: post
 title: "Using profiles with Compose"
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Compose
 refs: 
 - https://docs.docker.com/compose/profiles/
 youtube: 

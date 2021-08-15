@@ -4,9 +4,9 @@ title: "Use user-defined bridge networks"
 date: 2021-05-27T03:32:57+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Network
 refs: 
 - https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks
 youtube: fC7Vwzj5N6w

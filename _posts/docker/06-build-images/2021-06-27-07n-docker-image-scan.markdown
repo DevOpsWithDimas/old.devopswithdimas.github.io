@@ -4,9 +4,9 @@ title: "Best practices for scanning images"
 date: 2021-06-27T13:28:32+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
 refs: 
 - https://docs.docker.com/engine/scan/
 - https://docs.docker.com/develop/scan-images/

@@ -4,9 +4,9 @@ title: "Volume in Compose"
 date: 2021-08-13T20:53:47+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Compose
 refs: 
 - https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes
 - https://docs.docker.com/storage/volumes/#use-a-volume-with-docker-compose

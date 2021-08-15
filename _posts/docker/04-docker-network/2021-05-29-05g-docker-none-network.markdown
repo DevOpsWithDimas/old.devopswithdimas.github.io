@@ -4,9 +4,9 @@ title: "Disable networking for a container"
 date: 2021-05-29T11:40:22+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Network
 refs: 
 - https://docs.docker.com/network/none/
 youtube: ZlHhezRG9DA

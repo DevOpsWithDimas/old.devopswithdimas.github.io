@@ -3,9 +3,9 @@ layout: post
 title: "Share Compose configurations between files and projects"
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Compose
 refs: 
 - https://docs.docker.com/compose/extends/
 youtube: 

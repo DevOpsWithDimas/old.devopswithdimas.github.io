@@ -4,9 +4,10 @@ title: "Study Kasus: Build Java Web using maven-docker-plugin"
 date: 2021-06-29T04:35:37+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
+- Study-Cases
 refs: 
 - https://github.com/fabric8io/docker-maven-plugin
 - https://github.com/spotify/docker-maven-plugin

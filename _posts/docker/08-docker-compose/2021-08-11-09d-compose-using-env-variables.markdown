@@ -4,9 +4,9 @@ title: "Environment variables in Compose"
 date: 2021-08-11T17:01:40+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Compose
 refs: 
 - https://docs.docker.com/compose/environment-variables/
 youtube: 

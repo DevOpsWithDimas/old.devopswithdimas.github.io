@@ -4,9 +4,9 @@ title: "Basic Dockerfile - FROM Instruction"
 date: 2021-06-13T15:21:24+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
 refs: 
 - https://docs.docker.com/engine/reference/builder/
 youtube: t8uire2DNHE

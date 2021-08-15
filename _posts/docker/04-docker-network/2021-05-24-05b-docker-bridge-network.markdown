@@ -4,9 +4,9 @@ title: "Use default bridge networks"
 date: 2021-05-24T20:43:02+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Network
 refs: 
 - https://docs.docker.com/network/bridge/
 - https://docs.docker.com/network/network-tutorial-standalone/

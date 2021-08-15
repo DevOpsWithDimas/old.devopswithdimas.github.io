@@ -4,9 +4,9 @@ title: "Installing Nexus OSS"
 date: 2021-04-24T16:45:03+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Registry
 refs: 
 - https://help.sonatype.com/repomanager3/installation
 - https://help.sonatype.com/repomanager3/system-requirements

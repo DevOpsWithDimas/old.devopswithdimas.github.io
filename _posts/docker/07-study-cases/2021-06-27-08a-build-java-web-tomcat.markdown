@@ -4,9 +4,10 @@ title: "Study Kasus: Build Docker Image for Java Webapp"
 date: 2021-06-27T18:39:39+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
+- Study-Cases
 refs: 
 - https://docs.docker.com/
 youtube: ZFPexpD1lcg

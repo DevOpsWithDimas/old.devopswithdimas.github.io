@@ -4,9 +4,9 @@ title: "Use host networking"
 date: 2021-05-29T07:13:15+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Network
 refs: 
 - https://docs.docker.com/network/host/
 youtube: 5kKAvSJZsvk

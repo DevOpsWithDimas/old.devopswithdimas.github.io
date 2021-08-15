@@ -4,9 +4,9 @@ title: "Get started with Docker Compose"
 date: 2021-08-11T08:15:45+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Compose
 refs: 
 - https://docs.docker.com/compose/install/
 - https://docs.docker.com/compose/completion/

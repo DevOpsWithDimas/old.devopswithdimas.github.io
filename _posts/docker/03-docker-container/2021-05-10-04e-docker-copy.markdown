@@ -4,9 +4,9 @@ title: "Copying files/content between container and filesystem"
 date: 2021-05-10T06:21:24+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Container
 refs: 
 - https://docs.docker.com/engine/reference/commandline/cp/
 youtube: MTX6Z0fUBEM

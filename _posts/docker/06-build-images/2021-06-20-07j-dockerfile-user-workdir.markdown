@@ -4,9 +4,9 @@ title: "Basic Dockerfile - User, Volumes and Working Directory"
 date: 2021-06-20T21:02:55+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
 refs: 
 - https://docs.docker.com/engine/reference/builder/
 youtube: WNK7eB7dzDk

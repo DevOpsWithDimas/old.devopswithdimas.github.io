@@ -4,9 +4,10 @@ title: "Study Kasus: Springboot - using Environtment"
 date: 2021-06-30T22:42:36+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
+- Study-Cases
 refs: 
 - https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config
 youtube: 3huDmWMI2hs

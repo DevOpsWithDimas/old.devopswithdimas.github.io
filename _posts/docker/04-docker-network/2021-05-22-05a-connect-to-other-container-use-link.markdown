@@ -4,9 +4,9 @@ title: "Legacy feature of Docker Network - Container Links"
 date: 2021-05-22T16:03:31+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Network
 refs: 
 - https://docs.docker.com/network/links/
 youtube: oEuqbHQuq8Y

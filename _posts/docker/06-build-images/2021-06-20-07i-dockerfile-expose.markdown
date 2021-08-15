@@ -4,9 +4,9 @@ title: "Basic Dockerfile - Exposing Ports"
 date: 2021-06-20T12:15:43+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Dockerfile
 refs: 
 - https://docs.docker.com/engine/reference/builder/
 youtube: ZHFE3nA6iKY

@@ -4,9 +4,9 @@ title: "Run a command in a running container"
 date: 2021-05-05T07:52:32+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Container
 refs: 
 - https://docs.docker.com/engine/reference/commandline/exec/
 youtube: 6YTYvKk3OZs

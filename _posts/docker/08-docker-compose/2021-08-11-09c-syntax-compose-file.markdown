@@ -4,9 +4,9 @@ title: "Compose file specification and syntax"
 date: 2021-08-11T14:02:57+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Compose
 refs: 
 - https://docs.docker.com/compose/compose-file/compose-versioning/
 - https://docs.docker.com/compose/compose-file/compose-file-v3/

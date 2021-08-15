@@ -3,9 +3,9 @@ layout: post
 title: "Networking in Compose"
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Compose
 refs: 
 - https://docs.docker.com/compose/networking/
 youtube: 

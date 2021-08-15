@@ -4,9 +4,9 @@ title: "Docker Registry (Docker HUB)"
 date: 2021-04-24T16:43:49+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Registry
 refs: 
 - https://docs.docker.com/docker-hub/official_images/
 - https://www.docker.com/products/docker-hub

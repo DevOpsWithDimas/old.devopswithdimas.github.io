@@ -3,9 +3,9 @@ layout: post
 title: "09i-compose-build-image"
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Compose
 refs: 
 - https://docs.docker.com/
 youtube: 

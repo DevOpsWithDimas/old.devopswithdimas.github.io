@@ -4,9 +4,9 @@ title: "Share data among containers"
 date: 2021-06-05T20:53:07+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Volume
 refs: 
 - https://docs.docker.com/storage/volumes/
 youtube: 
