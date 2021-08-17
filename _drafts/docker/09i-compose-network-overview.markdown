@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Networking in Compose"
+title: "Networking Overview in Compose file"
 lang: docker
 categories:
 - DevOps
@@ -15,16 +15,7 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Hai semuanya di materi kali ini kita akan membahas tentang Networking menggunakan Docker Compose, Diantaranya 
-
-1. Simple networking
-2. Using links
-3. Specify custom networks
-4. Use a pre-existing network
-
-Ok langsung ja kita ke pembahasan yang pertama yaitu
-
-## Simple networking
+Hai semuanya di materi kali ini kita akan membahas tentang Networking menggunakan Docker Compose
 
 By default Compose sets up a single [network](https://docs.docker.com/engine/reference/commandline/network_create/) for your app. Each container for a service joins the default network and is both reachable by other containers on that network, and discoverable by them at a hostname identical to the container name.
 
@@ -81,3 +72,5 @@ Each container can now look up the hostname `webapp` or `db` and get back the ap
 It is important to note the distinction between `HOST_PORT` and `CONTAINER_PORT`. In the above example, for `db`, the `HOST_PORT` is `8080` and the container port is `5432` (postgres default). Networked service-to-service communication uses the `CONTAINER_PORT`. When `HOST_PORT` is defined, the service is accessible outside the swarm as well.
 
 Within the web container, your connection string to `db` would look like `postgres://db:5432`, and from the host machine, the connection string would look like `postgres://{DOCKER_IP}:31432`.
+
+If you make a configuration change to a service and run `docker-compose up` to update it, the old container is removed and the new one joins the network under a different IP address but the same name. 
