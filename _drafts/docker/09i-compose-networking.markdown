@@ -15,15 +15,63 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya di materi kali ini kita akan membahas tentang Networking menggunakan Docker Compose, Diantaranya 
 
-description...
+1. Simple networking
+2. Using links
+3. Specify custom networks
+4. Use a pre-existing network
 
-Materi: 
+Ok langsung ja kita ke pembahasan yang pertama yaitu
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+## Simple networking
+
+By default Compose sets up a single [network](https://docs.docker.com/engine/reference/commandline/network_create/) for your app. Each container for a service joins the default network and is both reachable by other containers on that network, and discoverable by them at a hostname identical to the container name.
+
+For example, suppose your app is in a directory called myapp, and your `docker-compose.yml` looks like this:
+
+{% gist page.gist "09i-simple-network.docker-compose.yaml" %}
+
+When you run `docker-compose -p myapp up`, the following happens:
+
+1. A network called `myapp_default` is created.
+2. A container is created using `web’s` configuration. It joins the network `myapp_default` under the name web.
+3. A container is created using `db’s` configuration. It joins the network `myapp_default` under the name db.
+
+Look like this:
+
+```powershell
+➜ docker  docker-compose -f .\09-docker-compose\network\docker-compose.yaml -p myapp up -d
+Creating network "myapp_default" with the default driver
+Status: Downloaded newer image for postgres:12.6
+Creating myapp_webapp_1 ... done
+Creating myapp_db_1     ... done
+
+➜ docker  docker-compose -f .\09-docker-compose\network\docker-compose.yaml -p myapp ps
+     Name                   Command               State                  Ports
+----------------------------------------------------------------------------------------------
+myapp_db_1       docker-entrypoint.sh postgres    Up      0.0.0.0:5432->5432/tcp,:::5432->5432/tcp
+myapp_webapp_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:80->80/tcp,:::80->80/tcp
+
+➜ docker  docker network ls -f name=myapp_default
+NETWORK ID     NAME            DRIVER    SCOPE
+1d8ba9a6b979   myapp_default   bridge    local
+
+➜ docker  docker network inspect myapp_default -f '{%raw%}{{json .Containers}}{%endraw%}' | python -m json.tool
+{
+    "06bc1e24abdb11c0fca7fc9660f17b890f5d67b06b9b3970d71839258873dcb4": {
+        "Name": "myapp_webapp_1",
+        "EndpointID": "b64417fe1ef6ab57b1ec22b9322fbc097e1b0e4a7a7311a58b46e224a380fecd",
+        "MacAddress": "02:42:ac:12:00:02",
+        "IPv4Address": "172.18.0.2/16",
+        "IPv6Address": ""
+    },
+    "ae6570375deaf908ff225f2751b9979a1ec3279d9c66680b4715153789805514": {
+        "Name": "myapp_db_1",
+        "EndpointID": "c9ac8916797a4166522aad097b7807d6825e4e7bc1c03e8992d67bd3c61cbb1a",
+        "MacAddress": "02:42:ac:12:00:03",
+        "IPv4Address": "172.18.0.3/16",
+        "IPv6Address": ""
+    }
+}
+```
