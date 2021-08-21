@@ -9,7 +9,7 @@ categories:
 - Compose
 refs: 
 - https://docs.docker.com/compose/reference/
-youtube: 
+youtube: eyvNmD5Ps0w
 comments: true
 image_path: /resources/posts/docker/09b-compose-cli
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524

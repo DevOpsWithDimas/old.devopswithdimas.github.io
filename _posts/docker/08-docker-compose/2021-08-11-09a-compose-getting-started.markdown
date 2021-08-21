@@ -11,7 +11,7 @@ refs:
 - https://docs.docker.com/compose/install/
 - https://docs.docker.com/compose/completion/
 - https://docs.docker.com/compose/gettingstarted/
-youtube: 
+youtube: C5BYAkbFPvs
 comments: true
 image_path: /resources/posts/docker/09a-compose-getting-started
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
