@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://docs.docker.com/compose/compose-file/compose-versioning/
 - https://docs.docker.com/compose/compose-file/compose-file-v3/
-youtube: 
+youtube: y3QAs0NZg-s
 comments: true
 image_path: /resources/posts/docker/09c-syntax-compose-file
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
