@@ -217,7 +217,19 @@ Dengan setting di atas, saya menggunakan PowerShell sebagai default command line
 2. [Font Cascadia Code](https://github.com/microsoft/cascadia-code)
 3. [Auto Compleation for docker command](https://github.com/samneirinck/posh-docker)
 
-Buka Powershell, kita akan memasang plugin tersebut dengan perintah seperti berikut:
+Sebelum kita install, kita perlu aktifkan dulu developer mode dan execute any command from powershell seperti berikut:
+
+![developer-mode-on]({{ page.image_path | prepend: site.baseurl }}/07a-developer-mode.png)
+
+dan 
+
+![developer-execute-any-command]({{ page.image_path | prepend: site.baseurl }}/07b-developer-mode.png)
+
+Buka **Powershell as Adminstrator**, jalankan perintah berikut:
+
+{% gist page.gist "02d-powershell-execute-restricted.ps1" %}
+
+Kemudian restart, setelah restart buka kembali Powershell as normal user, kita akan memasang plugin tersebut dengan perintah seperti berikut:
 
 {% gist page.gist "02d-powershell-install-plugin.powershell" %}
 
