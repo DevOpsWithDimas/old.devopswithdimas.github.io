@@ -6,8 +6,10 @@ categories:
 - DevOps
 - Docker
 - Compose
+- Build
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/compose/reference/build/
+- https://docs.docker.com/compose/compose-file/compose-file-v3/#build
 youtube: 
 comments: true
 image_path: /resources/posts/docker/09i-compose-build-image
