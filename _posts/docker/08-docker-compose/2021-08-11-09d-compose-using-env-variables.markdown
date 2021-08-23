@@ -10,7 +10,7 @@ categories:
 - Environtment
 refs: 
 - https://docs.docker.com/compose/environment-variables/
-youtube: 
+youtube: pbrBBcbkBwI
 comments: true
 image_path: /resources/posts/docker/09b-compose-using-env-variables
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
