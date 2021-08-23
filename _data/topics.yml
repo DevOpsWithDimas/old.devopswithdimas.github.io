@@ -143,25 +143,6 @@
   coming_soon: true
   visible: false
 
-- name: Spring Framework
-  url: spring-core
-  icon: "devicons devicons-java"
-  language: Java
-  color: green accent-2
-  tags:
-  - java
-  - springframework
-  - dependency-injection
-  - inversion-of-control
-  descriptions:
-    Temen-teman akan belajar suatu Design Pattern yaitu Dependency Injection (DI) dan Inversion of Control (IoC).
-  messages:
-  publish: 2017-10-28T20:50:50+07:00
-  github: 
-  youtube:
-  udemy:
-  coming_soon: true
-  visible: false
 
 - name: SQL Fundamental - Oracle 18c
   url: oracle18c
@@ -276,6 +257,26 @@
   udemy: 
   coming_soon: true
   visible: false
+
+- name: Spring Framework
+  url: spring-core
+  icon: "devicons devicons-java"
+  language: Java
+  color: green accent-2
+  tags:
+  - java
+  - springframework
+  - dependency-injection
+  - inversion-of-control
+  descriptions:
+    Temen-teman akan belajar suatu Design Pattern yaitu Dependency Injection (DI) dan Inversion of Control (IoC).
+  messages:
+  publish: 2021-08-24T12:26:00+07:00
+  github: https://github.com/BootcampYoutubeChannel/belajar-spring-ioc
+  youtube:
+  udemy:
+  coming_soon: true
+  visible: true
 
 - name: Openshift
   url: k8s-openshift

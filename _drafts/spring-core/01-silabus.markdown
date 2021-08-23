@@ -1,19 +1,20 @@
 ---
-layout: {{ layout }}
-title: "{{ title }}"
+layout: post
+title: "01-silabus"
 lang: spring-core
 categories:
 - java
 - springframework
 refs: 
 - https://spring.io/projects/spring-framework
-youtube: {{ youtube }}
+youtube: 
 comments: true
 gist: dimMaryanto93/18ec7d7d241ffdac192d249106d35500
 comments: true
-image_path: /resources/posts/spring-core/{{ title }}
+image_path: /resources/posts/spring-core/01-silabus
 downloads: []
 ---
+
 
 description...
 

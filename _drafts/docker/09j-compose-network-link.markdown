@@ -3,9 +3,10 @@ layout: post
 title: "Network links in Compose file"
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Compose
+- Network
 refs: 
 - https://docs.docker.com/compose/networking/
 - https://docs.docker.com/compose/compose-file/compose-file-v3/#links

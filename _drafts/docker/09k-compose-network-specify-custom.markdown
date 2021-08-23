@@ -3,9 +3,10 @@ layout: post
 title: "09k-compose-network-specify-custom"
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Compose
+- Network
 refs: 
 - https://docs.docker.com/
 youtube: 
