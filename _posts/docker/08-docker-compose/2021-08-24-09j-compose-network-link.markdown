@@ -81,7 +81,7 @@ f93145728402   link_default   bridge    local
 /link_mysql_1 => ["6db651322822","mysql"]
 /link_wordpress_1 => ["wordpress","9a45840e15e0"]
 
-➜ docker ✗  docker-compose -f .\09-docker-compose\network\link.docker-compose.yaml -p link exec mysql mysql -u wordpress_user --database wordpress_db -p
+➜ docker  docker-compose -f .\09-docker-compose\network\link.docker-compose.yaml -p link exec mysql mysql -u wordpress_user --database wordpress_db -p
 
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 19
