@@ -17,3 +17,9 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya di materi kali ini kita akan membahas tentang build docker image melalui compose file. Diantaranya yang akan kita bahas yaitu
+
+1. Basic build
+2. Using context
+3. Using build args
+5. Using labels
