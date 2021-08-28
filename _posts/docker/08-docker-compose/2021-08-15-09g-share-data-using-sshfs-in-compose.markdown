@@ -11,7 +11,7 @@ categories:
 refs: 
 - https://github.com/vieux/docker-volume-sshfs
 - https://docs.docker.com/storage/volumes/#use-a-volume-driver
-youtube: 
+youtube: WjIelawtYNM
 comments: true
 image_path: /resources/posts/docker/09h-share-data-using-sshfs-in-compose
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524

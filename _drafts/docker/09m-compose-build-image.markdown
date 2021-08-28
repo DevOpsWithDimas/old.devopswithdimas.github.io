@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "09i-compose-build-image"
+title: "Build docker image using Compose file"
 lang: docker
 categories:
 - DevOps
