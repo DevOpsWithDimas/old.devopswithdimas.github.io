@@ -16,14 +16,8 @@ downloads: []
 ---
 
 
-description...
+Hai semuanya di materi kali ini kita akan membahas tentang profiles pada compose file. Diantaranya 
 
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Assigning profiles to services
+2. Enabling profiles
+3. Auto-enabling profiles and dependency resolution
