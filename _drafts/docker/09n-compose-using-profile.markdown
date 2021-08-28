@@ -96,6 +96,6 @@ Services are associated with profiles through the `profiles` attribute which tak
 
 {% gist page.gist "09n-assign-profile.docker-compose.yaml" %}
 
-Here the services `frontend` and `phpmyadmin` are assigned to the profiles `frontend` and `debug` respectively and as such are only started when their respective profiles are enabled.
+Here the services `webapp` and `phpmyadmin` are assigned to the profiles `frontend` and `debug` respectively and as such are only started when their respective profiles are enabled.
 
 Services without a profiles attribute will always be enabled, i.e. in this case running `docker-compose up` would only start `backend` and `db`.
