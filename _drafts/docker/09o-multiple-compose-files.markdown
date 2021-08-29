@@ -18,13 +18,10 @@ downloads: []
 
 Hai semuanya di materi kali ini kita akan membahas lebih detail tentang multiple compose files. Diantaranya
 
-1. Undestending multiple compose files
+1. Add & Override attribute in compose files
 2. Multiple compose file for diffreent environment
-2. Add & Override attribute in compose files
 3. Administrative tasks
 
-Ok langsung aja kita ke pembahasan yang pertama:
+Using multiple Compose files enables you to customize a Compose application for different environments or different workflows. By default, Compose reads two files, a `docker-compose.yml` and an optional `docker-compose.override.yml` file. By convention, the `docker-compose.yml` contains your base configuration. The override file, as its name implies, can contain configuration overrides for existing services or entirely new services.
 
-## Undestending multiple compose files
-
-
+When you use multiple configuration files, you must make sure all paths in the files are relative to the base Compose file (the first Compose file specified with `-f`). This is required because override files need not be valid Compose files. Override files can contain small fragments of configuration. Tracking which fragment of a service is relative to which path is difficult and confusing, so to keep paths easier to understand, all paths must be defined relative to the base file.
