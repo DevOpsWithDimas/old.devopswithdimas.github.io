@@ -7,6 +7,7 @@ categories:
 - DevOps
 - Docker
 - Compose
+- Workflows
 refs: 
 - https://docs.docker.com/compose/profiles/
 youtube: 

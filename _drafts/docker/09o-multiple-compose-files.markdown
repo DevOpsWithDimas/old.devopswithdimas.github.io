@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "Share Compose configurations between files and projects"
+title: "Multiple Compose files to customize for different environments or workflows"
 lang: docker
 categories:
 - DevOps
 - Docker
 - Compose
+- Workflows
 refs: 
 - https://docs.docker.com/compose/extends/
 youtube: 
@@ -15,15 +16,15 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya di materi kali ini kita akan membahas lebih detail tentang multiple compose files. Diantaranya
 
-description...
+1. Undestending multiple compose files
+2. Multiple compose file for diffreent environment
+2. Add & Override attribute in compose files
+3. Administrative tasks
 
-Materi: 
+Ok langsung aja kita ke pembahasan yang pertama:
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+## Undestending multiple compose files
+
+
