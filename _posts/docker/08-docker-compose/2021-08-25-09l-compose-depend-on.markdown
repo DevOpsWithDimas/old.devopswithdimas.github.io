@@ -9,7 +9,7 @@ categories:
 - Docker
 refs: 
 - https://docs.docker.com/compose/compose-file/compose-file-v3/#depends_on
-youtube: 
+youtube: HPTSGkSkp98
 comments: true
 image_path: /resources/posts/docker/09l-compose-depend-on
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524

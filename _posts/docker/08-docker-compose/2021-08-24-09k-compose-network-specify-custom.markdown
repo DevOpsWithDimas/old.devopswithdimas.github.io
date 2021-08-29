@@ -10,7 +10,7 @@ categories:
 - Network
 refs: 
 - https://docs.docker.com/compose/networking/#specify-custom-networks
-youtube: 
+youtube: MTK9fRuKVFY
 comments: true
 image_path: /resources/posts/docker/09k-compose-network-specify-custom
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
