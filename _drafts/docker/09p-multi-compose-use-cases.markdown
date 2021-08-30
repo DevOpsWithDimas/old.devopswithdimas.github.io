@@ -157,3 +157,55 @@ To start a normal environment run `docker-compose up -d`. To run a database back
 {% highlight bash %}
 docker-compose -f docker-compose.yml -f docker-compose.admin.yml up -d
 {% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ docker  docker-compose -f .\09-docker-compose\multiple-compose\admin-task\docker-compose.yaml `
+>> -f .\09-docker-compose\multiple-compose\admin-task\docker-compose.admin-task.yaml config
+networks:
+  backend: {}
+services:
+  backend:
+    depends_on:
+      db:
+        condition: service_started
+    image: php:8.0-apache
+    networks:
+      backend: {}
+    ports:
+    - published: 8080
+      target: 80
+  db:
+    environment:
+      POSTGRES_DB: example_db
+      POSTGRES_PASSWORD: secretPassword
+      POSTGRES_USER: example_user
+    image: postgres:12.6
+    networks:
+      backend: {}
+    ports:
+    - published: 5432
+      target: 5432
+    volumes:
+    - source: pg_data
+      target: /var/lib/postgresql/data
+      type: volume
+  migrate:
+    command:
+    - -user=
+    - -password=
+    - -url=jdbc:postgresql://postgres:5432/
+    - info
+    depends_on:
+      db:
+        condition: service_started
+    environment:
+      FLYWAY_EDITION: null
+    image: flyway/flyway:latest-alpine
+    networks:
+      backend: {}
+version: '3.9'
+volumes:
+  pg_data: {}
+```
