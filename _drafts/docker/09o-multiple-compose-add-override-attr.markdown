@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Multiple Compose files to customize for different environments or workflows"
+title: "Multiple Compose files to Add & Override attribute"
 lang: docker
 categories:
 - DevOps
@@ -16,19 +16,11 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Hai semuanya di materi kali ini kita akan membahas lebih detail tentang multiple compose files. Diantaranya
-
-1. Add & Override attribute in compose files
-2. Multiple compose file for diffreent environment
-3. Administrative tasks
+Hai semuanya di materi kali ini kita akan membahas lebih detail tentang multiple compose files untuk Add & Override attribute
 
 Using multiple Compose files enables you to customize a Compose application for different environments or different workflows. By default, Compose reads two files, a `docker-compose.yml` and an optional `docker-compose.override.yml` file. By convention, the `docker-compose.yml` contains your base configuration. The override file, as its name implies, can contain configuration overrides for existing services or entirely new services.
 
 When you use multiple configuration files, you must make sure all paths in the files are relative to the base Compose file (the first Compose file specified with `-f`). This is required because override files need not be valid Compose files. Override files can contain small fragments of configuration. Tracking which fragment of a service is relative to which path is difficult and confusing, so to keep paths easier to understand, all paths must be defined relative to the base file.
-
-So ok langsung aja kita kepembahasan yang pertama
-
-## Add & Override attribute in compose files
 
 Compose copies configurations from the original service over to the local one. If a configuration option is defined in both the original service and the local service, the local value replaces or extends the original value.
 
@@ -167,3 +159,94 @@ services:
       - ./local:/bar
       - ./local:/baz
 {% endhighlight %}
+
+Berikut contohnya, file `docker-compose.yaml`:
+
+{% gist page.gist "09o-extend.docker-compose.yaml" %}
+
+Serta berikut file `docker-compose.override.yaml`:
+
+{% gist page.gist "090-extend.docker-compose.override.yaml" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ docker  cd .\09-docker-compose\extends\diff-envs\
+➜ diff-envs  docker-compose config
+networks:
+  frontend: {}
+services:
+  webapp:
+    build:
+      args:
+        NGINX_VERSION: mainline
+      context: C:\Users\dimasm93\Workspaces\youtube\docker\09-docker-compose\extends\diff-envs
+      dockerfile: Dockerfile
+    environment:
+      NGINX_DOMAIN_NAME: dev01.dimas-maryanto.com
+      NGINX_PORT: '80'
+      NGINX_ROOT_DOCUMENT: /var/www/html
+    image: dimmaryanto93/nginx:latest
+    networks:
+      frontend: {}
+    ports:
+    - published: 8080
+      target: 80
+    volumes:
+    - C:\Users\dimasm93\Workspaces\youtube\docker\09-docker-compose\extends\diff-envs\html:/usr/share/nginx/html:rw
+version: '3.9'
+
+## changed directory to root directory
+## override using --project-directory option
+➜ diff-envs  cd ../..
+➜ docker  docker-compose --project-directory .\09-docker-compose\extends\diff-envs config
+networks:
+  frontend: {}
+services:
+  webapp:
+    build:
+      args:
+        NGINX_VERSION: mainline
+      context: C:\Users\dimasm93\Workspaces\youtube\docker\09-docker-compose\extends\diff-envs
+      dockerfile: Dockerfile
+    environment:
+      NGINX_DOMAIN_NAME: dev01.dimas-maryanto.com
+      NGINX_PORT: '80'
+      NGINX_ROOT_DOCUMENT: /var/www/html
+    image: dimmaryanto93/nginx:latest
+    networks:
+      frontend: {}
+    ports:
+    - published: 8080
+      target: 80
+    volumes:
+    - C:\Users\dimasm93\Workspaces\youtube\docker\09-docker-compose\extends\diff-envs\html:/usr/share/nginx/html:rw
+version: '3.9'
+
+## override using specify file compose
+➜ docker  docker-compose -f .\09-docker-compose\extends\diff-envs\docker-compose.yaml `
+>> -f .\09-docker-compose\extends\diff-envs\docker-compose.override.yaml `
+>> config
+networks:
+  frontend: {}
+services:
+  webapp:
+    build:
+      args:
+        NGINX_VERSION: mainline
+      context: C:\Users\dimasm93\Workspaces\youtube\docker\09-docker-compose\extends\diff-envs
+      dockerfile: Dockerfile
+    environment:
+      NGINX_DOMAIN_NAME: dev01.dimas-maryanto.com
+      NGINX_PORT: '80'
+      NGINX_ROOT_DOCUMENT: /var/www/html
+    image: dimmaryanto93/nginx:latest
+    networks:
+      frontend: {}
+    ports:
+    - published: 8080
+      target: 80
+    volumes:
+    - C:\Users\dimasm93\Workspaces\youtube\docker\09-docker-compose\extends\diff-envs\html:/usr/share/nginx/html:rw
+version: '3.9'
+```
