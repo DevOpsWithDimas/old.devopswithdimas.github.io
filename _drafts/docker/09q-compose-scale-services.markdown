@@ -6,6 +6,7 @@ categories:
 - Containerization
 - DevOps
 - Docker
+- Workflows
 refs: 
 - https://docs.docker.com/compose/reference/scale/
 youtube: 
