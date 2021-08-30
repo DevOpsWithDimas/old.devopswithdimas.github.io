@@ -25,3 +25,7 @@ Ok langsung aja kita ke pembahasan yang pertama
 
 ## Different environments
 
+A common use case for multiple files is changing a development Compose app for a production-like environment (which may be production, staging or CI). To support these differences, you can split your Compose configuration into a few different files:
+
+Start with a base file that defines the canonical configuration for the services.
+
