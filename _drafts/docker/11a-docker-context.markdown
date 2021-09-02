@@ -3,7 +3,6 @@ layout: post
 title: "Context Management"
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
 refs: 

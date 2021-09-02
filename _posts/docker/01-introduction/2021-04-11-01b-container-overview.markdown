@@ -4,7 +4,6 @@ title: "What is Container"
 date: 2021-04-11T08:52:06+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
 refs: 

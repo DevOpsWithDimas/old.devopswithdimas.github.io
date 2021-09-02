@@ -4,7 +4,6 @@ title: "How to install Docker on Linux CentOS"
 date: 2021-04-11T22:16:33+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
 refs: 

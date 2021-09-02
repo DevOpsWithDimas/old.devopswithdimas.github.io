@@ -4,9 +4,10 @@ title: "Dependency between services in Compose file"
 date: 2021-08-25T11:31:22+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Compose
+- Dependency
 refs: 
 - https://docs.docker.com/compose/compose-file/compose-file-v3/#depends_on
 youtube: HPTSGkSkp98

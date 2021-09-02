@@ -4,7 +4,6 @@ title: "How to install Docker on Mac OS"
 date: 2021-04-13T04:49:21+07:00
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
 refs: 

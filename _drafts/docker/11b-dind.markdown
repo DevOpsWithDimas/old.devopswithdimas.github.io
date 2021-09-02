@@ -3,7 +3,6 @@ layout: post
 title: "Docker Daemon Inside Docker"
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
 refs: 

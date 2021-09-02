@@ -3,9 +3,10 @@ layout: post
 title: "09q-best-practice-write-compose"
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
+- Compose
+- Workflow
 refs: 
 - https://docs.docker.com/
 youtube: 

@@ -3,7 +3,6 @@ layout: post
 title: "Overview of Study Cases using Docker Compose"
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
 refs: 

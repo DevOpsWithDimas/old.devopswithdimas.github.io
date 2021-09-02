@@ -3,7 +3,6 @@ layout: post
 title: "09-docker-daemon-cli"
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
 refs: 

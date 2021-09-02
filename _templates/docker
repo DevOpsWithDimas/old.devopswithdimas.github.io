@@ -3,7 +3,6 @@ layout: {{ layout }}
 title: "{{ title }}"
 lang: docker
 categories:
-- Containerization
 - DevOps
 - Docker
 refs: 
