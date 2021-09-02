@@ -6,6 +6,7 @@ lang: docker
 categories:
 - DevOps
 - Docker
+- Compose
 - Workflows
 refs: 
 - https://docs.docker.com/compose/reference/scale/
