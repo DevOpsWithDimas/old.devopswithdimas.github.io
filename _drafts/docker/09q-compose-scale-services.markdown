@@ -40,13 +40,14 @@ Sekarang coba jalankan dengan perintah `docker-compose up -d` maka hasilnya sepe
 
 ```powershell
 ➜ docker  docker-compose -f .\09-docker-compose\scale\docker-compose.yaml -p scale up -d
-scale_proxy_1 is up-to-date
-scale_backend_1 is up-to-date
+Creating network "scale_default" with the default driver
+Creating scale_backend_1 ... done
+Creating scale_proxy_1   ... done
 
 ➜ docker  docker-compose -f .\09-docker-compose\scale\docker-compose.yaml -p scale ps
      Name                    Command               State                Ports
 -------------------------------------------------------------------------------------------
-scale_backend_1   docker-php-entrypoint apac ...   Up      80/tcp
+scale_backend_1   /docker-entrypoint.sh ngin ...   Up      80/tcp
 scale_proxy_1     /docker-entrypoint.sh ngin ...   Up      0.0.0.0:80->80/tcp,:::80->80/tcp
 ```
 
@@ -59,17 +60,16 @@ docker-compose up -d --scale backend=3
 Jika dijalankan maka hasilnya seperti berikut:
 
 ```powershell
-➜ docker ✗  docker-compose -f .\09-docker-compose\scale\docker-compose.yaml up -d --scale backend=3
+➜ docker  docker-compose -f .\09-docker-compose\scale\docker-compose.yaml -p scale up -d --scale backend=3
 scale_proxy_1 is up-to-date
-scale_backend_1 is up-to-date
-scale_backend_2 is up-to-date
-scale_backend_3 is up-to-date
+Creating scale_backend_2 ... done
+Creating scale_backend_3 ... done
 
-➜ docker  docker-compose -f .\09-docker-compose\scale\docker-compose.yaml ps
+➜ docker  docker-compose -f .\09-docker-compose\scale\docker-compose.yaml -p scale ps
      Name                    Command               State                Ports
 -------------------------------------------------------------------------------------------
-scale_backend_1   docker-php-entrypoint apac ...   Up      80/tcp
-scale_backend_2   docker-php-entrypoint apac ...   Up      80/tcp
-scale_backend_3   docker-php-entrypoint apac ...   Up      80/tcp
+scale_backend_1   /docker-entrypoint.sh ngin ...   Up      80/tcp
+scale_backend_2   /docker-entrypoint.sh ngin ...   Up      80/tcp
+scale_backend_3   /docker-entrypoint.sh ngin ...   Up      80/tcp
 scale_proxy_1     /docker-entrypoint.sh ngin ...   Up      0.0.0.0:80->80/tcp,:::80->80/tcp
 ```
