@@ -83,7 +83,7 @@ Scalling service instance pada docker-compose jika kita gambarkan maka seperti b
 
 By default docker akan menambahkan [loadbalancer](https://en.wikipedia.org/wiki/Load_balancing_(computing)) dengan konfigurasi [Round Robin](https://avinetworks.com/glossary/round-robin-load-balancing/)
 
-Pada contoh diatas kita melakukan reverse proxy dari service `proxy` ke service `backend`, dengan round-robin load balancing maka jika ada setiap request dari service `proxy` ke `backend` maka terminologinya akan seperti berikut:
+Pada contoh diatas kita melakukan reverse proxy dari service `proxy` ke service `backend` yaitu `http://backend:80`, dengan round-robin load balancing maka jika ada setiap request dari service `proxy` ke `backend` maka terminologinya akan seperti berikut:
 
 1. The first request is sent to `backend_1`.
 2. The second request is sent to `backend_2`.
@@ -103,5 +103,103 @@ backend_3  | 172.20.0.3 - - [02/Sep/2021:22:11:06 +0000] "GET / HTTP/1.1" 200 31
 backend_4  | 172.20.0.3 - - [02/Sep/2021:22:11:10 +0000] "GET / HTTP/1.1" 200 3105 "-" "curl/7.78.0" "-" 
 ```
 
-## Execute command specify container
+## Execute command specify index of containers
 
+Jika kita mau melakukan execute command dari suatu instance container, kita bisa menggunakan `--index` pada perintah `docker-compose exec` sebagai contoh kita akan meng-execute command pada container `scale_backend_2` maka gunakan perintah seperti berikut
+
+{% highlight bash %}
+docker-compose exec --index 2 backend
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```powershell
+➜ docker  docker container ls -f name=backend
+CONTAINER ID   IMAGE          COMMAND                  CREATED             STATUS             PORTS     NAMES
+bcbe6b682276   nginx:alpine   "/docker-entrypoint.…"   14 minutes ago      Up 13 minutes      80/tcp    scale_backend_4
+40ab3eb5c0ae   nginx:alpine   "/docker-entrypoint.…"   About an hour ago   Up About an hour   80/tcp    scale_backend_3
+9b6a94cdd432   nginx:alpine   "/docker-entrypoint.…"   About an hour ago   Up About an hour   80/tcp    scale_backend_2
+
+➜ docker  docker-compose -f .\09-docker-compose\scale\docker-compose.yaml -p scale exec --index 2 backend hostname
+9b6a94cdd432
+
+➜ docker  docker-compose -f .\09-docker-compose\scale\docker-compose.yaml -p scale exec --index 2 backend curl localhost
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Belajar HTML</title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Webapp Cources</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">HTML</a></li>
+                <li><a href="badges.html">CSS</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        <div class="row">
+            <div class="col s12 m6">
+              <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                  <span class="card-title">HTML</span>
+                  <p>I am a very simple card. I am good at containing small bits of information.
+                  I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">This is a link</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m6">
+              <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                  <span class="card-title">JavaScript</span>
+                  <p>I am a very simple card. I am good at containing small bits of information.
+                  I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">This is a link</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m6">
+              <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                  <span class="card-title">CSS</span>
+                  <p>I am a very simple card. I am good at containing small bits of information.
+                  I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">This is a link</a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
+```
