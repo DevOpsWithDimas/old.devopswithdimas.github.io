@@ -7,7 +7,7 @@ categories:
 - DevOps
 - Docker
 - Compose
-- Workflows
+- Scale
 refs: 
 - https://docs.docker.com/compose/reference/scale/
 - https://docker-k8s-lab.readthedocs.io/en/latest/docker/docker-compose-lb-scale.html
