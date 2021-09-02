@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "09q-best-practice-write-compose"
+title: "Use Compose in production"
 lang: docker
 categories:
 - DevOps
@@ -8,7 +8,7 @@ categories:
 - Compose
 - Workflow
 refs: 
-- https://docs.docker.com/
+- https://docs.docker.com/compose/production/
 youtube: 
 comments: true
 image_path: /resources/posts/docker/09q-best-practice-write-compose
