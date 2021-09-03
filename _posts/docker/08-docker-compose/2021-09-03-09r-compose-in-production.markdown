@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Use Compose in production"
+date: 2021-09-03T09:24:07+07:00
 lang: docker
 categories:
 - DevOps
