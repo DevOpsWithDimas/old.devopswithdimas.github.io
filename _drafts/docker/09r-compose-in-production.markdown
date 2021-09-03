@@ -269,3 +269,5 @@ This first rebuilds the image for `proxy` and then stop, destroy, and recreate _
 You can use Compose to deploy an app to a remote Docker host by setting the `DOCKER_HOST`, `DOCKER_TLS_VERIFY`, and `DOCKER_CERT_PATH` environment variables appropriately.
 
 Once you’ve set up your environment variables, all the normal `docker-compose` commands work with no further configuration.
+
+Untuk lebih jelasnya nanti kita akan bahas di bagian Docker Context.
