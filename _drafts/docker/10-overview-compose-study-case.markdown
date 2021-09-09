@@ -14,15 +14,9 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya, di materi sebelumnya kita udah membahas secara detail tentang `docker-compose` supaya memahami materinya, kita akan implementasikan dengan Study Kasus diantaranya
 
-description...
-
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Using compose file for dependency/development
+2. Build docker image using compose file
+3. Using compose file for ci, integration testing, etc
+4. Using compose file for production environment
