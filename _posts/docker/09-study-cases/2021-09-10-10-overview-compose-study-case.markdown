@@ -6,6 +6,8 @@ lang: docker
 categories:
 - DevOps
 - Docker
+- Compose
+- Study-Cases
 refs: 
 - https://docs.docker.com/
 youtube: 

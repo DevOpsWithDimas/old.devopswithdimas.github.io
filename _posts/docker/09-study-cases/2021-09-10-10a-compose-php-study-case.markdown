@@ -1,15 +1,18 @@
 ---
 layout: post
-title: "Study Kasus: Compose file for PHP development"
+title: "Study Kasus: Compose file for PHP deployment"
+date: 2021-09-10T07:14:36+07:00
 lang: docker
 categories:
 - DevOps
 - Docker
+- Compose
+- Study-Cases
 refs: 
 - https://docs.docker.com/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/10-compose-php-study-case
+image_path: /resources/posts/docker/10a-compose-php-study-case
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
