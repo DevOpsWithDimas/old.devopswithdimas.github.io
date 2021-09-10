@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Study Kasus: Compose file for angular deployment"
+title: "Study Kasus: Angular deployment using compose file"
 lang: docker
 categories:
 - DevOps

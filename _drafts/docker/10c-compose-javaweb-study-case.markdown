@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Study Kasus: Compose file for Java WEB deployment"
+title: "Study Kasus: Java WEB deployment using compose file"
 lang: docker
 categories:
 - DevOps

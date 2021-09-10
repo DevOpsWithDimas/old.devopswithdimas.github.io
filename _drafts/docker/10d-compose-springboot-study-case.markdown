@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Study Kasus: Compose file for spring-boot deployment"
+title: "Study Kasus: Springboot deployment using compose file"
 lang: docker
 categories:
 - DevOps
