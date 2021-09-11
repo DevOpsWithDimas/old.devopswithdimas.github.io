@@ -10,7 +10,7 @@ categories:
 - Workflow
 refs: 
 - https://docs.docker.com/compose/production/
-youtube: 
+youtube: ijGi37zj1IA
 comments: true
 image_path: /resources/posts/docker/09q-best-practice-write-compose
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
