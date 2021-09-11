@@ -13,7 +13,7 @@ refs:
 - https://docker-k8s-lab.readthedocs.io/en/latest/docker/docker-compose-lb-scale.html
 - https://en.wikipedia.org/wiki/Load_balancing_(computing)
 - https://avinetworks.com/glossary/round-robin-load-balancing/
-youtube: 
+youtube: GSpbU7kPKTM
 comments: true
 image_path: /resources/posts/docker/09q-compose-scale
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
