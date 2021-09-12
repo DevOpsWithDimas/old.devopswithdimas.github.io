@@ -14,15 +14,8 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya, di materi study kasus kali ini kita akan membahas Spring-Boot deployment menggunakan compose file. Diantaranya kita akan membahas
 
-description...
-
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Development on local environment using compose file
+2. Development on docker environment using compose file
+3. Deployment using compose file for production ready
