@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Context Management"
+title: "Docker Context"
 lang: docker
 categories:
 - DevOps

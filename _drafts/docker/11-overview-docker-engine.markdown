@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "09-docker-daemon-cli"
+title: "Overview of Docker Engine"
 lang: docker
 categories:
 - DevOps
@@ -9,7 +9,7 @@ refs:
 - https://docs.docker.com/
 youtube: 
 comments: true
-image_path: /resources/posts/docker/09-docker-daemon-cli
+image_path: /resources/posts/docker/11-docker-engine
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
