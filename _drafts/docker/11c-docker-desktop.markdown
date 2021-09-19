@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "11c-docker-desktop"
+title: "Using Docker Desktop for Mac / Windows Users"
 lang: docker
 categories:
 - DevOps

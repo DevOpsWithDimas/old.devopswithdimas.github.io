@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "11e-docker-vscode"
+title: "Using Docker on Visual Studio Code"
 lang: docker
 categories:
 - DevOps

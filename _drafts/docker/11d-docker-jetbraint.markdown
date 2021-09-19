@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "11d-docker-jetbraint"
+title: "Using Docker on Jetbraint IDE"
 lang: docker
 categories:
 - DevOps
