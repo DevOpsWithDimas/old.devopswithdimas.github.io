@@ -12,6 +12,7 @@ refs:
 - https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html#hql-empty-collection-predicate
 youtube: kjUj9KZlKw0
 comments: true
+catalog_key: hql
 image_path: /resources/posts/orm-hibernate/orm-hibernate-030f
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 downloads: []

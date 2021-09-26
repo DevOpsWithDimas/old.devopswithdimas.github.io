@@ -120,7 +120,29 @@
   udemy: https://www.udemy.com/course/hibernate-orm-bahasa-indonesia/?referralCode=8DA27E06BF0BA6935CCC
   coming_soon: false
   visible: true
-
+  catalogs:
+    - name: Pengenalan ORM Hibernate
+      key: introduction
+      description: ''
+    - name: ORM Mappings
+      key: orm-mapping
+      description: ''
+    - name: Hibernete Query Language (HQL)
+      key: hql
+      description: ''
+    - name: Hibernete Criteria API
+      key: criteria-api
+      description: ''
+    - name: Java Persistence Query Language (JPQL)
+      key: jpql
+      description: ''
+    - name: Audit with Hibernete Envers
+      key: hibernate-envers
+      description: ''
+    - name: Caching
+      key: hibernate-cache
+      description: ''
+      
 - name: Reporting with JasperReport
   url: jasper-report
   icon: "devicons devicons-java"

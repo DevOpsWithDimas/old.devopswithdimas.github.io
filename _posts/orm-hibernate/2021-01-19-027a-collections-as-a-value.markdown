@@ -11,6 +11,7 @@ categories:
 refs: 
 - https://docs.jboss.org/hibernate/stable/orm/userguide/html_single/Hibernate_User_Guide.html#collections-synopsis
 comments: true
+catalog_key: orm-mapping
 youtube: pqykSi6upg0
 gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate/orm-hibernate-27a
