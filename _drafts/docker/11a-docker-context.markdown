@@ -9,6 +9,7 @@ refs:
 - https://docs.docker.com/engine/context/working-with-contexts/
 youtube: 
 comments: true
+catalog_key: docker-context
 image_path: /resources/posts/docker/04g-docker-context
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

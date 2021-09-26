@@ -9,6 +9,7 @@ refs:
 - https://docs.docker.com/
 youtube: 
 comments: true
+catalog_key: docker-machine
 image_path: /resources/posts/docker/12a-install-docker-machine
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
