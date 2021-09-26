@@ -161,6 +161,43 @@
   udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/?referralCode=D1F375D96C53FC20DB42
   coming_soon: false
   visible: true
+  catalogs:
+    - name: Pengenalan Oracle Database
+      key: introduction
+      description: ''
+    - name: SQL - Select Statement
+      key: sql-select
+      description: ''
+    - name: SQL - Select with where clause
+      key: sql-where-clause
+      description: ''
+    - name: SQL - Functions
+      key: sql-functions
+      description: ''
+    - name: SQL - Join Tables
+      key: sql-join-tables
+      description: ''
+    - name: SQL - Sub Queries
+      key: sql-subquery
+      description: ''
+    - name: SQL - Expressions
+      key: sql-expression
+      description: ''
+    - name: SQL - Data Manipulation Language
+      key: sql-dml
+      description: ''
+    - name: SQL - Data Definition Language
+      key: sql-ddl
+      description: ''
+    - name: Indexing
+      key: index-table
+      description: ''
+    - name: DDL - User Management
+      key: ddl-user-management
+      description: ''
+    - name: Database Design
+      key: design-db
+      description: ''
 
 - name: PL/SQL - Oracle 18c
   url: plsql-oracle18c

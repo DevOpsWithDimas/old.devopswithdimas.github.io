@@ -12,6 +12,7 @@ refs:
 - https://www.oracle.com/database/technologies/appdev/xe.html
 youtube: Va-DhT3W2nI
 comments: true
+catalog_key: introduction
 image_path: /resources/posts/oracle12c/
 gist: 
 downloads: []

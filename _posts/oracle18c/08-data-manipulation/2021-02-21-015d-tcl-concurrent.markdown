@@ -11,6 +11,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-concurrency-and-consistency.html#GUID-7AD41DFA-04E5-4738-B744-C4407170411C
 youtube: GhyRV0ttoxE
 comments: true
+catalog_key: sql-dml
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

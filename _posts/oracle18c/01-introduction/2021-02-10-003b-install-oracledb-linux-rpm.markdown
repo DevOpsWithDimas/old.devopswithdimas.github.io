@@ -12,6 +12,7 @@ refs:
 - https://mikesmithers.wordpress.com/2019/01/03/installing-and-configuring-oracle-18cxe-on-centos/
 youtube: nHP4tx_PPyU
 comments: true
+catalog_key: introduction
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

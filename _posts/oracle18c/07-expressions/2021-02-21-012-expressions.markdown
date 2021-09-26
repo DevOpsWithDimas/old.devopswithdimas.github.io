@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Expressions.html#GUID-E7A5363C-AEE9-4809-99C1-1A9C6E3AE017
 youtube: ssjKIFYNt1g
 comments: true
+catalog_key: sql-expression
 image_path: /resources/posts/oracle12c/012-expressions
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

@@ -11,6 +11,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/21/refrn/release-changes.html#GUID-49445F8B-96CD-4927-A3DB-FAC4BE077426
 youtube: GKahT6yeU2o
 comments: true
+catalog_key: introduction
 image_path: /resources/posts/oracle12c/
 gist: 
 - name: "Oracle Installer"

@@ -12,6 +12,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/vldbg/view-info-partition-tables-indexes.html#GUID-2D424638-511C-4CC3-9BDE-53FFB1686ECD
 youtube: b27gwC7loeA
 comments: true
+catalog_key: design-db
 image_path: /resources/posts/oracle12c/019f-partitioned-table
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

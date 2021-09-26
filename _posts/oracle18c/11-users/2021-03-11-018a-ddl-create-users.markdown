@@ -14,6 +14,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/cncpt/logical-storage-structures.html#GUID-3502CA78-FBC9-4927-B455-0ECB22E53066
 youtube: ggqK5JxqQ8s
 comments: true
+catalog_key: ddl-user-management
 image_path: /resources/posts/oracle12c/018a-ddl-users
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

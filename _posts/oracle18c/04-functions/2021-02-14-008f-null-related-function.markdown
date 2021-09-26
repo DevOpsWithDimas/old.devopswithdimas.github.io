@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Single-Row-Functions.html#GUID-C4201DFA-90C5-46DA-B528-0B6D4E8C647A
 youtube: R3C4VoDcIBo
 comments: true
+catalog_key: sql-functions
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

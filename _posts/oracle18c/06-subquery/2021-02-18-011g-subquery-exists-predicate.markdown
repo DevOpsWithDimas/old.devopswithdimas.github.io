@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/database/121/index.htm
 youtube: UOgv3xDLqUI
 comments: true
+catalog_key: sql-subquery
 image_path: /resources/posts/oracle12c/011f-subquery-exist-predicate
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

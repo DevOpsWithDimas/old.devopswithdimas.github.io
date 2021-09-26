@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/PURGE.html#GUID-9257F773-E019-4464-80F4-F5AB61D7D9B6
 youtube: pcu-CX2CScs
 comments: true
+catalog_key: sql-ddl
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

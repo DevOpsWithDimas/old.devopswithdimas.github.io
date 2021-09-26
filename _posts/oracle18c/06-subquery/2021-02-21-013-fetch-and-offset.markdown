@@ -11,6 +11,7 @@ refs:
 - https://www.oracletutorial.com/oracle-basics/oracle-fetch/
 youtube: 6xbixjzTQlw
 comments: true
+catalog_key: sql-subquery
 image_path: /resources/posts/oracle12c/013-fetch-offset
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

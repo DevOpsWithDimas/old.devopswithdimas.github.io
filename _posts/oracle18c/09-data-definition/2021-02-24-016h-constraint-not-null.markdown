@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-integrity.html#GUID-CF2E06A6-6A35-46CE-808E-305A459457CC
 youtube: BSKfOmqdZBc
 comments: true
+catalog_key: sql-ddl
 image_path: /resources/posts/oracle12c/016h-constraint-not-null
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

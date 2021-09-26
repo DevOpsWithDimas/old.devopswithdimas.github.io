@@ -12,6 +12,7 @@ refs:
 - https://www.oracle.com/database/technologies/appdev/xe.html
 youtube: Fg54WPc3Oek
 comments: true
+catalog_key: introduction
 image_path: /resources/posts/oracle12c/003a-install-win
 gist: 
 downloads: []

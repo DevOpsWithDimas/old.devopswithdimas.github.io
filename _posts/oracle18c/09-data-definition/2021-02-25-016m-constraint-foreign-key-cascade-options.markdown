@@ -11,6 +11,7 @@ refs:
 - https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:5773459616034
 youtube: c8iL6c5nfgU
 comments: true
+catalog_key: sql-ddl
 image_path: /resources/posts/oracle12c/016m-constraint-foreign-key-cascade-options
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

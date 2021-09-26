@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-integrity.html#GUID-077C26A1-49C3-4E72-AE1D-7CEDD997917A
 youtube: 0W3UpXUyO5k
 comments: true
+catalog_key: sql-ddl
 image_path: /resources/posts/oracle12c/016i-constraint-unique
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

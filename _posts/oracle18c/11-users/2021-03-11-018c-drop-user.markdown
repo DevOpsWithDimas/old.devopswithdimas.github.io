@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/managing-security-for-oracle-database-users.html#GUID-D036CFC9-CDB6-4679-80F5-B9A189E463DA
 youtube: f6kLXA75WJQ
 comments: true
+catalog_key: ddl-user-management
 image_path: /resources/posts/oracle12c/018c-drop-user
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

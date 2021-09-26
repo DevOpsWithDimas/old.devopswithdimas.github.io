@@ -12,6 +12,7 @@ youtube: LgEPlatwh9E
 comments: true
 image_path: /resources/posts/oracle12c/002a-user-schema
 gist: 
+catalog_key: introduction
 downloads: []
 ---
 

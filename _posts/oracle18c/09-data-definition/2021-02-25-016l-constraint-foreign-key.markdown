@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-integrity.html#GUID-7CD73D16-EA1A-4AA8-AA7D-4288557395B8
 youtube: hJG3pnsZUXg
 comments: true
+catalog_key: sql-ddl
 image_path: /resources/posts/oracle12c/016l-constraint-foreign-key
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

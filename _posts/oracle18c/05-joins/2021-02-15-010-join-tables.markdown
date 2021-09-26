@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html#GUID-39081984-8D38-4D64-A847-AA43F515D460
 youtube: PegAMuFlTBU
 comments: true
+catalog_key: sql-join-tables
 image_path: /resources/posts/oracle12c/010-joins
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

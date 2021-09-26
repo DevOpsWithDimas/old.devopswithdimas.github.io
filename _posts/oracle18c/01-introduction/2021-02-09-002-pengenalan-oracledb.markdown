@@ -13,6 +13,7 @@ refs:
 - https://en.wikipedia.org/wiki/Oracle_Database
 youtube: iQHSROv3Imc
 comments: true
+catalog_key: introduction
 image_path: /resources/posts/oracle12c/
 gist: 
 downloads: []

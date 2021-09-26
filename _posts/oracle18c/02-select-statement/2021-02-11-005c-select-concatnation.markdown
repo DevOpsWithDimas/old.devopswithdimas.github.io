@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Concatenation-Operator.html#GUID-08C10738-706B-4290-B7CD-C279EBC90F7E
 youtube: Y62PlaCk3Yc
 comments: true
+catalog_key: sql-select
 image_path: /resources/posts/oracle12c/
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

@@ -11,6 +11,7 @@ refs:
 - https://oracle-base.com/articles/9i/uuid-9i
 youtube: TqIrc32qXxU
 comments: true
+catalog_key: sql-ddl
 image_path: /resources/posts/oracle12c/016r-default-value-pk
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

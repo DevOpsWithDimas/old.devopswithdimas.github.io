@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/data-integrity.html#GUID-5AF9C206-0139-4506-96DE-F6AD1D41CD41
 youtube: 2lfj8T3FM0U
 comments: true
+catalog_key: sql-ddl
 image_path: /resources/posts/oracle12c/016j-constraint-check
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

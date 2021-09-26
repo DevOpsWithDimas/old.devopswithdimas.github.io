@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CASE-Expressions.html#GUID-CA29B333-572B-4E1D-BA64-851FABDBAE96
 youtube: qDbEn6CqtlI
 comments: true
+catalog_key: sql-expression
 image_path: /resources/posts/oracle12c/012a-case-when-expression
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

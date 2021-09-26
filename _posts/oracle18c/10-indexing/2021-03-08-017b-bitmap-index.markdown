@@ -11,6 +11,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/Chunk559441123.html
 youtube: 8JkPm6m9yJY
 comments: true
+catalog_key: index-table
 image_path: /resources/posts/oracle12c/017b-bitmap-index
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

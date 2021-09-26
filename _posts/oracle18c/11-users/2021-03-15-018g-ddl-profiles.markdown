@@ -12,6 +12,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/configuring-authentication.html#GUID-CF1A8C33-5342-4257-AE8F-CF0BA437F65C
 youtube: 14Wok69W4ks
 comments: true
+catalog_key: ddl-user-management
 image_path: /resources/posts/oracle12c/018g-profiles
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

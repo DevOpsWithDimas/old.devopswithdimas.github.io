@@ -14,6 +14,7 @@ refs:
 - https://www.oracle.com/database/technologies/appdev/sqldeveloper-landing.html
 youtube: MtENXELBI6w
 comments: true
+catalog_key: introduction
 image_path: /resources/posts/oracle12c/002b-interface-database
 gist: 
 downloads: []

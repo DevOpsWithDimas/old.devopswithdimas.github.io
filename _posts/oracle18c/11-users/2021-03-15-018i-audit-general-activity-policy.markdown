@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/configuring-audit-policies.html#GUID-A215CCAF-4AFF-448A-909C-736EBDED5A8A
 youtube: wsekIxClGlo
 comments: true
+catalog_key: ddl-user-management
 image_path: /resources/posts/oracle12c/018i-audit-general-activity
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

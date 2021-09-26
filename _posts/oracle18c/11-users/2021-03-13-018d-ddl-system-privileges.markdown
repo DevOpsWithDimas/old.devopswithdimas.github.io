@@ -11,6 +11,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/sqlrf/GRANT.html#GUID-20B4E2C0-A7F8-4BC8-A5E8-BE61BDC41AC3__BABEFFEE
 youtube: 4WFIAwZ6oGM
 comments: true
+catalog_key: ddl-user-management
 image_path: /resources/posts/oracle12c/018d-ddl-system-privileges
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

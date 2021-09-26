@@ -11,6 +11,7 @@ refs:
 - https://docs.oracle.com/cd/E11882_01/appdev.112/e12137/getconn.htm#TDPJD127
 youtube: 3bCCqh4LXDo
 comments: true
+catalog_key: introduction
 image_path: /resources/posts/oracle12c/
 gist: 
 downloads: []

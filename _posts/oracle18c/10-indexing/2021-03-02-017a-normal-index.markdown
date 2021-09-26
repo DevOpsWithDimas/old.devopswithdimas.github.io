@@ -10,6 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/indexes-and-index-organized-tables.html#GUID-FC93A85B-C237-4249-AD1E-FF54576ED050
 youtube: SZL-PhWbmis
 comments: true
+catalog_key: index-table
 image_path: /resources/posts/oracle12c/019a-normal-index
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
