@@ -33,11 +33,11 @@ Untuk development pada local environment pada dasarnya kita perlu install
 
 Jadi biasanya, untuk sifatnya Software Development Kit atau SDK kita install di host kita sedangkan untuk yang sifatnya service seperti PostgreSQL Database kita jalankan di docker untuk memudahkan. Maka berikut adalah configuration `docker-compose.yaml`
 
-{% gist page.gist "10d-local.docker-compose.yaml" %}
+{% gist page.gist "10c-local.docker-compose.yaml" %}
 
 Serta berikut adalah file `.env` 
 
-{% gist page.gist "10d-local.env" %}
+{% gist page.gist "10c-local.env" %}
 
 Jika dijalankan maka hasilnya seperti berikut:
 
@@ -105,11 +105,11 @@ Untuk development di docker environment, pertama kita siapkan dulu environment s
 
 Update file `docker-compose.yaml` seperti berikut:
 
-{% gist page.gist "10d-docker-env.docker-compose.yaml" %}
+{% gist page.gist "10c-docker-env.docker-compose.yaml" %}
 
 Kemudian buat file baru `docker-compose.override.yaml` seperti berikut:
 
-{% gist page.gist "10d-docker-env.docker-compose.override.yaml" %}
+{% gist page.gist "10c-docker-env.docker-compose.override.yaml" %}
 
 Jika di jalankan maka hasilnya seperti berikut:
 
@@ -244,7 +244,7 @@ Untuk deployment menggunakan compose file, ada beberapa hal yang perlu kita tamb
 
 Berikut implementasinya, buat file baru dengan nama `docker-compose.production.yaml` seperti berikut:
 
-{% gist page.gist "10d-docker-env.docker-compose.production.yaml" %}
+{% gist page.gist "10c-docker-env.docker-compose.production.yaml" %}
 
 Kemudian kita buat file config untuk nginx dengan nama `.docker/default.template.conf` seperti berikut:
 
