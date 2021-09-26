@@ -217,6 +217,9 @@
     - name: DDL - User Management
       key: ddl-user-management
       description: ''
+    - name: Monitor database activity
+      key: monitor-audit-trail
+      description: ''
     - name: Database Design
       key: design-db
       description: ''

@@ -10,7 +10,7 @@ refs:
 - https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/configuring-audit-policies.html#GUID-C43651C6-A35C-4EEF-BEA7-EADA408BFF67
 youtube: 
 comments: true
-catalog_key: ddl-user-management
+catalog_key: monitor-audit-trail
 image_path: /resources/posts/oracle12c/018j-audit-predefined-unified-policy
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
