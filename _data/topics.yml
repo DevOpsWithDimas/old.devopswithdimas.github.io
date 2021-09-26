@@ -216,7 +216,7 @@
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvy6l51feh7ABmyyufPLnA6n
   udemy: 
   coming_soon: true
-  visible: false
+  visible: true
 
 - name: Database Administrator - Oracle 18c
   url: dba-oracle18c
@@ -235,7 +235,7 @@
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvw3_SjMKQlKRlGdBiRr_1dh
   udemy: 
   coming_soon: true
-  visible: false
+  visible: true
 
 - name: Object Oriented - Oracle 18c
   url: ordb-oracle18c
@@ -255,7 +255,7 @@
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvzvSZm8AZ_IAec0MJuxP3GR
   udemy: 
   coming_soon: true
-  visible: false
+  visible: true
 
 - name: Docker
   url: docker
@@ -312,6 +312,7 @@
     - name: Docker Swarm
       key: docker-swarm
       desctiption: ''
+
 - name: Kubernetes (k8s)
   url: k8s
   icon: "devicons devicons-java"
@@ -329,7 +330,7 @@
   youtube: 
   udemy: 
   coming_soon: true
-  visible: false
+  visible: true
 
 - name: Spring Framework
   url: spring-core
@@ -369,7 +370,7 @@
   youtube:
   udemy: 
   coming_soon: true
-  visible: false
+  visible: true
 
 - name: Gitlab CI/CD
   url: gitlab-ci-cd
@@ -390,4 +391,4 @@
   youtube: 
   udemy: 
   coming_soon: true
-  visible: false
+  visible: true
