@@ -155,9 +155,13 @@ layout: default
                     <div class="collapsible-header">
                         {% assign catalog_header_title = catalog.name | prepend: '. ' | prepend: forloop.index %}
                         {{ catalog_header_title }}
+                        {% if post_list_by_catalog.size >= 1 %}
                         <span class="badge new blue" data-badge-caption="Pelajaran">
                             {{ post_list_by_catalog.size }}
                         </span>
+                        {% else %}
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        {% endif %}
                     </div>
                     <ul class="collapsible-body collection">
                         {% if post_list_by_catalog.size >= 1 %}
