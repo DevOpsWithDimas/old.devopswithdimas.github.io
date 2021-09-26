@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Basic Dockerfile - Health Check Instruction"
+title: "Health Check Instruction"
 date: 2021-06-22T20:48:45+07:00
 lang: docker
 categories:

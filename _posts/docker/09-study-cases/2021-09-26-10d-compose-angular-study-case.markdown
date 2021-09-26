@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Study Kasus: Angular deployment using compose file"
+title: "Angular deployment using compose file"
 date: 2021-09-26T13:44:07+07:00
 lang: docker
 categories:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Study Kasus: Angular - Access Rest API"
+title: "Angular - Access Rest API"
 date: 2021-07-11T14:00:50+07:00
 lang: docker
 categories:

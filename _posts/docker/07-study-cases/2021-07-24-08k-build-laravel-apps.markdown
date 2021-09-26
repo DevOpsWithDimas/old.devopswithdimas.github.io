@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Study Kasus: Build Docker image for Laravel Framework"
+title: "Build Docker image for Laravel Framework"
 date: 2021-07-24T20:42:46+07:00
 lang: docker
 categories:

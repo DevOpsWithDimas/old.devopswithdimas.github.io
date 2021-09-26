@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Study Kasus: Springboot - using Environtment"
+title: "Springboot - using Environtment"
 date: 2021-06-30T22:42:36+07:00
 lang: docker
 categories:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Basic Dockerfile - Exposing Ports"
+title: "Exposing Ports"
 date: 2021-06-20T12:15:43+07:00
 lang: docker
 categories:

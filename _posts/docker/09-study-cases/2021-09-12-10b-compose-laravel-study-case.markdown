@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Study Kasus: Laravel deployment using compose file"
+title: "Laravel deployment using compose file"
 date: 2021-09-12T14:40:46+07:00
 lang: docker
 categories:

@@ -29,24 +29,24 @@ layout: default
         <div class="row">
             <div class="col s12 m5 hide-on-small-only">
                 {% if page_modal.catalogs.size >= 1 %}
-                    <ul class="collapsible" data-collapsible="expandable">
+                <ul class="collapsible" data-collapsible="expandable">
                     {% for catalog in page_modal.catalogs %}
                     <li>
                         <div class="collapsible-header">
                             {{catalog.name}}
                         </div>
                         <div class="collapsible-body">
-                            <ul class="collection">
+                            <ul>
                                 {% assign modal_post_by_catalog = modal_post_list | where: 'catalog_key', catalog.key | sort:"date" %}
                                 {% if modal_post_by_catalog.size >= 1 %}
                                     {% for modal_post in modal_post_by_catalog  %}
                                     {% assign modal_post_title = modal_post.title | truncate: 40 |  prepend: '. ' | prepend: forloop.index %}
-                                    <li class="collection-item">
+                                    <li>
                                         <a href="{{ modal_post.url | prepend: site.baseurl }}">{{ modal_post_title }}</a>
                                     </li>
                                     {% endfor %}
                                 {% else %}
-                                    <li class="collection-item">Materi: belum tersedia...</li>
+                                    <li>Materi: belum tersedia...</li>
                                 {% endif %}
                             </ul>
                         </div>

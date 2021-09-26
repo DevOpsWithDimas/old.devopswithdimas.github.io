@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Basic Dockerfile - FROM Instruction"
+title: "FROM Instruction"
 date: 2021-06-13T15:21:24+07:00
 lang: docker
 categories:
