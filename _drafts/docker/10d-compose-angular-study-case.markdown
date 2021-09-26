@@ -225,3 +225,102 @@ ng-serve_1     | [HPM] GET /spring-boot/api/mahasiswa/list ~> http://spring-boot
 ➜ docker git:(compose/angular)  docker-compose -p dev --profile dev restart ng-serve
 Restarting dev_ng-serve_1 ... done
 ```
+
+## Deployment for production ready
+
+Untuk deployment menggunakan compose file, ada beberapa hal yang perlu kita tambahkan dan rubah yaitu
+
+1. Changed/create from source-code to executeable binnary (.jar) then build docker image
+2. Use different port bind, or expose port only you need
+3. Spesify network for isolate environment
+4. Use different environment, such as strong password for credential database, reduce verbose logging, etc
+
+Berikut implementasinya, buat file baru dengan nama `docker-compose.production.yaml` seperti berikut:
+
+{% gist page.gist "10d-prod.docker-compose.production.yaml" %}
+
+Sekarang kita bisa jalankan dengan perintah:
+
+{% highlight bash %}
+docker-compose -f docker-compose.yaml -f docker-compose.production.yaml up -d --build
+{% endhighlight %}
+
+Jika kita jalankan maka basilnya seperti berikut:
+
+```powershell
+➜ docker git:(compose/angular) docker-compose -p prod `
+>> -f docker-compose.yaml `
+>> -f docker-compose.production.yaml `
+>> up -d --build
+Creating network "prod_backend" with the default driver
+Creating network "prod_frontend" with the default driver
+Creating volume "prod_pg_data" with default driver
+Building nginx
+[+] Building 104.7s (17/17) FINISHED
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 32B                                                                                0.0s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 34B                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/nginx:latest                                                    2.4s
+ => [internal] load metadata for docker.io/library/node:14.15-alpine                                               0.0s
+ => [auth] library/nginx:pull token for registry-1.docker.io                                                       0.0s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 20.81kB                                                                               0.0s
+ => [npm_install 1/5] FROM docker.io/library/node:14.15-alpine                                                     0.0s
+ => [stage-1 1/5] FROM docker.io/library/nginx@sha256:853b221d3341add7aaadf5f81dd088ea943ab9c918766e295321294b035  0.0s
+ => CACHED [npm_install 2/5] WORKDIR /var/www/src                                                                  0.0s
+ => [npm_install 3/5] COPY . .                                                                                     0.1s
+ => [npm_install 4/5] RUN npm install --prod --silence && npm install @angular-devkit/build-angular --silent      71.7s
+ => [npm_install 5/5] RUN ./node_modules/@angular/cli/bin/ng build --aot --build-optimizer --configuration=docke  29.9s
+ => CACHED [stage-1 2/5] WORKDIR /var/www/html                                                                     0.0s
+ => [stage-1 3/5] COPY --from=npm_install /var/www/src/dist/docker-angular .                                       0.0s
+ => [stage-1 4/5] COPY .nginx/nginx.template.conf /etc/nginx/templates/default.conf.template                       0.0s
+ => [stage-1 5/5] RUN sed -i 's|/usr/share/nginx/html|/var/www/html|g' /etc/nginx/conf.d/default.conf              0.2s
+ => exporting to image                                                                                             0.1s
+ => => exporting layers                                                                                            0.1s
+ => => writing image sha256:d8e3b7682b0ad8194694c246a5439a0a9b38475355783a798648214d4b50c2c7                       0.0s
+ => => naming to docker.io/dimmaryanto93/udemy-angular-app:latest                                                  0.0s
+Creating prod_postgres_1 ... done
+Creating prod_spring-boot_1 ... done
+Creating prod_nginx_1       ... done
+
+➜ docker git:(compose/angular) docker-compose -p prod `
+>> -f docker-compose.yaml `
+>> -f docker-compose.production.yaml `
+>> ps
+       Name                     Command                       State                        Ports
+--------------------------------------------------------------------------------------------------------------
+prod_nginx_1         /docker-entrypoint.sh ngin ...   Up (health: starting)   0.0.0.0:80->80/tcp,:::80->80/tcp
+prod_postgres_1      docker-entrypoint.sh postgres    Up                      5432/tcp
+prod_spring-boot_1   java -jar -Djava.security. ...   Up (health: starting)   80/tcp
+
+➜ docker git:(compose/angular) docker-compose -p prod `
+>> -f docker-compose.yaml `
+>> -f docker-compose.production.yaml `
+>> logs nginx
+Attaching to prod_nginx_1
+nginx_1        | /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+nginx_1        | /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+nginx_1        | /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+nginx_1        | 10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+nginx_1        | 10-listen-on-ipv6-by-default.sh: info: /etc/nginx/conf.d/default.conf differs from the packaged version
+nginx_1        | /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+nginx_1        | 20-envsubst-on-templates.sh: Running envsubst on /etc/nginx/templates/default.conf.template to /etc/nginx/conf.d/default.conf
+nginx_1        | /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+nginx_1        | /docker-entrypoint.sh: Configuration complete; ready for start up
+nginx_1        | 2021/09/26 06:42:08 [notice] 1#1: using the "epoll" event method
+nginx_1        | 2021/09/26 06:42:08 [notice] 1#1: nginx/1.21.3
+nginx_1        | 2021/09/26 06:42:08 [notice] 1#1: built by gcc 8.3.0 (Debian 8.3.0-6)
+nginx_1        | 2021/09/26 06:42:08 [notice] 1#1: OS: Linux 4.19.128-microsoft-standard
+nginx_1        | 2021/09/26 06:42:08 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+nginx_1        | 2021/09/26 06:42:08 [notice] 1#1: start worker processes
+nginx_1        | 2021/09/26 06:42:08 [notice] 1#1: start worker process 35
+nginx_1        | 2021/09/26 06:42:08 [notice] 1#1: start worker process 36
+nginx_1        | 172.30.0.1 - - [26/Sep/2021:06:43:01 +0000] "GET / HTTP/1.1" 200 541 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36" "-"
+nginx_1        | 172.30.0.1 - - [26/Sep/2021:06:43:01 +0000] "GET /styles.31d6cfe0d16ae931b73c.css HTTP/1.1" 200 0 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36" "-"
+nginx_1        | 172.30.0.1 - - [26/Sep/2021:06:43:01 +0000] "GET /runtime.5694b417c6f4c412fb7a.js HTTP/1.1" 200 1092 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36" "-"
+nginx_1        | 172.30.0.1 - - [26/Sep/2021:06:43:01 +0000] "GET /polyfills.40127cc8705bc19a6766.js HTTP/1.1" 200 36899 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36" "-"
+nginx_1        | 172.30.0.1 - - [26/Sep/2021:06:43:01 +0000] "GET /main.81cc0b793f9be649aaf3.js HTTP/1.1" 200 249873 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36" "-"
+nginx_1        | 172.30.0.1 - - [26/Sep/2021:06:43:01 +0000] "GET /favicon.ico HTTP/1.1" 200 948 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36" "-"
+nginx_1        | 172.30.0.1 - - [26/Sep/2021:06:43:01 +0000] "GET /spring-boot/api/mahasiswa/list HTTP/1.1" 200 71 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36" "-"
+```
