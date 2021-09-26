@@ -9,6 +9,7 @@ refs:
 - https://community.jaspersoft.com/wiki/jaspersoft-community-wiki-0
 youtube: {{ youtube }}
 comments: true
+catalog_key: <change-this>
 image_path: /resources/posts/jasper-report/
 gist: 
 downloads: []

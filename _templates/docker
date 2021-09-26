@@ -9,6 +9,7 @@ refs:
 - https://docs.docker.com/
 youtube: {{ youtube }}
 comments: true
+catalog_key: <change-this>
 image_path: /resources/posts/docker/{{ title }}
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
