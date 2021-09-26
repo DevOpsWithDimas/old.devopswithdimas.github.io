@@ -134,3 +134,94 @@ Build at: 2021-09-26T05:02:37.898Z - Hash: 73d216279733def625bc - Time: 5277ms
 ** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
 √ Compiled successfully.
 ```
+
+## Dev on docker environtment
+
+Untuk development di docker environment, pertama kita siapkan dulu SDK environment seperti NodeJS, Angular CLI dengan configurasi seperti berikut.
+
+Update file `docker-compose.yaml` seperti berikut:
+
+{% gist page.gist "10d-docker-env.docker-compose.yaml" %}
+
+Kemudian buat file baru `docker-compose.override.yaml` seperti berikut:
+
+{% gist page.gist "10d-docker-env.docker-compose.override.yaml" %}
+
+Untuk menjalankan perintah `ng serve` kita perlu script untuk menginstall dependency dan juga menjalankan web server untuk menampilkannya yaitu `lite-server` jadi kita perlu edit file `package.json` dengan menambahkan `docker-serve` dan `docker-start` seperti berikut:
+
+{% gist page.gist "10d-package.json" %}
+
+Dan juga kita buat file baru dengan nama `docker-proxy.conf.json` seperti berikut:
+
+{% gist page.gist "10d-docker-proxy.conf.json" %}
+
+Nah sekarang kalo kita jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ docker git:(compose/angular) docker-compose -p dev up angular-cli
+dev_angular-cli_1 is up-to-date
+Attaching to dev_angular-cli_1
+angular-cli_1  |
+angular-cli_1  | > docker-angular@0.0.0 docker-install /usr/share/source/angular
+angular-cli_1  | > npm install
+angular-cli_1  |
+angular-cli_1  | npm WARN ajv-keywords@3.5.2 requires a peer of ajv@^6.9.1 but none is installed. You must install peer dependencies yourself.
+angular-cli_1  | npm WARN karma-jasmine-html-reporter@1.7.0 requires a peer of jasmine-core@>=3.8 but none is installed. You must install peer dependencies yourself.
+angular-cli_1  | npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules/fsevents):
+angular-cli_1  | npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+angular-cli_1  | npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules/webpack-dev-server/node_modules/fsevents):
+angular-cli_1  | npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+angular-cli_1  |
+angular-cli_1  | audited 1324 packages in 7.995s
+angular-cli_1  |
+angular-cli_1  | 87 packages are looking for funding
+angular-cli_1  |   run `npm fund` for details
+angular-cli_1  |
+angular-cli_1  | found 28 vulnerabilities (3 moderate, 25 high)
+angular-cli_1  |   run `npm audit fix` to fix them, or `npm audit` for details
+dev_angular-cli_1 exited with code 0
+
+➜ docker git:(compose/angular) docker-compose -p dev --profile dev up -d
+Creating dev_postgres_1 ... done
+Creating dev_spring-boot_1 ... done
+Creating dev_ng-serve_1    ... done
+
+➜ docker git:(compose/angular) docker-compose -p dev --profile dev ps
+      Name                     Command                       State                              Ports
+------------------------------------------------------------------------------------------------------------------------
+dev_angular-cli_1   docker-entrypoint.sh npm r ...   Exit 0
+dev_ng-serve_1      docker-entrypoint.sh npm r ...   Up                      0.0.0.0:4200->4200/tcp,:::4200->4200/tcp
+dev_postgres_1      docker-entrypoint.sh postgres    Up                      0.0.0.0:5432->5432/tcp,:::5432->5432/tcp
+dev_spring-boot_1   java -jar -Djava.security. ...   Up (health: starting)   80/tcp,
+                                                                             0.0.0.0:8080->8080/tcp,:::8080->8080/tcp
+
+➜ docker git:(compose/angular) docker-compose -p dev --profile dev logs -f ng-serve
+Attaching to dev_ng-serve_1
+ng-serve_1     |
+ng-serve_1     | > docker-angular@0.0.0 docker-serve /usr/share/source/angular
+ng-serve_1     | > ng serve --proxy-config docker-proxy.conf.json --host 0.0.0.0 --disable-host-check --watch
+ng-serve_1     | Warning: Running a server with --disable-host-check is a security risk. See https://medium.com/webpack/webpack-dev-server-middleware-security-issues-1489d950874a for more information.
+ng-serve_1     | - Generating browser application bundles (phase: setup)...
+ng-serve_1     | [HPM] Proxy created: /spring-boot  ->  http://spring-boot:8080
+ng-serve_1     | [HPM] Proxy rewrite rule created: "^/spring-boot" ~> ""
+ng-serve_1     | [HPM] Subscribed to http-proxy events:  [ 'error', 'close' ]
+ng-serve_1     | ✔ Browser application bundle generation complete.
+ng-serve_1     |
+ng-serve_1     | Initial Chunk Files | Names         |      Size
+ng-serve_1     | vendor.js           | vendor        |   2.78 MB
+ng-serve_1     | polyfills.js        | polyfills     | 128.56 kB
+ng-serve_1     | main.js             | main          |  23.60 kB
+ng-serve_1     | runtime.js          | runtime       |   6.58 kB
+ng-serve_1     | styles.css          | styles        | 120 bytes
+ng-serve_1     |                     | Initial Total |   2.94 MB
+ng-serve_1     |
+ng-serve_1     | Build at: 2021-09-26T06:01:54.835Z - Hash: 5be6e5f53084fdea89c7 - Time: 13370ms
+ng-serve_1     | ** Angular Live Development Server is listening on 0.0.0.0:4200, open your browser on http://localhost:4200/ **
+ng-serve_1     | ✔ Compiled successfully.
+ng-serve_1     | [HPM] Rewriting path from "/spring-boot/api/mahasiswa/list" to "/api/mahasiswa/list"
+ng-serve_1     | [HPM] GET /spring-boot/api/mahasiswa/list ~> http://spring-boot:8080
+
+## edit file, need restart service
+➜ docker git:(compose/angular)  docker-compose -p dev --profile dev restart ng-serve
+Restarting dev_ng-serve_1 ... done
+```
