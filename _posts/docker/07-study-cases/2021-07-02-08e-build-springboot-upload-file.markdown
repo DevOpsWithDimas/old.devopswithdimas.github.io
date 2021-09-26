@@ -12,6 +12,7 @@ refs:
 - https://docs.docker.com/
 youtube: 39cBoIZviag
 comments: true
+catalog_key: study-cases-dockerfile
 image_path: /resources/posts/docker/08e-spring-boot-upload
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []

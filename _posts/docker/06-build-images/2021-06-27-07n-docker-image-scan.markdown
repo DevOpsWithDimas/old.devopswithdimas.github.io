@@ -12,6 +12,7 @@ refs:
 - https://docs.docker.com/develop/scan-images/
 youtube: 
 comments: true
+catalog_key: dockerfile
 image_path: /resources/posts/docker/07n-docker-image-scan
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

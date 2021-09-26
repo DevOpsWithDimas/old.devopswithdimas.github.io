@@ -12,6 +12,7 @@ refs:
 - https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config
 youtube: 3huDmWMI2hs
 comments: true
+catalog_key: study-cases-dockerfile
 image_path: /resources/posts/docker/08d-springboot-env
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []

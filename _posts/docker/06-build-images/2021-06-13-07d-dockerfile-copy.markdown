@@ -12,6 +12,7 @@ refs:
 - https://nickjanetakis.com/blog/docker-tip-2-the-difference-between-copy-and-add-in-a-dockerile
 youtube: 7GjEAvwu6sQ
 comments: true
+catalog_key: dockerfile
 image_path: /resources/posts/docker/07d-dockerfile-copy
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

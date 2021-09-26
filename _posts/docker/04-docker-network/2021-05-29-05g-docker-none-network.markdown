@@ -11,6 +11,7 @@ refs:
 - https://docs.docker.com/network/none/
 youtube: ZlHhezRG9DA
 comments: true
+catalog_key: docker-network
 image_path: /resources/posts/docker/05c-docker-none-network
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

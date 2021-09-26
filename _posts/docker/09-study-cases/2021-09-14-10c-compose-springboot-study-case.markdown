@@ -12,6 +12,7 @@ refs:
 - https://docs.docker.com/
 youtube: 
 comments: true
+catalog_key: study-cases-compose-files
 image_path: /resources/posts/docker/10d-compose-springboot-study-case
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []

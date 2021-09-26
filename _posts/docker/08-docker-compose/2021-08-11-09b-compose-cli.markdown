@@ -11,6 +11,7 @@ refs:
 - https://docs.docker.com/compose/reference/
 youtube: eyvNmD5Ps0w
 comments: true
+catalog_key: docker-compose
 image_path: /resources/posts/docker/09b-compose-cli
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

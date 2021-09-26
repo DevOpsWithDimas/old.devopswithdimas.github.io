@@ -13,6 +13,7 @@ refs:
 - https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization
 youtube: HO_gGVu7V7I
 comments: true
+catalog_key: study-cases-dockerfile
 image_path: /resources/posts/docker/08f-spring-boot-db
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []

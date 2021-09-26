@@ -14,6 +14,7 @@ refs:
 - https://hub.docker.com/r/itsthenetwork/nfs-server-alpine/
 youtube: zyenHnDoiPI
 comments: true
+catalog_key: docker-compose
 image_path: /resources/posts/docker/09g-share-data-using-nfs-in-compose
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

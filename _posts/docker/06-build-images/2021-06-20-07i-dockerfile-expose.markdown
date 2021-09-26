@@ -11,6 +11,7 @@ refs:
 - https://docs.docker.com/engine/reference/builder/
 youtube: ZHFE3nA6iKY
 comments: true
+catalog_key: dockerfile
 image_path: /resources/posts/docker/07h-expose
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

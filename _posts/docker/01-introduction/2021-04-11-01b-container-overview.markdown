@@ -12,6 +12,7 @@ refs:
 - https://en.wikipedia.org/wiki/Docker_(software)
 youtube: tKeSqHp57Uc
 comments: true
+catalog_key: introduction
 image_path: /resources/posts/docker/01b-container
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

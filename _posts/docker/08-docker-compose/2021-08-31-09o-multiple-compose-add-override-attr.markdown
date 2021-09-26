@@ -12,6 +12,7 @@ refs:
 - https://docs.docker.com/compose/extends/
 youtube: ffg5B1spkSE
 comments: true
+catalog_key: docker-compose
 image_path: /resources/posts/docker/09e-multiple-compose-files
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

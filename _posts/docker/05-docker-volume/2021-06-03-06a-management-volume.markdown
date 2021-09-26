@@ -12,6 +12,7 @@ refs:
 - https://docs.docker.com/engine/reference/commandline/volume_create/
 youtube: HcbqwPWUyRs
 comments: true
+catalog_key: docker-volume
 image_path: /resources/posts/docker/06a-management-volume
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

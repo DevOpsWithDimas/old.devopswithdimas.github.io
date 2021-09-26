@@ -12,6 +12,7 @@ refs:
 - https://docs.docker.com/compose/profiles/
 youtube: OTY_YpffvK4
 comments: true
+catalog_key: docker-compose
 image_path: /resources/posts/docker/09d-compose-using-profile
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

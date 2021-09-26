@@ -14,6 +14,7 @@ refs:
 - https://docs.docker.com/engine/reference/commandline/container_stats/
 youtube: -Pk7bzvrDOY
 comments: true
+catalog_key: docker-container
 image_path: /resources/posts/docker/06c-docker-logs-ps-command
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

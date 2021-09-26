@@ -14,6 +14,7 @@ refs:
 - https://laravel.com/docs/8.x/deployment
 youtube: ebk3yh4Lt8s
 comments: true
+catalog_key: study-cases-dockerfile
 image_path: /resources/posts/docker/08k-laravel-apps
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []

@@ -11,6 +11,7 @@ refs:
 - https://docs.docker.com/engine/reference/commandline/cp/
 youtube: MTX6Z0fUBEM
 comments: true
+catalog_key: docker-container
 image_path: /resources/posts/docker/04e-docker-cp
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

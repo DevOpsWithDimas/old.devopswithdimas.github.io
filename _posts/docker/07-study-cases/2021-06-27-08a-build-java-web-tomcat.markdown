@@ -12,6 +12,7 @@ refs:
 - https://docs.docker.com/
 youtube: ZFPexpD1lcg
 comments: true
+catalog_key: study-cases-dockerfile
 image_path: /resources/posts/docker/08a-build-javaweb
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []

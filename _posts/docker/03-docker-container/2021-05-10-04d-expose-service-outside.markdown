@@ -11,6 +11,7 @@ refs:
 - https://docs.docker.com/config/containers/container-networking/
 youtube: 4DLxbdKtm_U
 comments: true
+catalog_key: docker-container
 image_path: /resources/posts/docker/04d-expose-ports
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

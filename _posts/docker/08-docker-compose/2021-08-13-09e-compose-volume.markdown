@@ -13,6 +13,7 @@ refs:
 - https://docs.docker.com/storage/volumes/#use-a-volume-with-docker-compose
 youtube: 4qfPVvGTulI
 comments: true
+catalog_key: docker-compose
 image_path: /resources/posts/docker/09h-compose-volume
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

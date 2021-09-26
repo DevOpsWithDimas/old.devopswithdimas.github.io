@@ -14,6 +14,7 @@ refs:
 - https://laravel.com/docs/8.x/mix
 youtube: u4fk0ZudaAw
 comments: true
+catalog_key: study-cases-dockerfile
 image_path: /resources/posts/docker/08l-laravel-webapp-restapi
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []

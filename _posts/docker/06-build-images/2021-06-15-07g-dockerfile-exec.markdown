@@ -12,6 +12,7 @@ refs:
 - https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
 youtube: 7Q3j_b9feGI
 comments: true
+catalog_key: dockerfile
 image_path: /resources/posts/docker/07g-dockerfile-exec
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

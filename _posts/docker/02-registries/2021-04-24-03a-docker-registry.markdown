@@ -12,6 +12,7 @@ refs:
 - https://www.docker.com/products/docker-hub
 youtube: EiviPmBPEJA
 comments: true
+catalog_key: docker-registry
 image_path: /resources/posts/docker/03a-docker-hub
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

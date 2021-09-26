@@ -12,6 +12,7 @@ refs:
 - https://docs.docker.com/
 youtube: 9Nyh1tzXRiA
 comments: true
+catalog_key: study-cases-compose-files
 image_path: /resources/posts/docker/10-compose-study-case
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

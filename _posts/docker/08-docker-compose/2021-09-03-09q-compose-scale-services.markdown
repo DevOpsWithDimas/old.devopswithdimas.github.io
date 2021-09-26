@@ -15,6 +15,7 @@ refs:
 - https://avinetworks.com/glossary/round-robin-load-balancing/
 youtube: GSpbU7kPKTM
 comments: true
+catalog_key: docker-compose
 image_path: /resources/posts/docker/09q-compose-scale
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

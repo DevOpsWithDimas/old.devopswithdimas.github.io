@@ -11,6 +11,7 @@ refs:
 - https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks
 youtube: fC7Vwzj5N6w
 comments: true
+catalog_key: docker-network
 image_path: /resources/posts/docker/05c-docker-user-defined-briged-network
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []

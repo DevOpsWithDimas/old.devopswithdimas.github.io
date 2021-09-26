@@ -10,6 +10,7 @@ refs:
 - https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install
 youtube: q43Ev6R-RVA
 comments: true
+catalog_key: introduction
 image_path: /resources/posts/docker/04-system-requirement
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
