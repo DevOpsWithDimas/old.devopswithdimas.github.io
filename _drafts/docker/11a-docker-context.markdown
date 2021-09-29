@@ -44,3 +44,49 @@ You will also need one of the following:
 1. Docker Swarm cluster
 2. Single-engine Docker node
 3. Kubernetes cluster
+
+## The anatomy of a context
+
+A context is a combination of several properties. These include:
+
+1. Name
+2. Type
+2. Endpoint configuration
+4. Orchestrator
+
+The easiest way to see what a context looks like is to view the default context.
+
+```powershell
+➜ ~  docker context ls
+NAME                TYPE  DESCRIPTION                               DOCKER ENDPOINT                             KUBERNETES ENDPOINT   ORCHESTRATOR
+default *           moby  Current DOCKER_HOST based configuration   npipe:////./pipe/docker_engine                                    swarm
+desktop-linux       moby                                            npipe:////./pipe/dockerDesktopLinuxEngine
+```
+
+This shows a single context called `default`. It’s configured to talk to a Swarm cluster through the local `./pipe/docker_engine` Unix socket. It has no Kubernetes endpoint configured. The asterisk in the `NAME` column indicates that this is the active context. This means all docker commands will be executed against the `default` context unless overridden with environment variables such as `DOCKER_HOST` and `DOCKER_CONTEXT`, or on the command-line with the `--context` and `--host` flags.
+
+Dig a bit deeper with `docker context inspect`. In this example, we’re inspecting the context called `default`.
+
+
+```powershell
+➜ ~  docker context inspect default
+[
+    {
+        "Name": "default",
+        "Metadata": {
+            "StackOrchestrator": "swarm"
+        },
+        "Endpoints": {
+            "docker": {
+                "Host": "npipe:////./pipe/docker_engine",
+                "SkipTLSVerify": false
+            }
+        },
+        "TLSMaterial": {},
+        "Storage": {
+            "MetadataPath": "\u003cIN MEMORY\u003e",
+            "TLSPath": "\u003cIN MEMORY\u003e"
+        }
+    }
+]
+```
