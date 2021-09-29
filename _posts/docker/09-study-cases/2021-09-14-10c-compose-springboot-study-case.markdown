@@ -10,7 +10,7 @@ categories:
 - Study-Cases
 refs: 
 - https://docs.docker.com/
-youtube: 
+youtube: Licgu8Ph_G0
 comments: true
 catalog_key: study-cases-compose-files
 image_path: /resources/posts/docker/10d-compose-springboot-study-case

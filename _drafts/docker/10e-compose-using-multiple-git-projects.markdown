@@ -1,8 +1,7 @@
 ---
 layout: post
-title: "Compose file for Multiple git projects"
+title: "10e-compose-using-multiple-git-projects"
 lang: docker
-date: 2021-09-26T14:44:07+07:00
 categories:
 - DevOps
 - Docker
@@ -10,9 +9,9 @@ refs:
 - https://docs.docker.com/
 youtube: 
 comments: true
-catalog_key: docker-machine
-image_path: /resources/posts/docker/12d-example-use-docker-machine
-gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
+catalog_key: study-cases-compose-files
+image_path: /resources/posts/docker/10e-compose-using-multiple-git-projects
+gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
 
