@@ -1,8 +1,7 @@
 ---
 layout: post
-title: "Compose file for Multiple git projects"
+title: "12d-example-use-docker-machine"
 lang: docker
-date: 2021-09-26T14:44:07+07:00
 categories:
 - DevOps
 - Docker
