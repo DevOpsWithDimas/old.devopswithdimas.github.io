@@ -6,8 +6,11 @@ lang: docker
 categories:
 - DevOps
 - Docker
+- Compose
+- Study-Cases
 refs: 
 - https://docs.docker.com/
+- https://git-scm.com/book/en/v2/Git-Tools-Submodules
 youtube: 
 comments: true
 catalog_key: study-cases-compose-files
