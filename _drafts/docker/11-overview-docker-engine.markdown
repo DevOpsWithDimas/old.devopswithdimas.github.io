@@ -15,15 +15,22 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Docker Engine. 
 
-description...
+Docker Engine is an open source containerization technology for building and containerizing your applications. Docker Engine acts as a client-server application with:
 
-Materi: 
+1. A server with a long-running daemon process `dockerd`.
+2. APIs which specify interfaces that programs can use to talk to and instruct the Docker daemon.
+3. A command line interface (CLI) client `docker`.
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+The CLI uses [Docker APIs](https://docs.docker.com/engine/api/) to control or interact with the Docker daemon through scripting or direct CLI commands. Many other Docker applications use the underlying API and CLI. The daemon creates and manage Docker objects, such as images, containers, networks, and volumes.
+
+Kalo temen-temen masih inget tentang arsitektur dari Docker seperti berikut:
+
+![docker arch](https://docs.docker.com/engine/images/architecture.svg)
+
+Docker is written in the [Go programming language](https://golang.org/) and takes advantage of several features of the Linux kernel to deliver its functionality. Docker uses a technology called `namespaces` to provide the isolated workspace called the container. When you run a container, Docker creates a set of namespaces for that container.
+
+These namespaces provide a layer of isolation. Each aspect of a container runs in a separate namespace and its access is limited to that namespace.
+
+Nah jadi setelah kita berbicara tentang Docker arsitekturnya client-server, selanjutnya kita akan membahas tentang Docker Context.
