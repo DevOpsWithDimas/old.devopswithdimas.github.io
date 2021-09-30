@@ -19,15 +19,14 @@ gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
 
+Hai semuanya, pada materi study kasus kali ini kita akan membahas tentang Multiple git project dalam menggunakan docker compose. Diantaranya kita akan bahas
 
-description...
+1. Introduction
+2. Solusion 1 (Copy all the resources the new git project)
+3. Solusion 2 (Using git submodule)
+4. Writing compose file for deployment
 
-Materi: 
+Ok langsung aja kita ke pembahasan yang pertama
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+## Introduction
+
