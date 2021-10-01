@@ -46,3 +46,4 @@ Yang jadi pertanyaan sebagai seorang DevOps bagaimana kita deploy jika kita meng
 Ok kita simak beberapa solusi berikut
 
 ## Solusi 1 (Using separate compose file per project)
+
