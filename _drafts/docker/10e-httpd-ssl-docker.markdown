@@ -135,3 +135,7 @@ Jika response outputnya `OK` maka kita bisa restart servicenya menggunakan perin
 {% highlight bash %}
 systemctl restart apache2
 {% endhighlight %}
+
+Jika sudah sekarang coba akses dari browser ke [https://localhost](https://localhost) hasilnya seperti berikut:
+
+![https-proxy]({{ page.image_path | prepend: site.baseurl }}/httpd-proxy-ssl.png)
