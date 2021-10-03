@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "10e-httpd-ssl-docker"
+title: "Deploy httpd with ssl/https on docker"
 lang: docker
 categories:
 - DevOps
