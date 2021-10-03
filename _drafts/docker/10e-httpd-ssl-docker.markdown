@@ -71,7 +71,10 @@ apt-get update && apt-get upgrade && \
 apt-get install apache2 openssl && \
 a2enmod rewrite && \
 a2enmod proxy && \
-a2enmod ssl
+a2enmod ssl && \
+a2enmod proxy_http && \
+a2enmod proxy_balancer && \
+a2enmod lbmethod_byrequests
 
 ## generate ssl certificate for apache2
 openssl dhparam -out ${CERT_FOLDER}/$SITE_NAME.pem 2048 && \
