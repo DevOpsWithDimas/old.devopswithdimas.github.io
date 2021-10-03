@@ -4,7 +4,7 @@ gem "jekyll", '~> 3.9.0'
 gem 'octopress', '~> 3.0.11'
 
 group :jekyll_plugins do
-  gem 'jekyll-feed', '~> 0.6'
+  gem 'jekyll-feed'
   gem 'jekyll-gist'
   gem "kramdown"
   gem "github-pages"
@@ -12,8 +12,8 @@ group :jekyll_plugins do
   gem "rouge"
   gem "titlecase"
   gem "jekyll-youtube"
-  gem "redcarpet", ">= 3.5.1"
-  gem "nokogiri", ">= 1.11.0"
+  gem "redcarpet"
+  gem "nokogiri"
   gem 'jekyll-archives'
   gem 'jekyll-sitemap'
   gem 'jekyll-paginate'

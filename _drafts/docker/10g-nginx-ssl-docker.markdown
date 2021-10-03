@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Deploy nginx with ssl/https on docker"
-date: 2021-09-27T15:44:07+07:00
+date: 2021-09-29T15:44:07+07:00
 lang: docker
 categories:
 - DevOps

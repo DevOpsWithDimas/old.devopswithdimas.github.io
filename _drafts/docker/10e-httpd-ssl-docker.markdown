@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Deploy httpd with ssl/https on docker"
+date: 2021-09-27T15:44:07+07:00
 lang: docker
 categories:
 - DevOps
@@ -18,14 +19,12 @@ downloads: []
 ---
 
 
-description...
+Hai semuanya, di video study kasus kali ini kita akan membahas tentang Configure ssl/https pada httpd berdasarkan study kasus [sebelumnya]({% post_url docker/09-study-cases/2021-09-12-10b-compose-laravel-study-case %}). Diantaranya yang akan kita bahas yaitu
 
-Materi: 
+1. Setup ssl/https as reverse proxy
+2. Setup ssh/https direct from docker to host
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Ok langsung aja kita ke pembahas yang pertama
+
+## Setup ssl/https as reverse proxy
+
