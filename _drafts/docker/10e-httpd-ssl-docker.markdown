@@ -145,7 +145,7 @@ Jika sudah sekarang coba akses dari browser ke [https://localhost](https://local
 
 Selain menggunakan topology tersebut, kita juga bisa menggunakan arsitektur seperti berikut:
 
-![direct-docker]({{ page.image_path | prepend: site.baseurl }})
+![direct-docker]({{ page.image_path | prepend: site.baseurl }}/ssl-docker-arch.png)
 
 Ok pertama kita akan buat Dockerfile baru, dengan tujuan tidak menggangu file yang sudah kita buat sebelumnya. berikut `Dockerfile-ssl`:
 
