@@ -153,3 +153,82 @@ backend-spring-boot-1   "java -jar -Djava.se…"   spring-boot         running (
 NAME                 COMMAND                  SERVICE             STATUS              PORTS
 frontend-angular-1   "/docker-entrypoint.…"   angular             running (healthy)   0.0.0.0:80->80/tcp
 ```
+
+## Solution 2 (Include all compose files)
+
+Selanjutnya kita akan mencoba menjalankan dengan cara include semua compose file, untuk struktur directory masih sama seperti sebelumnya yaitu seperti berikut:
+
+```powershell
+➜ docker git:(compose/run-per-project) tree .
+Folder PATH listing
+
+C:\USERS\DIMASM93\WORKSPACES\UDEMY\DOCKER
+├───backend (spring-boot)
+│   ├───docker-compose.yaml
+│   └───docker-compose.production.yaml
+└───frontend (angular)
+    ├───docker-compose.yaml
+    └───docker-compose.production.yaml
+```
+
+Ok pertama kita buat compose file baru ya supaya tidak menggangu compose file yang sudah dibuat, sekarang kita buat untuk `backend` module dengan nama `docker-compose.include-all.yaml` seperti berikut:
+
+{% gist page.gist "10f-springboot.docker-compose.include-all.yaml" %}
+
+Dan satu lagi, kita buat compose file baru dengan nama `docker-compose.include-all.yaml` untuk module `frontend` seperti berikut:
+
+{% gist page.gist "10f-angular.docker-compose.include-all.yaml" %}
+
+Jadi jika temen-temen perhatikan kita mengganti beberapa value untuk property 
+
+1. `<services>.build.context` di tujukan ke folder tertentu berdasarkan modulenya masing-masing
+2. `build-jar.volumes["./backend:/var/lib/spring-boot"]`, kita mengganti foldernya untuk localtion source-code backend
+2. `backend.networks["frontend"]`, menambahkan network frondend supaya bisa connect dengan service `angular`
+2. `angular.env["BACKEND_HOST=spring-boot"]`, mengganti host dari service tidak menggunakan ip lagi, tetapi dns docker
+3. `angular.depends_on`, menggunakan dependency dengan service name `spring-boot`
+
+Ok sekarang kita bisa execute menggunakan perintah seperti berikut:
+
+{% highlight bash %}
+docker-compose --project-directory ./ \
+-f backend/docker-compose.yaml -f backend/docker-compose.include-all.yaml \
+-f frontend/docker-compose.include-all.yaml \
+up -d build-jar && \
+docker-compose --project-directory ./ \
+-f backend/docker-compose.yaml -f backend/docker-compose.include-all.yaml \
+-f frontend/docker-compose.include-all.yaml \
+up -d --build
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ docker git:(compose/multiple-projects) docker-compose --project-directory ./ `
+>> -f .\backend\docker-compose.yaml -f .\backend\docker-compose.include-all.yaml `
+>> -f .\frontend\docker-compose.include-all.yaml `
+>> up -d build-jar
+[+] Running 1/1
+ - Container docker-build-jar-1  Started                                     1.2s
+
+➜ docker git:(compose/multiple-projects) docker-compose --project-directory ./ `
+>> -f .\backend\docker-compose.yaml -f .\backend\docker-compose.include-all.yaml `
+>> -f .\frontend\docker-compose.include-all.yaml `
+>> up -d
+[+] Running 3/3
+ - Container docker-postgres-1     Running                                   0.0s
+ - Container docker-spring-boot-1  Runni...                                  0.0s
+ - Container docker-angular-1      Running                                   0.0s
+
+➜ docker git:(compose/multiple-projects) docker-compose --project-directory ./ `
+>> -f .\backend\docker-compose.yaml -f .\backend\docker-compose.include-all.yaml `
+>> -f .\frontend\docker-compose.include-all.yaml `
+>> ps
+NAME                   COMMAND                  SERVICE             STATUS               PORTS
+docker-angular-1       "/docker-entrypoint.…"   angular             running (starting)   0.0.0.0:80->80/tcp
+docker-build-jar-1     "/usr/local/bin/mvn-…"   build-jar           exited (0)    
+docker-postgres-1      "docker-entrypoint.s…"   postgres            running              0.0.0.0:55432->5432/tcp
+docker-spring-boot-1   "java -jar -Djava.se…"   spring-boot         running (starting)   80/tcp
+```
+
+## Solution 3 (Centralize compose file)
+
