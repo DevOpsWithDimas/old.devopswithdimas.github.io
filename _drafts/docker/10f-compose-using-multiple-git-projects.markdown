@@ -38,8 +38,6 @@ Jaman sekarang itu hampir semua aplikasi menggunakan arsitektur micro-services, 
     3. backend-n
 2. api-gateway
 3. frontend
-4. mobile-android
-5. mobile-ios
 
 Yang jadi pertanyaan sebagai seorang DevOps bagaimana kita deploy jika kita menggunakan compose file?
 
@@ -69,8 +67,8 @@ Folder PATH listing
 
 C:\USERS\DIMASM93\WORKSPACES\UDEMY\DOCKER
 ├───.idea
-├───backend
-└───frontend
+├───backend/
+└───frontend/
 ```
 
 
@@ -83,10 +81,10 @@ Nah kita bisa jalankan masing-masing servicenya per compose file (`1` service/pr
 Folder PATH listing
 
 C:\USERS\DIMASM93\WORKSPACES\UDEMY\DOCKER
-├───backend (spring-boot)
+├───backend/ (spring-boot)
 │   ├───docker-compose.yaml
 │   └───docker-compose.production.yaml
-└───frontend (angular)
+└───frontend/ (angular)
     ├───docker-compose.yaml
     └───docker-compose.production.yaml
 ```
@@ -163,10 +161,10 @@ Selanjutnya kita akan mencoba menjalankan dengan cara include semua compose file
 Folder PATH listing
 
 C:\USERS\DIMASM93\WORKSPACES\UDEMY\DOCKER
-├───backend (spring-boot)
+├───backend/ (spring-boot)
 │   ├───docker-compose.yaml
 │   └───docker-compose.production.yaml
-└───frontend (angular)
+└───frontend/ (angular)
     ├───docker-compose.yaml
     └───docker-compose.production.yaml
 ```
@@ -183,9 +181,9 @@ Jadi jika temen-temen perhatikan kita mengganti beberapa value untuk property
 
 1. `<services>.build.context` di tujukan ke folder tertentu berdasarkan modulenya masing-masing
 2. `build-jar.volumes["./backend:/var/lib/spring-boot"]`, kita mengganti foldernya untuk localtion source-code backend
-2. `backend.networks["frontend"]`, menambahkan network frondend supaya bisa connect dengan service `angular`
-2. `angular.env["BACKEND_HOST=spring-boot"]`, mengganti host dari service tidak menggunakan ip lagi, tetapi dns docker
-3. `angular.depends_on`, menggunakan dependency dengan service name `spring-boot`
+3. `backend.networks["frontend"]`, menambahkan network frondend supaya bisa connect dengan service `angular`
+4. `angular.env["BACKEND_HOST=spring-boot"]`, mengganti host dari service tidak menggunakan ip lagi, tetapi dns docker
+5. `angular.depends_on`, menggunakan dependency dengan service name `spring-boot`
 
 Ok sekarang kita bisa execute menggunakan perintah seperti berikut:
 
@@ -232,3 +230,66 @@ docker-spring-boot-1   "java -jar -Djava.se…"   spring-boot         running (s
 
 ## Solution 3 (Centralize compose file)
 
+Selanjutnya kita akan mencoba menjalankan dengan cara centralize compose file (system terpusat), untuk struktur directory sekarang seperti berikut:
+
+```powershell
+➜ docker git:(compose/run-per-project) tree .
+Folder PATH listing
+
+C:\USERS\DIMASM93\WORKSPACES\UDEMY\DOCKER
+├───.env
+├───docker-compose.yaml
+├───docker-compose.override.yaml
+├───docker-compose.production.yaml
+├───backend/ (spring-boot)
+└───frontend/ (angular)
+```
+
+Ok pertama kita buat compose file dengan nama `docker-compose.yaml` seperti berikut:
+
+{% gist page.gist "10f-central.docker-compose.yaml" %}
+
+Setelah itu buat juga untuk `docker-compose.override.yaml` untuk melakukan build docker imagenya seperti berikut:
+
+{% gist page.gist "10f-central.docker-compose.override.yaml" %}
+
+Kemudian untuk running di server, kita tidak perlu build lagi cukup pull saja dari docker image yang udah kita build sebelumnya yaitu dengan buat compose file baru namanya `docker-compose.production.yaml` seperti berikut:
+
+{% gist page.gist "10f-central.docker-compose.production.yaml" %}
+
+Dan yang terakhir jangan lupa juga untuk menambahkan file `.env` seperti berikut:
+
+{% gist page.gist "10f-central.env" %}
+
+Ok sekarang jika sudah, kita bisa jalankan dengan perintah seperti berikut:
+
+{% highlight bash %}
+docker-compose --env-file .env up build-jar && \
+docker-compose --env-file .env up -d --build
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ docker git:(compose/multiple-projects) docker-compose --env-file .env up -d build-jar
+[+] Running 4/4
+ - Network docker_default        Created                                     0.0s
+ - Volume "docker_pg_data"       Created                                     0.0s
+ - Volume "docker_spring_data"   Created                                     0.0s
+ - Container docker-build-jar-1  Started                                     1.3s
+
+➜ docker git:(compose/multiple-projects) docker-compose --env-file .env up -d --build
+[+] Building 3.9s (28/28) FINISHED
+[+] Running 3/3
+ - Container docker-postgres-1     Started                                   0.5s
+ - Container docker-spring-boot-1  Start...                                  1.3s
+ - Container docker-angular-1      Started                                   2.2s
+
+➜ docker git:(compose/multiple-projects) docker-compose --env-file .env ps
+NAME                   COMMAND                  SERVICE             STATUS               PORTS
+docker-angular-1       "/docker-entrypoint.…"   angular             running (starting)   0.0.0.0:80->80/tcp
+docker-build-jar-1     "/usr/local/bin/mvn-…"   build-jar           exited (0)
+
+docker-postgres-1      "docker-entrypoint.s…"   postgres            running              0.0.0.0:5432->5432/tcp
+docker-spring-boot-1   "java -jar -Djava.se…"   spring-boot         running (starting)   0.0.0.0:8080->8080/tcp
+```
