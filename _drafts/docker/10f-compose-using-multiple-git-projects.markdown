@@ -23,8 +23,8 @@ Hai semuanya, pada materi study kasus kali ini kita akan membahas tentang Multip
 
 1. Introduction
 2. Solution 1 (Using separate compose file per project)
-3. Solution 2 (Copy all the git projects to new git repo)
-4. Solution 3 (Using git submodule)
+3. Solution 2 (Include all compose files)
+4. Solution 3 (Centralize compose file)
 
 Ok langsung aja kita ke pembahasan yang pertama
 
@@ -43,16 +43,40 @@ Jaman sekarang itu hampir semua aplikasi menggunakan arsitektur micro-services, 
 
 Yang jadi pertanyaan sebagai seorang DevOps bagaimana kita deploy jika kita menggunakan compose file?
 
-Ok kita simak beberapa solusi berikut
-
-## Solusi 1 (Using separate compose file per project)
-
 Nah buat temen-temen mau meng-deploy microservices dengan arsitketurnya seperti study kasus sebelumnya yaitu
 
 1. [spring-boot (backend)]({% post_url docker/09-study-cases/2021-09-14-10c-compose-springboot-study-case %})
 2. [Angular (frontend)]({% post_url docker/09-study-cases/2021-09-26-10d-compose-angular-study-case %})
 
-Nah kita bisa jalankan masing-masing servicenya per compose file (`1` service `1` compose file), klo saya gambarkhan structur directorynya seperti berikut:
+Tapi sebelum itu saya mau import dulu project `angular` dan `spring-boot` menggunakan `git submodule` dengan perintah seperti berikut:
+
+{% highlight bash %}
+git submodule add --force --name frontend \
+-b compose/angular \
+git@repository.dimas-maryanto.com:youtube/devops/docker.git frontend;
+
+git submodule add --force --name backend \
+-b compose/spring-boot \
+git@repository.dimas-maryanto.com:youtube/devops/docker.git backend;
+{% endhighlight %}
+
+Maka sekarang kita punya struktur directory seperti berikut:
+
+```powershell
+C:\USERS\DIMASM93\WORKSPACES\UDEMY\DOCKER
+➜ docker git:(compose/multiple-projects) tree .
+Folder PATH listing
+
+C:\USERS\DIMASM93\WORKSPACES\UDEMY\DOCKER
+├───.idea
+├───backend
+└───frontend
+```
+
+
+## Solusi 1 (Using separate compose file per project)
+
+Nah kita bisa jalankan masing-masing servicenya per compose file (`1` service/project `1` compose file), klo saya gambarkan structur filenya seperti berikut:
 
 ```powershell
 ➜ docker git:(compose/run-per-project) tree .
