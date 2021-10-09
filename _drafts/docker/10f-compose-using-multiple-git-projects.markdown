@@ -89,7 +89,7 @@ Ethernet adapter Ethernet:
    Default Gateway . . . . . . . . . : 192.168.88.1
 ```
 
-Jadi kita perlu rubah untuk environment variable `BACKEND_HOST=<your-network-ip> manjadi BACKEND_HOST=192.168.88.252`. Sekarang klo kita coba jalankan menggunakan perintah seperti berikut:
+Jadi kita perlu rubah untuk environment variable `BACKEND_HOST=<your-network-ip>` menjadi `BACKEND_HOST=192.168.88.252`. Sekarang klo kita coba jalankan menggunakan perintah seperti berikut:
 
 {% highlight bash %}
 docker-compose --project-directory backend \
