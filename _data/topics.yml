@@ -331,7 +331,7 @@
     - name: Docker Context
       key: docker-context
       desciption: ''
-    - name: 'Study Kasus: Docker for CI environtment'
+    - name: 'Study Kasus: Docker for CI'
       key: study-cases-docker-ci
       description: ''
     - name: Docker Machine
