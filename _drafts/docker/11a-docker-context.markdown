@@ -5,6 +5,7 @@ lang: docker
 categories:
 - DevOps
 - Docker
+- Context
 refs: 
 - https://docs.docker.com/engine/context/working-with-contexts/
 youtube: 
