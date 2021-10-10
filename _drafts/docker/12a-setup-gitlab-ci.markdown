@@ -5,6 +5,8 @@ lang: docker
 categories:
 - DevOps
 - Docker
+- Context
+- Study-Cases
 refs: 
 - https://docs.docker.com/
 youtube: 
