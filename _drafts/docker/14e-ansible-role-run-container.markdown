@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "14b-ansible-role-install-docker"
+title: "14e-ansible-role-run-container"
 lang: docker
 categories:
 - DevOps
@@ -12,7 +12,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: study-cases-ansible
-image_path: /resources/posts/docker/14b-ansible-role-install-docker
+image_path: /resources/posts/docker/14e-ansible-role-run-container
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---

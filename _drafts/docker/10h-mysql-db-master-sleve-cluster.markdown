@@ -14,7 +14,7 @@ youtube:
 comments: true
 catalog_key: study-cases-compose-files
 image_path: /resources/posts/docker/10g-mysql-db-master-sleve-cluster
-gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
+gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
 
