@@ -1,18 +1,19 @@
 ---
 layout: post
-title: "12b-pipeline-php-gitlab-ci"
+title: "12e-pipeline-angular-gitlab-ci"
 lang: docker
 categories:
 - DevOps
 - Docker
 - Context
 - Study-Cases
+- Gitlab-CI
 refs: 
 - https://docs.docker.com/
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
-image_path: /resources/posts/docker/12b-pipeline-php-gitlab-ci
+image_path: /resources/posts/docker/12e-pipeline-angular-gitlab-ci
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "12a-setup-gitlab-ci"
+title: "12b-pipeline-laravel-gitlab-ci"
 lang: docker
 categories:
 - DevOps
@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
-image_path: /resources/posts/docker/12a-setup-gitlab-ci
+image_path: /resources/posts/docker/12b-pipeline-laravel-gitlab-ci
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---

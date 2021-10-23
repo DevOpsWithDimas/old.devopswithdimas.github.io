@@ -1,19 +1,20 @@
 ---
 layout: post
-title: "12d-pipeline-spring-boot-gitlab-ci"
+title: "12a-pipeline-javaweb-gitlab-ci"
 lang: docker
 categories:
 - DevOps
 - Docker
 - Context
 - Study-Cases
+- Gitlab-CI
 refs: 
 - https://docs.docker.com/
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
-image_path: /resources/posts/docker/12d-pipeline-spring-boot-gitlab-ci
-gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
+image_path: /resources/posts/docker/12a-pipeline-javaweb-gitlab-ci
+gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
