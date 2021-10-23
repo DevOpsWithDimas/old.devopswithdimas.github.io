@@ -12,7 +12,7 @@ refs:
 - https://docs.docker.com/
 - https://id.wikipedia.org/wiki/Transport_Layer_Security
 - https://www.digicert.com/kb/csr-ssl-installation/ubuntu-server-with-apache2-openssl.htm
-youtube: 
+youtube: dQXnZK7wTuc
 comments: true
 catalog_key: study-cases-compose-files
 image_path: /resources/posts/docker/10e-httpd-ssl
