@@ -12,7 +12,7 @@ categories:
 refs: 
 - https://docs.docker.com/
 - https://git-scm.com/book/en/v2/Git-Tools-Submodules
-youtube: 
+youtube: GdduFmCD2uA
 comments: true
 catalog_key: study-cases-compose-files
 image_path: /resources/posts/docker/10e-compose-using-multiple-git-projects
