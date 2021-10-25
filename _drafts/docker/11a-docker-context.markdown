@@ -91,3 +91,37 @@ Dig a bit deeper with `docker context inspect`. In this example, we’re inspect
     }
 ]
 ```
+
+##  Create a new context
+
+You can create new contexts with the `docker context create` command.
+
+The following example creates a new context called `docker-remote-linux` and specifies the following:
+
+1. Default `orchestrator = Swarm`
+2. Issue commands to the local Unix socket `unix:///var/run/docker.sock`
+3. Or you can using ssh to connect remote docker-daemon `ssh://user@remotehost`
+4. Or you can using tcp to connect remote docker-daemon `tcp://127.0.0.1:2375`, required config for docker daemon export and expose tcp port `2375`
+
+{% highlight bash %}
+## using unix socket (by default enabled when installed docker daemon)
+docker context create default \
+  --default-stack-orchestrator=swarm \
+  --docker host=unix:///var/run/docker.sock
+
+## using ssh
+docker context create docker-ssh-test \
+  --default-stack-orchestrator=swarm \
+  --docker host=ssh://user@192.168.88.199
+
+## using tcp (Not Recommended because not secure)
+docker context create docker-tcp-test \
+  --default-stack-orchestrator=swarm \
+  --docker host=tcp://192.168.88.199:2375
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+
+```
