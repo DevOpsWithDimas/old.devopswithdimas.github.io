@@ -111,7 +111,7 @@ docker context create default \
 
 ## using ssh
 docker context create docker-ssh-test \
-  --default-stack-orchestrator=swarm \
+  --default-stack-orchestrator swarm \
   --docker host=ssh://user@192.168.88.199
 
 ## using tcp (Not Recommended because not secure)
@@ -123,5 +123,98 @@ docker context create docker-tcp-test \
 Jika dijalankan maka hasilnya seperti berikut:
 
 ```powershell
+➜ ~ ✗  docker context ls
+NAME                TYPE                DESCRIPTION                               DOCKER ENDPOINT                             KUBERNETES ENDPOINT   ORCHESTRATOR
+default *           moby                Current DOCKER_HOST based configuration   npipe:////./pipe/docker_engine                                    swarm
+desktop-linux       moby                                                          npipe:////./pipe/dockerDesktopLinuxEngine
 
+➜ ~  docker info
+Server:
+ Kernel Version: 4.19.128-microsoft-standard
+ Operating System: Docker Desktop
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 2
+ Total Memory: 3.842GiB
+ Name: docker-desktop
+ ID: AOXY:2GUY:EZ3L:6RFF:G7XZ:SDFL:6U6X:XEK4:3N5Q:GVZZ:6ROI:6WYI
+ Docker Root Dir: /var/lib/docker
+
+## Generate ssh-key https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+➜ ~ ssh-copy-id dimasm93@192.168.88.11
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/c/Users/dimasm93/.ssh/id_rsa.pub"
+The authenticity of host '192.168.88.11 (192.168.88.11)' can''t be established.
+ED25519 key fingerprint is SHA256:evGwEQ5wsOsSkCle6t9+aJ++2Z1V1D7u/AMGHfClQ7Q.
+
+Now try logging into the machine, with:   "ssh 'dimasm93@192.168.88.11'" and check to make sure that only the key(s) you wanted were added.
+
+➜ ~ docker context create docker-ssh-test `
+>> --default-stack-orchestrator swarm `
+>> --docker host=ssh://dimasm93@192.168.88.11
+docker-ssh-test
+Successfully created context "docker-ssh-test"
+
+➜ ~  docker context use docker-ssh-test
+docker-ssh-test
+
+➜ ~  docker context ls
+NAME                TYPE                DESCRIPTION                               DOCKER ENDPOINT                             KUBERNETES ENDPOINT   ORCHESTRATOR
+default             moby                Current DOCKER_HOST based configuration   npipe:////./pipe/docker_engine                                    swarm
+desktop-linux       moby                                                          npipe:////./pipe/dockerDesktopLinuxEngine
+docker-ssh-test *   moby                                                          ssh://dimasm93@192.168.88.11                                      swarm
+
+➜ ~  docker info
+Server:
+ Kernel Version: 4.18.0-305.19.1.el8_4.x86_64
+ Operating System: CentOS Linux 8
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 2
+ Total Memory: 1.748GiB
+ Name: docker.dimas-maryanto.com
+ ID: 52LG:X5YZ:6KR2:6VK5:EKVJ:3XZ5:Q2TX:PF36:6ING:UN2J:GA5F:LCPB
+ Docker Root Dir: /var/lib/docker
+```
+
+## Export & Import Docker Context
+
+The `docker context` command makes it easy to export and import contexts on different machines with the Docker client installed.
+
+You can use the `docker context export` command to export an existing context to a file. This file can later be imported on another machine that has the `docker` client installed. By default, contexts will be exported as a _native Docker contexts_. **You can export and import** these using the `docker context` command. If the context you are exporting includes a Kubernetes endpoint, the Kubernetes part of the context will be included in the `export` and `import` operations.
+
+Exporting and importing a native Docker context
+
+The following example exports an existing context called `docker-ssh-test`. It will be written to a file called
+
+{% highlight bash %}
+docker context export docker-ssh-test
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ ~  docker context export docker-ssh-test
+Written file "docker-ssh-test.dockercontext"
+
+➜ ~  cat .\docker-ssh-test.dockercontext
+meta.json0000644000000000000000000000023000000000000011021 0ustar0000000000000000{"Name":"docker-ssh-test","Metadata":{"StackOrchestrator":"swarm"},"Endpoints":{"docker":{"Host":"ssh://dimasm93@192.168.88.11","SkipTLSVerify":false}}}tls0000700000000000000000000000000000000000000007716 5ustar0000000000000000
+
+➜ ~  docker context rm docker-ssh-test
+docker-ssh-test
+
+➜ ~  docker context ls
+NAME                TYPE                DESCRIPTION                               DOCKER ENDPOINT                             KUBERNETES ENDPOINT   ORCHESTRATOR
+default *           moby                Current DOCKER_HOST based configuration   npipe:////./pipe/docker_engine                                    swarm
+desktop-linux       moby                                                          npipe:////./pipe/dockerDesktopLinuxEngine
+
+➜ ~  docker context import docker-ssh-server-test .\docker-ssh-test.dockercontext
+docker-ssh-server-test
+Successfully imported context "docker-ssh-server-test"
+
+➜ ~  docker context ls
+NAME                     TYPE                DESCRIPTION                               DOCKER ENDPOINT                             KUBERNETES ENDPOINT   ORCHESTRATOR
+default *                moby                Current DOCKER_HOST based configuration   npipe:////./pipe/docker_engine                                    swarm
+desktop-linux            moby                                                          npipe:////./pipe/dockerDesktopLinuxEngine
+docker-ssh-server-test   moby                                                          ssh://dimasm93@192.168.88.11                                      swarm
 ```
