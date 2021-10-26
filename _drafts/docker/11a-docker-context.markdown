@@ -194,12 +194,14 @@ docker context export docker-ssh-test
 Jika dijalankan maka hasilnya seperti berikut:
 
 ```powershell
+## export docker context
 ➜ ~  docker context export docker-ssh-test
 Written file "docker-ssh-test.dockercontext"
 
 ➜ ~  cat .\docker-ssh-test.dockercontext
 meta.json0000644000000000000000000000023000000000000011021 0ustar0000000000000000{"Name":"docker-ssh-test","Metadata":{"StackOrchestrator":"swarm"},"Endpoints":{"docker":{"Host":"ssh://dimasm93@192.168.88.11","SkipTLSVerify":false}}}tls0000700000000000000000000000000000000000000007716 5ustar0000000000000000
 
+## remove docker context
 ➜ ~  docker context rm docker-ssh-test
 docker-ssh-test
 
@@ -208,6 +210,7 @@ NAME                TYPE                DESCRIPTION                             
 default *           moby                Current DOCKER_HOST based configuration   npipe:////./pipe/docker_engine                                    swarm
 desktop-linux       moby                                                          npipe:////./pipe/dockerDesktopLinuxEngine
 
+## import back from file
 ➜ ~  docker context import docker-ssh-server-test .\docker-ssh-test.dockercontext
 docker-ssh-server-test
 Successfully imported context "docker-ssh-server-test"
