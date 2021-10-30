@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Remote deployment using docker-compose"
+date: 2021-10-30T15:32:02+07:00
 lang: docker
 categories:
 - DevOps
@@ -259,3 +260,159 @@ Removing network 01-getting-started_default
 ```
 
 This is a better approach than the manual deployment. But same as before it gets quite annoying as it requires to set/export the remote host endpoint on every application change or host change.
+
+## Remote Using docker context
+
+Docker Contexts are an efficient way to automatically switch between different deployment targets. Pada [artikel sebelumnya]({% post_url docker/10-docker-context/2021-10-26-11a-docker-context %}) kita udah membahas/membuat docker context. Seperti berikut
+
+```powershell
+➜ 01-getting-started git:(master) docker context ls
+NAME                     TYPE                DESCRIPTION                               DOCKER ENDPOINT                             KUBERNETES ENDPOINT   ORCHESTRATOR
+default *                moby                Current DOCKER_HOST based configuration   npipe:////./pipe/docker_engine                                    swarm
+desktop-linux            moby                                                          npipe:////./pipe/dockerDesktopLinuxEngine
+docker-ssh-server-test   moby                                                          ssh://dimasm93@192.168.88.11                                      swarm
+```
+
+Untuk menggunakan context dalam `docker-compose` kita bisa menggunakan 2 cara yaitu 
+
+1. `docker context use` command
+2. Using `docker-compose --context` command line option
+
+Ok kita akan coba `docker context use`, seperti berikut:
+
+1. Kita set docker context ke docker host / target yang kita inginkan menggunakan 
+
+{% highlight powershell %}
+docker context use <context-name>
+{% endhighlight %}
+
+2. Setelah itu kita coba jalankan perintah `docker-compose up -d` seperti biasa
+
+Jika kita jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ 01-getting-started git:(master) docker context ls --format '{% raw %}{{ .Name }} => {{json .DockerEndpoint }} {% endraw %}'
+default => "npipe:////./pipe/docker_engine"
+desktop-linux => "npipe:////./pipe/dockerDesktopLinuxEngine"
+docker-ssh-server-test => "ssh://dimasm93@192.168.88.11"
+
+➜ 01-getting-started git:(master) docker context use docker-ssh-server-test
+docker-ssh-server-test
+
+➜ 01-getting-started git:(master) docker info
+Client:
+ Context:    docker-ssh-server-test
+ Debug Mode: false
+ Plugins:
+  buildx: Build with BuildKit (Docker Inc., v0.6.3)
+  compose: Docker Compose (Docker Inc., v2.0.0)
+  scan: Docker Scan (Docker Inc., v0.8.0)
+
+Server:
+ Kernel Version: 4.18.0-305.19.1.el8_4.x86_64
+ Operating System: CentOS Linux 8
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 2
+ Total Memory: 3.623GiB
+ Name: docker-centos8.udemy.dimas-maryanto.com
+ ID: ZWET:4ZXS:QFUF:H56E:6MVB:QBQA:AWAJ:5KHC:CM2X:67C5:7U64:UP7D
+
+➜ 01-getting-started git:(master) docker-compose -f .\docker-compose.yaml up -d
+Creating network "01-getting-started_default" with the default driver
+Creating 01-getting-started_db_1     ... done
+Creating 01-getting-started_webapp_1 ... done
+
+➜ 01-getting-started git:(master) docker-compose -f .\docker-compose.yaml ps
+           Name                          Command               State                    Ports
+---------------------------------------------------------------------------------------------------------------
+01-getting-started_db_1       docker-entrypoint.sh postgres    Up      0.0.0.0:5432->5432/tcp,:::5432->5432/tcp
+01-getting-started_webapp_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:80->80/tcp,:::80->80/tcp
+
+➜ 01-getting-started git:(master) curl 192.168.88.11
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : <!DOCTYPE html>
+                    <html>
+                    <head>
+                    <title>Welcome to nginx!</title>
+                    <style>
+                    html { color-scheme: light dark; }
+                    body { width: 35em; margin: 0 auto;
+                    font-family: Tahoma, Verdana, Arial, sans-serif; }
+                    </style...
+
+➜ 01-getting-started git:(master) docker-compose -f .\docker-compose.yaml down --volumes
+Stopping 01-getting-started_webapp_1 ... done
+Stopping 01-getting-started_db_1     ... done
+Removing 01-getting-started_webapp_1 ... done
+Removing 01-getting-started_db_1     ... done
+Removing network 01-getting-started_default
+
+## reset to default
+➜ 01-getting-started git:(master) docker context use default
+default
+
+```
+
+
+Jadi dengan menggunakan set context, kita bisa mudah untuk berpindah remote docker host dan secara default tersimpan dalam list docker context. 
+
+Dan selanjutnya kita juga bisa menggunakan `--context` baik itu `docker` maupun `docker-compose` Seperti berikut implementasinya:
+
+```powershell
+➜ 01-getting-started git:(master) docker --context docker-ssh-server-test info
+Client:
+ Context:    docker-ssh-server-test
+ Debug Mode: false
+ Plugins:
+  buildx: Build with BuildKit (Docker Inc., v0.6.3)
+  compose: Docker Compose (Docker Inc., v2.0.0)
+  scan: Docker Scan (Docker Inc., v0.8.0)
+
+Server:
+ Kernel Version: 4.18.0-305.19.1.el8_4.x86_64
+ Operating System: CentOS Linux 8
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 2
+ Total Memory: 3.623GiB
+ Name: docker-centos8.udemy.dimas-maryanto.com
+ ID: ZWET:4ZXS:QFUF:H56E:6MVB:QBQA:AWAJ:5KHC:CM2X:67C5:7U64:UP7D
+ Docker Root Dir: /var/lib/docker
+
+➜ 01-getting-started git:(master) docker-compose --context docker-ssh-server-test -f .\docker-compose.yaml up -d
+Creating network "01-getting-started_default" with the default driver
+Creating 01-getting-started_db_1     ... done
+Creating 01-getting-started_webapp_1 ... done
+
+➜ 01-getting-started git:(master) docker-compose --context docker-ssh-server-test -f .\docker-compose.yaml ps
+           Name                          Command               State                    Ports
+---------------------------------------------------------------------------------------------------------------
+01-getting-started_db_1       docker-entrypoint.sh postgres    Up      0.0.0.0:5432->5432/tcp,:::5432->5432/tcp
+01-getting-started_webapp_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:80->80/tcp,:::80->80/tcp
+
+➜ 01-getting-started git:(master) curl 192.168.88.11
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : <!DOCTYPE html>
+                    <html>
+                    <head>
+                    <title>Welcome to nginx!</title>
+                    <style>
+                    html { color-scheme: light dark; }
+                    body { width: 35em; margin: 0 auto;
+                    font-family: Tahoma, Verdana, Arial, sans-serif; }
+                    </style...
+
+➜ 01-getting-started git:(master) docker-compose --context docker-ssh-server-test -f .\docker-compose.yaml down --volumes
+Stopping 01-getting-started_webapp_1 ... done
+Stopping 01-getting-started_db_1     ... done
+Removing 01-getting-started_webapp_1 ... done
+Removing 01-getting-started_db_1     ... done
+Removing network 01-getting-started_default
+```
+
+Untuk menggunakan `--context` sebetulnya lebih sering jika hanya temporary connect ke docker daemon. Dan klo saya lebih sering menggunakan method set context ketimbang menggunakan `--context` command line option.
