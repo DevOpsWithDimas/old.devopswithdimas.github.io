@@ -20,7 +20,7 @@ downloads: []
 
 Hai semuanya, di video study kasus kali ini kita akan membahas tentang Configure ssl/https pada nginx berdasarkan study kasus [sebelumnya]({% post_url docker/09-study-cases/2021-09-28-10f-compose-using-multiple-git-projects %}). Diantaranya yang akan kita bahas yaitu
 
-1. Setup ssl/https as reverse proxy
+1. Setup ssl/https as reverse and balancer
 2. Setup ssh/https direct from docker to host
 
 Ok langsung aja kita ke pembahasan yang pertama yaitu
@@ -40,4 +40,4 @@ Untuk membuat arsitektur tersebut, kita perlu siapkan service `spring-boot`, `po
 
 Buatlah compose file dengan nama `docker-compose.reverse-proxy.yaml`:
 
-{% gist page.gist "10g-proxy-.docker-compose.reverse-proxy.yaml" %}
+{% gist page.gist "10g-proxy.docker-compose.reverse-proxy.yaml" %}
