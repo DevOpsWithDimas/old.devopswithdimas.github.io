@@ -109,6 +109,10 @@ docker-compose up -d
 Jika temen-temen menggunakan Linux/macOs kita bisa menggunakan perintah seperti berikut:
 
 {% highlight bash %}
+export DOCKER_HOST=ssh://dimasm93@192.168.88.11
+docker-compose up -d
+
+## or you can run directly
 DOCKER_HOST=ssh://dimasm93@192.168.88.11 docker-compose up -d
 {% endhighlight %}
 
@@ -169,8 +173,89 @@ Content           : <!DOCTYPE html>
                     font-family: Tahoma, Verdana, Arial, sans-serif; }
                     </style...
 Headers           : {[Connection, keep-alive], [Accept-Ranges, bytes], [Content-Length, 615], [Content-Type, text/html]...}
+
+➜ 01-getting-started git:(master) docker-compose -f .\docker-compose.yaml down
+Stopping 01-getting-started_webapp_1 ... done
+Stopping 01-getting-started_db_1     ... done
+Removing 01-getting-started_webapp_1 ... done
+Removing 01-getting-started_db_1     ... done
 ```
 
 This is a better approach than the manual deployment. But it gets quite annoying as it requires to set/export the remote host endpoint on every application change or host change.
 
 ## Remote Using `-H` command line option from `docker-compose`
+
+Ok selanjutnya adalah kita bisa menggunakan `-H` option command line pada `docker` atau `docker-compose`, pertama sama seperti sebelumnya kita bisa siapkan Server VM atau kita juga bisa menggunakan VM Sebelumnya. Dan kita setup juga untuk ssh connectionnya menggunakan perintah `ssh-copy-id` dan install docker jika belum ada. Untuk menggunakannya kita bisa menggunakan perintah seperti berikut:
+
+{% highlight powershell %}
+docker --host=ssh://dimasm93@192.168.88.11 info
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ ~  docker --host=ssh://dimasm93@192.168.88.11 info
+Client:
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  buildx: Build with BuildKit (Docker Inc., v0.6.3)
+  compose: Docker Compose (Docker Inc., v2.0.0)
+  scan: Docker Scan (Docker Inc., v0.8.0)
+
+Server:
+ Kernel Version: 4.18.0-305.19.1.el8_4.x86_64
+ Operating System: CentOS Linux 8
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 2
+ Total Memory: 3.623GiB
+ Name: docker-centos8.udemy.dimas-maryanto.com
+ ID: ZWET:4ZXS:QFUF:H56E:6MVB:QBQA:AWAJ:5KHC:CM2X:67C5:7U64:UP7D
+```
+
+Sedangkan untuk menjalankan `docker-compose` seperti berikut perintahnya:
+
+{% highlight powershell %}
+docker-compose --host=ssh://dimasm93@192.168.88.11 -f docker-compose.yaml up -d
+{% endhighlight %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+
+```powershell
+➜ docker git:(master) cd .\08-docker-compose\01-getting-started\
+➜ 01-getting-started git:(master) docker-compose --host ssh://dimasm93@192.168.88.11 -f .\docker-compose.yaml up -d
+Creating network "01-getting-started_default" with the default driver
+Creating 01-getting-started_db_1     ... done
+Creating 01-getting-started_webapp_1 ... done
+
+➜ 01-getting-started git:(master) docker-compose --host ssh://dimasm93@192.168.88.11 -f .\docker-compose.yaml ps
+           Name                          Command               State                    Ports
+---------------------------------------------------------------------------------------------------------------
+01-getting-started_db_1       docker-entrypoint.sh postgres    Up      0.0.0.0:5432->5432/tcp,:::5432->5432/tcp
+01-getting-started_webapp_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:80->80/tcp,:::80->80/tcp
+
+➜ 01-getting-started git:(master) curl 192.168.88.11
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : <!DOCTYPE html>
+                    <html>
+                    <head>
+                    <title>Welcome to nginx!</title>
+                    <style>
+                    html { color-scheme: light dark; }
+                    body { width: 35em; margin: 0 auto;
+                    font-family: Tahoma, Verdana, Arial, sans-serif; }
+                    </style...
+
+➜ 01-getting-started git:(master) docker-compose --host ssh://dimasm93@192.168.88.11 -f .\docker-compose.yaml down --volumes
+Stopping 01-getting-started_db_1     ... done
+Stopping 01-getting-started_webapp_1 ... done
+Removing 01-getting-started_db_1     ... done
+Removing 01-getting-started_webapp_1 ... done
+Removing network 01-getting-started_default
+```
+
+This is a better approach than the manual deployment. But same as before it gets quite annoying as it requires to set/export the remote host endpoint on every application change or host change.
