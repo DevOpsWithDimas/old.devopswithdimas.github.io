@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "12-overview-docker-for-ci"
+title: "Overview of Study Cases using docker for CI"
 lang: docker
 categories:
 - DevOps
 - Docker
 - Context
 - Study-Cases
+- Gitlab-CI
 refs: 
 - https://docs.docker.com/
 youtube: 
@@ -17,15 +18,14 @@ gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
 
+Hai semuanya, pada materi study kasus kali ini kita akan membahas Continues Integration atau yang lebih di kenal CI dengan menggunakan Docker. Seperti yang kita tau ya Docker ini tidak hanya untuk development saja tapi bisa juga di terapkan pada lingkugan Continues Integration, Integration Testing bahkan Production. 
 
-description...
+Jadi kali ini kita akan implementasi untuk Continues Ingration dan Integration Testing dulu ya menggunakan tool Docker berserta Gitlab CI.
 
-Materi: 
+Untuk implementasinya, nanti kita akan membahas
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Setup CI environment menggunakan Gitlab CI
+2. Build pipeline for Java Web application
+3. Build pipeline for Laravel application
+4. Build pipeline for Spring Boot application
+5. Build pipeline for Angular application
