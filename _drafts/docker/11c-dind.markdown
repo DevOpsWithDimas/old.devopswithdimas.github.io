@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Docker Daemon Inside Docker"
+title: "Docker Inside Docker (DinD)"
 lang: docker
 categories:
 - DevOps
 - Docker
 - Context
 refs: 
-- https://docs.docker.com/
+- https://hub.docker.com/_/docker
 youtube: 
 comments: true
 catalog_key: docker-context
