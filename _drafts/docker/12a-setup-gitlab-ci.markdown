@@ -51,4 +51,110 @@ Inner loop yaitu prosesnya ( `Code` -> `Build` -> `Run` -> `Test`) workflow ini 
 
 Sedangkan untuk Outer loop yaitu prosesnya ( `Push changes` -> `CI build` -> `CI test` -> `Deploy` ) workflow ini biasanya dimana ketika development selesai atau kita mau deploy ke server testing, staging atau production
 
+## Arsitektur Infra & Software
 
+Untuk arsitektur untuk infrastructur dan Software yang kita gunakan seperti berikut:
+
+![arch-infra]({{ page.image_path | prepend: site.baseur }}/arch-gitlab-ci.jpg)
+
+Untuk minimum specification:
+
+```yaml
+vcs_repository:
+    os: Linux Distro
+        distro: CentOS
+        vesion: '>= 7.9'
+    hardware:
+        cpu: 2 CPU
+        memory: 6GB
+        storage: 250GB
+            partitions:
+                - name: /
+                  size: 75 GB
+                - name: /var
+                  size: '>= 150GB'
+            type: LVM
+    networks:
+        - name: private ip
+          ip4: 192.168.88.10/24
+          gateway: 192.168.88.1
+          dns: 
+            - 8.8.8.8
+            - 8.8.4.4
+    firewall-cmd:
+        - name: SSH
+          port: 22/tcp
+          policy: allow
+        - name: Gitlab Repository
+          port: 80/tcp, 443/tcp   
+          policy: allow
+    packages:
+        - gitlab-ce
+        - OpenSSH-Server       
+
+docker_registry:
+    os: Linux Distro
+        distro: CentOS
+        vesion: '>= 7.9'
+    hardware:
+        cpu: 2 CPU
+        memory: 4GB
+        storage: 150GB
+            partitions:
+                - name: /
+                  size: 70 GB
+                - name: /var
+                  size: '>= 120GB'
+            type: LVM
+    networks:
+        - name: private ip
+          ip4: 192.168.88.9/24
+          gateway: 192.168.88.1
+          dns: 
+            - 8.8.8.8
+            - 8.8.4.4
+    firewall-cmd:
+        - name: SSH
+          port: 22/tcp
+          policy: allow
+        - name: Nexus OSS
+          port: 8081/tcp
+          policy: allow
+        - name: Docker registry
+          port: 8086/tcp, 8087/tcp
+          policy: allow
+    packages:
+        - OpenSSH-Server
+        - 'oracle-jdk:8'
+        - 'nexus-oss'
+
+workers:
+    os: Linux Distro
+        distro: CentOS
+        vesion: '>= 7.9'
+    hardware:
+        ## sesuaikan specifikasi hardwarenya dengan kebutuhan build
+        ## karena ada beberapa bahasa pemograman membutuhkan lebih dari 4GB RAM dan jumlah cpu
+        cpu: 2 CPU
+        memory: 4GB
+        storage: 50GB
+            partitions:
+                - name: /
+                  size: 20 GB
+                - name: /var
+                  size: '>= 30GB'
+            type: LVM
+    networks:
+        - name: private ip
+          ip4: 192.168.88.8/24
+          gateway: 192.168.88.1
+          dns: 
+            - 8.8.8.8
+            - 8.8.4.4
+    packages:
+        - OpenSSH-Server
+        - docker-ce
+        - gitlab-runner
+```
+
+## Setup & Konfigurasi software
