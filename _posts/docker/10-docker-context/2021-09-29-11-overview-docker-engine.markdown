@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Overview of Docker Engine"
+title: "Overview of Docker Context"
 date: 2021-10-01T18:34:41+07:00
 lang: docker
 categories:
@@ -17,7 +17,7 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Docker Engine. 
+Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Docker Context dan sebelum kita membahas Docker Context kita review lagi untuk Docker Engine. 
 
 Docker Engine is an open source containerization technology for building and containerizing your applications. Docker Engine acts as a client-server application with:
 
