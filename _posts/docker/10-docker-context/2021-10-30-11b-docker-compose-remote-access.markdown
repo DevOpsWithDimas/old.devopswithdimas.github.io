@@ -56,7 +56,7 @@ jika di jalankan hasilnya seperti berikut:
 
 ```powershell
 ➜ ~  ssh dimasm93@192.168.88.11
-dimasm93@192.168.88.11''s password:
+dimasm93@192.168.88.11 password:
 Activate the web console with: systemctl enable --now cockpit.socket
 
 Last login: Sat Oct 30 13:34:50 2021 from 192.168.88.252
@@ -89,7 +89,7 @@ Server:
 /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/c/Users/dimasm93/.ssh/id_rsa.pub"
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
 /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-dimasm93@192.168.88.11''s password:
+dimasm93@192.168.88.11 password:
 
 Number of key(s) added: 1
 
