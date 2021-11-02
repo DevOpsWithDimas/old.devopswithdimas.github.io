@@ -6,8 +6,9 @@ categories:
 - DevOps
 - Docker
 - Context
+- Dashboard
 refs: 
-- https://docs.docker.com/
+- https://www.jetbrains.com/help/idea/docker.html
 youtube: 
 comments: true
 catalog_key: docker-context

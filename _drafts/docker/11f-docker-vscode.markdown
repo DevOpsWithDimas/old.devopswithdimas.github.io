@@ -6,6 +6,7 @@ categories:
 - DevOps
 - Docker
 - Context
+- Dashboard
 refs: 
 - https://docs.docker.com/
 youtube: 
