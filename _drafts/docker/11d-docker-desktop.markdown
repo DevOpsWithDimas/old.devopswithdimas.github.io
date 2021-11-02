@@ -23,8 +23,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang dashboard menggunaka
 1. Docker desktop overview
 2. Explore running containers and applications
 3. Interact with containers and applications
-4. Pull & Push the latest image from/to Docker Hub
-5. Manage volumes
+4. Explore docker images
+5. Explore volumes
 
 Ok langsung aja kita ke pembahasan pertama yaitu
 
@@ -86,3 +86,35 @@ Now that you can see the list of running containers and applications on the Dash
 2. Click `CLI` to open a terminal and run commands on the container. If you have installed iTerm2 on your Mac, the CLI option opens an iTerm2 terminal. Otherwise, it opens the Terminal app on Mac, or a Command Prompt on Windows.
 3. Click `Stop`, `Start`, `Restart`, or `Delete` to perform lifecycle operations on the container.
 4. Use the Search option to search for a specific object. You can also sort your containers and applications using various options. Click the `Sort by` drop-down to see a list of available options.
+
+## Interact with containers and applications
+
+From the Docker Dashboard, select the example application we started earlier.
+
+The `Containers/Apps` view lists all the containers running on the application and contains a detailed logs view. It also allows you to `start`, `stop`, or `delete` the application. Use the `Search` option at the bottom of the logs view to search application logs for specific events, or select the Copy icon to copy the logs to your clipboard.
+
+Click on a specific container for detailed information about the container. The container view displays Logs, Inspect, and Stats tabs and provides quick action buttons to perform various actions.
+
+1. Select Logs to see logs from the container. You can also search the logs for specific events and copy the logs to your clipboard.
+2. Select Inspect to view low-level information about the container. You can see the local path, version number of the image, SHA-256, port mapping, and other details.
+3. Select Stats to view information about the container resource utilization. You can see the amount of CPU, disk I/O, memory, and network I/O used by the container.
+
+## Explore docker images
+
+The Images view is a simple interface that lets you manage Docker images without having to use the CLI. By default, it displays a list of all Docker images on your local disk. To view images in remote repositories, click Sign in and connect to Docker Hub. This allows you to collaborate with your team and manage your images directly through Docker Desktop.
+
+The Images view allows you to perform core operations such as running an image as a container, pulling the latest version of an image from Docker Hub, pushing the image to Docker Hub, and inspecting images.
+
+![local-image-docker-desktop]({{ page.image_path | prepend: site.baseurl }}/02-local-image-docker-desktop.png)
+
+**Interact with remote repositories**
+
+The Images view also allows you to manage and interact with images in remote repositories and lets you switch between organizations. Select an organization from the drop-down to view a list of repositories in your organization.
+
+![remote-image-docker-desktop]({{ page.image_path | prepend: site.baseurl }}/02-remote-image-docker-desktop.png)
+
+## Explore volumes
+
+You can use volumes to store files and share them among containers. Volumes are created and are directly managed by Docker. They are also the preferred mechanism to persist data in Docker containers and services.
+
+![volumes-docker-desktop]({{ page.image_path | prepend: site.baseurl }}/03-volume-docker-desktop.png)
