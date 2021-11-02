@@ -27,6 +27,7 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Docker in Docker ata
 2. Run Docker in Docker container
 3. Docker in Docker use cases?
 4. The good, the bad, the ugly, and then gets better using Docker in Docker
+5. Key Considerations
 
 Ok langsung aja kita bahas materi yang pertama yaitu 
 
@@ -128,3 +129,13 @@ Nah buat temen-temen yang masih binggung sebetulnya, buat apa sih Docker in Dock
 2. Docker daemon clusters espesialy using for docker swarm (alternative for docker-machine).
 3. Sandboxed environments.
 4. For experimental purposes on your local development workstation (docker development it's self).
+
+# The good, the bad using Docker in Docker
+
+
+# Key Considerations
+
+1. Use Docker in Docker only if it is a requirement. Do the POCs and enough testing before migrating any workflow to the Docker-in-Docker method.
+2. While using containers in privileged mode, make sure you get the necessary approvals from enterprise security teams on what you are planning to do.
+3. Running docker in docker using `docker.sock` and `dind` method is less secure as it has complete privileges over the docker daemon.
+4. The performance of the container doesn’t have any effect because of the methods you use. However, the underlying hardware decides on the performance.
