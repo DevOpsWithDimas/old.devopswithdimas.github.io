@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: docker-context
-image_path: /resources/posts/docker/11c-docker-desktop
+image_path: /resources/posts/docker/11d-docker-desktop
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
@@ -47,3 +47,35 @@ Some of the key features of Docker Desktop include:
 9. In-container development and debugging with supported IDEs
 
 ## Explore running containers and applications
+
+From the Docker menu, select **Dashboard**. This lists all your running containers and applications. You must have running or stopped containers and applications to see them listed on the Docker Dashboard.
+
+Same as using `docker` command line 
+
+{% highlight bash %}
+docker container ls -a
+{% endhighlight %}
+
+**Starting container from docker command**
+
+Seperti yang kita telah pelajari, untuk menjalankan container kita bisa menggunakan terminal/commandpromt dengan menggunakan perintah seperti berikut
+
+{% highlight bash %}
+docker run -d -e POSTGRES_PASSW0RD=testPasswordRoot postgres:12.6
+{% endhighlight %}
+
+the result look's like this:
+
+![basic-docker-desktop]({{ page.image_path | prepend: site.baseurl }}/01-basic-dashboard.png)
+
+**Starting container from docker-compose**
+
+Sama halnya dengan perintah `docker-compose ps` docker-desktop juga bisa menampilkan detail list containernya, Sekarang coba jalankan compose file seperti berikut
+
+{% highlight bash %}
+docker-compose --project-directory .\08-docker-compose\10-scale\ up -d --scale backend=3
+{% endhighlight %}
+
+the result look's like this:
+
+![compose-docker-desktop]({{ page.image_path | prepend: site.baseurl }}/01-compose-dashboard.png)
