@@ -25,8 +25,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Docker in Docker ata
 
 1. What is Docker in Docker (DinD)?
 2. Docker in Docker use cases?
-3. how to use basic Docker in Docker
-4. Kelebihan & Kekurangan
+3. Run Docker in Docker container
+3. The good, the bad, the ugly, and then gets better using Docker in Docker
 
 Ok langsung aja kita bahas materi yang pertama yaitu 
 
@@ -113,4 +113,84 @@ dind_docker_1 exited with code 0
 ```
 
 ## Docker in Docker use cases?
+
+Nah buat temen-temen yang masih binggung sebetulnya, buat apa sih Docker in Docker (DinD). Berikut adalah beberapa contoh kasus penggunaannya:
+
+1. One potential use case for docker in docker is for the CI pipeline, where you need to build and push docker images to a container registry after a successful code build.
+2. Docker daemon clusters espesialy using for docker swarm (alternative for docker-machine).
+3. Sandboxed environments.
+4. For experimental purposes on your local development workstation (docker development it's self).
+
+## Run Docker in Docker container methods
+
+Ada 3 cara untuk menggunakan Docker in Docker (DinD), yaitu
+
+1. Run docker by mounting `docker.sock` (DooD Method)
+2. Docker in Docker (DinD) method
+3. Using Nestybox sysbox
+
+**Run docker by mounting `docker.sock`**
+
+`/var/run/docker.sock` is the default Unix socket. Sockets are meant for communication between processes on the same host. Docker daemon by default listens to `docker.sock`. If you are on the same host where Docker daemon is running, you can use the `/var/run/docker.sock` to manage containers. Seperti berikut contohnya:
+
+```powershell
+[dimasm93@dev01 ~]$ docker context inspect --format '{% raw %}{{ .Name }} => {{ .Endpoints.docker.Host }}{% endraw %}'
+default => unix:///var/run/docker.sock
+
+# For example, if you run the following command, it would return the version of docker engine.
+[dimasm93@dev01 ~]$ curl --unix-socket /var/run/docker.sock http://localhost/version | python3 -m json.tool
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   884  100   884    0     0  38434      0 --:--:-- --:--:-- --:--:-- 38434
+{
+    "Platform": {
+        "Name": "Docker Engine - Community"
+    },
+    "Components": [
+        {
+            "Name": "Engine",
+            "Version": "19.03.14",
+            "Details": {
+                "ApiVersion": "1.40",
+                "Arch": "amd64",
+                "BuildTime": "2020-12-01T19:19:17.000000000+00:00",
+                "Experimental": "false",
+                "KernelVersion": "4.18.0-305.19.1.el8_4.x86_64",
+                "MinAPIVersion": "1.12",
+                "Os": "linux"
+            }
+        },
+        {
+            "Name": "containerd",
+            "Version": "1.2.13",
+            "Details": {
+                "GitCommit": "7ad184331fa3e55e52b890ea95e65ba581ae3429"
+            }
+        },
+        {
+            "Name": "runc",
+            "Version": "1.0.0-rc10",
+            "Details": {
+                "GitCommit": "dc9208a3303feef5b3839f4323d9beb36df0a9dd"
+            }
+        },
+        {
+            "Name": "docker-init",
+            "Version": "0.18.0",
+            "Details": {
+                "GitCommit": "fec3683"
+            }
+        }
+    ],
+    "Version": "19.03.14",
+    "ApiVersion": "1.40",
+    "Os": "linux",
+    "Arch": "amd64",
+    "KernelVersion": "4.18.0-305.19.1.el8_4.x86_64"
+}
+```
+
+Atau berikut adalah `docker-compose.yaml` untuk method `docker.sock`
+
+{% gist page.gist "11c-dood-without-tls.docker-compose.yaml" %}
 
