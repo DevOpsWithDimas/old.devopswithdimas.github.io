@@ -79,3 +79,10 @@ docker-compose --project-directory .\08-docker-compose\10-scale\ up -d --scale b
 the result look's like this:
 
 ![compose-docker-desktop]({{ page.image_path | prepend: site.baseurl }}/01-compose-dashboard.png)
+
+Now that you can see the list of running containers and applications on the Dashboard, let us explore some of the actions you can perform:
+
+1. Click `Port` to open the port exposed by the container in a browser.
+2. Click `CLI` to open a terminal and run commands on the container. If you have installed iTerm2 on your Mac, the CLI option opens an iTerm2 terminal. Otherwise, it opens the Terminal app on Mac, or a Command Prompt on Windows.
+3. Click `Stop`, `Start`, `Restart`, or `Delete` to perform lifecycle operations on the container.
+4. Use the Search option to search for a specific object. You can also sort your containers and applications using various options. Click the `Sort by` drop-down to see a list of available options.
