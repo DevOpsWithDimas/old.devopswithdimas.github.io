@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Docker Inside Docker (DinD)"
+date: 2021-11-02T07:59:31+07:00
 lang: docker
 categories:
 - DevOps
