@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Dashboard using Docker Desktop"
+date: 2021-11-02T20:18:48+07:00
 lang: docker
 categories:
 - DevOps
