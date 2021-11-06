@@ -9,7 +9,7 @@ categories:
 - Context
 refs: 
 - https://docs.docker.com/engine/context/working-with-contexts/
-youtube: 
+youtube: _UlYnSlbeUg
 comments: true
 catalog_key: docker-context
 image_path: /resources/posts/docker/04g-docker-context
