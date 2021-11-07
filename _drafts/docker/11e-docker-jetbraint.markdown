@@ -8,7 +8,9 @@ categories:
 - Context
 - Dashboard
 refs: 
+- https://www.docker.com/what-docker
 - https://www.jetbrains.com/help/idea/docker.html
+- https://plugins.jetbrains.com/plugin/7724-docker?_ga=2.163087548.1667072148.1636275769-1635107743.1636275769
 youtube: 
 comments: true
 catalog_key: docker-context
@@ -22,18 +24,9 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Manage service dan a
 
 1. Introduction
 2. Enable Docker support to IntelliJ IDEA
-3. Managing images
-    - Configure docker registires
-    - Pull image from docker registry
-    - Push image to docker registry
+3. Managing docker images
 4. Running containers
-    - Run from docker image
-    - Run from Dockerfile
-    - Run via Docker compose
 5. Interation to container
-    - view logs
-    - view stats
-    - execute command
 6. Scale a service
 
 Ok langsung aja kita ke pembahasan yang pertama
@@ -55,3 +48,27 @@ Setelah ter-install, kita akan configure supaya docker dan IntelliJ IDEA terinte
 Jika di IDEA temen-temen belum ada konfigurasi tersebut, bisa klik `+` untuk menambahkan Docker server baru, Kemudian konfigurasi sesuai dengen kebutuhan contohnya connection lewat ssh, atau lewat tcp dan lain-lain. Jika sudah OK nanti di bawah akan ada connection statusnya seperti gambar tersebut `Connection successful` dan yang terkahir kita bisa `Apply` konfigurasinya. Maka jika buka tab `Services` hasilnya seperti berikut:
 
 ![jetbraint-services]({{ page.image_path | prepend: site.baseurl }}/03-jetbraint-services-docker.png)
+
+## Managing images
+
+Images are distributed via the Docker registry. [Docker Hub](https://hub.docker.com/) is the default public registry with all of the most common images: various Linux flavors, database management systems, web servers, runtime environments, and so on. There are other public and private Docker registries, and you can also deploy your own registry server.
+
+1. Configure a docker registry
+    ![config-docker-registry]({{ page.image_path | prepend: site.baseurl }}/04-manage-image-config-registry.png)
+2. Pull an image from docker registry
+    ![manage-image-pull]({{ page.image_path | prepend: site.baseurl }}/05-manage-image-pull.png)
+3. Build an image from a Dockerfile
+4. Push an image to a Docker registry
+    ![manage-image-push]({{ page.image_path | prepend: site.baseurl }}/06-manage-image-push.png)
+
+## Running containers
+
+Docker containers are runtime instances of the corresponding images. IntelliJ IDEA uses run configurations to execute the commands that build Docker images and run containers. There are three types of Docker run configurations:
+
+1. Docker Image: Created automatically when you run a container from an existing image. You can run it from a locally existing Docker image that you either pulled or built previously.
+    ![run-from-image]({{ page.image_path | prepend: site.baseurl }}/07-run-container-from-image.png)
+
+2. Dockerfile: Created automatically when you run a container from a Dockerfile. This configuration builds an image from the Dockerfile, and then derives a container from this image.
+
+3. Docker-compose: Created automatically when you run a multi-container Docker application from a Docker Compose file.
+    ![run-from-compose-files]({{ page.image_path | prepend: site.baseurl }}/08-run-container-from-compose.png)
