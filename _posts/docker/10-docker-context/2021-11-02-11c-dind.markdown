@@ -13,7 +13,7 @@ refs:
 - https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
 - https://devopscube.com/run-docker-in-docker/
 - https://docs.gitlab.com/ce/ci/docker/using_docker_build.html
-youtube: 
+youtube: j0Zm85kzY64
 comments: true
 catalog_key: docker-context
 image_path: /resources/posts/docker/11c-dind

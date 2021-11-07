@@ -9,7 +9,7 @@ categories:
 - Context
 refs: 
 - https://www.docker.com/blog/how-to-deploy-on-remote-docker-hosts-with-docker-compose/
-youtube: 
+youtube: qoiIbmd48GQ
 comments: true
 catalog_key: docker-context
 image_path: /resources/posts/docker/11b-docker-compose-remote-access
