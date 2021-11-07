@@ -27,7 +27,6 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Manage service dan a
 3. Managing docker images
 4. Running containers
 5. Interation to container
-6. Scale a service
 
 Ok langsung aja kita ke pembahasan yang pertama
 
@@ -72,3 +71,26 @@ Docker containers are runtime instances of the corresponding images. IntelliJ ID
 
 3. Docker-compose: Created automatically when you run a multi-container Docker application from a Docker Compose file.
     ![run-from-compose-files]({{ page.image_path | prepend: site.baseurl }}/08-run-container-from-compose.png)
+
+## Interation to container
+
+Created containers are listed in the Services tool window. By default, the Services tool window displays all containers, including those that are not running. To hide stopped containers from the list, click The Filter button in the toolbar, select Docker, and then click Stopped Containers to remove the checkbox.
+
+When you select a container, you can view the following tabs by default:
+
+1. **Build Log**, Shows the deployment log produced by the corresponding Docker run configuration while building the image for the container.
+    ![interaction-build-logs]({{ page.image_path | prepend: site.baseurl }}/09a-container-interaction-build-log.png)
+2. **Log**, Shows the log messages from the container's standard output streams: `STDOUT` and `STDERR`.
+    ![interaction-logs]({{ page.image_path | prepend: site.baseurl }}/09b-container-interaction-log.png)
+3. **Properties**, Shows the name and ID of the container, and the ID of the corresponding image.
+    ![interaction-properties]({{ page.image_path | prepend: site.baseurl }}/09c-container-interaction-properties.png)
+4. **Environment Variables**, Shows the environment variables configured for the container.
+    ![interaction-env-vars]({{ page.image_path | prepend: site.baseurl }}/09d-container-interaction-env-variables.png)
+5. **Port Bindings**, Show the port bindings configured for this container.
+    ![interaction-port-binding]({{ page.image_path | prepend: site.baseurl }}/09e-container-interaction-port-binding.png)
+6. **Volume Bindings**, Show the volume bindings configured for this container.
+    ![interaction-volume-binding]({{ page.image_path | prepend: site.baseurl }}/09f-container-interaction-volume-binding.png)
+7. **Files**, Browse the files inside a running container.
+    ![interaction-files]({{ page.image_path | prepend: site.baseurl }}/09g-container-interaction-files.png)
+8. **Execute a command inside a running container**
+    ![interaction-exec]({{ page.image_path | prepend: site.baseurl }}/10-container-interaction-exec.png)
