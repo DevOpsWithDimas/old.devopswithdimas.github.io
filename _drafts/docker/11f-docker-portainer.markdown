@@ -92,4 +92,34 @@ Sekarang kita buka menggunakan browser untuk inital setup dengan meng-akses hala
 
 Setelah itu kita bisa klik button `create`, untuk membuat user dan masuk ke halaman home seperti berikut:
 
-![home]({{ page.image_path | prepend: site.baseurl }}/01-initial-setup.png)
+![home]({{ page.image_path | prepend: site.baseurl }}/01a-home.png)
+
+The Home page is the first page you will see after logging into Portainer. This page provides an overview of your environments along with vital statistics about each. To manage an environment, click to select it
+
+## Deploy a container
+
+Put simply, a container is a runnable instance of an image. Containers do not hold any persistent data and therefore can be destroyed and recreated as needed.
+
+To deploy new container, Select Containers from the menu then click Add container.
+
+Sebagai contoh disini kita akan jalankan image `nginx:mainline` dan portbinding random, jadi configurasinya seperti berikut:
+
+![deploy-new-container]({{ page.image_path | prepend: site.baseurl }}/02-deploy-simple-container.png)
+
+Kemudian klik `Deploy the container`, jika sudah maka hasilnya seperti berikut:
+
+![deploy-new-container]({{ page.image_path | prepend: site.baseurl }}/02a-list-containers.png)
+
+Sekarang kita bisa check hasilnya dengan klik `Published ports` seperti berikut hasilnya:
+
+![deploy-new-container]({{ page.image_path | prepend: site.baseurl }}/02b-simple-container-app.png)
+
+Dari menu tersebut juga kita bisa melakukan management terhadap containernya seperti
+
+1. View logs
+2. View Inspect
+3. View Stats
+4. Exec into container
+5. Start/Stop container
+6. Kill container
+7. Restart container
