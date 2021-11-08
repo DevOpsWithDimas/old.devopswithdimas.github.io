@@ -18,7 +18,6 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-
 Hai semuanya, di materi kali ini kita akan membahas tentang dashboard di lingkungan server yang paling sering digunakan adalah linux dan paling juga sifatnya web based. Ada banyak sekali dashboard untuk docker yaitu
 
 1. [portainer.io](https://www.portainer.io/)
@@ -32,10 +31,9 @@ Nah sekarang kita bahas menggunakan yang paling populer ya yaitu [portainer.io](
 2. Install Portainer with Docker on Linux
 3. Deploy a container
 4. Deploy a stack
-5. Managing docker image
-6. Managing docker network
-7. Managing docker volumes
-8. Dashboard
+5. Managing images
+6. Managing networks
+7. Managing volumes
 
 Ok langsung aja kita ke pembahas yang pertama
 
@@ -155,3 +153,30 @@ Jika kita Klik detail `wordpress_app` kita akan melihat list containers yang jal
 Sekarang jika kita click `Publish ports` pada container `worpress_app_wordpress_1` maka hasilnya seperti berikut:
 
 ![wordpress]({{ page.image_path | prepend: site.baseurl }}/03c-wordpress-app.png)
+
+## Managing images
+
+Images are what is used to build containers. Each image defines the pieces required to build and configure a container and can be reused many times. The Images section in Portainer lets you interact with the images in an environment.
+
+1. **Pull an image**, You can pull images from Docker Hub or any other registry
+    1. Default registry: Docker Hub
+    2. Add new insecure-registry
+2. **Build a new image**
+3. Import an image
+4. Export an image
+
+## Managing networks
+
+Portainer lets you add, remove and manage networks in your environment.
+
+1. Add a new network
+2. Remove a network
+
+## Managing volumes
+
+A volume is a data storage area that can be mounted into a container to provide persistent storage. Unlike bind mounts, volumes are independent of the underlying OS and are fully managed by the Docker Engine.
+
+1. Add a new volume
+2. Remove a volume
+
+
