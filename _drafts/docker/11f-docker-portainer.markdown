@@ -21,8 +21,8 @@ downloads: []
 
 Hai semuanya, di materi kali ini kita akan membahas tentang dashboard di lingkungan server yang paling sering digunakan adalah linux dan paling juga sifatnya web based. Ada banyak sekali dashboard untuk docker yaitu
 
-1. [DataDog](https://www.datadoghq.com/dashboards/docker-dashboard/)
-2. [portainer.io](https://www.portainer.io/)
+1. [portainer.io](https://www.portainer.io/)
+2. [DataDog](https://www.datadoghq.com/dashboards/docker-dashboard/)
 3. [Big Boat (deprecated)](https://github.com/ICTU/docker-dashboard#big-boat)
 4. dan masih banyak lagi. 
 
@@ -31,12 +31,11 @@ Nah sekarang kita bahas menggunakan yang paling populer ya yaitu [portainer.io](
 1. Introduction
 2. Install Portainer with Docker on Linux
 3. Deploy a container
-4. Container interaction
-5. Deploy a stack
-6. Managing docker image
-7. Managing docker network
-8. Managing docker volumes
-9. Dashboard
+4. Deploy a stack
+5. Managing docker image
+6. Managing docker network
+7. Managing docker volumes
+8. Dashboard
 
 Ok langsung aja kita ke pembahas yang pertama
 
@@ -123,3 +122,36 @@ Dari menu tersebut juga kita bisa melakukan management terhadap containernya sep
 5. Start/Stop container
 6. Kill container
 7. Restart container
+
+## Deploy a stack
+
+A stack is a collection of services (`docker-compose`), usually related to one application or usage. For example, a WordPress stack definition may include a web server container (such as nginx) and a database container (such as MySQL).
+
+Ada beberapa cara untuk deploy stack
+
+1. **Web editor**, Use our web editor to define the services for the stack using a docker-compose format.
+2. **Upload file**, If you have a `docker-compose.yml` file, you can upload it from your computer and use it to deploy the stack.
+3. **Git Repository**, You can use a docker-compose format file hosted in a Git repository.
+4. Custome template
+
+Tools yang paling sering saya gunakan adalah **Upload file** dan **Git Repository**. Jadi source-code dari compose filenya saya bisa versioning atau reused.
+
+Contohnya kita bisa gunakan `docker-compose.yaml` seperti berikut misalnya:
+
+{% gist page.gist "11f-stack.docker-compose.yaml" %}
+
+Jadi kita masukan ke web-editor atau upload filenya seperti berikut:
+
+![deploy-new-stack]({{ page.image_path | prepend: site.baseurl }}/03-deploy-stack.png)
+
+Jika sudah terdeploy maka hasilnya seperti berikut:
+
+![list-new-stack]({{ page.image_path | prepend: site.baseurl }}/03a-list-stack.png)
+
+Jika kita Klik detail `wordpress_app` kita akan melihat list containers yang jalan seperti berikut:
+
+![detail-new-stack]({{ page.image_path | prepend: site.baseurl }}/03b-detail-stack.png)
+
+Sekarang jika kita click `Publish ports` pada container `worpress_app_wordpress_1` maka hasilnya seperti berikut:
+
+![wordpress]({{ page.image_path | prepend: site.baseurl }}/03c-wordpress-app.png)
