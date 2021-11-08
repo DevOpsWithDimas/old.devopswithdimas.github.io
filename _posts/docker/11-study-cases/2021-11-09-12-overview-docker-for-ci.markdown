@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Overview of Study Cases using docker for CI"
+date: 2021-11-09T06:35:27+07:00
 lang: docker
 categories:
 - DevOps
