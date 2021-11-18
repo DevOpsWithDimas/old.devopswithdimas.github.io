@@ -62,11 +62,11 @@ Untuk minimum specification:
 ```yaml
 vcs_repository:
     os: Linux Distro
-        distro: CentOS
-        vesion: '>= 7.9'
+        distro: Ubuntu Server
+        vesion: '>= 20.04'
     hardware:
         cpu: 2 CPU
-        memory: 6GB
+        memory: 8GB
         storage: 250GB
             partitions:
                 - name: /
