@@ -1,0 +1,9 @@
+---
+- hosts: ["repository"]
+  become: true
+  roles:
+    - role: dimmaryanto93.gitlab
+      vars: 
+        gitlab_root_password_print: true
+        gitlab_external_url: "{{ hostvars[groups['repository'] | first ]['ansible_default_ipv4']['address'] }}"
+
