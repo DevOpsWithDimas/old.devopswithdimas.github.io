@@ -11,7 +11,7 @@ categories:
 refs: 
 - https://docs.docker.com/desktop/
 - https://docs.docker.com/desktop/dashboard/
-youtube: 
+youtube: 00VvFAQAGZ4
 comments: true
 catalog_key: docker-context
 image_path: /resources/posts/docker/11d-docker-desktop

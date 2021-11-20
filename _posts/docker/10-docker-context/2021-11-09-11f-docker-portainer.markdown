@@ -11,7 +11,7 @@ categories:
 refs: 
 - https://www.portainer.io/
 - https://docs.portainer.io/v/ce-2.9/
-youtube: 
+youtube: KwSQUChhoiM
 comments: true
 catalog_key: docker-context
 image_path: /resources/posts/docker/11f-docker-portainer

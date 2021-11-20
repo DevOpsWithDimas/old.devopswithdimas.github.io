@@ -12,7 +12,7 @@ refs:
 - https://www.docker.com/what-docker
 - https://www.jetbrains.com/help/idea/docker.html
 - https://plugins.jetbrains.com/plugin/7724-docker?_ga=2.163087548.1667072148.1636275769-1635107743.1636275769
-youtube: 
+youtube: bS_fW8-knvo
 comments: true
 catalog_key: docker-context
 image_path: /resources/posts/docker/11e-docker-jetbraint
