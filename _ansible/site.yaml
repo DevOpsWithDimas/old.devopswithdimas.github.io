@@ -36,7 +36,10 @@
   roles:
     - role: dimmaryanto93.gitlab
       vars: 
+        gitlab_external_url: "http://192.168.88.10"
         gitlab_root_password_print: true
+        gitlab_init_root_password: default_password
+        gitlab_init_shared_runner_registration_token: default_token
 
 - hosts: ["registry"]
   become: true
@@ -55,9 +58,9 @@
   roles:
     - role: dimmaryanto93.gitlab_runner_docker_executor
       vars: 
-        GITLAB_URL: http://192.168.88.10
+        GITLAB_URL: "http://192.168.88.10"
         docker_storage_driver: overlay2
-        gitlab_register_token: "{{ GITLAB_SHARED_RUNNERS_REGISTRATION_TOKEN }}"
+        gitlab_register_token: "default_token"
         docker_insecure_registries_enabled: true
         docker_insecure_registries_conf:
           - url: "192.168.88.9:8087"
