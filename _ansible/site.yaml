@@ -37,7 +37,7 @@
     - role: dimmaryanto93.gitlab
       vars: 
         gitlab_external_url: "http://192.168.88.10"
-        gitlab_root_password_print: true
+        gitlab_root_password_print: false
         gitlab_init_root_password: default_password
         gitlab_init_shared_runner_registration_token: default_token
 
@@ -51,7 +51,7 @@
         oracle_java_version: 8u311
     - role: dimmaryanto93.sonatype_nexus_oss
       vars:
-        nexus_admin_password_print: true
+        nexus_admin_password_print: false
 
 - hosts: ["gitlab_runner"]
   become: true
