@@ -5,5 +5,16 @@
     - role: dimmaryanto93.gitlab
       vars: 
         gitlab_root_password_print: true
-        gitlab_external_url: "{{ hostvars[groups['repository'] | first ]['ansible_default_ipv4']['address'] }}"
+        gitlab_external_url: "http://192.168.88.10"
 
+- hosts: ["registry"]
+  become: true
+  roles:
+    - role: dimmaryanto93.oracle_java
+      vars:
+        ## download jdk from https://www.oracle.com/java/technologies/downloads/#java8-linux 
+        ## TODO move downloaded file to files directory
+        oracle_java_version: 8u311
+    - role: dimmaryanto93.sonatype_nexus_oss
+      vars:
+        nexus_admin_password_print: true
