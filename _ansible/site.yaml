@@ -1,5 +1,5 @@
 ---
-- hosts: ["repository"]
+- hosts: ["gitlab"]
   become: true
   roles:
     - role: dimmaryanto93.gitlab
@@ -18,3 +18,14 @@
     - role: dimmaryanto93.sonatype_nexus_oss
       vars:
         nexus_admin_password_print: true
+
+- hosts: ["gitlab_runner"]
+  become: true
+  roles:
+    - role: dimmaryanto93.gitlab_runner_docker_executor
+      vars: 
+        GITLAB_URL: http://192.168.88.10
+        docker_storage_driver: overlay2
+        docker_insecure_registries: []
+        docker_insecure_user: admin
+        docker_insecure_password: 

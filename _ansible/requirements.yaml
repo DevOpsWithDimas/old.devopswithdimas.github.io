@@ -5,6 +5,5 @@ collections:
 roles:
   - dimmaryanto93.docker
   - dimmaryanto93.gitlab
-  - dimmaryanto93.gitlab_runner
   - dimmaryanto93.gitlab_runner_docker_executor
   - dimmaryanto93.sonatype_nexus_oss
