@@ -52,6 +52,7 @@
     - role: dimmaryanto93.sonatype_nexus_oss
       vars:
         nexus_admin_password_print: false
+    - role: nexus-repository
 
 - hosts: ["gitlab_runner"]
   become: true

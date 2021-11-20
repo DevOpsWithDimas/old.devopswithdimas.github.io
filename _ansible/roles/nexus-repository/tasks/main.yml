@@ -1,0 +1,153 @@
+---
+- name: Docker hosted repository on nexus-oss
+  block:
+  - name: Check if hosted docker registry exist
+    uri:
+      url: http://localhost:8081/service/rest/v1/repositories/docker/hosted/docker-hosted
+      user: "{{ nexus_admin_user }}"
+      password: "{{ nexus_admin_password }}"
+      method: GET
+      force_basic_auth: yes
+      status_code: 404
+    failed_when: false
+    register: check_docker_hosted
+
+  - name: Create a docker hosted repository on nexus
+    uri:
+      url: http://localhost:8081/service/rest/v1/repositories/docker/hosted
+      user: "{{ nexus_admin_user }}"
+      password: "{{ nexus_admin_password }}"
+      method: POST
+      return_content: yes
+      body: 
+        name: docker-hosted
+        online: true
+        storage:
+          blobStoreName: default
+          strictContentTypeValidation: true
+          writePolicy: ALLOW
+        cleanup: 
+          policyNames: []
+        component:
+          proprietaryComponents: true
+        docker:
+          v1Enabled: false
+          forceBasicAuth: true
+          httpPort: "8087"
+      force_basic_auth: yes
+      status_code: "201"
+      body_format: json
+    when: check_docker_hosted.status == 404
+
+- name: Docker proxy repository on nexus-oss
+  block:
+  - name: Check if proxy docker registry exist
+    uri:
+      url: http://localhost:8081/service/rest/v1/repositories/docker/proxy/docker-hub-proxy
+      user: "{{ nexus_admin_user }}"
+      password: "{{ nexus_admin_password }}"
+      method: GET
+      force_basic_auth: yes
+      status_code: 404
+    register: check_docker_proxy
+    failed_when: false
+
+  - name: Create a docker proxy repository on nexus
+    uri:
+      url: http://localhost:8081/service/rest/v1/repositories/docker/proxy
+      user: "{{ nexus_admin_user }}"
+      password: "{{ nexus_admin_password }}"
+      method: POST
+      return_content: yes
+      body: 
+        name: docker-hub-proxy
+        online: true
+        storage:
+          blobStoreName: default
+          strictContentTypeValidation: true
+        cleanup: 
+          policyNames: []
+        component:
+          proprietaryComponents: true
+        proxy:
+          remoteUrl: "https://registry-1.docker.io"
+          contentMaxAge: 1440
+          metadataMaxAge: 1440
+        negativeCache: 
+          enabled: true
+          timeToLive: 1440
+        httpClient: 
+          blocked: false
+          autoBlock: true
+        docker:
+          v1Enabled: false
+          forceBasicAuth: true
+          httpPort: "8088"
+        dockerProxy:
+          indexType: HUB
+          indexUrl: "https://index.docker.io/"
+      force_basic_auth: yes
+      status_code: "201"
+      body_format: json
+    when: check_docker_proxy.status == 404
+
+- name: Docker group repository on nexus-oss
+  block:
+  - name: Check if group docker registry exist
+    uri:
+      url: http://localhost:8081/service/rest/v1/repositories/docker/group/docker-group
+      user: "{{ nexus_admin_user }}"
+      password: "{{ nexus_admin_password }}"
+      method: GET
+      force_basic_auth: yes
+      status_code: 404
+    register: check_docker_group
+    failed_when: false
+
+  - name: Create a docker group repository on nexus
+    uri:
+      url: http://localhost:8081/service/rest/v1/repositories/docker/group
+      user: "{{ nexus_admin_user }}"
+      password: "{{ nexus_admin_password }}"
+      method: POST
+      return_content: yes
+      body: 
+        name: docker-group
+        online: true
+        storage:
+          blobStoreName: default
+          strictContentTypeValidation: true
+        group:
+          memberNames: ["docker-hub-proxy", "docker-hosted"]
+        docker:
+          v1Enabled: false
+          forceBasicAuth: true
+          httpPort: "8086"
+      force_basic_auth: yes
+      status_code: "201"
+      body_format: json
+    when: check_docker_group.status == 404
+
+- name: Iptables config docker registry
+  block:
+    - name: UFW allow port 8086/8087/8088 tcp
+      ufw: 
+        rule: allow
+        port: "{{ item }}"
+        proto: tcp
+      loop:
+        - 8086
+        - 8087
+        - 8088
+      when: ansible_facts['os_family'] == 'Debian'
+    
+    - name: firewall-cmd allow port 8086/8087/8088 tcp
+      firewalld: 
+        port: "{{ item }}/tcp"
+        permanent: yes
+        state: enabled
+      loop:
+        - 8086
+        - 8087
+        - 8088
+      when: ansible_facts['os_family'] == 'RedHat'
