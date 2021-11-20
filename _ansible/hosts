@@ -1,6 +1,6 @@
 repository  ansible_host=192.168.88.10 
 registry    ansible_host=192.168.88.9
-worker01    ansible_host=192.168.88.15   gitlab_register_token=
+worker01    ansible_host=192.168.88.8
 
 [gitlab]
 repository

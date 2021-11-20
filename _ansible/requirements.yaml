@@ -2,7 +2,9 @@
 collections:
   - ansible.posix
   - community.general
+  - community.docker
 roles:
+  - dimmaryanto93.proxy_repo
   - dimmaryanto93.docker
   - dimmaryanto93.gitlab
   - dimmaryanto93.gitlab_runner_docker_executor
