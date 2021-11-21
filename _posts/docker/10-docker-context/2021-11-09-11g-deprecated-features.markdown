@@ -9,7 +9,7 @@ categories:
 - Context
 refs: 
 - https://docs.docker.com/engine/deprecated/
-youtube: 
+youtube: o8AKmI7YD_s
 comments: true
 catalog_key: docker-context
 image_path: /resources/posts/docker/11g-deprecated-features
