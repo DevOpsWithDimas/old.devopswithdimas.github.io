@@ -26,4 +26,4 @@ Hai semuanya, di artikel sebelumnya kita sudah men-setup suatu environment untuk
 4. Using CI/CD Variables
 5. Using services
 6. Extends / Merge job
-7. Use cases to build, and publish docker images
+7. Use cases to test, build, and publish docker images
