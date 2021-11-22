@@ -9,7 +9,8 @@ categories:
 - Study-Cases
 - Gitlab-CI
 refs: 
-- https://docs.gitlab.com/14.4/ee/ci/yaml/gitlab_ci_yaml.html
+- https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html
+- https://docs.gitlab.com/ee/ci/variables/
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
@@ -160,3 +161,81 @@ Jika kita coba push, maka automaticlly job `test-case1` mulai running sedangkan 
 Sedangkan jika kita buat branch baru dengan nama `develop` dan push perubahkan ke branch tersebut maka hasilnya seperti berikut:
 
 ![trigger-semiauto-by-branch]({{ page.image_path | prepend: site.baseurl }}/trigger-semiauto-by-branch.png)
+
+## Using CI/CD Variables
+
+CI/CD variables are a type of environment variable. You can use them to:
+
+1. Control the behavior of jobs and pipelines.
+2. Store values you want to re-use.
+3. Avoid hard-coding values in your `.gitlab-ci.yml` file.
+
+You can use [predefined CI/CD variables](https://docs.gitlab.com/ee/ci/variables/#predefined-cicd-variables) or define custom:
+
+1. Variables in the `.gitlab-ci.yml` file.
+2. **Project CI/CD variables**, You can add CI/CD variables to a project’s settings. Only project members with the Maintainer role can add or update project CI/CD variables. To keep a CI/CD variable secret, put it in the project settings, not in the `.gitlab-ci.yml` file.
+3. **Group CI/CD variables**, To make a CI/CD variable available to all projects in a group, define a group CI/CD variable.
+4. **Instance CI/CD variables**, To make a CI/CD variable available to all projects and groups in a GitLab instance, add an instance CI/CD variable. You must have the Administrator role.
+
+For example, create variable instance for global variable
+
+1. key: `PRIVATE_REGISTRY_PULL`, value: `192.168.88.9:8086`, protect: `un check`
+2. key: `PRIVATE_REGISTRY_PUSH`, value: `192.168.88.9:8087`, protect: `un check`
+
+![admin-variables]({{ page.image_path | prepend: site.baseulr}}/admin-variables.png)
+
+then for secret such as password credential, we can create variable at project level
+
+1. key: `DATABASE_HOST`, value: `192.168.88.15`
+2. key: `DATABASE_PORT`, value: `3306`
+3. key: `DATABASE_USER`, value: `postgres`
+4. key: `DATABASE_PASSWORD`, value: `password`
+
+![project-variables]({{ page.image_path | prepend: site.baseulr}}/project-variables.png)
+
+or you can define in `.gitlab-ci.yaml`.
+
+```
+variables:
+  VARIABLE_NAME: variable_value
+
+job-name:
+  variables: 
+    VARIABLE_NAME_IN_JOB: variable_value
+```
+
+For example using/access CI/CD Variables:
+
+{% highlight yaml %}
+stages:
+  - test
+  - build
+
+variables:
+  RUBY_VERSION: 2.7.4-slim-bullseye
+
+test-case1:
+  stage: test
+  ## using $, not recommand because ambigous
+  image: $PRIVATE_REGISTRY_PULL/ruby:$RUBY_VERSION
+  script:
+    - ruby -v
+    - echo "test some files with one command:"
+  tags:
+    - docker
+
+build-code-job:
+  stage: build
+  ## using ${}
+  image: ${PRIVATE_REGISTRY_PULL}/ruby:${RUBY_VERSION}
+  script:
+    - echo "Check the ruby version, then build some Ruby project files:"
+    - ruby -v
+    - echo "print env host=${DATABASE_HOST}, port=${DATABASE_PORT}, user=${DATABASE_USER} passwd=${DATABASE_PASSWORD}"
+  tags: 
+    - docker
+{% endhighlight %}
+
+Jika kita lihat hasilnya seperti berikut:
+
+![result-variables]({{ page.image_path | prepend: site.baseurl }}/build-variables.png)
