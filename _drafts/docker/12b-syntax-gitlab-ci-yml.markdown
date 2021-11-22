@@ -12,6 +12,7 @@ refs:
 - https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html
 - https://docs.gitlab.com/ee/ci/variables/
 - https://docs.gitlab.com/ee/ci/services/
+- https://stackoverflow.com/a/22876662
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
@@ -285,4 +286,71 @@ Jika di jalankan hasilnya seperti berikut:
 ![using-services]({{ page.image_path | prepend: site.baseurl }}/using-services.png)
 
 ## Use cases to test, build, and publish docker images
+
+Jadi dengan Gitlab CI kita bisa menjalanan script apapun yang kita mau, Dari sekian banyak contoh paling commons penggunaan CI/CD adalah di kasus kali ini adalah kita akan coba Build docker image kemudian push ke registry menggunakan Gitlab CI. Ok jadi pertama kita perlu 
+
+`Dockerfile`, untuk filenya kita bisa pakai file yang sebelumnya yaitu:  
+  
+{% gist "dimMaryanto93/d92bd18da1c73c230d7762361f738524" 07a-dockerfile %}
+
+`index.html`, untuk file ini kita pake yang sudah ada juga yaitu:  
+
+{% gist "dimMaryanto93/d92bd18da1c73c230d7762361f738524" 07l-index.html %}
+
+`.gitlab-ci.yaml`, berikut script untuk build dan push ke registery menggunakan Gitlab CI
+
+Copy your docker config to CI/CD Variable, key: `DOCKER_CONF_JSON`, type: `file` like this
+
+![docker-config-variable]({{ page.image_path | prepend: site.baseurl }}/docker-config-variables.png)
+
+{% highlight yaml %}
+stages:
+  - build
+  - publish
+
+variables:
+  APP_NAME: "${CI_PROJECT_NAME}"
+  IMAGE_NAME: "${PRIVATE_REGISTRY_PUSH}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}:latest"
+
+publish-image:
+  stage: publish
+  image: ${PRIVATE_REGISTRY_PULL}/docker:stable
+  services:
+    - name: ${PRIVATE_REGISTRY_PULL}/docker:18.09-dind
+      # Enabled insecure registry into docker inside docker
+      entrypoint: ["dockerd-entrypoint.sh"]
+      # TODO variable `--insecure-registry` cant be inject as variable
+      command: [
+        "--insecure-registry=192.168.88.9:8087",
+        "--insecure-registry=192.168.88.9:8086"
+      ]
+      alias: dockerd
+  variables:
+      # modified file /etc/hosts inside docker container
+      DOCKER_HOST: tcp://dockerd:2375
+      DOCKER_DRIVER: overlay2
+      DOCKER_TLS_CERTDIR: ""
+  before_script:
+    - mkdir -p .docker/
+    - cat $DOCKER_CONF_JSON > .docker/config.json
+  script:
+    - docker --config .docker build -t ${IMAGE_NAME} -f Dockerfile .
+  after_script:
+    - docker image push ${IMAGE_NAME}
+  tags:
+    - docker
+{% endhighlight %}
+
+Jika kita commit & push, maka hasilnya seperti berikut:
+
+![gitlab-ci-build-docker]({{ page.image_path | prepend: site.baseurl }}/gitlab-ci-build-docker.png)
+
+If you have problem, dockerd not connected because 
+
+```bash
+iptables v1.8.3 (legacy): cant initialize iptables table 'nat': Table does not exist (do you need to insmod?)
+Perhaps iptables or your kernel needs to be upgraded.
+```
+
+here is solusion from [stackoverflow](https://stackoverflow.com/a/22876662)
 
