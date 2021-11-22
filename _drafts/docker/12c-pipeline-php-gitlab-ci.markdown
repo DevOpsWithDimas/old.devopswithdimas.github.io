@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "12b-pipeline-php-gitlab-ci"
+title: "Pipeline: PHP deployment using Gitlab CI"
 lang: docker
 categories:
 - DevOps
