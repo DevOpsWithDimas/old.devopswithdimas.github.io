@@ -9,7 +9,7 @@ categories:
 - Study-Cases
 - Gitlab-CI
 refs: 
-- https://docs.gitlab.com/14.4/ce/ci/yaml/gitlab_ci_yaml.html
+- https://docs.gitlab.com/14.4/ee/ci/yaml/gitlab_ci_yaml.html
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
@@ -61,22 +61,30 @@ stages:
 
 build-code-job:
   stage: build
+  image: ruby
   script:
     - echo "Check the ruby version, then build some Ruby project files:"
     - ruby -v
-    - rake
+  tags: 
+    - docker
 
 test-code-job1:
   stage: test
+  image: ruby:2.7.4-slim-bullseye
   script:
+    - ruby -v
     - echo "If the files are built successfully, test some files with one command:"
-    - rake test1
+  tags:
+    - docker
 
 test-code-job2:
   stage: test
+  image: ruby:2.7.4-slim-bullseye
   script:
+    - ruby -v
     - echo "If the files are built successfully, test other files with a different command:"
-    - rake test2
+  tags:
+    - docker
 {% endhighlight %}
 
 In this example, the `build-code-job` job in the `build` stage runs first. It outputs the Ruby version the job is using, then runs `rake` to build project files. If this job completes successfully, the two `test-code-job` jobs in the `test` stage start in parallel and run tests on the files.
@@ -84,3 +92,71 @@ In this example, the `build-code-job` job in the `build` stage runs first. It ou
 Untuk lebih detailnya tentang `.gitlab-ci.yaml` kita bisa check di dokumentasi official website gitlab, [baca disini](https://docs.gitlab.com/14.4/ee/ci/yaml/index.html)
 
 ## Should i triggered to deploy manually or automatically?
+
+Untuk Gitlab CI, ini mem-provided banyak sekali workflow seperti 
+
+1. **Automatically deploy** when push the code
+2. **Semi Automatic deploy** when using event ex push at specific branch, push with tags, etc...
+3. **Manually deploy**
+
+By default, jika kita jalankan script diatas maka gitlab akan men-trigger gitlab runner ketika ada perubahan source-code atau ada push baru (Automatically deploy).
+
+Saya sendiri biasanya atau lebih sering menggunakan workflow Semi Automatic atau Manualy deployment. Jadi kurang lebih seperti berikut contoh script `.gitlab-ci.yml`
+
+{% highlight yaml %}
+stages:
+  - test
+  - build
+  - deploy
+
+## automaticaly deploy
+test-case1:
+  stage: test
+  image: ruby:2.7.4-slim-bullseye
+  script:
+    - ruby -v
+    - echo "test some files with one command:"
+  tags:
+    - docker
+
+## semi automaticaly deploy when push with tags
+build-code-job:
+  stage: build
+  image: ruby
+  script:
+    - echo "Check the ruby version, then build some Ruby project files:"
+    - ruby -v
+  tags: 
+    - docker
+  only:
+    - /-release/ # trigger when push tag / branch named prefix `-release`
+
+## semi automaticaly deploy when push at specific branch
+deploy-dev:
+  stage: deploy
+  image: ruby
+  script:
+    - echo "deploy script to dev env"
+  tags: 
+    - docker
+  only:
+    - develop # trigger when push at branch named prefix `develop`
+
+## manualy deploy
+deploy-prod:
+  stage: deploy
+  image: ruby
+  when: manual
+  script:
+    - echo "deploy script to prod env"
+  tags: 
+    - docker
+{% endhighlight %}
+
+Jika kita coba push, maka automaticlly job `test-case1` mulai running sedangkan job `deploy-prod` statusnya skip atau pause sampai kita klik button play pada job visualizer seperti berikut:
+
+![trigger-auto-manual]({{ page.image_path | prepend: site.baseurl }}/trigger-auto-manual.png)
+
+Sedangkan jika kita buat branch baru dengan nama `develop` dan push perubahkan ke branch tersebut maka hasilnya seperti berikut:
+
+![trigger-semiauto-by-branch]({{ page.image_path | prepend: site.baseurl }}/trigger-semiauto-by-branch.png)
