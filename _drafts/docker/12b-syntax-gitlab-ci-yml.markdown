@@ -11,6 +11,7 @@ categories:
 refs: 
 - https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html
 - https://docs.gitlab.com/ee/ci/variables/
+- https://docs.gitlab.com/ee/ci/services/
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
@@ -26,8 +27,7 @@ Hai semuanya, di artikel sebelumnya kita sudah men-setup suatu environment untuk
 3. Should i triggered to deploy manually or automatically?
 4. Using CI/CD Variables
 5. Using services
-6. Extends / Merge job
-7. Use cases to test, build, and publish docker images
+6. Use cases to test, build, and publish docker images
 
 Ok lansung aja kita ke pembahasan yang pertama yaitu
 
@@ -239,3 +239,50 @@ build-code-job:
 Jika kita lihat hasilnya seperti berikut:
 
 ![result-variables]({{ page.image_path | prepend: site.baseurl }}/build-variables.png)
+
+## Using services
+
+The `services` keyword defines a Docker image that runs during a job linked to the Docker image that the image keyword defines. This allows you to access the service image during build time.
+
+The service image can run any application, but the most common use case is to run a database container, for example:
+
+1. [MySQL](https://docs.gitlab.com/ee/ci/services/mysql.html)
+2. [PostgreSQL](https://docs.gitlab.com/ee/ci/services/postgres.html)
+3. [Redis](https://docs.gitlab.com/ee/ci/services/redis.html)
+4. Other docker image
+
+It’s easier and faster to use an existing image and run it as an additional container than to install mysql, for example, every time the project is built.
+
+You’re not limited to only database services. You can add as many services you need to `.gitlab-ci.yml` or manually modify `config.toml`. Any image found at [Docker Hub](https://hub.docker.com/) or your private Container Registry can be used as a service.
+
+Common usage, of service to use database on integration testing. Berikut contoh implementasinya
+
+{% highlight yaml %}
+stages:
+  - test
+  - build
+
+test-case1:
+  stage: test
+  image: $PRIVATE_REGISTRY_PULL/maven:3.8.3-jdk-11
+  services:
+    - name: $PRIVATE_REGISTRY_PULL/postgres:12.6
+      alias: postgres_db
+  variables:
+    ## set environment variable for service postgres, requirement postgres to run container
+    POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    DATABASE_HOST: postgres_db
+  script:
+    - mvn -version
+    - echo "print env host=${DATABASE_HOST}, port=${DATABASE_PORT}, user=${DATABASE_USER} passwd=${DATABASE_PASSWORD}"
+    - echo "do test integration script here"
+  tags:
+    - docker
+{% endhighlight %}
+
+Jika di jalankan hasilnya seperti berikut:
+
+![using-services]({{ page.image_path | prepend: site.baseurl }}/using-services.png)
+
+## Use cases to test, build, and publish docker images
+
