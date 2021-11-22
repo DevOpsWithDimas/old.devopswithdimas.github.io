@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The `.gitlab-ci.yml` file"
+date: 2021-11-23T06:32:23+07:00
 lang: docker
 categories:
 - DevOps
