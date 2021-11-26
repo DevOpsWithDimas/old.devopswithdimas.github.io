@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Managing PDBs dan Application Containers"
-lang: dba-oracle18c
+lang: oracle18c
 categories:
 - RDBMS
 - Oracle18c
@@ -10,6 +10,7 @@ refs:
 - https://oracle-base.com/articles/12c/multitenant-startup-and-shutdown-cdb-and-pdb-12cr1
 youtube: 
 comments: true
+catalog_key: design-db
 image_path: /resources/posts/oracle12c/019a-managing-pdbs
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
