@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Pipeline: PHP deployment using Gitlab CI"
+date: 2021-11-27T14:48:50+07:00
 lang: docker
 categories:
 - DevOps
