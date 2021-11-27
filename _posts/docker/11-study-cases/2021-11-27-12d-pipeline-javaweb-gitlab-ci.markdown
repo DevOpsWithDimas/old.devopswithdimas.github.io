@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Pipeline: Java Web deployment using Gitlab CI"
+date: 2021-11-27T19:09:57+07:00
 lang: docker
 categories:
 - DevOps
