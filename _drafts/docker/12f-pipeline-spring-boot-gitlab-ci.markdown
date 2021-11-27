@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "12d-pipeline-spring-boot-gitlab-ci"
+title: "Pipeline: spring-boot deploy with Gitlab CI"
 lang: docker
 categories:
 - DevOps
@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
-image_path: /resources/posts/docker/12d-pipeline-spring-boot-gitlab-ci
+image_path: /resources/posts/docker/12f-pipeline-springboot
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
