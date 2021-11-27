@@ -97,3 +97,18 @@ Nah sekarang kita bisa check pada pipeline, jika sukses maka hasilnya seperti be
 
 ## Add caching from maven registry using Nexus OSS
 
+Selanjutnya kita akan bahas untuk mempercepat proses build di maven, jika temen-temen perhatikan dalam hasil build sebelumnya membutuhkan waktu lebih dari 5 menit dalam mendownload dependency dan plugin dari maven repository. Kita sudah menggunakan local caching gitlab tpi akan lebih cepet lagi menggunakan proxy repository maven dengan bantuan Nexus OSS.
+
+Ok langusung ja, update configurasi variable untuk `M2_PROXY` seperti berikut:
+
+{% gist page.gist "12d-m2-proxy.xml" %}
+
+Sekarang kita coba build ulang, dengan klik button retry kita liat first run seperti berikut:
+
+![cache-first-run]({{ page.image_path | prepend: site.baseurl }}/04-caching-first-run.png)
+
+Sekarang kita coba lagi untuk second run, semoga terlihat perbedaannya seperti berikut hasilnya:
+
+![cache-2nd-run]({{ page.image_path | prepend: site.baseurl }}/05-caching-2nd-run.png)
+
+Nah sekarang terlihat ya perbedaanya dari `1 menit lebih` ke `5 detik` build timenya.
