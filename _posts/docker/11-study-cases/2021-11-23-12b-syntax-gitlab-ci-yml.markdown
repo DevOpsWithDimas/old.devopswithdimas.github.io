@@ -30,6 +30,7 @@ Hai semuanya, di artikel sebelumnya kita sudah men-setup suatu environment untuk
 4. Using CI/CD Variables
 5. Using services
 6. Use cases to test, build, and publish docker images
+7. Cleanup
 
 Ok lansung aja kita ke pembahasan yang pertama yaitu
 
@@ -355,3 +356,15 @@ Perhaps iptables or your kernel needs to be upgraded.
 
 here is solusion from [stackoverflow](https://stackoverflow.com/a/22876662)
 
+## Cleanup your server
+
+Setelah kita menggunakan feature Gitlab CI kita harus cleanup servernya secara berkala. 
+
+Gitlab Runner dengan Docker executor ini biasanya akan menyimpan Docker image hasil build, dan juga Docker volumenya untuk cache maka klo kita tidak cleanup lama-lama storagenya akan penuh. Untuk memanage cleanup secara berkala sebagai contoh kita bisa menggunakan script cront seperti berikut:
+
+{% highlight bash %}
+# login as root, then execute `crontab -e` write command below:
+@weekly docker system prune -fa --volumes
+{% endhighlight %}
+
+Dengan script diatas, kita akan membersihkan image dan juga volume secara berkala/weekly
