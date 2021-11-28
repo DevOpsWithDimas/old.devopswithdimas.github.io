@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "12b-pipeline-laravel-gitlab-ci"
+title: "Pipeline: Laravel deploy with Gitlab CI"
 lang: docker
 categories:
 - DevOps
@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
-image_path: /resources/posts/docker/12b-pipeline-laravel-gitlab-ci
+image_path: /resources/posts/docker/12e-pipeline-laravel
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
