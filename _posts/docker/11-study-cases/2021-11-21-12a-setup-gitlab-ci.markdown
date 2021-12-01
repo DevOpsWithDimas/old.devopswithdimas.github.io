@@ -14,7 +14,7 @@ refs:
 - https://about.gitlab.com/install/?version=ce
 - https://docs.docker.com/ci-cd/best-practices/
 - https://docs.gitlab.com/runner/executors/docker.html
-youtube: 
+youtube: SdzdkL3gXx0
 comments: true
 catalog_key: study-cases-docker-ci
 image_path: /resources/posts/docker/12a-setup-gitlab-ci

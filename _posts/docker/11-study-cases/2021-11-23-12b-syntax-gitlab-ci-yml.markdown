@@ -14,7 +14,7 @@ refs:
 - https://docs.gitlab.com/ee/ci/variables/
 - https://docs.gitlab.com/ee/ci/services/
 - https://stackoverflow.com/a/22876662
-youtube: 
+youtube: 5A3bZqQ75ZM
 comments: true
 catalog_key: study-cases-docker-ci
 image_path: /resources/posts/docker/12b-syntax-gitlab-ci-yaml
