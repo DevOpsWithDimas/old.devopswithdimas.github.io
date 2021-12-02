@@ -18,15 +18,9 @@ gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
 
+Hai semuanya, di materi study kasus kali ini kita akan membahas Gitlab CI untuk spring-boot berdasarkan source-code [berikut]({% post_url docker/09-study-cases/2021-09-14-10c-compose-springboot-study-case %}). Jadi karena pembahasan lumayan panjang kita akan bagi menjadi beberapa bagian yaitu
 
-description...
-
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Run unit test using Gitlab CI
+2. Build jar archived to gitlab
+3. Build docker image using archived artifact
+4. Push the docker image after build
