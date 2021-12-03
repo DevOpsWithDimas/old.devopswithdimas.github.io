@@ -5,6 +5,9 @@ lang: docker
 categories:
 - DevOps
 - Docker
+- ci
+- Study-Cases
+- Gitlab-CI
 refs: 
 - https://docs.docker.com/
 youtube: 

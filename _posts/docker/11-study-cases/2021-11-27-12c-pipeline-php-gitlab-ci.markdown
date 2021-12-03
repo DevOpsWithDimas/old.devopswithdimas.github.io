@@ -6,7 +6,7 @@ lang: docker
 categories:
 - DevOps
 - Docker
-- Context
+- ci
 - Study-Cases
 - Gitlab-CI
 refs: 

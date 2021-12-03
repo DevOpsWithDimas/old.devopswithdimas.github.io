@@ -5,7 +5,7 @@ lang: docker
 categories:
 - DevOps
 - Docker
-- Context
+- ci
 - Study-Cases
 - Gitlab-CI
 refs: 
@@ -119,3 +119,5 @@ DockerizeSpringbootAppsApplicationTests in 3.511 seconds (JVM running for 17.122
 ```
 
 Jika outputnya seperti di atas, artinya kita sudah bisa terkoneksi ke database dengan cara memanggil service MahasiswaController melalui RestAPI dengan endpoint `/api/mahasiswa/{id}` pada method GET.
+
+## Run unit/integration test using Gitlab CI
