@@ -12,6 +12,7 @@ refs:
 - https://docs.docker.com/
 - https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#integration-testing
 - https://docs.gitlab.com/ee/ci/unit_test_reports.html
+- https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
@@ -146,3 +147,23 @@ kita juga bisa lihat detail dari reportnya seperti berikut:
 ![pipeline-report-detail-status]({{ page.image_path | prepend: site.baseurl }}/03-pipeline-job-report-detail.png)
 
 ## Build jar and archived to gitlab
+
+Next step adalah kita akan membuild jar file menggunakan Pipeline Gitlab CI, Java web dengan Springboot framework jaman sekarang di deploy menggunakan format `jar` yang di running sebagai service. Dengan kita membuat pipeline build jar ini akan sangat berguna untuk tahap selanjutnya jika kita mau menggunakan Continues Delivery ataupun deploy secara manual. Ok lansung aja kita buat pipelinenya 
+
+1. update file `.gitlab-ci.yml` menjadi seperti berikut:
+
+    {% gist page.gist "12f-gitlab-ci.build-jar.yml" %}
+
+2. Selanjutnya, kita buat tags dan push source-codenya. Kita coba check pipelinenuya seperti berikut:
+
+![pipeline-build-status]({{ page.image_path | prepend: site.baseurl }}/04-pipeline-status.png)
+
+Jadi di pipeline tersebut, akan menjalankan `test:unit` jika sudah success maka jalankan job `build:jar`, sekarang kita coba check detail job untuk `build:jar` seperti berikut:
+
+![pipeline-build-jar-job-detail-status]({{ page.image_path | prepend: site.baseurl }}/05-pipeline-build-job-detail-status.png)
+
+Jika sudah success, maka kita bisa download artifact nya yang kita build tadi. atau kita bisa juga browse filenya seperti berikut:
+
+![pipeline-artifact-download]({{ page.image_path | prepend: site.baseurl }}/06-job-artifact-downloads.png)
+
+## Build docker image using dependencies
