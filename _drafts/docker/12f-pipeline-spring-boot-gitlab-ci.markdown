@@ -13,6 +13,7 @@ refs:
 - https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#integration-testing
 - https://docs.gitlab.com/ee/ci/unit_test_reports.html
 - https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html
+- https://docs.gitlab.com/ee/ci/yaml/#needs
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
@@ -26,8 +27,7 @@ Hai semuanya, di materi study kasus kali ini kita akan membahas Gitlab CI untuk 
 1. Create unit/integration testing run locally
 2. Run unit/integration test using Gitlab CI
 3. Build jar archived to gitlab
-4. Build docker image using archived artifact
-5. Push the docker image after build
+4. Build & push docker image using archived artifact
 
 Ok langsung bahas yang pertama yaitu
 
@@ -167,3 +167,25 @@ Jika sudah success, maka kita bisa download artifact nya yang kita build tadi. a
 ![pipeline-artifact-download]({{ page.image_path | prepend: site.baseurl }}/06-job-artifact-downloads.png)
 
 ## Build docker image using dependencies
+
+Ok selanjutnya dan terkahir, kita akan build docker image menggunakan Pipeline Gitlab CI. Untuk build docker image kali ini berbeda dengan yang sebelumnya yaitu menggunaman `maven-dockerfile-plugin` sekarang kita akan membuat dengan docker client sebagai executor-nya. Ok langsung ja berikut pipelinenya
+
+1. Kita edit file `.gitlab-ci.yml` untuk job `build:jar` dan buat job baru dengan nama `build:docker` dalam stage `build` seperti berikut:
+
+    {% gist page.gist "12f-gitlab-ci.build-docker.yml" %}
+
+2. Selanjutnya, kita buat tags dan push source-codenya. Kita coba check pipelinenuya seperti berikut:
+
+![pipeline-build-status]({{ page.image_path | prepend: site.baseurl }}/07-pipeline-docker-status.png)
+
+Jadi dengan script pipeline tersebut, workflownya `test` -> `build:jar` -> `build:docker` jika kita lihat dari sisi dependencies seperti berikut:
+
+![pipeline-depends]({{ page.image_path | prepend: site.baseurl }}/08-pipeline-docker-job-depends-status.png)
+
+Sekarang kita coba check job detailnya untuk `build:docker` seperti berikut:
+
+![pipeline-depends]({{ page.image_path | prepend: site.baseurl }}/09-pipeline-docker-job-detail-status.png)
+
+Jika kita perhatikan di job detail tersebut, disitu mendownload dari artifact dari build:jar sebelumnya dan push docker image ke insecure registry seperti berikut:
+
+![pipeline-docker-image-push]({{ page.image_path | prepend: site.baseurl }}/10-docker-image-pushed.png)
