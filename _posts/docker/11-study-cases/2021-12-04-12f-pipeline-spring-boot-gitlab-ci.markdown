@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Pipeline: spring-boot deploy with Gitlab CI"
+date: 2021-12-04T10:34:46+07:00
 lang: docker
 categories:
 - DevOps
@@ -186,6 +187,6 @@ Sekarang kita coba check job detailnya untuk `build:docker` seperti berikut:
 
 ![pipeline-depends]({{ page.image_path | prepend: site.baseurl }}/09-pipeline-docker-job-detail-status.png)
 
-Jika kita perhatikan di job detail tersebut, disitu mendownload dari artifact dari build:jar sebelumnya dan push docker image ke insecure registry seperti berikut:
+Jika kita perhatikan di job detail tersebut, disitu mendownload dari artifact dari `build:jar` sebelumnya dan push docker image ke insecure registry seperti berikut:
 
 ![pipeline-docker-image-push]({{ page.image_path | prepend: site.baseurl }}/10-docker-image-pushed.png)
