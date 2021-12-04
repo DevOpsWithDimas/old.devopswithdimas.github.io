@@ -11,6 +11,7 @@ categories:
 refs: 
 - https://docs.docker.com/
 - https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#integration-testing
+- https://docs.gitlab.com/ee/ci/unit_test_reports.html
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
@@ -121,3 +122,27 @@ DockerizeSpringbootAppsApplicationTests in 3.511 seconds (JVM running for 17.122
 Jika outputnya seperti di atas, artinya kita sudah bisa terkoneksi ke database dengan cara memanggil service MahasiswaController melalui RestAPI dengan endpoint `/api/mahasiswa/{id}` pada method GET.
 
 ## Run unit/integration test using Gitlab CI
+
+Ok setelah kita coba di local, sekarang kita akan buat automation menggunakan Pipeline di gitlab-ci. Kenapa kita buat automationnya?
+
+Jadi unit/integration testing ini berguna jika programer males jalanin testnya jadi kita bisa make sure source-code yang kita buat jauh dari bugs atau klo misalnya ada penambahan feature tidak ngenggol feature yang existing. Ok langsung ja kita buat pipelinenya untuk menjalankan unit/integration testing
+
+1. Pertama kita buat file `.gitlab-ci.yml` seperti berikut:
+
+    {% gist page.gist "12f-gitlab-ci.test.yml" %}
+
+2. Setelah itu, kita coba commit menggunakan perintah `git commit -m 'init project'`
+3. Dan kemudian coba buat repository baru, misalnya buat dengan nama `udemy-springboot`
+4. Dan yang terakhir coba buat tags dan push sourcenya. kemudian coba check status pipelinenya seperti berikut:
+
+![pipeline-status]({{ page.image_path | prepend: site.baseurl }}/01-pipeline-job-detail.png)
+
+Jika kita mau lihat junit report dari gitlab, kita bisa check yang unit test mana saja yang succussed dan failed seperti berikut:
+
+![pipeline-report-status]({{ page.image_path | prepend: site.baseurl }}/02-pipeline-job-report.png)
+
+kita juga bisa lihat detail dari reportnya seperti berikut:
+
+![pipeline-report-detail-status]({{ page.image_path | prepend: site.baseurl }}/03-pipeline-job-report-detail.png)
+
+## Build jar and archived to gitlab

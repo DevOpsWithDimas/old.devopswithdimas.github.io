@@ -67,7 +67,7 @@
       vars: 
         GITLAB_URL: "http://192.168.88.10"
         docker_storage_driver: overlay2
-        gitlab_register_token: "default_token"
+        gitlab_register_token: "xm72k1ZqvZpznMbWZK1Y"
         docker_insecure_registries_enabled: true
         docker_insecure_registries_conf:
           - url: "192.168.88.9:8087"
