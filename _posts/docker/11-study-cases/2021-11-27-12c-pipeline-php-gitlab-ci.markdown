@@ -11,7 +11,7 @@ categories:
 - Gitlab-CI
 refs: 
 - https://docs.docker.com/
-youtube: 
+youtube: vSTRT3BqJ9A
 comments: true
 catalog_key: study-cases-docker-ci
 image_path: /resources/posts/docker/12c-pipeline-php

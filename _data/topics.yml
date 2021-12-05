@@ -362,6 +362,10 @@
   udemy: 
   coming_soon: true
   visible: true
+  catalogs:
+    - name: Pengenalan Kubernetes
+      key: introduction
+      description: ''
 
 - name: Ansible
   url: ansible
