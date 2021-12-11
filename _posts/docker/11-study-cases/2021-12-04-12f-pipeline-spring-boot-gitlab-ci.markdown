@@ -15,7 +15,7 @@ refs:
 - https://docs.gitlab.com/ee/ci/unit_test_reports.html
 - https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html
 - https://docs.gitlab.com/ee/ci/yaml/#needs
-youtube: 
+youtube: dd0LNtpCsS0
 comments: true
 catalog_key: study-cases-docker-ci
 image_path: /resources/posts/docker/12f-pipeline-springboot
