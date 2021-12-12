@@ -35,16 +35,29 @@ Dalam deployment angular application, pada dasarnya kita harus melakukan compila
 2. Build source-code menggunakan `ng build`
 3. Copy hasil build ke web server seperti nginx atau apache httpd
 
-Tahap pertama kita build dulu menggunakan Gitlab CI, OK langsung aja berikut adalah file `.gitlab-ci.yml`:
+Tahap pertama kita build dulu menggunakan Gitlab CI, kemudian simpan dalam archived sebagai Gitlab artifact supaya bisa di gunakan next job seperti berikut
 
-{% gist page.gist "12f-gitlab-ci.build-ng.yml" %}
+1. Buat file `.gitlab-ci.yml` seperti berikut:
 
-Setelah itu, kita coba commit menggunakan perintah 
+    {% gist page.gist "12f-gitlab-ci.build-ng.yml" %}
 
-`git commit -m 'init project'` 
+2. Setelah itu, kita coba commit menggunakan perintah `git commit -m 'init project'` 
 
-Kemudian coba buat repository baru, misalnya buat dengan nama `udemy-angular` dan yang terakhir coba buat tags dan push sourcenya. 
+3. Kemudian coba buat repository baru, misalnya buat dengan nama `udemy-angular` dan yang terakhir coba buat tags dan push sourcenya. 
 
-kemudian coba check status pipelinenya seperti berikut:
+4. kemudian coba check status pipelinenya seperti berikut:
 
-![pipeline-status]({{ page.image_path | prepend: site.baseurl }}/01-build-ng-pipeline.png)
+    ![pipeline-status]({{ page.image_path | prepend: site.baseurl }}/01-build-ng-pipeline.png)
+
+5. Jika job build menggunakan `ng build` selesai, seperti berikut:
+
+    ![pipeline-job-detail]({{ page.image_path | prepend: site.baseurl }}/02-build-ng-pipeline-job-detail.png)
+
+6. Maka kita biasa check archived Gitlab Artifactnya seperti berikut:
+
+    ![pipeline-artifact]({{ page.image_path | prepend: site.baseurl }}/03-build-ng-job-artifacts.png)
+
+Dengan artifact tersebut kita bisa deploy manual atau lakukan next jobnya.
+
+
+## Add cache/proxy npm using Nexus OSS
