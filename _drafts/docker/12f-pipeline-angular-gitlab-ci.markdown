@@ -118,3 +118,31 @@ Jika kita lihat, build pertama hasilnya akan seperti berikut:
 Sekarang coba retry, untuk menjalankan build ke 2, maka hasilnya seperti berikut:
 
 ![first-build]({{ page.image_path | prepend: site.baseurl }}/08-second-build-proxy-registry.png)
+
+## Build docker image using Gitlab CI
+
+Setelah kita compile/build source-code project Angular, kita akan build docker image menggunakan Gitlab CI.
+
+Ok sekarang kita akan buat/modifikasi file `Dockerfile` supaya tidak menganggu tutorial sebelumnya karena kita hanya akan copy dari hasil build pipeline `build:ng` dan serve to nginx web server seperti berikut:
+
+{% gist page.gist "12f-dockerfile-ci" %}
+
+Setelah itu kita juga modifkasi file `.dockerignore` dengan meng-exlude folder `dist` seperti berikut:
+
+{% gist page.gist "12f-dockerignore" %}
+
+Dan yang terakhir, kita update/modifikasi file `.gitlab-ci.yml` seperti berikut:
+
+{% gist page.gist "12f-gitlab-ci.build-docker.yml" %}
+
+Jika sudah sekarang seperti biasa kita commit perubahanya dan push ke repository. Kemudian check pipelinenya maka hasilnya seperti berikut:
+
+![pipeline-status]({{ page.image_path | prepend: site.baseurl }}/09-build-docker-pipeline.png)
+
+Sekarang kita lihat detail jobnya seperti berikut:
+
+![pipeline-job-build-docker]({{ page.image_path | prepend: site.baseurl }}/10-build-docker-pipeline-job-detail.png)
+
+Dan yang terakhir, kita bisa check di private docker registry nexus seperti berikut:
+
+![docker-image-pushed]({{ page.image_path | prepend: site.baseurl }}/11-docker-image-pushed.png)
