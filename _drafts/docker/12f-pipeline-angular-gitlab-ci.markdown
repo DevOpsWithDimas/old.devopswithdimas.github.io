@@ -9,7 +9,11 @@ categories:
 - Study-Cases
 - Gitlab-CI
 refs: 
-- https://docs.docker.com/
+- https://help.sonatype.com/repomanager3/nexus-repository-administration/formats/npm-registry
+- https://docs.npmjs.com/cli/v8/configuring-npm/npmrc
+- https://www.base64encode.org/
+- https://www.base64decode.org/
+- https://help.sonatype.com/repomanager3/nexus-repository-administration/access-control/realms
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
@@ -59,5 +63,58 @@ Tahap pertama kita build dulu menggunakan Gitlab CI, kemudian simpan dalam archi
 
 Dengan artifact tersebut kita bisa deploy manual atau lakukan next jobnya.
 
-
 ## Add cache/proxy npm using Nexus OSS
+
+Selanjutnya kita akan bahas untuk mempercepat proses build time di Angular dengan npm, Proses download dependencies memang tergantung dari kecepatan dan bandwidth koneksi internet kita tetapi akan lebih optimal jika kita menambahkan local caching/proxy registry pada project yang berbasis NPM atau keluargannya.
+
+Untuk project angular sendiri, biasanya isi dari dependenciesnya bisa menghabiskan lebih dari `200MB` sendiri banyangkan saja kita kita melakukan 10x build artinya kita membutuhkan quota hampir `1GB` dengan koneksi yg stable jika ingin hasilnya cepat. Ok sekarang kita akan configure dulu membuat registry npm di Nexus OSS seperti berikut:
+
+1. Login sebagai Admin di Nexus OSS dengan akses alamat `http://192.168.88.9:8081`
+2. click `Server administration & configuration`, kemudian click `Repository` dan click `Repositories`
+3. Kemudian click button `Create Repository`, kemudian pilih `npm (Proxy)` untuk membuat proxy dari npm registry central. Dengan configurasi seperti berikut:
+    1. Define Name e.g `npm-registry-central`
+    2. Define URL for Remote storage e.g. `https://registry.npmjs.org`
+    3. Select Blob store for Storage
+    4. Click `Create Repository`
+
+    ![add-npm-proxy-registry]({{ page.image_path | prepend: site.baseurl }}/04-add-npm-proxy-registry.png)
+
+4. Kemudian kita buat group repositorynya dengan cara, Click `Create Repository` kemudian pilih `npm (Group)` dengan Configurasi seperti berikut:
+    1. Define Name e.g `npm-local-group`
+    2. Select Blob store for Storage
+    3. Add npm repositories to the Members list in the desired order
+    4. Click `Create Repository`
+
+    ![add-npm-proxy-registry]({{ page.image_path | prepend: site.baseurl }}/05-add-npm-group-registry.png)
+
+5. Selanjutnya kita akan apply registry config tersebut ke project kita dengan membuat file `.npmrc` pada root project kita dengan property seperti berikut:
+    1. `registry` adalah url yang kita bisa dapatkan dari repository group kita buat sebelumnya contoh `http://192.168.88.9:8081/repository/npm-local-group/`
+    2. `email` kita bisa isi dengan email temen-temen contoh `software.dimas_m@icloud.com`
+    3. `_auth` kita bisa isi dengan user dan password nexus kita, jika user dan password adalah `admin/admin123` maka kita buat menjadi `admin:default_password` yang di format `base64` hasilnya seperti berikut: `YWRtaW46ZGVmYXVsdF9wYXNzd29yZAo=`
+    4. Berikut adalah contoh selengkapnya:
+
+        {% gist page.gist "12f-npmrc" %}
+
+6. Selanjutnya, file tersebut kita akan simpan dalam CI/CD Variables di Gitlab dalam bentuk file dengan nama `NPM_PROXY` seperti berikut:
+
+    ![add-variable-npm-proxy]({{ page.image_path | prepend: site.baseurl }}/06-add-variables-npm-registry.png)
+
+7. Kemudian kita tambahkan bearer token untuk npm, dengan cara masuk ke menu `Security` kemudian pilih `Realms` dan tambahkan `npm Bearer Token Realm` ke list Active supaya bisa authenticate ke nexus
+
+    ![add-bearer-token-realm]({{ page.image_path | prepend: site.baseurl }}/06-add-bearer-token-realm.png)
+
+8. Kemudian kita modifikasi file `.gitlab-ci.yml` dengan menambahkan `cat $NPM_PROXY > .npmrc` pada section `before_script` seperti berikut:
+
+    {% gist page.gist "12f-gitlab-ci.add-proxy.yml" %}
+
+Jika sudah sekarang seperti biasa kita commit perubahanya dan push ke repository. Kemudian check pipelinenya maka hasilnya seperti berikut:
+
+![pipeline-status]({{ page.image_path | prepend: site.baseurl }}/01-build-ng-pipeline.png)
+
+Jika kita lihat, build pertama hasilnya akan seperti berikut:
+
+![first-build]({{ page.image_path | prepend: site.baseurl }}/07-first-build-proxy-registry.png)
+
+Sekarang coba retry, untuk menjalankan build ke 2, maka hasilnya seperti berikut:
+
+![first-build]({{ page.image_path | prepend: site.baseurl }}/08-second-build-proxy-registry.png)
