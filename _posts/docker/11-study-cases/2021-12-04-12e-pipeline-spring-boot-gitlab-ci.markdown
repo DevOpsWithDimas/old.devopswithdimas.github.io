@@ -18,7 +18,7 @@ refs:
 youtube: dd0LNtpCsS0
 comments: true
 catalog_key: study-cases-docker-ci
-image_path: /resources/posts/docker/12f-pipeline-springboot
+image_path: /resources/posts/docker/12e-pipeline-springboot
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
@@ -40,7 +40,7 @@ Ada banyak hal sebetulnya yang kita bisa bahas disini tetapi, untuk sekarang kit
 
 1. Buat file `MahasiswaControllerRestTest` dalam folder `src/test/java` menggunakan package `com.maryanto.dimas.udemy.controller` seperti berikut:
 
-    {% gist page.gist "12f-MahasiswaControllerRestTest.java" %}
+    {% gist page.gist "12e-MahasiswaControllerRestTest.java" %}
 
 2. Selanjutnya, karena unit/integration testing tersebut membutuhkan Database PostgreSQL, sekarang kita jalankan postgresql servicenya menggunakan docker-compose seperti berikut
 
@@ -131,7 +131,7 @@ Jadi unit/integration testing ini berguna jika programer males jalanin testnya j
 
 1. Pertama kita buat file `.gitlab-ci.yml` seperti berikut:
 
-    {% gist page.gist "12f-gitlab-ci.test.yml" %}
+    {% gist page.gist "12e-gitlab-ci.test.yml" %}
 
 2. Setelah itu, kita coba commit menggunakan perintah `git commit -m 'init project'`
 3. Dan kemudian coba buat repository baru, misalnya buat dengan nama `udemy-springboot`
@@ -153,7 +153,7 @@ Next step adalah kita akan membuild jar file menggunakan Pipeline Gitlab CI, Jav
 
 1. update file `.gitlab-ci.yml` menjadi seperti berikut:
 
-    {% gist page.gist "12f-gitlab-ci.build-jar.yml" %}
+    {% gist page.gist "12e-gitlab-ci.build-jar.yml" %}
 
 2. Selanjutnya, kita buat tags dan push source-codenya. Kita coba check pipelinenuya seperti berikut:
 
@@ -173,7 +173,7 @@ Ok selanjutnya dan terkahir, kita akan build docker image menggunakan Pipeline G
 
 1. Kita edit file `.gitlab-ci.yml` untuk job `build:jar` dan buat job baru dengan nama `build:docker` dalam stage `build` seperti berikut:
 
-    {% gist page.gist "12f-gitlab-ci.build-docker.yml" %}
+    {% gist page.gist "12e-gitlab-ci.build-docker.yml" %}
 
 2. Selanjutnya, kita buat tags dan push source-codenya. Kita coba check pipelinenuya seperti berikut:
 
