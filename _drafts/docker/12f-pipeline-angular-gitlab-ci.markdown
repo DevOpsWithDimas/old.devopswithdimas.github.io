@@ -146,3 +146,21 @@ Sekarang kita lihat detail jobnya seperti berikut:
 Dan yang terakhir, kita bisa check di private docker registry nexus seperti berikut:
 
 ![docker-image-pushed]({{ page.image_path | prepend: site.baseurl }}/11-docker-image-pushed.png)
+
+## Testing run containers
+
+Ok setelah kita berhasil build docker image serta mem-push ke docker insecure registry (Nexus OSS) sekarang kita coba jalankan ya containernya menggunakan compose file
+
+Buat file `docker-compose.yaml` seperti berikut:
+
+{% gist page.gist "12f-docker-compose.yaml" %}
+
+Buat file `.env` seperti berikut:
+
+{% gist page.gist "12f.env" %}
+
+Sekarang kita jalankan dengan perintah seperti berikut:
+
+```bash
+docker-compose --env-file .env up -d
+```
