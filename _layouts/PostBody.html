@@ -434,34 +434,82 @@ layout: default
             <i class="material-icons left">home</i> {{site.title}}
         </a>
     </li>
-    
-    {% assign post_list = site.posts | sort:"date" | where: "lang", page.lang %}    
-    {% if post_list.size >= 1 %}
-        <li>
-            <div class="divider"></div>
-        </li>        
-        <li>
-            <a class="subheader">Daftar Materi</a>
-        </li>
 
-        {% for post in post_list %}
-        <li>
-            {% assign post_title = post.title | truncate: 35 |  prepend: '. ' | prepend: forloop.index %}    
-            {% if post.url == page.url %}      
-            <a class="subheader">
-                <span class="badge" data-badge-caption="">
-                    <i class="material-icons">turned_in</i>
-                </span>                
-                {{ post_title }}
-            </a>            
-            {% else %}
-            <a href="{{post.url | prepend: site.baseurl }}">
-                {{ post_title }}
-            </a>
-            {% endif %}
-        </li>
-        {% endfor %}
-    {% endif %}   
+    {% if topic.catalogs.size >= 1 %}
+    <li>
+        <div class="divider"></div>
+    </li> 
+    <li>
+        <div class="row show-on-medium-and-down">
+            {% assign post_list = site.posts | where: "lang", page.lang | sort:"date"  | reverse %}
+            <ul class="collapsible with-header" data-collapsible="accordion">
+                <li class="collection-header">
+                    <div class="collapsible-header subheader">
+                        Daftar Materi
+                    </div>                    
+                </li>
+
+                {% for catalog in topic.catalogs %}
+                {% assign post_list_by_catalog = post_list | where: 'catalog_key', catalog.key | sort:"date" %}
+                <li>
+                    <div class="collapsible-header">
+                        {% assign catalog_header_title = catalog.name %}
+                        {{ catalog_header_title }}
+                        {% if post_list_by_catalog.size >= 1 %}
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            {{ post_list_by_catalog.size }}
+                        </span>
+                        {% else %}
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        {% endif %}
+                    </div>
+                    <ul class="collapsible-body collection">
+                        {% if post_list_by_catalog.size >= 1 %}
+                            {% for post_by_catalog_diag in post_list_by_catalog  %}
+                                {% assign post_by_catalog_title = post_by_catalog_diag.title | truncate: 40 |  prepend: '. ' | prepend: forloop.index %}                                
+                                    <a class="collection-item" 
+                                        href="{{ post_by_catalog_diag.url | prepend: site.baseurl }}">
+                                            {{ post_by_catalog_title }}
+                                    </a>                                
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </li>
+                {% endfor %}               
+            </ul>
+        </div>
+    </li>
+    {% else %}
+        {% assign post_list = site.posts | sort:"date" | where: "lang", page.lang %}    
+        {% if post_list.size >= 1 %}
+            <li>
+                <div class="divider"></div>
+            </li>        
+            <li>
+                <a class="subheader">Daftar Materi</a>
+            </li>
+
+            {% for post in post_list %}
+            <li>
+                {% assign post_title = post.title | truncate: 35 |  prepend: '. ' | prepend: forloop.index %}    
+                {% if post.url == page.url %}      
+                <a class="subheader">
+                    <span class="badge" data-badge-caption="">
+                        <i class="material-icons">turned_in</i>
+                    </span>                
+                    {{ post_title }}
+                </a>            
+                {% else %}
+                <a href="{{post.url | prepend: site.baseurl }}">
+                    {{ post_title }}
+                </a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        {% endif %}   
+    {% endif %}
+
+    
     
     <li>
         <div class="divider"></div>
