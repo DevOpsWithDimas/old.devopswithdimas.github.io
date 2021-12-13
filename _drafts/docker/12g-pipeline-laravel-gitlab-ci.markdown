@@ -20,17 +20,20 @@ downloads: []
 
 Hai semuanya, di materi study kasus kali ini kita akan membahas Pipeline untuk Laravel application berdasarkan source-code [berikut]({% post_url docker/09-study-cases/2021-09-27-10e-httpd-ssl-docker %}). Seperti biasa karena pembahasan kali akan lumayan panjang kita bagi-bagi menjadi beberapa bagian, Diantaranya
 
-1. Build custome image to test, and build Laravel application
-2. Build source-code to site resources with Gitlab CI
-3. Add local caching/proxy to build with Gitlab CI
-4. Build docker image with Gitlab CI
-5. Test run containers
+1. Introduction to workflow deployment
+2. Build custome image to test, and build Laravel application
+3. Write unit/integration testing locally
+4. Pipeline unit/integration testing with Gitlab CI
+5. Add local caching/proxy to build with Gitlab CI
+6. Build source-code to site resources with Gitlab CI
+7. Build docker image with Gitlab CI
+8. Test run containers
 
 Ok langsung kita ke pembahasan yang pertama yaitu
 
+## Introduction to workflow deployment
+
 ## Build custome image to test, and build Laravel apps
-
-
 
 ## Build source-code to site resources
 
