@@ -24,3 +24,7 @@ Hai semuanya, di materi study kasus kali ini kita akan membahas Pipeline untuk L
 2. Add local caching/proxy to build with Gitlab CI
 3. Build docker image with Gitlab CI
 4. Test run containers
+
+Ok langsung kita ke pembahasan yang pertama yaitu
+
+## Build source-code to site resources

@@ -187,42 +187,55 @@
     - name: Pengenalan Oracle Database
       key: introduction
       description: ''
+      deprecated: false
     - name: SQL - Select Statement
       key: sql-select
       description: ''
+      deprecated: false
     - name: SQL - Select with where clause
       key: sql-where-clause
       description: ''
+      deprecated: false
     - name: SQL - Functions
       key: sql-functions
       description: ''
+      deprecated: false
     - name: SQL - Join Tables
       key: sql-join-tables
       description: ''
+      deprecated: false
     - name: SQL - Sub Queries
       key: sql-subquery
       description: ''
+      deprecated: false
     - name: SQL - Expressions
       key: sql-expression
       description: ''
+      deprecated: false
     - name: SQL - Data Manipulation Language
       key: sql-dml
       description: ''
+      deprecated: false
     - name: SQL - Data Definition Language
       key: sql-ddl
       description: ''
+      deprecated: false
     - name: Indexing
       key: index-table
       description: ''
+      deprecated: false
     - name: DDL - User Management
       key: ddl-user-management
       description: ''
+      deprecated: false
     - name: Monitor database activity
       key: monitor-audit-trail
       description: ''
+      deprecated: false
     - name: Database Design
       key: design-db
       description: ''
+      deprecated: false
 
 - name: PL/SQL - Oracle 18c
   url: plsql-oracle18c
@@ -304,45 +317,63 @@
     - name: Pengenalan Docker
       key: introduction
       description: ''
+      deprecated: false
     - name: Docker Registry
       key: docker-registry
       description: ''
+      deprecated: false
     - name: Docker Container CLI
       key: docker-container
       description: ''
+      deprecated: false
     - name: Docker Networks
       key: docker-network
       description: ''
+      deprecated: false
     - name: Docker Volumes
       key: docker-volume
       description: ''
+      deprecated: false
     - name: Dockerfile
       key: dockerfile
       description: ''
+      deprecated: false
     - name: 'Study Kasus: Build docker image'
       key: study-cases-dockerfile
       description: ''
+      deprecated: false
     - name: Docker Compose
       key: docker-compose
       description: ''
+      deprecated: false
     - name: 'Study Kasus: Docker Compose'
       key: study-cases-compose-files
       description: ''
+      deprecated: false
     - name: Docker Context
       key: docker-context
       desciption: ''
+      deprecated: false
     - name: 'Study Kasus: Docker for CI'
       key: study-cases-docker-ci
       description: ''
+      deprecated: false
     - name: Docker Machine
       key: docker-machine
       desctiption: ''
+      deprecated: true
     - name: 'Study Kasus: Ansible for Docker'
       key: study-cases-ansible
       desctiption: ''
+      deprecated: false
     - name: Docker Swarm
       key: docker-swarm
       desctiption: ''
+      deprecated: false
+    - name: Kubernetes in Docker (KinD)
+      key: k8s-in-docker
+      desctiption: ''
+      deprecated: false
 
 - name: Kubernetes (k8s)
   url: k8s
@@ -366,6 +397,7 @@
     - name: Pengenalan Kubernetes
       key: introduction
       description: ''
+      deprecated: false
 
 - name: Ansible
   url: ansible
@@ -388,30 +420,39 @@
     - name: Pengenalan Ansible
       key: introduction
       description: ''
+      deprecated: false
     - name: Writing task, plays, and playbooks
       key: task
       description: ''
+      deprecated: false
     - name: Working with inventory
       key: inventory
       description: ''
+      deprecated: false
     - name: Interacting with data
       key: data
       description: ''
+      deprecated: false
     - name: Structure control
       key: statement
       description: ''
+      deprecated: false
     - name: Including & Importing
       key: include
       description: ''
+      deprecated: false
     - name: Testing
       key: test
       description: ''
+      deprecated: false
     - name: Ansible Collection
       key: collection
       description: ''
+      deprecated: false
     - name: Ansible Galaxy
       key: galaxy
       description: ''
+      deprecated: false
     
 - name: Spring Framework
   url: spring-core
