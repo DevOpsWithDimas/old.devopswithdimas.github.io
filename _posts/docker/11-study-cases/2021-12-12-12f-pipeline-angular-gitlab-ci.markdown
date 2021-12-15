@@ -15,7 +15,7 @@ refs:
 - https://www.base64encode.org/
 - https://www.base64decode.org/
 - https://help.sonatype.com/repomanager3/nexus-repository-administration/access-control/realms
-youtube: 
+youtube: xQvhDCAgHfU
 comments: true
 catalog_key: study-cases-docker-ci
 image_path: /resources/posts/docker/12f-pipeline-angular
