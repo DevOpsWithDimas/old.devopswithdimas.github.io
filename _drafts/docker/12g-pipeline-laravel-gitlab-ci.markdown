@@ -10,6 +10,7 @@ categories:
 - Gitlab-CI
 refs: 
 - https://docs.gitlab.com/ee/ci/examples/deployment/composer-npm-deploy.html
+- https://laravel.com/docs/8.x/testing
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
@@ -84,6 +85,72 @@ Dan jika sudah selesai, kita bisa lihat job detailnya seperti berikut:
 
 ![build-laravel-mix-job-detail]({{ page.image_path | prepend: site.baseurl }}/05-build-laravel-mix-job-detail.png)
 
-
 ## Write unit/integration testing locally
 
+Laravel is built with testing in mind. In fact, support for testing with PHPUnit is included out of the box and a `phpunit.xml` file is already set up for your application. The framework also ships with convenient helper methods that allow you to expressively test your applications.
+
+By default, your application's `tests` directory contains two directories: `Feature` and `Unit`. `Unit` tests are tests that focus on a very small, isolated portion of your code. In fact, most unit tests probably focus on a single method. Tests within your "Unit" test directory do not boot your Laravel application and therefore are unable to access your application's database or other framework services. `Feature` tests may test a larger portion of your code, including how several objects interact with each other or even a full HTTP request to a JSON endpoint.
+
+In addition, you may create a `.env.testing` file in the root of your project. This file will be used instead of the `.env` file when running PHPUnit tests or executing Artisan commands with the `--env=testing` option.
+
+To create a new test case, use the `make:test` Artisan command. By default, tests will be placed in the `tests/Feature` directory:
+
+{% highlight bash %}
+php artisan make:test MahasiswaTest
+{% endhighlight %}
+
+Seperti berikut filenya:
+
+{% gist page.gist "12g-feature-mahasiswa-test.php" %}
+
+Sekarang kita coba jalankan, tapi sebelum itu kita harus siapkan dulu environment seperti database, config database dan lain-lain. Untuk database kita bisa lansung jalankan menggunakan docker-compose seperti berikut:
+
+{% highlight bash %}
+docker-compose up -d mysql
+{% endhighlight %}
+
+Setelah databasenya jalan kita bisa coba jalankan menggunakan debug mode seperti berikut:
+
+{% highlight bash %}
+php artisan migrate;
+php artisan test;
+{% endhighlight %}
+
+Jika di jalankan hasilnya seperti berikut:
+
+```powershell
+➜ docker git:(compose/laravel) docker-compose up -d mysql
+[+] Running 3/3
+ - Network docker_default      Created                                              0.7s
+ - Volume "docker_mysql_data"  Created                                              0.0s
+ - Container docker_mysql_1    Started                                              1.1s
+
+➜ docker git:(compose/laravel) php artisan migrate
+Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table (29.53ms)
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table (38.95ms)
+Migrating: 2019_08_19_000000_create_failed_jobs_table
+Migrated:  2019_08_19_000000_create_failed_jobs_table (31.68ms)
+Migrating: 2021_08_09_164144_create_mahasiswa_table
+Migrated:  2021_08_09_164144_create_mahasiswa_table (60.49ms)
+
+➜ docker git:(compose/laravel) php artisan test
+Warning: TTY mode is not supported on Windows platform.
+
+   PASS  Tests\Unit\ExampleTest
+  ✓ example
+
+   PASS  Tests\Feature\ExampleTest
+  ✓ example
+
+   PASS  Tests\Feature\MahasiswaTest
+  ✓ list mahasiswa
+  ✓ find by id mahasiswa
+
+  Tests:  5 passed
+  Time:   0.20s
+```
+
+Jadi dengan seperti berikut, kita sudah sukses melakukan integration testing menggunakan Rest API dari Laravel menggunakan Database MySQL.
