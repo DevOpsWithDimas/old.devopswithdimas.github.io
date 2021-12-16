@@ -11,6 +11,7 @@ categories:
 refs: 
 - https://docs.gitlab.com/ee/ci/examples/deployment/composer-npm-deploy.html
 - https://laravel.com/docs/8.x/testing
+- https://docs.gitlab.com/ee/ci/examples/laravel_with_gitlab_and_envoy/
 youtube: 
 comments: true
 catalog_key: study-cases-docker-ci
@@ -154,3 +155,17 @@ Warning: TTY mode is not supported on Windows platform.
 ```
 
 Jadi dengan seperti berikut, kita sudah sukses melakukan integration testing menggunakan Rest API dari Laravel menggunakan Database MySQL.
+
+## Pipeline unit/integration testing
+
+Setelah sebelumnya kita membuat Unit/Integration testing di Laravel Application, selanjutnya kita akan buat Pipelinenya juga. Ok jadi langsung ja berikut adalah file `.gitlab-ci.yml` yang kita perlu update seperti berikut:
+
+{% gist page.gist "12g-gitlab-ci.testing.yml" %}
+
+Jika sudah seperti biasa, kita commit dan push dan yang terkahir kita buat tagnya kemudian kita check pipelinenya:
+
+![test-laravel-pipeline]({{ page.image_path | prepend: site.baseurl }}/06-test-laravel-pipeline.png)
+
+Jika sudah selesai kita bisa check test unitnya seperti berikut:
+
+![test-laravel-tests-status]({{ page.image_path | prepend: site.baseurl }}/07-test-laravel-test-status.png)
