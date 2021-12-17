@@ -392,11 +392,55 @@
   github: 
   youtube: 
   udemy: 
-  coming_soon: false
+  coming_soon: true
   visible: true
   catalogs:
     - name: Pengenalan Kubernetes
       key: introduction
+      description: ''
+      deprecated: false
+    - name: Review docker as runtime kubernetes
+      key: basic-docker
+      description: ''
+      deprecated: false
+    - name: Setup single cluster with Minikube
+      key: minikube
+      description: ''
+      deprecated: false
+    - name: Kubernetes Components
+      key: components
+      description: ''
+      deprecated: false
+    - name: Kubernetes Objects
+      key: objects
+      description: ''
+      deprecated: false
+    - name: Static deploy with Pods
+      key: pods
+      description: ''
+      deprecated: false
+    - name: Deployments files
+      key: deployment
+      description: ''
+      deprecated: false
+    - name: 'Study Kasus: Deployment'
+      key: study-cases-deployment
+      description: ''
+      deprecated: false
+    - name: Networking using Services
+      key: service
+      description: ''
+      deprecated: false
+    - name: 'Study Kasus: Networking'
+      key: study-cases-networking
+      description: ''
+      deprecated: false
+    - name: Volumes
+      key: volumes
+      description: ''
+      deprecated: false
+    - name: 'Study Kasus: Store data using Volumes'
+      key: study-cases-volumes
       description: ''
       deprecated: false
 
