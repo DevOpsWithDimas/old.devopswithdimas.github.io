@@ -165,7 +165,6 @@
   coming_soon: true
   visible: false
 
-
 - name: SQL Fundamental - Oracle 18c
   url: oracle18c
   icon: "devicons devicons-java"
@@ -254,7 +253,7 @@
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvy6l51feh7ABmyyufPLnA6n
   udemy: 
   coming_soon: true
-  visible: true
+  visible: false
 
 - name: Database Administrator - Oracle 18c
   url: dba-oracle18c
@@ -273,7 +272,7 @@
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvw3_SjMKQlKRlGdBiRr_1dh
   udemy: 
   coming_soon: true
-  visible: true
+  visible: false
 
 - name: Object Oriented - Oracle 18c
   url: ordb-oracle18c
@@ -293,7 +292,7 @@
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvzvSZm8AZ_IAec0MJuxP3GR
   udemy: 
   coming_soon: true
-  visible: true
+  visible: false
 
 - name: Docker
   url: docker
@@ -399,10 +398,6 @@
       key: introduction
       description: ''
       deprecated: false
-    - name: Review docker as runtime kubernetes
-      key: basic-docker
-      description: ''
-      deprecated: false
     - name: Setup single cluster with Minikube
       key: minikube
       description: ''
@@ -460,7 +455,7 @@
   youtube: 
   udemy: 
   coming_soon: true
-  visible: true
+  visible: false
   catalogs:
     - name: Pengenalan Ansible
       key: introduction
@@ -517,7 +512,7 @@
   youtube:
   udemy:
   coming_soon: true
-  visible: true
+  visible: false
 
 - name: Openshift
   url: k8s-openshift
@@ -537,7 +532,7 @@
   youtube:
   udemy: 
   coming_soon: true
-  visible: true
+  visible: false
 
 - name: Gitlab CI/CD
   url: gitlab-ci-cd
@@ -558,4 +553,4 @@
   youtube: 
   udemy: 
   coming_soon: true
-  visible: true
+  visible: false
