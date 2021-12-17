@@ -406,15 +406,15 @@
       key: components
       description: ''
       deprecated: false
-    - name: Kubernetes Objects
-      key: objects
+    - name: Kubernetes API
+      key: k8s-api
       description: ''
       deprecated: false
-    - name: Static deploy with Pods
-      key: pods
+    - name: Working with Kubernetes Objects
+      key: k8s-objects
       description: ''
       deprecated: false
-    - name: Deployments files
+    - name: 'Undestanding Deployments files'
       key: deployment
       description: ''
       deprecated: false
@@ -422,7 +422,7 @@
       key: study-cases-deployment
       description: ''
       deprecated: false
-    - name: Networking using Services
+    - name: 'Networking using Services'
       key: service
       description: ''
       deprecated: false
@@ -430,12 +430,40 @@
       key: study-cases-networking
       description: ''
       deprecated: false
-    - name: Volumes
+    - name: 'Store data using Volumes'
       key: volumes
+      description: ''
+      deprecated: false
+    - name: 'ConfigMap, and Secrets'
+      key: configmap
       description: ''
       deprecated: false
     - name: 'Study Kasus: Store data using Volumes'
       key: study-cases-volumes
+      description: ''
+      deprecated: false
+    - name: 'Monitoring and Dashboard'
+      key: monitoring
+      description: ''
+      deprecated: false
+    - name: 'Kubernetes package manager with helm'
+      key: helm
+      description: ''
+      deprecated: false
+    - name: 'Service mesh with istio'
+      key: istio
+      description: ''
+      deprecated: false
+    - name: 'Kubernetes for Production'
+      key: kubeadm
+      description: ''
+      deprecated: false
+    - name: 'Manage Administration Clusters'
+      key: admin-cluster
+      description: ''
+      deprecated: false
+    - name: 'CI/CD: Kubernetes integration with Gitlab'
+      key: k8s-integration-gitlab
       description: ''
       deprecated: false
 
