@@ -5,7 +5,7 @@ permalink: /pages/courses.html
 icon: library_books
 ---
 
-{% assign languages = site.data.topics | where: 'coming_soon', 'false' | map: 'language' | join: ',' | split: ',' | uniq %}
+{% assign languages = site.data.topics | map: 'language' | join: ',' | split: ',' | uniq %}
 <div class="row">
     <div class="container">
         <div class="col m12 l3 hide-on-med-and-down">
@@ -23,7 +23,7 @@ icon: library_books
         <div class="col m12 l9">
             {% for lang in languages %}          
             <div id="{{ lang }}" class="section scrollspy">
-                {% assign pages = site.data.topics | where: 'visible', true | where: 'language', lang | sort: "publish" %}
+                {% assign pages = site.data.topics | where: 'language', lang | sort: "publish" %}
                 <ul class="collection with-header">
                     <li class="collection-header"><h4>{{ lang }}</h4></li>
                     {% for page in pages %}
