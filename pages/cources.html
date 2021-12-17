@@ -37,6 +37,9 @@ icon: library_books
                                 <span class="new badge" data-badge-caption="Pages">{{ posts | size }}</span>
                                 <span class="title">{{ page_title }}</span>
                                 <p class="grey-text text-lighten-1">{{ page.descriptions | truncate: 150 }}</p>
+                                {% if page.catalogs.first %}
+                                <hr>
+                                {% endif  %}
                                 {% for category in page.catalogs %}
                                     <div class="chip">{{ category.name }}</div>                                
                                 {% endfor %}
@@ -46,6 +49,12 @@ icon: library_books
                                 <span class="new badge yellow black-text" data-badge-caption="Comming soon"></span>
                                 <span class="title">{{ page_title }}</span>
                                 <p class="grey-text text-lighten-1">{{ page.descriptions | truncate: 150 }}</p>
+                                {% if page.catalogs.first %}
+                                <hr>
+                                {% endif  %}
+                                {% for category in page.catalogs %}
+                                    <div class="chip">{{ category.name }}</div>                                
+                                {% endfor %}
                             </div>  
                         {% else %}  
                             <div>
