@@ -186,3 +186,27 @@ Jika sudah selesai, kita bisa check job detailnya seperti berikut:
 Dan yang terakhir, kita bisa check Gitlab archive as artifact maka hasilnya seperti berikut:
 
 ![build-laravel-gitlab-artifact]({{ page.image_path | prepend: site.baseurl }}/10-build-laravel-artifact.png)
+
+## Build docker image
+
+Setelah kita build source-code menjadi Gitlab Archive as artifact, sekarang kita akan build docker image berdasarkan artifact tersebut. tpi sebelum itu kita modifikasi file `Dockerfile` untuk menyesuaikan worklow dengan Gitlab CI.
+
+Jadi yang kita gunakan adalah stage untuk mencopy dari Gitlab archive as artifact ke Docker image. Nah supaya kita tidak menyinggung tutorial sebelumnya kita akan buat file baru dengan nama `Dockerfile-run` seperti berikut:
+
+{% gist page.gist "12g-dockerfile-build-run" %}
+
+Selanjutnya kita modifkasi file `.gitlab-ci.yml` seperti berikut:
+
+{% gist page.gist "12g-gitlab-ci.build-docker.yml" %}
+
+Nah sekarang seperti biasa kita commit, push dan buat tag baru. Kemudian kita check status pipelinenya seperti berikut:
+
+![build-docker-pipeline-status]({{ page.image_path | prepend: site.baseurl }}/11-build-docker-pipeline-status.png)
+
+Jika sudah selesai, kita bisa check job detailnya seperti berikut:
+
+![build-docker-pipeline-job-detail]({{ page.image_path | prepend: site.baseurl }}/12-build-docker-job-detail.png)
+
+Dan yang terakhir kita check apakah docker image sudah ada di Nexus OSS seperti berikut:
+
+![nexus-oss]({{ page.image_path | prepend: site.baseurl }}/13-docker-image-pushed.png)
