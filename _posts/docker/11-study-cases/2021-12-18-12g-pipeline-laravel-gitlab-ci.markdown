@@ -13,7 +13,7 @@ refs:
 - https://docs.gitlab.com/ee/ci/examples/deployment/composer-npm-deploy.html
 - https://laravel.com/docs/8.x/testing
 - https://docs.gitlab.com/ee/ci/examples/laravel_with_gitlab_and_envoy/
-youtube: 
+youtube: E8p4RnsZ_44
 comments: true
 catalog_key: study-cases-docker-ci
 image_path: /resources/posts/docker/12g-pipeline-laravel
