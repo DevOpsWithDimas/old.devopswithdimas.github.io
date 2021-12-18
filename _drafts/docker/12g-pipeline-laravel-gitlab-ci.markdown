@@ -210,3 +210,89 @@ Jika sudah selesai, kita bisa check job detailnya seperti berikut:
 Dan yang terakhir kita check apakah docker image sudah ada di Nexus OSS seperti berikut:
 
 ![nexus-oss]({{ page.image_path | prepend: site.baseurl }}/13-docker-image-pushed.png)
+
+## Test run containers
+
+Ok setelah kita berhasil publish docker imagenya menggunakan Gitlab CI, sekarang kita akan test containernya menggunakan docker-compose, Sekarang kita buat file `docker-compose.ci.yaml` seperti berikut:
+
+{% gist page.gist "12g-docker-compose.ci-yaml" %}
+
+Dan berikut adalah file `.env.ci`
+
+{% gist page.gist "12g-env.ci-yaml" %}
+
+Jika kita running menggunakan perintah 
+
+{% highlight bash %}
+docker-compose -f docker-compose.ci.yaml --env-file .env up -d
+docker-compose -f docker-compose.ci.yaml --enf-file .env exec laravel php artisan migrate
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+```powershell
+dimasm93@gitlab-runner01:~$ docker-compose -f docker-compose.ci.yaml --env-file .env up -d
+Starting dimasm93_mysql_1 ... done
+Starting dimasm93_laravel_1 ... done
+
+dimasm93@gitlab-runner01:~$ docker-compose -f docker-compose.ci.yaml --env-file .env ps
+       Name                     Command               State                   Ports
+----------------------------------------------------------------------------------------------------
+dimasm93_laravel_1   docker-php-entrypoint .doc ...   Up      0.0.0.0:80->80/tcp,:::80->80/tcp
+dimasm93_mysql_1     docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp,:::3306->3306/t
+                                                              cp, 33060/tcp
+
+dimasm93@gitlab-runner01:~$ curl localhost
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Laravel</title>
+    <link href="/css/app.css" rel="stylesheet"/>
+    <script src="/js/app.js"></script>
+</head>
+<body class="antialiased">
+
+<div class="container">
+
+    <p>jQuery not work!!! enable JS now</p>
+
+    <h3>Daftar Mahasiswa</h3>
+    <table id="mahasiswaList" class="table table-bordered table-striped dataTable">
+        <thead>
+        <tr>
+            <td>No</td>
+            <td>NIM</td>
+            <td>Nama</td>
+            <td>Email</td>
+            <td>Semester</td>
+        </tr>
+        </thead>
+    </table>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('p').html('jQuery works!');
+        $('#mahasiswaList').DataTable({
+            ajax: '/api/mahasiswa',
+            columns: [
+                {data: 'id'},
+                {data: 'nim'},
+                {data: 'name'},
+                {data: 'email'},
+                {data: 'semester'}
+            ]
+        });
+    });
+</script>
+</body>
+</html>
+```
+
+Jika kita coba dari browser maka hasilnya seperti berikut:
+
+![test-container]({{ page.image_path | prepend: site.baseurl }}/14-tested-container.png)
