@@ -388,7 +388,7 @@
     Temen-teman akan belajar Managing Orchestration dengan menggunakan Kubernetes (k8s) untuk Pemula sampai Mahir.
   messages:
   publish: 2021-05-01T13:26:00+07:00
-  github: 
+  github: https://github.com/BootcampYoutubeChannel/belajar-kubernetes
   youtube: 
   udemy: 
   coming_soon: true
@@ -446,7 +446,7 @@
       key: monitoring
       description: ''
       deprecated: false
-    - name: 'Kubernetes package manager with helm'
+    - name: 'Package manager with helm'
       key: helm
       description: ''
       deprecated: false
@@ -462,7 +462,7 @@
       key: admin-cluster
       description: ''
       deprecated: false
-    - name: 'CI/CD: Kubernetes integration with Gitlab'
+    - name: 'CI/CD: with Gitlab'
       key: k8s-integration-gitlab
       description: ''
       deprecated: false

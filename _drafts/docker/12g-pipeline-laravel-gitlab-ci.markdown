@@ -26,10 +26,9 @@ Hai semuanya, di materi study kasus kali ini kita akan membahas Pipeline untuk L
 2. Build custome image to test, and build Laravel application
 3. Write unit/integration testing locally
 4. Pipeline unit/integration testing with Gitlab CI
-5. Add local caching/proxy to build with Gitlab CI
-6. Build source-code to site resources with Gitlab CI
-7. Build docker image with Gitlab CI
-8. Test run containers
+5. Build source-code to site resources with Gitlab CI
+6. Build docker image with Gitlab CI
+7. Test run containers
 
 Ok langsung kita ke pembahasan yang pertama yaitu
 
@@ -169,3 +168,6 @@ Jika sudah seperti biasa, kita commit dan push dan yang terkahir kita buat tagny
 Jika sudah selesai kita bisa check test unitnya seperti berikut:
 
 ![test-laravel-tests-status]({{ page.image_path | prepend: site.baseurl }}/07-test-laravel-test-status.png)
+
+## Build Pipeline source-code to site webapp resources
+
