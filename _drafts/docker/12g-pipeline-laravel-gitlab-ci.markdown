@@ -171,3 +171,18 @@ Jika sudah selesai kita bisa check test unitnya seperti berikut:
 
 ## Build Pipeline source-code to site webapp resources
 
+Setelah kita success melakukan unit/integration testing tahap selanjutnya adalah kita akan build source-code menjadi site webapp resources kemudian kita buat Gitlab archive as artifact, Seperti biasanya kita update file `.gitlab-ci.yml` seperti berikut:
+
+{% gist page.gist "12g-gitlab-ci.build-laravel.yml" %}
+
+Jika sudah sekarang, kita commit, push dan buat tag baru lalu kita check status pipelinenya seperti berikut:
+
+![build-laravel-pipeline-status]({{ page.image_path | prepend: site.baseurl }}/08-build-laravel-pipeline-status.png)
+
+Jika sudah selesai, kita bisa check job detailnya seperti berikut:
+
+![build-laravel-job-detail]({{ page.image_path | prepend: site.baseurl }}/09-build-laravel-pipeline-job-detail.png)
+
+Dan yang terakhir, kita bisa check Gitlab archive as artifact maka hasilnya seperti berikut:
+
+![build-laravel-gitlab-artifact]({{ page.image_path | prepend: site.baseurl }}/10-build-laravel-artifact.png)
