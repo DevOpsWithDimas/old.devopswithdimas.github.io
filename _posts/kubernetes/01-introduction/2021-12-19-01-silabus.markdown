@@ -23,7 +23,10 @@ downloads: []
 Hai semuanya, di materi kali ini kita membahas Container-Orchestration System menggunakan Kubernetes (k8s). Sebelum temen-temen mengikuti cource ini disarankan untuk memahami system Container dan Virtualization seperti 
 
 1. Virtualization: [Virtualbox](https://www.virtualbox.org/), [vmware](https://www.vmware.com/), etc
-2. Containerize: [Docker]({% post_url docker/01-introduction/2021-04-02-01-silabus %}), [containerd](https://containerd.io/), [CRI-O](https://cri-o.io/), etc
+2. Containerization: [Docker]({% post_url docker/01-introduction/2021-04-02-01-silabus %}), [containerd](https://containerd.io/), [CRI-O](https://cri-o.io/), etc
+3. Basic [Bash](https://www.gnu.org/software/bash/) script
+4. Web Server, Databases, Other services such as mail-server, nfs-server, ssh-server etc
+5. Basic Programming language such as Java, PHP, js etc
 
 Materi yang akan di bahas pada cource `DevOps Kubernetes: Pemula sampai Mahir` diantaranya
 
