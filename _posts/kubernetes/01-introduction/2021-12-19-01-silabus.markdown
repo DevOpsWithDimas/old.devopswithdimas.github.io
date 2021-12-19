@@ -1,0 +1,71 @@
+---
+layout: post
+title: "Silabus - DevOps Kubernetes: Pemula sampai Mahir"
+date: 2021-12-19T23:52:39+07:00
+lang: k8s
+categories:
+- DevOps
+- Orchestration
+- Kubernetes
+refs: 
+- https://docs.docker.com/
+- https://kubernetes.io/docs/home/
+- https://minikube.sigs.k8s.io/docs/
+youtube: 
+comments: true
+catalog_key: introduction
+image_path: /resources/posts/kubernetes/01-silabus
+gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
+downloads: []
+---
+
+
+Hai semuanya, di materi kali ini kita membahas Container-Orchestration System menggunakan Kubernetes (k8s). Sebelum temen-temen mengikuti cource ini disarankan untuk memahami system Container dan Virtualization seperti 
+
+1. Virtualization: [Virtualbox](https://www.virtualbox.org/), [vmware](https://www.vmware.com/), etc
+2. Containerize: [Docker]({% post_url docker/01-introduction/2021-04-02-01-silabus %}), [containerd](https://containerd.io/), [CRI-O](https://cri-o.io/), etc
+
+Materi yang akan di bahas pada cource `DevOps Kubernetes: Pemula sampai Mahir` diantaranya
+
+1. Kubernetes Overview
+2. Getting started
+    1. Learning environment with minikube
+    2. Create single cluster with minikube
+    3. Test running containers/pods
+    4. Expose running pods to outside
+    5. Setup to scale pods
+3. Kubernetes Concepts
+    1. Overview
+    2. Cluster Architecture
+    3. Containers
+    4. Workloads
+    5. Service, Load Balancing and Networking
+    6. Storage
+    7. Configuration
+    9. Scheduling, Preemping and Eviction
+4. Cluster administration with `minikube` CLI
+5. Kubernetes CLI (`kubectl`)
+6. Kubernetes Tasks
+    1. Configure pods and containers
+    2. Manage Kubernetes Object
+    3. Managing Secrets
+    4. Inject data Into Application
+    5. Run Application
+    6. Run Jobs
+    7. Access Application in a Cluster
+    8. Networking
+7. Monitoring, Logging and Debugging
+8. Dashboard
+    1. Kubernetes Dashboard
+    2. Portainer.io
+    3. Others
+9. Kubernetes in Production machines
+    1. Using kubeadm
+    2. Configure load balancer with etcd
+    3. Using nfs-server for storing data
+    4. Using MinIO for alternative better store data
+10. Kubernetes package manager with helm chart
+11. Service Mesh with istio
+12. CI/CD with Gitlab CI
+
+Selain itu juga masih banyak lagi yang akan kita bahas di cource ini, Ok mungkin sekian dulu yang bisa saya sampaikan terkait silabus belajar Kubernetes untuk Pemula sampai Mahir. Sampai jumpa di cource nanti
