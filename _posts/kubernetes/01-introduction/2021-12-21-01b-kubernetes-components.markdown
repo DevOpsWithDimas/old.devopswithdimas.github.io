@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Kubernetes Components"
+date: 2021-12-21T04:11:18+07:00
 lang: k8s
 categories:
 - DevOps
