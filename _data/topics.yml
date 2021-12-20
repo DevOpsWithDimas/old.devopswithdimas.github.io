@@ -398,7 +398,7 @@
       key: introduction
       description: ''
       deprecated: false
-    - name: Setup single cluster with Minikube
+    - name: Getting started with minikube
       key: minikube
       description: ''
       deprecated: false
