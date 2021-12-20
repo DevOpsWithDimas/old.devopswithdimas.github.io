@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01c-kubernetes-api"
+title: "The Kubernetes API"
 lang: k8s
 categories:
 - DevOps
@@ -8,7 +8,7 @@ categories:
 - Kubernetes
 refs: 
 - https://docs.docker.com/
-- https://kubernetes.io/docs/home/
+- https://kubernetes.io/docs/concepts/overview/kubernetes-api/
 - https://minikube.sigs.k8s.io/docs/
 youtube: 
 comments: true
@@ -18,15 +18,43 @@ gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
 
+Hai semuanya, selanjutnya setelah kita membahas Komponen pada Kubernetes sekarang kita bahas yaitu Kubernetes API (Application Program Inteface). Diantaranya
 
-description...
+1. What is Kubernetes API?
+2. API groups and versioning
+3. API changes
+4. API Extension
 
-Materi: 
+Ok sekarang lansung aja kita ke pembahasan yang pertama yaitu
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+## The Kubernetes API
+
+The core of Kubernetes control plane is the API server. The API server exposes an HTTP API that lets end users, different parts of your cluster, and external components communicate with one another.
+
+The Kubernetes API lets you query and manipulate the state of API objects in Kubernetes (for example: Pods, Namespaces, ConfigMaps, and Events).
+
+Most operations can be performed through the [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) command-line interface or other command-line tools, such as [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/), [minikube](https://minikube.sigs.k8s.io/docs/start/), which in turn use the API. However, you can also access the API directly using REST calls.
+
+Consider using one of the [client libraries](https://kubernetes.io/docs/reference/using-api/client-libraries/) if you are writing an application using the Kubernetes API.
+
+Kubernetes using OpenAPI to documented all API, Ada 2 version saat ini yaitu 
+
+1. **OpenAPI V2**, The Kubernetes API server serves an aggregated OpenAPI v2 spec via the `/openapi/v2` endpoint.
+2. **OpenAPI V3**, Kubernetes v1.23 offers initial support for publishing its APIs as OpenAPI v3; this is an alpha feature that is disabled by default. You can enable the alpha feature by turning on the feature gate named `OpenAPIV3` for the kube-apiserver component. With the feature enabled, the Kubernetes API server serves an aggregated OpenAPI v3 spec per Kubernetes group version at the `/openapi/v3/apis/<group>/<version>` endpoint. Please refer to the table below for accepted request headers.
+
+## API groups and versioning
+
+To make it easier to eliminate fields or restructure resource representations, Kubernetes supports multiple API versions, each at a different API path, such as `/api/v1` or `/apis/rbac.authorization.k8s.io/v1alpha1`.
+
+Versioning is done at the API level rather than at the resource or field level to ensure that the API presents a clear, consistent view of system resources and behavior, and to enable controlling access to end-of-life and/or experimental APIs.
+
+API groups make it easier to extend the Kubernetes API. The API group is specified in a REST path and in the apiVersion field of a serialized object.
+
+There are several API groups in Kubernetes:
+
+1. The core (also called legacy) group is found at REST path `/api/v1`. The core group is not specified as part of the apiVersion field, for example, `apiVersion: v1`.
+2. The named groups are at REST path `/apis/$GROUP_NAME/$VERSION` and use `apiVersion: $GROUP_NAME/$VERSION` (for example, `apiVersion: batch/v1`). You can find the full list of supported API groups in [Kubernetes API reference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-).
+
+API resources are distinguished by their API group, resource type, namespace (for namespaced resources), and name. The API server handles the conversion between API versions transparently: all the different versions are actually representations of the same persisted data. The API server may serve the same underlying data through multiple API versions.
+
+For example, suppose there are two API versions, `v1` and `v1beta1`, for the same resource. If you originally created an object using the `v1beta1` version of its API, you can later read, update, or delete that object using either the `v1beta1` or the `v1` API version.
