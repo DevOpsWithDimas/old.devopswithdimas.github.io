@@ -58,3 +58,18 @@ There are several API groups in Kubernetes:
 API resources are distinguished by their API group, resource type, namespace (for namespaced resources), and name. The API server handles the conversion between API versions transparently: all the different versions are actually representations of the same persisted data. The API server may serve the same underlying data through multiple API versions.
 
 For example, suppose there are two API versions, `v1` and `v1beta1`, for the same resource. If you originally created an object using the `v1beta1` version of its API, you can later read, update, or delete that object using either the `v1beta1` or the `v1` API version.
+
+## API changes
+
+Any system that is successful needs to grow and change as new use cases emerge or existing ones change. Therefore, Kubernetes has designed the Kubernetes API to continuously change and grow. The Kubernetes project aims to not break compatibility with existing clients, and to maintain that compatibility for a length of time so that other projects have an opportunity to adapt.
+
+In general, new API resources and new resource fields can be added often and frequently. Elimination of resources or fields requires following the API deprecation policy.
+
+Kubernetes makes a strong commitment to maintain compatibility for official Kubernetes APIs once they reach general availability (GA), typically at API version `v1`. Additionally, Kubernetes keeps compatibility even for beta API versions wherever feasible: if you adopt a beta API you can continue to interact with your cluster using that API, even after the feature goes stable.
+
+## API Extension
+
+The Kubernetes API can be extended in one of two ways:
+
+1. Custom resources let you declaratively define how the API server should provide your chosen resource API.
+2. You can also extend the Kubernetes API by implementing an aggregation layer.
