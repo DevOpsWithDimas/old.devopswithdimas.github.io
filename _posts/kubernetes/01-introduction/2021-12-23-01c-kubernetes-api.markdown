@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The Kubernetes API"
+date: 2021-12-23T19:12:03+07:00
 lang: k8s
 categories:
 - DevOps
