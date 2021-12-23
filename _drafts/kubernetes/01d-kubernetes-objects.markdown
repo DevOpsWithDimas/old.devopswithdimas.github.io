@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01d-kubernetes-objects"
+title: "What is Kubernetes Objects?"
 lang: k8s
 categories:
 - DevOps
@@ -8,7 +8,7 @@ categories:
 - Kubernetes
 refs: 
 - https://docs.docker.com/
-- https://kubernetes.io/docs/home/
+- https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/
 - https://minikube.sigs.k8s.io/docs/
 youtube: 
 comments: true
