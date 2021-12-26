@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "What is Kubernetes Namespaces?"
+date: 2021-12-26T16:26:37+07:00
 lang: k8s
 categories:
 - DevOps
