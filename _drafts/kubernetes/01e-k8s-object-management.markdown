@@ -122,3 +122,58 @@ Use "kubectl options" for a list of global command-line options (applies to all 
 ```
 
 ## Imperative commands
+
+When using imperative commands, a user operates directly on live objects in a cluster. The user provides operations to the `kubectl` command as arguments or flags. This is the recommended way to get started or to run a one-off task in a cluster. Because this technique operates directly on live objects, it provides no history of previous configurations.
+
+Run an instance of the nginx container by creating a Deployment object:
+
+{% highlight bash %}
+kubectl create deployment nginx --image nginx
+{% endhighlight %}
+
+Advantages compared to object configuration:
+
+1. Commands are expressed as a single action word.
+2. Commands require only a single step to make changes to the cluster.
+
+Disadvantages compared to object configuration:
+
+1. Commands do not integrate with change review processes.
+2. Commands do not provide an audit trail associated with changes.
+3. Commands do not provide a source of records except for what is live.
+5. Commands do not provide a template for creating new objects.
+
+## Imperative object configuration
+
+In imperative object configuration, the `kubectl` command specifies the operation (`create`, `replace`, etc.), optional flags and at least one file name. The file specified must contain a full definition of the object in YAML or JSON format.
+
+Create the objects defined in a configuration file:
+
+{% highlight bash %}
+kubectl create -f nginx.yaml
+{% endhighlight %}
+
+Delete the objects defined in two configuration files:
+
+{% highlight bash %}
+kubectl delete -f nginx.yaml -f redis.yaml
+{% endhighlight %}
+
+Update the objects defined in a configuration file by overwriting the live configuration:
+
+{% highlight bash %}
+kubectl replace -f nginx.yaml
+{% endhighlight %}
+
+Advantages compared to imperative commands:
+
+1. Object configuration can be stored in a source control system such as Git.
+2. Object configuration can integrate with processes such as reviewing changes before push and audit trails.
+3. Object configuration provides a template for creating new objects.
+
+Disadvantages compared to imperative commands:
+
+1. Object configuration requires basic understanding of the object schema.
+2. Object configuration requires the additional step of writing a YAML file.
+
+## Declarative object configuration
