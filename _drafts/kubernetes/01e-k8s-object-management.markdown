@@ -177,3 +177,29 @@ Disadvantages compared to imperative commands:
 2. Object configuration requires the additional step of writing a YAML file.
 
 ## Declarative object configuration
+
+When using declarative object configuration, a user operates on object configuration files stored locally, however the user does not define the operations to be taken on the files. Create, update, and delete operations are automatically detected per-object by `kubectl`. This enables working on directories, where different operations might be needed for different objects.
+
+For examples, Process all object configuration files in the `configs` directory, and `create` or `patch` the live objects. You can first `diff` to see what changes are going to be made, and then apply:
+
+{% highlight bash %}
+kubectl diff -f configs/
+kubectl apply -f configs/
+{% endhighlight %}
+
+Recursively process directories:
+
+{% highlight bash %}
+kubectl diff -R -f configs/
+kubectl apply -R -f configs/
+{% endhighlight %}
+
+Advantages compared to imperative object configuration:
+
+1. Changes made directly to live objects are retained, even if they are not merged back into the configuration files.
+2. Declarative object configuration has better support for operating on directories and automatically detecting operation types (`create`, `patch`, `delete`) per-object.
+
+Disadvantages compared to imperative object configuration:
+
+1. Declarative object configuration is harder to debug and understand results when they are unexpected.
+2. Partial updates using diffs create complex merge and patch operations.
