@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Managing Kubernetes Object"
+date: 2021-12-26T13:36:22+07:00
 lang: k8s
 categories:
 - DevOps
