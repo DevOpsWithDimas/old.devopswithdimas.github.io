@@ -369,10 +369,6 @@
       key: docker-swarm
       desctiption: ''
       deprecated: false
-    - name: Kubernetes in Docker (KinD)
-      key: k8s-in-docker
-      desctiption: ''
-      deprecated: false
 
 - name: Kubernetes (k8s)
   url: k8s
