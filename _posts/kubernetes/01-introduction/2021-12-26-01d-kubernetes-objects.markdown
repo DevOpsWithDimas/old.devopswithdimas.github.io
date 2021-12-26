@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "What is Kubernetes Objects?"
+date: 2021-12-26T11:26:31+07:00
 lang: k8s
 categories:
 - DevOps
