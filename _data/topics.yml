@@ -398,24 +398,12 @@
       key: minikube
       description: ''
       deprecated: false
-    - name: Kubernetes Components
-      key: components
+    - name: Kubernetes Workloads
+      key: workloads
       description: ''
       deprecated: false
-    - name: Kubernetes API
-      key: k8s-api
-      description: ''
-      deprecated: false
-    - name: Working with Kubernetes Objects
-      key: k8s-objects
-      description: ''
-      deprecated: false
-    - name: 'Undestanding Deployments files'
-      key: deployment
-      description: ''
-      deprecated: false
-    - name: 'Study Kasus: Deployment'
-      key: study-cases-deployment
+    - name: 'Study Kasus: Workloads'
+      key: study-cases-workloads
       description: ''
       deprecated: false
     - name: 'Networking using Services'
