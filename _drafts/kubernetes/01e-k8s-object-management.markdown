@@ -20,14 +20,15 @@ downloads: []
 ---
 
 
-description...
+Hai semuanya, sebelumnya kita udah membahas tentang Objects pada Kubernetes sekarang kita akan bagaimana cara memanage Objectnya. Seperti yang kita tahu untuk berinteraksi dengan Kubernetes Cluster yaitu dengan menggunakan Kubernetes Client yaitu `kubectl`, Kubernetes API, dan Kubernetes Client Libraries. Kali ini kita akan membahas tentang `kubectl` command line terlebih dulu ya Diantaranya
 
-Materi: 
+1. Management techniques
+2. Imperative commands
+3. Imperative object configuration
+4. Declarative object configuration
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Ok langsung aja kita bahas materi pertama 
+
+## Management techniques
+
+The `kubectl` command-line tool supports several different ways to create and manage Kubernetes objects.
