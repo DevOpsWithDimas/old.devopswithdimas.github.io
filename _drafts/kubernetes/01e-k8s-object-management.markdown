@@ -31,7 +31,7 @@ Ok langsung aja kita bahas materi pertama
 
 ## Management techniques
 
-The `kubectl` command-line tool supports several different ways to create and manage Kubernetes objects. 
+The `kubectl` command-line tool supports several different ways to create and manage Kubernetes objects. A Kubernetes object should be managed using only one technique. Mixing and matching techniques for the same object results in undefined behavior.
 
 Most Kubectl commands typically fall into one of a few categories:
 
@@ -121,4 +121,4 @@ Use "kubectl <command> --help" for more information about a given command.
 Use "kubectl options" for a list of global command-line options (applies to all commands).
 ```
 
-> A Kubernetes object should be managed using only one technique. Mixing and matching techniques for the same object results in undefined behavior.
+## Imperative commands
