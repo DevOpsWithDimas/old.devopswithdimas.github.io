@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "What is Kubernetes?"
+title: "What is Kubernetes (k8s) ?"
 date: 2021-12-21T03:27:42+07:00
 lang: k8s
 categories:
@@ -32,7 +32,18 @@ Ok langsung ja kita bahas materi pertama yaitu
 
 Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available.
 
+Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery. Kubernetes giving you the freedom to take advantage of on-premises, hybrid, or public cloud infrastructure, letting you effortlessly move workloads to where it matters to you.
+
 The name Kubernetes originates from Greek, meaning helmsman or pilot. K8s as an abbreviation results from counting the eight letters between the "K" and the "s". Google open-sourced the Kubernetes project in 2014. Kubernetes combines over 15 years of Google's experience running production workloads at scale with best-of-breed ideas and practices from the community.
+
+Kubernetes top features:
+
+1. **Service discovery and load balancing**, No need to modify your application to use an unfamiliar service discovery mechanism. Kubernetes gives Pods their own IP addresses and a single DNS name for a set of Pods, and can load-balance across them.
+2. **Automated rollouts and rollbacks**, Kubernetes progressively rolls out changes to your application or its configuration, while monitoring application health to ensure it doesn't kill all your instances at the same time. If something goes wrong, Kubernetes will rollback the change for you.
+3. **Storage orchestration**, Automatically mount the storage system of your choice, whether from local storage, a public cloud provider such as GCP or AWS, or a network storage system such as NFS, iSCSI, Gluster, Ceph, Cinder, or Flocker.
+4. **Secret and configuration management**, Deploy and update secrets and application configuration without rebuilding your image and without exposing secrets in your stack configuration.
+5. **Batch execution**, In addition to services, Kubernetes can manage your batch and CI workloads, replacing containers that fail, if desired.
+6. **Self-healing**, Restarts containers that fail, replaces and reschedules containers when nodes die, kills containers that don't respond to your user-defined health check, and doesn't advertise them to clients until they are ready to serve.
 
 ## Traditional deploy era vs Virtualized deploy era vs Container deploy era?
 
