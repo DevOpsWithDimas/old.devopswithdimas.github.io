@@ -36,20 +36,11 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 
 The name Kubernetes originates from Greek, meaning helmsman or pilot. K8s as an abbreviation results from counting the eight letters between the "K" and the "s". Google open-sourced the Kubernetes project in 2014. Kubernetes combines over 15 years of Google's experience running production workloads at scale with best-of-breed ideas and practices from the community.
 
-Kubernetes top features:
-
-1. **Service discovery and load balancing**, No need to modify your application to use an unfamiliar service discovery mechanism. Kubernetes gives Pods their own IP addresses and a single DNS name for a set of Pods, and can load-balance across them.
-2. **Automated rollouts and rollbacks**, Kubernetes progressively rolls out changes to your application or its configuration, while monitoring application health to ensure it doesn't kill all your instances at the same time. If something goes wrong, Kubernetes will rollback the change for you.
-3. **Storage orchestration**, Automatically mount the storage system of your choice, whether from local storage, a public cloud provider such as GCP or AWS, or a network storage system such as NFS, iSCSI, Gluster, Ceph, Cinder, or Flocker.
-4. **Secret and configuration management**, Deploy and update secrets and application configuration without rebuilding your image and without exposing secrets in your stack configuration.
-5. **Batch execution**, In addition to services, Kubernetes can manage your batch and CI workloads, replacing containers that fail, if desired.
-6. **Self-healing**, Restarts containers that fail, replaces and reschedules containers when nodes die, kills containers that don't respond to your user-defined health check, and doesn't advertise them to clients until they are ready to serve.
-
 ## Traditional deploy era vs Virtualized deploy era vs Container deploy era?
 
 Let's take a look at why Kubernetes is so useful by going back in time.
 
-![era-comparison](https://d33wubrfki0l68.cloudfront.net/26a177ede4d7b032362289c6fccd448fc4a91174/eb693/images/docs/container_evolution.svg)
+![era-comparison]({{ page.image_path | prepend: site.baseurl }}/deployments-era.png)
 
 **Traditional deployment era**: Early on, organizations ran applications on physical servers. There was no way to define resource boundaries for applications in a physical server, and this caused resource allocation issues. For example, if multiple applications run on a physical server, there can be instances where one application would take up most of the resources, and as a result, the other applications would underperform. A solution for this would be to run each application on a different physical server. But this did not scale as resources were underutilized, and it was expensive for organizations to maintain many physical servers.
 
@@ -82,12 +73,13 @@ That's how Kubernetes comes to the rescue! Kubernetes provides you with a framew
 
 Kubernetes provides you with:
 
-1. **Service discovery and load balancing** Kubernetes can expose a container using the DNS name or using their own IP address. If traffic to a container is high, Kubernetes is able to load balance and distribute the network traffic so that the deployment is stable.
-2. **Storage orchestration** Kubernetes allows you to automatically mount a storage system of your choice, such as local storages, public cloud providers, and more.
-3. **Automated rollouts and rollbacks** You can describe the desired state for your deployed containers using Kubernetes, and it can change the actual state to the desired state at a controlled rate. For example, you can automate Kubernetes to create new containers for your deployment, remove existing containers and adopt all their resources to the new container.
-4. **Automatic bin packing** You provide Kubernetes with a cluster of nodes that it can use to run containerized tasks. You tell Kubernetes how much CPU and memory (RAM) each container needs. Kubernetes can fit containers onto your nodes to make the best use of your resources.
-5. **Self-healing** Kubernetes restarts containers that fail, replaces containers, kills containers that don't respond to your user-defined health check, and doesn't advertise them to clients until they are ready to serve.
-6. **Secret and configuration management** Kubernetes lets you store and manage sensitive information, such as passwords, OAuth tokens, and SSH keys. You can deploy and update secrets and application configuration without rebuilding your container images, and without exposing secrets in your stack configuration.
+1. **Service discovery and load balancing**, No need to modify your application to use an unfamiliar service discovery mechanism. Kubernetes gives Pods their own IP addresses and a single DNS name for a set of Pods, and can load-balance across them.
+2. **Automated rollouts and rollbacks**, Kubernetes progressively rolls out changes to your application or its configuration, while monitoring application health to ensure it doesn't kill all your instances at the same time. If something goes wrong, Kubernetes will rollback the change for you.
+3. **Storage orchestration**, Automatically mount the storage system of your choice, whether from local storage, a public cloud provider such as GCP or AWS, or a network storage system such as NFS, iSCSI, Gluster, Ceph, Cinder, or Flocker.
+4. **Secret and configuration management**, Deploy and update secrets and application configuration without rebuilding your image and without exposing secrets in your stack configuration.
+5. **Batch execution**, In addition to services, Kubernetes can manage your batch and CI workloads, replacing containers that fail, if desired.
+6. **Self-healing**, Restarts containers that fail, replaces and reschedules containers when nodes die, kills containers that don't respond to your user-defined health check, and doesn't advertise them to clients until they are ready to serve.
+7. **Horizontal scaling**, Scale your application up and down with a simple command, with a UI, or automatically based on CPU usage.
 
 ## What Kubernetes is not?
 
