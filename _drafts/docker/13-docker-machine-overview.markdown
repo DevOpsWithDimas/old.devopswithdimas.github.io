@@ -1,29 +1,23 @@
 ---
 layout: post
-title: "12-docker-machine-overview"
+title: "Overview of Docker machines"
 lang: docker
 categories:
 - DevOps
 - Docker
+- Machine
 refs: 
 - https://docs.docker.com/
 youtube: 
 comments: true
 catalog_key: docker-machine
-image_path: /resources/posts/docker/12-docker-machine-overview
+image_path: /resources/posts/docker/13-docker-machine-overview
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
+Hai semuanya, Setelah sebelumnya kita membahas Docker for Continues Integration (CI) sekarang kita akan membahas tentang Docker machine.
 
-description...
+> Note: Docker machine sekarang statusnya sudah deprecated atau sudah tidak aktif lagi.
 
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Docker machine
