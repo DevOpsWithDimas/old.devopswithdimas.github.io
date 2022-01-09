@@ -48,8 +48,8 @@
   code: devops
   description: 
   courses: 
-  - ansible
   - docker 
   - k8s
+  - ansible
   - k8s-openshift
   - gitlab-ci-cd
