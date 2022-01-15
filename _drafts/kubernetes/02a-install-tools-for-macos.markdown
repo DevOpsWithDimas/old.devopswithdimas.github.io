@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "02a-install-tools-for-macos"
+title: "Installing minikube on Mac (Intell/Apple silicon)"
 lang: k8s
 categories:
 - DevOps
