@@ -7,7 +7,8 @@ categories:
 - RDBMS
 - PostgreSQL
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/docs/14/intro-whatis.html
+- https://www.postgresql.org/docs/14/history.html
 youtube: 
 image_path: /resources/posts/psql/02-what-postgresql
 comments: true
