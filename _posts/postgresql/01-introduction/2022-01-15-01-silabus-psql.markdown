@@ -89,3 +89,5 @@ Materi yang akan dibahas adalah **version update 2022**, sepertinya temen-temen 
 6. High Availability, Load Balancing, and Replication
 7. Monitoring Database Activity
 8. Monitoring Disk Usage
+
+Selain itu juga masih banyak lagi yang akan kita bahas di cource ini, Ok mungkin sekian dulu yang bisa saya sampaikan terkait Silabus Belajar PostgreSQL untuk Pemula sampai Mahir. Sampai jumpa di cource nanti.

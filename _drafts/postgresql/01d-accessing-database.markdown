@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Pengenalan Structural Query Language (SQL)"
-date: 2017-11-26T19:52:11+07:00
 lang: psql
 categories:
 - RDBMS
@@ -10,6 +9,7 @@ refs: []
 youtube: mLC3DBBboTk
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+catalog_key: introduction
 downloads: []
 ---
 
