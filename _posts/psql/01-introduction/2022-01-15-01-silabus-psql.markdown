@@ -1,21 +1,26 @@
 ---
 layout: post
-title: "Silabus belajar RDBMS PostgreSQL"
-date: 2017-11-21T21:16:38+07:00
+title: "Silabus - PostgreSQL: Pemula sampai Mahir"
+date: 2022-01-15T20:49:25+07:00
 lang: psql
 categories:
 - RDBMS
 - PostgreSQL 
-refs: []
+refs: 
+- https://www.postgresql.org/docs/current/
 youtube: WgABoubjQdY
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 downloads: []
+catalog_key: introduction
+image_path: /resources/posts/psql/01-silabus
 ---
 
-Hi, di materi ini 'PostgreSQL' temen-temen akan belajar menggunakan Relational Database Management Sistem dengan menggunakan Database PostgreSQL.
+Hai semuanya, di kali ini kita akan membahas Database yang sifatnya Relational menggunakan PostgreSQL. Di kelas `PostgreSQL: Pemula sampai Mahir` ini temen-temen akan belajar mulai dari Level Fundamental, Intermedite sampai dengan Advanced menggunakan Database PostgreSQL. 
 
-Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
+Materi yang akan dibahas adalah **version update 2022**, sepertinya temen-temen ketahui 4 tahun lalu saya pernah buat tutorial tentang PostgreSQL yang saya publish di youtube karena sudah **out of obsolate** jadi saya buat ulang materinya menyesuaikan dengan kebutuhan Industri saat ini, Adapun silabunya seperti berikut:
+
+## Basic / Fundamental:
 
 1. Pengenalan SQL dengan PostgreSQL
 2. Setup Development Environtment
@@ -54,10 +59,18 @@ Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
     2. Function Based Index
     3. Bitmap Index
     4. Drop Index
-11. Advanced Query
+
+## Intermediate
+
+1. Advanced Query
     1. Menggabungkan data dengan `UNION`
     2. Menggabungkan data dengan `MERGE`
-12. PL/pgSQL
+2. User/Schema Management
+    1. User Management
+    2. Privileges Management
+    3. Role Management
+3. Audit Trail
+4. PL/pgSQL
     1. Variables
     2. Constanta
     3. Functions
@@ -65,7 +78,14 @@ Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
     5. Cursor
     6. Store Procedure
     7. Trigger
-13. User/Schema Management
-    1. User Management
-    2. Privileges Management
-    3. Role Management
+
+## Advanced
+
+1. Server Setup and Operation for Production machine
+2. Server Configuration / Tunning
+3. Managing Databases
+4. Routine Database Maintenance Tasks
+5. Backup and Restore
+6. High Availability, Load Balancing, and Replication
+7. Monitoring Database Activity
+8. Monitoring Disk Usage

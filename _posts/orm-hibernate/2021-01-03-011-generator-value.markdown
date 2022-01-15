@@ -19,7 +19,7 @@ image_path: /resources/posts/orm-hibernate/
 downloads: []
 ---
 
-Untuk generator sebetulnya sama halnya yang telah saya tulis materinya [di sini]({{site.baseurl}}{% post_url psql/2020-01-03-019e-ddl-primary-key-generator-value %}) yaitu 
+Untuk generator sebetulnya sama halnya yang telah saya tulis materinya [di sini]() yaitu 
 dengan menggunakan:
 
 1. Sequance/Auto_Increment Generator

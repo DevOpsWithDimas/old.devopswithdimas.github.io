@@ -5,12 +5,14 @@ lang: psql
 categories:
 - RDBMS
 - PostgreSQL
-refs: []
+refs: 
+- https://www.postgresql.org/docs/current/
 youtube: {{ youtube }}
+image_path: /resources/posts/psql/{{ title }}
 comments: true
-image_path: /resources/posts/psql/
-gist: {{ gist }}
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 downloads: []
+catalog_key: introduction
 ---
 
 description...

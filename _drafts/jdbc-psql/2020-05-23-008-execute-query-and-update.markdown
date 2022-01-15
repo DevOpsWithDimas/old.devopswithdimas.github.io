@@ -14,7 +14,7 @@ comments: true
 downloads: []
 ---
 
-Hai, [Pada post sebelumnya]({{site.baseurl}}{% post_url jdbc-psql/2020-04-20-007-prepared-statement %}) kita udah belajar tentang Class API [Statement](https://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html) dan [PreparedStatement](https://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html). Pembahasan kali ini kita akan lihat perbedaan antara method `executeUpdate()` dan `executeQuery()`. Ok yang pertama kita bahas dulu method `executeUpdate()`
+Hai, [Pada post sebelumnya]() kita udah belajar tentang Class API [Statement](https://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html) dan [PreparedStatement](https://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html). Pembahasan kali ini kita akan lihat perbedaan antara method `executeUpdate()` dan `executeQuery()`. Ok yang pertama kita bahas dulu method `executeUpdate()`
 
 ## Method `executeUpdate()`
 

@@ -17,24 +17,6 @@
   coming_soon: false
   visible: true
 
-- name: PostgreSQL
-  url: psql
-  icon: "devicons devicons-postgresql"
-  language: Database
-  color: light-blue lighten-3
-  tags:
-  - PostgreSQL
-  - Database
-  descriptions:
-    Temen-temen akan belajar Relational Database Management System (RDBMS) dengan menggunakan PostgreSQL. 
-  messages:
-    Temen-temen akan di pandu untuk menguasai perintah SQL dengan salah satu Relational Database Management System (RDBMS) yaitu dengan PostgreSQL. Dengan menggunakan Relational Database Management Sistem kita dengan mudah dapat melakukan baca-tulis data dengan mudah dan cepat tidak seperti menggunakan baca-tulis di file.
-  publish: 2017-10-16T20:50:50+07:00
-  github: https://github.com/BootcampYoutubeChannel/belajar-postgresql-query
-  youtube:
-  udemy:
-  coming_soon: false
-  visible: true
 
 - name: JDBC with Postgresql
   url: java-jdbc-psql
@@ -566,3 +548,74 @@
   udemy: 
   coming_soon: true
   visible: false
+
+- name: PostgreSQL
+  url: psql
+  icon: "devicons devicons-postgresql"
+  language: Database
+  color: light-blue lighten-3
+  tags:
+  - Database
+  - PostgreSQL
+  descriptions:
+    Temen-temen akan belajar Relational Database Management System (RDBMS) dengan menggunakan PostgreSQL untuk Pemula sampai Mahir. 
+  messages:
+    Temen-temen akan di pandu untuk menguasai perintah SQL dengan salah satu Relational Database Management System (RDBMS) yaitu dengan PostgreSQL. Dengan menggunakan Relational Database Management Sistem kita dengan mudah dapat melakukan baca-tulis data dengan mudah dan cepat tidak seperti menggunakan baca-tulis di file.
+  publish: 2022-01-16T20:50:50+07:00
+  github: 
+  youtube:
+  udemy:
+  coming_soon: false
+  visible: true
+  catalogs:
+    - name: Pengenalan PostgreSQL
+      key: introduction
+      description: ''
+    - name: Getting started
+      key: getting-started
+      description: ''
+    - name: SQL Statement
+      key: sql-statement
+      description: ''
+    - name: Data manipulation
+      key: dml-statement
+      description: ''
+    - name: Data definition
+      key: ddl-statement
+      description: ''
+    - name: Function and Operators
+      key: func-operator
+      description: ''
+    - name: Indexes
+      key: indexes
+      description: ''
+    - name: User Management
+      key: user-management
+      description: ''
+    - name: Type Conversion
+      key: type-conversion
+      description: ''
+    - name: Query Performance Tips
+      key: query-tunning-tips
+      description: ''
+    - name: Database design (Mapping)
+      key: db-relational-mapping
+      description: ''
+    - name: 'Study Kasus: Tokopedia clone'
+      key: study-cases-database-design
+      description: ''
+    - name: 'Server Administration'
+      key: server-administration
+      description: ''
+    - name: 'Pg/PL SQL Triggers'
+      key: pgpl-sql-trigger
+      description: ''
+    - name: 'Pg/PL SQL Procedural'
+      key: pgpl-sql-procedure
+      description: ''
+    - name: 'Pg/PL SQL Cursor'
+      key: pgpl-sql-cursor
+      description: ''
+    - name: 'Study Kasus: Backend engine'
+      key: study-cases-backend-engine
+      description: ''
