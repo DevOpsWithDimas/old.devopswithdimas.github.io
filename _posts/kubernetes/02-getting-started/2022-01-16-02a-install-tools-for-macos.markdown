@@ -120,5 +120,6 @@ brew install kubernetes-cli
 jika dijalankan maka hasilnya seperti berikut:
 
 ```bash
-
+➜  ~ kubectl version --client
+Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.1", GitCommit:"86ec240af8cbd1b60bcc4c03c20da9b98005b92e", GitTreeState:"clean", BuildDate:"2021-12-16T11:33:37Z", GoVersion:"go1.17.5", Compiler:"gc", Platform:"darwin/amd64"}
 ```
