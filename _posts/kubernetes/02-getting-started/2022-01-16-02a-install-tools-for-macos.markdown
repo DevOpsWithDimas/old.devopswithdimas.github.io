@@ -75,7 +75,7 @@ Untuk install minikube juga kita bisa menggunakan beberapa cara yaitu
 Klo saya lebih suka menggunakan package manager homebrew, jadi pertama buat temen-temen yang belum install [homebrew](https://brew.sh/) bisa install dulu jika sudah kita lanjutkan dengan perintah berikut:
 
 {% highlight bash %}
-brew install minikube
+brew install minikube kubernetes-cli
 {% endhighlight %}
 
 If which minikube fails after installation via brew, you may have to remove the old minikube links and link the newly installed binary:
