@@ -9,8 +9,10 @@ categories:
 - Kubernetes
 refs: 
 - https://docs.docker.com/
-- https://kubernetes.io/docs/home/
-- https://minikube.sigs.k8s.io/docs/
+- https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
+- https://formulae.brew.sh/formula/kubernetes-cli
+- https://minikube.sigs.k8s.io/docs/start/
+- https://formulae.brew.sh/formula/minikube
 youtube: 
 comments: true
 catalog_key: minikube
@@ -24,6 +26,7 @@ Hai semuanya, di materi kali ini kita akan membahas cara install minikube di Mac
 1. What you’ll need?
 2. Installing Container or virtual machine as backend minikube
 3. Installing minikube binary
+4. Installing kubernetes client
 
 Ok langsung aja kita bahas ke materi yang pertama
 
@@ -97,4 +100,25 @@ Hasilnya seperti berikut:
 ➜  ~ minikube version
 minikube version: v1.24.0
 commit: 76b94fb3c4e8ac5062daf70d60cf03ddcc0a741b
+```
+
+## Installing kubernetes client
+
+You must use a kubectl version that is within one minor version difference of your cluster. For example, a v1.23 client can communicate with v1.22, v1.23, and v1.24 control planes. Using the latest compatible version of kubectl helps avoid unforeseen issues.
+
+Untuk install kubernetes client / kubectl kita bisa menggunakan beberapa cara yaitu 
+
+1. binary download
+2. homebrew
+
+Sama seperti sebelumnya kita bisa install menggunakan perintah berikut:
+
+{% highlight bash %}
+brew install kubernetes-cli
+{% endhighlight %}
+
+jika dijalankan maka hasilnya seperti berikut:
+
+```bash
+
 ```
