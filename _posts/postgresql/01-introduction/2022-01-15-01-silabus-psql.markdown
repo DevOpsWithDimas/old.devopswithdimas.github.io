@@ -18,7 +18,7 @@ image_path: /resources/posts/psql/01-silabus
 
 Hai semuanya, di kali ini kita akan membahas Database yang sifatnya Relational menggunakan PostgreSQL. Di kelas `PostgreSQL: Pemula sampai Mahir` ini temen-temen akan belajar mulai dari Level Fundamental, Intermedite sampai dengan Advanced menggunakan Database PostgreSQL. 
 
-Materi yang akan dibahas adalah **version update 2022**, sepertinya temen-temen ketahui 4 tahun lalu saya pernah buat tutorial tentang PostgreSQL yang saya publish di youtube karena sudah **out of obsolate** jadi saya buat ulang materinya menyesuaikan dengan kebutuhan Industri saat ini, Adapun silabunya seperti berikut:
+Materi yang akan dibahas adalah **version update tahun 2022**,  seperti temen-temen ketahui 4 tahun lalu saya pernah buat tutorial tentang PostgreSQL yang saya publish di youtube karena sudah **out of obsolate** jadi saya buat ulang materinya menyesuaikan dengan kebutuhan Industri saat ini, Adapun silabunya seperti berikut:
 
 ## Basic / Fundamental:
 
