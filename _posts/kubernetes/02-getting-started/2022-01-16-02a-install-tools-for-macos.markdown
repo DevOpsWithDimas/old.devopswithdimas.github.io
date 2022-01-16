@@ -41,10 +41,6 @@ Klo saya sendiri disini masih menggunakan Macbook Pro 13" four thunderbold 2017 
 
 ![virtualbox]({{ page.image_path | prepend: site.baseurl }}/01-mac-system.png)
 
-1. CPU: Intel core i5 dual core
-2. Ram: `8Gb` 
-3. Storage: SSD `256GB`
-
 ## Installing Container or virtual machine as backend minikube
 
 Untuk Mac yang menggunakan architecture intel kita bisa menggunakan beberapa driver yaitu
