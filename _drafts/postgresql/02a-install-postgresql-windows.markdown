@@ -1,19 +1,20 @@
 ---
-layout: {{ layout }}
-title: "{{ title }}"
+layout: post
+title: "Install PostgreSQL for Windows users"
 lang: psql
 categories:
 - RDBMS
 - PostgreSQL
 refs: 
 - https://www.postgresql.org/docs/current/
-youtube: {{ youtube }}
-image_path: /resources/posts/psql/{{ title }}
+youtube: 
+image_path: /resources/posts/psql/02a-install-postgresql-windows
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+catalog_key: getting-started
 downloads: []
-catalog_key: introduction
 ---
+
 
 description...
 
