@@ -8,17 +8,31 @@ services:
       - POSTGRES_DB
       - POSTGRES_HOST_AUTH_METHOD
     ports:
-      - 5432:${POSTGRES_PORT}
+      - 5432:5432
     volumes:
       - pg_data:/var/lib/postgresql/data
-    networks:
-      - postgres-network
+
   flyway: 
-    image: boxfuse/flyway
-    command: -url=jdbc:postgresql://postgresql:5432/bootcamp -schemas=bootcamp -user=bootcamp -password=bootcamp -connectRetries=60 migrate
+    image: ${PRIVATE_REPOSITORY}flyway/flyway
+    command: -url=jdbc:postgresql://postgres:5432/bootcamp -schemas=bootcamp -user=bootcamp -password=bootcamp -connectRetries=60 migrate
     volumes:
       - ./db/migration:/flyway/sql
     depends_on:
-      - postgresql
+      - postgres
+
+  pgadmin4:
+    image: ${PRIVATE_REPOSITORY}dpage/pgadmin4
+    profiles:
+      - debug
+    environment:
+      - PGADMIN_DEFAULT_PASSWORD=${POSTGRES_PASSWORD}
+      - PGADMIN_DEFAULT_EMAIL=${POSTGRES_USER}@example.com
+    ports:
+      - 55432:80
+    volumes:
+      - pg_admin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
 volumes:
   pg_data:
+  pg_admin_data:
