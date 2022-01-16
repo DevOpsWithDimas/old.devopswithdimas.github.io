@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "02a-install-tools-for-windows"
+title: "Install minikube for Windows 11/10 Users"
 lang: k8s
 categories:
 - DevOps
@@ -8,12 +8,12 @@ categories:
 - Kubernetes
 refs: 
 - https://docs.docker.com/
-- https://kubernetes.io/docs/home/
-- https://minikube.sigs.k8s.io/docs/
+- https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/
+- https://minikube.sigs.k8s.io/docs/start/
 youtube: 
 comments: true
 catalog_key: minikube
-image_path: /resources/posts/kubernetes/02a-install-tools-for-windows
+image_path: /resources/posts/kubernetes/02a-install-minikube-windows
 gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
