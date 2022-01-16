@@ -39,6 +39,8 @@ Untuk menginstall minikube di Mac OS kita membutuhkan:
 
 Klo saya sendiri disini masih menggunakan Macbook Pro 13" four thunderbold 2017 dengan specification seperti berikut:
 
+![virtualbox]({{ page.image_path | prepend: site.baseurl }}/01-mac-system.png)
+
 1. CPU: Intel core i5 dual core
 2. Ram: `8Gb` 
 3. Storage: SSD `256GB`
@@ -65,7 +67,7 @@ Untuk proses installasi Virtualbox, simple kita tinggal download file `dmg` pada
 
 Jika sudah terinstall maka tampilannya seperti berikut:
 
-![virtualbox]({{ page.image_path | prepend: site.baseurl }}/01-install-virtualbox.png)
+![virtualbox]({{ page.image_path | prepend: site.baseurl }}/02-install-virtualbox.png)
 
 ## Installing minikube binary
 
