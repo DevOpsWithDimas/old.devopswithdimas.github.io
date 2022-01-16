@@ -88,3 +88,17 @@ If which minikube fails after installation via brew, you may have to remove the 
 brew unlink minikube
 brew link minikube
 {% endhighlight %}
+
+Jika sudah success, coba check di terminal dengan perintah seperti berikut:
+
+{% highlight bash %}
+minikube version
+{% endhighlight %}
+
+Hasilnya seperti berikut:
+
+```bash
+➜  ~ minikube version
+minikube version: v1.24.0
+commit: 76b94fb3c4e8ac5062daf70d60cf03ddcc0a741b
+```
