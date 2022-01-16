@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "02a-install-tools-for-linux"
+title: "Install minikube for Linux users"
 lang: k8s
 categories:
 - DevOps
@@ -18,15 +18,4 @@ gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
 
-
-description...
-
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Hai semuanya, di materi kali ini kita akan membahas cara Install Kubernetes Cluster untuk local development menggunakan minikube dan virtualbox sebagai engine di Linux.
