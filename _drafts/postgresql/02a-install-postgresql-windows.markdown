@@ -110,3 +110,5 @@ kemudian pilih **Properties** maka akan tampil konfigurasi seperti berikut:
 ![manual]({{ page.image_path | prepend: site.baseurl}}/13-manual-service.png)
 
 Jadi konfigurasi secara default servicenya adalah `Automatic` jadi ketika komputer dihidupkan service PostgreSQL Server auto runing juga. Karena kita mau cuman jalankan ketika digunakan saja maka pilih saja `Manual` kemudian klick **Apply** dan **OK**
+
+## Create user & database for Learning environtment
