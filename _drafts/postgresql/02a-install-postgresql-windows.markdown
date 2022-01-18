@@ -112,3 +112,49 @@ kemudian pilih **Properties** maka akan tampil konfigurasi seperti berikut:
 Jadi konfigurasi secara default servicenya adalah `Automatic` jadi ketika komputer dihidupkan service PostgreSQL Server auto runing juga. Karena kita mau cuman jalankan ketika digunakan saja maka pilih saja `Manual` kemudian klick **Apply** dan **OK**
 
 ## Create user & database for Learning environtment
+
+Setelah melakukan proses installasi _software_ PostgreSQL Server dan PgAdmin4, tahap selanjutnya kita akan membuat scema atau role, berikut adalah caranya.
+
+Login sebagai user `postgres`, yang pertama harus di ingat adalah _password_ postgres didapatkan ketika melakukan installasi software PostgreSQL. setelah itu baru bisa login sebagai user postgres dengan cara seperti berikut:
+
+{% gist page.gist "login-postgres.bash" %}
+
+Kemudian kita buat schema dengan perintah seperti berikut:
+
+{% gist page.gist "create-database-hr.sql" %}
+
+Setelah membuat user dengan _username_ `hr` dan passwornya sama dengan _username_ yaitu `hr`, tahap selanjutnya kita login sebagai user `hr`, dengan perintah seperti berikut:
+
+{% highlight psql %}
+psql -h localhost -U hr -W
+{% endhighlight %}
+
+Setelah login sebagai `hr` kemudian kita buat satu database dengan nama yang sama dengan username, dengan perintah seperti berikut:
+
+{% gist page.gist "create-database-hr.bash" %}
+
+Setelah database terbuat, kemudian download [file ini]({{ site.baseurl }}/resources/downloads/file/psql-schema.sql) setelah itu import file sql tersebut ke database `hr` dengan perintah seperti berikut:
+
+{% highlight psql %}
+psql -h localhost -d hr -U hr -W -f .\psql-schema.sql
+{% endhighlight %}
+
+Kemudian kita check dengan cara login menggunakan user dan database `hr` perintah seperti berikut:
+
+{% highlight psql %}
+psql -h localhost -d hr -U hr -W
+{% endhighlight %}
+
+Kemudian check datanya dengan perintah seperti berikut:
+
+{% highlight psql %}
+\dt
+
+select count(*) from employees;
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+![migration]({{ page.image_path | prepend: site.baseurl}}/14-migration.sql.png)
+
+Jika sudah seperti gambar diatas, selamat anda sudah sukses dan siap untuk mulai belajar Database PostgreSQL Fundamental.
