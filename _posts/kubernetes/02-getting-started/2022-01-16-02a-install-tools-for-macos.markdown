@@ -396,3 +396,56 @@ kube-system   kube-dns     ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,
 ```
 
 Nah sekarang kita sudah bisa menggunakan kubernetes cluster tersebut untuk belajar atau sebagai learning environment kita.
+
+## Create cluster using Docker driver (alternative apple silicon)
+
+Selain menggunakan virtualbox yang hanya support dengan processor intel saja saat ini, kita juga bisa menggunakan Docker sebagai drivernya minikube. Dengan Docker driver ini jadi kita bisa gunakan untuk MacOS dengan processor Apple silicon.
+
+Untuk membuat single cluster dengan Docker driver, syaratnya adalah
+
+1. Install docker-desktop untuk mac
+2. Setting container-resources seperti increse memory, dan cpu
+
+Untuk settingan docker-desktop disini saya menggunakan settingan seperti berikut:
+
+![docker-desktop]({{ page.image_path | prepend: site.baseurl }}/04-docker-desktop.png)
+
+Nah sekarang kita buat clusternya dengan perintah seperti berikut:
+
+{% gist page.gist "02a-start-docker-cluster-mac.bash" %}
+
+Nah jadi klo kita setting memory lebih besar dari yang kita setting di Docker Desktop biasanya akan error create cluster dengan notifikasi seperti berikut:
+
+```bash
+❌  Exiting due to MK_USAGE: Docker Desktop has only 3934MB memory but you specified 3993MB
+```
+
+Jika sudah success, maka hasilnya seperti berikut:
+
+```bash
+➜  ~ minikube start --driver docker --memory 3500MB
+😄  minikube v1.25.1 on Darwin 12.1
+✨  Using the docker driver based on user configuration
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+🔥  Creating docker container (CPUs=2, Memory=3500MB) ...
+🐳  Preparing Kubernetes v1.23.1 on Docker 20.10.12 ...
+    ▪ kubelet.housekeeping-interval=5m
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: default-storageclass, storage-provisioner
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+```
+
+Nah sekarang jika kita lihat di docker list container, disinilah kubernetes engine berjalan.
+
+```bash
+➜  ~ docker container ls
+CONTAINER ID   IMAGE                                 COMMAND                  CREATED         STATUS         PORTS                                                                                                                                  NAMES
+5f3b6370df83   gcr.io/k8s-minikube/kicbase:v0.0.29   "/usr/local/bin/entr…"   2 minutes ago   Up 2 minutes   127.0.0.1:50585->22/tcp, 127.0.0.1:50586->2376/tcp, 127.0.0.1:50588->5000/tcp, 127.0.0.1:50589->8443/tcp, 127.0.0.1:50587->32443/tcp   minikube
+```
+
+Setelah itu kita bisa, menggunakan kubernetes clusternya untuk learning environtment.
