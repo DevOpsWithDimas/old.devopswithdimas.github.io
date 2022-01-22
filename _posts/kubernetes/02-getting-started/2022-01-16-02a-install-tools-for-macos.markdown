@@ -326,10 +326,10 @@ commands).
 
 Secara default jika kita membuat single cluster dengan minikube menggunakan Virtualbox biasanya kita akan dibuatkan VM dengan configurasi
 
-- 2CPUs
-- 2GB memory
-- 20GB storage
-- Driver virtualbox
+- `2CPUs`
+- `2GB` memory
+- `20GB` storage
+- Driver `virtualbox`
 
 Nah saya mau override nilai tersebut untuk membuat clusternya dengan configurasi seperti berikut:
 
