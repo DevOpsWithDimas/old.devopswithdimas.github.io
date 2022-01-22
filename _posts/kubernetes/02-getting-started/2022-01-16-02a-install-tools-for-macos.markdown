@@ -240,7 +240,7 @@ daemon.  The default service CIDR range will automatically be added.
       --install-addons=true: If set, install addons. Defaults to true.
       --interactive=true: Allow user prompts for more information
 
---iso-url=[https://storage.googleapis.com/minikube/iso/minikube-v1.25.0.iso,https://github.com/kubernetes/minikube/releases/download/v1.25.0/minikube-v1.25.0.iso,https://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/iso/minikube-v1.25.0.iso]:
+--iso-url=[https://storage.googleapis.com/minikube/iso/minikube-v1.25.0.iso, ...]:
 Locations to fetch the minikube ISO from.
       --keep-context=false: This will keep the existing kubectl context and will
 create a minikube context.
