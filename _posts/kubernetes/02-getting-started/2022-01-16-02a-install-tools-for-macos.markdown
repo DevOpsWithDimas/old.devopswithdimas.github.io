@@ -27,6 +27,8 @@ Hai semuanya, di materi kali ini kita akan membahas cara install minikube di Mac
 2. Installing Container or virtual machine as backend minikube
 3. Installing minikube binary
 4. Installing kubernetes client
+5. Create cluster using Virtualbox driver
+6. Create cluster using Docker driver (alternative apple silicon)
 
 Ok langsung aja kita bahas ke materi yang pertama
 
@@ -114,7 +116,7 @@ Untuk install kubernetes client / kubectl kita bisa menggunakan beberapa cara ya
 Sama seperti sebelumnya kita bisa install menggunakan perintah berikut:
 
 {% highlight bash %}
-brew install kubernetes-cli
+brew install kubernetes-cli kustomize
 {% endhighlight %}
 
 jika dijalankan maka hasilnya seperti berikut:
@@ -122,4 +124,20 @@ jika dijalankan maka hasilnya seperti berikut:
 ```bash
 ➜  ~ kubectl version --client
 Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.1", GitCommit:"86ec240af8cbd1b60bcc4c03c20da9b98005b92e", GitTreeState:"clean", BuildDate:"2021-12-16T11:33:37Z", GoVersion:"go1.17.5", Compiler:"gc", Platform:"darwin/amd64"}
+```
+
+## Create cluster using Virtualbox driver
+
+Setelah kita menginstall tools untuk belajar kubernetes seperti `virtualbox` atau `docker` sebagai kubernetes runtime serta `minikube` ,`kubectl` dan `kustomize`. Sekarang kita akan membuat single kubernetes cluster dengan minikube menggunakan driver virtualbox.
+
+Untuk membuat kita bisa menggunakan perintah `minikube start` untuk lebih jelasnya kita bisa lihat dokumentasinya seperti berikut:
+
+{% highlight bash %}
+minikube start -h
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+
 ```
