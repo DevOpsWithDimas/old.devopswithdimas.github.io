@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Install minikube for Windows 11/10 Users"
+date: 2022-01-22T17:08:46+07:00
 lang: k8s
 categories:
 - DevOps
