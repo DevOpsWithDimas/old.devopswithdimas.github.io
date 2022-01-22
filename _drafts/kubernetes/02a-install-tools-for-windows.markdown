@@ -340,3 +340,62 @@ kube-system   kube-dns     ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,
 ```
 
 Nah sekarang kita sudah bisa menggunakan kubernetes cluster tersebut untuk belajar atau sebagai learning environment kita.
+
+## Create cluster using Docker driver (alternative)
+
+Selain menggunakan virtualbox kita juga bisa menggunakan Docker sebagai drivernya minikube.
+
+Untuk membuat single cluster dengan Docker driver, syaratnya adalah
+
+1. Install docker-desktop untuk Windows
+2. Setting container-resources seperti increse memory, dan cpu
+
+Untuk settingan docker-desktop disini saya menggunakan settingan `.wslconfig` seperti berikut:
+
+{% highlight conf %}
+[wsl2]
+memory=4GB # Limits VM memory in WSL 2 to 4 GB
+processors=2
+{% endhighlight %}
+
+Nah sekarang kita buat clusternya dengan perintah seperti berikut:
+
+{% gist page.gist "02a-start-docker-cluster-mac.bash" %}
+
+Nah jadi klo kita setting memory lebih besar dari yang kita setting di Docker Desktop biasanya akan error create cluster dengan notifikasi seperti berikut:
+
+```bash
+❌  Exiting due to MK_USAGE: Docker Desktop has only 3934MB memory but you specified 3993MB
+```
+
+Jika sudah success, maka hasilnya seperti berikut:
+
+```bash
+➜ ~ ✗  minikube start --driver docker --memory 3500MB
+😄  minikube v1.24.0 on Microsoft Windows 11 Pro 10.0.22000 Build 22000
+✨  Using the docker driver based on user configuration
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+    > gcr.io/k8s-minikube/kicbase: 355.78 MiB / 355.78 MiB  100.00% 2.83 MiB p/
+🔥  Creating docker container (CPUs=2, Memory=3500MB) ...
+❗  This container is having trouble accessing https://k8s.gcr.io
+💡  To pull new external images, you may need to configure a proxy: https://minikube.sigs.k8s.io/docs/reference/networking/proxy/
+🐳  Preparing Kubernetes v1.22.3 on Docker 20.10.8 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: storage-provisioner, default-storageclass
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+```
+
+Nah sekarang jika kita lihat di docker list container, disinilah kubernetes engine berjalan.
+
+```bash
+➜ ~  docker container ls
+CONTAINER ID   IMAGE                                 COMMAND                  CREATED              STATUS              PORTS                                                                                                                                  NAMES
+889dcc0689c0   gcr.io/k8s-minikube/kicbase:v0.0.28   "/usr/local/bin/entr…"   About a minute ago   Up About a minute   127.0.0.1:55692->22/tcp, 127.0.0.1:55693->2376/tcp, 127.0.0.1:55690->5000/tcp, 127.0.0.1:55691->8443/tcp, 127.0.0.1:55694->32443/tcp   minikube
+```
+
+Setelah itu kita bisa, menggunakan kubernetes clusternya untuk learning environtment.
