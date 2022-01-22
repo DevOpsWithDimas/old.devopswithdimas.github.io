@@ -356,7 +356,7 @@ Jika dijalankan maka outputnya seperti berikut:
 
 Nah sekarang jika kita lihat di virtualbox, akan jalan VM linux seperti berikut:
 
-![vm-kubernetes-cluster]({{ page.image_path | prepend: site.baseurl }}/03-virtualbox-vms)
+![vm-kubernetes-cluster]({{ page.image_path | prepend: site.baseurl }}/03-virtualbox-vms.png)
 
 Dengan begitu kita sudah bisa menggunakan kubernetes clusternya, sekarang kita coba check dengan perintah seperti berikut:
 
