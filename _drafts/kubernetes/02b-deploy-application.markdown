@@ -167,3 +167,31 @@ Jadi kita bisa mengkasesnya dengan port `30733`. Karena kita menjalankan menggun
 Maka kita bisa akes dari browser dengan alamat `http://192.168.59.105:30733` hasilnya seperti berikut:
 
 ![nginx-deploy]({{ page.image_path | prepend: site.baseurl }}/02-nginx-exposed.png)
+
+## Scale the deployment
+
+In the previous modules we created a Deployment, and then exposed it publicly via a Service. The Deployment created only one Pod for running our application. When traffic increases, we will need to scale the application to keep up with user demand. 
+
+![scaling-application](https://d33wubrfki0l68.cloudfront.net/30f75140a581110443397192d70a4cdb37df7bfc/b5f56/docs/tutorials/kubernetes-basics/public/images/module_05_scaling2.svg)
+
+Scaling out a Deployment will ensure new Pods are created and scheduled to Nodes with available resources. Scaling will increase the number of Pods to the new desired state.
+
+Running multiple instances of an application will require a way to distribute the traffic to all of them. Services have an integrated load-balancer that will distribute network traffic to all Pods of an exposed Deployment.
+
+Next, let's scale the Deployment to 4 replicas. We'll use the `kubectl scale` command, followed by deployment type, name and disired number of instances:
+
+{% gist page.gist "02b-deploy-scale.bash" %}
+
+To list your deployment state use `get deploy`:
+
+{% gist page.gist "02b-get-deploy.bash" %}
+
+The change was applied and we have 4 instance of application available. Next, let's check if number of Pods changed:
+
+{% gist page.gist "02b-get-pod-out-wide.bash" %}
+
+There are 4 pods now, with different IP address. The change was registered in the Deployment event logs. To check that, use `kubectl describe` command:
+
+{% gist page.gist "02b-describe-deploy.bash" %}
+
+You can also view in the output of this command that there are 4 replicas now.
