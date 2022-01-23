@@ -21,8 +21,8 @@ downloads: []
 Hai semuanya, di materi kali ini kita akan membahas Basic of Kubernetes untuk Container orchestration system menggunakan minikube (Learning environment). Diantaranya yang akan kita bahas
 
 1. Deploy a containerized application on a cluster.
-2. Viewing Pods and Nodes
-3. Expose Your App Publicly
+2. Viewing Pods and Nodes.
+3. Expose Your App Publicly.
 3. Scale the deployment.
 4. Update the containerized application with a new software version.
 5. Debug the containerized application.
