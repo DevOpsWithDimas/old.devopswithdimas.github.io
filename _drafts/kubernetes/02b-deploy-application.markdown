@@ -23,9 +23,9 @@ Hai semuanya, di materi kali ini kita akan membahas Basic of Kubernetes untuk Co
 1. Deploy a containerized application on a cluster.
 2. Viewing Pods and Nodes.
 3. Expose Your App Publicly.
-3. Scale the deployment.
-4. Update the containerized application with a new software version.
-5. Debug the containerized application.
+4. Scale the deployment.
+5. Update the containerized application with a new software version.
+6. Debug the containerized application.
 
 ## Deploy a containerized application on a cluster
 
