@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: minikube
-image_path: /resources/posts/kubernetes/02c-getting-started
+image_path: /resources/posts/kubernetes/02b-deploy-application
 gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
@@ -22,7 +22,7 @@ Hai semuanya, di materi kali ini kita akan membahas Basic of Kubernetes untuk Co
 
 1. Deploy a containerized application on a cluster.
 2. Viewing Pods and Nodes
-3. 
+3. Expose Your App Publicly
 3. Scale the deployment.
 4. Update the containerized application with a new software version.
 5. Debug the containerized application.
@@ -123,3 +123,47 @@ minikube   Ready    control-plane,master   31m   v1.23.1
 NAME                            READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
 nginx-deploy-6c758c8d46-s8nrj   1/1     Running   0          22m   172.17.0.3   minikube   <none>           <none>
 ```
+
+## Expose Your App Publicly
+
+When you created a Deployment, by default you can't access that service directly. to Expose your container you need a Kubernetes Service. A Service in Kubernetes is an abstraction which defines a logical set of Pods and a policy by which to access them. Services enable a loose coupling between dependent Pods. 
+
+Although each Pod has a unique IP address, those IPs are not exposed outside the cluster without a Service. Services can be exposed in different ways by specifying a type in the ServiceSpec:
+
+1. **ClusterIP** (default) - Exposes the Service on an internal IP in the cluster. This type makes the Service only reachable from within the cluster.
+2. **NodePort** - Exposes the Service on the same port of each selected Node in the cluster using NAT. Makes a Service accessible from outside the cluster using `<NodeIP>:<NodePort>`. Superset of ClusterIP.
+3. **LoadBalancer** - Creates an external load balancer in the current cloud (if supported) and assigns a fixed, external IP to the Service. Superset of NodePort.
+4. **ExternalName** - Maps the Service to the contents of the externalName field (e.g. `foo.bar.example.com`), by returning a CNAME record with its value. No proxying of any kind is set up. This type requires v1.7 or higher of kube-dns, or CoreDNS version 0.0.8 or higher.
+
+First take a look list of services using `get services` command: 
+
+{% gist page.gist "02b-get-service.bash" %}
+
+By default we have a services called `kubernetes` created when kubernetes cluster started. To create a new service and expose to external traffic we'll use `expose` command with type `NodePort` as parameter.
+
+{% gist page.gist "02b-create-service-node-port.bash" %}
+
+Ok cool!, let's run again `get service` command, to view list of services created.
+
+```bash
+➜ ~  kubectl get service
+NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+kubernetes     ClusterIP   10.96.0.1      <none>        443/TCP        49m
+nginx-deploy   NodePort    10.102.0.219   <none>        80:30733/TCP   68s
+```
+
+You will see, `nginx-deploy` service. kita bisa check portnya di kolom `PORT(S)` yaitu `80:30733/TCP` 
+
+- Port `80` adalah port container
+- Port `30733` adalah port exposed
+
+Jadi kita bisa mengkasesnya dengan port `30733`. Karena kita menjalankan menggunakan minikube dengan driver virtualbox jadi kita bisa ambil ip nya menggunakan `minikube ip` seperti berikut:
+
+```bash
+➜ ~  minikube ip minikube
+192.168.59.105
+```
+
+Maka kita bisa akes dari browser dengan alamat `http://192.168.59.105:30733` hasilnya seperti berikut:
+
+![nginx-deploy]({{ page.image_path | prepend: site.baseurl }}/02-nginx-exposed.png)
