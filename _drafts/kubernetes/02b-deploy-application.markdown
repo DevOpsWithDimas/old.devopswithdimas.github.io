@@ -90,11 +90,11 @@ When you created a Deployment, Kubernetes created a **Pod** to host your applica
 2. Networking, as a unique cluster IP address
 3. Information about how to run each container, such as the container image version or specific ports to use
 
-![pod-overview](https://d33wubrfki0l68.cloudfront.net/fe03f68d8ede9815184852ca2a4fd30325e5d15a/98064/docs/tutorials/kubernetes-basics/public/images/module_03_pods.svg)
+![pod-overview]({{ page.image_path | prepend: site.baseurl }}/03-pods.png)
 
 A Pod always runs on a **Node**. A Node is a worker machine in Kubernetes and may be either a virtual or a physical machine, depending on the cluster.
 
-![node-overview](https://d33wubrfki0l68.cloudfront.net/5cb72d407cbe2755e581b6de757e0d81760d5b86/a9df9/docs/tutorials/kubernetes-basics/public/images/module_03_nodes.svg)
+![node-overview]({{ page.image_path | prepend: site.baseurl }}/04-nodes.png)
 
 To view list of pods currently running in your cluster use `get pods`:
 
@@ -172,7 +172,7 @@ Maka kita bisa akes dari browser dengan alamat `http://192.168.59.105:30733` has
 
 In the previous modules we created a Deployment, and then exposed it publicly via a Service. The Deployment created only one Pod for running our application. When traffic increases, we will need to scale the application to keep up with user demand. 
 
-![scaling-application](https://d33wubrfki0l68.cloudfront.net/30f75140a581110443397192d70a4cdb37df7bfc/b5f56/docs/tutorials/kubernetes-basics/public/images/module_05_scaling2.svg)
+![scaling-application]({{ page.image_path | prepend: site.baseurl }}/05-services.png)
 
 Scaling out a Deployment will ensure new Pods are created and scheduled to Nodes with available resources. Scaling will increase the number of Pods to the new desired state.
 
@@ -195,3 +195,24 @@ There are 4 pods now, with different IP address. The change was registered in th
 {% gist page.gist "02b-describe-deploy.bash" %}
 
 You can also view in the output of this command that there are 4 replicas now.
+
+## Update the containerized application with a new software version.
+
+Users expect applications to be available all the time and developers are expected to deploy new versions of them several times a day. In Kubernetes this is done with rolling updates. **Rolling updates** allow Deployments' update to take place with zero downtime by incrementally updating Pods instances with new ones. The new Pods will be scheduled on Nodes with available resources.
+
+Similar to application Scaling, if a Deployment is exposed publicly, the Service will load-balance the traffic only to available Pods during the update. Rolling updates allow the following actions:
+
+1. Promote an application from one environment to another (via container image updates)
+2. Rollback to previous versions
+3. Continuous Integration and Continuous Delivery of applications with zero downtime
+
+To update the image of application to next version, use the `set image` command, followed by deployment name, container name and the new image version:
+
+{% gist page.gist "02b-set-new-image.bash" %}
+
+The command notified the Deployment to use a different image from your app and initiated a rolling update. To check the status of new Pods and view the old one terminate with the `get pods`
+
+{% gist page.gist "02b-get-pods.bash" %}
+
+## Debug the containerized application.
+
