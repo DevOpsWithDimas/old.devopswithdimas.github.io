@@ -216,3 +216,110 @@ The command notified the Deployment to use a different image from your app and i
 
 ## Debug the containerized application.
 
+Setelah kita memcoba meng-operasikan kubernetes dengan `kubectl` command, sekarang kita akan membahas bagaimana cara melakukan debug pada Pod yang sedang berjalan (running) atau yang failed (crashing) pada Node. Untuk melakukan debug kita bisa menggunakan beberapa cara yaitu
+
+1. `logs` command
+2. `describe` command
+3. `exec` command
+
+Examining pod logs. First, look at the logs of the affected container:
+
+{% highlight bash %}
+kubectl logs ${POD_NAME} ${CONTAINER_NAME}
+{% endhighlight %}
+
+Example:
+
+{% gist page.gist "02b-logs-pod.bash" %}
+
+Jika kita jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ ~  kubectl get pods
+NAME                            READY   STATUS         RESTARTS   AGE
+nginx-deploy-7ffddfc8f8-66mbk   0/1     ErrImagePull   0          31s
+
+➜ ~  kubectl logs nginx-deploy-7ffddfc8f8-66mbk
+Error from server (BadRequest): container "nginx" in pod "nginx-deploy-7ffddfc8f8-66mbk" is waiting to start: trying and failing to pull image
+```
+
+If you want more detail, use `describe` command:
+
+{% highlight bash %}
+kubectl describe pod ${POD_NAME}
+{% endhighlight %}
+
+Example:
+
+{% gist page.gist "02b-pod-describe.bash" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ ~  kubectl describe pod nginx-deploy
+Name:         nginx-deploy-7ffddfc8f8-66mbk
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Tue, 25 Jan 2022 05:21:45 +0700
+Labels:       app=nginx-deploy
+              pod-template-hash=7ffddfc8f8
+Annotations:  <none>
+Status:       Pending
+IP:           172.17.0.3
+IPs:
+  IP:           172.17.0.3
+Controlled By:  ReplicaSet/nginx-deploy-7ffddfc8f8
+Containers:
+  nginx:
+    Container ID:
+    Image:          nginx:0.0.0
+    Image ID:
+    Port:           <none>
+    Host Port:      <none>
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-72dhn (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             False
+  ContainersReady   False
+  PodScheduled      True
+Volumes:
+  kube-api-access-72dhn:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                From               Message
+  ----     ------     ----               ----               -------
+  Normal   Scheduled  94s                default-scheduler  Successfully assigned default/nginx-deploy-7ffddfc8f8-66mbk to minikube
+  Normal   Pulling    30s (x3 over 94s)  kubelet            Pulling image "nginx:0.0.0"
+  Warning  Failed     25s (x3 over 77s)  kubelet            Failed to pull image "nginx:0.0.0": rpc error: code = Unknown desc = Error response from daemon: manifest for nginx:0.0.0 not found: manifest unknown: manifest unknown
+  Warning  Failed     25s (x3 over 77s)  kubelet            Error: ErrImagePull
+  Normal   BackOff    0s (x4 over 76s)   kubelet            Back-off pulling image "nginx:0.0.0"
+  Warning  Failed     0s (x4 over 76s)   kubelet            Error: ImagePullBackOff
+```
+
+You can see at the Events has message: `Back-off pulling image "nginx:0.0.0"` it's mean docker image `nginx` version `0.0.0` not valid or not available on registries.
+
+Or somethime error logs trigger at runtime and produce using file not on stdout by default. use `exec` command to interact inside container
+
+{% highlight bash %}
+kubectl exec -it deploy/${DEPLOYMENT_NAME} -c ${CONTAINER_NAME} -- ${APPS} ${ARGS1 ...}
+{% endhighlight %}
+
+Example:
+
+{% gist page.gist "02b-exec-container.bash" %}

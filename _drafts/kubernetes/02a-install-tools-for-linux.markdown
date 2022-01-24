@@ -25,7 +25,7 @@ Hai semuanya, di materi kali ini kita akan membahas cara install minikube di Lin
 3. Installing minikube binary
 4. Installing kubernetes client
 5. Create cluster using Virtualbox driver
-6. Create cluster using Docker driver (alternative apple silicon)
+6. Create cluster using Docker driver (alternative)
 
 Ok langsung aja kita bahas ke materi yang pertama
 
