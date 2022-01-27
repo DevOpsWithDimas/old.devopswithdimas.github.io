@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Install minikube for Linux users"
+date: 2022-01-27T11:51:22+07:00
 lang: k8s
 categories:
 - DevOps
