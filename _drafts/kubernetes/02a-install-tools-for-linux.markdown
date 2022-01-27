@@ -42,3 +42,22 @@ Untuk menginstall minikube di Windows 10/11 kita membutuhkan:
 Klo saya sendiri disini menggunakan Thinkbook 14" dengan specification seperti berikut:
 
 ![system-info]({{ page.image_path | prepend: site.baseurl }}/01-system-info.png)
+
+## Installing Container or virtual machine as backend minikube
+
+Untuk pengguna linux kita bisa menggunakan beberapa driver yaitu
+
+1. Docker / Podman
+2. Virtualbox
+3. VMware player
+
+Untuk proses installasi docker di Linux kita bisa lihat dari official dokumentasi docker
+
+1. [Untuk Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+2. [Untuk Centos/RedHat](https://docs.docker.com/engine/install/centos/)
+
+Untuk proses installasi Virtualbox di linux, kita bisa Download binary dari [official dokumentasi](https://www.virtualbox.org/wiki/Linux_Downloads) Virtualbox kemudian kita install sesuai dengan platform. Karena saya menggunakan Ubuntu Desktop `21.04` maka kita bisa menggunakan perintah seperti berikut:
+
+{% highlight bash %}
+dpkg -i virtualbox-xxx.xxx_Ubuntu_eoan_xxxx.deb
+{% endhighlight %}
