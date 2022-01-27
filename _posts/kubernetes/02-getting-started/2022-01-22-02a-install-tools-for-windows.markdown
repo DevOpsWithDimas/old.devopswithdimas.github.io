@@ -92,7 +92,7 @@ commit: 76b94fb3c4e8ac5062daf70d60cf03ddcc0a741b
 Untuk install kubernetes client / kubectl kita bisa menggunakan beberapa cara yaitu 
 
 1. binary download
-2. homebrew
+2. Package Manager Chocolatey
 
 Sama seperti sebelumnya kita bisa install menggunakan perintah berikut:
 
