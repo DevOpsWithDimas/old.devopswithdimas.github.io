@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Deploying an apps/services into Kubernetes"
-date: 2022-01-27T12:59:08+07:00
+date: 2022-01-27T11:59:08+07:00
 lang: k8s
 categories:
 - DevOps
