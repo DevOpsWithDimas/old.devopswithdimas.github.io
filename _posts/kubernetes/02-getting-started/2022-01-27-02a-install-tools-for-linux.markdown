@@ -34,7 +34,7 @@ Ok langsung aja kita bahas ke materi yang pertama
 
 ## What you’ll need?
 
-Untuk menginstall minikube di Windows 10/11 kita membutuhkan:
+Untuk menginstall minikube di Linux kita membutuhkan:
 
 1. `2 CPUs` or more
 2. `2GB` of free memory
