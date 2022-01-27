@@ -303,20 +303,18 @@ Nah saya mau override nilai tersebut untuk membuat clusternya dengan configurasi
 Jika dijalankan maka outputnya seperti berikut:
 
 ```bash
-➜ ~  minikube start --memory 4g --driver virtualbox --no-vtx-check true
-😄  minikube v1.24.0 on Microsoft Windows 11 Pro 10.0.22000 Build 22000
+➜  ~ minikube start --driver virtualbox --memory 4g --no-vtx-check
+😄  minikube v1.24.0 on Ubuntu 21.10
 ✨  Using the virtualbox driver based on user configuration
 👍  Starting control plane node minikube in cluster minikube
 🔥  Creating virtualbox VM (CPUs=2, Memory=4096MB, Disk=20000MB) ...
-❗  This VM is having trouble accessing https://k8s.gcr.io
-💡  To pull new external images, you may need to configure a proxy: https://minikube.sigs.k8s.io/docs/reference/networking/proxy/
 🐳  Preparing Kubernetes v1.22.3 on Docker 20.10.8 ...
     ▪ Generating certificates and keys ...
     ▪ Booting up control plane ...
     ▪ Configuring RBAC rules ...
     ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
-🌟  Enabled addons: default-storageclass, storage-provisioner
 🔎  Verifying Kubernetes components...
+🌟  Enabled addons: storage-provisioner, default-storageclass
 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
 ```
 
@@ -370,13 +368,12 @@ Nah sekarang kita buat clusternya dengan perintah seperti berikut:
 Jika sudah success, maka hasilnya seperti berikut:
 
 ```bash
-➜ ~ ✗  minikube start --driver docker --memory 3500MB
-😄  minikube v1.24.0 on Microsoft Windows 11 Pro 10.0.22000 Build 22000
-✨  Using the docker driver based on user configuration
+➜  ~ minikube start 
+😄  minikube v1.24.0 on Ubuntu 21.10
+✨  Automatically selected the docker driver. Other choices: virtualbox, ssh
 👍  Starting control plane node minikube in cluster minikube
 🚜  Pulling base image ...
-    > gcr.io/k8s-minikube/kicbase: 355.78 MiB / 355.78 MiB  100.00% 2.83 MiB p/
-🔥  Creating docker container (CPUs=2, Memory=3500MB) ...
+🔥  Creating docker container (CPUs=2, Memory=3800MB) ...
 ❗  This container is having trouble accessing https://k8s.gcr.io
 💡  To pull new external images, you may need to configure a proxy: https://minikube.sigs.k8s.io/docs/reference/networking/proxy/
 🐳  Preparing Kubernetes v1.22.3 on Docker 20.10.8 ...
@@ -385,7 +382,7 @@ Jika sudah success, maka hasilnya seperti berikut:
     ▪ Configuring RBAC rules ...
 🔎  Verifying Kubernetes components...
     ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
-🌟  Enabled addons: storage-provisioner, default-storageclass
+🌟  Enabled addons: default-storageclass, storage-provisioner
 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
 ```
 
