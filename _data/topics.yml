@@ -564,7 +564,7 @@
   publish: 2022-01-16T20:50:50+07:00
   github: 
   youtube:
-  udemy:
+  udemy: https://www.udemy.com/course/dba-postgresql-pemula-sampai-mahir/?referralCode=8080BE598C39D7652D33
   coming_soon: false
   visible: true
   catalogs:
