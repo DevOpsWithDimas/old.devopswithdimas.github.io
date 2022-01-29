@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "02d-minikube-configuration"
+title: "02e-minikube-push-images"
 lang: k8s
 categories:
 - DevOps
@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: minikube
-image_path: /resources/posts/kubernetes/02d-minikube-configuration
+image_path: /resources/posts/kubernetes/02e-minikube-push-images
 gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---

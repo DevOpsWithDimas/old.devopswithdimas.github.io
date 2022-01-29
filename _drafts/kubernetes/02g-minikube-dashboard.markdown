@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "02e-minikube-registries"
+title: "02g-minikube-dashboard"
 lang: k8s
 categories:
 - DevOps
@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: minikube
-image_path: /resources/posts/kubernetes/02e-minikube-registries
+image_path: /resources/posts/kubernetes/02g-minikube-dashboard
 gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
