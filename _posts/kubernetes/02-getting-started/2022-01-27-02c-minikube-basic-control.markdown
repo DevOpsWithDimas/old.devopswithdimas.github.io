@@ -22,10 +22,11 @@ downloads: []
 Hai semuanya, di materi kali ini kita akan membahas dulu basic penggunaan dari minikube seperti
 
 1. Start/Stop cluster
-2. Multiple cluster on same machine
-3. Multiple nodes on a cluster
-4. Accessing a node using ssh
-5. Delete cluster
+2. Delete cluster
+3. Multiple cluster on same machine
+4. Multiple nodes on a cluster
+5. Accessing a node using ssh
+6. Using insecure-registry build-in minikube
 
 Ok langsung ja kita bahas materi yang pertama 
 
@@ -38,6 +39,16 @@ Dengan menggunakan minikube kita bisa management cluster seperti start/stop. Fea
 Jika kita mau stop service kubernetes cluster pada minikube, kita bisa menggunakan perintah 
 
 {% gist page.gist "02c-minikube-stop.bash" %}
+
+## Delete cluster
+
+Dengan menggunakan minikube juga kita bisa menghapus cluster yang sudah kita gunakan, dengan menggunakan perintah:
+
+{% gist page.gist "02c-minikube-delete-profile.bash" %}
+
+Selain itu juga kita bisa menghapus semua cluster yang ada, dengan menggunakan perintah berikut:
+
+{% gist page.gist "02c-minikube-delete-all.bash" %}
 
 ## Multiple cluster on same machine
 
@@ -275,12 +286,5 @@ WARNING: No blkio throttle.read_iops_device support
 WARNING: No blkio throttle.write_iops_device support
 ```
 
-## Delete cluster
+## Using insecure-registry build-in minikube
 
-Dengan menggunakan minikube juga kita bisa menghapus cluster yang sudah kita gunakan, dengan menggunakan perintah:
-
-{% gist page.gist "02c-minikube-delete-profile.bash" %}
-
-Selain itu juga kita bisa menghapus semua cluster yang ada, dengan menggunakan perintah berikut:
-
-{% gist page.gist "02c-minikube-delete-all.bash" %}
