@@ -169,6 +169,112 @@ RawContent        : HTTP/1.1 200 OK
                     Last-Modified: Tue, 25 Jan 2022 ...
 ```
 
+## Accessing a node using ssh
+
+Dengan menggunakan minikube juga kita bisa log into node using ssh untuk debugging terkait dengan kubernetes components (api-server, kubelet, cni, container runtime), dengan menggunakan perintah `minikube ssh`.
+
+{% highlight bash %}
+minikube ssh -h
+{% endhighlight %}
+
+Maka outputnya seperti berikut:
+
+```powershell
+➜ ~  minikube ssh -h
+Log into or run a command on a machine with SSH; similar to 'docker-machine ssh'.
+
+Options:
+      --native-ssh=true: Use native Golang SSH client (default true). Set to 'false' to use the
+command line 'ssh' command when accessing the docker machine. Useful for the machine drivers when
+they will not start with 'Waiting for SSH'.
+  -n, --node='': The node to ssh into. Defaults to the primary control plane.
+
+Usage:
+  minikube ssh [flags] [options]
+
+Use "minikube options" for a list of global command-line options (applies to all commands).
+```
+
+Untuk melihat daftar nodes kita bisa menggunakan perintah:
+
+{% gist page.gist "02c-minikube-node-list.bash" %}
+
+Sekarang kita akan coba login ke node `multiple-nodes-m03` maka perintahnya seperti berikut:
+
+{% gist page.gist "02c-minikube-ssh-login.bash" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ ~  minikube ssh -n multiple-nodes-m03
+                         _             _
+            _         _ ( )           ( )
+  ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __
+/' _ ` _ `\| |/' _ `\| || , <  ( ) ( )| '_`\  /'__`\
+| ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
+(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/''`\____)
+
+$ docker info
+Client:
+ Context:    default
+ Debug Mode: false
+
+Server:
+ Containers: 7
+  Running: 6
+  Paused: 0
+  Stopped: 1
+ Images: 12
+ Server Version: 20.10.12
+ Storage Driver: overlay2
+  Backing Filesystem: extfs
+  Supports d_type: true
+  Native Overlay Diff: true
+  userxattr: false
+ Logging Driver: json-file
+ Cgroup Driver: systemd
+ Cgroup Version: 1
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 io.containerd.runtime.v1.linux runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 7b11cfaabd73bb80907dd23182b9347b4245eb5d
+ runc version: 52b36a2dd837e8462de8e01458bf02cf9eea47dd
+ init version: de40ad0
+ Security Options:
+  seccomp
+   Profile: default
+ Kernel Version: 4.19.202
+ Operating System: Buildroot 2021.02.4
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 2
+ Total Memory: 3.335GiB
+ Name: multiple-nodes-m03
+ ID: GBLY:WYNL:WWKN:5OKS:WE2Y:5H3R:JICT:KOML:3XE5:R32H:Q64S:RKGL
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ No Proxy: 192.168.59.110,192.168.59.111
+ Registry: https://index.docker.io/v1/
+ Labels:
+  provider=virtualbox
+ Experimental: false
+ Insecure Registries:
+  10.96.0.0/12
+  127.0.0.0/8
+ Live Restore Enabled: false
+ Product License: Community Engine
+
+WARNING: No blkio throttle.read_bps_device support
+WARNING: No blkio throttle.write_bps_device support
+WARNING: No blkio throttle.read_iops_device support
+WARNING: No blkio throttle.write_iops_device support
+```
+
 ## Delete cluster
 
 Dengan menggunakan minikube juga kita bisa menghapus cluster yang sudah kita gunakan, dengan menggunakan perintah:
