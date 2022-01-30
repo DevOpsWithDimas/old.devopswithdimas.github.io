@@ -11,6 +11,9 @@ refs:
 - https://docs.docker.com/
 - https://kubernetes.io/docs/home/
 - https://minikube.sigs.k8s.io/docs/handbook/controls/
+- https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
+- https://minikube.sigs.k8s.io/docs/commands/ssh/
+- https://minikube.sigs.k8s.io/docs/handbook/registry/
 youtube: 
 comments: true
 catalog_key: minikube
@@ -26,7 +29,7 @@ Hai semuanya, di materi kali ini kita akan membahas dulu basic penggunaan dari m
 3. Multiple cluster on same machine
 4. Multiple nodes on a cluster
 5. Accessing a node using ssh
-6. Using insecure-registry build-in minikube
+6. Using insecure-registry to pull image
 
 Ok langsung ja kita bahas materi yang pertama 
 
@@ -286,5 +289,44 @@ WARNING: No blkio throttle.read_iops_device support
 WARNING: No blkio throttle.write_iops_device support
 ```
 
-## Using insecure-registry build-in minikube
+## Using insecure-registry to pull image
 
+Dengan menggunakan minikube, by default registry yang digunakan adalah [DockerHUB](https://hub.docker.com/) tetapi selain itu juga kita bisa menggunakan registry lain seperti
+
+1. AWS Elastic Container Registry (ECR)
+2. Google Container Registry (GCR)
+3. Insecure Docker registry (Docker)
+4. Azure Container Registry (ACR)
+
+dengan menambahkan feature / addon `registry-creds`
+
+Sebagai contoh, disini saya menggunakan Nexus OSS yang telah di configurasi untuk docker registry (insecure docker registry) dengan address `192.168.88.50:8086`. Pertama kita perlu setting container runtime untuk bisa insecure registry dengan menggunakan `--insecure-registry` seperti berikut:
+
+{% gist page.gist "02c-minikube-start-insecure-registry.bash" %}
+
+Dan setelah clusternya terbuat maka kita bisa configure untuk authenctionnya menggunakan perintah:
+
+{% gist page.gist "02c-minikube-addon-registry-creds.bash" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ ~  minikube start --memory 4g --driver virtualbox -p insecure-registry --insecure-registry=192.168.88.50:8086 --no-vtx-check
+😄  [insecure-registry] minikube v1.25.1 on Microsoft Windows 11 Pro 10.0.22000 Build 22000
+✨  Using the virtualbox driver based on user configuration
+👍  Starting control plane node insecure-registry in cluster insecure-registry
+🔥  Creating virtualbox VM (CPUs=2, Memory=4096MB, Disk=20000MB) ...
+❗  This VM is having trouble accessing https://k8s.gcr.io
+💡  To pull new external images, you may need to configure a proxy: https://minikube.sigs.k8s.io/docs/reference/networking/proxy/
+🐳  Preparing Kubernetes v1.23.1 on Docker 20.10.12 ...
+    ▪ kubelet.housekeeping-interval=5m
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: default-storageclass, storage-provisioner
+🔎  Verifying Kubernetes components...
+🏄  Done! kubectl is now configured to use "insecure-registry" cluster and "default" namespace by default
+
+
+```
