@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Using your own image into Minikube cluster"
+date: 2022-02-01T23:12:50+07:00
 lang: k8s
 categories:
 - DevOps
