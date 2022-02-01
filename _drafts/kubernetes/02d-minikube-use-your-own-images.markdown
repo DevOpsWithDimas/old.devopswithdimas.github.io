@@ -457,7 +457,7 @@ Sekarang kita coba jalankan:
 
 ```bash
 ➜  ~ minikube start --memory 4g --driver virtualbox \
-> --insecure-registry="192.168.88.50:8087,192.168.88.50:8086" \
+> --insecure-registry="repository.dimas-maryanto.com:8087,repository.dimas-maryanto.com:8086" \
 > -p insecure-registry
 😄  [insecure-registry] minikube v1.25.1 on Darwin 12.2
 ✨  Using the virtualbox driver based on user configuration
@@ -533,8 +533,8 @@ Server:
   provider=virtualbox
  Experimental: false
  Insecure Registries:
-  192.168.88.50:8086
-  192.168.88.50:8087
+  repository.dimas-maryanto.com:8086
+  repository.dimas-maryanto.com:8087
   10.96.0.0/12
   127.0.0.0/8
  Live Restore Enabled: false
@@ -559,7 +559,7 @@ Jika dijalankan maka hasilnya seperti berikut:
 Do you want to enable AWS Elastic Container Registry? [y/n]: n
 Do you want to enable Google Container Registry? [y/n]: n
 Do you want to enable Docker Registry? [y/n]: y
--- Enter docker registry server url: 192.168.88.50:8087
+-- Enter docker registry server url: repository.dimas-maryanto.com:8087
 -- Enter docker registry username: admin
 -- Enter docker registry password:
 Do you want to enable Azure Container Registry? [y/n]: n
@@ -598,8 +598,8 @@ IPs:
 Containers:
   nginx-insecure-app:
     Container ID:   docker://fce02061f60ffda073afd25df53e06d4312931f5dc7be79f872f7582af0458d8
-    Image:          192.168.88.50:8087/udemy/kubernetes/nginx-app:1.0
-    Image ID:       docker-pullable://192.168.88.50:8087/udemy/kubernetes/nginx-app@sha256:bce870a1cfc768aa9cb6affe71e18ac7dc3c6997ad016d3ce44af0e8ecae50c9
+    Image:          repository.dimas-maryanto.com:8087/udemy/kubernetes/nginx-app:1.0
+    Image ID:       docker-pullable://repository.dimas-maryanto.com:8087/udemy/kubernetes/nginx-app@sha256:bce870a1cfc768aa9cb6affe71e18ac7dc3c6997ad016d3ce44af0e8ecae50c9
     Port:           <none>
     Host Port:      <none>
     State:          Running
@@ -630,8 +630,8 @@ Events:
   Type    Reason     Age   From               Message
   ----    ------     ----  ----               -------
   Normal  Scheduled  33s   default-scheduler  Successfully assigned default/nginx-insecure-app to insecure-registry
-  Normal  Pulling    32s   kubelet            Pulling image "192.168.88.50:8087/udemy/kubernetes/nginx-app:1.0"
-  Normal  Pulled     26s   kubelet            Successfully pulled image "192.168.88.50:8087/udemy/kubernetes/nginx-app:1.0" in 6.294481617s
+  Normal  Pulling    32s   kubelet            Pulling image "repository.dimas-maryanto.com:8087/udemy/kubernetes/nginx-app:1.0"
+  Normal  Pulled     26s   kubelet            Successfully pulled image "repository.dimas-maryanto.com:8087/udemy/kubernetes/nginx-app:1.0" in 6.294481617s
   Normal  Created    25s   kubelet            Created container nginx-insecure-app
   Normal  Started    25s   kubelet            Started container nginx-insecure-app
 ```
