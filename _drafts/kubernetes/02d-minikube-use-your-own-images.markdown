@@ -418,3 +418,25 @@ Events:
   Normal  Created    54s   kubelet            Created container nginx-private-app
   Normal  Started    54s   kubelet            Started container nginx-private-app
 ```
+
+## Publish to private/insecure registry
+
+minikube allows users to configure the docker engine’s `--insecure-registry` flag. 
+
+You can use the `--insecure-registry` flag on the `minikube start` command to enable insecure communication between the docker engine and registries listening to requests from the CIDR range.
+
+Insecure Registry ini adalah alternative jika container image mau di simpan di on-premis, Ada beberapa container registry yang kita bisa gunakan seperti
+
+1. [Nexus OSS](https://www.sonatype.com/products/repository-oss)
+2. [JFrog Artifactory](https://jfrog.com/artifactory/)
+3. [Gitlab Container Registry](https://docs.gitlab.com/ee/administration/packages/container_registry.html)
+4. dan masih banyak lagi.
+
+Disini saya sudah install insecure-registry menggunakan Nexus dan untuk cara installnya saya sudah pernah bahas di [artikel berikut]({% post_url docker/02-registries/2021-04-24-03c-install-nexus-oss %}) untuk registry urlnya seperti berikut:
+
+1. Hosted registry: `192.168.88.50:8087`
+2. Group registry: `192.168.88.50:8086`
+
+Jadi jika kita mau menggunakan insecure registry tersebut kita bisa menggunakan perintah berikut:
+
+{% gist page.gist "02d-minikube-start-with-insecure-registry.bash" %}
