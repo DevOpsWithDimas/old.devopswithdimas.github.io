@@ -113,3 +113,116 @@ pod/nginx-app created
 NAME        READY   STATUS    RESTARTS   AGE
 nginx-app   1/1     Running   0          10s
 ```
+
+## Build container image in minikube cluster
+
+Selain menggunakan Save/Load kita juga bisa menggunakan build directly ke minikube cluster menggunakan perintah `minikube image build` Untuk lebih detail kita bisa check dokumentasinya:
+
+```powershell
+➜ 01-getting-started  minikube image build -h
+Build a container image, using the container runtime.
+
+Examples:
+minikube image build .
+
+Options:
+      --all=false: Build image on all nodes.
+      --build-env=[]: Environment variables to pass to the build. (format: key=value)
+      --build-opt=[]: Specify arbitrary flags to pass to the build. (format: key=value)
+  -f, --file='': Path to the Dockerfile to use (optional)
+  -n, --node='': The node to build on. Defaults to the primary control plane.
+      --push=false: Push the new image (requires tag)
+  -t, --tag='': Tag to apply to the new image (optional)
+
+Usage:
+  minikube image build PATH | URL | - [flags] [options]
+
+Use "minikube options" for a list of global command-line options (applies to all commands).
+```
+
+Sekarang kita coba untuk build docker image yang sebelumnya, dengan perintah seperti berikut:
+
+{% gist page.gist "02d-minikube-image-build-minikube.bash" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```powershell
+➜ 01-getting-started  minikube image build -t dimmaryanto93/kubernetes-cource:1.1 .
+Sending build context to Docker daemon  9.216kB
+Step 1/2 : FROM nginx:mainline
+ ---> c316d5a335a5
+Step 2/2 : COPY index.html /usr/share/nginx/html/
+ ---> 9a6dfda72b33
+Successfully built 9a6dfda72b33
+Successfully tagged dimmaryanto93/kubernetes-cource:1.1
+
+➜ 01-getting-started  minikube image ls dimmaryanto93/kubernetes-cource
+...
+docker.io/dimmaryanto93/kubernetes-cource:1.1
+docker.io/dimmaryanto93/kubernetes-cource:1.0
+
+➜ 01-getting-started ✗  kubectl set image pod/nginx-app nginx-app='dimmaryanto93/kubernetes-cource:1.1'
+pod/nginx-app image updated
+
+➜ 01-getting-started  kubectl get pod
+NAME        READY   STATUS    RESTARTS      AGE
+nginx-app   1/1     Running   1 (19s ago)   100s
+
+➜ 01-getting-started  kubectl describe pod nginx-app
+Name:         nginx-app
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.59.119
+Start Time:   Tue, 01 Feb 2022 18:48:23 +0700
+Labels:       run=nginx-app
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.3
+IPs:
+  IP:  172.17.0.3
+Containers:
+  nginx-app:
+    Container ID:   docker://c78bf452350b1371120d1439bf7fff48a5f3f2115c336f4b8108ad3ae5f06f19
+    Image:          dimmaryanto93/kubernetes-cource:1.1
+    Image ID:       docker://sha256:9a6dfda72b3330b8725de35c6e8934e9b35fe1eef8393e2e0b5708a72b23b6c0
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Tue, 01 Feb 2022 18:49:44 +0700
+    Last State:     Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Tue, 01 Feb 2022 18:48:25 +0700
+      Finished:     Tue, 01 Feb 2022 18:49:44 +0700
+    Ready:          True
+    Restart Count:  1
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-s6dfp (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  kube-api-access-s6dfp:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age                 From               Message
+  ----    ------     ----                ----               -------
+  Normal  Scheduled  2m7s                default-scheduler  Successfully assigned default/nginx-app to minikube
+  Normal  Pulled     2m6s                kubelet            Container image "dimmaryanto93/kubernetes-cource:1.0" already present on machine
+  Normal  Created    46s (x2 over 2m6s)  kubelet            Created container nginx-app
+  Normal  Started    46s (x2 over 2m5s)  kubelet            Started container nginx-app
+  Normal  Killing    46s                 kubelet            Container nginx-app definition changed, will be restarted
+  Normal  Pulled     46s                 kubelet            Container image "dimmaryanto93/kubernetes-cource:1.1" already present on machine
+```
