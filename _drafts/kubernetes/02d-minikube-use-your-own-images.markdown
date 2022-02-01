@@ -434,9 +434,21 @@ Insecure Registry ini adalah alternative jika container image mau di simpan di o
 
 Disini saya sudah install insecure-registry menggunakan Nexus dan untuk cara installnya saya sudah pernah bahas di [artikel berikut]({% post_url docker/02-registries/2021-04-24-03c-install-nexus-oss %}) untuk registry urlnya seperti berikut:
 
-1. Hosted registry: `192.168.88.50:8087`
-2. Group registry: `192.168.88.50:8086`
+1. Hosted registry: `repository.dimas-maryanto.com:8087`
+2. Group registry: `repository.dimas-maryanto.com:8086`
 
 Jadi jika kita mau menggunakan insecure registry tersebut kita bisa menggunakan perintah berikut:
 
 {% gist page.gist "02d-minikube-start-with-insecure-registry.bash" %}
+
+Sebelum kita coba, kita coba push dulu ke registry tersebut:
+
+{% highlight bash %}
+docker tag dimmaryanto93/kubernetes-cource:1.0 repository.dimas-maryanto.com:8087/udemy/kubernetes/nginx-app:1.0
+
+docker push repository.dimas-maryanto.com:8087/udemy/kubernetes/nginx-app:1.0
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+![image-insecure-registry]({{ page.image_path | prepend: site.baseurl }}/02-insecure-registry-docker.png)
