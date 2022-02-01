@@ -226,3 +226,18 @@ Events:
   Normal  Killing    46s                 kubelet            Container nginx-app definition changed, will be restarted
   Normal  Pulled     46s                 kubelet            Container image "dimmaryanto93/kubernetes-cource:1.1" already present on machine
 ```
+
+## Publish to public registry
+
+Dengan menggunakan minikube kita juga bisa menggunakan Private registry seperti 
+
+1. Google Container Registry (GCR),
+2. Amazon’s EC2 Container Registry (ECR)
+3. Azure Container Registry (ACR)
+4. Private Docker registries
+
+You will need to run `minikube addons configure registry-creds` and `minikube addons enable registry-creds` to get up and running. An example of this is below:
+
+```powershell
+
+```
