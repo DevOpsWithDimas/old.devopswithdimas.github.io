@@ -452,3 +452,186 @@ docker push repository.dimas-maryanto.com:8087/udemy/kubernetes/nginx-app:1.0
 Maka hasilnya seperti berikut:
 
 ![image-insecure-registry]({{ page.image_path | prepend: site.baseurl }}/02-insecure-registry-docker.png)
+
+Sekarang kita coba jalankan:
+
+```bash
+➜  ~ minikube start --memory 4g --driver virtualbox \
+> --insecure-registry="192.168.88.50:8087,192.168.88.50:8086" \
+> -p insecure-registry
+😄  [insecure-registry] minikube v1.25.1 on Darwin 12.2
+✨  Using the virtualbox driver based on user configuration
+👍  Starting control plane node insecure-registry in cluster insecure-registry
+🔥  Creating virtualbox VM (CPUs=2, Memory=4096MB, Disk=20000MB) ...
+🐳  Preparing Kubernetes v1.23.1 on Docker 20.10.12 ...
+    ▪ kubelet.housekeeping-interval=5m
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🔎  Verifying Kubernetes components...
+🌟  Enabled addons: storage-provisioner, default-storageclass
+🏄  Done! kubectl is now configured to use "insecure-registry" cluster and "default" namespace by default
+
+➜  ~ minikube profile insecure-registry
+✅  minikube profile was successfully set to insecure-registry
+
+➜  ~ minikube ssh
+                         _             _
+            _         _ ( )           ( )
+  ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __
+/' _ ` _ `\| |/' _ `\| || , <  ( ) ( )| '_`\  /'__`\
+| ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
+(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
+
+$ docker info
+Client:
+ Context:    default
+ Debug Mode: false
+
+Server:
+ Containers: 14
+  Running: 14
+  Paused: 0
+  Stopped: 0
+ Images: 10
+ Server Version: 20.10.12
+ Storage Driver: overlay2
+  Backing Filesystem: extfs
+  Supports d_type: true
+  Native Overlay Diff: true
+  userxattr: false
+ Logging Driver: json-file
+ Cgroup Driver: systemd
+ Cgroup Version: 1
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 io.containerd.runtime.v1.linux runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 7b11cfaabd73bb80907dd23182b9347b4245eb5d
+ runc version: 52b36a2dd837e8462de8e01458bf02cf9eea47dd
+ init version: de40ad0
+ Security Options:
+  seccomp
+   Profile: default
+ Kernel Version: 4.19.202
+ Operating System: Buildroot 2021.02.4
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 2
+ Total Memory: 3.847GiB
+ Name: insecure-registry
+ ID: PY6R:ATXB:YQKK:QLMW:PNBD:UV2I:YJ4Q:2XVC:K4BF:WMYX:PB6J:GLRZ
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ Registry: https://index.docker.io/v1/
+ Labels:
+  provider=virtualbox
+ Experimental: false
+ Insecure Registries:
+  192.168.88.50:8086
+  192.168.88.50:8087
+  10.96.0.0/12
+  127.0.0.0/8
+ Live Restore Enabled: false
+ Product License: Community Engine
+```
+
+Nah sekarang jika kita lihat, pada container runtime sudah terkonfigurasi Insecure Registry. Sekarang kita bisa lakukan registry-creds menggunakan `addons configure registry-creds` atau menggunakan cara manual yaitu `imagePullSecret` object pada podSpec atau deploySpec (Recommended). 
+
+Karena supaya simple kita akan bahas dulu pake `minikube addons configure registry-creds` seperti berikut:
+
+{% gist page.gist "02d-minikube-config-registry-creds.bash" %}
+
+Dan setelah kita configure, kita gunakan perintah berikut untuk menaktifkan registry credentialnya:
+
+{% gist page.gist "02d-minikube-enable-registry-creds.bash" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```bash
+➜  ~ minikube addons configure registry-creds
+
+Do you want to enable AWS Elastic Container Registry? [y/n]: n
+Do you want to enable Google Container Registry? [y/n]: n
+Do you want to enable Docker Registry? [y/n]: y
+-- Enter docker registry server url: 192.168.88.50:8087
+-- Enter docker registry username: admin
+-- Enter docker registry password:
+Do you want to enable Azure Container Registry? [y/n]: n
+✅  registry-creds was successfully configured
+
+➜  ~ minikube addons enable registry-creds
+    ▪ Using image upmcenterprises/registry-creds:1.10
+🌟  The 'registry-creds' addon is enabled
+
+➜  ~ kubectl get secrets -n kube-system
+NAME                                             TYPE                                  DATA   AGE
+registry-creds-acr                               Opaque                                3      75s
+registry-creds-dpr                               Opaque                                3      75s
+registry-creds-ecr                               Opaque                                6      75s
+registry-creds-gcr                               Opaque                                2      75s
+
+➜  ~ kubectl run nginx-insecure-app --image 192.168.88.50:8087/udemy/kubernetes/nginx-app:1.0
+pod/nginx-insecure-app created
+
+➜  ~ kubectl get pods
+NAME                 READY   STATUS    RESTARTS   AGE
+nginx-insecure-app   1/1     Running   0          13s
+
+➜  ~ kubectl describe pods nginx-insecure-app
+Name:         nginx-insecure-app
+Namespace:    default
+Priority:     0
+Node:         insecure-registry/192.168.59.117
+Start Time:   Tue, 01 Feb 2022 23:07:49 +0700
+Labels:       run=nginx-insecure-app
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.4
+IPs:
+  IP:  172.17.0.4
+Containers:
+  nginx-insecure-app:
+    Container ID:   docker://fce02061f60ffda073afd25df53e06d4312931f5dc7be79f872f7582af0458d8
+    Image:          192.168.88.50:8087/udemy/kubernetes/nginx-app:1.0
+    Image ID:       docker-pullable://192.168.88.50:8087/udemy/kubernetes/nginx-app@sha256:bce870a1cfc768aa9cb6affe71e18ac7dc3c6997ad016d3ce44af0e8ecae50c9
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Tue, 01 Feb 2022 23:07:57 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-n9ww5 (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  kube-api-access-n9ww5:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  33s   default-scheduler  Successfully assigned default/nginx-insecure-app to insecure-registry
+  Normal  Pulling    32s   kubelet            Pulling image "192.168.88.50:8087/udemy/kubernetes/nginx-app:1.0"
+  Normal  Pulled     26s   kubelet            Successfully pulled image "192.168.88.50:8087/udemy/kubernetes/nginx-app:1.0" in 6.294481617s
+  Normal  Created    25s   kubelet            Created container nginx-insecure-app
+  Normal  Started    25s   kubelet            Started container nginx-insecure-app
+```
