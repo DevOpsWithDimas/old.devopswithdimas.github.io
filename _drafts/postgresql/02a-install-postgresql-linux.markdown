@@ -6,9 +6,11 @@ categories:
 - RDBMS
 - PostgreSQL
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/download/
+- https://bitnami.com/stack/postgresql
+- https://www.percona.com/software/postgresql-distribution
 youtube: 
-image_path: /resources/posts/psql/02a-install-postgresql-linux
+image_path: /resources/posts/psql/02a-install-postgres-linux-ubuntu
 comments: true
 gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
 catalog_key: getting-started
@@ -23,7 +25,7 @@ Hai semuanya, di materi kali ini kita akan membahas Install PostgreSQL di Linux 
 
 1. Install PostgreSQL Server for learning environment
 2. Install Graphical editor using `pgadmin`
-4. Create user & database for learning environment
+3. Create user & database for learning environment
 
 Ok langsung aja kita bahas ke materi yang pertama
 
@@ -164,3 +166,87 @@ Type "help" for help.
 
 postgres=#
 ```
+
+## Install Graphical editor using `pgadmin`
+
+Setelah kita meng-install PostgreSQL Server selanjutnya kita akan menginstall graphical editor menggunakan pgAdmin, [PgAdmin](https://www.pgadmin.org/) saat ini terdiri dari 2 versi versi web dan desktop. Kita bisa pilih salah satu, klo saya akan menginstall version desktop. Untuk menginstall di Ubuntu Desktop kita bisa menggunakan apt seperti pada [offical dokumentasinya](https://www.pgadmin.org/download/pgadmin-4-apt/) seperti berikut:
+
+{% gist page.gist "02a-install-pgadmin4-dekstop-linux-apt.bash" %}
+
+Jika di jalankan outputnya seperti berikut:
+
+```bash
+root@Dimas-ThinkBook:~# sudo curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+100  3935  100  3935    0     0   1895      0  0:00:02  0:00:02 --:--:--  1895
+OK
+
+root@Dimas-ThinkBook:~# sudo apt install pgadmin4-desktop
+Unpacking pgadmin4-desktop (6.4) ...
+Setting up pgadmin4-server (6.4) ...
+Setting up pgadmin4-desktop (6.4) ...
+Processing triggers for bamfdaemon (0.5.5+21.10.20210710-0ubuntu1) ...
+Rebuilding /usr/share/applications/bamf-2.index...
+Processing triggers for desktop-file-utils (0.26-1ubuntu2) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+Processing triggers for gnome-menus (3.36.0-1ubuntu1) ...
+Processing triggers for mailcap (3.69ubuntu1) ...
+```
+
+Jika sudah kita bisa jalankan pgAdmin4 dari launcher, seperti berikut:
+
+![pgadmin4-desktop]({{ page.image_path | prepend: site.baseurl }}/01-pgadmin4-desktop-linux.png)
+
+Sekarang kita coba register PostgreSQL Server dengan menambahkan connection seperti berikut:
+
+![pgadmin4-connect]({{ page.image_path | prepend: site.baseurl }}/02-pgadmin4-connect-server.png)
+
+Jika success hasilnya seperti berikut:
+
+![pgadmin4-dashboard]({{ page.image_path | prepend: site.baseurl }}/02-pgadmin4-dashboard.png)
+
+## Create user & database for learning environment
+
+Setelah melakukan proses installasi _software_ PostgreSQL Server dan `PgAdmin4`, tahap selanjutnya kita akan membuat scema atau role, berikut adalah caranya.
+
+Login sebagai user `postgres`, yang pertama harus di ingat adalah _password_ postgres didapatkan ketika melakukan installasi software PostgreSQL. setelah itu baru bisa login sebagai user postgres dengan cara seperti berikut:
+
+{% gist page.gist "login-postgres.bash" %}
+
+Kemudian kita buat schema dengan perintah seperti berikut:
+
+{% gist page.gist "create-database-hr.sql" %}
+
+Setelah membuat user dengan _username_ `hr` dan passwornya sama dengan _username_ yaitu `hr`, tahap selanjutnya kita login sebagai user `hr`, dengan perintah seperti berikut:
+
+{% highlight psql %}
+psql -h localhost -U hr -W
+{% endhighlight %}
+
+Setelah login sebagai `hr` kemudian kita buat satu database dengan nama yang sama dengan username, dengan perintah seperti berikut:
+
+{% gist page.gist "create-database-hr.bash" %}
+
+Setelah database terbuat, kemudian download [file ini]({{ site.baseurl }}/resources/downloads/file/psql-schema.sql) setelah itu import file sql tersebut ke database `hr` dengan perintah seperti berikut:
+
+{% highlight psql %}
+psql -h localhost -d hr -U hr -W -f .\psql-schema.sql
+{% endhighlight %}
+
+Kemudian kita check dengan cara login menggunakan user dan database `hr` perintah seperti berikut:
+
+{% highlight psql %}
+psql -h localhost -d hr -U hr -W
+{% endhighlight %}
+
+Kemudian check datanya dengan perintah seperti berikut:
+
+{% highlight psql %}
+\dt
+
+select count(*) from employees;
+{% endhighlight %}
+
+Jika sudah, selamat anda sudah sukses dan siap untuk mulai belajar Database PostgreSQL Fundamental.
