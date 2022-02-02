@@ -18,15 +18,13 @@ downloads:
   url: /resources/downloads/file/psql-schema.sql
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas Install PostgreSQL di Linux Ubuntu Desktop. Diantaranya
 
-description...
 
-Materi: 
+1. Install PostgreSQL Server for learning environment
+2. Test connection to PostgreSQL
+3. Create user & database for learning environment
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Ok langsung aja kita bahas ke materi yang pertama
+
+## Install PostgreSQL Server for learning environment
