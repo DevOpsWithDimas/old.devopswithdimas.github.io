@@ -23,7 +23,6 @@ Hai semuanya, di materi kali ini kita akan membahas Install PostgreSQL di Linux 
 
 1. Install PostgreSQL Server for learning environment
 2. Install Graphical editor using `pgadmin`
-3. Test connection to PostgreSQL
 4. Create user & database for learning environment
 
 Ok langsung aja kita bahas ke materi yang pertama
@@ -147,4 +146,21 @@ Enter it again:
 postgres=# exit
 ```
 
-Jika sudah kita bisa login dengan normal user.
+Jika sudah kita bisa login dengan normal user. Dan coba perintah berikut:
+
+
+{% highlight bash %}
+psql -h localhost -U postgres -W
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+➜  ~ psql -h localhost -U postgres -W
+Password: 
+psql (14.1 (Ubuntu 14.1-1.pgdg21.10+1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+postgres=#
+```
