@@ -1,18 +1,25 @@
 ---
 layout: post
-title: "Install PostgreSQL via Docker"
+title: "Install PostgreSQL using Docker"
 lang: psql
 categories:
 - RDBMS
 - PostgreSQL
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.docker.com/
+- https://hub.docker.com/_/postgres
 youtube: 
-image_path: /resources/posts/psql/02a-install-postgresql-docker
+image_path: /resources/posts/postgresql/02a-install-postgresql-docker
 comments: true
-gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
 catalog_key: getting-started
-downloads: []
+downloads: 
+- name: "schema-hr"
+  type: "sql"
+  url: /resources/downloads/file/postgresql/psql-schema.sql
+- name: "docker-compose"
+  type: "yaml"
+  url: /resources/downloads/file/postgresql/docker-compose.yaml
 ---
 
 

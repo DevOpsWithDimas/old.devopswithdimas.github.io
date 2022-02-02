@@ -18,7 +18,7 @@ catalog_key: getting-started
 downloads: 
 - name: "schema-hr"
   type: "sql"
-  url: /resources/downloads/file/psql-schema.sql
+  url: /resources/downloads/file/postgresql/psql-schema.sql
 ---
 
 Hai semuanya, di materi kali ini kita akan membahas Install PostgreSQL di Mac OS. Diantaranya
