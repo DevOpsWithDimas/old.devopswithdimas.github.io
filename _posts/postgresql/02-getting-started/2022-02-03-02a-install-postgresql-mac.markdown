@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Install PostgreSQL for Mac users"
+date: 2022-02-03T03:40:43+07:00
 lang: psql
 categories:
 - RDBMS
@@ -76,3 +77,65 @@ Kemudian kita clik **Install** maka akan melakukan installing component yang sud
 Jika sudah selesai maka seperti berikut:
 
 ![finish]({{ page.image_path | prepend: site.baseurl }}/10-finish.png)
+
+## Test connection to PostgreSQL
+
+Untuk melakukan testing login ada 2 cara yaitu dengan menggunakan terminal dan juga tools yang telah kita tambahkan tadi yaitu `pgAdmin4`. sekarang kita coba dulu login dengan `psql` maka gunakan perintah seperti berikut:
+
+{% highlight bash %}
+psql -h localhost -U postgres -W
+{% endhighlight %}
+
+jika berhasil login maka tampilannya seperti berikut:
+
+![psql]({{ page.image_path | prepend: site.baseurl }}/11-psql.png)
+
+Selain itu juga kita bisa menggunakan `pgAdmin4`
+
+Secara default jika kita install menggunakan EDB serta mengaktfikan pgAdmin4 dan Server di hosts yang sama kita sudah di register. kita tidak perlu register lagi kita cukup click Servers dan connect PostgreSQL 14 dan input password untuk user postgres maka hasilnya seperti berikut:
+
+![pgadmin4]({{ page.image_path | prepend: site.baseurl }}/12-pgadmin4.png)
+
+## Create user & database for learning environment
+
+Setelah melakukan proses installasi _software_ PostgreSQL Server dan `PgAdmin4`, tahap selanjutnya kita akan membuat scema atau role, berikut adalah caranya.
+
+Login sebagai user `postgres`, yang pertama harus di ingat adalah _password_ postgres didapatkan ketika melakukan installasi software PostgreSQL. setelah itu baru bisa login sebagai user postgres dengan cara seperti berikut:
+
+{% gist page.gist "login-postgres.bash" %}
+
+Kemudian kita buat schema dengan perintah seperti berikut:
+
+{% gist page.gist "create-database-hr.sql" %}
+
+Setelah membuat user dengan _username_ `hr` dan passwornya sama dengan _username_ yaitu `hr`, tahap selanjutnya kita login sebagai user `hr`, dengan perintah seperti berikut:
+
+{% highlight psql %}
+psql -h localhost -U hr -W
+{% endhighlight %}
+
+Setelah login sebagai `hr` kemudian kita buat satu database dengan nama yang sama dengan username, dengan perintah seperti berikut:
+
+{% gist page.gist "create-database-hr.bash" %}
+
+Setelah database terbuat, kemudian download [file ini]({{ site.baseurl }}/resources/downloads/file/psql-schema.sql) setelah itu import file sql tersebut ke database `hr` dengan perintah seperti berikut:
+
+{% highlight psql %}
+psql -h localhost -d hr -U hr -W -f .\psql-schema.sql
+{% endhighlight %}
+
+Kemudian kita check dengan cara login menggunakan user dan database `hr` perintah seperti berikut:
+
+{% highlight psql %}
+psql -h localhost -d hr -U hr -W
+{% endhighlight %}
+
+Kemudian check datanya dengan perintah seperti berikut:
+
+{% highlight psql %}
+\dt
+
+select count(*) from employees;
+{% endhighlight %}
+
+Jika sudah, selamat anda sudah sukses dan siap untuk mulai belajar Database PostgreSQL Fundamental.
