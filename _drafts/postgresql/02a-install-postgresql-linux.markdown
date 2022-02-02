@@ -12,7 +12,10 @@ image_path: /resources/posts/psql/02a-install-postgresql-linux
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 catalog_key: getting-started
-downloads: []
+downloads: 
+- name: "schema-hr"
+  type: "sql"
+  url: /resources/downloads/file/psql-schema.sql
 ---
 
 

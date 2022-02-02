@@ -7,13 +7,18 @@ categories:
 - RDBMS
 - PostgreSQL
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/download/
+- https://bitnami.com/stack/postgresql
+- https://www.percona.com/software/postgresql-distribution
 youtube: 
 image_path: /resources/posts/postgresql/02a-install-postgres-windows
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 catalog_key: getting-started
-downloads: []
+downloads: 
+- name: "schema-hr"
+  type: "sql"
+  url: /resources/downloads/file/psql-schema.sql
 ---
 
 Hai semuanya, di materi kali ini kita akan membahas Install PostgreSQL di Windows 10/11. Diantaranya
