@@ -11,7 +11,7 @@ refs:
 youtube: 
 image_path: /resources/posts/psql/02-install-postgres
 comments: true
-gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
 catalog_key: getting-started
 downloads: []
 ---
