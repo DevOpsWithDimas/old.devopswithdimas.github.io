@@ -23,7 +23,6 @@ Hai semuanya, di materi kali ini kita akan membahas tentang pgAdmin4 sebagai edi
 2. Developer Tools
 3. Managing Database Objects (Schema, Tables, User, etc)
 4. Backup and Restore
-5. Dashboard
 
 Ok langsung saja kita bahas materi yang pertama
 
@@ -92,4 +91,36 @@ The pgAdmin Tools menu displays a list of powerful developer tools that you can 
     2. PSQL will connect to the current connected database from the browser tree.
 
 ## Managing Database Objects
+
+pgAdmin 4 provides simple but powerful dialogs that you can use to design and create database objects. Each dialog contains a series of tabs that you use to describe the object that will be created by the dialog; the SQL tab displays the SQL command that the server will execute when creating the object.
+
+1. Cast Dialog
+2. Collation Dialog
+3. Event Trigger Dialog
+4. Extension Dialog
+5. Foreign Table Dialog
+6. Function Dialog
+7. Package Dialog
+8. Procedure Dialog
+9. Publication Dialog
+10. Schema Dialog
+11. Sequence Dialog
+12. Subscription Dialog
+13. Synonym Dialog
+14. Trigger Function Dialog
+15. Type Dialog
+16. User Mapping Dialog
+17. View Dialog
+
+## Backup and Restore
+
+A powerful, but user-friendly Backup and Restore tool provides an easy way to use pg_dump, pg_dumpall, and pg_restore to take backups and create copies of databases or database objects for use in a development environment.
+
+1. **Backup Dialog**, pgAdmin uses the pg_dump utility to provide an easy way to create a backup in a plain-text or archived format. You can then use a client application (like psql or the Query Tool) to restore a plain-text backup file, or use the Postgres pg_restore utility to restore an archived backup. The pg_dump utility must have read access to all database objects that you want to back up.
+    
+    ![backup-dialog]({{ page.image_path | prepend: site.baseurl }}/09-backup-dialog.png)
+
+2. The **Restore dialog** provides an easy way to use a Custom, tar, or Directory format backup taken with the pgAdmin Backup dialog to recreate a database or database object. The Backup dialog invokes options of the pg_dump client utility; the Restore dialog invokes options of the pg_restore client utility.
+
+    ![restore-dialog]({{ page.image_path | prepend: site.baseurl }}/10-restore-dialog.png)
 
