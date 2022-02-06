@@ -15,15 +15,105 @@ catalog_key: getting-started
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas tenteng Menggunakan `psql` sebagai PostgreSQL Client/Editor. Diantaranya yang kita bahas
 
-description...
+1. Connecting to a database
+2. Meta-Commands to show the objects database
+3. Backup & Restore a database
 
-Materi: 
+Ok langsung aja kita bahas materi yang pertama
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+## Connecting to a database
+
+psql is a regular PostgreSQL client application. In order to connect to a database you need to know the name of your target database, the host name and port number of the server, and what user name you want to connect as. psql can be told about those parameters via command line options, namely `-d`, `-h`, `-p`, and `-U` respectively. If an argument is found that does not belong to any option it will be interpreted as the database name (or the user name, if the database name is already given). Not all of these options are required; there are useful defaults. If you omit the host name, psql will connect via a Unix-domain socket to a server on the `localhost`, or via `TCP/IP` to `localhost` on machines that don't have Unix-domain sockets. The default port number is determined at compile time. Since the database server uses the same default, you will not have to specify the port in most cases. The default user name is your operating-system user name, as is the default database name.
+
+An alternative way to specify connection parameters is in a conninfo string or a URI, which is used instead of a database name. This mechanism give you very wide control over the connection. For example:
+
+{% highlight bash %}
+$ psql "service=myservice sslmode=require"
+$ psql postgresql://dbmaster:5433/mydb?sslmode=require
+{% endhighlight %}
+
+If the connection could not be made for any reason (e.g., insufficient privileges, server is not running on the targeted host, etc.), psql will return an error and terminate.
+
+## Meta-Commands to show the objects database
+
+Anything you enter in `psql` that begins with an unquoted backslash is a psql meta-command that is processed by `psql` itself. These commands make psql more useful for administration or scripting. Meta-commands are often called slash or backslash commands.
+
+The format of a `psql` command is the backslash, followed immediately by a command verb, then any arguments. The arguments are separated from the command verb and each other by any number of whitespace characters.
+
+The following meta-commands are defined:
+
+1. `\d`, For each relation (table, view, materialized view, index, sequence, or foreign table) or composite type matching the pattern, show all columns, their types, the tablespace (if not the default) and any special attributes such as NOT NULL or defaults.
+2. `\da`, Lists aggregate functions, together with their return type and the data types they operate on. If pattern is specified, only aggregates whose names match the pattern are shown.
+3. `\dA`, Lists access methods. If pattern is specified, only access methods whose names match the pattern are shown
+4. `\dAc`, Lists operator classes
+5. `\ddAo`, Lists operators associated with operator families
+6. `\db`, Lists tablespaces
+7. `\dC`, Lists type casts.
+8. `\dd`, Shows the descriptions of objects of type constraint, operator class, operator family, rule, and trigger.
+9. `\ddp`, Lists default access privilege settings.
+10. `\dp`, Lists tables, views and sequences with their associated access privileges.
+11. Dan masih banyak lagi.
+
+Contoh penggunaannya, jika kita mau lihat semua object pada database kita bisa gunakan `\d` seperti berikut:
+
+```postgresql-console
+bootcamp=# \d
+                       List of relations
+  Schema  |             Name              |   Type   |  Owner
+----------+-------------------------------+----------+----------
+ bootcamp | countries                     | table    | bootcamp
+ bootcamp | departments                   | table    | bootcamp
+ bootcamp | departments_department_id_seq | sequence | bootcamp
+ bootcamp | employees                     | table    | bootcamp
+ bootcamp | employees_employee_id_seq     | sequence | bootcamp
+ bootcamp | flyway_schema_history         | table    | bootcamp
+ bootcamp | job_history                   | table    | bootcamp
+ bootcamp | jobs                          | table    | bootcamp
+ bootcamp | locations                     | table    | bootcamp
+ bootcamp | locations_location_id_seq     | sequence | bootcamp
+ bootcamp | regions                       | table    | bootcamp
+ bootcamp | regions_region_id_seq         | sequence | bootcamp
+(12 rows)
+```
+
+Selain itu juga jika kita mau lihat daftar table, kita bisa menggunakan `\dt object-name` seperti berikut:
+
+```postgresql-console
+bootcamp=# \dt
+                  List of relations
+  Schema  |         Name          | Type  |  Owner
+----------+-----------------------+-------+----------
+ bootcamp | countries             | table | bootcamp
+ bootcamp | departments           | table | bootcamp
+ bootcamp | employees             | table | bootcamp
+ bootcamp | flyway_schema_history | table | bootcamp
+ bootcamp | job_history           | table | bootcamp
+ bootcamp | jobs                  | table | bootcamp
+ bootcamp | locations             | table | bootcamp
+ bootcamp | regions               | table | bootcamp
+(8 rows)
+```
+
+Dan misalnya kita mau lihat detail dari table tertentu kita bisa menggunakan perintah `\d <object-name>` seperti berikut:
+
+```postgresql-console
+bootcamp=# \d departments
+                                            Table "bootcamp.departments"
+     Column      |         Type          | Collation | Nullable |                      Default
+
+-----------------+-----------------------+-----------+----------+----------------------------------------------------
+ department_id   | integer               |           | not null | nextval('departments_department_id_seq'::regclass)
+ department_name | character varying(30) |           |          |
+ manager_id      | integer               |           |          |
+ location_id     | integer               |           |          |
+Indexes:
+    "departments_pkey" PRIMARY KEY, btree (department_id)
+Foreign-key constraints:
+    "fk_departments_location_id" FOREIGN KEY (location_id) REFERENCES locations(location_id) ON UPDATE CASCADE ON DELETE CASCADE
+    "fk_departments_manager_id" FOREIGN KEY (manager_id) REFERENCES employees(employee_id) ON UPDATE CASCADE ON DELETE CASCADE
+Referenced by:
+    TABLE "employees" CONSTRAINT "fk_employees_department_id" FOREIGN KEY (department_id) REFERENCES departments(department_id) ON UPDATE CASCADE ON DELETE CASCADE
+    TABLE "job_history" CONSTRAINT "fk_job_history_department_id" FOREIGN KEY (department_id) REFERENCES departments(department_id) ON UPDATE CASCADE ON DELETE CASCADE
+```
