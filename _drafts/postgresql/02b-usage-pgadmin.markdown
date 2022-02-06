@@ -87,7 +87,7 @@ The pgAdmin Tools menu displays a list of powerful developer tools that you can 
 
     ![erd]({{ page.image_path | prepend: site.baseurl }}/08-erd.png)
 
-5. **The PSQL tool** allows users to connect to PostgreSQL or EDB Advanced server using the psql command line interface through their browser.
+5. **The PSQL tool** allows users to connect to PostgreSQL or EDB Advanced server using the psql command line interface through their browser. The PSQL tool is always available when pgAdmin is running in Desktop mode, but is disabled by default in Server mode.
     1. Open the PSQL tool from the Tools or browser tree context menu, or use PSQL tool button at the top of the browser tree.
     2. PSQL will connect to the current connected database from the browser tree.
 
