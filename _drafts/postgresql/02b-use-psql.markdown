@@ -117,3 +117,35 @@ Referenced by:
     TABLE "employees" CONSTRAINT "fk_employees_department_id" FOREIGN KEY (department_id) REFERENCES departments(department_id) ON UPDATE CASCADE ON DELETE CASCADE
     TABLE "job_history" CONSTRAINT "fk_job_history_department_id" FOREIGN KEY (department_id) REFERENCES departments(department_id) ON UPDATE CASCADE ON DELETE CASCADE
 ```
+
+## Backup & Restore a database
+
+The idea behind this dump method is to generate a file with SQL commands that, when fed back to the server, will recreate the database in the same state as it was at the time of the dump. PostgreSQL provides the utility program `pg_dump` for this purpose. The basic usage of this command is:
+
+{% highlight bash %}
+pg_dump \
+-U user -W \
+--no-privileges \
+--inserts \
+-d dbname \
+--encoding utf8 > dumpfile.sql
+{% endhighlight %}
+
+As you see, `pg_dump` writes its result to the standard output. We will see below how this can be useful. While the above command creates a text file, pg_dump can create files in other formats that allow for parallelism and more fine-grained control of object restoration.
+
+`pg_dump` is a regular PostgreSQL client application (albeit a particularly clever one). This means that you can perform this backup procedure from any remote host that has access to the database. But remember that pg_dump does not operate with special permissions. In particular, it must have read access to all tables that you want to back up, so in order to back up the entire database you almost always have to run it as a database superuser.
+
+Text files created by `pg_dump` are intended to be read in by the psql program. The general command form to restore a dump is
+
+{% highlight bash %}
+pg_restore dbname -U userdb -h server-host -W -f dumpfile
+{% endhighlight %}
+
+where `dumpfile` is the file output by the `pg_dump` command. The database dbname will not be created by this command, so you must create it yourself from template0 before executing psql (e.g., with `createdb dbname`).
+
+{% highlight bash %}
+psql \
+-U bootcamp -W \
+-d test_restore \
+-f dumpfile.sql
+{% endhighlight %}
