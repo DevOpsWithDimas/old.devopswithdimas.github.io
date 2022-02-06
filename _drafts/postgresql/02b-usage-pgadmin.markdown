@@ -7,7 +7,7 @@ categories:
 - PostgreSQL
 refs: 
 - https://www.postgresql.org/docs/current/
-- https://www.pgadmin.org/docs/pgadmin4/6.4/index.html
+- https://www.pgadmin.org/docs/pgadmin4/latest/index.html
 youtube: 
 image_path: /resources/posts/postgresql/02b-pgadmin4
 comments: true
@@ -17,14 +17,10 @@ downloads: []
 ---
 
 
-description...
+Hai semuanya, di materi kali ini kita akan membahas tentang pgAdmin4 sebagai editor untuk berinteraksi dengan PostgreSQL Database. Diantaranya adalah
 
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+1. Connecting to a Server
+2. Developer Tools
+3. Managing Database Objects (Schema, Tables, User, etc)
+4. Backup and Restore
+5. Dashboard
