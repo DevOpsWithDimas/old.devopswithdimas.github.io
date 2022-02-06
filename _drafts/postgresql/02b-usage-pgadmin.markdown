@@ -33,16 +33,63 @@ Before you can use the pgAdmin client to manage the objects that reside on your 
 
 You can (optionally) use the Server Group dialog to create server groups to organize the server connections within the tree control for easier management. To open the Server Group dialog, right-click on the Servers node of the tree control, and select Server Group from the Create menu.
 
-![group-server]({{ site.path_image | prepend: site.baseurl }}/01-create-server-group.png)
+![group-server]({{ page.image_path | prepend: site.baseurl }}/01-create-server-group.png)
 
 Use the fields on the Server dialog to define the connection properties for each new server that you wish to manage with pgAdmin. To open the Server dialog, right-click on the Servers node of the tree control, and select Server from the Create menu.
 
-![server]({{ site.page_image | prepend: site.baseulr }}/02-create-server.png)
+![server]({{ page.image_path | prepend: site.baseurl }}/02-create-server.png)
 
 A master password is required to secure and later unlock saved server passwords. It is set by the user and can be disabled using config.
 
-![change-password]({{ site.page_image | prepend: site.baseulr }}/03-change-password.png)
+![change-password]({{ page.image_path | prepend: site.baseurl }}/03-change-password.png)
 
 Server definitions (and their groups) can be exported to a JSON file and re-imported to the same or a different system to enable easy pre-configuration of pgAdmin.
 
-![import-export]({{ site.page_image | prepend: site.baseulr }}/04-export-import-servers.png)
+![import-export]({{ page.image_path | prepend: site.baseurl }}/04-export-import-servers.png)
+
+## Developer Tools
+
+The pgAdmin Tools menu displays a list of powerful developer tools that you can use to execute and analyze complex SQL commands, manage data, and debug PL/SQL code.
+
+1. The **Query Tool** is a powerful, feature-rich environment that allows you to execute arbitrary SQL commands and review the result set. You can access the Query Tool via the Query Tool menu option on the Tools menu, or through the context menu of select nodes of the Browser tree control. The Query Tool allows you to:
+
+    1. Issue ad-hoc SQL queries.
+    2. Execute arbitrary SQL commands.
+    3. Edit the result set of a SELECT query if it is updatable.
+    4. Displays current connection and transaction status as configured by the user.
+    5. Save the data displayed in the output panel to a CSV file.
+    6. Review the execution plan of a SQL statement in either a text, a graphical format or a table format (similar to https://explain.depesz.com).
+    7. View analytical information about a SQL statement.
+
+    ![query-tools]({{ page.image_path | prepend: site.baseurl }}/05-query-tools.png)
+
+2. To **view or modify data**, right click on a table or view name in the Browser tree control. When the context menu opens, use the View/Edit Data menu to specify the number of rows you would like to display in the editor panel.
+
+    ![query-tools]({{ page.image_path | prepend: site.baseurl }}/06-view-modified-data.png)
+
+3. **Schema Diff** is a feature that allows you to compare objects between two databases or two schemas. Use the Tools menu to access Schema Diff. The Schema Diff feature allows you to:
+    1. Compare and synchronize the database objects (from source to target).
+    2. Visualize the differences between database objects.
+    3. List the differences in SQL statement for target database objects.
+    4. Generate synchronization scripts.
+
+    ![schema-diff]({{ page.image_path | prepend: site.baseurl }}/07-schema-diff.png)
+
+4. **The Entity-Relationship Diagram (ERD) tool** is a database design tool that provides a graphical representation of database tables, columns, and inter-relationships. ERD can give sufficient information for the database administrator to follow when developing and maintaining the database. The ERD Tool allows you to:
+
+    1. Design and visualize the database tables and their relationships.
+    2. Add notes to the diagram.
+    3. Auto-align the tables and links for cleaner visualization.
+    4. Save the diagram and open it later to continue working on it.
+    5. Generate ready to run SQL from the database design.
+    6. Generate the database diagram for an existing database.
+    7. Drag and drop tables from browser tree to the diagram.
+
+    ![erd]({{ page.image_path | prepend: site.baseurl }}/08-erd.png)
+
+5. **The PSQL tool** allows users to connect to PostgreSQL or EDB Advanced server using the psql command line interface through their browser.
+    1. Open the PSQL tool from the Tools or browser tree context menu, or use PSQL tool button at the top of the browser tree.
+    2. PSQL will connect to the current connected database from the browser tree.
+
+## Managing Database Objects
+

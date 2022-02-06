@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "02c-usege-jetbraints"
+title: "Using thirdparty Editor untuk PostgreSQL Server"
 lang: psql
 categories:
 - RDBMS
@@ -8,7 +8,7 @@ categories:
 refs: 
 - https://www.postgresql.org/docs/current/
 youtube: 
-image_path: /resources/posts/psql/02c-usege-jetbraints
+image_path: /resources/posts/psql/02c-usage-3rd-party-editors
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 catalog_key: getting-started
