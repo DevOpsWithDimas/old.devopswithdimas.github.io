@@ -1,14 +1,15 @@
 ---
 layout: post
-title: "Rekomendasi text-editor untuk belajar PostgreSQL"
+title: "Menggunakan pgAdmin4 sebagai text-editor PostgreSQL"
 lang: psql
 categories:
 - RDBMS
 - PostgreSQL
 refs: 
 - https://www.postgresql.org/docs/current/
+- https://www.pgadmin.org/docs/pgadmin4/6.4/index.html
 youtube: 
-image_path: /resources/posts/postgresql/02b-text-editor
+image_path: /resources/posts/postgresql/02b-pgadmin4
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 catalog_key: getting-started

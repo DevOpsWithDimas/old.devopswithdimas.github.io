@@ -11,7 +11,7 @@ youtube:
 image_path: /resources/posts/postgresql/02d-data-types
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
-catalog_key: getting-started
+catalog_key: sql-statement
 downloads: []
 ---
 
