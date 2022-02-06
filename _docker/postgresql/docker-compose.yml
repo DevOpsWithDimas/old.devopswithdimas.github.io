@@ -18,6 +18,9 @@ services:
       - ./db/migration:/flyway/sql
     depends_on:
       - postgres
+    profiles:
+      - migrate
+
 
   pgadmin4:
     image: ${PRIVATE_REPOSITORY}dpage/pgadmin4

@@ -214,11 +214,13 @@ Setelah melakukan proses installasi _software_ PostgreSQL Server dan `PgAdmin4`,
 
 Login sebagai user `postgres`, yang pertama harus di ingat adalah _password_ postgres didapatkan ketika melakukan installasi software PostgreSQL. setelah itu baru bisa login sebagai user postgres dengan cara seperti berikut:
 
-{% gist page.gist "login-postgres.bash" %}
+{% highlight psql %}
+psql -h localhost -U postgres -W
+{% endhighlight %}
 
-Kemudian kita buat schema dengan perintah seperti berikut:
+Kemudian kita buat schema & database dengan perintah seperti berikut:
 
-{% gist page.gist "create-database-hr.sql" %}
+{% gist page.gist "02a-create-user-schema.sql" %}
 
 Setelah membuat user dengan _username_ `hr` dan passwornya sama dengan _username_ yaitu `hr`, tahap selanjutnya kita login sebagai user `hr`, dengan perintah seperti berikut:
 
@@ -226,11 +228,7 @@ Setelah membuat user dengan _username_ `hr` dan passwornya sama dengan _username
 psql -h localhost -U hr -W
 {% endhighlight %}
 
-Setelah login sebagai `hr` kemudian kita buat satu database dengan nama yang sama dengan username, dengan perintah seperti berikut:
-
-{% gist page.gist "create-database-hr.bash" %}
-
-Setelah database terbuat, kemudian download [file ini]({{ site.baseurl }}/resources/downloads/file/psql-schema.sql) setelah itu import file sql tersebut ke database `hr` dengan perintah seperti berikut:
+Setelah login sebagai `hr` kemudian download [file ini]({{ site.baseurl }}/resources/downloads/file/psql-schema.sql) setelah itu import file sql tersebut ke database `hr` dengan perintah seperti berikut:
 
 {% highlight psql %}
 psql -h localhost -d hr -U hr -W -f .\psql-schema.sql

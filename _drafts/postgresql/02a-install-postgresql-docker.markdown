@@ -117,3 +117,56 @@ Berikut properties:
 Jika sudah, kita klik **Save**, maka jika success hasilnya seperti berikut:
 
 ![admin4 connected]({{ page.image_path | prepend: site.baseurl }}/03-connected.png)
+
+## Migrate schema using flyway
+
+Untuk belajar, kita membutuhkan user & database/schema untuk mencoba feature dari PostgreSQL. Sekarang kita akan buat user & database di Docker melalui `psql`
+
+{% highlight docker %}
+docker-compose \
+  -f docker-compose.yaml \
+  --env-file .env \
+  exec postgres \
+  psql -U postgres -W 
+{% endhighlight %}
+
+Kemudian kita buat schema dengan perintah seperti berikut:
+
+{% gist page.gist "02a-create-user-schema.sql" %}
+
+Setelah kita buat schema, user dan database, kita download [file ini]({{ site.baseurl }}/resources/downloads/file/psql-schema.sql) simpan dalam folder `db/migration` dan jalankan migrationnya dengan perintah
+
+{% highlight docker %}
+docker-compose \
+-f docker-compose.yaml \
+--env-file .env \
+--profile migrate up -d
+{% endhighlight %}
+
+Jika sudah sekarang kita bisa check dengan perintah berikut:
+
+{% highlight docker %}
+docker-compose \
+-f docker-compose.yaml \
+--env-file .env \
+exec postgres psql -U hr -W -c "\dt"
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```powershell
+➜ postgresql git:(master) docker-compose -f docker-compose.yml --env-file .env exec postgres psql -U hr -W -c "\dt"
+Password:
+                  List of relations
+  Schema  |         Name          | Type  |  Owner
+----------+-----------------------+-------+----------
+ hr       | countries             | table | hr
+ hr       | departments           | table | hr
+ hr       | employees             | table | hr
+ hr       | flyway_schema_history | table | hr
+ hr       | job_history           | table | hr
+ hr       | jobs                  | table | hr
+ hr       | locations             | table | hr
+ hr       | regions               | table | hr
+(8 rows)
+```

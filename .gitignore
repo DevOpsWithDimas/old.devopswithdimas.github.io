@@ -15,3 +15,7 @@ sources
 
 # macbook
 .DS_Store
+
+# vim
+*.un~
+*.*~
