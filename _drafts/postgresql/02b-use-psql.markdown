@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "02b-usage-psql"
+title: "Using psql as PostgreSQL editor"
 lang: psql
 categories:
 - RDBMS
 - PostgreSQL
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/docs/current/app-psql.html
 youtube: 
-image_path: /resources/posts/psql/02b-usage-psql
+image_path: /resources/posts/postgresql/02b-use-psql
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 catalog_key: getting-started
