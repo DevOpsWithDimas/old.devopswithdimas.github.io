@@ -8,7 +8,7 @@ categories:
 refs: 
 - https://hub.docker.com/_/postgres
 youtube: 
-image_path: /resources/posts/postgresql/02a-install-postgresql-docker
+image_path: /resources/posts/postgresql/02a-install-postgres-docker
 comments: true
 gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
 catalog_key: getting-started
@@ -70,3 +70,50 @@ Kemudian kita jalankan dengan perintah
 {% highlight docker %}
 docker-compose -f docker-compose.yaml --env-file .env up -d
 {% endhighlight %}
+
+## Using `pgAdmin4` web based
+
+Untuk text editor seperti `pgadmin4` kita bisa menggunakan versi Desktop atau juga kita bisa menggunakan version web yang kita pasang dalam docker, sepertinya temen-temen liat pada script `docker-compose.yaml` sebelumnya seperti berikut:
+
+{% highlight yaml %}
+pgadmin4:
+  image: ${PRIVATE_REPOSITORY}dpage/pgadmin4
+  profiles:
+    - debug
+  environment:
+    - PGADMIN_DEFAULT_PASSWORD=${POSTGRES_PASSWORD}
+    - PGADMIN_DEFAULT_EMAIL=${POSTGRES_USER}@example.com
+  ports:
+    - 55432:80
+  volumes:
+    - pg_admin_data:/var/lib/pgadmin
+  depends_on:
+    - postgres
+{% endhighlight %}
+
+Untuk meng-aktifikan container `pgadmin4` tersebut, kita perlu menggunakan profile `debug` dengan perintah seperti berikut:
+
+{% highlight docker %}
+docker-compose -f docker-compose.yaml --env-file .env --profile debug up -d
+{% endhighlight %}
+
+Jika sudah, kita bisa akses dengan alamat [localhost:55432](http://localhost:55432) seperti berikut:
+
+![pgadmin4]({{ page.image_path | prepend: site.baseurl }}/01-pgadmin4-web.png)
+
+Sekarang kita akan buat connection ke PostgreSQL server di Docker, Kita klik kanan di Menu **Servers** -> **Create** -> **Server** kemudian kita input connection name contohnya: `postgresql` dan kemudian kita ke tab **Connection** seperti berikut:
+
+![new connection]({{ page.image_path | prepend: site.baseurl }}/02-pgadmin4-connection.png)
+
+Berikut properties:
+
+| Property    | Value       | Description     |
+| :---        | :---        | :---            |
+| `Host`      | `postgres`  | Karena kita menggunakan container, kita tidak bisa menggunakan `localhost` karena docker memiliki ip yang berbeda setiap container |
+| `Database`  | `postgres`  | Sesuaikan dengan .env yang telah kita buat |
+| `Username`  | `postgres`  | Sesuaikan dengan .env yang telah kita buat |
+| `Password`  | `password`  | Sesuaikan dengan .env yang telah kita buat |
+
+Jika sudah, kita klik **Save**, maka jika success hasilnya seperti berikut:
+
+![admin4 connected]({{ page.image_path | prepend: site.baseurl }}/03-connected.png)
