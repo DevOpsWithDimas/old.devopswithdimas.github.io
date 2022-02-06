@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Menggunakan pgAdmin4 sebagai editor PostgreSQL"
+title: "Using pgAdmin4 as PostgreSQL editor"
 lang: psql
 categories:
 - RDBMS
@@ -9,7 +9,7 @@ refs:
 - https://www.postgresql.org/docs/current/
 - https://www.pgadmin.org/docs/pgadmin4/latest/index.html
 youtube: 
-image_path: /resources/posts/postgresql/02b-use-pgadmin
+image_path: /resources/posts/postgresql/02c-use-pgadmin
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 catalog_key: getting-started
@@ -58,7 +58,7 @@ The pgAdmin Tools menu displays a list of powerful developer tools that you can 
     3. Edit the result set of a SELECT query if it is updatable.
     4. Displays current connection and transaction status as configured by the user.
     5. Save the data displayed in the output panel to a CSV file.
-    6. Review the execution plan of a SQL statement in either a text, a graphical format or a table format (similar to https://explain.depesz.com).
+    6. Review the execution plan of a SQL statement in either a text, a graphical format.
     7. View analytical information about a SQL statement.
 
     ![query-tools]({{ page.image_path | prepend: site.baseurl }}/05-query-tools.png)
