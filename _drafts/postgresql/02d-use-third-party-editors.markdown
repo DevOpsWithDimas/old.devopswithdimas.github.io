@@ -15,15 +15,23 @@ catalog_key: getting-started
 downloads: []
 ---
 
+Hai semuanya, Di materi kali ini kita akan membahas Third Party Editor yang bisa digunakan untuk berkomunikasi dengan PostgreSQL Server. Sepertinya kita ketahui ya PostgreSQL Server menggunakan TCP/IP dan Unix socket untuk berkomunikasi antara client dan server. Selain menggunakan aplikasi client bawaan, kita juga bisa menggunakan Aplikasi 3rd Party seperti 
 
-description...
+1. [Navicate](https://www.navicat.com/en/products/navicat-for-postgresql)
+2. [Jetbraint DataGrip](https://www.jetbrains.com/datagrip/)
+3. [DBeaver](https://dbeaver.io)
+4. [HeidiSQL](https://www.heidisql.com)
+5. Dan masih banyak sekali editor lainnya
 
-Materi: 
+Nah jadi temen-temen bisa pilih salah satu dari 3rd party editor tersebut kalau mau pakai. Untuk saya sendiri biasanya menggunakan Editor [IntelliJ IDEA](https://www.jetbrains.com/idea/) buatnnya Jetbraint yang Ultimate.
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-<!--more-->
-3. Topic 3
-4. Topic 4
+Jadi di cource ini, kita akan menggunakan IntelliJ IDEA ya. Adapun pembahasannya kali ini kita akan setup environmentnya dulu mulai:
+
+1. Connection to PostgreSQL Server
+2. Run a Query
+3. Export/Import
+4. Show Diagram ERD from existing tables
+
+Ok langsung aja kita ke pembahasan yang pertama
+
+## Connection to PostgreSQL Server
