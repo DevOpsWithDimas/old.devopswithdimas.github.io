@@ -135,7 +135,7 @@ Kemudian kita buat schema dengan perintah seperti berikut:
 
 {% gist page.gist "02a-create-user-schema.sql" %}
 
-Setelah kita buat schema, user dan database, kita download [file ini]({{ site.baseurl }}/resources/downloads/file/psql-schema.sql) simpan dalam folder `db/migration` dan jalankan migrationnya dengan perintah
+Setelah kita buat schema, user dan database, kita download [file ini]({{ site.baseurl }}/resources/downloads/file/postgresql/psql-schema.sql) simpan dalam folder `db/migration` dan jalankan migrationnya dengan perintah
 
 {% highlight docker %}
 docker-compose \

@@ -137,7 +137,7 @@ Setelah membuat user dengan _username_ `hr` dan passwornya sama dengan _username
 psql -h localhost -U hr -W
 {% endhighlight %}
 
-Setelah login sebagai `hr` kemudian download [file ini]({{ site.baseurl }}/resources/downloads/file/psql-schema.sql) setelah itu import file sql tersebut ke database `hr` dengan perintah seperti berikut:
+Setelah login sebagai `hr` kemudian download [file ini]({{ site.baseurl }}/resources/downloads/file/postgresql/psql-schema.sql) setelah itu import file sql tersebut ke database `hr` dengan perintah seperti berikut:
 
 {% highlight psql %}
 psql -h localhost -d hr -U hr -W -f .\psql-schema.sql
