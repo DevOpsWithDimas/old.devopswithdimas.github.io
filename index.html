@@ -242,14 +242,21 @@ layout: default
                     </div>
                 <div class="collapsible-body">
                     <div class="row">
-                        <b>Title:</b> 
-                        <a class="title" href="{{ topic.udemy }}">{{ topic.fullname }}</a>
+                        <div class="col m6">
+                            <b>Title:</b> 
+                            <a class="title" href="{{ topic.udemy }}">{{ topic.fullname }}</a>
+                        </div>
+                        <div class="col m2">
+                            <b>Total duration:</b> <pre><code>{{ news.duration }}</code></pre> 
+                        </div>
+                        <div class="col m2">
+                            <b>Type member:</b> <pre><code>{{ news.type }}</code></pre>
+                        </div>
                     </div>
                     <div class="row">
-                        <b>Total duration:</b> <pre><code>{{ news.duration }}</code></pre> 
-                    </div>
-                    <div class="row">
-                        <b>Type member:</b> <pre><code>{{ news.type }}</code></pre>
+                        {% if news.youtube %}
+                            {% include youtubePlayer.html id=news.youtube %}
+                        {% endif %}
                     </div>
                     <div class="row">
 {% highlight html linenos %}
