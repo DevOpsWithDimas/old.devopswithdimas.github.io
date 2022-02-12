@@ -2,7 +2,7 @@
   catalog: getting-started
   date: 2022-02-12T14:29:00+07:00
   duration: "2jam"
-  type: "free"
+  tier: "free"
   youtube: 
   visible: false
   markers: |
@@ -14,7 +14,7 @@
   catalog: minikube
   visible: false
   duration: "1jam"
-  type: "free"
+  tier: "free"
   youtube: 
   date: 2022-02-05T14:29:00+07:00
   markers: |
@@ -27,7 +27,7 @@
   visible: true
   duration: "2jam"
   youtube: agYCNlb8-rA
-  type: "free"
+  tier: "free"
   date: 2022-01-28T14:29:00+07:00
   markers: |
     00:00:00 Introduction
@@ -73,7 +73,7 @@
   catalog: introduction
   date: 2022-02-12T14:29:00+07:00
   duration: "45menit"
-  type: "free"
+  tier: "free"
   youtube: oH38ULCCuFo
   visible: true
   markers: |

@@ -250,7 +250,7 @@ layout: default
                             <b>Total duration:</b> <pre><code>{{ news.duration }}</code></pre> 
                         </div>
                         <div class="col m2">
-                            <b>Type member:</b> <pre><code>{{ news.type }}</code></pre>
+                            <b>Member tier:</b> <pre><code>{{ news.tier }}</code></pre>
                         </div>
                     </div>
                     <div class="row">
@@ -259,6 +259,7 @@ layout: default
                         {% endif %}
                     </div>
                     <div class="row">
+                        <b>Table of Contents:</b>
 {% highlight html linenos %}
 {{ news.markers }}
 {% endhighlight %}
