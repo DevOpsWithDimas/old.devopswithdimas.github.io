@@ -218,11 +218,13 @@ layout: default
     <h5 class="container center">        
         News
         <br />
-        <small>Latest published video</small>
+        <small>Latest Video Published</small>
     </h5>
     <br>
     <div class="row">
-        {% assign news_list = site.data.news | sort:"date" %}
+        {% assign news_list = site.data.news | where: 'visible', true | sort:"date" %}
+
+        {% if news_list.size >= 1 %}
         <ul class="collapsible popout" data-collapsible="accordion">
         {% for news in news_list limit:5 %}
             {% assign topic = site.data.topics | where: "url", news.cource | sort:"date" | first %}
@@ -230,14 +232,15 @@ layout: default
             <li>
                 <span class="new badge yellow black-text" data-badge-caption="">{{ news.date | date: "%A, %d/%m/%Y"}}</span>
                 <div class="collapsible-header">
+                    <i class="material-icons">filter_drama</i>
                     <!-- <img sizes="100px" 
                         class="circle responsive-img" 
                         src="{{ "/resources/images/" | prepend: site.baseurl}}{{news.cource}}.png"> -->
-                        <p>{{ catalog.description }}</p>
+                        {{ catalog.description }} | {{ topic.name }}
                     </div>
                 <div class="collapsible-body">
                     <div class="row">
-                        <b>Cource:</b> 
+                        <b>Title:</b> 
                         <a class="title" href="{{ topic.udemy }}">{{ topic.fullname }}</a>
                     </div>
                     <div class="row">
@@ -249,5 +252,13 @@ layout: default
             </li>
         {% endfor %}
         </ul>
+        {% else %}
+        <ul class="collapsible popout" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header">Belum tersedia update terbaru</div>
+                <div class="collapsible-body"><span>Silahkan kembali lagi lain waktu!</span></div>
+            </li>
+        </ul>
+        {% endif %}
     </div>
 </div>

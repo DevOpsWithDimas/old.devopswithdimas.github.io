@@ -383,11 +383,11 @@
   catalogs:
     - name: Pengenalan Kubernetes
       key: introduction
-      description: ''
+      description: 'Eps 1: Pengenakan Kubernetes (k8s)'
       deprecated: false
     - name: Getting started with minikube
       key: minikube
-      description: ''
+      description: 'Eps 2: Getting started with Minikube Cluster'
       deprecated: false
     - name: Kubernetes Workloads
       key: workloads
@@ -587,7 +587,7 @@
       description: 'Eps 1: Pengenalan PostgreSQL Database'
     - name: Getting started
       key: getting-started
-      description: 'Eps 2: Getting Started for Learning environment'
+      description: 'Eps 2: Getting Started with PostgreSQL Database for Learning environment'
     - name: SQL Statement
       key: sql-statement
       description: ''

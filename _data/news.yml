@@ -1,6 +1,16 @@
 - cource: postgresql
   catalog: getting-started
   date: 2022-02-12T14:29:00+07:00
+  visible: false
+  markers: |
+    00:00:00 Introduction
+    00:00:01 Testing script
+    00:00:03 Implementasi coding
+
+- cource: k8s
+  catalog: minikube
+  visible: false
+  date: 2022-02-05T14:29:00+07:00
   markers: |
     00:00:00 Introduction
     00:00:01 Testing script
