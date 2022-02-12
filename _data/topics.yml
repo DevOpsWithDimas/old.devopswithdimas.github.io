@@ -367,7 +367,7 @@
   messages:
   publish: 2021-05-01T13:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-kubernetes
-  youtube: 
+  youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvy9cHYEG7b-qcXMkpBPm8ZN
   udemy: https://www.udemy.com/course/devops-kubernetes-pemula-sampai-mahir/?referralCode=58BDCE6103ADC4C9C11D
   coming_soon: false
   visible: true
