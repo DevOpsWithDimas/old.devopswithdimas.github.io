@@ -562,8 +562,8 @@
   messages:
     Temen-temen akan di pandu untuk menguasai perintah SQL dengan salah satu Relational Database Management System (RDBMS) yaitu dengan PostgreSQL. Dengan menggunakan Relational Database Management Sistem kita dengan mudah dapat melakukan baca-tulis data dengan mudah dan cepat tidak seperti menggunakan baca-tulis di file.
   publish: 2022-01-16T20:50:50+07:00
-  github: 
-  youtube:
+  github: https://github.com/BootcampYoutubeChannel/belajar-postgres14
+  youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvypZXSk2GC932nludT345xk
   udemy: https://www.udemy.com/course/dba-postgresql-pemula-sampai-mahir/?referralCode=8080BE598C39D7652D33
   coming_soon: false
   visible: true
