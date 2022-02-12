@@ -5,6 +5,12 @@ permalink: /pages/news.html
 icon: announcement
 ---
 
+<script>
+    $(document).ready(function(){
+        $('#collapsibleNews').collapsible('open', 0);        
+    })
+</script>
+
 <div class="container">
     <br>
     <h5 class="center">        
@@ -17,7 +23,7 @@ icon: announcement
         {% assign news_list = site.data.news | where: 'visible', true | sort:"date" | reverse %}
 
         {% if news_list.size >= 1 %}
-        <ul class="collapsible popout" data-collapsible="accordion">
+        <ul class="collapsible popout" data-collapsible="expandable" id="collapsibleNews">
         {% for news in news_list %}
             {% assign topic = site.data.topics | where: "url", news.cource | first %}
             {% assign catalog = topic.catalogs | where: "key", news.catalog | first %}
@@ -44,15 +50,17 @@ icon: announcement
                         </div>
                     </div>
                     <div class="row">
-                        {% if news.youtube %}
-                            {% include youtubePlayer.html id=news.youtube %}
-                        {% endif %}
-                    </div>
-                    <div class="row">
-                        <b>Table of Contents:</b>
+                        <div class="col s12 m6 l8">
+                            {% if news.youtube %}
+                                {% include youtubePlayer.html id=news.youtube %}
+                            {% endif %}
+                        </div>
+                        <div class="col s12 m6 l4">
+                            <b>Table of Contents:</b>
 {% highlight html linenos %}
 {{ news.markers }}
 {% endhighlight %}
+                        </div>
                     </div>
                 </div>
             </li>

@@ -127,6 +127,11 @@ layout: default
 </div>
 {% endfor %}
 
+<script>
+    $(document).ready(function(){
+        $('#collapsibleNews').collapsible('open', 0);        
+    })
+</script>
 
 <div class="row container">
     <br>
@@ -227,7 +232,7 @@ layout: default
     <br>
     <div class="row">
         {% if news_list.size >= 1 %}
-        <ul class="collapsible popout" data-collapsible="accordion">
+        <ul class="collapsible popout" data-collapsible="accordion" id="collapsibleNews">
         {% for news in news_list limit:5 %}
             {% assign topic = site.data.topics | where: "url", news.cource | first %}
             {% assign catalog = topic.catalogs | where: "key", news.catalog | first %}
