@@ -2,7 +2,7 @@
 layout: post
 title: "Overview of PostgreSQL Database"
 date: 2022-01-15T21:22:25+07:00
-lang: psql
+lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Using thirdparty Editor untuk PostgreSQL Server"
-lang: psql
+lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL

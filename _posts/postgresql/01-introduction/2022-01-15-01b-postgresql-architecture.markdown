@@ -2,7 +2,7 @@
 layout: post
 title: "Architecture of PostgreSQL Database"
 date: 2022-01-15T21:36:17+07:00
-lang: psql
+lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL

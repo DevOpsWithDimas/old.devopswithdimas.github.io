@@ -2,7 +2,7 @@
 layout: post
 title: "Accessing a Database"
 date: 2022-01-16T10:09:27+07:00
-lang: psql
+lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL

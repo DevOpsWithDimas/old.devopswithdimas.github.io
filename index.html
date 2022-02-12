@@ -212,4 +212,42 @@ layout: default
             </a>
         </div>
     </div>
+
+    <br>
+    <hr>
+    <h5 class="container center">        
+        News
+        <br />
+        <small>Latest published video</small>
+    </h5>
+    <br>
+    <div class="row">
+        {% assign news_list = site.data.news | sort:"date" %}
+        <ul class="collapsible popout" data-collapsible="accordion">
+        {% for news in news_list limit:5 %}
+            {% assign topic = site.data.topics | where: "url", news.cource | sort:"date" | first %}
+            {% assign catalog = topic.catalogs | where: "key", news.catalog | first %}
+            <li>
+                <span class="new badge yellow black-text" data-badge-caption="">{{ news.date | date: "%A, %d/%m/%Y"}}</span>
+                <div class="collapsible-header">
+                    <!-- <img sizes="100px" 
+                        class="circle responsive-img" 
+                        src="{{ "/resources/images/" | prepend: site.baseurl}}{{news.cource}}.png"> -->
+                        <p>{{ catalog.description }}</p>
+                    </div>
+                <div class="collapsible-body">
+                    <div class="row">
+                        <b>Cource:</b> 
+                        <a class="title" href="{{ topic.udemy }}">{{ topic.fullname }}</a>
+                    </div>
+                    <div class="row">
+{% highlight html linenos %}
+{{ news.markers }}
+{% endhighlight %}
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
 </div>

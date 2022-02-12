@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "03-overview-sql"
-lang: psql
+lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL

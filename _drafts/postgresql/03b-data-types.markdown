@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "02d-data-types"
-lang: psql
+lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL

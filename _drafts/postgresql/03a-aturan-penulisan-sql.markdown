@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "02c-aturan-penulisan-sql"
-lang: psql
+lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL

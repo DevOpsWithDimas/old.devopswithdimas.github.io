@@ -2,7 +2,7 @@
 layout: post
 title: "Using psql as PostgreSQL editor"
 date: 2022-02-06T15:12:02+07:00
-lang: psql
+lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL

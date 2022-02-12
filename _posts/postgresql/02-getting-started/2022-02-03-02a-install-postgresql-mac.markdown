@@ -2,7 +2,7 @@
 layout: post
 title: "Install PostgreSQL for Mac users"
 date: 2022-02-03T03:40:43+07:00
-lang: psql
+lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL

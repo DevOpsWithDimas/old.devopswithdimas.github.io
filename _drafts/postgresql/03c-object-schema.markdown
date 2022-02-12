@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "03c-konsep-object-schema"
-lang: psql
+lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL
@@ -11,7 +11,7 @@ youtube:
 image_path: /resources/posts/psql/03c-konsep-object-schema
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
-catalog_key: getting-started
+catalog_key: sql-statement
 downloads: []
 ---
 
