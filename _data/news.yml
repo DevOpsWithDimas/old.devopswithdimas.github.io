@@ -33,39 +33,12 @@
     00:00:00 Introduction
     00:02:26 Silabus - DevOps Kubernetes Pemula sampai Mahir
     00:08:35 Pengantar untuk belajar Kubernetes (k8s)
-    00:10:46 What is Kubernetes (k8s)
-    00:16:25 Comparison deployments era
-    00:31:22 Why you need Kubernetes?
-    00:38:15 What Kubernetes is can't do?
-    00:43:56 Overview of Kubernetes Components
-    00:44:45 What is Control Panel Component?
-    00:52:18 What is Nodes Component?
-    00:56:53 What is Addons Component?
-    01:01:03 Overview of Kubernetes API
-    01:02:02 What is Kubernetes API?
-    01:05:57 Kubernetes API Groups & Versioning
-    01:12:59 Kubernetes API Spec Changes
-    01:15:26 Kubernetes API Extension
-    01:16:59 Overview of Kubernetes Objects
-    01:18:06 What is Kubernetes Objects?
-    01:21:39 What is Kubernetes object spec & status
-    01:25:14 Describing a Kubernetes object
-    01:28:41 Required Fields in kubernetes objects
+    00:43:56 Kubernetes Components
+    01:01:03 Kubernetes API
+    01:16:59 Kubernetes Objects
     01:33:29 Managing Kubernetes Object
-    01:35:21 How to manage kubernetes objects?
-    01:39:42 Imperative commands techique
-    01:44:26 Imperative object configuration technique
-    01:48:18 Declarative object configuration technique
-    01:53:23 Overview of Kubernetes Object Names and IDs
-    01:54:35 What is Object names and IDs?
-    01:58:46 Standart definition for naming resources
-    02:02:43 What is UIDs?
-    02:05:30 Overview of Kubernetes namespaces
-    02:06:51 What is kubernetes namespaces?
-    02:08:45 When to Use Kubernetes Namespaces?
-    02:12:27 Working with namespaces
-    02:15:38 Using Namespaces for DNS
-    02:18:08 Not all objects in a namespace
+    01:53:23 Kubernetes Object Names and IDs
+    02:05:30 Kubernetes namespaces
     02:19:42 Kubernetes Cluster environment
     02:23:03 Materi selanjutnya
 
@@ -78,15 +51,8 @@
   visible: true
   markers: |
     00:00:00 Introduction
-    00:01:53 Silabus belajar PostgreSQL
-    00:06:45 Overview of PostgreSQL Database
-    00:07:28 What is PostgreSQL Database?
-    00:10:00 History of PostgreSQL
-    00:15:55 Architecture of PostgreSQL Database
-    00:23:33 Overview of Object-Relation Database Management System (ORDBMS)
-    00:24:26 What is Object-Relational Database Management System (ORDBMS)?
-    00:27:29 What the difference between Relational and Object-Relational DBMS?
-    00:30:37 Overview of Accessing PostgreSQL Database
-    00:31:22 Command to create a database
-    00:37:15 How to accessing a database?
-    00:41:21 How to interation with Object Database?
+    00:01:53 Silabus - DBA PostgreSQL Pemula sampai Mahir
+    00:06:45 What is PostgreSQL Database?
+    00:23:33 Object-Relation Database Management System (ORDBMS)
+    00:30:37 Accessing PostgreSQL Database
+    00:45:01 Materi selanjutnya
