@@ -29,9 +29,11 @@ Nah jadi temen-temen bisa pilih salah satu dari 3rd party editor tersebut kalau 
 Jadi di cource ini, kita akan menggunakan IntelliJ IDEA ya. Adapun pembahasannya kali ini kita akan setup environmentnya dulu mulai:
 
 1. Connection to PostgreSQL Server
-2. Run a Query
-3. Developer Tools
-4. Export/Import
+2. Database Tools
+3. Run a Query
+4. Manage database object
+5. Export/Import
+6. Diagrams ERD
 
 Ok langsung aja kita ke pembahasan yang pertama
 
@@ -61,6 +63,38 @@ Jika sudah kita bisa navigasi ke object databasenya seperti berikut:
 
 ![idea-db-navigation]({{ page.image_path | prepend: site.baseurl }}/02-idea-navigation.png)
 
+
+## Database Tools
+
+The database management functionality in IntelliJ IDEA is supported by the **Database tools and SQL** plugin. The **Database tools and SQL** plugin provides support of all the features that are available in DataGrip, the standalone database management environment for developers. With the plugin, you can query, create and manage databases. 
+
+Databases can work locally, on a server, or in the cloud. The plugin supports MySQL, PostgreSQL, Microsoft SQL Server, SQLite, MariaDB, Oracle, Apache Cassandra, and others.
+
+Banyak sekali feature yang di tawarkan oleh Database Tools plugin ini diantaranya
+
+1. Query results
+    1. View two result sets in the editor
+    2. Edit values in the result set
+    3. Export to a file
+    4. Export to a clipboard
+    5. Sort data
+    6. Filter data
+2. Write your code
+    1. Code completion
+    2. Generating code
+3. Manage database object
+    1. Database
+    2. User/Role
+    3. Tables
+    4. View
+    5. etc
+2. Database diagrams
+    1. **Explain Plan**: the result is shown in a mixed tree and table format on a dedicated Plan tab. You can click the Show Visualization icon (the Show Visualization icon) to create a diagram that visualizes the query execution.
+    2. **Explain Plan (Raw)**: the result is shown in a table format.
+    3. Generate a diagram for a database object
+    4. Save diagrams in the UML format
+    5. Save diagrams in the PNG format
+
 ## Run a Query
 
 Query or database consoles are SQL files in which you can compose and execute SQL statements. Unlike scratch files, consoles are attached to a data source. You can use a query console in the same way as you use a terminal. Just type and run your code.
@@ -87,3 +121,36 @@ Kemudian kita bisa jalankan Querynya dengan clik Play button warna hijau atau sh
 ![idea-file-run-query]({{ page.image_path | prepend: site.baseurl }}/05-file-run-query.png)
 
 Nah klo perbedaanya menggunakan Query Console dan juga file adalah jika Query Console jika projectnya kita hapus maka akan hilang sedangkan menggunakan file, filenya akan tetap tersimpan jadi kita bisa jalankan di kemudian hari.
+
+## Manage database objects
+
+The IDE provides a unified UI for adding or editing database object such as table, view, sequance, user/role, etc. 
+
+![idea-create-table]({{ page.image_path | prepend: site.baseurl }}/06-create-table.png)
+
+## Export/Import schema
+
+Being able to import and export data is useful when you move data between databases that are used for different purposes but need to share some data. For example, between development and production databases.
+
+IntelliJ IDEA has an engine to export and import data in various formats. You can select a predefined format or create your own.
+
+1. **Export**: see how to generate DDL for objects and export data in different formats.
+2. **Import**: import CSV, TSV, or any other text files that contain delimiter-separated values. Also, learn how to restore the dump file by using `mysql`, `pg_restore`, or `psql`.
+3. **Run migrations**: learn how to use migration tools in IntelliJ IDEA.
+4. **Data extractors**: learn about default extractors and creating custom extractors.
+
+Berikut contohnya, jika kita mau backup/export
+
+![idea-backup]({{ page.image_path | prepend: site.baseurl }}/07-export-schema.png)
+
+Dan untuk import / restore seperti berikut:
+
+![idea-restore]({{ page.image_path | prepend: site.baseurl }}/08-restore-schema.png)
+
+## ERD Diagram tools
+
+Database diagrams graphically show the structure of the database and relations between database objects. You can generate a diagram for a data source, a schema, or a table. To create relations between database objects, consider using primary and foreign keys.
+
+You can save the generated diagrams in two formats: UML and PNG. The UML format is an internal format developed specifically for IntelliJ IDEA. It is not supported by other products. If you want to share the created diagram, consider using PNG.
+
+![idea-erd-diagram]({{ page.image_path | prepend: site.baseurl }}/09-erd-diagram.png)
