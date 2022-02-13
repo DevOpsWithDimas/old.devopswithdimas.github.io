@@ -62,3 +62,28 @@ Jika sudah kita bisa navigasi ke object databasenya seperti berikut:
 ![idea-db-navigation]({{ page.image_path | prepend: site.baseurl }}/02-idea-navigation.png)
 
 ## Run a Query
+
+Query or database consoles are SQL files in which you can compose and execute SQL statements. Unlike scratch files, consoles are attached to a data source. You can use a query console in the same way as you use a terminal. Just type and run your code.
+
+When you create a data source, a query console is created automatically. If necessary, you can create additional consoles. Each console creates a new connection. If you do not want to create new connections, enable single session mode.
+
+To create a console, use one of the following actions in the Database tool window **View** > **Tool Windows** > **Database**.
+
+1. Click a data source and select **File** > **New** > **Query Console**.
+2. Right-click a data source and select **New** > **Query Console**.
+3. Click a data source, press `Alt+Insert`, and select **Query Console**.
+4. Click a data source, press `Ctrl+Shift+F10`, and select **New Query Console**.
+
+![idea-query-console]({{ page.image_path | prepend: site.baseurl }}/03-query-console.png)
+
+Selain itu juga kita bisa membuat file `.sql` dengan cara Click menu **File** > **New** > **File** 
+
+Kemudian kita bisa pilih **Change dialect** > **Project dialog & SQL Dialect** > **PostgreSQL** seperti berikut:
+
+![idea-dialect]({{ page.image_path | prepend: site.baseurl }}/04-dialect-postgres.png)
+
+Kemudian kita bisa jalankan Querynya dengan clik Play button warna hijau atau shortcutnya `Ctrl + Enter` untuk windows/linux seperti berikut:
+
+![idea-file-run-query]({{ page.image_path | prepend: site.baseurl }}/05-file-run-query.png)
+
+Nah klo perbedaanya menggunakan Query Console dan juga file adalah jika Query Console jika projectnya kita hapus maka akan hilang sedangkan menggunakan file, filenya akan tetap tersimpan jadi kita bisa jalankan di kemudian hari.
