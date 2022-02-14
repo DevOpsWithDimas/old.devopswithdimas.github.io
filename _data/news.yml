@@ -15,8 +15,8 @@
   date: 2022-02-15T18:29:00+07:00
   duration: "3jam"
   tier: "free"
-  youtube: 
-  visible: false
+  youtube: UjxEMXePVRk
+  visible: true
   markers: |
     00:00:00 Introduction
     00:01:15 Install PostgreSQL Server on MacOS
