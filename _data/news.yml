@@ -1,15 +1,3 @@
-- cource: postgresql
-  catalog: getting-started
-  date: 2022-02-12T14:29:00+07:00
-  duration: "2jam"
-  tier: "free"
-  youtube: 
-  visible: false
-  markers: |
-    00:00:00 Introduction
-    00:00:01 Testing script
-    00:00:03 Implementasi coding
-
 - cource: k8s
   catalog: minikube
   visible: false
@@ -21,6 +9,25 @@
     00:00:00 Introduction
     00:00:01 Testing script
     00:00:03 Implementasi coding
+
+- cource: postgresql
+  catalog: getting-started
+  date: 2022-02-15T18:29:00+07:00
+  duration: "3jam"
+  tier: "free"
+  youtube: 
+  visible: false
+  markers: |
+    00:00:00 Introduction
+    00:01:15 Install PostgreSQL Server on MacOS
+    00:18:04 Install PostgreSQL Server on Windows 11
+    00:37:35 Install PostgreSQL Server on Linux ubuntu desktop
+    00:55:14 Setup project and Create git repository
+    00:59:31 Install PostgreSQL on Docker as container
+    01:21:53 Using psql as main editor
+    01:42:36 Using pgAdmin4 as main editor
+    02:19:43 Using 3rd party application as main editor
+    02:57:34 Materi selanjutnya
 
 - cource: k8s
   catalog: introduction
