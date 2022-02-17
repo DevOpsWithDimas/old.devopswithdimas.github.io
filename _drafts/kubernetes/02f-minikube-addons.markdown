@@ -482,3 +482,70 @@ Events:
   Normal  Created    25s   kubelet            Created container nginx-insecure-app
   Normal  Started    25s   kubelet            Started container nginx-insecure-app
 ```
+
+## Enable Load balancer service
+
+A LoadBalancer service is the standard way to expose a service to the internet. With this method, each service gets its own IP address.
+
+Services of type `LoadBalancer` can be exposed via the `minikube tunnel` command. It must be run in a separate terminal window to keep the `LoadBalancer` running. But first you need enable LoadBalencer it self using 
+
+{% gist page.gist "02f-minikube-enable-loadbalancer.bash" %}
+
+Jika di jalankan seperti berikut:
+
+```bash
+➜ ~  minikube addons enable metallb
+    ▪ Using image metallb/speaker:v0.9.6
+    ▪ Using image metallb/controller:v0.9.6
+🌟  The 'metallb' addon is enabled
+
+## you should know range ip minikube using this command
+➜ ~  minikube node list
+minikube        192.168.59.102
+
+➜ ~  minikube addons configure metallb
+-- Enter Load Balancer Start IP: 192.168.59.100
+-- Enter Load Balancer End IP: 192.168.59.110
+    ▪ Using image metallb/speaker:v0.9.6
+    ▪ Using image metallb/controller:v0.9.6
+✅  metallb was successfully configured
+```
+
+Setelah kita kita coba deploy aplikasinya dan expose menggunakan LoadBalancer service seperti berikut:
+
+```bash
+➜ ~  kubectl run nginx-app --image nginx:mainline --port 80
+pod/nginx-app created
+
+➜ ~  kubectl expose pod nginx-app --type=LoadBalancer --port 80
+service/nginx-app exposed
+
+➜ ~  kubectl get service
+NAME         TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)        AGE
+kubernetes   ClusterIP      10.96.0.1       <none>           443/TCP        4m58s
+nginx-app    LoadBalancer   10.108.206.69   192.168.59.100   80:31341/TCP   10s
+
+➜ ~  curl 192.168.59.100
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : <!DOCTYPE html>
+                    <html>
+                    <head>
+                    <title>Welcome to nginx!</title>
+                    <style>
+                    html { color-scheme: light dark; }
+                    body { width: 35em; margin: 0 auto;
+                    font-family: Tahoma, Verdana, Arial, sans-serif; }
+                    </style...
+RawContent        : HTTP/1.1 200 OK
+                    Connection: keep-alive
+                    Accept-Ranges: bytes
+                    Content-Length: 615
+                    Content-Type: text/html
+                    Date: Thu, 17 Feb 2022 13:04:13 GMT
+                    ETag: "61f01158-267"
+                    Last-Modified: Tue, 25 Jan 2022 ...
+Headers           : {[Connection, keep-alive], [Accept-Ranges, bytes], [Content-Length, 615],
+                    [Content-Type, text/html]...}
+```
