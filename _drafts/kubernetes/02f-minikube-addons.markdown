@@ -526,7 +526,6 @@ kubernetes   ClusterIP      10.96.0.1       <none>           443/TCP        4m58
 nginx-app    LoadBalancer   10.108.206.69   192.168.59.100   80:31341/TCP   10s
 
 ➜ ~  curl 192.168.59.100
-
 StatusCode        : 200
 StatusDescription : OK
 Content           : <!DOCTYPE html>
@@ -538,14 +537,6 @@ Content           : <!DOCTYPE html>
                     body { width: 35em; margin: 0 auto;
                     font-family: Tahoma, Verdana, Arial, sans-serif; }
                     </style...
-RawContent        : HTTP/1.1 200 OK
-                    Connection: keep-alive
-                    Accept-Ranges: bytes
-                    Content-Length: 615
-                    Content-Type: text/html
-                    Date: Thu, 17 Feb 2022 13:04:13 GMT
-                    ETag: "61f01158-267"
-                    Last-Modified: Tue, 25 Jan 2022 ...
 Headers           : {[Connection, keep-alive], [Accept-Ranges, bytes], [Content-Length, 615],
                     [Content-Type, text/html]...}
 ```
