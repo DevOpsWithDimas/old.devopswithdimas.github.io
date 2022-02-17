@@ -549,3 +549,5 @@ RawContent        : HTTP/1.1 200 OK
 Headers           : {[Connection, keep-alive], [Accept-Ranges, bytes], [Content-Length, 615],
                     [Content-Type, text/html]...}
 ```
+
+## Enable Ingress Controller
