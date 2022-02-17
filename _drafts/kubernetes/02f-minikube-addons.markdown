@@ -21,7 +21,7 @@ downloads: []
 Hai semuanya, di materi kali ini kita akan membahas tentang Minikube Addons for added functionality features of Kubernetes. Diantaranya yang akan kita bahas adalah
 
 1. Basic usage `addons` command
-2. Enable Dashboard & metrix-server using minikube addons
+2. Enable Dashboard & metrics-server using minikube addons
 3. Enable Load balancer service using minikube addons
 4. Enable Ingress Controller using minikube addons
 5. Enable Storage Provisioning using minikube addons
@@ -126,3 +126,25 @@ To disable an addon:
 {% highlight bash %}
 minikube addons disable <name>
 {% endhighlight %}
+
+## Enable Dashboard & metrics-server
+
+minikube has integrated support for the [Kubernetes Dashboard UI](https://github.com/kubernetes/dashboard).
+
+The Dashboard is a web-based Kubernetes user interface. You can use it to:
+
+1. deploy containerized applications to a Kubernetes cluster
+2. troubleshoot your containerized application
+3. manage the cluster resources
+4. get an overview of applications running on your cluster
+5. creating or modifying individual Kubernetes resources (such as `Deployments`, `Jobs`, `DaemonSets`, etc)
+
+To access the dashboard:
+
+{% gist page.gist "02f-minikube-dashboard.bash" %}
+
+This will enable the dashboard add-on, and open the proxy in the default web browser. seperti berikut:
+
+![minikube-dashboard]({{ page.image_path | prepend: site.baseurl }}/01-minikube-dashboard.png)
+
+## Enable Load balancer service
