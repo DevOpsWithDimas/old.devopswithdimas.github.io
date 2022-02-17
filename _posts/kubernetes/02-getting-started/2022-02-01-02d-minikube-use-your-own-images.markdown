@@ -228,3 +228,80 @@ Events:
 ```
 
 ## Publish to public registry
+
+Dengan menggunakan minikube kita juga bisa menggunakan Public Registry seperti [Docker HUB](https://hub.docker.com/), [Red Hat Quay](https://www.redhat.com/en/technologies/cloud-computing/quay) dan lain-lain.
+
+Sekarang yang kita perlu lakukan adalah coba push imagenya ke Public Registry, misalnnya kita menggunakan Docker HUB dengan perintahnya seperti berikut:
+
+{% highlight bash %}
+docker login
+
+docker push dimmaryanto93/kubernetes-cource:1.0
+{% endhighlight %}
+
+Seperti berikut hasilnya:
+
+![docker-private-registry]({{ page.image_path | prepend: site.baseurl }}/01-registry-docker.png)
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```bash
+➜  ~ kubectl run nginx-private-app --image dimmaryanto93/kubernetes-cource:1.0
+pod/nginx-private-app created
+
+➜  ~ kubectl get pod
+NAME                READY   STATUS    RESTARTS   AGE
+nginx-private-app   1/1     Running   0          71s
+
+➜  ~ kubectl describe pod/nginx-private-app
+Name:         nginx-private-app
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.59.116
+Start Time:   Tue, 01 Feb 2022 22:00:28 +0700
+Labels:       run=nginx-private-app
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.3
+IPs:
+  IP:  172.17.0.3
+Containers:
+  nginx-private-app:
+    Container ID:   docker://7d7c24228450ec909bdff802bf7c3cfba856f95985b882f70f6f7f1e28424d44
+    Image:          dimmaryanto93/kubernetes-cource:1.0
+    Image ID:       docker-pullable://dimmaryanto93/kubernetes-cource@sha256:bce870a1cfc768aa9cb6affe71e18ac7dc3c6997ad016d3ce44af0e8ecae50c9
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Tue, 01 Feb 2022 22:01:09 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-7zv7k (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  kube-api-access-7zv7k:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  95s   default-scheduler  Successfully assigned default/nginx-private-app to minikube
+  Normal  Pulling    94s   kubelet            Pulling image "dimmaryanto93/kubernetes-cource:1.0"
+  Normal  Pulled     54s   kubelet            Successfully pulled image "dimmaryanto93/kubernetes-cource:1.0" in 39.727921156s
+  Normal  Created    54s   kubelet            Created container nginx-private-app
+  Normal  Started    54s   kubelet            Started container nginx-private-app
+```
