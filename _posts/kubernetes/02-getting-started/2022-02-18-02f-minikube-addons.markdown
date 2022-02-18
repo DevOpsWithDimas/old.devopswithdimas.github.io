@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Minikube addons features"
+date: 2022-02-18T22:19:57+07:00
 lang: k8s
 categories:
 - DevOps
@@ -26,7 +27,6 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Minikube Addons for 
 4. Enable Registry-Creds for Insecure Docker Registry
 5. Enable Load balancer service using minikube addons
 6. Enable Ingress Controller using minikube addons
-7. Enable Storage Provisioning using minikube addons
 
 Ok langsung aja kita ke pembahasan yang pertama
 
@@ -542,3 +542,17 @@ Headers           : {[Connection, keep-alive], [Accept-Ranges, bytes], [Content-
 ```
 
 ## Enable Ingress Controller
+
+
+
+```bash
+➜ ~  minikube addons enable ingress
+💡  After the addon is enabled, please run "minikube tunnel" and your ingress resources would be available at "127.0.0.1"
+    ▪ Using image k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1
+    ▪ Using image k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1
+    ▪ Using image k8s.gcr.io/ingress-nginx/controller:v1.1.0
+🔎  Verifying ingress addon...
+🌟  The 'ingress' addon is enabled
+
+
+```
