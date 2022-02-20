@@ -27,7 +27,7 @@ Ok langsung aja kita ke pembahasan yang pertama
 
 ## Using `minikube service` command
 
-Basicly pada kubernetes cluster kita meng-akses aplikasi dengan service type `NodePort`. A NodePort service is the most basic way to get external traffic directly to your service. NodePort, as the name implies, opens a specific port, and any traffic that is sent to this port is forwarded to the service.
+A NodePort service is the most basic way to get external traffic directly to your service. NodePort, as the name implies, opens a specific port, and any traffic that is sent to this port is forwarded to the service.
 
 We also have a shortcut for fetching the minikube IP and a service’s `NodePort`:
 
@@ -96,3 +96,84 @@ Content           : <!DOCTYPE html>
 Headers           : {[Connection, keep-alive], [Accept-Ranges, bytes], [Content-Length, 615], [Content-Type,
                     text/html]...}
 ```
+
+## Using `minikube tunnel` command
+
+Selain menggunakan service type `NodePort`, kita juga bisa menggunakan `LoadBalancer`. A LoadBalancer service is the standard way to expose a service to the internet. With this method, each service gets its own IP address.
+
+Services of type `LoadBalancer` can be exposed via the `minikube tunnel` command. It must be run in a separate terminal window to keep the LoadBalancer running. `Ctrl-C` in the terminal can be used to terminate the process at which time the network routes will be cleaned up.
+
+{% gist page.gist "02g-minikube-tunnel.bash" %}
+
+The `minikube tunnel` runs as a process, creating a network route on the host to the service CIDR of the cluster using the cluster’s IP address as a gateway. The `tunnel` command exposes the external IP directly to any program running on the host operating system.
+
+Jika di jalankan outputnya seperti berikut:
+
+```bash
+➜ ~  minikube addons enable metallb
+    ▪ Using image metallb/speaker:v0.9.6
+    ▪ Using image metallb/controller:v0.9.6
+🌟  The 'metallb' addon is enabled
+
+➜ ~  minikube ip
+192.168.59.104
+
+➜ ~  minikube addons configure metallb
+-- Enter Load Balancer Start IP: 192.168.59.100
+-- Enter Load Balancer End IP: 192.168.59.120
+    ▪ Using image metallb/controller:v0.9.6
+    ▪ Using image metallb/speaker:v0.9.6
+✅  metallb was successfully configured
+
+➜ ~  kubectl get pods -n metallb-system
+NAME                          READY   STATUS    RESTARTS   AGE
+controller-7dd4bdf68f-skn58   1/1     Running   0          93s
+speaker-9884v                 1/1     Running   0          93s
+
+➜ ~  kubectl run nginx-app --image nginx --port 80
+pod/nginx-app created
+
+➜ ~  kubectl expose pod/nginx-app --type=LoadBalancer --port 80
+service/nginx-app exposed
+
+➜ ~  kubectl get svc
+NAME         TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)        AGE
+kubernetes   ClusterIP      10.96.0.1        <none>           443/TCP        65s
+nginx-app    LoadBalancer   10.108.169.185   192.168.59.100   80:32002/TCP   24s
+```
+
+Jika kita mau akses applicationnya brati kita menggunakan ip external seperti berikut:
+
+```bash
+➜ ~  curl 192.168.59.100
+StatusCode        : 200
+StatusDescription : OK
+Content           : <!DOCTYPE html>
+                    <html>
+                    <head>
+                    <title>Welcome to nginx!</title>
+                    <style>
+                    html { color-scheme: light dark; }
+                    body { width: 35em; margin: 0 auto;
+                    font-family: Tahoma, Verdana, Arial, sans-serif; }
+                    </style...
+Forms             : {}
+Headers           : {[Connection, keep-alive], [Accept-Ranges, bytes], [Content-Length, 615], [Content-Type,
+                    text/html]...}
+```
+
+Nah jadi minikube punya alternatif lain yaitu menggunakan protocol tunneling, dengan perintah `minikube tunnel` jika kita jalankan pada windows terminal baru seperti berikut:
+
+```bash
+Status:
+        machine: minikube
+        pid: 5268
+        route: 10.96.0.0/12 -> 192.168.59.104
+        minikube: Running
+        services: []
+    errors:
+                minikube: no errors
+                router: error adding route: The requested operation requires elevation.
+```
+
+**NOTE:** may not working on Windows 10/11 using Virtualbox driver. 
