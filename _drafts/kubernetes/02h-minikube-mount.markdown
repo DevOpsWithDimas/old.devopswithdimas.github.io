@@ -89,5 +89,19 @@ These mounts can be disabled by passing `--disable-driver-mounts` to minikube st
 Jika kita coba, seperti berikut:
 
 ```bash
+## my workspaces
+➜  ~ ls Workspaces/examples 
+udemy-k8s-kustomize
 
+## inside minikube cluster
+➜  ~ minikube ssh
+                         _             _            
+            _         _ ( )           ( )           
+  ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __  
+/' _ ` _ `\| |/' _ `\| || , <  ( ) ( )| '_`\  /'__`\
+| ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
+(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
+
+$ ls /hosthome/dimasm93/Workspaces/examples/ 
+udemy-k8s-kustomize
 ```
