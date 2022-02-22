@@ -11,6 +11,7 @@ refs:
 - https://docs.docker.com/
 - https://kubernetes.io/docs/home/
 - https://minikube.sigs.k8s.io/docs/commands/addons/
+- https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/
 youtube: 
 comments: true
 catalog_key: minikube
@@ -22,10 +23,11 @@ downloads: []
 Hai semuanya, di materi kali ini kita akan membahas tentang Minikube Addons for added functionality features of Kubernetes. Diantaranya yang akan kita bahas adalah
 
 1. Basic usage `addons` command
-2. Enable Dashboard & metrics-server using minikube addons
+2. Enable Dashboard & metrics-server
 3. Enable Registry-Creds for Private Registry
 4. Enable Registry-Creds for Insecure Docker Registry
-5. Enable Load balancer service using minikube addons
+5. Enable Load balancer service
+6. Enable Ingress service
 
 Ok langsung aja kita ke pembahasan yang pertama
 
@@ -525,6 +527,126 @@ kubernetes   ClusterIP      10.96.0.1       <none>           443/TCP        4m58
 nginx-app    LoadBalancer   10.108.206.69   192.168.59.100   80:31341/TCP   10s
 
 ➜ ~  curl 192.168.59.100
+StatusCode        : 200
+StatusDescription : OK
+Content           : <!DOCTYPE html>
+                    <html>
+                    <head>
+                    <title>Welcome to nginx!</title>
+                    <style>
+                    html { color-scheme: light dark; }
+                    body { width: 35em; margin: 0 auto;
+                    font-family: Tahoma, Verdana, Arial, sans-serif; }
+                    </style...
+Headers           : {[Connection, keep-alive], [Accept-Ranges, bytes], [Content-Length, 615],
+                    [Content-Type, text/html]...}
+```
+
+## Enable Ingress service
+
+Selain menggunakan LoadBalancer, kita juga bisa menggunakan Ingress Controller salah satu implementasinya adalah ingress-nginx. Di minikube tersedia juga addons untuk `ingress` dengan menggunakan perintah seperti berikut:
+
+{% gist page.gist "02f-minikube-ingress.bash" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+➜ ~  minikube addons enable ingress
+💡  After the addon is enabled, please run "minikube tunnel" and your ingress resources would be available at "127.0.0.1"
+    ▪ Using image k8s.gcr.io/ingress-nginx/controller:v1.1.0
+    ▪ Using image k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1
+    ▪ Using image k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1
+🔎  Verifying ingress addon...
+🌟  The 'ingress' addon is enabled
+
+➜ ~  minikube service --url ingress-nginx-controller -n ingress-nginx
+🏃  Starting tunnel for service ingress-nginx-controller.
+|---------------|--------------------------|-------------|-------------------------|
+|   NAMESPACE   |           NAME           | TARGET PORT |          URL            |
+|---------------|--------------------------|-------------|-------------------------|
+| ingress-nginx | ingress-nginx-controller |             | http://127.0.0.1:54424  |
+|               |                          |             | https://127.0.0.1:54425 |
+|---------------|--------------------------|-------------|-------------------------|
+http://127.0.0.1:54424
+https://127.0.0.1:54425
+❗  Because you are using a Docker driver on windows, the terminal needs to be open to run it.
+
+## check ingress run
+➜ ~  curl http://127.0.0.1:54424
+curl : 404 Not Found
+nginx
+At line:1 char:1
+```
+
+Jika sudah sekarang kita coba deploy 2 container misalnya menggunakan `nginx` yang nantinya akan di mapping menjadi `/web1` dan `/web2` Seperti berikut:
+
+{% gist page.gist "02f-minikube-ingress.yaml" %}
+
+Sekarang kita coba jalankan dengan perintah seperti berikut:
+
+{% highlight bash %}
+kubectl apply -f ingress-nginx-controller.yaml
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+```powershell
+➜ kubernetes  kubectl apply -f .\01-getting-started\ingress-controller.yaml
+deployment.apps/nginx-app1 created
+service/nginx-app1 created
+deployment.apps/nginx-app2 created
+service/nginx-app2 created
+ingress.networking.k8s.io/webapp-ingress created
+
+➜ ~  kubectl get ing
+NAME             CLASS    HOSTS                ADDRESS     PORTS   AGE
+webapp-ingress   <none>   nginx.example.info   localhost   80      2m49s
+
+➜ ~  kubectl describe ing
+Name:             webapp-ingress
+Labels:           <none>
+Namespace:        default
+Address:          localhost
+Default backend:  default-http-backend:80 (<error: endpoints "default-http-backend" not found>)
+Rules:
+  Host                Path  Backends
+  ----                ----  --------
+  nginx.example.info
+                      /web1(/|$)(.*)   nginx-app1:80 (172.17.0.7:80)
+                      /web2(/|$)(.*)   nginx-app2:80 (172.17.0.8:80)
+Annotations:          kubernetes.io/ingress.class: nginx
+                      nginx.ingress.kubernetes.io/rewrite-target: /$2
+Events:
+  Type    Reason  Age                   From                      Message
+  ----    ------  ----                  ----                      -------
+  Normal  Sync    2m55s (x2 over 3m9s)  nginx-ingress-controller  Scheduled for sync
+```
+
+Jika sudah sekarang coba edit file `/etc/hosts` jika di windows lokasinya `C:\Windows\System32\drivers\etc\hosts` seperti berikut:
+
+{% highlight bash %}
+$(minikube ip) nginx.example.info
+{% endhighlight %}
+
+Kalau udah sekarang kita bisa coba check dengan perintah curl seperti berikut:
+
+```powershell
+➜ ~  curl http://nginx.example.info:54424/web1
+StatusCode        : 200
+StatusDescription : OK
+Content           : <!DOCTYPE html>
+                    <html>
+                    <head>
+                    <title>Welcome to nginx!</title>
+                    <style>
+                    html { color-scheme: light dark; }
+                    body { width: 35em; margin: 0 auto;
+                    font-family: Tahoma, Verdana, Arial, sans-serif; }
+                    </style...
+Headers           : {[Connection, keep-alive], [Accept-Ranges, bytes], [Content-Length, 615],
+                    [Content-Type, text/html]...}
+
+➜ ~  curl http://nginx.example.info:54424/web2
 StatusCode        : 200
 StatusDescription : OK
 Content           : <!DOCTYPE html>
