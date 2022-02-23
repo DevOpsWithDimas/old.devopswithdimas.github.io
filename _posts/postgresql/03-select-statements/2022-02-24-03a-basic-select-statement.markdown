@@ -22,6 +22,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Basic penggunaan SQL
 2. Menampilkan semua data dalam sebuah _table_
 3. Menampilkan hanya beberapa _columns_ pada sebuah _table_
 4. Memberikan alias pada suatu _column_
+5. Menggunakan Special Characters / Escape Characters
+6. Menggunakan Comments
 
 Ok langsung saja kita bahas materi yang pertama
 
@@ -77,13 +79,13 @@ Maka akan tampil datanya seperti berikut:
 
 Selain menggunakan `*` untuk menampikan semua kolom pada tabel tersebut, kita juga bisa sebutkan nama kolomnya. Tapi yang harus kita ketahui dulu adalah nama kolomnya pada table tersebut. kita bisa menggunakan perintah seperti berikut:
 
-{% highlight postgresql-console %}
+```postgresql
 hr=# \dt departments
  department_id   | integer               | not null default nextval('departments_department_id_seq'::regclass)
  department_name | character varying(30) | 
  manager_id      | integer               | 
  location_id     | integer               | 
-{% endhighlight %}
+```
 
 Nah jadi kita punya column `department_id`, `department_name`, `manager_id`, dan `location_id` jadi kita bisa pilih atau semuanya seperti berikut:
 
@@ -128,14 +130,93 @@ Seperti berikut contohnya:
 
 Jika dijalankan hasilnya seperti berikut:
 
-{% highlight postgresql %}
-kode_department |   nama_deparment     | Kode Manager | 
-----------------+----------------------+------------+
-            300 | System Analis        |            |
-             10 | Administration       |        200 |
-             20 | Marketing            |        201 |
-             30 | Purchasing           |        114 |
-             40 | Human Resources      |        203 |
-             50 | Shipping             |        121 |
-             60 | IT                   |        103 |
+```postgresql
+hr=# select  department_id as kode_divisi,
+hr-#         department_name nama_department,
+hr-#         manager_id as "Kode Manager"
+hr-# from departments;
+ kode_divisi |   nama_department    | Kode Manager
+-------------+----------------------+--------------
+         300 | System Analis        |
+          10 | Administration       |          200
+          20 | Marketing            |          201
+          30 | Purchasing           |          114
+          40 | Human Resources      |          203
+          50 | Shipping             |          121
+          60 | IT                   |          103
+          70 | Public Relations     |          204
+          80 | Sales                |          145
+          90 | Executive            |          100
+         100 | Finance              |          108
+         110 | Accounting           |          205
+         120 | Treasury             |
+
+(28 rows)
+```
+
+## Menggunakan Special Characters / Escape Characters
+
+Some characters that are not alphanumeric have a special meaning that is different from being an operator. Details on the usage can be found at the location where the respective syntax element is described. This section only exists to advise the existence and summarize the purposes of these characters.
+
+1. A dollar sign (`$`) followed by digits is used to represent a positional parameter in the body of a function definition or a prepared statement. In other contexts the dollar sign can be part of an identifier or a dollar-quoted string constant.
+2. Parentheses (`()`) have their usual meaning to group expressions and enforce precedence. In some cases parentheses are required as part of the fixed syntax of a particular SQL command.
+3. Brackets (`[]`) are used to select the elements of an array. See Section 8.15 for more information on arrays.
+4. Commas (`,`) are used in some syntactical constructs to separate the elements of a list.
+5. The semicolon (`;`) terminates an SQL command. It cannot appear anywhere within a command, except within a string constant or quoted identifier.
+6. The colon (`:`) is used to select “slices” from arrays. (See Section 8.15.) In certain SQL dialects (such as Embedded SQL), the colon is used to prefix variable names.
+7. The asterisk (`*`) is used in some contexts to denote all the fields of a table row or composite value. It also has a special meaning when used as the argument of an aggregate function, namely that the aggregate does not require any explicit parameter.
+8. The period (`.`) is used in numeric constants, and to separate schema, table, and column names.
+
+PostgreSQL also accepts "escape" string constants, which are an extension to the SQL standard. An escape string constant is specified by writing the letter E (upper or lower case) just before the opening single quote. Within an escape string, a backslash character (\) begins a C-like backslash escape sequence, in which the combination of backslash and following character(s) represent a special byte value
+
+| Backslash Escape  | Interpretation    |
+| :---              | :---              |
+| `\b`              | backspace         |
+| `\f`              | form feed         |
+| `\n`              | newline           |
+| `\r`              | carriage return   |
+| `\t`              | tab               |
+
+
+For example:
+
+{% gist page.gist "03a-select-special-characters.sql" %}
+
+Jika di jalankan hasilnya seperti berikut:
+
+```postgresql
+hr=# select '*' bintang,
+hr-#         E'()' kurung,
+hr-#         E'\\' slash,
+hr-#         E'baris pertama \n baris kedua' newline,
+hr-#         E'awal\t setelah' tabspace;
+ bintang | kurung | slash |    newline     |     tabspace
+---------+--------+-------+----------------+------------------
+ *       | ()     | \     | baris pertama +| awal     setelah
+         |        |       |  baris kedua   |
+(1 row)
+```
+
+## Menggunakan Comments
+
+A comment is a sequence of characters beginning with double dashes and extending to the end of the line, e.g.:
+
+{% highlight sql %}
+-- This is a standard SQL comment
 {% endhighlight %}
+
+Alternatively, C-style block comments can be used:
+
+{% highlight sql linenos %}
+/* multiline comment
+ * with nesting: /* nested block comment */
+ */
+{% endhighlight %}
+
+where the comment begins with /* and extends to the matching occurrence of */. These block comments nest, as specified in the SQL standard but unlike C, so that one can comment out larger blocks of code that might contain existing block comments.
+
+A comment is removed from the input stream before further syntax analysis and is effectively replaced by whitespace.
+
+For example:
+
+{% gist page.gist "03a-select-with-comments.sql" %}
