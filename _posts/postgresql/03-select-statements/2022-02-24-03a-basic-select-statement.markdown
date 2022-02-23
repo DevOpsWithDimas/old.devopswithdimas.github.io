@@ -213,7 +213,7 @@ Alternatively, C-style block comments can be used:
  */
 {% endhighlight %}
 
-where the comment begins with /* and extends to the matching occurrence of */. These block comments nest, as specified in the SQL standard but unlike C, so that one can comment out larger blocks of code that might contain existing block comments.
+where the comment begins with `/*` and extends to the matching occurrence of `*/`. These block comments nest, as specified in the SQL standard but unlike C, so that one can comment out larger blocks of code that might contain existing block comments.
 
 A comment is removed from the input stream before further syntax analysis and is effectively replaced by whitespace.
 
