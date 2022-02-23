@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Basic SQL Select statements"
+date: 2022-02-24T06:05:06+07:00
 lang: postgresql
 categories:
 - RDBMS
