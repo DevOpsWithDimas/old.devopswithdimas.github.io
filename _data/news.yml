@@ -1,14 +1,25 @@
 - cource: k8s
   catalog: minikube
-  visible: false
-  duration: "1jam"
+  visible: true
+  duration: "4jam 40menit"
   tier: "free"
-  youtube: 
-  date: 2022-02-05T14:29:00+07:00
+  youtube: uQj0mJxDpeE
+  date: 2022-02-23T07:47:00+07:00
   markers: |
     00:00:00 Introduction
-    00:00:01 Testing script
-    00:00:03 Implementasi coding
+    00:01:15 What is minikube?
+    00:04:02 Install minikube on MacOS
+    00:36:33 Install minikube on Windows
+    01:07:24 Install minikube on Linux
+    01:37:37 Setup Project & Create git repository
+    01:43:23 Deploying an apps/services into Kubernetes
+    02:32:45 Basic Control of Kubernetes Cluster for Learning env using Minikube
+    02:58:53 How to deploy an own image to Kubernetes Cluster using minikube
+    03:27:29 Minikube addons To Add Functionality of Kubernetes
+    04:15:57 How to access your app/service
+    04:27:03 Mount filesystem to minikube cluster
+    04:37:06 Using Driver Mount filesystem
+    04:43:22 Materi selanjutnya
 
 - cource: postgresql
   catalog: getting-started
