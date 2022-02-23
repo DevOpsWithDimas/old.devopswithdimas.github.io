@@ -12,7 +12,7 @@ youtube:
 image_path: /resources/posts/postgresql/03a-basic-select-statement
 comments: true
 gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
-catalog_key: sql-statements
+catalog_key: sql-statement
 downloads: []
 ---
 
