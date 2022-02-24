@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "03d-sql-where-clause"
+title: "04c-where-clasuse-between-predicate"
 lang: postgresql
 categories:
 - RDBMS
@@ -8,7 +8,7 @@ categories:
 refs: 
 - https://www.postgresql.org/docs/current/
 youtube: 
-image_path: /resources/posts/postgresql/03d-sql-where-clause
+image_path: /resources/posts/postgresql/04c-where-clasuse-between-predicate
 comments: true
 gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
 catalog_key: sql-statement
