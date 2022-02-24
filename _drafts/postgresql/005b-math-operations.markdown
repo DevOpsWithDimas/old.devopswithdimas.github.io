@@ -23,16 +23,16 @@ Dalam SQL, kita juga bisa melakukan operasi matematika seperti pertambahan, peng
 
 Operasi pada bilangan pada dasarnya sama seperti operasi matematika biasa, seperti berikut table operasinya:
 
-| Operator 	|   Description     |	Example     |	Result  |
-| :------- 	|   :----------     |	:------     |	:-----  |
-| + 	    |   addition 	    | 2 + 3         |        5  |
-| - 	    |   subtraction 	| 2 - 3         |        -1 |
-| * 	    |   multiplication 	| 2 * 3         |        6  |
-| / 	    |   division        |	4 / 2       |        2  |
-| % 	    |   modulo          | 	5 % 4       |        1  |
-| ^ 	    |   exponentiation 	| 2.0 ^ 3.0     |        8  |
-| ! 	    |   factorial 	    | 5 !           |       120 |
-| @ 	    |   absolute value  | @ -5.0        | 	      5 |
+| Operator 	  |   Description     |	Example         |	Result    |
+| :------- 	  |   :----------     |	:------         |	:-----    |
+| `+` 	      |   addition 	      | `2 + 3`         |      `5`  |
+| `-` 	      |   subtraction 	  | `2 - 3`         |      `-1` |
+| `*` 	      |   multiplication 	| `2 * 3`         |      `6`  |
+| `/` 	      |   division        |	`4 / 2`         |      `2`  |
+| `%` 	      |   modulo          | `5 % 4`         |      `1`  |
+| `^` 	      |   exponentiation 	| `2.0 ^ 3.0`     |      `8`  |
+| `!` 	      |   factorial 	    | `5 !`           |    `120`  |
+| `@` 	      |   absolute value  | `@ -5.0`        | 	   `5`  |
 
 ### Contoh sederhana
 
