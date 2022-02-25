@@ -94,7 +94,7 @@ Operasi matematika pada tanggal juga bisa dilakukan, diantaranya seperti berikut
 
 Apa itu concatenation?, Concatenation biasanya digunakan untuk mengkombinasikan, menyambungkan beberapa kolom dalam suatu query menjadi satu. seperti berikut ilustrasinya:
 
-![konsep]({{ page.image_path | prepend: site.baseurl }}/01-konsep-concatenation.png)
+![konsep-concat]({{ page.image_path | prepend: site.baseurl }}/01-konsep-concatenation.png)
 
 Ok misalnya saya punya struktur tabel seperti berikut:
 
