@@ -19,10 +19,10 @@ Hai semuanya, di materi kali ini kita akan membahas Operators pada PostgreSQL, O
 
 1. Math operators
 2. Concate operators
-3. Comparation operators
-4. Logic operators
-5. Typecast operators
-6. Range containment operators
+3. Typecast operators
+4. Range containment operators
+5. Comparation operators
+6. Logic operators
 
 Ok langsung aja kita bahas materi yang pertama
 
@@ -48,7 +48,7 @@ Operasi pada bilangan pada dasarnya sama seperti operasi matematika biasa, seper
 
 Contoh penggunaan dalam SQL seperti berikut:
 
-{% gist page.gist "03b-select-math-operation.sql" %}
+{% gist page.gist "03b-select-math-operator.sql" %}
 
 Jika di running maka hasilnya seperti berikut:
 
@@ -81,7 +81,7 @@ Jika dijalankan hasilnya seperti berikut:
 
 Operasi matematika pada tanggal juga bisa dilakukan, diantaranya seperti berikut:
 
-{% gist page.gist "03b-select-math-date-operation.sql" %}
+{% gist page.gist "03b-select-math-date-operator.sql" %}
 
 ```bash
     lusa    |   besok    | kurang 2 hari |     kurang 2jam     | tambah 1 hari | durasi dalam hari |    kurang 15jam     | target harus selesai |   jam makan siang
@@ -91,3 +91,49 @@ Operasi matematika pada tanggal juga bisa dilakukan, diantaranya seperti berikut
 ```
 
 ## Concate operators
+
+Apa itu concatenation?, Concatenation biasanya digunakan untuk mengkombinasikan, menyambungkan beberapa kolom dalam suatu query menjadi satu. seperti berikut ilustrasinya:
+
+![konsep]({{ page.image_path | prepend: site.baseurl }}/01-konsep-concatenation.png)
+
+Ok misalnya saya punya struktur tabel seperti berikut:
+
+```postgresql-console
+hr=# \d employees;
+                                            Table "public.employees"
+     Column     |         Type          | Collation | Nullable |                    Default
+----------------+-----------------------+-----------+----------+------------------------------------------------
+ employee_id    | integer               |           | not null | nextval('employees_employee_id_seq'::regclass)
+ first_name     | character varying(20) |           |          |
+ last_name      | character varying(25) |           | not null |
+ email          | character varying(25) |           | not null |
+ phone_number   | character varying(20) |           |          |
+ job_id         | character varying(10) |           |          |
+ salary         | numeric(8,2)          |           |          |
+ commission_pct | numeric(2,2)          |           |          |
+ manager_id     | integer               |           |          |
+ department_id  | integer               |           |          |
+```
+
+Nah saya mau mengambil semua data dari table `employees` untuk menampilkan `kode karyawan` dan `nama depan + nama belakang` digabungkan menjadi satu kolom. Berikut adalah contoh querynya: 
+
+{% gist page.gist "03b-select-concate-operator.sql" %}
+
+Berikut hasilnya:
+
+```postgresql
+id  |   nama_lengkap
+-----+-------------------
+ 100 | Steven King
+ 101 | Neena Kochhar
+ 102 | Lex De Haan
+ 103 | Alexander Hunold
+ 104 | Bruce Ernst
+ 105 | David Austin
+ 106 | Valli Pataballa
+ 107 | Diana Lorentz
+ ....
+ (107 rows)
+```
+
+## Typecast operators
