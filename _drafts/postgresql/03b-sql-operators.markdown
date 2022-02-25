@@ -89,3 +89,5 @@ Operasi matematika pada tanggal juga bisa dilakukan, diantaranya seperti berikut
  2022-02-23 | 2022-02-26 | 2017-03-26    | 2017-03-27 22:00:00 | 2017-03-29    |                15 | 2017-03-28 03:20:00 | 2017-04-23 00:00:00  | 2017-03-02 12:19:30
 (1 row)
 ```
+
+## Concate operators

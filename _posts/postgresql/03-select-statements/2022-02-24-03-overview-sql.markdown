@@ -59,6 +59,28 @@ INSERT INTO MY_TABLE VALUES (3, 'hi there');
 
 This is a sequence of three commands, one per line (although this is not required; more than one command can be on a line, and commands can usefully be split across lines).
 
+Tokens such as `SELECT`, `UPDATE`, or `VALUES` in the example above are examples of keywords, that is, words that have a fixed meaning in the SQL language.
+
+SQL identifiers and key words must begin with a letter (`a-z`, but also letters with diacritical marks and non-Latin letters) or an underscore (`_`). Subsequent characters in an identifier or key word can be letters, underscores, digits (`0-9`), or dollar signs (`$`). Note that dollar signs are not allowed in identifiers according to the letter of the SQL standard, so their use might render applications less portable. The SQL standard will not define a key word that contains digits or starts or ends with an underscore, so identifiers of this form are safe against possible conflict with future extensions of the standard.
+
+Key words and unquoted identifiers are case insensitive. Therefore:
+
+{% highlight sql %}
+UPDATE MY_TABLE SET A = 5;
+{% endhighlight %}
+
+can equivalently be written as:
+
+{% highlight sql %}
+uPDaTE my_TabLE SeT a = 5;
+{% endhighlight %}
+
+A convention often used is to write key words in upper case and names in lower case, e.g.:
+
+{% highlight sql %}
+UPDATE my_table SET a = 5;
+{% endhighlight %}
+
 ## Data Types di PostgreSQL
 
 PostgreSQL has a rich set of native data types available to users. Users can add new types to PostgreSQL using the `CREATE TYPE` command. Basicly data types in PostgreSQL diff by
