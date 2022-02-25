@@ -20,7 +20,7 @@ icon: announcement
     </h5>
     <br>
     <div class="row">
-        {% assign news_list = site.data.news | where: 'visible', true | sort:"date" | reverse %}
+        {% assign news_list = site.data.news | sort:"date" | reverse %}
 
         {% if news_list.size >= 1 %}
         <ul class="collapsible popout" data-collapsible="expandable" id="collapsibleNews">
@@ -28,7 +28,11 @@ icon: announcement
             {% assign topic = site.data.topics | where: "url", news.cource | first %}
             {% assign catalog = topic.catalogs | where: "key", news.catalog | first %}
             <li>
-                <span class="new badge yellow black-text" data-badge-caption="">{{ news.date | date: "%A, %d/%m/%Y"}}</span>
+                {% if news.visible %}
+                    <span class="new badge yellow black-text" data-badge-caption="">{{ news.date | date: "%A, %d/%m/%Y"}}</span>
+                {% else %}
+                    <span class="new badge yellow black-text" data-badge-caption="">Comming soon</span>
+                {% endif %}
                 <div class="collapsible-header">
                     <i class="material-icons">movie</i>
                     <!-- <img sizes="100px" 
@@ -42,9 +46,16 @@ icon: announcement
                             <b>Title:</b> 
                             <a class="title" href="{{ topic.udemy }}">{{ topic.fullname }}</a>
                         </div>
+                        {% if news.visible %}
                         <div class="col m2">
                             <b>Total duration:</b> <pre><code>{{ news.duration }}</code></pre> 
                         </div>
+                        {% else %}
+                        <div class="col m2">
+                            <b>Estimasi duration:</b> <pre><code>{{ news.duration }}</code></pre> 
+                        </div>
+                        {% endif %}
+                        
                         <div class="col m2">
                             <b>Member tier:</b> <pre><code>{{ news.tier }}</code></pre>
                         </div>

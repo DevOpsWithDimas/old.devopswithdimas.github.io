@@ -1,3 +1,23 @@
+- cource: postgresql
+  catalog: sql-statement
+  date: 2022-02-25T18:29:00+07:00
+  duration: "2jam"
+  tier: "free"
+  youtube: 
+  visible: false
+  markers: |
+    Pengenalan SQL
+    Select statement
+    Operators
+    Filter data with where clause
+    Ordering data with Order by
+    Limit and Offset data
+    Single row functions
+    Group functions
+    Join Tables
+    Sub Query / Nested Query
+    Control Statement
+    
 - cource: k8s
   catalog: minikube
   visible: true
