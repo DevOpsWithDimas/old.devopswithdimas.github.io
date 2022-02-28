@@ -206,3 +206,50 @@ The operators `AND` and `OR` are commutative, that is, you can switch the left a
 
 ## Comparation operators
 
+The usual comparison operators are available, as shown in below
+
+| Operators                         | Description               |
+| :-------                          | :-----                    |
+| `datatype < datatype → boolean`   | Less than                 |
+| `datatype > datatype → boolean`   | Greater than              |
+| `datatype <= datatype → boolean`  | Less than or equal to     |
+| `datatype >= datatype → boolean`  | Greater than or equal to  |
+| `datatype = datatype → boolean`   | Equal                     |
+| `datatype != datatype → boolean`  | Not Equal                 |
+| `datatype <> datatype → boolean`  | Not Equal                 |
+
+These comparison operators are available for all built-in data types that have a natural ordering, including numeric, string, and date/time types. In addition, arrays, composite types, and ranges can be compared if their component data types are comparable.
+
+There are also some comparison predicates, as shown in below. These behave much like operators, but have special syntax mandated by the SQL standard.
+
+| Operators                                             | Description                                               | Examples                          |
+| :-------                                              | :-----                                                    | :------                           |
+| `IS NULL`                                             | Test whether value is null.                               | `1.5 IS NULL → f`                 |
+| `IS NOT NULL`                                         | Test whether value is not null.                           | `1.5 IS NOT NULL → t`             |
+| `IS TRUE/FALSE`                                       | Test whether boolean expression yields true/false.        | `NULL::boolean IS TRUE → f`       |
+| `IS NOT TRUE/FALSE`                                   | Test whether boolean expression yields true/false.        | `NULL::boolean IS NOT TRUE → f`   |
+| `IS UNKNOWN`                                          | Test whether boolean expression yields unknown.           | `NULL::boolean IS UNKNOWN → t`    |
+| `IS NOT UNKNOWN`                                      | Test whether boolean expression yields true or false.     | `NULL::boolean IS NOT UNKNOWN → f`|
+| `datatype BETWEEN datatype AND datatype → boolean`    | inclusive of the range endpoints.                         | `2 BETWEEN 1 AND 3 → t`           |
+| `datatype NOT BETWEEN datatype AND datatype → boolean`| the negation of BETWEEN                                   | `2 NOT BETWEEN 1 AND 3 → f`       |
+
+For examples:
+
+{% gist page.gist "03b-select-comparison-operator.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```sql
+hr=# select 3 > 4 as compare_less_than,
+hr-#        'nilai tidak sama' <> 'nilai sama' as compare_string_no_equal,
+hr-#        '28-FEB-2022'::DATE = '28-FEB-2021'::DATE as compare_date_equal, -- '28-FEB-2022'::DATE sama seperti CAST('28-FEB-2022' as date)
+hr-#        2800000 IS NOT NULL as compare_not_null,
+hr-#        'off'::boolean IS NOT TRUE as compare_not_true; -- 'off'::boolean sama seperti CAST('off' as boolean)
+ compare_less_than | compare_string_no_equal | compare_date_equal | compare_not_null | compare_not_true
+-------------------+-------------------------+--------------------+------------------+------------------
+ f                 | t                       | f                  | t                | t
+(1 row)
+```
+
+## Range containment operators
+
