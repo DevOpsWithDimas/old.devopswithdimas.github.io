@@ -7,6 +7,7 @@ categories:
 - PostgreSQL
 refs: 
 - https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/docs/current/typeconv.html
 youtube: 
 image_path: /resources/posts/postgresql/03b-sql-operators
 comments: true
@@ -137,3 +138,28 @@ id  |   nama_lengkap
 ```
 
 ## Typecast operators
+
+SQL is a strongly typed language. That is, every data item has an associated data type which determines its behavior and allowed usage. PostgreSQL has an extensible type system that is more general and flexible than other SQL implementations.
+
+Select the operators to be considered from the `pg_operator` system catalog. If a non-schema-qualified operator name was used (the usual case), the operators considered are those with the matching name and argument count that are visible in the current search path. PostgreSQL supports a CAST operator that is used to convert a value of one type to another:
+
+{% highlight sql %}
+select CAST ( expression AS target_type );
+{% endhighlight %}
+
+The following statement converts:
+
+{% gist page.gist "03b-select-type-cast-string.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```sql
+hr=# select cast ('100' as int) as string_to_int,
+hr-#        cast ('10.3' as double precision) as string_to_double,
+hr-#        cast ('28-FEB-2022' as date) as string_to_date,
+hr-#        'dimasm' || cast (93 as varchar) as int_to_string,
+hr-#        cast(0 as boolean) as int_to_boolean;
+ string_to_int | string_to_double | string_to_date | int_to_string | int_to_boolean
+---------------+------------------+----------------+---------------+----------------
+           100 |             10.3 | 2022-02-28     | dimasm93      | f
+```
