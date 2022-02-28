@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "PostgreSQL Operators"
+title: "Build-in Operators for PostgreSQL"
 lang: postgresql
 categories:
 - RDBMS
@@ -16,7 +16,9 @@ catalog_key: sql-statement
 downloads: []
 ---
 
-Hai semuanya, di materi kali ini kita akan membahas Operators pada PostgreSQL, Operators sendiri ada beberapa seperti:
+Hai semuanya, di materi kali ini kita akan membahas Operators pada PostgreSQL, PostgreSQL provides a large number of operators for the built-in data types. Users can also define their own operators, as described in previews section but for now we explain build-in operators. 
+
+Operators banyak sekali, kita akan bahas beberapa yang menurut saya penting untuk di pelajari pada cource ini diantaranya:
 
 1. Math operators
 2. Concate operators
