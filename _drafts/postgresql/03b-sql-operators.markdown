@@ -203,3 +203,6 @@ Sedangkan berikut untuk `NOT` Operator:
 | NOT       | true          | false         | -         |
 
 The operators `AND` and `OR` are commutative, that is, you can switch the left and right operands without affecting the result. (However, it is not guaranteed that the left operand is evaluated before the right operand.
+
+## Comparation operators
+

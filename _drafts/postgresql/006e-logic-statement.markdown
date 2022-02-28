@@ -13,46 +13,6 @@ gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 downloads: []
 ---
 
-Di SQL juga mengenal yang namanya gerbang logica, do you remember??
-
-{% highlight sql linenos %}
-select
-    (true and true) "AND -> true x true",
-    (true and false) "AND -> true x false",
-    (false and false) "AND -> false x false",
-    (true or true) "OR -> true x true",
-    (true or false) "OR -> true x false",
-    (false or false) "OR -> false x false",
-    NOT(false) "NOT -> false",
-    NOT(true) "NOT -> true";
-{% endhighlight %}
-
-Berikut hasilnya:
-
-```bash
- AND -> true x true | AND -> true x false | AND -> false x false | OR -> true x true | OR -> true x false | OR -> false x false | NOT -> false | NOT -> true 
---------------------+---------------------+--------------------+-------------------+--------------------+---------------------+--------------+-------------
- t                  | f                   | f                  | t                 | t                  | f                   | t            | f
-(1 row)
-
-```
-
-Atau klo kita gambarin ke tabel seperti ini:
-
-
-| Operator  | true x false  | false x false | true x true   |
-|:----------|:--------------|:--------------|:--------------|
-| AND       | false         | false         | true          |
-| OR        | true          | false         | true          |
-
-<hr/>
-
-| Operator  | false         | true          |
-|:----------|:--------------|:--------------|
-| NOT       | true          | false         |
-
-Operator logika tersebut bisa digunakan di klausa `where` statement, contoh kasusnya seperti berikut:
-
 # AND Statement
 
 Kasusnya saya mau mencari data karyawan yang berkerja di `department_id = 90` dan yang `manager_id = 100`, berikut querynya:

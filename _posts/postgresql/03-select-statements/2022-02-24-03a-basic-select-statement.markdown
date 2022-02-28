@@ -24,6 +24,7 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Basic penggunaan SQL
 4. Memberikan alias pada suatu _column_
 5. Menggunakan Special Characters / Escape Characters
 6. Menggunakan Comments
+7. Elimination of duplicate rows.
 
 Ok langsung saja kita bahas materi yang pertama
 
@@ -220,3 +221,112 @@ A comment is removed from the input stream before further syntax analysis and is
 For example:
 
 {% gist page.gist "03a-select-with-comments.sql" %}
+
+## Elimination of duplicate rows
+
+After the select list has been processed, the result table can optionally be subject to the elimination of duplicate rows. The `DISTINCT` keyword is written directly after `SELECT` to specify this:
+
+{% highlight sql %}
+SELECT DISTINCT select_list ...
+{% endhighlight %}
+
+Alternatively, an arbitrary expression can determine what rows are to be considered distinct:
+
+{% highlight sql %}
+SELECT DISTINCT ON (expression [, expression ...]) select_list ...
+{% endhighlight %}
+
+Here expression is an arbitrary value expression that is evaluated for all rows. A set of rows for which all the expressions are equal are considered duplicates, and only the first row of the set is kept in the output. Note that the “first row” of a set is unpredictable unless the query is sorted on enough columns to guarantee a unique ordering of the rows arriving at the `DISTINCT` filter. (`DISTINCT ON` processing occurs after `ORDER BY` sorting.)
+
+The `DISTINCT ON` clause is not part of the SQL standard and is sometimes considered bad style because of the potentially indeterminate nature of its results. With judicious use of `GROUP BY` and subqueries in `FROM`, this construct can be avoided, but it is often the most convenient alternative.
+
+For examples,Saya mau memangil data dari table `employees` untuk menampilkan kolom `employee_id` dan `job_id` berikut querynya:
+
+{% highlight sql %}
+select job_id from employees;
+{% endhighlight %}
+
+Jika saya jalankan maka hasilnya seperti berikut:
+
+```sql
+hr=# select job_id from employees;
+
+   job_id   
+------------
+ AD_PRES
+ AD_VP
+ AD_VP
+ IT_PROG
+ IT_PROG
+ IT_PROG
+ FI_MGR
+ FI_ACCOUNT
+ FI_ACCOUNT
+ PU_CLERK
+...
+(107 rows)
+```
+
+Jika kita mau meng-eliminasi nilai redudansi atau supaya unique datanya kita bisa menggunakan query seperti berikut:
+
+{% gist page.gist "03a-select-distinct.sql" %}
+
+Jika saya jalankan maka hasilnya seperti berikut:
+
+```sql
+hr=# select distinct job_id from employees;
+   job_id
+------------
+ SH_CLERK
+ AD_VP
+ SA_MAN
+ PU_MAN
+ IT_PROG
+ ST_CLERK
+ FI_MGR
+ PU_CLERK
+ HR_REP
+ ST_MAN
+ MK_MAN
+ AC_MGR
+ SA_REP
+ AD_ASST
+ PR_REP
+ MK_REP
+ AD_PRES
+ FI_ACCOUNT
+ AC_ACCOUNT
+(19 rows)
+```
+
+Selain itu juga kita bisa gunakan multiple column selection untuk Distinct ini, contohnya seperti berikut:
+
+{% gist page.gist "03a-select-distinct-multiple-columns.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# select distinct (job_id, manager_id),
+hr-#        job_id,
+hr-#        manager_id
+hr-# from employees;
+       row        |   job_id   | manager_id
+------------------+------------+------------
+ (AC_ACCOUNT,205) | AC_ACCOUNT |        205
+ (AC_MGR,101)     | AC_MGR     |        101
+ (AD_ASST,101)    | AD_ASST    |        101
+ (AD_PRES,)       | AD_PRES    |
+ (AD_VP,100)      | AD_VP      |        100
+ (FI_ACCOUNT,108) | FI_ACCOUNT |        108
+ (FI_MGR,101)     | FI_MGR     |        101
+ (HR_REP,101)     | HR_REP     |        101
+ (IT_PROG,102)    | IT_PROG    |        102
+ (IT_PROG,103)    | IT_PROG    |        103
+ (MK_MAN,100)     | MK_MAN     |        100
+ (MK_REP,201)     | MK_REP     |        201
+ (PR_REP,101)     | PR_REP     |        101
+ (PU_CLERK,114)   | PU_CLERK   |        114
+ (PU_MAN,100)     | PU_MAN     |        100
+ (SA_MAN,100)     | SA_MAN     |        100
+(32 rows)
+```
