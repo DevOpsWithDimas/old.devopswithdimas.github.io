@@ -251,6 +251,3 @@ hr-#        'off'::boolean IS NOT TRUE as compare_not_true; -- 'off'::boolean sa
  f                 | t                       | f                  | t                | t
 (1 row)
 ```
-
-## Range containment operators
-
