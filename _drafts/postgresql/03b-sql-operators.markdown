@@ -21,9 +21,9 @@ Hai semuanya, di materi kali ini kita akan membahas Operators pada PostgreSQL, O
 1. Math operators
 2. Concate operators
 3. Typecast operators
-4. Range containment operators
+4. Logic operators
 5. Comparation operators
-6. Logic operators
+6. Range containment operators
 
 Ok langsung aja kita bahas materi yang pertama
 
@@ -141,7 +141,9 @@ id  |   nama_lengkap
 
 SQL is a strongly typed language. That is, every data item has an associated data type which determines its behavior and allowed usage. PostgreSQL has an extensible type system that is more general and flexible than other SQL implementations.
 
-Select the operators to be considered from the `pg_operator` system catalog. If a non-schema-qualified operator name was used (the usual case), the operators considered are those with the matching name and argument count that are visible in the current search path. PostgreSQL supports a CAST operator that is used to convert a value of one type to another:
+Select the operators to be considered from the `pg_operator` system catalog. If a non-schema-qualified operator name was used (the usual case), the operators considered are those with the matching name and argument count that are visible in the current search path. 
+
+PostgreSQL supports a CAST operator that is used to convert a value of one type to another:
 
 {% highlight sql %}
 select CAST ( expression AS target_type );
@@ -163,3 +165,41 @@ hr-#        cast(0 as boolean) as int_to_boolean;
 ---------------+------------------+----------------+---------------+----------------
            100 |             10.3 | 2022-02-28     | dimasm93      | f
 ```
+
+## Logical operator
+
+The usual logical operators are available:
+
+{% highlight sql %}
+boolean AND boolean → boolean
+boolean OR boolean → boolean
+NOT boolean → boolean
+{% endhighlight %}
+
+SQL uses a three-valued logic system with `true`, `false`, and `null`, which represents “unknown”. Observe the following truth tables:
+
+{% gist page.gist "03b-select-logical-operator.sql" %}
+
+Berikut hasilnya:
+
+```bash
+ AND -> true x true | AND -> true x false | AND -> false x false | AND -> null x false | AND -> null x true | OR -> true x true | OR -> true x false | OR -> false x false | OR -> null x true | OR -> null x false | NOT -> false | NOT -> null | NOT -> true
+--------------------+---------------------+----------------------+---------------------+--------------------+-------------------+--------------------+---------------------+-------------------+--------------------+--------------+-------------+-------------
+ t                  | f                   | f                    | f                   |                    | t                 | t                  | f                   | t                 |                    | t            |             | f
+(1 row)
+```
+
+Atau kalo kita gambarin tabelnya seperti berikut untuk `AND` dan `OR` Operators:
+
+| Operator  | true x false  | false x false | true x true   | null x true   | null x false  |
+|:----------|:--------------|:--------------|:--------------| :----------   | :----------   |
+| AND       | false         | false         | true          | -             | false         |
+| OR        | true          | false         | true          | true          | -             |
+
+Sedangkan berikut untuk `NOT` Operator:
+
+| Operator  | false         | true          | null      |
+|:----------|:--------------|:--------------| :-------- |
+| NOT       | true          | false         | -         |
+
+The operators `AND` and `OR` are commutative, that is, you can switch the left and right operands without affecting the result. (However, it is not guaranteed that the left operand is evaluated before the right operand.
