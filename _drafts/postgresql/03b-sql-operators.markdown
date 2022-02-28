@@ -25,7 +25,6 @@ Operators banyak sekali, kita akan bahas beberapa yang menurut saya penting untu
 3. Typecast operators
 4. Logic operators
 5. Comparation operators
-6. Range containment operators
 
 Ok langsung aja kita bahas materi yang pertama
 
