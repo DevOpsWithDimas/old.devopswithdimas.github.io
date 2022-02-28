@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Build-in Functions for PostgreSQL"
+title: "Build-in Functions in PostgreSQL"
 lang: postgresql
 categories:
 - RDBMS

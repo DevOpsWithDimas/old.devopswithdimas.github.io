@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Build-in Operators for PostgreSQL"
+title: "Build-in Operators in PostgreSQL"
 date: 2022-02-28T11:11:32+07:00
 lang: postgresql
 categories:
