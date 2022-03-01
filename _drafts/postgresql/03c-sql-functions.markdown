@@ -32,8 +32,8 @@ Ok langsung aja kita bahas materi yang pertama
 
 This section describes functions for examining and manipulating string values. Strings in this context include values of the types `character`, `character varying`, and `text`. Except where noted, these functions are declared to accept and return type text.
 
-| Functions	                                                                                    |  Description      | Example         |
-| :------- 	                                                                                    | :----------       | :------         |
+| Functions	                                                                                    |  Description      |
+| :------- 	                                                                                    | :----------       |
 | `substring ( string text [ FROM start integer ] [ FOR count integer ] ) → text`               | Extracts the substring of string starting at the start'th character if that is specified, and stopping after count characters if that is specified. Provide at least one of start and count. 	            |   
 | `lower ( text ) → text` 	                                                                    | Converts the string to all lower case, according to the rules of the database's locale.                                                                                |  
 | `upper ( text ) → text` 	                                                                    | Converts the string to all upper case, according to the rules of the database's locale.                                                                                |   
@@ -70,3 +70,6 @@ hr-#         ascii('D') as "ascii";
  Dim            | Dimas  | ini adalah text besar dan kecil | INI ADALAH TEXT BESAR DAN KECIL | Ini Adalah Text Besar Dan Kecil | ini text ada spacenya |   ini text ada spacenya | samid   |     14 | dimasm93 : Dimas Maryanto |    68
 (1 row)
 ```
+
+## Math function
+
