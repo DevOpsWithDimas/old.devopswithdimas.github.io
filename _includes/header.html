@@ -5,7 +5,7 @@
         <div class="nav-wrapper">
             <a href="{{ "/" | prepend : site.baseurl }}" class="brand-logo">
                 <i class="material-icons right">home</i>&nbsp;
-                <span class="hide-on-med-and-down">{{ site.title }}</span>
+                <span>{{ site.title }}</span>
             </a>
             <a href="#" data-activates="slide-out" class="button-collapse">
                 <i class="material-icons">menu</i>
@@ -16,7 +16,7 @@
                 <li>
                     <a href="{{ other-link.url }}">
                         {% if other-link.icon %}<i class="material-icons left">{{ other-link.icon }}</i>{% endif %} 
-                        <span class="hide-on-med-only">{{ other-link.title }}</span>            
+                        <span>{{ other-link.title }}</span>            
                     </a>
                 </li>
                 {% endif %}
