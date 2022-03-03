@@ -2,9 +2,10 @@
 layout: default
 ---
 
-<div class="center">
-    <img class="responsive-img" src="{{ "/resources/pictures/art.png" | prepend: site.baseurl }}" width="100%"
-        height="100%">
+<div class="parallax-container">
+    <div class="parallax">
+        <img class="responsive-img" src="{{ "/resources/pictures/art.png" | prepend: site.baseurl }}">
+    </div>
 </div>
 
 {% assign pages_list = site.data.topics | sort:"publish" %}
@@ -133,155 +134,165 @@ layout: default
     })
 </script>
 
-<div class="row container">
-    <br>
-    {% assign pages_list_count = pages_list.size %}
-    <h5 class="container center">
-        <a href="{{ '/pages/roadmap.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
-            <span class="new badge" data-badge-caption="Cources">{{pages_list_count}}</span>
-        </a>
-        <a href="{{ '/pages/articles.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
-            <span class="new badge" data-badge-caption="Pages">{{post_list_size}}</span>
-        </a>
-        Explore
-        <br />
-        <small>Browse by topic and view available courses</small>
-    </h5>
-    <br>
-
-    <div class="row">
-        {% assign topics = pages_list | where: 'visible', true | sort:"publish" | reverse  %}
-        {% for topic in topics limit:3 %}
-        {% assign post_list = site.posts | where: "lang", topic.url | sort:"date" %}
-        {% assign a_post =  post_list.first %}
-        <div class="col s12 m4">
-            <div class="card z-depth-3 sticky-action large">
-                <div class="card-image {{topic.color}}">
+<div class="section white">
+    <div class="row container">
+        <br>
+        {% assign pages_list_count = pages_list.size %}
+        <h5 class="container center">
+            <a href="{{ '/pages/roadmap.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
+                <span class="new badge" data-badge-caption="Cources">{{pages_list_count}}</span>
+            </a>
+            <a href="{{ '/pages/articles.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
+                <span class="new badge" data-badge-caption="Pages">{{post_list_size}}</span>
+            </a>
+            Explore
+            <br />
+            <small>Browse by topic and view available courses</small>
+        </h5>
+        <br>
+    
+        <div class="row">
+            {% assign topics = pages_list | where: 'visible', true | sort:"publish" | reverse  %}
+            {% for topic in topics limit:3 %}
+            {% assign post_list = site.posts | where: "lang", topic.url | sort:"date" %}
+            {% assign a_post =  post_list.first %}
+            <div class="col s12 m4">
+                <div class="card z-depth-3 sticky-action large">
+                    <div class="card-image {{topic.color}}">
+                        {% if topic.coming_soon == false %}
+                        <span class="new badge black white-text" data-badge-caption="Pages">{{ post_list | size }}</span>
+                        <img class="activator responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
+                        {% else %}
+                        <span class="new badge yellow black-text" data-badge-caption="">Coming soon</span>
+                        <img class="responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
+                        {% endif %}
+                        <span class="card-title grey darken-4 white-text">{{topic.name}}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            {{topic.descriptions}}
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <!-- show first page of content -->
+                        {% if topic.coming_soon == false and a_post %}
+                            <a href="{{ a_post.url | prepend: site.baseurl }}" class="tooltipped btn blue-grey lighten-5" data-position="bottom" data-delay="50" data-tooltip="Start Learning">
+                                <i class="material-icons green-text">play_arrow</i>
+                            </a>
+                        {% endif %}
+    
+                        <!-- show modal of content -->
+                        <a class="modal-trigger btn tooltipped blue-grey lighten-5" href="#modal-{{ topic.url }}" data-position="bottom" data-delay="50" data-tooltip="Preview">
+                            <i class="material-icons blue-grey-text lighten-4">library_books</i>
+                        </a>
+    
+                        {% if topic.udemy %}
+                            <a href="{{ topic.udemy }}" class="tooltipped btn red accent-1" data-position="bottom" data-delay="50" data-tooltip="Become a Premium Members">
+                                <i class="material-icons white-text">lock_open</i>
+                            </a>
+                        {% endif %}
+                    </div>
                     {% if topic.coming_soon == false %}
-                    <span class="new badge black white-text" data-badge-caption="Pages">{{ post_list | size }}</span>
-                    <img class="activator responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
-                    {% else %}
-                    <span class="new badge yellow black-text" data-badge-caption="">Coming soon</span>
-                    <img class="responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
-                    {% endif %}
-                    <span class="card-title grey darken-4 white-text">{{topic.name}}</span>
-                </div>
-                <div class="card-content">
-                    <p>
-                        {{topic.descriptions}}
-                    </p>
-                </div>
-                <div class="card-action">
-                    <!-- show first page of content -->
-                    {% if topic.coming_soon == false and a_post %}
-                        <a href="{{ a_post.url | prepend: site.baseurl }}" class="tooltipped btn blue-grey lighten-5" data-position="bottom" data-delay="50" data-tooltip="Start Learning">
-                            <i class="material-icons green-text">play_arrow</i>
-                        </a>
-                    {% endif %}
-
-                    <!-- show modal of content -->
-                    <a class="modal-trigger btn tooltipped blue-grey lighten-5" href="#modal-{{ topic.url }}" data-position="bottom" data-delay="50" data-tooltip="Preview">
-                        <i class="material-icons blue-grey-text lighten-4">library_books</i>
-                    </a>
-
-                    {% if topic.udemy %}
-                        <a href="{{ topic.udemy }}" class="tooltipped btn red accent-1" data-position="bottom" data-delay="50" data-tooltip="Become a Premium Members">
-                            <i class="material-icons white-text">lock_open</i>
-                        </a>
+                    <div class="card-reveal hide-on-med-and-down">
+                        <!-- title of card reveal -->
+                        <span class="card-title grey-text text-darken-4">
+                            {{topic.name}}
+                            <i class="material-icons right">close</i>
+                        </span>
+                        <!-- message card revel -->
+                        <p>{{topic.messages}}</p>
+                        
+                        <!-- tags -->
+                        <hr>
+                        {% for tag in topic.tags %}
+                            <div class="chip"><i class="fa fa-tag"></i> {{tag}}</div>
+                        {% endfor %}
+                    </div>
                     {% endif %}
                 </div>
-                {% if topic.coming_soon == false %}
-                <div class="card-reveal hide-on-med-and-down">
-                    <!-- title of card reveal -->
-                    <span class="card-title grey-text text-darken-4">
-                        {{topic.name}}
-                        <i class="material-icons right">close</i>
-                    </span>
-                    <!-- message card revel -->
-                    <p>{{topic.messages}}</p>
-                    
-                    <!-- tags -->
-                    <hr>
-                    {% for tag in topic.tags %}
-                        <div class="chip"><i class="fa fa-tag"></i> {{tag}}</div>
-                    {% endfor %}
-                </div>
-                {% endif %}
+            </div>
+            {% endfor %}
+            {% assign counter = i | times: 3 %}
+            <div class="col s12" >
+                <a class="btn waves-effect waves-light blue darken-4" href="{{ '/pages/courses.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
+                    View more courses...
+                </a>
             </div>
         </div>
-        {% endfor %}
-        {% assign counter = i | times: 3 %}
-        <div class="col s12" >
-            <a class="btn waves-effect waves-light blue darken-4" href="{{ '/pages/courses.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
-                View more courses...
-            </a>
-        </div>
     </div>
+</div>
 
-    {% assign news_list = site.data.news | where: 'visible', true | sort:"date" | reverse %}
-    <br>
-    <hr>
-    <h5 class="container center">
-        <a href="{{ '/pages/news.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
-            <span class="new badge" data-badge-caption="News">{{news_list.size}}</span>
-        </a>        
-        News
-        <br />
-        <small>Latest Video Published</small>
-    </h5>
-    <br>
-    <div class="row">
-        {% if news_list.size >= 1 %}
-        <ul class="collapsible popout" data-collapsible="accordion" id="collapsibleNews">
-        {% for news in news_list limit:5 %}
-            {% assign topic = site.data.topics | where: "url", news.cource | first %}
-            {% assign catalog = topic.catalogs | where: "key", news.catalog | first %}
-            <li>
-                <span class="new badge yellow black-text" data-badge-caption="">{{ news.date | date: "%A, %d/%m/%Y"}}</span>
-                <div class="collapsible-header">
-                    <i class="material-icons">movie</i>
-                    <!-- <img sizes="100px" 
-                        class="circle responsive-img" 
-                        src="{{ "/resources/images/" | prepend: site.baseurl}}{{news.cource}}.png"> -->
-                        {{ catalog.description }} | {{ topic.name }}
-                    </div>
-                <div class="collapsible-body">
-                    <div class="row">
-                        <div class="col s12 m6">
-                            <b>Title:</b> 
-                            <a class="title" href="{{ topic.udemy }}">{{ topic.fullname }}</a>
+<div class="parallax-container">
+    <div class="parallax">
+        <img class="responsive-img" src="{{ "/resources/pictures/mindmap.png" | prepend: site.baseurl }}">
+    </div>
+</div>
+
+<div class="section white">
+    <div class="row container">
+        {% assign news_list = site.data.news | where: 'visible', true | sort:"date" | reverse %}
+        <h5 class="container center">
+            <a href="{{ '/pages/news.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
+                <span class="new badge" data-badge-caption="News">{{news_list.size}}</span>
+            </a>        
+            News
+            <br />
+            <small>Latest Video Published</small>
+        </h5>
+        <br>
+        <div class="row">
+            {% if news_list.size >= 1 %}
+            <ul class="collapsible popout" data-collapsible="accordion" id="collapsibleNews">
+            {% for news in news_list limit:5 %}
+                {% assign topic = site.data.topics | where: "url", news.cource | first %}
+                {% assign catalog = topic.catalogs | where: "key", news.catalog | first %}
+                <li>
+                    <span class="new badge yellow black-text" data-badge-caption="">{{ news.date | date: "%A, %d/%m/%Y"}}</span>
+                    <div class="collapsible-header">
+                        <i class="material-icons">movie</i>
+                        <!-- <img sizes="100px" 
+                            class="circle responsive-img" 
+                            src="{{ "/resources/images/" | prepend: site.baseurl}}{{news.cource}}.png"> -->
+                            {{ catalog.description }} | {{ topic.name }}
                         </div>
-                        <div class="col s12 m2">
-                            <b>Total duration:</b> <pre><code>{{ news.duration }}</code></pre> 
+                    <div class="collapsible-body">
+                        <div class="row">
+                            <div class="col s12 m6">
+                                <b>Title:</b> 
+                                <a class="title" href="{{ topic.udemy }}">{{ topic.fullname }}</a>
+                            </div>
+                            <div class="col s12 m2">
+                                <b>Total duration:</b> <pre><code>{{ news.duration }}</code></pre> 
+                            </div>
+                            <div class="col s12 m2">
+                                <b>Member tier:</b> <pre><code>{{ news.tier }}</code></pre>
+                            </div>
                         </div>
-                        <div class="col s12 m2">
-                            <b>Member tier:</b> <pre><code>{{ news.tier }}</code></pre>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m6 l8">
-                            {% if news.youtube %}
-                                {% include youtubePlayer.html id=news.youtube %}
-                            {% endif %}
-                        </div>
-                        <div class="col s12 m6 l4">
-                            <b>Table of Contents:</b>
+                        <div class="row">
+                            <div class="col s12 m6 l8">
+                                {% if news.youtube %}
+                                    {% include youtubePlayer.html id=news.youtube %}
+                                {% endif %}
+                            </div>
+                            <div class="col s12 m6 l4">
+                                <b>Table of Contents:</b>
 {% highlight html linenos %}
 {{ news.markers }}
 {% endhighlight %}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-        {% endfor %}
-        </ul>
-        {% else %}
-        <ul class="collapsible popout" data-collapsible="accordion">
-            <li>
-                <div class="collapsible-header">Belum tersedia update terbaru</div>
-                <div class="collapsible-body"><span>Silahkan kembali lagi lain waktu!</span></div>
-            </li>
-        </ul>
-        {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+            {% else %}
+            <ul class="collapsible popout" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header">Belum tersedia update terbaru</div>
+                    <div class="collapsible-body"><span>Silahkan kembali lagi lain waktu!</span></div>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
     </div>
 </div>
