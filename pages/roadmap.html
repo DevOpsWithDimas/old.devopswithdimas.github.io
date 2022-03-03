@@ -14,6 +14,9 @@ icon: assessment
                 {% for topic in topics %}
                 <li class="collection-item">
                     <a href="#{{ topic.code }}">{{ topic.name }}</a>
+                    {% if topic.isNew %}
+                    <span class="new badge brown black-text" data-badge-caption="baru"></span>
+                    {% endif %}
                 </li>
                 {% endfor %}
             </ul>
@@ -41,6 +44,11 @@ icon: assessment
                                         <img class="responsive-img circle" src="{{ "/resources/images/" | prepend: site.baseurl }}{{course}}.png">
                                         <span class="title"><b>{{article.name}}</b></span>
                                         <p class="grey-text text-lighten-1">{{ article.descriptions | truncate: 150 }}</p>
+                                        {% if article.udemy %}
+                                            <a href="{{ article.udemy }}" class="tooltipped btn red accent-1" data-position="bottom" data-delay="50" data-tooltip="Become a Premium Members">
+                                                <i class="material-icons white-text">lock_open</i> Join Premium Class
+                                            </a>
+                                        {% endif %}
                                     </li>
                                 </ul>
                             </div>

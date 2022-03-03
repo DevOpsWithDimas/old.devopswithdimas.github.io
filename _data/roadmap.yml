@@ -1,6 +1,14 @@
-- name: Database Administrator (DBA)
-  code: dba
+- name: PostgreSQL Database (DBA)
+  code: dba-postgres
   description: 
+  isNew: true
+  courses: 
+  - postgresql
+
+- name: Oracle Database (DBA)
+  code: dba-oracle
+  description: 
+  isNew: false
   courses: 
   - oracle18c
   - plsql-oracle18c
@@ -10,14 +18,16 @@
 - name: Java Web Developer (Fundamental)
   code: java-web-developer
   description: 
+  isNew: false
   courses: 
   - java-core
-  - psql
+  - postgresql
   - java-jdbc-psql
   - java-web
 
 - name: Front-End Developer (FE)
   code: fe-pwa
+  isNew: false
   description: 
   courses: 
   - js
@@ -28,6 +38,7 @@
 
 - name: Back-End Developer (BE)
   code: be-webservice
+  isNew: false
   description: 
   courses: 
   - java-core  
@@ -39,13 +50,15 @@
 
 - name: Data Engineer
   code: data-engineer
+  isNew: false
   description: 
   courses: 
-  - psql  
+  - postgresql  
   - jasper-report
 
 - name: DevOps
   code: devops
+  isNew: true
   description: 
   courses: 
   - docker 
