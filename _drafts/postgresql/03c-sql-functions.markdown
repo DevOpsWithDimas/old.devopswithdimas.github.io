@@ -166,6 +166,34 @@ hr-#         extract(month from current_date) get_current_month;
 
 ## Nulless function
 
+Function untuk menghandle nilai `null` di PostgreSQL bisa menggunakan berbagai macam cara yaitu 
+
+1. `COALESCE(value [, ...])`
+2. `NULLIF(value1, value2)`
+
+The `COALESCE` function returns the first of its arguments that is not null. Null is returned only if all arguments are `null`. It is often used to substitute a default value for `null` values when data is retrieved for display.
+
+The `NULLIF` function returns a null value if `value1` equals `value2`; otherwise it returns `value1`. This can be used to perform the inverse operation of the `COALESCE`
+
+Berikut adalah implementasi SQLnya:
+
+{% gist page.gist "03c-select-nuless-function.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select  COALESCE(null, 'data1', 'data2') return_data1,
+hr-#         COALESCE(null, null, 'data2') return_data2,
+hr-#         COALESCE(null, null, null) return_null,
+hr-#         NULLIF(null, 'data1') return_null1,
+hr-#         NULLIF('data1', 'data1') return_null2,
+hr-#         NULLIF('data1', 'data2') return_data1;
+ return_data1 | return_data2 | return_null | return_null1 | return_null2 | return_data1
+--------------+--------------+-------------+--------------+--------------+--------------
+ data1        | data2        |             |              |              | data1
+(1 row)
+```
+
 ## Data type formatting function
 
 The PostgreSQL formatting functions provide a powerful set of tools for converting various data types (`date/time`, `integer`, `floating point`, `numeric`) to formatted `strings` and for converting from formatted strings to specific data types. These functions all follow a common calling convention: the first argument is the value to be formatted and the second argument is a template that defines the output or input format.
