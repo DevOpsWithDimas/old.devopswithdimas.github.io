@@ -9,6 +9,7 @@ refs:
 - https://www.postgresql.org/docs/current/functions-string.html
 - https://www.postgresql.org/docs/current/functions-math.html
 - https://www.postgresql.org/docs/current/functions-formatting.html
+- https://www.postgresql.org/docs/current/functions-datetime.html
 youtube: 
 image_path: /resources/posts/postgresql/03c-sql-functions
 comments: true
@@ -23,9 +24,10 @@ ada banyak selali Fucntions, kita akan bahas beberapa yang menurut saya penting 
 
 1. String function
 2. Math function
-3. Data type formatting function
-4. Date/Time function
-5. Comparison function
+3. Date/Time function
+4. Nulless function
+5. Data type formatting function
+6. Comparison function
 
 Ok langsung aja kita bahas materi yang pertama
 
@@ -115,6 +117,54 @@ hr-#         floor(5.6) "floor2";
       10 |        3 |   1 |     8 |         5.45 |     5 |       6 |     5 |      5
 (1 row)
 ```
+
+## Date/Time function
+
+This section describes and shows the available functions for `date/time` value processing, with details appearing in the following subsections. 
+
+| Functions	                                                |  Description        |
+| :------- 	                                                | :----------         |
+| `current_date → date`                                     | Current date        |
+| `current_time → time with time zone`                      | Current time of day |
+| `current_timestamp → timestamp with time zone`            | Current date and time (start of current transaction) |
+| `now () → timestamp with time zone`                      | Current date and time (start of current transaction) |
+| `extract ( field from timestamp ) → numeric`              | Get timestamp subfield |
+| `isfinite ( date ) → boolean`                             | Test for finite date (not +/-infinity) |
+| `age ( timestamp, timestamp ) → interval`                 | Subtract arguments, producing a “symbolic” result that uses years and months, rather than just days |
+| `age ( timestamp ) → interval`                            | Subtract argument from current_date (at midnight) |
+
+The extract function retrieves subfields such as year or hour from `date/time` values. field is an identifier or string that selects what field to extract from the source value
+
+1. `century`
+2. `day`
+3. `decade`
+4. `epoch`
+5. `hour`
+6. `milliseconds`
+7. `minute`
+8. `month`
+9. `year`
+
+Berikut adalah implementasi SQLnya:
+
+{% gist page.gist "03c-select-datetime-function.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select  current_date tgl_sekarang,
+hr-#         now() datetime_sekarang_func,
+hr-#         current_timestamp as datetime_tz,
+hr-#         age(timestamp '1991-03-01') as years_old,
+hr-#         extract(year from current_timestamp) get_current_year,
+hr-#         extract(month from current_date) get_current_month;
+ tgl_sekarang |    datetime_sekarang_func     |          datetime_tz          |    years_old    | get_current_year | get_current_month
+--------------+-------------------------------+-------------------------------+-----------------+------------------+-------------------
+ 2022-03-04   | 2022-03-04 12:04:26.070727+00 | 2022-03-04 12:04:26.070727+00 | 31 years 3 days |             2022 |                 3
+(1 row)
+```
+
+## Nulless function
 
 ## Data type formatting function
 
