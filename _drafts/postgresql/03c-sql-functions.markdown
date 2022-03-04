@@ -27,7 +27,6 @@ ada banyak selali Fucntions, kita akan bahas beberapa yang menurut saya penting 
 3. Date/Time function
 4. Nulless function
 5. Data type formatting function
-6. Comparison function
 
 Ok langsung aja kita bahas materi yang pertama
 
