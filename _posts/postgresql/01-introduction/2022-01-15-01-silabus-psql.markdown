@@ -5,7 +5,7 @@ date: 2022-01-15T20:49:25+07:00
 lang: postgresql
 categories:
 - RDBMS
-- PostgreSQL 
+- PostgreSQL
 refs: 
 - https://www.postgresql.org/docs/current/
 youtube: 

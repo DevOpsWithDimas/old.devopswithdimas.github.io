@@ -6,6 +6,7 @@ lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL
+- getting-started
 refs: 
 - https://www.postgresql.org/docs/current/
 - https://www.pgadmin.org/docs/pgadmin4/latest/index.html

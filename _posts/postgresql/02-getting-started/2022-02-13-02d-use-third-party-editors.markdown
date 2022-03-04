@@ -6,6 +6,7 @@ lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL
+- getting-started
 refs: 
 - https://www.postgresql.org/docs/current/
 - https://www.jetbrains.com/help/idea/postgresql.html

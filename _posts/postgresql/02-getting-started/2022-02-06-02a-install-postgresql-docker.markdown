@@ -6,6 +6,7 @@ lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL
+- getting-started
 refs: 
 - https://hub.docker.com/_/postgres
 youtube: 
