@@ -6,8 +6,8 @@ categories:
 - RDBMS
 - PostgreSQL
 refs: 
-- https://www.postgresql.org/docs/14/functions-comparison.html#FUNCTIONS-COMPARISON-FUNC-TABLE
 - https://www.postgresql.org/docs/current/functions-string.html
+- https://www.postgresql.org/docs/current/functions-math.html
 youtube: 
 image_path: /resources/posts/postgresql/03c-sql-functions
 comments: true
@@ -73,3 +73,44 @@ hr-#         ascii('D') as "ascii";
 
 ## Math function
 
+This section describes and shows the available mathematical functions for calculation. Many of these functions are provided in multiple forms with different argument types. Except where noted, any given form of a function returns the same data type as its argument(s); cross-type cases are resolved in the same way as operators.
+
+| Functions	                                                |  Description        |
+| :------- 	                                                | :----------         |
+| `abs ( numeric_type ) → numeric_type`                     | Absolute value      |
+| `div ( y numeric, x numeric ) → numeric`                  | Integer quotient of `y/x` (truncates towards zero) |
+| `factorial ( bigint ) → numeric`                          | Factorial |
+| `floor ( numeric ) → numeric`                             | Nearest integer less than or equal to argument |
+| `mod ( y numeric_type, x numeric_type ) → numeric_type`   | Remainder of `y/x;` available for smallint, integer, bigint, and numeric |
+| `pi ( ) → double precision`                               | Approximate value of `π` |
+| `power ( a numeric, b numeric ) → numeric`                | `a` raised to the power of `b` |
+| `round ( numeric ) → numeric`                             | Rounds to nearest integer. For numeric, ties are broken by rounding away from zero. |
+| `sqrt ( numeric ) → numeric`                              | Square root |
+| `random ( ) → double precision`                           | Returns a random value in the range `0.0 <= x < 1.0` |
+
+Selain itu juga tersedia function lainnya seperti:
+
+1. Trigonometric Functions
+2. Hyperbolic Functions
+
+Berikut adalah implementasi SQLnya:
+
+{% gist page.gist "03c-select-math-function.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select  abs(-10) "absolut",
+hr-#         div(10, 3) "division",
+hr-#         mod(5, 2) "mod",
+hr-#         power(2, 3) "power",
+hr-#         round(5.451234, 2) "round scale2",
+hr-#         round(5.43) "round",
+hr-#         round(5.6) "roundup",
+hr-#         floor(5.45234) "floor",
+hr-#         floor(5.6) "floor2";
+ absolut | division | mod | power | round scale2 | round | roundup | floor | floor2
+---------+----------+-----+-------+--------------+-------+---------+-------+--------
+      10 |        3 |   1 |     8 |         5.45 |     5 |       6 |     5 |      5
+(1 row)
+```
