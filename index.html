@@ -2,12 +2,6 @@
 layout: default
 ---
 
-<div class="parallax-container">
-    <div class="parallax">
-        <img class="responsive-img" src="{{ "/resources/pictures/art.png" | prepend: site.baseurl }}">
-    </div>
-</div>
-
 {% assign pages_list = site.data.topics | sort:"publish" %}
 {% assign post_list_size = site.posts | size %}
 
@@ -134,6 +128,12 @@ layout: default
     })
 </script>
 
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="{{ "/resources/pictures/big-art.png" | prepend: site.baseurl }}">
+    </div>
+</div>
+
 <div class="section white">
     <div class="row container">
         <br>
@@ -224,7 +224,7 @@ layout: default
 
 <div class="parallax-container">
     <div class="parallax">
-        <img class="responsive-img" src="{{ "/resources/pictures/mindmap.png" | prepend: site.baseurl }}">
+        <img src="{{ "/resources/pictures/mindmap.png" | prepend: site.baseurl }}">
     </div>
 </div>
 
