@@ -5,6 +5,12 @@ permalink: /pages/courses.html
 icon: library_books
 ---
 
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="{{ "/resources/pictures/big-art.png" | prepend: site.baseurl }}">
+    </div>
+</div>
+
 {% assign languages = site.data.topics | map: 'language' | join: ',' | split: ',' | uniq %}
 <div class="row">
     <div class="container">
