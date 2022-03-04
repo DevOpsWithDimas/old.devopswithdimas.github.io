@@ -16,7 +16,7 @@
   - ordb-oracle18c
 
 - name: Java Web Developer (Fundamental)
-  code: java-web-developer
+  code: java-web
   description: 
   isNew: false
   courses: 
@@ -26,7 +26,7 @@
   - java-web
 
 - name: Front-End Developer (FE)
-  code: fe-pwa
+  code: fe-dev
   isNew: false
   description: 
   courses: 
@@ -37,7 +37,7 @@
   - vue
 
 - name: Back-End Developer (BE)
-  code: be-webservice
+  code: be-dev
   isNew: false
   description: 
   courses: 
@@ -48,15 +48,7 @@
   - spring-security
   - spring-oauth2
 
-- name: Data Engineer
-  code: data-engineer
-  isNew: false
-  description: 
-  courses: 
-  - postgresql  
-  - jasper-report
-
-- name: DevOps
+- name: Development & Operation (DevOps)
   code: devops
   isNew: true
   description: 

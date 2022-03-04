@@ -6,6 +6,20 @@ icon: assessment
 ---
 {% assign topics = site.data.roadmap %}
 <link rel="stylesheet" type="text/css" href="{{ "/assets/timeline.css" | prepend: site.baseurl }}" />
+
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="{{ "/resources/pictures/roadmap.png" | prepend: site.baseurl }}">
+    </div>
+</div>
+
+<div class="section white">
+    <div class="row container">
+      <h2 class="header">Roadmap</h2>
+      <p class="grey-text text-darken-3 lighten-3">Learn through online classes and guided learning maps. Level up your skills and jumpstart your career</p>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div id="topic-navigation" class="col m12 l3 hide-on-med-and-down">
@@ -69,4 +83,51 @@ icon: assessment
             </div>
         </div>
     </div>
+
+    <div class="fixed-action-btn click-to-toggle hide-on-large-only">
+        <a href="#" data-activates="slide-out-roadmap" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+            <i class="large material-icons">menu</i>
+        </a>
+    </div>
 </div>
+
+<ul id="slide-out-roadmap" class="side-nav">
+    <li>
+        {% include side-nav/profile.html %}
+    </li>
+    <li>
+        <a href="{{ "/" | prepend : site.baseurl }}">
+            <i class="material-icons left">home</i> {{site.title}}
+        </a>
+    </li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li>
+        <a class="subheader">To becomming a</a>
+    </li>
+    {% for topic in topics %}
+    <li>
+        <a href="#{{ topic.code }}">{{ topic.name }}</a>
+    </li>
+    {% endfor %}
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    {% include side-nav/pages.html %}
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    
+    {% include side-nav/socials.html %}
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    {% include side-nav/others.html %}
+</ul>
