@@ -6,6 +6,8 @@ lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL
+- sql
+- select
 refs: 
 - https://www.postgresql.org/docs/current/sql.html
 - https://www.postgresql.org/docs/current/datatype.html

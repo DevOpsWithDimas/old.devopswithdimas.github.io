@@ -6,6 +6,8 @@ lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL
+- sql
+- select
 refs: 
 - https://www.postgresql.org/docs/current/functions-string.html
 - https://www.postgresql.org/docs/current/functions-math.html

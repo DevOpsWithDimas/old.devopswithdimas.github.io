@@ -6,6 +6,8 @@ lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL
+- sql
+- select
 refs: 
 - https://www.postgresql.org/docs/current/
 - https://www.postgresql.org/docs/current/typeconv.html

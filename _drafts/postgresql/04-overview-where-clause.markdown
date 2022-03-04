@@ -1,10 +1,12 @@
 ---
 layout: post
-title: "03d-sql-where-clause"
+title: "Filtering data with WHERE clause"
 lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL
+- sql
+- select
 refs: 
 - https://www.postgresql.org/docs/current/
 youtube: 

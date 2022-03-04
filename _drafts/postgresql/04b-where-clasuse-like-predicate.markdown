@@ -5,6 +5,8 @@ lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL
+- sql
+- select
 refs: 
 - https://www.postgresql.org/docs/current/
 youtube: 
