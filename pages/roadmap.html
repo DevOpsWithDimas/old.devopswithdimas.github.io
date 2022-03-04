@@ -29,7 +29,7 @@ icon: assessment
                 <li class="collection-item">
                     <a href="#{{ topic.code }}">{{ topic.name }}</a>
                     {% if topic.isNew %}
-                    <span class="new badge brown black-text" data-badge-caption="baru"></span>
+                    <span class="new badge yellow black-text" data-badge-caption="baru"></span>
                     {% endif %}
                 </li>
                 {% endfor %}
@@ -53,13 +53,13 @@ icon: assessment
                                 <ul class="collection z-depth-3">
                                     <li class="collection-item avatar">
                                         {% if article.coming_soon == true %}
-                                        <span class="new badge yellow black-text" data-badge-caption="">Coming Soon</span>
+                                        <span class="new badge black white-text" data-badge-caption="">Coming Soon</span>
                                         {% endif %}
                                         <img class="responsive-img circle" src="{{ "/resources/images/" | prepend: site.baseurl }}{{course}}.png">
                                         <span class="title"><b>{{article.name}}</b></span>
                                         <p class="grey-text text-lighten-1">{{ article.descriptions | truncate: 150 }}</p>
                                         {% if article.udemy %}
-                                            <a href="{{ article.udemy }}" class="tooltipped btn red accent-1" data-position="bottom" data-delay="50" data-tooltip="Become a Premium Members">
+                                            <a href="{{ article.udemy.url }}?referralCode={{ article.udemy.referralCode }}" class="tooltipped btn red accent-1" data-position="bottom" data-delay="50" data-tooltip="Become a Premium Members">
                                                 <i class="material-icons white-text">lock_open</i> Join Premium Class
                                             </a>
                                         {% endif %}

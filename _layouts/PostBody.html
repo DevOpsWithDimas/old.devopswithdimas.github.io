@@ -70,9 +70,9 @@ layout: default
                         <i class="material-icons teal-text">lock_open</i>
                         Join Premium Members:
                     </li>
-                    {% if topic.udemy %}
+                    {% if topic.udemy.url %}
                     <li class="collection-item">
-                        <a href="{{ topic.udemy }}">
+                        <a href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}">
                             Udemy.com
                         </a>
                     </li>

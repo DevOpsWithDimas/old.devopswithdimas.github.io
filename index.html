@@ -157,7 +157,7 @@ layout: default
             {% assign post_list = site.posts | where: "lang", topic.url | sort:"date" %}
             {% assign a_post =  post_list.first %}
             <div class="col s12 m4">
-                <div class="card z-depth-3 sticky-action large">
+                <div class="card z-depth-3 sticky-action large hoverable">
                     <div class="card-image {{topic.color}}">
                         {% if topic.coming_soon == false %}
                         <span class="new badge black white-text" data-badge-caption="Pages">{{ post_list | size }}</span>
@@ -166,41 +166,65 @@ layout: default
                         <span class="new badge yellow black-text" data-badge-caption="">Coming soon</span>
                         <img class="responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
                         {% endif %}
-                        <span class="card-title grey darken-4 white-text">{{topic.name}}</span>
+                        <span class="card-title grey darken-4 white-text">
+                            {% if topic.coming_soon == false and a_post %}
+                            <a href="{{ a_post.url | prepend: site.baseurl }}" 
+                                class="tooltipped" 
+                                data-position="bottom" 
+                                data-delay="50" 
+                                data-tooltip="Start Learning">
+                                {{topic.name}}
+                            </a>
+                            {% endif %}                            
+                        </span>
                     </div>
                     <div class="card-content">
-                        <p>
-                            {{topic.descriptions}}
-                        </p>
+                        <div class="col m12 l6 s12">
+                            <div class="center hide-on-med-and-down">
+                                <i class="material-icons small">access_time</i>
+                            </div>
+                            <span class="gray-text">
+                                Sekali gabung, akses<br>
+                                selamanya tanpa batas<br>
+                                dan materinya selalu up to date!
+                            </span>
+                        </div>
+                        <div class="col m12 l6 s12">
+                            <blockquote class="right-align">
+                            {% if topic.udemy %}
+                                <span class="flow-text">{{ topic.udemy.discount }}</span>
+                                <del class="gray-text hide-on-med-and-down">{{ topic.udemy.price }}</del>
+                            {% else %}
+                                <span class="flow-text">Rp0,- (free)</span>
+                            {% endif %}
+                            </blockquote>                                
+                        </div>
                     </div>
                     <div class="card-action">
-                        <!-- show first page of content -->
-                        {% if topic.coming_soon == false and a_post %}
-                            <a href="{{ a_post.url | prepend: site.baseurl }}" class="tooltipped btn blue-grey lighten-5" data-position="bottom" data-delay="50" data-tooltip="Start Learning">
-                                <i class="material-icons green-text">play_arrow</i>
-                            </a>
-                        {% endif %}
-    
-                        <!-- show modal of content -->
-                        <a class="modal-trigger btn tooltipped blue-grey lighten-5" href="#modal-{{ topic.url }}" data-position="bottom" data-delay="50" data-tooltip="Preview">
-                            <i class="material-icons blue-grey-text lighten-4">library_books</i>
-                        </a>
-    
                         {% if topic.udemy %}
-                            <a href="{{ topic.udemy }}" class="tooltipped btn red accent-1" data-position="bottom" data-delay="50" data-tooltip="Become a Premium Members">
-                                <i class="material-icons white-text">lock_open</i>
+                            <a target="_blank" 
+                                href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}" 
+                                class="tooltipped btn red accent-1" 
+                                data-position="bottom" 
+                                data-delay="50" 
+                                data-tooltip="Become a Premium Members">
+                                <i class="material-icons white-text">lock_open</i> Join Class
                             </a>
                         {% endif %}
                     </div>
                     {% if topic.coming_soon == false %}
-                    <div class="card-reveal hide-on-med-and-down">
+                    <div class="card-reveal">
                         <!-- title of card reveal -->
                         <span class="card-title grey-text text-darken-4">
                             {{topic.name}}
                             <i class="material-icons right">close</i>
                         </span>
                         <!-- message card revel -->
-                        <p>{{topic.messages}}</p>
+                        {% if topic.message %}
+                            <p>{{topic.messages}}</p>
+                        {% else %}
+                            <p>{{ topic.descriptions }}</p>
+                        {% endif %}
                         
                         <!-- tags -->
                         <hr>
@@ -259,7 +283,11 @@ layout: default
                         <div class="row">
                             <div class="col s12 m6">
                                 <b>Title:</b> 
-                                <a class="title" href="{{ topic.udemy }}">{{ topic.fullname }}</a>
+                                {% if topic.udemy %}
+                                <a class="title" href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}">{{ topic.fullname }}</a>
+                                {% else %}
+                                <span>{{ topic.fullname }}</span>
+                                {% endif %}
                             </div>
                             <div class="col s12 m2">
                                 <b>Total duration:</b> <pre><code>{{ news.duration }}</code></pre> 

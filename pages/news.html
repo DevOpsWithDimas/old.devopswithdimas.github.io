@@ -44,7 +44,11 @@ icon: announcement
                     <div class="row">
                         <div class="col m6">
                             <b>Title:</b> 
-                            <a class="title" href="{{ topic.udemy }}">{{ topic.fullname }}</a>
+                            {% if topic.udemy %}
+                                <a class="title" href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}">{{ topic.fullname }}</a>
+                                {% else %}
+                                <span>{{ topic.fullname }}</span>
+                            {% endif %}
                         </div>
                         {% if news.visible %}
                         <div class="col m2">

@@ -104,7 +104,12 @@
   publish: 2017-10-26T20:59:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-orm-hibernate
   youtube:
-  udemy: https://www.udemy.com/course/hibernate-orm-bahasa-indonesia/?referralCode=8DA27E06BF0BA6935CCC
+  udemy: 
+    url: https://www.udemy.com/course/hibernate-orm-bahasa-indonesia/
+    price: Rp280.000,-
+    discount: Rp99.000,-
+    couponCode:
+    referralCode: 8DA27E06BF0BA6935CCC
   coming_soon: false
   visible: true
   catalogs:
@@ -168,7 +173,12 @@
   publish: 2021-02-07T12:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvzqS-Z57hZ_spTRtVvnYYpV
-  udemy: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/?referralCode=D1F375D96C53FC20DB42
+  udemy: 
+    url: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
+    price: Rp350.000,-
+    discount: Rp99.000,-
+    couponCode: 
+    referralCode: D1F375D96C53FC20DB42  
   coming_soon: false
   visible: true
   catalogs:
@@ -299,7 +309,12 @@
   publish: 2021-04-02T13:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-docker.git
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvztpGmVOoRU4Sp1gUr2H72B
-  udemy: https://www.udemy.com/course/docker-pemula-sampai-mahir/?referralCode=8D13D85D4D34027B76BE
+  udemy: 
+    url: https://www.udemy.com/course/docker-pemula-sampai-mahir/
+    price: Rp560.000,-
+    discount: Rp99.000,-
+    couponCode: 
+    referralCode: 8D13D85D4D34027B76BE
   coming_soon: false
   visible: true
   catalogs:
@@ -377,7 +392,12 @@
   publish: 2021-05-01T13:26:00+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-kubernetes
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvy9cHYEG7b-qcXMkpBPm8ZN
-  udemy: https://www.udemy.com/course/devops-kubernetes-pemula-sampai-mahir/?referralCode=58BDCE6103ADC4C9C11D
+  udemy: 
+    url: https://www.udemy.com/course/devops-kubernetes-pemula-sampai-mahir/
+    price: Rp280.000,-
+    discount: Rp99.000,-
+    couponCode: 
+    referralCode: 58BDCE6103ADC4C9C11D
   coming_soon: false
   visible: true
   catalogs:
@@ -578,7 +598,12 @@
   publish: 2022-01-16T20:50:50+07:00
   github: https://github.com/BootcampYoutubeChannel/belajar-postgres14
   youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvypZXSk2GC932nludT345xk
-  udemy: https://www.udemy.com/course/dba-postgresql-pemula-sampai-mahir/?referralCode=8080BE598C39D7652D33
+  udemy: 
+    url: https://www.udemy.com/course/dba-postgresql-pemula-sampai-mahir/
+    price: Rp.280.000,-
+    discount: Rp.99.000,-
+    couponCode: 
+    referralCode: 8080BE598C39D7652D33  
   coming_soon: false
   visible: true
   catalogs:
