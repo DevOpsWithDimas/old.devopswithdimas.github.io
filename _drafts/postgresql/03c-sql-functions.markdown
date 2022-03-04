@@ -8,6 +8,7 @@ categories:
 refs: 
 - https://www.postgresql.org/docs/current/functions-string.html
 - https://www.postgresql.org/docs/current/functions-math.html
+- https://www.postgresql.org/docs/current/functions-formatting.html
 youtube: 
 image_path: /resources/posts/postgresql/03c-sql-functions
 comments: true
@@ -112,5 +113,64 @@ hr-#         floor(5.6) "floor2";
  absolut | division | mod | power | round scale2 | round | roundup | floor | floor2
 ---------+----------+-----+-------+--------------+-------+---------+-------+--------
       10 |        3 |   1 |     8 |         5.45 |     5 |       6 |     5 |      5
+(1 row)
+```
+
+## Data type formatting function
+
+The PostgreSQL formatting functions provide a powerful set of tools for converting various data types (`date/time`, `integer`, `floating point`, `numeric`) to formatted `strings` and for converting from formatted strings to specific data types. These functions all follow a common calling convention: the first argument is the value to be formatted and the second argument is a template that defines the output or input format.
+
+| Functions	                                                |  Description        |
+| :------- 	                                                | :----------         |
+| `to_char ( timestamp, date-patterns ) → text`                      | Converts time stamp to string according to the given format. |
+| `to_char ( interval, date-patterns ) → text`                       | Converts interval to string according to the given format. |
+| `to_char ( numeric_type, number-pattern ) → text`                   | Converts number to string according to the given format; available for `integer`, `bigint`, `numeric`, `real`, `double precision`. |
+| `to_date ( text, date-patterns ) → date`                           | Converts string to date according to the given format. |
+| `to_number ( text, number-pattern ) → numeric`                      | Converts string to numeric according to the given format. |
+| `to_timestamp ( text, date-patterns ) → timestamp with time zone`  | Converts string to time stamp according to the given format. |
+
+The `date-patterns` template patterns available for formatting date and time values.
+
+| Pattern	|  Description              |
+| :------- 	| :----------               |
+| `HH`      | hour of day (`01–12`)     |
+| `HH24`    | hour of day (`01–24`)     |
+| `MI`      | minute (`00–59`)          |
+| `SS`      | second (`00–59`)          |
+| `MS`      | millisecond (`000–999`)   |
+| `DD`      | day of month (`01–31`)    |
+| `DAY`     | full upper case day name (blank-padded to `9 chars`)    |
+| `D`       | day of the week, `Sunday` to `Saturday` |
+| `MM`      | month number (`01–12`)    |
+| `MON`     | abbreviated upper case month name (`3 chars` in English, localized lengths vary) |
+| `YY`      | last 2 digits of year |
+| `YYYY`    | year (4 or more digits) |
+
+The `number-pattern` template patterns available for formatting numeric values.
+
+| Pattern	        |  Description              |
+| :------- 	        | :----------               |
+| `9`               | digit position (can be dropped if insignificant) |
+| `0`               | digit position (will not be dropped, even if insignificant) |
+| `.` (period)      | decimal point |
+| `,` (comma)       | group (thousands) separator |
+| `L`               | currency symbol (uses locale) |
+| `RN`              | Roman numeral (input between `1` and `3999`) |
+
+Berikut adalah implementasi SQLnya:
+
+{% gist page.gist "03c-select-formating-function.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select  to_char(current_date, 'DD/MON/YYYY') date_indonesia,
+hr-#         to_char(current_timestamp, 'DD/MM/YYYY HH24:MM') datetime_indonesia,
+hr-#         to_char(1000000, 'RpL999,999,999.00-') sejuta_rupiah,
+hr-#         to_date('02/03/22', 'DD/MM/YY') format_ke_date,
+hr-#         to_number('10,132,456.53', '999,999,999') format_ke_number;
+ date_indonesia | datetime_indonesia |    sejuta_rupiah    | format_ke_date | format_ke_number
+----------------+--------------------+---------------------+----------------+------------------
+ 04/MAR/2022    | 04/03/2022 11:03   | Rp    1,000,000.00- | 2022-03-02     |         10132456
 (1 row)
 ```
