@@ -185,6 +185,7 @@ icon: library_books
                                         </span>
                                         {% endif %}
                                     </div>
+                                    {% if topic.coming_soon == false %}
                                     <div class="col m12 l6 s12">
                                         <blockquote class="right-align">
                                         {% if topic.udemy %}
@@ -195,6 +196,7 @@ icon: library_books
                                         {% endif %}
                                         </blockquote>                                
                                     </div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="card-action">
