@@ -110,6 +110,7 @@
     discount: Rp99.000,-
     couponCode:
     referralCode: 8DA27E06BF0BA6935CCC
+    banner: 
   coming_soon: false
   visible: true
   catalogs:
@@ -178,7 +179,8 @@
     price: Rp350.000,-
     discount: Rp99.000,-
     couponCode: 
-    referralCode: D1F375D96C53FC20DB42  
+    referralCode: D1F375D96C53FC20DB42
+    banner: 
   coming_soon: false
   visible: true
   catalogs:
@@ -315,6 +317,7 @@
     discount: Rp99.000,-
     couponCode: 
     referralCode: 8D13D85D4D34027B76BE
+    banner: 
   coming_soon: false
   visible: true
   catalogs:
@@ -398,6 +401,7 @@
     discount: Rp99.000,-
     couponCode: 
     referralCode: 58BDCE6103ADC4C9C11D
+    banner: 
   coming_soon: false
   visible: true
   catalogs:
@@ -603,7 +607,8 @@
     price: Rp.280.000,-
     discount: Rp.99.000,-
     couponCode: 
-    referralCode: 8080BE598C39D7652D33  
+    referralCode: 8080BE598C39D7652D33
+    banner: 
   coming_soon: false
   visible: true
   catalogs:
