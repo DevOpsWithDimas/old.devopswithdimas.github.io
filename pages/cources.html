@@ -155,7 +155,7 @@ icon: library_books
                         <div class="card z-depth-3 sticky-action large hoverable">
                             <div class="card-image {{topic.color}}">
                                 {% if topic.coming_soon == false and topic.udemy %}                                
-                                <img class="activator responsive-img" src="{{ "/resources/cources/banners/" | prepend: site.baseurl}}{{topic.url}}.jpg">
+                                <img class="activator responsive-img" src="{{ "/resources/cources/banners/" | prepend: site.baseurl}}{{topic.url}}.png">
                                 {% elsif topic.coming_soon == false %}
                                 <span class="new badge black white-text" data-badge-caption="Pages">{{ post_list | size }}</span>
                                 <img class="activator responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
