@@ -5,123 +5,6 @@ layout: default
 {% assign pages_list = site.data.topics | sort:"publish" %}
 {% assign post_list_size = site.posts | size %}
 
-<!-- Modal Structure -->
-{% for page_modal in pages_list  %}
-{% assign modal_post_list = site.posts | where: "lang", page_modal.url | sort:"date" %}
-{% assign modal_post = modal_post_list.first %}
-<div id="modal-{{ page_modal.url }}" class="modal modal-fixed-footer">
-    <div class="modal-content">
-        <h4>{{ page_modal.name }}</h4>
-        <hr>
-        <div class="row">
-            <div class="col m2">
-                <img class="responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{page_modal.url}}.png">
-            </div>
-            <div class="col m10 hide-on-small-only">
-                <p>{{page_modal.messages }}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12 m5 hide-on-small-only">
-                {% if page_modal.catalogs.size >= 1 %}
-                <ul class="collapsible with-header" data-collapsible="expandable">
-                    <li class="collection-header">
-                        <div class="collapsible-header">
-                            Daftar Materi
-                        </div>
-                    </li>
-                    {% for catalog in page_modal.catalogs %}
-                    {% assign modal_header_title = catalog.name | prepend: '. ' | prepend: forloop.index %}
-                    <li>
-                        <div class="collapsible-header">
-                            {{modal_header_title}}
-                        </div>
-                        <div class="collapsible-body">
-                            <ul>
-                                {% assign modal_post_by_catalog = modal_post_list | where: 'catalog_key', catalog.key | sort:"date" %}
-                                {% if modal_post_by_catalog.size >= 1 %}
-                                    {% for modal_post in modal_post_by_catalog  %}
-                                    {% assign modal_post_title = modal_post.title | truncate: 40 |  prepend: '. ' | prepend: forloop.index %}
-                                    <li>
-                                        <a href="{{ modal_post.url | prepend: site.baseurl }}">{{ modal_post_title }}</a>
-                                    </li>
-                                    {% endfor %}
-                                {% else %}
-                                    <li>Materi: belum tersedia...</li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </li>
-                    {% endfor %}
-                </ul>
-                {% else %}
-                    <ul class="collection with-header">
-                        <li class="collection-header">Daftar Materi</li>
-                        {% if modal_post_list.size >= 1 %}
-                            {% for modal_post in modal_post_list %}
-                            {% assign modal_post_title = modal_post.title | truncate: 40 |  prepend: '. ' | prepend: forloop.index %}
-                            <li class="collection-item">
-                                <a href="{{ modal_post.url | prepend: site.baseurl }}">{{ modal_post_title }}</a>
-                            </li>
-                            {% endfor %}
-                        {% else %}
-                            <li class="collection-item">Materi: belum tersedia...</li>
-                        {% endif %}
-                    </ul>
-                {% endif %}
-            </div>
-            <div class="col s12 m7">
-                <!-- youtube link -->
-                <div class="row hide-on-med-and-down">
-                    {% if modal_post and modal_post.youtube %}
-                        {% include youtubePlayer.html id=modal_post.youtube %}
-                    {% else %}
-                        Embeded Video: <br>
-                        <a href="#!" class="disabled btn btn-flat">belum tersedia...</a>
-                    {% endif %}
-                </div>
-                <!-- article -->
-                <div class="row">
-                    {% if modal_post.content contains '<!--more-->' %} 
-                        {{ modal_post.content | split:'<!--more-->' | first }}<br>
-                        <span>
-                            <a href="{{ modal_post.url | prepend: site.baseurl }}" class="right">
-                                Lanjut membaca...
-                            </a>
-                        </span>
-                    {% endif %}
-                </div>
-
-                <div class="row">
-                    <!-- repository link -->
-                    {% if page_modal.github %}
-                        Downloads : <br>
-                        <a href="{{ page_modal.github }}" target="_blank" class="btn black" rel="noopener noreferrer">
-                            <i class="fa fa-github"></i> Github
-                        </a>
-                    {% else %}
-                        Download: <br>
-                        <a href="#!" class="disabled btn btn-flat">belum tersedia...</a>
-                    {% endif %}
-                </div>
-                <br>
-                <!-- tags -->
-                <hr>
-                {% for tag in page_modal.tags %}
-                    <div class="chip"><i class="fa fa-tag"></i> {{tag}}</div>
-                {% endfor %}
-
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn black">
-          <i class="material-icons">close</i>
-      </a>
-    </div>
-</div>
-{% endfor %}
-
 <script>
     $(document).ready(function(){
         $('#collapsibleNews').collapsible('open', 0);        
@@ -156,7 +39,8 @@ layout: default
             {% for topic in topics limit:3 %}
             {% assign post_list = site.posts | where: "lang", topic.url | sort:"date" %}
             {% assign a_post =  post_list.first %}
-            <div class="col s12 m4">
+            {% assign a_last_post =  post_list.last %}
+            <div class="col s12 m6 l4">
                 <div class="card z-depth-3 sticky-action large hoverable">
                     <div class="card-image {{topic.color}}">
                         {% if topic.coming_soon == false %}
@@ -180,14 +64,12 @@ layout: default
                     </div>
                     <div class="card-content">
                         <div class="col m12 l6 s12">
-                            <div class="center hide-on-med-and-down">
-                                <i class="material-icons small">access_time</i>
-                            </div>
-                            <span class="gray-text">
-                                Sekali gabung, akses<br>
-                                selamanya tanpa batas<br>
-                                dan materinya selalu up to date!
+                            {% if a_last_post.date %}
+                            Last updated: <br>
+                            <span class="gray-text small">
+                                {{ a_last_post.date | date: "%-d %B %Y" }}
                             </span>
+                            {% endif %}
                         </div>
                         <div class="col m12 l6 s12">
                             <blockquote class="right-align">
@@ -195,19 +77,12 @@ layout: default
                                 <span class="flow-text">{{ topic.udemy.discount }}</span>
                                 <del class="gray-text hide-on-med-and-down">{{ topic.udemy.price }}</del>
                             {% else %}
-                                <span class="flow-text">Rp0,- (free)</span>
+                                <span class="flow-text">Rp0,-</span>
                             {% endif %}
                             </blockquote>                                
                         </div>
                     </div>
                     <div class="card-action">
-                        <a class="modal-trigger btn tooltipped blue-grey lighten-5 hide-on-med-and-down" 
-                            href="#modal-{{ topic.url }}" 
-                            data-position="bottom" 
-                            data-delay="50" 
-                            data-tooltip="Preview">
-                                <i class="material-icons blue-grey-text lighten-4">library_books</i>
-                        </a>
                         {% if topic.udemy %}
                             <a target="_blank" 
                                 href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}" 
