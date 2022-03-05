@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01-silabus"
+title: "Silabus - Spring Framework: Pemula sampai Mahir"
 lang: spring-core
 categories:
 - java
@@ -12,6 +12,7 @@ comments: true
 gist: dimMaryanto93/18ec7d7d241ffdac192d249106d35500
 comments: true
 image_path: /resources/posts/spring-core/01-silabus
+catalog_key: introduction
 downloads: []
 ---
 

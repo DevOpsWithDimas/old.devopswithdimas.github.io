@@ -522,26 +522,6 @@
       description: ''
       deprecated: false
     
-- name: Spring Framework
-  fullname: 
-  url: spring-core
-  icon: "devicons devicons-java"
-  language: Java
-  color: green accent-2
-  tags:
-  - java
-  - springframework
-  - dependency-injection
-  - inversion-of-control
-  descriptions:
-    Temen-teman akan belajar suatu Design Pattern yaitu Dependency Injection (DI) dan Inversion of Control (IoC).
-  messages:
-  publish: 2021-08-24T12:26:00+07:00
-  github: https://github.com/BootcampYoutubeChannel/belajar-spring-ioc
-  youtube:
-  udemy:
-  coming_soon: true
-  visible: false
 
 - name: Openshift
   fullname: 
@@ -660,3 +640,40 @@
     - name: 'Study Kasus: Backend engine'
       key: study-cases-backend-engine
       description: ''
+
+- name: Spring Framework
+  fullname: 'Developer Spring Framework: Pemula sampai Mahir'
+  url: spring-core
+  icon: "devicons devicons-java"
+  language: Java
+  color: green accent-2
+  tags:
+  - java
+  - springframework
+  - dependency-injection
+  - inversion-of-control
+  descriptions:
+    Temen-teman akan belajar suatu Design Pattern yaitu Dependency Injection (DI) dan Inversion of Control (IoC).
+  messages:
+  publish: 2022-03-05T16:26:00+07:00
+  github: https://github.com/BootcampYoutubeChannel/belajar-spring-ioc
+  youtube:
+  udemy:
+  coming_soon: true
+  visible: true
+  catalogs:
+    - name: Pengenalan Spring Framework
+      key: introduction
+      description: 'Eps 1: Pengenalan Spring Framework'
+    - name: Getting Started
+      key: getting-started
+      description: 'Eps 2: Getting Started with Spring Framework'
+    - name: Dependency Injection
+      key: dep-injection
+      description: 'Eps 3: Dependency Injection'
+    - name:  Handles Resources
+      key: resources
+      description: 'Eps 4: Resources'
+    - name:  Validation, Data Binding, and Type Conversion
+      key: validation
+      description: 'Eps 5: Validation, Data Binding, and Type Conversion'
