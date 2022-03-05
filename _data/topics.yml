@@ -543,27 +543,52 @@
   coming_soon: true
   visible: false
 
-- name: Gitlab CI/CD
-  fullname: 
-  url: gitlab-ci-cd
+- name: Gitlab
+  fullname: 'GitOps Gitlab: Pemula sampai Mahir'
+  url: gitlab
   icon: "devicons devicons-java"
   language: DevOps
   color: amber lighten-2
   tags:
   - DevOps
-  - Docker
+  - GitOps
   - Gitlab
-  - Continues Integration
-  - Delivery
+  - Docker
+  - Kubernetes
   descriptions:
-    Temen-teman akan belajar Deployment Automation dengan Gitlab CI/CD.
+    Temen-teman akan belajar GitOps dengan menggunakan Gitlab Stack terkait Automation Deployment, Monitoring, Issues Tracking, dan lain-lain.
   messages:
-  publish: 2021-04-02T13:26:00+07:00
+  publish: 2022-03-06T13:26:00+07:00
   github: 
   youtube: 
   udemy: 
   coming_soon: true
-  visible: false
+  visible: true
+  catalogs:
+    - name: Pengenalan Git & Gitlab
+      key: introduction
+      description: 'Eps 1: Pengenalan Git & Gitlab'
+    - name: Getting started with Git
+      key: getting-started
+      description: 'Eps 2: Getting started with vcs git'
+    - name: Git Remote
+      key: remote
+      description: 'Eps 3: Git Remote'
+    - name: Git Workflow
+      key: workflow
+      description: 'Eps 4: Git Workflow'
+    - name: Git Submodules
+      key: submodules
+      description: 'Eps 5: Working with Git Submodules'
+    - name: Issues Tracker
+      key: issues-tracker
+      description: 'Eps 6: Issues Tracker'
+    - name: Release Management
+      key: release-management
+      description: 'Eps 7: Management Release'
+    - name: DevOps Tools
+      key: devops-tools
+      description: 'Eps 8: DevOps Tools'
 
 - name: PostgreSQL
   fullname: "DBA PostgreSQL: Pemula sampai Mahir"
