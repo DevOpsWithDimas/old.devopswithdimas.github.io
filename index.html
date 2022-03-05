@@ -43,43 +43,49 @@ layout: default
             <div class="col s12 m6 l4">
                 <div class="card z-depth-3 sticky-action large hoverable">
                     <div class="card-image {{topic.color}}">
-                        {% if topic.coming_soon == false %}
-                        <span class="new badge black white-text" data-badge-caption="Pages">{{ post_list | size }}</span>
-                        <img class="activator responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
-                        {% else %}
-                        <span class="new badge yellow black-text" data-badge-caption="">Coming soon</span>
-                        <img class="responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
+                        {% if topic.coming_soon == false %}                                
+                            <img class="activator responsive-img" 
+                                src="{{ "/resources/cources/banners/" | prepend: site.baseurl}}{{topic.url}}.png">
+                            {% else %}
+                            <span class="new badge yellow black-text" 
+                                data-badge-caption="">Coming soon</span>
+                            <img class="responsive-img" 
+                                src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
                         {% endif %}
-                        <span class="card-title grey darken-4 white-text">
-                            {% if topic.coming_soon == false and a_post %}
-                            <a href="{{ a_post.url | prepend: site.baseurl }}" 
-                                class="tooltipped" 
-                                data-position="bottom" 
-                                data-delay="50" 
-                                data-tooltip="Start Learning">
-                                {{topic.name}}
-                            </a>
-                            {% endif %}                            
-                        </span>
                     </div>
                     <div class="card-content">
-                        <div class="col m12 l6 s12">
-                            {% if a_last_post.date %}
-                            Last updated: <br>
-                            <span class="gray-text small">
-                                {{ a_last_post.date | date: "%-d %B %Y" }}
+                        <div class="row">
+                            <span class="flow-text">
+                                {% if topic.coming_soon == false and a_post %}
+                                <a href="{{ a_post.url | prepend: site.baseurl }}" 
+                                    class="tooltipped" 
+                                    data-position="bottom" 
+                                    data-delay="50" 
+                                    data-tooltip="Start Learning">
+                                    {% if topic.fullname %} {{topic.fullname}} {% else %} {{topic.name}} {% endif %}
+                                </a>
+                                {% endif %}                            
                             </span>
-                            {% endif %}
                         </div>
-                        <div class="col m12 l6 s12">
-                            <blockquote class="right-align">
-                            {% if topic.udemy %}
-                                <span class="flow-text">{{ topic.udemy.discount }}</span>
-                                <del class="gray-text hide-on-med-and-down">{{ topic.udemy.price }}</del>
-                            {% else %}
-                                <span class="flow-text">Rp0,-</span>
-                            {% endif %}
-                            </blockquote>                                
+                        <div class="row">
+                            <div class="col m12 l6 s12">
+                                {% if a_last_post.date %}
+                                Last updated: 
+                                <span class="gray-text small">
+                                    {{ a_last_post.date | date: "%-d %B %Y" }}
+                                </span>
+                                {% endif %}
+                            </div>
+                            <div class="col m12 l6 s12">
+                                <blockquote class="right-align">
+                                {% if topic.udemy %}
+                                    <span class="flow-text">{{ topic.udemy.discount }}</span>
+                                    <del class="gray-text">{{ topic.udemy.price }}</del>
+                                {% else %}
+                                    <span class="flow-text">Gratis</span>
+                                {% endif %}
+                                </blockquote>                                
+                            </div>
                         </div>
                     </div>
                     <div class="card-action">
