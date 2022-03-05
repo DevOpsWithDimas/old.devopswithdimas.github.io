@@ -37,7 +37,15 @@ icon: library_books
                 <img class="responsive-img" src="{{ "/resources/images/" | prepend: site.baseurl}}{{page_modal.url}}.png">
             </div>
             <div class="col m10 hide-on-small-only">
-                <p>{{page_modal.messages }}</p>
+                <p>
+                    {% if page_modal.messages %}
+                        {{ page_modal.messages }}
+                    {% elsif page_modal.descriptions %}
+                        {{ page_modal.descriptions }}
+                    {% else %}
+                        Belum ada deskripsi
+                    {% endif %}
+                </p>
             </div>
         </div>
         <div class="row">
