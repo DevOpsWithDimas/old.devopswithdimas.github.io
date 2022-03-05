@@ -627,14 +627,8 @@
     - name: 'Server Administration'
       key: server-administration
       description: ''
-    - name: 'Pg/PL SQL Triggers'
-      key: pgpl-sql-trigger
-      description: ''
-    - name: 'Pg/PL SQL Procedural'
-      key: pgpl-sql-procedure
-      description: ''
-    - name: 'Pg/PL SQL Cursor'
-      key: pgpl-sql-cursor
+    - name: 'Pg/PL SQL'
+      key: pg-plsql
       description: ''
     - name: 'Study Kasus: Backend engine'
       key: study-cases-backend-engine
