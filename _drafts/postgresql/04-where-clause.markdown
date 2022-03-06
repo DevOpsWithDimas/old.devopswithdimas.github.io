@@ -36,9 +36,10 @@ Ilustrasi tersebut menggambarkan, suatu predicate atau `search_condition` yaitu 
 1. Relational predicate
 2. Like predicates
 3. Between predicates
-4. Nulless predicate
+4. Null predicate
 5. Logical predicate
 6. Pattern-matching predicate
+7. Array comparision
 
 Ok kita bahas satu-per-satu ya, mulai dari relational predicate
 
@@ -157,5 +158,100 @@ hr-# where substring(first_name from 2 for 1) between 'h' and 'j';
 (18 rows)
 ```
 
-## Nulless predicate
+## Null predicate
 
+Operator `IS NULL` digunakan untuk memfiter data yang bernilai `null`. 
+
+Contoh kasusnya, saya mau menampilkan data karywan yang tidak memiliki manager. Berikut querynya:
+
+{% gist page.gist "04-select-where-isnull.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select employee_id, first_name, last_name, job_id, manager_id
+hr-# from employees
+hr-# where manager_id is null;
+ employee_id | first_name | last_name | job_id  | manager_id
+-------------+------------+-----------+---------+------------
+         100 | Steven     | King      | AD_PRES |
+(1 row)
+```
+
+## Logical predicate
+
+Logical predicate pada dasarnya sama seperti [logical operators]({% post_url postgresql/03-select-statements/2022-02-28-03b-sql-operators %}#logic-operators) yaitu
+
+1. `and` operators
+2. `or` operators
+3. `not` operators
+
+Kasusnya saya mau mencari data karyawan yang berkerja di `department_id = 90` dan yang `manager_id = 100` berarti kita bisa menggunakan operator `and`, berikut querynya:
+
+{% gist page.gist "04-select-where-logic-and.sql" %}
+
+Jika kita jalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select employee_id, first_name, last_name, department_id, manager_id
+hr-# from employees
+hr-# where department_id = 90 and manager_id = 100;
+ employee_id | first_name | last_name | department_id | manager_id
+-------------+------------+-----------+---------------+------------
+         101 | Neena      | Kochhar   |            90 |        100
+         102 | Lex        | De Haan   |            90 |        100
+(2 rows)
+```
+
+Dan sedangkan untuk operator `or` seperti berikut:
+
+{% gist page.gist "04-select-where-logic-or.sql" %}
+
+Jika kita jalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select employee_id, first_name, last_name, department_id, manager_id
+hr-# from employees
+hr-# where department_id = 90 or manager_id = 100;
+ employee_id | first_name | last_name | department_id | manager_id
+-------------+------------+-----------+---------------+------------
+         100 | Steven     | King      |            90 |
+         101 | Neena      | Kochhar   |            90 |        100
+         102 | Lex        | De Haan   |            90 |        100
+         114 | Den        | Raphaely  |            30 |        100
+         120 | Matthew    | Weiss     |            50 |        100
+         121 | Adam       | Fripp     |            50 |        100
+         122 | Payam      | Kaufling  |            50 |        100
+         123 | Shanta     | Vollman   |            50 |        100
+         124 | Kevin      | Mourgos   |            50 |        100
+         145 | John       | Russell   |            80 |        100
+         146 | Karen      | Partners  |            80 |        100
+         147 | Alberto    | Errazuriz |            80 |        100
+         148 | Gerald     | Cambrault |            80 |        100
+         149 | Eleni      | Zlotkey   |            80 |        100
+         201 | Michael    | Hartstein |            20 |        100
+(15 rows)
+```
+
+Dan yang terakhir kita juga bisa menggunakan `not` operator seperti berikut:
+
+{% gist page.gist "04-select-where-logic-not.sql" %}
+
+Jika di jalankan maka hasilnya sebagai berikut:
+
+```postgresql-console
+hr=# select employee_id, first_name, last_name, job_id, manager_id, salary
+hr-# from employees
+hr-# where salary not between 3000 and 20000;
+ employee_id | first_name |  last_name  |  job_id  | manager_id |  salary
+-------------+------------+-------------+----------+------------+----------
+         100 | Steven     | King        | AD_PRES  |            | 24000.00
+         116 | Shelli     | Baida       | PU_CLERK |        114 |  2900.00
+         117 | Sigal      | Tobias      | PU_CLERK |        114 |  2800.00
+         118 | Guy        | Himuro      | PU_CLERK |        114 |  2600.00
+         119 | Karen      | Colmenares  | PU_CLERK |        114 |  2500.00
+         126 | Irene      | Mikkilineni | ST_CLERK |        120 |  2700.00
+         127 | James      | Landry      | ST_CLERK |        120 |  2400.00
+         128 | Steven     | Markle      | ST_CLERK |        120 |  2200.00
+(25 rows)
+```
