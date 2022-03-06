@@ -62,39 +62,50 @@ layout: default
                                     data-position="bottom" 
                                     data-delay="50" 
                                     data-tooltip="Start Learning">
-                                    {% if topic.fullname %} {{topic.fullname}} {% else %} {{topic.name}} {% endif %}
+                                    {{topic.name}}
                                 </a>
                                 {% endif %}                            
                             </span>
                         </div>
-                        <div class="row">
+                        <div class="row"> 
                             <div class="col m12 l6 s12">
                                 {% if a_last_post.date %}
                                 Last updated: 
-                                <span class="gray-text small">
-                                    {{ a_last_post.date | date: "%-d %B %Y" }}
-                                </span>
-                                {% endif %}                                
-                            </div>
-                            <div class="col m12 l6 s12">
+                                <code>{{ a_last_post.date | date: "%-d %B %Y" }}</code>
+                                {% endif %}
+                                {% if topic.catalogs %}
+                                <br>
+                                Kurikulum: <code>{{ topic.catalogs.size }}</code>
+                                {% endif %} 
+                                {% if post_list.size >= 1 %}
+                                <br>
+                                Total Materi: <code>{{ post_list.size }}</code>
+                                {% endif %}              
+                            </div>                           
+                            <div class="col m12 l6 s12 right-align">
+                                {% if topic.udemy %}
+                                <span class="badge" data-badge-caption="{{ topic.udemy.expired }}">Exp: </span>
+                                {% endif %}
                                 <blockquote class="right-align">
                                 {% if topic.udemy %}
-                                    <span class="flow-text">{{ topic.udemy.discount }}</span>
+                                    <span class="flow-text">
+                                        {{ topic.udemy.discount }}
+                                    </span>
                                     <del class="gray-text">{{ topic.udemy.price }}</del>
                                 {% else %}
                                     <span class="flow-text">Gratis</span>
                                 {% endif %}
                                 </blockquote>                                
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                     <div class="card-action">
-                        {% if topic.udemy %}
-                        <div class="col l8 m12 s12">
-                                Coupon: <code><mark>{{ topic.udemy.couponCode }}</mark></code><br>
-                                Exp: <code>{{ topic.udemy.expired }}</code>
+                        {% if topic.udemy %}                        
+                        <div class="col l6 m12 s12">
+                            CouponCode: <br>
+                            <code><mark>{{ topic.udemy.couponCode }}</mark></code>
                         </div>
-                        <div class="col l4 m12 s12 right-align">
+                        <div class="col l6 m12 s12 right-align">
                             <a target="_blank" 
                                 href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}" 
                                 class="tooltipped btn red accent-1" 
