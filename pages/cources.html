@@ -207,8 +207,8 @@ icon: library_books
                                     {% endif %}
                                 </div>
                             </div>
+                            {% if topic.udemy %}                        
                             <div class="card-action">
-                                {% if topic.udemy %}                        
                                 <div class="col l6 m12 s12">
                                     CouponCode: <br>
                                     <code><mark>{{ topic.udemy.couponCode }}</mark></code>
@@ -223,8 +223,8 @@ icon: library_books
                                             <i class="material-icons white-text">lock_open</i> Join
                                     </a>
                                 </div>
-                                {% endif %}
                             </div>
+                            {% endif %}
                             {% if topic.coming_soon == false %}
                             <div class="card-reveal">
                                 <!-- title of card reveal -->
