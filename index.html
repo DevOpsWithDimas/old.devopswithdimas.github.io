@@ -74,7 +74,7 @@ layout: default
                                 <span class="gray-text small">
                                     {{ a_last_post.date | date: "%-d %B %Y" }}
                                 </span>
-                                {% endif %}
+                                {% endif %}                                
                             </div>
                             <div class="col m12 l6 s12">
                                 <blockquote class="right-align">
@@ -90,14 +90,20 @@ layout: default
                     </div>
                     <div class="card-action">
                         {% if topic.udemy %}
+                        <div class="col l8 m12 s12">
+                                Coupon: <code><mark>{{ topic.udemy.couponCode }}</mark></code><br>
+                                Exp: <code>{{ topic.udemy.expired }}</code>
+                        </div>
+                        <div class="col l4 m12 s12 right-align">
                             <a target="_blank" 
                                 href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}" 
                                 class="tooltipped btn red accent-1" 
-                                data-position="bottom" 
+                                data-position="bottom"                            
                                 data-delay="50" 
                                 data-tooltip="Become a Premium Members">
-                                <i class="material-icons white-text">lock_open</i> Join
+                                    <i class="material-icons white-text">lock_open</i> Join
                             </a>
+                        </div>
                         {% endif %}
                     </div>
                     {% if topic.coming_soon == false %}
