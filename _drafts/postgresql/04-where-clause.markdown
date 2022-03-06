@@ -115,3 +115,44 @@ hr-# where last_name like '_t%';
          138 | Stephen    | Stiles    | SSTILES  | 650.121.2034 | ST_CLERK | 3200.00
 (2 rows)
 ```
+
+## Between predicates
+
+Operator `BETWEEN` digunakan untuk memfilter dengan interval/rentang tertentu diantar nilai terkecil dan terbesar biasanya digunakan untuk tipe data seperti `number`, `date`, `time`, `datetime` serta `char`. 
+
+Contoh kasusnya, Saya mau menampilkan data yang karywan yang memiliki gaji dari `4000` s/d `6000`. Berikut querynya:
+
+{% gist page.gist "04-select-where-between-number.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select employee_id, first_name, last_name, email, phone_number, job_id, salary
+hr-# from employees
+hr-# where salary between 17000 and 20000;
+ employee_id | first_name | last_name |  email   | phone_number | job_id |  salary
+-------------+------------+-----------+----------+--------------+--------+----------
+         101 | Neena      | Kochhar   | NKOCHHAR | 515.123.4568 | AD_VP  | 17000.00
+         102 | Lex        | De Haan   | LDEHAAN  | 515.123.4569 | AD_VP  | 17000.00
+(2 rows)
+```
+
+Atau berikut contoh lainnya, saya mau mengambil `first_name` yang mengandung huruf `h` sampai `j` pada character ke 2. maka querynya seperti berikut:
+
+{% gist page.gist "04-select-where-between-char.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select employee_id, first_name, last_name
+hr-# from employees
+hr-# where substring(first_name from 2 for 1) between 'h' and 'j';
+ employee_id | first_name  | last_name
+-------------+-------------+-----------
+         107 | Diana       | Lorentz
+         116 | Shelli      | Baida
+         117 | Sigal       | Tobias
+         205 | Shelley     | Higgins
+         206 | William     | Gietz
+(18 rows)
+```
