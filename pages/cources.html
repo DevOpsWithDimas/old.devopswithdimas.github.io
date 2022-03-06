@@ -170,13 +170,13 @@ icon: library_books
                                 <span class="new badge yellow black-text" data-badge-caption="">Coming soon</span>
                                 {% endif %}
                                 <div class="row">
-                                    <span class="flow-text">
-                                        {% if topic.coming_soon == false and a_post %}
-                                        <a href="{{ a_post.url | prepend: site.baseurl }}" 
-                                            class="tooltipped" 
+                                    <span class="flow-text truncate">
+                                        {% if topic.coming_soon == false %}
+                                        <a class="modal-trigger tooltipped" 
+                                            href="#modal-{{ topic.url }}" 
                                             data-position="bottom" 
                                             data-delay="50" 
-                                            data-tooltip="Start Learning">
+                                            data-tooltip="Preview">
                                             {% if topic.fullname %} {{topic.fullname}} {% else %} {{topic.name}} {% endif %}
                                         </a>
                                         {% else %}
@@ -197,7 +197,7 @@ icon: library_books
                                     <div class="col m12 l6 s12">
                                         <blockquote class="right-align">
                                         {% if topic.udemy %}
-                                            <span class="flow-text">{{ topic.udemy.discount }}</span>
+                                            <span class="flow-text">{{ topic.udemy.discount }}</span><br>
                                             <del class="gray-text">{{ topic.udemy.price }}</del>
                                         {% else %}
                                             <span class="flow-text">Gratis</span>
@@ -208,22 +208,21 @@ icon: library_books
                                 </div>
                             </div>
                             <div class="card-action">
-                                <a class="modal-trigger btn tooltipped blue-grey lighten-5" 
-                                    href="#modal-{{ topic.url }}" 
-                                    data-position="bottom" 
-                                    data-delay="50" 
-                                    data-tooltip="Preview">
-                                        <i class="material-icons blue-grey-text lighten-4">library_books</i>
-                                </a>
-                                {% if topic.udemy %}
+                                {% if topic.udemy %}                        
+                                <div class="col l6 m12 s12">
+                                    CouponCode: <br>
+                                    <code><mark>{{ topic.udemy.couponCode }}</mark></code>
+                                </div>
+                                <div class="col l6 m12 s12 right-align">
                                     <a target="_blank" 
                                         href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}" 
                                         class="tooltipped btn red accent-1" 
-                                        data-position="bottom" 
+                                        data-position="bottom"                            
                                         data-delay="50" 
                                         data-tooltip="Become a Premium Members">
-                                        <i class="material-icons white-text">lock_open</i>
+                                            <i class="material-icons white-text">lock_open</i> Join
                                     </a>
+                                </div>
                                 {% endif %}
                             </div>
                             {% if topic.coming_soon == false %}
@@ -233,18 +232,34 @@ icon: library_books
                                     {{topic.name}}
                                     <i class="material-icons right">close</i>
                                 </span>
-                                <!-- message card revel -->
-                                {% if topic.message %}
+                                <div class="row">
+                                    <!-- message card revel -->
+                                    {% if topic.message %}
                                     <p>{{topic.messages}}</p>
-                                {% else %}
+                                    {% else %}
                                     <p>{{ topic.descriptions }}</p>
-                                {% endif %}
-                                
-                                <!-- tags -->
-                                <hr>
-                                {% for tag in topic.tags %}
+                                    {% endif %}
+                                </div>
+                                <div class="row">
+                                    {% if a_last_post.date %}
+                                    Last updated: 
+                                    <code>{{ a_last_post.date | date: "%-d %B %Y" }}</code>
+                                    {% endif %}
+                                    {% if topic.catalogs %}
+                                    <br>
+                                    Kurikulum: <code>{{ topic.catalogs.size }}</code>
+                                    {% endif %} 
+                                    {% if post_list.size >= 1 %}
+                                    <br>
+                                    Total Materi: <code>{{ post_list.size }}</code>
+                                    {% endif %}
+                                </div>
+                                <div class="row">
+                                    <!-- tags -->
+                                    {% for tag in topic.tags %}
                                     <div class="chip"><i class="fa fa-tag"></i> {{tag}}</div>
-                                {% endfor %}
+                                    {% endfor %}
+                                </div>
                             </div>
                             {% endif %}
                         </div>
