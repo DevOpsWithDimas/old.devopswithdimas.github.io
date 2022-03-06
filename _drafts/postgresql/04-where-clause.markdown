@@ -156,3 +156,6 @@ hr-# where substring(first_name from 2 for 1) between 'h' and 'j';
          206 | William     | Gietz
 (18 rows)
 ```
+
+## Nulless predicate
+
