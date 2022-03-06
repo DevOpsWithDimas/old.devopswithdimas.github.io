@@ -10,7 +10,7 @@ categories:
 refs: 
 - https://www.postgresql.org/docs/current/
 youtube: 
-image_path: /resources/posts/postgresql/04-where-clause
+image_path: /resources/posts/postgresql/03d-where-clause
 comments: true
 gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
 catalog_key: sql-statement
