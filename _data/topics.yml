@@ -18,7 +18,6 @@
   coming_soon: false
   visible: true
 
-
 - name: JDBC with Postgresql
   fullname: 
   url: java-jdbc-psql
@@ -523,7 +522,7 @@
       deprecated: false
     
 - name: Openshift
-  fullname: 
+  fullname: 'DevOps RedHat Openshift: Pemula sampai Mahir'
   url: k8s-openshift
   icon: "devicons devicons-java"
   language: DevOps
@@ -532,7 +531,7 @@
   - DevOps
   - Docker
   - Kubernates
-  - Container
+  - Openshift
   descriptions:
     Temen-teman akan belajar Management Containerization dengan Openshift Kubernetes.
   messages:
@@ -541,7 +540,14 @@
   youtube:
   udemy: 
   coming_soon: true
-  visible: false
+  visible: true
+  catalogs:
+    - name: Pengenalan RedHat Openshift
+      key: introduction
+      description: 'Eps 1: Pengenalan RedHat Openshift'
+    - name: Getting started with minishift
+      key: getting-started
+      description: 'Eps 2: Getting started with free of Openshift using minishift'
 
 - name: Gitlab
   fullname: 'GitOps Gitlab: Pemula sampai Mahir'
@@ -695,3 +701,30 @@
     - name:  Validation, Data Binding, and Type Conversion
       key: validation
       description: 'Eps 5: Validation, Data Binding, and Type Conversion'
+
+- name: Apache JMeter
+  fullname: 'DevOps Apache JMeter - LoadTest Performance: Pemula sampai Mahir'
+  url: apache-jmeter
+  icon: "devicons devicons-java"
+  language: DevOps
+  color: green accent-2
+  tags:
+  - DevOps
+  - LoadPerformance
+  descriptions:
+    Temen-temen akan belajar LoadPerformance dengan menggunakan tools Apache JMeter untuk Web, Web Service, Jdbc, dan lain-lain.
+  messages:
+  publish: 2022-03-06T16:26:00+07:00
+  github: 
+  youtube:
+  udemy:
+  coming_soon: true
+  visible: true
+  catalogs:
+    - name: Pengenalan Apache JMeter
+      key: introduction
+      description: 'Eps 1: Pengenalan Apache JMeter'
+    - name: Getting Started
+      key: getting-started
+      description: 'Eps 2: Getting Started with Apache JMeter'
+    
