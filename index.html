@@ -55,15 +55,17 @@ layout: default
                     </div>
                     <div class="card-content">
                         <div class="row">
-                            <span class="flow-text">
+                            <span class="flow-text truncate">
                                 {% if topic.coming_soon == false and a_post %}
                                 <a href="{{ a_post.url | prepend: site.baseurl }}" 
                                     class="tooltipped" 
                                     data-position="bottom" 
                                     data-delay="50" 
                                     data-tooltip="Start Learning">
-                                    {{topic.name}}
+                                    {% if topic.fullname %} {{ topic.fullname }} {% else %} {{topic.name}} {% endif %}
                                 </a>
+                                {% else %}
+                                    {% if topic.fullname %} {{ topic.fullname }} {% else %} {{topic.name}} {% endif %}
                                 {% endif %}                            
                             </span>
                         </div>
@@ -72,25 +74,14 @@ layout: default
                                 {% if a_last_post.date %}
                                 Last updated: 
                                 <code>{{ a_last_post.date | date: "%-d %B %Y" }}</code>
-                                {% endif %}
-                                {% if topic.catalogs %}
-                                <br>
-                                Kurikulum: <code>{{ topic.catalogs.size }}</code>
-                                {% endif %} 
-                                {% if post_list.size >= 1 %}
-                                <br>
-                                Total Materi: <code>{{ post_list.size }}</code>
                                 {% endif %}              
                             </div>                           
                             <div class="col m12 l6 s12 right-align">
-                                {% if topic.udemy %}
-                                <span class="badge" data-badge-caption="{{ topic.udemy.expired }}">Exp: </span>
-                                {% endif %}
                                 <blockquote class="right-align">
                                 {% if topic.udemy %}
                                     <span class="flow-text">
                                         {{ topic.udemy.discount }}
-                                    </span>
+                                    </span><br>
                                     <del class="gray-text">{{ topic.udemy.price }}</del>
                                 {% else %}
                                     <span class="flow-text">Gratis</span>
@@ -121,22 +112,37 @@ layout: default
                     <div class="card-reveal">
                         <!-- title of card reveal -->
                         <span class="card-title grey-text text-darken-4">
-                            {{topic.name}}
+                            {% if topic.fullname %} {{ topic.fullname }} {% else %} {{topic.name}} {% endif %}                            
                             <i class="material-icons right">close</i>
                         </span>
-                        <!-- message card revel -->
-                        {% if topic.message %}
+                        <div class="row">
+                            <!-- message card revel -->
+                            {% if topic.message %}
                             <p>{{topic.messages}}</p>
-                        {% else %}
+                            {% else %}
                             <p>{{ topic.descriptions }}</p>
-                        {% endif %}
-                        
-                        <!-- tags -->
-                        <hr>
-                        {% for tag in topic.tags %}
-                            <div class="chip"><i class="fa fa-tag"></i> {{tag}}</div>
-                        {% endfor %}
-                    </div>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            {% if a_last_post.date %}
+                            Last updated: 
+                            <code>{{ a_last_post.date | date: "%-d %B %Y" }}</code>
+                            {% endif %}
+                            {% if topic.catalogs %}
+                            <br>
+                            Kurikulum: <code>{{ topic.catalogs.size }}</code>
+                            {% endif %} 
+                            {% if post_list.size >= 1 %}
+                            <br>
+                            Total Materi: <code>{{ post_list.size }}</code>
+                            {% endif %}
+                        </div>
+                        <div class="row"></div>
+                            <!-- tags -->
+                            {% for tag in topic.tags %}
+                                <div class="chip"><i class="fa fa-tag"></i> {{tag}}</div>
+                            {% endfor %}
+                        </div>
                     {% endif %}
                 </div>
             </div>
