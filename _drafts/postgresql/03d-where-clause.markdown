@@ -428,3 +428,5 @@ hr-# where job_id = any (ARRAY['IT_PROG', 'SA_MAN', 'MK_MAN']);
          201 | Michael    | 515.123.5555       | MK_MAN
 (11 rows)
 ```
+
+Untuk operator `ALL` dan lain-lainnya nanti kita bahas selanjutnya di Subquery ya.
