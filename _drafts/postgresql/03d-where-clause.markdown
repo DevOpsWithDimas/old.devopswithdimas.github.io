@@ -8,7 +8,12 @@ categories:
 - sql
 - select
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-WHERE
+- https://www.postgresql.org/docs/current/functions-logical.html
+- https://www.postgresql.org/docs/current/functions-comparison.html
+- https://www.postgresql.org/docs/current/functions-math.html
+- https://www.postgresql.org/docs/current/functions-matching.html
+- https://www.postgresql.org/docs/14/functions-array.html
 youtube: 
 image_path: /resources/posts/postgresql/03d-where-clause
 comments: true
@@ -39,7 +44,7 @@ Ilustrasi tersebut menggambarkan, suatu predicate atau `search_condition` yaitu 
 4. Null predicate
 5. Logical predicate
 6. Regular Expression (Regex) predicate
-7. Array comparision
+7. Row and Array Comparisons
 
 Ok kita bahas satu-per-satu ya, mulai dari relational predicate
 
@@ -339,3 +344,62 @@ hr-# where first_name ~ '^S.*(a|v|ph)';
          203 | Susan      | 515.123.7777       | HR_REP
 (11 rows)
 ```
+
+## Row and Array Comparisons
+
+This section describes several specialized constructs for making multiple comparisons between groups of values. These forms are syntactically related to the subquery forms but this time we do not involve subqueries. The forms involving array subexpressions are PostgreSQL extensions; the rest are SQL-compliant. All of the expression forms documented in this section return Boolean (true/false) results.
+
+1. `IN`
+2. `ANY` / `SOME`
+3. `ALL`
+
+Pertama kita bahas yang paling basic dulu yaitu `IN` operator, 
+
+{% highlight sql %}
+expression IN (value [, ...])
+{% endhighlight %}
+
+The right-hand side is a parenthesized list of scalar expressions. This is a shorthand notation for
+
+{% highlight sql %}
+expression = value1 OR
+expression = value2 OR
+expression = value3 OR
+...
+{% endhighlight %}
+
+Salah satu penggunaanya seperti berikut:
+
+{% gist page.gist "03d-select-where-in.sql" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select employee_id, first_name, phone_number, job_id
+hr-# from employees
+hr-# where job_id in ('IT_PROG', 'SA_MAN', 'MK_MAN');
+ employee_id | first_name |    phone_number    | job_id
+-------------+------------+--------------------+---------
+         103 | Alexander  | 590.423.4567       | IT_PROG
+         104 | Bruce      | 590.423.4568       | IT_PROG
+         105 | David      | 590.423.4569       | IT_PROG
+         106 | Valli      | 590.423.4560       | IT_PROG
+         107 | Diana      | 590.423.5567       | IT_PROG
+         145 | John       | 011.44.1344.429268 | SA_MAN
+         146 | Karen      | 011.44.1344.467268 | SA_MAN
+         147 | Alberto    | 011.44.1344.429278 | SA_MAN
+         148 | Gerald     | 011.44.1344.619268 | SA_MAN
+         149 | Eleni      | 011.44.1344.429018 | SA_MAN
+         201 | Michael    | 515.123.5555       | MK_MAN
+(11 rows)
+```
+
+Kemudian kita bahas untuk `SOME` dan `ANY`,
+
+{% highlight sql %}
+expression operator ANY (array expression)
+expression operator SOME (array expression)
+{% endhighlight %}
+
+The right-hand side is a parenthesized expression, which must yield an array value. The left-hand expression is evaluated and compared to each element of the array using the given operator, which must yield a Boolean result.
+
