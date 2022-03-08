@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Filtering data with WHERE clause"
+date: 2022-03-08T20:28:05+07:00
 lang: postgresql
 categories:
 - RDBMS
