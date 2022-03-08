@@ -38,7 +38,7 @@ Ilustrasi tersebut menggambarkan, suatu predicate atau `search_condition` yaitu 
 3. Between predicates
 4. Null predicate
 5. Logical predicate
-6. Pattern-matching predicate
+6. Regular Expression (Regex) predicate
 7. Array comparision
 
 Ok kita bahas satu-per-satu ya, mulai dari relational predicate
@@ -54,11 +54,11 @@ Relational predicates pada dasarnya adalah [comparison operators]({% post_url po
 
 Contoh penggunaannya seperti berikut:
 
-{% gist page.gist "04-select-where-relation-eq.sql" %}
+{% gist page.gist "03d-select-where-relation-eq.sql" %}
 
 Contoh lainnya seperti berikut:
 
-{% gist page.gist "04-select-where-relation-greater-than.sql" %}
+{% gist page.gist "03d-select-where-relation-greater-than.sql" %}
 
 Jika dijalankan maka hasilnya seperti berikut:
 
@@ -83,7 +83,7 @@ Operator `like` biasanya digunakan untuk tipe data `string` (`varchar`, `text`),
 
 Contoh kasus untuk expresion `%`, saya ingin mencari nama depan karyawan yang diawali oleh huruf `A`. Berikut querynya:
 
-{% gist page.gist "04-select-where-like-percent.sql" %}
+{% gist page.gist "03d-select-where-like-percent.sql" %}
 
 Jika dijalankan hasilnya seperti berikut:
 
@@ -102,7 +102,7 @@ hr-# where last_name like 'A%';
 
 Sedangkan untuk contoh expresion `_`, saya ingin mencari huruf ke 2 dari kolom `job_id` di tabel `jobs` mengadung `t`. Berikut querynya:
 
-{% gist page.gist "04-select-where-like-underscore.sql" %}
+{% gist page.gist "03d-select-where-like-underscore.sql" %}
 
 Jika dijalankan hasilnya seperti berikut:
 
@@ -123,7 +123,7 @@ Operator `BETWEEN` digunakan untuk memfilter dengan interval/rentang tertentu di
 
 Contoh kasusnya, Saya mau menampilkan data yang karywan yang memiliki gaji dari `4000` s/d `6000`. Berikut querynya:
 
-{% gist page.gist "04-select-where-between-number.sql" %}
+{% gist page.gist "03d-select-where-between-number.sql" %}
 
 Jika dijalankan hasilnya seperti berikut:
 
@@ -140,7 +140,7 @@ hr-# where salary between 17000 and 20000;
 
 Atau berikut contoh lainnya, saya mau mengambil `first_name` yang mengandung huruf `h` sampai `j` pada character ke 2. maka querynya seperti berikut:
 
-{% gist page.gist "04-select-where-between-char.sql" %}
+{% gist page.gist "03d-select-where-between-char.sql" %}
 
 Jika dijalankan hasilnya seperti berikut:
 
@@ -164,7 +164,7 @@ Operator `IS NULL` digunakan untuk memfiter data yang bernilai `null`.
 
 Contoh kasusnya, saya mau menampilkan data karywan yang tidak memiliki manager. Berikut querynya:
 
-{% gist page.gist "04-select-where-isnull.sql" %}
+{% gist page.gist "03d-select-where-isnull.sql" %}
 
 Jika dijalankan hasilnya seperti berikut:
 
@@ -188,7 +188,7 @@ Logical predicate pada dasarnya sama seperti [logical operators]({% post_url pos
 
 Kasusnya saya mau mencari data karyawan yang berkerja di `department_id = 90` dan yang `manager_id = 100` berarti kita bisa menggunakan operator `and`, berikut querynya:
 
-{% gist page.gist "04-select-where-logic-and.sql" %}
+{% gist page.gist "03d-select-where-logic-and.sql" %}
 
 Jika kita jalankan maka hasilnya seperti berikut:
 
@@ -205,7 +205,7 @@ hr-# where department_id = 90 and manager_id = 100;
 
 Dan sedangkan untuk operator `or` seperti berikut:
 
-{% gist page.gist "04-select-where-logic-or.sql" %}
+{% gist page.gist "03d-select-where-logic-or.sql" %}
 
 Jika kita jalankan maka hasilnya seperti berikut:
 
@@ -235,7 +235,7 @@ hr-# where department_id = 90 or manager_id = 100;
 
 Dan yang terakhir kita juga bisa menggunakan `not` operator seperti berikut:
 
-{% gist page.gist "04-select-where-logic-not.sql" %}
+{% gist page.gist "03d-select-where-logic-not.sql" %}
 
 Jika di jalankan maka hasilnya sebagai berikut:
 
@@ -254,4 +254,88 @@ hr-# where salary not between 3000 and 20000;
          127 | James      | Landry      | ST_CLERK |        120 |  2400.00
          128 | Steven     | Markle      | ST_CLERK |        120 |  2200.00
 (25 rows)
+```
+
+## Regular Expression (Regex) predicate
+
+The `SIMILAR TO` operator returns `true` or `false` depending on whether its pattern matches the given string. It is similar to `LIKE`, except that it interprets the pattern using the SQL standard's definition of a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions).
+
+In addition to these facilities borrowed from `LIKE`, `SIMILAR TO` supports these pattern-matching metacharacters borrowed from `POSIX` regular expressions:
+
+1. `|` denotes alternation (either of two alternatives).
+2. `*` denotes repetition of the previous item zero or more times.
+3. `+` denotes repetition of the previous item one or more times.
+4. `?` denotes repetition of the previous item zero or one time.
+5. `{m}` denotes repetition of the previous item exactly m times.
+6. `{m,}` denotes repetition of the previous item m or more times.
+7. `{m,n}` denotes repetition of the previous item at least m and not more than n times.
+8. `()` can be used to group items into a single logical item.
+9. `[...]` specifies a character class, just as in POSIX regular expressions.
+
+Some examples:
+
+{% highlight sql %}
+'abc' SIMILAR TO 'abc'          true
+'abc' SIMILAR TO 'a'            false
+'abc' SIMILAR TO '%(b|d)%'      true
+'abc' SIMILAR TO '(b|c)%'       false
+'-abc-' SIMILAR TO '%\mabc\M%'  true
+'xabcy' SIMILAR TO '%\mabc\M%'  false
+{% endhighlight %}
+
+Salah satu penggunaanya seperti berikut:
+
+{% gist page.gist "03d-select-where-similar-to.sql" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select employee_id, first_name, phone_number, job_id
+hr-# from employees
+hr-# where first_name similar to 'Ste(v|ph)en';
+ employee_id | first_name | phone_number |  job_id
+-------------+------------+--------------+----------
+         100 | Steven     | 515.123.4567 | AD_PRES
+         128 | Steven     | 650.124.1434 | ST_CLERK
+         138 | Stephen    | 650.121.2034 | ST_CLERK
+(3 rows)
+```
+
+Selain menggunakan `SIMILAR TO` Operators kita juga bisa menggunakan `POSIX` regular expression yang lebih powerfull dibadingkan `LIKE` dan `SIMILAR TO`. Many Unix tools such as `egrep`, `sed`, or `awk` use a pattern matching language that is similar to the one described here.
+
+Some examples:
+
+{% highlight sql %}
+'abcd' ~ 'bc'     true
+'abcd' ~ 'a.c'    true -- dot matches any character
+'abcd' ~ 'a.*d'   true -- * repeats the preceding pattern item
+'abcd' ~ '(b|x)'  true -- | means OR, parentheses group
+'abcd' ~ '^a'     true -- ^ anchors to start of string
+'abcd' ~ '^(b|c)' false -- would match except for anchoring
+{% endhighlight %}
+
+Salah satu penggunaanya seperti berikut:
+
+{% gist page.gist "03d-select-where-posix.sql" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select employee_id, first_name, phone_number, job_id
+hr-# from employees
+hr-# where first_name ~ '^S.*(a|v|ph)';
+ employee_id | first_name |    phone_number    |  job_id
+-------------+------------+--------------------+----------
+         100 | Steven     | 515.123.4567       | AD_PRES
+         117 | Sigal      | 515.127.4564       | PU_CLERK
+         123 | Shanta     | 650.123.4234       | ST_MAN
+         128 | Steven     | 650.124.1434       | ST_CLERK
+         138 | Stephen    | 650.121.2034       | ST_CLERK
+         161 | Sarath     | 011.44.1345.529268 | SA_REP
+         166 | Sundar     | 011.44.1346.629268 | SA_REP
+         173 | Sundita    | 011.44.1343.329268 | SA_REP
+         192 | Sarah      | 650.501.1876       | SH_CLERK
+         194 | Samuel     | 650.501.3876       | SH_CLERK
+         203 | Susan      | 515.123.7777       | HR_REP
+(11 rows)
 ```
