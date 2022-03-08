@@ -403,3 +403,28 @@ expression operator SOME (array expression)
 
 The right-hand side is a parenthesized expression, which must yield an array value. The left-hand expression is evaluated and compared to each element of the array using the given operator, which must yield a Boolean result.
 
+The simple example is `= ANY` look like this:
+
+{% gist page.gist "03d-select-where-eq-any-some.sql" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select employee_id, first_name, phone_number, job_id
+hr-# from employees
+hr-# where job_id = any (ARRAY['IT_PROG', 'SA_MAN', 'MK_MAN']);
+ employee_id | first_name |    phone_number    | job_id
+-------------+------------+--------------------+---------
+         103 | Alexander  | 590.423.4567       | IT_PROG
+         104 | Bruce      | 590.423.4568       | IT_PROG
+         105 | David      | 590.423.4569       | IT_PROG
+         106 | Valli      | 590.423.4560       | IT_PROG
+         107 | Diana      | 590.423.5567       | IT_PROG
+         145 | John       | 011.44.1344.429268 | SA_MAN
+         146 | Karen      | 011.44.1344.467268 | SA_MAN
+         147 | Alberto    | 011.44.1344.429278 | SA_MAN
+         148 | Gerald     | 011.44.1344.619268 | SA_MAN
+         149 | Eleni      | 011.44.1344.429018 | SA_MAN
+         201 | Michael    | 515.123.5555       | MK_MAN
+(11 rows)
+```
