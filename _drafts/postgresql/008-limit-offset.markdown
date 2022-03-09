@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Limit dan Offset data di PostgreSQL"
+title: "Limit dan Offset rows"
 date: 2018-11-10T11:51:27+07:00
 lang: psql
 categories:

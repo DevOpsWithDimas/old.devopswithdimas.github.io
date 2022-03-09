@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "03f-limit-offset-clause"
+title: "Limit dan Offset rows"
 lang: postgresql
 categories:
 - RDBMS
@@ -8,9 +8,9 @@ categories:
 - sql
 - select
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/docs/current/queries-limit.html
 youtube: 
-image_path: /resources/posts/postgresql/03f-limit-offset-clause
+image_path: /resources/posts/postgresql/03f-limit-offset
 comments: true
 gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
 catalog_key: sql-statement
