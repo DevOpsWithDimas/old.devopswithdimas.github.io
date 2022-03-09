@@ -1,6 +1,6 @@
 ---
-layout: {{ layout }}
-title: "{{ title }}"
+layout: post
+title: "03d-pod-topology"
 lang: k8s
 categories:
 - DevOps
@@ -8,16 +8,15 @@ categories:
 - Kubernetes
 - Workloads
 refs: 
-- https://docs.docker.com/
-- https://kubernetes.io/docs/home/
-- https://minikube.sigs.k8s.io/docs/
-youtube: {{ youtube }}
+- https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
+youtube: 
 comments: true
 catalog_key: workloads
-image_path: /resources/posts/kubernetes/{{ title }}
+image_path: /resources/posts/kubernetes/03d-pod-topology
 gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
+
 
 description...
 
