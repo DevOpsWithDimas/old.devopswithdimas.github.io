@@ -69,43 +69,48 @@ layout: default
                                 {% endif %}                            
                             </span>
                         </div>
-                        <div class="row"> 
-                            <div class="col m12 l6 s12">
-                                {% if a_last_post.date %}
-                                Last updated: 
-                                <code>{{ a_last_post.date | date: "%-d %B %Y" }}</code>
-                                {% endif %}              
-                            </div>                           
-                            <div class="col m12 l6 s12 right-align">
-                                <blockquote class="right-align">
-                                {% if topic.udemy %}
-                                    <span class="flow-text">
-                                        {{ topic.udemy.discount }}
-                                    </span><br>
+                    </div>
+                    <div class="card-action">
+                        <div class="row">
+                            {% if a_last_post.date %}
+                                <span>Last updated: {{ a_last_post.date | date: "%-d %B %Y" }}</span>
+                            {% endif %} 
+                        </div>
+                        {% if topic.udemy %}
+                        <div class="row">
+                            <div class="right-align">
+                                {% if topic.udemy.price %}
+                                    {% if topic.udemy.discount %}
                                     <del class="gray-text">{{ topic.udemy.price }}</del>
+                                    <span class="flow-text">{{ topic.udemy.discount }}</span>
+                                    {% else %}
+                                    <span class="flow-text">{{ topic.udemy.price }}</span>
+                                    {% endif %}
                                 {% else %}
                                     <span class="flow-text">Gratis</span>
                                 {% endif %}
-                                </blockquote>                                
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="card-action">
-                        {% if topic.udemy %}                        
-                        <div class="col l6 m12 s12">
-                            CouponCode: <br>
-                            <code><mark>{{ topic.udemy.couponCode }}</mark></code>
-                        </div>
-                        <div class="col l6 m12 s12 right-align">
-                            <a target="_blank" 
-                                href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}" 
-                                class="tooltipped btn red accent-1" 
-                                data-position="bottom"                            
-                                data-delay="50" 
-                                data-tooltip="Become a Premium Members">
-                                    <i class="material-icons white-text">lock_open</i> Join
-                            </a>
-                        </div>
+                            </div>
+                        </div>  
+                        <div class="row">
+                            <div class="col l6 m6 s12">
+                                <div>
+                                    CouponCode:
+                                    <code><mark>{{ topic.udemy.couponCode }}</mark></code>
+                                </div>
+                            </div>
+                            <div class="col l6 m6 s12">
+                                <div class="right-align">
+                                    <a target="_blank" 
+                                        href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}" 
+                                        class="tooltipped btn red accent-1" 
+                                        data-position="bottom"                            
+                                        data-delay="50" 
+                                        data-tooltip="Become a Premium Members">
+                                            <i class="material-icons white-text">lock_open</i> Join
+                                    </a>
+                                </div>
+                            </div>
+                        </div>                                              
                         {% endif %}
                     </div>
                     {% if topic.coming_soon == false %}
