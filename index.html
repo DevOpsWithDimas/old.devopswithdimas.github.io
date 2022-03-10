@@ -53,7 +53,7 @@ layout: default
                                 src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
                         {% endif %}
                     </div>
-                    <div class="card-content">
+                    <div class="card-content">                        
                         <div class="row">
                             <span class="flow-text truncate">
                                 {% if topic.coming_soon == false and a_post %}
@@ -69,13 +69,19 @@ layout: default
                                 {% endif %}                            
                             </span>
                         </div>
-                    </div>
-                    <div class="card-action">
                         <div class="row">
                             {% if a_last_post.date %}
-                                <span>Last updated: {{ a_last_post.date | date: "%-d %B %Y" }}</span>
+                            <span class="badge" data-badge-caption="">Latest update: {{ a_last_post.date | date: "%-d %B %Y" }}</span>
                             {% endif %} 
                         </div>
+                        <div class="row">
+                            {% if topic.catalogs %}
+                            <span class="badge" data-badge-caption="Kurikulum">{{topic.catalogs.size}}</span>
+                            {% endif %}
+                            <span class="badge" data-badge-caption="Pelajaran">{{post_list.size}}</span>
+                        </div>
+                    </div>
+                    <div class="card-action">
                         {% if topic.udemy %}
                         <div class="row">
                             <div class="right-align">
@@ -93,10 +99,12 @@ layout: default
                         </div>  
                         <div class="row">
                             <div class="col l6 m6 s12">
+                                {% if topic.udemy.couponCode %}
                                 <div>
                                     CouponCode:
                                     <code><mark>{{ topic.udemy.couponCode }}</mark></code>
                                 </div>
+                                {% endif %}
                             </div>
                             <div class="col l6 m6 s12">
                                 <div class="right-align">
