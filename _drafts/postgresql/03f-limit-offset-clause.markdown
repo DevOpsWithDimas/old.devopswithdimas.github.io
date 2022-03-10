@@ -21,7 +21,7 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Limit dan Offset. Se
 
 1. Limit clause
 2. Offset clause
-3. Applying limit and offset
+3. Applying limit and offset together
 
 Ok langsung aja kita bahas materi yang pertama:
 
@@ -76,7 +76,7 @@ hr-# limit 10;
 
 ![konsep-offset]({{ page.image_path | prepend: site.baseurl }}/02-offset.png)
 
-Basic format Limit clause seperti berikut:
+Basic format offset clause seperti berikut:
 
 {% highlight sql %}
 SELECT select_list
@@ -108,4 +108,42 @@ hr-# offset 100;
          205 | Shelley    | 12000.00 |
          206 | William    |  8300.00 |
 (7 rows)
+```
+
+## Applying limit and offset together
+
+If both `OFFSET` and `LIMIT` appear, then `OFFSET` rows are skipped before starting to count the `LIMIT` rows that are returned. Secara konsep fungsi `LIMIT` dan `OFFSET` jika kita gabungkan maka ilustrasinya seperti berikut:
+
+![konsep-limit-offset]({{ page.image_path | prepend: site.baseurl }}/03-limit-offset.png)
+
+SQL Format limit & offset clause seperti berikut:
+
+{% highlight sql %}
+SELECT select_list
+FROM table_expression
+[ ORDER BY ... ]
+[ LIMIT { number | ALL } ] 
+[ OFFSET number ]
+{% endhighlight %}
+
+Contoh penggunaannya seperti berikut:
+
+{% gist page.gist "03f-select-limit-offset-number.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select employee_id, first_name, salary, commission_pct
+hr-# from employees
+hr-# order by employee_id
+hr-# limit 5
+hr-# offset 100;
+ employee_id | first_name |  salary  | commission_pct
+-------------+------------+----------+----------------
+         200 | Jennifer   |  4400.00 |
+         201 | Michael    | 13000.00 |
+         202 | Pat        |  6000.00 |
+         203 | Susan      |  6500.00 |
+         204 | Hermann    | 10000.00 |
+(5 rows)
 ```
