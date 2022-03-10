@@ -69,3 +69,43 @@ hr-# limit 10;
          109 | Daniel     |  9000.00 |
 (10 rows)
 ```
+
+## Offset clause
+
+`OFFSET` says to skip that many rows before beginning to return rows. `OFFSET 0` is the same as omitting the OFFSET clause, as is `OFFSET` with a `NULL` argument. Secara konsep fungsi `OFFSET` jika kita gambarkan seperti berikut:
+
+![konsep-offset]({{ page.image_path | prepend: site.baseurl }}/02-offset.png)
+
+Basic format Limit clause seperti berikut:
+
+{% highlight sql %}
+SELECT select_list
+FROM table_expression
+[ ORDER BY ... ]
+[ OFFSET number ]
+{% endhighlight %}
+
+Sama halnya dengan `LIMIT`, kita membutuhkan `ORDER BY` clause untuk mendapatkan data yang predicatable.
+
+Contoh penggunaannya seperti berikut:
+
+{% gist page.gist "03f-select-offset-number.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select employee_id, first_name, salary, commission_pct
+hr-# from employees
+hr-# order by employee_id
+hr-# offset 100;
+ employee_id | first_name |  salary  | commission_pct
+-------------+------------+----------+----------------
+         200 | Jennifer   |  4400.00 |
+         201 | Michael    | 13000.00 |
+         202 | Pat        |  6000.00 |
+         203 | Susan      |  6500.00 |
+         204 | Hermann    | 10000.00 |
+         205 | Shelley    | 12000.00 |
+         206 | William    |  8300.00 |
+(7 rows)
+```
