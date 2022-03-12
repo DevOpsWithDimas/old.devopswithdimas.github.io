@@ -634,13 +634,16 @@
     - name: SQL - Data manipulation
       key: dml-statement
       description: ''
-    - name: SQL - Data definition
-      key: ddl-statement
+    - name: SQL - Data definition (Tables)
+      key: ddl-statement-table
       description: ''
-    - name: Indexes
+    - name: 'Study Kasus: Database design (Mapping)'
+      key: study-cases-database-design
+      description: ''
+    - name: SQL - Indexes
       key: indexes
       description: ''
-    - name: User Management
+    - name: SQL - Users Management
       key: user-management
       description: ''
     - name: Type Conversion
@@ -649,11 +652,8 @@
     - name: Query Performance Tips
       key: query-tunning-tips
       description: ''
-    - name: Database design (Mapping)
-      key: db-relational-mapping
-      description: ''
     - name: 'Study Kasus: Tokopedia clone'
-      key: study-cases-database-design
+      key: study-cases-tokopedia-clone
       description: ''
     - name: 'Server Administration'
       key: server-administration
