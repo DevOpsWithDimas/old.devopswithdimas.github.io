@@ -1,18 +1,23 @@
 ---
 layout: post
-title: "Time is your practice part 2"
-date: 2018-11-21T14:28:28+07:00
-lang: psql
+title: "Time your practice (part 2)"
+lang: postgresql
 categories:
 - RDBMS
 - PostgreSQL
-refs: []
-youtube: K4G-GrWFTlQ
+- sql
+- select
+refs: 
+- https://www.postgresql.org/docs/current/queries.html
+youtube: 
+image_path: /resources/posts/postgresql/03g-quis-1
 comments: true
-image_path: /resources/posts/psql/psql-quis-2
-gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
+gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
+catalog_key: select-statement
 downloads: []
 ---
+
+Hai semuanya di materi sebelumnya kita sudah membahas beberapa hal basic sepert SQL Select statement, build-in Functions and Operators, WHERE clause, dan limit serta offset. Untuk memahami materi sebelumnya saatnya temen-temen untuk mencoba dengan mengerjakan soal seperti berikut: 
 
 1. buatlah _query_ untuk menampilkan data sebagai berikut:
 ![Hasil soal no 1]({{ site.baseurl }}{{ page.image_path | prepend: site.baseurl }}/soal1.png)
