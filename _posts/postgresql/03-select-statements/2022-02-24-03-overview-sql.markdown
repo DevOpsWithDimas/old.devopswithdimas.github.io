@@ -16,7 +16,7 @@ youtube:
 image_path: /resources/posts/postgresql/03-overview-sql
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
-catalog_key: sql-statement
+catalog_key: select-statement
 downloads: []
 ---
 

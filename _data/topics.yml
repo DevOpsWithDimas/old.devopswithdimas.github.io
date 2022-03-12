@@ -628,13 +628,13 @@
     - name: Getting started
       key: getting-started
       description: 'Eps 2: Getting Started with PostgreSQL Database for Learning env'
-    - name: SQL Statement
-      key: sql-statement
+    - name: SQL - Select Statement
+      key: select-statement
       description: 'Eps 3: Query with Select statement'
-    - name: Data manipulation
+    - name: SQL - Data manipulation
       key: dml-statement
       description: ''
-    - name: Data definition
+    - name: SQL - Data definition
       key: ddl-statement
       description: ''
     - name: Indexes
