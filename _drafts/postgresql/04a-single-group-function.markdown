@@ -117,9 +117,18 @@ hr-# FROM employees;
 
 ## Using GROUP BY clause
 
-The `GROUP BY` clause is used to group together those rows in a table that have the same values in all the columns listed. 
+The `GROUP BY` clause is used to group together those rows in a table that have the same values in all the columns listed. Jika di gambarkan berikut ilustrasinya
 
 ![ilustration-group-by]({{ page.image_path | prepend: site.baseurl }}/03-ilustration-group-by.png)
+
+Untuk basic usage seperti berikut:
+
+{% highlight sql %}
+SELECT select_list
+FROM ...
+[WHERE ...]
+GROUP BY grouping_column_reference [, grouping_column_reference]...
+{% endhighlight %}
 
 The effect is to combine each set of rows having common values into one group row that represents all rows in the group. Berikut adalah contoh penggunaanya di SQL:
 
@@ -143,6 +152,8 @@ hr-# GROUP BY job_id;
  AC_ACCOUNT
 (19 rows)
 ```
+
+NOTE: Grouping without aggregate expressions effectively calculates the set of distinct values in a column.
 
 In general, if a table is grouped, columns that are not listed in GROUP BY cannot be referenced except in aggregate expressions. An example with aggregate expressions is:
 
@@ -173,3 +184,42 @@ hr-# GROUP BY job_id;
 
 ## Using HAVING clause
 
+If a table has been grouped using `GROUP BY`, but only certain groups are of interest, the `HAVING` clause can be used, much like a `WHERE` clause, to eliminate groups from the result. 
+
+The syntax is:
+
+{% highlight sql %}
+SELECT select_list 
+FROM ... 
+[WHERE ...] 
+GROUP BY ... 
+HAVING boolean_expression
+{% endhighlight %}
+
+Expressions in the `HAVING` clause can refer both to grouped expressions and to ungrouped expressions (which necessarily involve an aggregate function). Berikut adalah contoh penggunaanya di SQL:
+
+{% gist page.gist "04a-select-group-by-with-having.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# SELECT  job_id,
+hr-#         count(*) count_employees_by_job,
+hr-#         sum(salary) salary_group_by_job
+hr-# FROM employees
+hr-# GROUP BY job_id
+hr-# HAVING count(*) >= 5;
+   job_id   | count_employees_by_job | salary_group_by_job
+------------+------------------------+---------------------
+ SH_CLERK   |                     20 |            64300.00
+ SA_MAN     |                      5 |            61000.00
+ IT_PROG    |                      5 |            28800.00
+ ST_CLERK   |                     20 |            55700.00
+ PU_CLERK   |                      5 |            13900.00
+ ST_MAN     |                      5 |            36400.00
+ SA_REP     |                     30 |           250500.00
+ FI_ACCOUNT |                      5 |            39600.00
+(8 rows)
+
+hr=#
+```
