@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Single Row / Group functions"
+date: 2022-03-13T15:51:40+07:00
 lang: postgresql
 categories:
 - RDBMS
