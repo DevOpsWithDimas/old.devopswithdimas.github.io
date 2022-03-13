@@ -25,6 +25,7 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Jenis dari Functions
 3. Using `GROUP BY` clause
 4. Using `HAVING` clause
 5. Different between `WHERE` and `HAVING` clause?
+6. Using `GROUPING SET` clause
 
 Ok langsung aja kita bahas materi yang pertama
 
@@ -222,7 +223,7 @@ hr-# HAVING count(*) >= 5;
 (8 rows)
 ```
 
-## Different between `WHERE` and `HAVING` clause?
+## Different between WHERE and HAVING clause?
 
 Mungkin dari temen-temen ada yang bertanya? jika menggunakan `HAVING` clause apa bedanya dengan `WHERE` clause?
 
@@ -251,3 +252,65 @@ hr-# HAVING sum(salary) >= 20000;
  FI_ACCOUNT |                      5 |            39600.00
 (3 rows)
 ```
+
+## Using GROUPING SET clause
+
+More complex grouping operations than those described above are possible using the concept of `grouping sets`. 
+
+The data selected by the `FROM` and `WHERE` clauses is grouped separately by each specified grouping set, aggregates computed for each group just as for simple `GROUP BY` clauses, and then the results returned. Berikut adalah contoh penggunaanya di SQL:
+
+{% gist page.gist "04a-select-group-by-grouping-set.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# SELECT manager_id, department_id, count(*), sum(salary)
+hr-# FROM employees
+hr-# GROUP BY GROUPING SETS ((manager_id), (department_id));
+ manager_id | department_id | count |    sum
+------------+---------------+-------+-----------
+        103 |               |     4 |  19800.00
+            |               |     1 |  24000.00
+        101 |               |     5 |  44900.00
+        122 |               |     8 |  23600.00
+        121 |               |     8 |  25400.00
+        114 |               |     5 |  13900.00
+        102 |               |     1 |   9000.00
+        205 |               |     1 |   8300.00
+        146 |               |     6 |  51000.00
+        108 |               |     5 |  39600.00
+        147 |               |     6 |  46600.00
+        201 |               |     1 |   6000.00
+        120 |               |     8 |  22100.00
+        100 |               |    14 | 155400.00
+        124 |               |     8 |  23000.00
+        145 |               |     6 |  51000.00
+        123 |               |     8 |  25900.00
+        148 |               |     6 |  51900.00
+        149 |               |     6 |  50000.00
+            |            70 |     1 |  10000.00
+            |            80 |    34 | 304500.00
+            |            20 |     2 |  19000.00
+            |            10 |     1 |   4400.00
+            |               |     1 |   7000.00
+            |            90 |     3 |  58000.00
+            |           100 |     6 |  51600.00
+            |           110 |     2 |  20300.00
+            |            30 |     6 |  24900.00
+            |            50 |    45 | 156400.00
+            |            40 |     1 |   6500.00
+            |            60 |     5 |  28800.00
+(31 rows)
+```
+
+Jika kita perhatikan query tersebut sama jika kita menjalankan 2 query tetapi hasilnya digabungkan menjadi 1 result sets, seperti berikut:
+
+{% highlight sql %}
+select manager_id, count(*), sum(salary)
+from employees
+group by manager_id;
+
+select department_id, count(*), sum(salary)
+from employees
+group by department_id;
+{% endhighlight %}

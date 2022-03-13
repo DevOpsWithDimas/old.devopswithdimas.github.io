@@ -187,7 +187,6 @@ Contoh penggunaannya seperti berikut:
 Jika dijalankan maka hasilnya seperti berikut:
 
 ```postgresql-console
-hr=# select employee_id, first_name, salary,
 hr=# select employee_id, first_name, salary, commission_pct
 hr-# from employees
 hr-# order by
