@@ -9,6 +9,7 @@ categories:
 - select
 refs: 
 - https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-GROUP
+- https://www.postgresql.org/docs/current/functions-aggregate.html
 youtube: 
 image_path: /resources/posts/postgresql/04a-single-group-function
 comments: true
@@ -63,3 +64,53 @@ hr-# LIMIT 10;
 ```
 
 ## Using Group / Aggregate functions
+
+Aggregate functions compute a single result from a set of input values. Jika kita gambarkan ilustrasinya seperti berikut:
+
+![ilustration-aggregate-function]({{ page.image_path | prepend: site.baseurl }}/02-ilustration-aggregate-func.png)
+
+Group atau Aggregate function di bagi menjadi beberapa diantaranya:
+
+1. General-Purpose Aggregate Functions
+2. Aggregate Functions for Statistics
+3. Ordered-Set Aggregate Functions
+4. Hypothetical-Set Aggregate Functions
+5. Grouping Operations
+
+Untuk general purpose aggregate function berikut adalah beberapa function yang paling umum di gunakan:
+
+| Functions	                                                |  Description        |
+| :------- 	                                                | :----------         |
+| `avg ( numeric ) → numeric`             | Computes the average (arithmetic mean) of all the non-null input values. |
+| `bool_and ( boolean ) → boolean`        | Returns true if all non-null input values are true, otherwise false. |
+| `bool_or ( boolean ) → boolean`         | Returns true if any non-null input value is true, otherwise false. |
+| `count ( "any" ) → bigint`              | Computes the number of input rows in which the input value is not null. |
+| `max ( any ) → same as input type`      | Computes the maximum of the non-null input values. Available for any `numeric`, `string`, `date/time`, or `enum` type, as well as `inet`, `interval`, `money`, `oid`, `pg_lsn`, `tid`, and `arrays` of any of these types. |
+| `min ( any ) → same as input type`      | Computes the minimum of the non-null input values. Available for any `numeric`, `string`, `date/time`, or `enum` type, as well as `inet`, `interval`, `money`, `oid`, `pg_lsn`, `tid`, and `arrays` of any of these types. |
+| `sum ( number ) → same as input type`   | Computes the sum of the non-null input values. |
+
+Sedangkan untuk Statistic purpose berikut adalah beberapa function yang paling umum di gunakan:
+
+| Functions	                                                |  Description        |
+| :------- 	                                                | :----------         |
+| `corr ( Y double , X double ) → double`                   | Computes the correlation coefficient. |
+| `stddev ( numeric_type ) → double`                        | This is a historical alias for stddev_samp. |
+| `variance ( numeric_type ) → double`                      | This is a historical alias for var_samp. |
+
+Dan masih banyak lagi, Berikut adalah contoh penggunaanya di SQL:
+
+{% gist page.gist "04a-select-aggregate-func.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# SELECT  max(salary) max_salary,
+hr-#         min(salary) min_salary,
+hr-#         avg(salary) avg_salary,
+hr-#         count(*) count_employees
+hr-# FROM employees;
+ max_salary | min_salary |      avg_salary       | count_employees
+------------+------------+-----------------------+-----------------
+   24000.00 |    2100.00 | 6461.6822429906542056 |             107
+(1 row)
+```
