@@ -8,7 +8,7 @@ categories:
 - PostgreSQL
 - getting-started
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/docs/14/
 youtube: 
 image_path: /resources/posts/psql/02-install-postgres
 comments: true

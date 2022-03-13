@@ -9,7 +9,7 @@ categories:
 - sql
 - select
 refs: 
-- https://www.postgresql.org/docs/current/queries-limit.html
+- https://www.postgresql.org/docs/14/queries-limit.html
 youtube: 
 image_path: /resources/posts/postgresql/03f-limit-offset
 comments: true

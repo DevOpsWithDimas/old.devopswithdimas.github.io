@@ -9,8 +9,8 @@ categories:
 - sql
 - select
 refs: 
-- https://www.postgresql.org/docs/current/
-- https://www.postgresql.org/docs/current/typeconv.html
+- https://www.postgresql.org/docs/14/
+- https://www.postgresql.org/docs/14/typeconv.html
 youtube: 
 image_path: /resources/posts/postgresql/03b-sql-operators
 comments: true

@@ -9,10 +9,10 @@ categories:
 - sql
 - select
 refs: 
-- https://www.postgresql.org/docs/current/functions-string.html
-- https://www.postgresql.org/docs/current/functions-math.html
-- https://www.postgresql.org/docs/current/functions-formatting.html
-- https://www.postgresql.org/docs/current/functions-datetime.html
+- https://www.postgresql.org/docs/14/functions-string.html
+- https://www.postgresql.org/docs/14/functions-math.html
+- https://www.postgresql.org/docs/14/functions-formatting.html
+- https://www.postgresql.org/docs/14/functions-datetime.html
 youtube: 
 image_path: /resources/posts/postgresql/03c-sql-functions
 comments: true

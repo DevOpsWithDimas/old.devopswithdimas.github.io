@@ -7,7 +7,7 @@ categories:
 - RDBMS
 - PostgreSQL
 refs: 
-- https://www.postgresql.org/docs/current/tutorial-accessdb.html
+- https://www.postgresql.org/docs/14/tutorial-accessdb.html
 youtube: 
 comments: true
 gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2

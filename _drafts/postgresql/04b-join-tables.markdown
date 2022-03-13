@@ -8,7 +8,7 @@ categories:
 - sql
 - select
 refs: 
-- https://www.postgresql.org/docs/current/queries-table-expressions.html#joined-tables
+- https://www.postgresql.org/docs/14/queries-table-expressions.html#joined-tables
 youtube: 
 image_path: /resources/posts/postgresql/03h-join-tables
 comments: true

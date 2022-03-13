@@ -8,7 +8,7 @@ categories:
 - PostgreSQL
 - getting-started
 refs: 
-- https://www.postgresql.org/docs/current/app-psql.html
+- https://www.postgresql.org/docs/14/app-psql.html
 youtube: 
 image_path: /resources/posts/postgresql/02b-use-psql
 comments: true

@@ -8,7 +8,7 @@ categories:
 - PostgreSQL
 - getting-started
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/docs/14/
 - https://www.pgadmin.org/docs/pgadmin4/latest/index.html
 youtube: 
 image_path: /resources/posts/postgresql/02c-use-pgadmin

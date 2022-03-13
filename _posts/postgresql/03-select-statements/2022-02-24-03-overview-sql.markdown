@@ -9,9 +9,9 @@ categories:
 - sql
 - select
 refs: 
-- https://www.postgresql.org/docs/current/sql.html
-- https://www.postgresql.org/docs/current/datatype.html
-- https://www.postgresql.org/docs/current/queries-select-lists.html
+- https://www.postgresql.org/docs/14/sql.html
+- https://www.postgresql.org/docs/14/datatype.html
+- https://www.postgresql.org/docs/14/queries-select-lists.html
 youtube: 
 image_path: /resources/posts/postgresql/03-overview-sql
 comments: true

@@ -8,7 +8,7 @@ categories:
 - sql
 - select
 refs: 
-- https://www.postgresql.org/docs/current/queries-union.html
+- https://www.postgresql.org/docs/14/queries-union.html
 youtube: 
 image_path: /resources/posts/postgresql/03k-combining-queries
 comments: true

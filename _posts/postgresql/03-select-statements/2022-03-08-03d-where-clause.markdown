@@ -9,11 +9,11 @@ categories:
 - sql
 - select
 refs: 
-- https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-WHERE
-- https://www.postgresql.org/docs/current/functions-logical.html
-- https://www.postgresql.org/docs/current/functions-comparison.html
-- https://www.postgresql.org/docs/current/functions-math.html
-- https://www.postgresql.org/docs/current/functions-matching.html
+- https://www.postgresql.org/docs/14/queries-table-expressions.html#QUERIES-WHERE
+- https://www.postgresql.org/docs/14/functions-logical.html
+- https://www.postgresql.org/docs/14/functions-comparison.html
+- https://www.postgresql.org/docs/14/functions-math.html
+- https://www.postgresql.org/docs/14/functions-matching.html
 - https://www.postgresql.org/docs/14/functions-array.html
 youtube: 
 image_path: /resources/posts/postgresql/03d-where-clause

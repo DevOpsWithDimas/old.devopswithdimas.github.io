@@ -8,8 +8,8 @@ categories:
 - sql
 - select
 refs: 
-- https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-GROUP
-- https://www.postgresql.org/docs/current/functions-aggregate.html
+- https://www.postgresql.org/docs/14/queries-table-expressions.html#QUERIES-GROUP
+- https://www.postgresql.org/docs/14/functions-aggregate.html
 youtube: 
 image_path: /resources/posts/postgresql/04a-single-group-function
 comments: true
@@ -115,7 +115,7 @@ hr-# FROM employees;
 (1 row)
 ```
 
-## Using `GROUP BY` clause
+## Using GROUP BY clause
 
 The `GROUP BY` clause is used to group together those rows in a table that have the same values in all the columns listed. 
 
@@ -170,4 +170,6 @@ hr-# GROUP BY job_id;
  AC_ACCOUNT |                      1 |             8300.00
 (19 rows)
 ```
+
+## Using HAVING clause
 

@@ -7,7 +7,7 @@ categories:
 - RDBMS
 - PostgreSQL
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/docs/14/
 - https://en.wikipedia.org/wiki/Object%E2%80%93relational_database
 youtube: 
 image_path: /resources/posts/psql/01d-postgresql-database
