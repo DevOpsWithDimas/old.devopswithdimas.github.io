@@ -220,6 +220,34 @@ hr-# HAVING count(*) >= 5;
  SA_REP     |                     30 |           250500.00
  FI_ACCOUNT |                      5 |            39600.00
 (8 rows)
+```
 
-hr=#
+## Different between `WHERE` and `HAVING` clause?
+
+Mungkin dari temen-temen ada yang bertanya? jika menggunakan `HAVING` clause apa bedanya dengan `WHERE` clause?
+
+Untuk mengetahui jawabanya kita kita perhatikan ilustrasi berikut:
+
+![ilustration-where-having-clause]({{ page.image_path | prepend: site.baseurl }}/04-ilustrasi-where-and-having-clause.png)
+
+Jadi klausa dengan `WHERE` dia prosesnya akan melakukan filter terlebih dahulu sebelum dilakukan proses `GROUP BY` sedangkan untuk `HAVING` dia akan memfilter datanya setelah dikelompokan / grouping. Berikut adalah contoh penggunaanya di SQL:
+
+{% gist page.gist "04a-select-group-by-with-where-and-having.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# SELECT  job_id,
+hr-#         count(*) count_employees_by_job,
+hr-#         sum(salary) salary_group_by_job
+hr-# FROM employees
+hr-# WHERE job_id in ('FI_ACCOUNT', 'SA_MAN', 'IT_PROG', 'HR_REP', 'MK_MAN')
+hr-# GROUP BY job_id
+hr-# HAVING sum(salary) >= 20000;
+   job_id   | count_employees_by_job | salary_group_by_job
+------------+------------------------+---------------------
+ SA_MAN     |                      5 |            61000.00
+ IT_PROG    |                      5 |            28800.00
+ FI_ACCOUNT |                      5 |            39600.00
+(3 rows)
 ```
