@@ -116,3 +116,77 @@ hr-# FROM employees;
 ```
 
 ## Using `GROUP BY` clause
+
+The `GROUP BY` clause is used to group together those rows in a table that have the same values in all the columns listed. 
+
+![ilustration-group-by]({{ page.image_path | prepend: site.baseurl }}/03-ilustration-group-by.png)
+
+The effect is to combine each set of rows having common values into one group row that represents all rows in the group. Berikut adalah contoh penggunaanya di SQL:
+
+{% gist page.gist "04a-select-group-by.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# SELECT  job_id
+hr-# FROM employees
+hr-# GROUP BY job_id;
+   job_id
+------------
+ SH_CLERK
+ AD_VP
+ SA_MAN
+ PU_MAN
+ IT_PROG
+ ST_CLERK
+ FI_MGR
+ PU_CLERK
+ HR_REP
+ ST_MAN
+ MK_MAN
+ AC_MGR
+ SA_REP
+ AD_ASST
+ PR_REP
+ MK_REP
+ AD_PRES
+ FI_ACCOUNT
+ AC_ACCOUNT
+(19 rows)
+```
+In general, if a table is grouped, columns that are not listed in GROUP BY cannot be referenced except in aggregate expressions. An example with aggregate expressions is:
+
+{% gist page.gist "04a-select-group-by-with-aggregate.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# SELECT  job_id,
+hr-#         count(*) count_employees_by_job,
+hr-#         sum(salary) salary_group_by_job
+hr-# FROM employees
+hr-# GROUP BY job_id;
+   job_id   | count_employees_by_job | salary_group_by_job
+------------+------------------------+---------------------
+ SH_CLERK   |                     20 |            64300.00
+ AD_VP      |                      2 |            34000.00
+ SA_MAN     |                      5 |            61000.00
+ PU_MAN     |                      1 |            11000.00
+ IT_PROG    |                      5 |            28800.00
+ ST_CLERK   |                     20 |            55700.00
+ FI_MGR     |                      1 |            12000.00
+ PU_CLERK   |                      5 |            13900.00
+ HR_REP     |                      1 |             6500.00
+ ST_MAN     |                      5 |            36400.00
+ MK_MAN     |                      1 |            13000.00
+ AC_MGR     |                      1 |            12000.00
+ SA_REP     |                     30 |           250500.00
+ AD_ASST    |                      1 |             4400.00
+ PR_REP     |                      1 |            10000.00
+ MK_REP     |                      1 |             6000.00
+ AD_PRES    |                      1 |            24000.00
+ FI_ACCOUNT |                      5 |            39600.00
+ AC_ACCOUNT |                      1 |             8300.00
+(19 rows)
+```
+
