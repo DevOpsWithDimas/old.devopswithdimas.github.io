@@ -114,3 +114,5 @@ hr-# FROM employees;
    24000.00 |    2100.00 | 6461.6822429906542056 |             107
 (1 row)
 ```
+
+## Using `GROUP BY` clause
