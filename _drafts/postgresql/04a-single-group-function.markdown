@@ -136,17 +136,6 @@ hr-# GROUP BY job_id;
  SH_CLERK
  AD_VP
  SA_MAN
- PU_MAN
- IT_PROG
- ST_CLERK
- FI_MGR
- PU_CLERK
- HR_REP
- ST_MAN
- MK_MAN
- AC_MGR
- SA_REP
- AD_ASST
  PR_REP
  MK_REP
  AD_PRES
@@ -154,6 +143,7 @@ hr-# GROUP BY job_id;
  AC_ACCOUNT
 (19 rows)
 ```
+
 In general, if a table is grouped, columns that are not listed in GROUP BY cannot be referenced except in aggregate expressions. An example with aggregate expressions is:
 
 {% gist page.gist "04a-select-group-by-with-aggregate.sql" %}
@@ -174,15 +164,6 @@ hr-# GROUP BY job_id;
  PU_MAN     |                      1 |            11000.00
  IT_PROG    |                      5 |            28800.00
  ST_CLERK   |                     20 |            55700.00
- FI_MGR     |                      1 |            12000.00
- PU_CLERK   |                      5 |            13900.00
- HR_REP     |                      1 |             6500.00
- ST_MAN     |                      5 |            36400.00
- MK_MAN     |                      1 |            13000.00
- AC_MGR     |                      1 |            12000.00
- SA_REP     |                     30 |           250500.00
- AD_ASST    |                      1 |             4400.00
- PR_REP     |                      1 |            10000.00
  MK_REP     |                      1 |             6000.00
  AD_PRES    |                      1 |            24000.00
  FI_ACCOUNT |                      5 |            39600.00
