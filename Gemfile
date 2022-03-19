@@ -20,6 +20,7 @@ group :jekyll_plugins do
   gem 'jemoji'
   gem 'jekyll-minifier'
   gem 'jekyll-analytics'
+  gem 'jekyll-mermaid'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -13,6 +13,9 @@ url: "https://youtube.dimas-maryanto.com" # the base hostname & protocol for you
 # Build settings
 markdown: kramdown
 
+mermaid:
+  src: 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'
+
 plugins_dir: ./_scripts
 
 kramdown:
