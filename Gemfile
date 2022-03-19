@@ -18,7 +18,6 @@ group :jekyll_plugins do
   gem 'jekyll-sitemap'
   gem 'jekyll-paginate'
   gem 'jemoji'
-  gem 'jekyll-minifier'
   gem 'jekyll-analytics'
   gem 'jekyll-plantuml-url'
   gem 'jekyll-coffeescript'

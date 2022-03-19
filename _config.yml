@@ -29,13 +29,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jemoji
-  - jekyll-minifier
   - jekyll-analytics
   - jekyll-plantuml-url
   - jekyll-coffeescript
-
-jekyll-minifier:
-  exclude: 'feed.xml' 
 
 jekyll_analytics:
   GoogleAnalytics:          # Add, if you want to track with Google Analytics
