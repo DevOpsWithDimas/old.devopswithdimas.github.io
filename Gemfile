@@ -14,14 +14,11 @@ group :jekyll_plugins do
   gem "jekyll-youtube"
   gem "redcarpet"
   gem "nokogiri"
-  gem 'jekyll-archives'
   gem 'jekyll-sitemap'
   gem 'jekyll-paginate'
   gem 'jemoji'
   gem 'jekyll-analytics'
   gem 'jekyll-plantuml-url'
-  gem 'jekyll-coffeescript'
-  gem 'execjs'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
