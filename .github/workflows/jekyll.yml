@@ -13,9 +13,10 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          key: ${{ runner.os }}-gems-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
       - uses: jeffreytse/jekyll-deploy-action@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          bundler_ver: 2.1.4
