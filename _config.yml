@@ -46,9 +46,6 @@ plantuml:
   type:         'svg'
   ssl_noverify: '0'
   http_debug:   '0'
-
-paginate: 5
-paginate_path: /archives/page-:num
   
 titlecase: false
 
@@ -57,6 +54,10 @@ titlecase: false
 # to override the default setting.
 exclude:
   - _docker/
+  - _ansible/
+  - _mmd/
+  - _puml/
+  - out/
   - vendor
   - Gemfile
   - Gemfile.lock
