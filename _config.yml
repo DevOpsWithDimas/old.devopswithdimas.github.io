@@ -13,18 +13,13 @@ url: "https://youtube.dimas-maryanto.com" # the base hostname & protocol for you
 # Build settings
 markdown: kramdown
 
-mermaid:
-  src: 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'
-
-plugins_dir: ./_scripts
-
 kramdown:
   input: GFM
   syntax_highlighter: rouge
 gist:
   noscript: false
 permalink: /posts/:categories/:title
-whitelist: [jekyll-analytics]
+whitelist: [jekyll-analytics, jekyll-plantuml-url]
 plugins:
   - jekyll-gist
   - jekyll-feed
@@ -36,6 +31,7 @@ plugins:
   - jemoji
   - jekyll-minifier
   - jekyll-analytics
+  - jekyll-plantuml-url
 
 jekyll-minifier:
   exclude: 'atom.xml' 
@@ -44,6 +40,12 @@ jekyll_analytics:
   GoogleAnalytics:          # Add, if you want to track with Google Analytics
     id: UA-82058496-1       # Required - replace with your tracking id
     anonymizeIp: false      # Optional - Default: false - set to true for anonymized tracking
+
+plantuml:
+  url:          'http://www.plantuml.com/plantuml' 
+  type:         'svg'
+  ssl_noverify: '0'
+  http_debug:   '0'
 
 paginate: 5
 paginate_path: /archives/page-:num
