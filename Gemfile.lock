@@ -313,10 +313,12 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  execjs
   github-pages
   jekyll (~> 3.9.0)
   jekyll-analytics
   jekyll-archives
+  jekyll-coffeescript
   jekyll-feed
   jekyll-gist
   jekyll-minifier
