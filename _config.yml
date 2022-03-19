@@ -32,6 +32,7 @@ plugins:
   - jekyll-minifier
   - jekyll-analytics
   - jekyll-plantuml-url
+  - jekyll-coffeescript
 
 jekyll-minifier:
   exclude: 'atom.xml' 
