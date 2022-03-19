@@ -19,3 +19,6 @@ sources
 # vim
 *.un~
 *.*~
+
+# export diagram
+out/

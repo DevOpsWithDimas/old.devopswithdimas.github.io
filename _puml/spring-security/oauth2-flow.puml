@@ -1,0 +1,17 @@
+	
+@startuml oauth2-flow
+autonumber
+actor client as user
+participant WebServer as ws 
+control AuthServer as auth
+entity Database as db
+
+
+user -> ws : Request access token
+ws -> auth : Generate access token
+auth -> db : Get credential by client id
+db --> auth : Data credential
+auth -> auth : Validate credential
+auth --> user : Access token
+
+@enduml
