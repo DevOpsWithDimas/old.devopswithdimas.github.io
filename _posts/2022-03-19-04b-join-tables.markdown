@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Joined Tables"
+date: 2022-03-19T08:48:51+07:00
 lang: postgresql
 categories:
 - RDBMS
