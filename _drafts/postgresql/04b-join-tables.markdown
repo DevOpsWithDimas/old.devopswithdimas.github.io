@@ -27,3 +27,9 @@ T1 join_type T2 [ join_condition ]
 {% endhighlight %}
 
 Joins of all types can be chained together, or nested: either or both `T1` and `T2` can be joined tables. Parentheses can be used around `JOIN` clauses to control the join order. In the absence of parentheses, `JOIN` clauses nest left-to-right.
+
+{% mermaid %}
+erDiagram
+    CAR ||--o{ NAMED-DRIVER : allows
+    PERSON ||--o{ NAMED-DRIVER : is
+{% endmermaid %}

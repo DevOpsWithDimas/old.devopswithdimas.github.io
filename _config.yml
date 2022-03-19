@@ -30,21 +30,17 @@ plugins:
   - jekyll-paginate
   - jemoji
   - jekyll-analytics
-  - jekyll-plantuml-url
-  - jekyll-coffeescript
+  - jekyll-mermaid
 
 jekyll_analytics:
   GoogleAnalytics:          # Add, if you want to track with Google Analytics
     id: UA-82058496-1       # Required - replace with your tracking id
     anonymizeIp: false      # Optional - Default: false - set to true for anonymized tracking
-
-plantuml:
-  url:          'http://www.plantuml.com/plantuml' 
-  type:         'svg'
-  ssl_noverify: '0'
-  http_debug:   '0'
   
 titlecase: false
+
+mermaid:
+  src: 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
