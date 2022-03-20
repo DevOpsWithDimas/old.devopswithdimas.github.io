@@ -36,13 +36,13 @@ layout: default
     
         <div class="row">
             {% assign topics = pages_list | where: 'visible', true | where_exp:"item", "item.udemy" | sort:"publish" | reverse  %}
-            {% for topic in topics limit:3 %}
+            {% for topic in topics limit:4 %}
             {% assign post_list = site.posts | where: "lang", topic.url | sort:"date" %}
             {% assign a_post =  post_list.first %}
             {% assign a_last_post =  post_list.last %}
-            <div class="col s12 m6 l4">
-                <div class="card z-depth-3 sticky-action large hoverable">
-                    <div class="card-image {{topic.color}}">
+            <div class="col s12 m12 l6">
+                <div class="card horizontal hoverable">
+                    <div class="card-image">
                         {% if topic.coming_soon == false %}                                
                             <img class="activator responsive-img" 
                                 src="{{ "/resources/cources/banners/" | prepend: site.baseurl}}{{topic.url}}.png">
@@ -52,74 +52,52 @@ layout: default
                             <img class="responsive-img" 
                                 src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
                         {% endif %}
+                        <span class="card-title black white-text truncate">
+                            {% if topic.coming_soon == false and a_post %}
+                            <a href="{{ a_post.url | prepend: site.baseurl }}" 
+                                class="tooltipped" 
+                                data-position="bottom" 
+                                data-delay="50" 
+                                data-tooltip="Start Learning">
+                                {% if topic.fullname %} {{ topic.fullname }} {% else %} {{topic.name}} {% endif %}
+                            </a>
+                            {% else %}
+                                {% if topic.fullname %} {{ topic.fullname }} {% else %} {{topic.name}} {% endif %}
+                            {% endif %}                            
+                        </span>
                     </div>
-                    <div class="card-content">                        
-                        <div class="row">
-                            <span class="flow-text truncate">
-                                {% if topic.coming_soon == false and a_post %}
-                                <a href="{{ a_post.url | prepend: site.baseurl }}" 
-                                    class="tooltipped" 
-                                    data-position="bottom" 
-                                    data-delay="50" 
-                                    data-tooltip="Start Learning">
-                                    {% if topic.fullname %} {{ topic.fullname }} {% else %} {{topic.name}} {% endif %}
-                                </a>
-                                {% else %}
-                                    {% if topic.fullname %} {{ topic.fullname }} {% else %} {{topic.name}} {% endif %}
-                                {% endif %}                            
-                            </span>
-                        </div>
-                        <div class="row">
-                            {% if a_last_post.date %}
-                            <span class="badge" data-badge-caption="">Latest update: {{ a_last_post.date | date: "%-d %B %Y" }}</span>
-                            {% endif %} 
-                        </div>
-                        <div class="row">
-                            {% if topic.catalogs %}
-                            <span class="badge" data-badge-caption="Kurikulum">{{topic.catalogs.size}}</span>
-                            {% endif %}
-                            <span class="badge" data-badge-caption="Pelajaran">{{post_list.size}}</span>
-                        </div>
-                    </div>
-                    <div class="card-action">
-                        {% if topic.udemy %}
-                        <div class="row">
-                            <div class="right-align">
-                                {% if topic.udemy.price %}
-                                    {% if topic.udemy.discount %}
-                                    <del class="gray-text">{{ topic.udemy.price }}</del>
-                                    <span class="flow-text">{{ topic.udemy.discount }}</span>
-                                    {% else %}
-                                    <span class="flow-text">{{ topic.udemy.price }}</span>
-                                    {% endif %}
-                                {% else %}
-                                    <span class="flow-text">Gratis</span>
-                                {% endif %}
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <div class="row">
+                                {% if a_last_post.date %}
+                                <span class="badge" data-badge-caption="">Latest update: {{ a_last_post.date | date: "%-d %B %Y" }}</span>
+                                {% endif %} 
                             </div>
-                        </div>  
-                        <div class="row">
-                            <div class="col l6 m6 s12">
+                            {% if topic.udemy %}
+                            <div class="row">
                                 {% if topic.udemy.couponCode %}
                                 <div>
-                                    CouponCode:
+                                    CouponCode: <br>
                                     <code><mark>{{ topic.udemy.couponCode }}</mark></code>
                                 </div>
-                                {% endif %}
+                                {% endif %}                                
                             </div>
-                            <div class="col l6 m6 s12">
-                                <div class="right-align">
-                                    <a target="_blank" 
-                                        href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}" 
-                                        class="tooltipped btn red accent-1" 
-                                        data-position="bottom"                            
-                                        data-delay="50" 
-                                        data-tooltip="Become a Premium Members">
-                                            <i class="material-icons white-text">lock_open</i> Join
-                                    </a>
-                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="card-action right-align">                            
+                            {% if topic.udemy %}
+                            <div class="row">
+                                <a target="_blank" 
+                                    href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}" 
+                                    class="tooltipped btn red accent-1" 
+                                    data-position="bottom"                            
+                                    data-delay="50" 
+                                    data-tooltip="Become a Premium Members">
+                                        <i class="material-icons white-text">lock_open</i> Join
+                                </a>
                             </div>
-                        </div>                                              
-                        {% endif %}
+                            {% endif %}
+                        </div>
                     </div>
                     {% if topic.coming_soon == false %}
                     <div class="card-reveal">
@@ -160,7 +138,6 @@ layout: default
                 </div>
             </div>
             {% endfor %}
-            {% assign counter = i | times: 3 %}
             <div class="col s12" >
                 <a class="btn waves-effect waves-light blue darken-4" href="{{ '/pages/courses.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
                     View more courses...
