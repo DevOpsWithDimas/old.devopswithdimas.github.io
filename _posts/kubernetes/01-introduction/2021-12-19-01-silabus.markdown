@@ -11,7 +11,7 @@ refs:
 - https://docs.docker.com/
 - https://kubernetes.io/docs/home/
 - https://minikube.sigs.k8s.io/docs/
-youtube: 
+youtube: agYCNlb8-rA
 comments: true
 catalog_key: introduction
 image_path: /resources/posts/kubernetes/01-silabus

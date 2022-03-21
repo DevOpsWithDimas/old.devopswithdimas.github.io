@@ -11,7 +11,7 @@ refs:
 - https://docs.docker.com/
 - https://kubernetes.io/docs/tasks/tools/
 - https://minikube.sigs.k8s.io/docs/
-youtube: 
+youtube: uQj0mJxDpeE
 comments: true
 catalog_key: minikube
 image_path: /resources/posts/kubernetes/02-overview-learn-env

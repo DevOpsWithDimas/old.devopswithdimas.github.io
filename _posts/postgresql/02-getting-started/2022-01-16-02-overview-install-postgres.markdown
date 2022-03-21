@@ -9,7 +9,7 @@ categories:
 - getting-started
 refs: 
 - https://www.postgresql.org/docs/14/
-youtube: 
+youtube: UjxEMXePVRk
 image_path: /resources/posts/psql/02-install-postgres
 comments: true
 gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
