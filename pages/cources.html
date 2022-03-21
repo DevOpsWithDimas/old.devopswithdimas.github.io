@@ -173,76 +173,75 @@ icon: library_books
                     {% assign post_list = site.posts | where: "lang", topic.url | sort:"date" %}
                     {% assign a_post =  post_list.first %}
                     {% assign a_last_post =  post_list.last %}
-                    <div class="col s12 m6 l4">
-                        <div class="card z-depth-3 sticky-action large hoverable">
-                            <div class="card-image {{topic.color}}">
+                    <div class="col s12 m12 l6">
+                        <div class="card small horizontal hoverable">
+                            <div class="card-image">
                                 <img class="activator responsive-img" 
                                     src="{{ "/resources/cources/banners/" | prepend: site.baseurl}}{{topic.url}}.png">
-                                </div>
-                            <div class="card-content">
-                                {% if topic.coming_soon == true %}                                
-                                <span class="new badge yellow black-text" data-badge-caption="Coming soon"></span>
-                                {% endif %}
-                                <div class="row">
-                                    <span class="flow-text truncate">
-                                        {% if topic.coming_soon == false %}
-                                        <a class="modal-trigger tooltipped" 
-                                            href="#modal-{{ topic.url }}" 
+                                    <span class="black white-text card-title flow-text truncate">
+                                        {% if topic.coming_soon == false and a_post %}                                        
+                                        <a href="#modal-{{ topic.url }}"
+                                            class="modal-trigger tooltipped" 
                                             data-position="bottom" 
                                             data-delay="50" 
                                             data-tooltip="Preview">
                                             <span class="field-name">
-                                                {% if topic.fullname %} {{topic.fullname}} {% else %} {{topic.name}} {% endif %}
+                                                {{topic.name}}
                                             </span>
                                         </a>
-                                        {% else %} 
-                                            <span class="field-name">
-                                                {% if topic.fullname %} {{topic.fullname}} {% else %} {{topic.name}} {% endif %}
-                                            </span>                                           
+                                        {% else %}
+                                        <span class="field-name">
+                                            <span class="badge yellow" data-badge-caption="soon"></span>
+                                            {{topic.name}}
+                                        </span>
                                         {% endif %}                            
                                     </span>
-                                </div>
-                                <div class="row">
-                                    <div class="col m12 l6 s12">
-                                        {% if a_last_post.date %}
-                                        Last updated: 
-                                        <span class="gray-text small">
-                                            {{ a_last_post.date | date: "%-d %B %Y" }}
-                                        </span>
-                                        {% endif %}
-                                    </div>
-                                    {% if topic.coming_soon == false %}
-                                    <div class="col m12 l6 s12">
-                                        <blockquote class="right-align">
-                                        {% if topic.udemy %}
-                                            <span class="flow-text">{{ topic.udemy.discount }}</span><br>
-                                            <del class="gray-text">{{ topic.udemy.price }}</del>
-                                        {% else %}
-                                            <span class="flow-text">Gratis</span>
-                                        {% endif %}
-                                        </blockquote>                                
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    {% if a_last_post.date %}
+                                    <span class="badge" data-badge-caption="">{{ a_last_post.date | date: "%-d %B %Y" }}</span>
+                                    {% endif %} 
+                                    {% if topic.fullname %}
+                                    <div class="row">
+                                        <span class="field-fullname">{{ topic.fullname }}</span>
                                     </div>
                                     {% endif %}
+                                    <div class="row">
+                                        <p>
+                                            {{ topic.descriptions }}
+                                        </p>
+                                    </div>
                                 </div>
+                                {% if topic.udemy %}
+                                <div class="card-action right-align">                          
+                                    <div class="row">
+                                        <div class="col s12 m12 l6">
+                                            <div class="right-align">
+                                                {% if topic.udemy.discount %}
+                                                <del class="gray-text">{{ topic.udemy.price }}</del>
+                                                <span class="flow-text">{{ topic.udemy.discount }}</span>
+                                                {% elsif topic.udemy.price %}
+                                                <span class="flow-text">{{ topic.udemy.price }}</span>
+                                                {% else %}
+                                                <span class="flow-text">Gratis</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l6">
+                                            <a target="_blank" 
+                                                href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}" 
+                                                class="tooltipped btn red accent-1" 
+                                                data-position="bottom"                            
+                                                data-delay="50" 
+                                                data-tooltip="Become a Premium Members">
+                                                    <i class="material-icons white-text">lock_open</i> Join
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
                             </div>
-                            {% if topic.udemy %}                        
-                            <div class="card-action">
-                                <div class="col l6 m12 s12">
-                                    CouponCode: <br>
-                                    <code><mark>{{ topic.udemy.couponCode }}</mark></code>
-                                </div>
-                                <div class="col l6 m12 s12 right-align">
-                                    <a target="_blank" 
-                                        href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}" 
-                                        class="tooltipped btn red accent-1" 
-                                        data-position="bottom"                            
-                                        data-delay="50" 
-                                        data-tooltip="Become a Premium Members">
-                                            <i class="material-icons white-text">lock_open</i> Join
-                                    </a>
-                                </div>
-                            </div>
-                            {% endif %}
                             {% if topic.coming_soon == false %}
                             <div class="card-reveal">
                                 <!-- title of card reveal -->
@@ -252,7 +251,7 @@ icon: library_books
                                 </span>
                                 <div class="row">
                                     <!-- message card revel -->
-                                    {% if topic.message %}
+                                    {% if topic.messages %}
                                     <p>{{topic.messages}}</p>
                                     {% else %}
                                     <p>{{ topic.descriptions }}</p>
@@ -275,7 +274,9 @@ icon: library_books
                                 <div class="row">
                                     <!-- tags -->
                                     {% for tag in topic.tags %}
-                                    <div class="chip field-tags"><i class="fa fa-tag"></i> {{tag}}</div>
+                                    <div class="chip"><i class="fa fa-tag"></i> 
+                                        <span class="field-tag">{{tag}}</span>
+                                    </div>
                                     {% endfor %}
                                 </div>
                             </div>
@@ -295,9 +296,11 @@ icon: library_books
 <script>
     var options = {
         valueNames: [
-            'field-name'
+            'field-name',
+            'field-fullname',
+            'field-tag'
         ],
-        page: 10,
+        page: 5,
         pagination: true
     };
 
