@@ -158,7 +158,7 @@
   coming_soon: true
   visible: false
 
-- name: SQL Fundamental - Oracle 18c
+- name: Oracle DB - SQL
   fullname: "DBA Oracle: Pemula sampai Mahir"
   url: oracle18c
   icon: "devicons devicons-java"
@@ -236,7 +236,7 @@
       description: ''
       deprecated: false
 
-- name: PL/SQL - Oracle 18c
+- name: Oracle DB - PL/SQL
   url: plsql-oracle18c
   icon: "devicons devicons-java"
   language: Database
@@ -255,7 +255,7 @@
   coming_soon: true
   visible: false
 
-- name: Database Administrator - Oracle 18c
+- name: Oracle DB - Administration
   url: dba-oracle18c
   icon: "devicons devicons-java"
   language: Database
@@ -274,7 +274,7 @@
   coming_soon: true
   visible: false
 
-- name: Object Oriented - Oracle 18c
+- name: Oracle DB - ORDBMS
   url: ordb-oracle18c
   icon: "devicons devicons-java"
   language: Database
