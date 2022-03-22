@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "12a-install-docker-machine"
+title: "Install docker-machine on MacOS"
 lang: docker
 categories:
 - DevOps
@@ -10,7 +10,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: docker-machine
-image_path: /resources/posts/docker/12a-install-docker-machine
+image_path: /resources/posts/docker/13a-docker-machine-mac
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---

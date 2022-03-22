@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "12a-install-docker-machine-for-linux"
+title: "Install docker-machine on Linux"
 lang: docker
 categories:
 - DevOps
@@ -10,7 +10,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: docker-machine
-image_path: /resources/posts/docker/12a-install-docker-machine-for-linux
+image_path: /resources/posts/docker/13a-docker-machine-linux
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
