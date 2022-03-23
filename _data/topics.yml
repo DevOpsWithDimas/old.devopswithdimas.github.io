@@ -665,6 +665,31 @@
       key: study-cases-backend-engine
       description: ''
 
+- name: Java Essentials
+  fullname: "Java Developer: Essentials untuk Pemula sampai Mahir"
+  url: java-se
+  icon: "devicons devicons-postgresql"
+  language: Programming
+  color: light-blue lighten-3
+  tags:
+  - Programming
+  - Java
+  - JavaSE
+  descriptions:
+    Temen-temen akan belajar bahasa pemograman Java untuk Pemula sampai Mahir diantaranya, Basic Java, Konsep & Impl OOP, JDBC, Multithreads, Client/Server, Java Desktop, Java Web, etc
+  messages:
+    Temen-temen akan di pandu untuk menguasai bahasa pemograman Java dengan versi terbaru (jdk17-lts) melalui konsep dan praktek.
+  publish: 2022-03-24T20:50:50+07:00
+  github: https://github.com/BootcampYoutubeChannel/belajar-java17
+  youtube: 
+  udemy: 
+  coming_soon: true
+  visible: true
+  catalogs:
+    - name: Pengenalan Java programming language
+      key: introduction
+      description: 'Eps 1: Pengenalan Java Programming'
+    
 - name: Spring Framework
   fullname: 'Developer Spring Framework: Pemula sampai Mahir'
   url: spring-core

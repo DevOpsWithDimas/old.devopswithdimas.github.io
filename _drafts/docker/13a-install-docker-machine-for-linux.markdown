@@ -6,7 +6,7 @@ categories:
 - DevOps
 - Docker
 refs: 
-- https://docs.docker.com/
+- https://github.com/docker/machine/blob/docs/docs/install-machine.md
 youtube: 
 comments: true
 catalog_key: docker-machine

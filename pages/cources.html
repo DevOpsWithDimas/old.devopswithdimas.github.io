@@ -242,7 +242,6 @@ icon: library_books
                                 </div>
                                 {% endif %}
                             </div>
-                            {% if topic.coming_soon == false %}
                             <div class="card-reveal">
                                 <!-- title of card reveal -->
                                 <span class="card-title grey-text text-darken-4">
@@ -253,8 +252,10 @@ icon: library_books
                                     <!-- message card revel -->
                                     {% if topic.messages %}
                                     <p>{{topic.messages}}</p>
-                                    {% else %}
+                                    {% elsif topic.descriptions %}
                                     <p>{{ topic.descriptions }}</p>
+                                    {% else %}
+                                    <p>Belum ada deskripsi...</p>
                                     {% endif %}
                                 </div>
                                 <div class="row">
@@ -266,10 +267,8 @@ icon: library_books
                                     <br>
                                     Kurikulum: <code>{{ topic.catalogs.size }}</code>
                                     {% endif %} 
-                                    {% if post_list.size >= 1 %}
                                     <br>
                                     Total Materi: <code>{{ post_list.size }}</code>
-                                    {% endif %}
                                 </div>
                                 <div class="row">
                                     <!-- tags -->
@@ -280,7 +279,6 @@ icon: library_books
                                     {% endfor %}
                                 </div>
                             </div>
-                            {% endif %}
                         </div>
                     </div>
                 </li>
