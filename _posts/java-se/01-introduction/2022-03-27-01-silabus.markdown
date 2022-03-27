@@ -1,0 +1,70 @@
+---
+layout: post
+title: "Silabus - Java: Pemula sampai Mahir"
+date: 2022-03-27T18:05:08+07:00
+lang: java-se
+categories:
+- language
+- java
+refs: 
+- https://docs.oracle.com/en/java/
+youtube: 
+comments: true
+gist: dimMaryanto93/96aad3c6bed60d010757c7d1acba930a
+catalog_key: introduction
+image_path: /resources/posts/java-se/01-silabus
+downloads: []
+---
+
+Hai semuanya, di cource ini kita akan membahas bahasa pemograman Java untuk Pemula sampai Mahir secara Konsep dan Implementasinya.
+
+Materi yang di bahas adalah Java Standart Edition (Java SE) version `jdk-17-lts`. Mungkin buat temen-temen yang belum tau saya pernah buat tutorial Java secara free di youtube 5 tahun lalu nah sekarang adalah waktu yang pas untuk meng-update materinya supaya lebih lengkap dan terstruktur.
+
+Ok untuk materinya kita akan bagi menjadi 4 section yaitu 
+
+## Basic
+
+1. Variables
+2. Data Types
+3. Methods
+4. Build-in Function & Operators
+5. Classes & Packages
+6. Structure Controls
+7. Arrays, Collections & Generics
+
+## Object Oriented Programming
+
+1. Inherintance
+2. Polymorphism
+3. Encapsulation
+4. Interfaces
+
+<!--more-->
+
+## Functions programming
+
+1. Lambda Expression
+2. Aggregate Functions
+
+## Threads & Concurrency
+
+1. Single threads
+2. Multi Threads
+
+## Client/Server
+
+1. Java Database Access (JDBC)
+2. Remote Method Invocation (RMI)
+3. Java Naming and Directory Interface (JNDI)
+
+## Graphical User Interface GUI
+
+1. Swing Components
+2. Swing Layouts
+
+## Java Web 
+
+1. Java Servlet
+2. Java Server Pages (JSP)
+
+Selain itu juga masih banyak lagi yang akan kita bahas di cource ini, Ok mungkin sekian dulu yang bisa saya sampaikan terkati Silabus Belajar bahasa pemograman Java untuk Pemulai sampai Mahir. Sampai jumpa di cource!

@@ -736,6 +736,12 @@
     - name: 'Study Kasus: Membuat aplikasi'
       key: study-cases
       description: 'Eps 15: Study Kasus membuat aplikasi'
+    - name: Java Web (Servlet)
+      key: servlet
+      description: 'Eps 16: Java Servlet'
+    - name: Java Server Pages (JSP)
+      key: jsp
+      description: 'Eps 16: Java Server Pages'
     
 - name: Spring Framework
   fullname: 'Developer Spring Framework: Pemula sampai Mahir'
