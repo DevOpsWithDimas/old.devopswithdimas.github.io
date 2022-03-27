@@ -1,16 +1,16 @@
 ---
 layout: {{ layout }}
 title: "{{ title }}"
-lang: java-core
+lang: java-se
 categories:
+- language
 - java
-- core
 refs: []
 youtube: {{ youtube }}
 comments: true
-gist: {{ gist}}
-catalog_key: <change-this>
-image_path: /resources/posts/java-core/
+gist: dimMaryanto93/96aad3c6bed60d010757c7d1acba930a
+catalog_key: introduction
+image_path: /resources/posts/java-se/{{ title }}
 downloads: []
 ---
 

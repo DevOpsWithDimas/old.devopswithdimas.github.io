@@ -669,26 +669,73 @@
   fullname: "Java Developer: Essentials untuk Pemula sampai Mahir"
   url: java-se
   icon: "devicons devicons-postgresql"
-  language: Programming
+  language: Java
   color: light-blue lighten-3
   tags:
-  - Programming
   - Java
   - JavaSE
   descriptions:
     Temen-temen akan belajar bahasa pemograman Java untuk Pemula sampai Mahir diantaranya, Basic Java, Konsep & Impl OOP, JDBC, Multithreads, Client/Server, Java Desktop, Java Web, etc
   messages:
-    Temen-temen akan di pandu untuk menguasai bahasa pemograman Java dengan versi terbaru (jdk17-lts) melalui konsep dan praktek.
-  publish: 2022-03-24T20:50:50+07:00
-  github: https://github.com/BootcampYoutubeChannel/belajar-java17
+    Temen-temen akan di pandu untuk menguasai bahasa pemograman Java dengan versi terbaru (jdk17-lts) dan selalu up to date. Materi yang dibahas baik secara konsep dan implementasinya mulai dari yang paling dasar hingga advanced jadi sangat cocok sekali buat temen-temen baru mulai jurney sebagai Java Developer.
+  publish: 2022-03-27T20:50:50+07:00
+  github: 
   youtube: 
   udemy: 
-  coming_soon: true
+  coming_soon: false
   visible: true
   catalogs:
     - name: Pengenalan Java programming language
       key: introduction
       description: 'Eps 1: Pengenalan Java Programming'
+    - name: Getting started
+      key: getting-started
+      description: 'Eps 2: Getting started with Java'
+    - name: Variables, Data Types and Methods
+      key: basic
+      description: 'Eps 3: Variables, Data Types and Methods'
+    - name: Build-in Functions & Operators
+      key: function-and-operators
+      description: 'Eps 4: Build-in Function and Operators'
+    - name: Classes and Packages
+      key: class-package
+      description: 'Eps 5: Classes and Packages'
+    - name: Structure Control
+      key: structure-control
+      description: 'Eps 6: Structure Control'
+    - name: Array, Collections & Generics
+      key: collections-generics
+      description: 'Eps 6: Array, Collections and Generics'
+    - name: Object Oriented Programming (OOP)
+      key: oop
+      description: 'Eps 7: Object Oriented Programming (OOP)'
+    - name: Exceptions Handling
+      key: exceptions
+      description: 'Eps 8: Exceptions Handling'
+    - name: Lamda Expressions
+      key: lamda
+      description: 'Eps 8: Lamda Expressions'
+    - name: Aggregate Operations
+      key: aggregate
+      description: 'Eps 9: Aggregate Operations'
+    - name: Thread and Concurrency
+      key: thread
+      description: 'Eps 10: Thread and Concurrency'
+    - name: Graphical User Interface - Swing
+      key: gui-swing
+      description: 'Eps 11: Graphical User Interface with Swing'
+    - name: Database Access (JDBC)
+      key: jdbc
+      description: 'Eps 12: Java Database Connectivity (JDBC)'
+    - name: Client / Server - JNDI
+      key: jndi
+      description: 'Eps 13: Java Naming and Directory Interface'
+    - name: Client / Server - RMI
+      key: rmi
+      description: 'Eps 14: The Remote Method Invocation API'
+    - name: 'Study Kasus: Membuat aplikasi'
+      key: study-cases
+      description: 'Eps 15: Study Kasus membuat aplikasi'
     
 - name: Spring Framework
   fullname: 'Developer Spring Framework: Pemula sampai Mahir'
