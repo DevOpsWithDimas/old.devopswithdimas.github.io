@@ -7,7 +7,7 @@ categories:
 - language
 - java
 refs: 
-- https://docs.oracle.com/en/java/
+- https://docs.oracle.com/javase/specs/jls/se17/html/index.html
 youtube: 
 comments: true
 gist: dimMaryanto93/96aad3c6bed60d010757c7d1acba930a
