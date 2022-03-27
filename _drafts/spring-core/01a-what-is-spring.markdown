@@ -1,19 +1,20 @@
 ---
-layout: {{ layout }}
-title: "{{ title }}"
+layout: post
+title: "What is Spring Framework"
 lang: spring-core
 categories:
 - java
 - spring
 refs: 
-- https://spring.io/projects/spring-framework
-youtube: {{ youtube }}
+- https://docs.spring.io/spring-framework/docs/current/reference/html/overview.html#overview
+youtube: 
 comments: true
 gist: dimMaryanto93/18ec7d7d241ffdac192d249106d35500
 catalog_key: introduction
-image_path: /resources/posts/spring-core/{{ title }}
+image_path: /resources/posts/spring-core/01a-what-is-spring
 downloads: []
 ---
+
 
 description...
 
