@@ -30,5 +30,17 @@ Joins of all types can be chained together, or nested: either or both `T1` and `
 {% mermaid %}
 erDiagram
     CAR ||--o{ NAMED-DRIVER : allows
+    CAR {
+        string allowedDriver FK "The license of the allowed driver"
+        string registrationNumber
+        string make
+        string model
+    }
     PERSON ||--o{ NAMED-DRIVER : is
+    PERSON {
+        string driversLicense PK "The license #"
+        string firstName
+        string lastName
+        int age
+    }
 {% endmermaid %}

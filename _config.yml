@@ -48,8 +48,7 @@ mermaid:
 exclude:
   - _docker/
   - _ansible/
-  - _mmd/
-  - _puml/
+  - _uml/
   - out/
   - vendor
   - Gemfile
