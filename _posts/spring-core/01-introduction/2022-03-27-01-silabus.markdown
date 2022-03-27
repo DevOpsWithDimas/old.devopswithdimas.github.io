@@ -1,0 +1,78 @@
+---
+layout: post
+title: "Silabus - Spring Framework: Pemula sampai Mahir"
+date: 2022-03-27T14:45:51+07:00
+lang: spring-core
+categories:
+- java
+- spring
+refs: 
+- https://spring.io/projects/spring-framework
+youtube: 
+comments: true
+gist: dimMaryanto93/18ec7d7d241ffdac192d249106d35500
+comments: true
+image_path: /resources/posts/spring-core/01-silabus
+catalog_key: introduction
+downloads: []
+---
+
+Hai semuanya, di cource kali ini kita akan membahas salah satu framework yang paling popular yaitu [Spring Framework](https://spring.io). Di kelas `Java Developer - Spring Framework: Pemula sampai Mahir` ini temen-temen akan belajar Konsep dan Implementasi dari Features yang di tawarkan oleh Spring Framework.
+
+Materi yang dibahas adalah versi terbaru yaitu `5.x` dan `6.x` dengan menggunakan bahasa pemograman [Java](https://www.oracle.com/java/technologies/downloads/). Mungkin buat temen-temen yang belum tau hampir 7 tahun yang lalu saya pernah membuat tutorial tentang Spring secara free di youtube nah sekarang udah saatnya untuk meng-update materinya karena semakin banyaknya kebutuhan sebagai Java / Backend Developer menggunakan Spring Framework khususnya dengan Springboot.
+
+Ok untuk materinya kita akan bagi menjadi 6 section yaitu 
+
+## Core technologies
+
+1. Dependency injection
+2. Event
+3. Resources
+4. i18n
+5. Validation
+6. Data Binding
+7. Type conversion
+8. Spring Expression Language (SpEL)
+9. Aspect Oriented programming
+
+<!--more-->
+
+## Data Access
+
+1. JDBC
+2. ORM
+3. Transactions
+
+## Web
+
+1. Spring MVC
+2. Rest API
+
+## Testing
+
+1. Unit Testing
+2. Mock objects
+3. TestContext Framework
+3. SpringMVC Test
+
+## Integration
+
+1. Remoting
+2. Java Messaging Service
+3. Email
+4. Batch / Scheduling
+5. Cache
+
+## Deployments
+
+1. On-Premise
+2. Intrastructure as a Service
+    - Google Compute Engine
+2. Platform as a Service (PaaS)
+    - Google cloud function
+    - Heroku
+3. Software as a Service (SaaS)
+    - Kubernetes
+    - Google Kubernetes Engine (GKE)
+
+Selain itu juga masih banyak lagi yang akan kita bahas di cource ini, Ok mungkin sekian dulu yang bisa saya sampaikan terkati Silabus Belajar Spring Framework untuk Pemulai sampai Mahir. Sampai jumpa di cource!
