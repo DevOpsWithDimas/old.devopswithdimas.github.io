@@ -3,6 +3,8 @@ layout: post
 title: "DDL - Menghapus table dengan DROP"
 date: 2021-02-22T18:50:06+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

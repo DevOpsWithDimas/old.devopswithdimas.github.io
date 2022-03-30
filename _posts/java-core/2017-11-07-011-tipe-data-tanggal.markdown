@@ -3,6 +3,8 @@ layout: post
 title: "Tipe data untuk menyimpan Tanggal"
 date: 2017-11-07T23:36:01+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - Java
 - Core

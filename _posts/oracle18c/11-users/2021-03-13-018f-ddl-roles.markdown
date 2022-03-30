@@ -3,6 +3,8 @@ layout: post
 title: "DDL - Grouping Privileges dengan Roles"
 date: 2021-03-13T21:29:09+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

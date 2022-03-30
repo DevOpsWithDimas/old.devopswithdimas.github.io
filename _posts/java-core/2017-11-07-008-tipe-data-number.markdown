@@ -3,6 +3,8 @@ layout: post
 title: "Tipe data yang bernilai Number"
 date: 2017-11-07T19:03:01+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - Java
 - Core

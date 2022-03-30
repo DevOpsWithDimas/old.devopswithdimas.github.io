@@ -3,6 +3,8 @@ layout: post
 title: "Install Oracle 18c XE untuk Linux"
 date: 2021-02-10T02:05:10+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

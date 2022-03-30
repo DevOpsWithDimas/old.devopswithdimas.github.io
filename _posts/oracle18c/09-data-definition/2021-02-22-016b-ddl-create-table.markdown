@@ -3,6 +3,8 @@ layout: post
 title: "DDL - Membuat Tabel di Oracle"
 date: 2021-02-22T14:45:26+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

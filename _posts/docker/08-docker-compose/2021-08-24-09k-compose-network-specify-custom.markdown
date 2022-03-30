@@ -3,6 +3,8 @@ layout: post
 title: "Specify custom networks in Compose file"
 date: 2021-08-24T05:57:55+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

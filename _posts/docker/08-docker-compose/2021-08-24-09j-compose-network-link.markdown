@@ -3,6 +3,8 @@ layout: post
 title: "Network links in Compose file"
 date: 2021-08-24T03:58:47+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

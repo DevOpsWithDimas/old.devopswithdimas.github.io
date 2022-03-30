@@ -3,6 +3,8 @@ layout: post
 title: "Menerima data dari paramenter ke dalam function"
 date: 2017-11-14T20:42:11+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - Java
 - Core

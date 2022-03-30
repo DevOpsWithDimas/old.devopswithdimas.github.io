@@ -3,6 +3,8 @@ layout: post
 title: "DDL - Primary Key Constraint"
 date: 2021-02-25T16:15:23+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

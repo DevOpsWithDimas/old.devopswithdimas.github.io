@@ -3,6 +3,8 @@ layout: post
 title: "Variabel dan Tipe Data"
 date: 2017-11-07T16:40:18+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - Java
 - Core

@@ -3,6 +3,8 @@ layout: post
 title: "Menghilangkan nilai redundansi dengan klausa Distinct"
 date: 2021-02-11T19:48:11+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

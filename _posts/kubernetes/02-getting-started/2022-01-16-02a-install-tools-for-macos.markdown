@@ -3,6 +3,8 @@ layout: post
 title: "Install minikube on Mac (Intel/Apple silicon)"
 date: 2022-01-16T14:36:35+07:00
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

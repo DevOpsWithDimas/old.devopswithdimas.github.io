@@ -3,6 +3,8 @@ layout: post
 title: "Predicate LIKE dengan HQL"
 date: 2021-01-26T12:32:34+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

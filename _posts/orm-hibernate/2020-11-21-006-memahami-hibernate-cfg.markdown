@@ -3,6 +3,8 @@ layout: post
 title: "Memahami fungsi hibernate.cfg.xml"
 date: 2020-11-21T13:19:34+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

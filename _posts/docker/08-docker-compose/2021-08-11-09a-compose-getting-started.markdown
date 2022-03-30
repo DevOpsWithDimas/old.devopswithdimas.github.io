@@ -3,6 +3,8 @@ layout: post
 title: "Get started with Docker Compose"
 date: 2021-08-11T08:15:45+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

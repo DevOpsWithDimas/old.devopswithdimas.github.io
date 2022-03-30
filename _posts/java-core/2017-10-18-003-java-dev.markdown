@@ -3,6 +3,8 @@ layout: post
 title: "Software Development for Java Users"
 date: 2017-10-18T21:36:55+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - java
 - core

@@ -3,6 +3,8 @@ layout: post
 title: "Install Oracle 18c XE dengan Docker"
 date: 2021-02-10T15:08:43+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

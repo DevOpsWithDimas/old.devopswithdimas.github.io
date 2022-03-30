@@ -3,6 +3,8 @@ layout: post
 title: "Overview of Study Cases using Docker Compose"
 date: 2021-09-10T06:00:42+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

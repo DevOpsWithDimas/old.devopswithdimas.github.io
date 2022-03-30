@@ -3,6 +3,8 @@ layout: post
 title: "Run a Container using Environtment File"
 date: 2021-05-18T22:07:38+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

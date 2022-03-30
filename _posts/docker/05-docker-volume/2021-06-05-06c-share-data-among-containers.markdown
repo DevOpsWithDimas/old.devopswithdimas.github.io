@@ -3,6 +3,8 @@ layout: post
 title: "Share data among containers"
 date: 2021-06-05T20:53:07+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

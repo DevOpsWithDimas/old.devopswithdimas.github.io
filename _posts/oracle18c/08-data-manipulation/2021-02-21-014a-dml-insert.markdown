@@ -3,6 +3,8 @@ layout: post
 title: "DML - Insert Statement di Oracle"
 date: 2021-02-21T16:24:30+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

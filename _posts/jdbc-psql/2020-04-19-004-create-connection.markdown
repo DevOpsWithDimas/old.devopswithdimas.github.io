@@ -3,6 +3,8 @@ layout: post
 title: "Membuat connection ke Database PostgreSQL via JDBC"
 date: 2020-04-19T16:36:52+07:00
 lang: java-jdbc-psql
+authors:
+- dimasm93
 categories:
 - Java
 - JDBC

@@ -3,6 +3,8 @@ layout: post
 title: "Menggabungkan column dengan concatnation"
 date: 2021-02-11T14:34:11+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

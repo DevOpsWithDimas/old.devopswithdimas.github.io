@@ -3,6 +3,8 @@ layout: post
 title: "Distinct dengan HQL"
 date: 2021-01-21T18:15:14+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

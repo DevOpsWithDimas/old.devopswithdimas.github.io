@@ -3,6 +3,8 @@ layout: post
 title: "DDL - Foreign Key Constraint"
 date: 2021-02-25T16:55:14+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

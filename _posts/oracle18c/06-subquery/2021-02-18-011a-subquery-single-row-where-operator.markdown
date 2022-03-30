@@ -3,6 +3,8 @@ layout: post
 title: "Sub Query single row result dengan where clause"
 date: 2021-02-18T07:30:34+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

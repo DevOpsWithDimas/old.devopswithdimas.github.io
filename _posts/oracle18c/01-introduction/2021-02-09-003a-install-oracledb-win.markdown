@@ -3,6 +3,8 @@ layout: post
 title: "Install Oracle 18c XE untuk Windows 10"
 date: 2021-02-09T15:46:03+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

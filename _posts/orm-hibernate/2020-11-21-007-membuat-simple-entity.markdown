@@ -3,6 +3,8 @@ layout: post
 title: "Membuat Simple Entity di Hibernate"
 date: 2020-11-21T14:11:27+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

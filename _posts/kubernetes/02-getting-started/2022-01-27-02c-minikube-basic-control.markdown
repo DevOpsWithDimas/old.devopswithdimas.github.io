@@ -3,6 +3,8 @@ layout: post
 title: "Minikube basic control"
 date: 2022-01-27T18:55:11+07:00
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

@@ -3,6 +3,8 @@ layout: post
 title: "Hibernate ORM Relationship Mapping"
 date: 2021-01-04T14:21:26+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

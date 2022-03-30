@@ -3,6 +3,8 @@ layout: post
 title: "Aggregation Function dengan HQL"
 date: 2021-01-22T21:11:25+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

@@ -3,6 +3,8 @@ layout: post
 title: "Compose file specification and syntax"
 date: 2021-08-11T14:02:57+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

@@ -3,6 +3,8 @@ layout: post
 title: "Sub Query di Oracle"
 date: 2021-02-18T07:08:08+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

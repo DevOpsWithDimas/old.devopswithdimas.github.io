@@ -3,6 +3,8 @@ layout: post
 title: "Installing Nexus OSS"
 date: 2021-04-24T16:45:03+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

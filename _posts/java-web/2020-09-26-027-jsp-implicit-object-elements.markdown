@@ -3,6 +3,8 @@ layout: post
 title: "JSP Implicit Object"
 date: 2020-09-26T20:32:13+07:00
 lang: java-web
+authors:
+- dimasm93
 categories:
 - java
 - web

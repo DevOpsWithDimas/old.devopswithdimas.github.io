@@ -3,6 +3,8 @@ layout: post
 title: "Case When dengan HQL"
 date: 2021-01-24T13:10:53+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

@@ -3,6 +3,8 @@ layout: post
 title: "Advanced user-defined bridge network"
 date: 2021-05-27T22:04:45+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

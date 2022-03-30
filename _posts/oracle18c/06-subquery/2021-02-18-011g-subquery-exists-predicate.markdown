@@ -3,6 +3,8 @@ layout: post
 title: "Sub Query EXIST Predicates di Oracle"
 date: 2021-02-18T19:23:41+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

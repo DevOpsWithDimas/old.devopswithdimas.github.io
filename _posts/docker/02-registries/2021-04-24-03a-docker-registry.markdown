@@ -3,6 +3,8 @@ layout: post
 title: "Docker Registry (Docker HUB)"
 date: 2021-04-24T16:43:49+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

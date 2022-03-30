@@ -3,6 +3,8 @@ layout: post
 title: "Springboot deployment using compose file"
 date: 2021-09-14T04:55:37+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

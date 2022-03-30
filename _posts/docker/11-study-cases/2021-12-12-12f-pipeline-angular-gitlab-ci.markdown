@@ -3,6 +3,8 @@ layout: post
 title: "Pipeline: Angular deploy with Gitlab CI"
 date: 2021-12-12T16:55:58+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

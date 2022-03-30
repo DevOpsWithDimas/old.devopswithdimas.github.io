@@ -3,6 +3,8 @@ layout: post
 title: "Management Docker Container"
 date: 2021-05-03T06:29:41+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

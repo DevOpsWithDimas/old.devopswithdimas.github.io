@@ -3,6 +3,8 @@ layout: post
 title: "Mapping Enum Ordinal & String"
 date: 2021-01-06T14:05:37+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

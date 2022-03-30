@@ -3,6 +3,8 @@ layout: post
 title: "Not Predicate dengan HQL"
 date: 2021-02-02T13:40:34+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

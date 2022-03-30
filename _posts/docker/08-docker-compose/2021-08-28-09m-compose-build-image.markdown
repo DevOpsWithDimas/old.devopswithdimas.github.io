@@ -3,6 +3,8 @@ layout: post
 title: "Build docker image using Compose file"
 date: 2021-08-28T18:46:43+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

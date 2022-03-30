@@ -3,6 +3,8 @@ layout: post
 title: "Scale services using compose command"
 date: 2021-09-03T05:26:23+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

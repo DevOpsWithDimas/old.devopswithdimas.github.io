@@ -3,6 +3,8 @@ layout: post
 title: "Nullness Predicate dengan HQL"
 date: 2021-01-26T10:32:18+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

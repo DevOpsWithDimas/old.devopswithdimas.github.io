@@ -3,6 +3,8 @@ layout: post
 title: "Compose file for multiple git projects"
 date: 2021-09-28T14:44:07+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

@@ -3,6 +3,8 @@ layout: post
 title: "DDL - Purge Table & Recyclebin"
 date: 2021-02-23T19:22:07+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

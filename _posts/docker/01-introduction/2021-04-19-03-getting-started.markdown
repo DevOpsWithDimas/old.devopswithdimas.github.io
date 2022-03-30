@@ -3,6 +3,8 @@ layout: post
 title: "Getting Started with Docker"
 date: 2021-04-19T08:13:48+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

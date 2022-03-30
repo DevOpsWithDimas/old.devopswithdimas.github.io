@@ -3,6 +3,8 @@ layout: post
 title: "Silabus - Spring Framework: Pemula sampai Mahir"
 date: 2022-03-27T14:45:51+07:00
 lang: spring-core
+authors:
+- dimasm93
 categories:
 - framework
 - java

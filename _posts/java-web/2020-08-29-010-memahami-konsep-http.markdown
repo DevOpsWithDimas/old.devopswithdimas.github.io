@@ -3,6 +3,8 @@ layout: post
 title: "Konsep Hypertext Transper Protocol (HTTP)"
 date: 2020-08-29T19:28:08+07:00
 lang: java-web
+authors:
+- dimasm93
 categories:
 - java
 - web

@@ -3,6 +3,8 @@ layout: post
 title: "Combine Logical pada klausa where di Oracle"
 date: 2021-02-12T20:51:06+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

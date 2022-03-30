@@ -3,6 +3,8 @@ layout: post
 title: "Mounting filesystems to minikube cluster"
 date: 2022-02-21T20:33:54+07:00
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

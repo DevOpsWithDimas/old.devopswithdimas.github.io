@@ -3,6 +3,8 @@ layout: post
 title: "Use user-defined bridge networks"
 date: 2021-05-27T03:32:57+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

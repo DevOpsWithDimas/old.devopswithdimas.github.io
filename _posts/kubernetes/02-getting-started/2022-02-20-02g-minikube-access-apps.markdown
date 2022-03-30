@@ -3,6 +3,8 @@ layout: post
 title: "Access your apps/service in minikube"
 date: 2022-02-20T15:01:52+07:00
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

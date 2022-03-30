@@ -3,6 +3,8 @@ layout: post
 title: "Pipeline: spring-boot deploy with Gitlab CI"
 date: 2021-12-04T10:34:46+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

@@ -3,6 +3,8 @@ layout: post
 title: "Inherintance Mapping metode Single Table menggunakan Descriminator column dan value"
 date: 2021-01-16T16:16:42+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

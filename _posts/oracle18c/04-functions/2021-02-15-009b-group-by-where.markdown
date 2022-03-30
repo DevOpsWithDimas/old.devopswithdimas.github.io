@@ -3,6 +3,8 @@ layout: post
 title: "Where clause dengan Group By Function"
 date: 2021-02-15T05:19:00+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

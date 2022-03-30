@@ -3,6 +3,8 @@ layout: post
 title: "ANY & SOME dengan Sub Query di Oracle"
 date: 2021-02-18T18:14:40+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

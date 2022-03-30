@@ -3,6 +3,8 @@ layout: post
 title: "Mengenal Transactional dengan JDBC"
 date: 2020-05-29T11:19:37+07:00
 lang: java-jdbc-psql
+authors:
+- dimasm93
 categories:
 - Java
 - JDBC

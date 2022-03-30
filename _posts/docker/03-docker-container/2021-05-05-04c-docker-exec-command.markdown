@@ -3,6 +3,8 @@ layout: post
 title: "Run a command in a running container"
 date: 2021-05-05T07:52:32+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

@@ -3,6 +3,8 @@ layout: post
 title: "Use Bind Mounts"
 date: 2021-06-05T16:19:57+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

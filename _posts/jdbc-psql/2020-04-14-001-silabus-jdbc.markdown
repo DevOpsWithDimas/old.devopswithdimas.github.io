@@ -3,6 +3,8 @@ layout: post
 title: "Silabus Belajar JDBC dengan PostgreSQL Database"
 date: 2020-04-14T19:38:52+07:00
 lang: java-jdbc-psql
+authors:
+- dimasm93
 categories:
 - Java
 - JDBC

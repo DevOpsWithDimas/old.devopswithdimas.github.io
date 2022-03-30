@@ -3,6 +3,8 @@ layout: post
 title: "DDL - Truncate Table"
 date: 2021-02-22T19:47:47+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

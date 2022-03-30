@@ -3,6 +3,8 @@ layout: post
 title: "Looping menggunakan For statement"
 date: 2017-11-12T12:04:57+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - Java
 - Core

@@ -3,6 +3,8 @@ layout: post
 title: "Pagination dengan fetch dan offset"
 date: 2021-02-21T15:49:17+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

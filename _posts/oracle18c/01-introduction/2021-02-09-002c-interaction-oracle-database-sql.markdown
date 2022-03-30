@@ -3,6 +3,8 @@ layout: post
 title: "Database Interaction dengan SQL"
 date: 2021-02-09T15:31:08+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

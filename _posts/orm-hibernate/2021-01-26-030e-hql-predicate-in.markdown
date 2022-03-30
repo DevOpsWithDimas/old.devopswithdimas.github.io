@@ -3,6 +3,8 @@ layout: post
 title: "Predicate IN dengan HQL"
 date: 2021-01-26T14:52:10+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

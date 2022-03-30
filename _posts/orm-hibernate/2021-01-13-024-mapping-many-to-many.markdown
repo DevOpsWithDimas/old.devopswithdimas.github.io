@@ -3,6 +3,8 @@ layout: post
 title: "ManyToMany Mapping"
 date: 2021-01-13T15:08:30+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

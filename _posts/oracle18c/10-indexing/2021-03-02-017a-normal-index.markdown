@@ -3,6 +3,8 @@ layout: post
 title: "Index - Balanced Tree (B-Tree)"
 date: 2021-03-02T16:31:15+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

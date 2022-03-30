@@ -3,6 +3,8 @@ layout: post
 title: "Sorting rows using ORDER BY clause"
 date: 2022-03-10T04:37:48+07:00
 lang: postgresql
+authors:
+- dimasm93
 categories:
 - RDBMS
 - PostgreSQL

@@ -3,6 +3,8 @@ layout: post
 title: "Persiapan install Oracle Database 18c"
 date: 2021-02-09T15:44:55+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

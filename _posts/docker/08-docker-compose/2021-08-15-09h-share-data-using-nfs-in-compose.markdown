@@ -3,6 +3,8 @@ layout: post
 title: "Using NFS for share data in Compose"
 date: 2021-08-15T18:06:06+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

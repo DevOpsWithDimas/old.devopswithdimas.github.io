@@ -3,6 +3,8 @@ layout: post
 title: "Best practices for writing Dockerfiles"
 date: 2021-06-24T20:06:46+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

@@ -3,6 +3,8 @@ layout: post
 title: "Not Predicate pada klausa where di Oracle"
 date: 2021-02-12T20:34:06+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

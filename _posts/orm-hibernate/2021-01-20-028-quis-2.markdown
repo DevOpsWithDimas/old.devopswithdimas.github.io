@@ -3,6 +3,8 @@ layout: post
 title: "Time is your Practice"
 date: 2021-01-20T20:02:00+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

@@ -3,6 +3,8 @@ layout: post
 title: "Comparison Predicate pada klausa where di Oracle"
 date: 2021-02-11T20:26:16+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

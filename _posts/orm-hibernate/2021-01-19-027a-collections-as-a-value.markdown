@@ -3,6 +3,8 @@ layout: post
 title: "Collections Mapping as a Value"
 date: 2021-01-19T15:30:51+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

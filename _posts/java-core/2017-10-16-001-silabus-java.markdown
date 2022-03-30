@@ -3,6 +3,8 @@ layout: post
 title: "Silabus Belajar Pemograman Java"
 date: 2017-10-16T23:13:11+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - java
 - core

@@ -3,6 +3,8 @@ layout: post
 title: "DDL - Enabled, Disabled & Drop Constraints"
 date: 2021-02-27T06:03:22+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

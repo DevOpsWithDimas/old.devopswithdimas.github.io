@@ -3,6 +3,8 @@ layout: post
 title: "Embbeded Mapping"
 date: 2021-01-07T12:57:19+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

@@ -3,6 +3,8 @@ layout: post
 title: "Pengenalan JavaServer Page (JSP)"
 date: 2020-09-11T21:51:06+07:00
 lang: java-web
+authors:
+- dimasm93
 categories:
 - java
 - web

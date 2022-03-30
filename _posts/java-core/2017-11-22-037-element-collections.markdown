@@ -3,6 +3,8 @@ layout: post
 title: "Element Collection"
 date: 2017-11-22T19:09:52+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - Java
 - Core

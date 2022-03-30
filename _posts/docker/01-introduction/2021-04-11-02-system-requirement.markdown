@@ -3,6 +3,8 @@ layout: post
 title: "What to know before you install Docker"
 date: 2021-04-11T21:15:57+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

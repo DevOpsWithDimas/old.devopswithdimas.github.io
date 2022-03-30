@@ -3,6 +3,8 @@ layout: post
 title: "Kubernetes cluster environtments"
 date: 2022-01-14T09:12:47+07:00
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

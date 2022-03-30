@@ -3,6 +3,8 @@ layout: post
 title: "One To One Relationship Tables"
 date: 2021-03-22T16:58:36+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

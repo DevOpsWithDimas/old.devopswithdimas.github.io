@@ -3,6 +3,8 @@ layout: post
 title: "Interface untuk Oracle Database"
 date: 2021-02-09T14:43:51+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

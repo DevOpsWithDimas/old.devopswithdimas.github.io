@@ -3,6 +3,8 @@ layout: post
 title: "Install PostgreSQL using Docker"
 date: 2022-02-06T10:25:40+07:00
 lang: postgresql
+authors:
+- dimasm93
 categories:
 - RDBMS
 - PostgreSQL

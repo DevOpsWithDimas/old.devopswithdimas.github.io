@@ -3,6 +3,8 @@ layout: post
 title: "Coalesce & NullIF menggunakan HQL"
 date: 2021-01-24T14:28:08+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

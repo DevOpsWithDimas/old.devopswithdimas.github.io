@@ -3,6 +3,8 @@ layout: post
 title: "Membuat project Hibernate ORM dengan Apache Maven"
 date: 2020-11-21T12:17:00+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

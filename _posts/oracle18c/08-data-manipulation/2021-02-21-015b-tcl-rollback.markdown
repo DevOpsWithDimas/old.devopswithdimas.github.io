@@ -3,6 +3,8 @@ layout: post
 title: "TCL - Rollback Transaction di Oracle"
 date: 2021-02-21T20:26:29+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

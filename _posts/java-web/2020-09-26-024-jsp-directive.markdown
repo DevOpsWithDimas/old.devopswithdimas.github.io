@@ -3,6 +3,8 @@ layout: post
 title: "JSP Directive"
 date: 2020-09-26T20:31:52+07:00
 lang: java-web
+authors:
+- dimasm93
 categories:
 - java
 - web

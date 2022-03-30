@@ -3,6 +3,8 @@ layout: post
 title: "Pipeline: Laravel deploy with Gitlab CI"
 date: 2021-12-18T10:56:14+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

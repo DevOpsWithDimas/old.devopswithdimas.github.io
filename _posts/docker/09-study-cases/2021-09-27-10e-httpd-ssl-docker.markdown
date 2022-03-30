@@ -3,6 +3,8 @@ layout: post
 title: "Deploy httpd with ssl/https on docker"
 date: 2021-09-27T15:44:07+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

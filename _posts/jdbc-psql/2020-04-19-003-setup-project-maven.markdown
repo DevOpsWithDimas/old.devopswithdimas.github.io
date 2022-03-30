@@ -3,6 +3,8 @@ layout: post
 title: "Setup Project JDBC dengan Apache Maven"
 date: 2020-04-19T14:25:25+07:00
 lang: java-jdbc-psql
+authors:
+- dimasm93
 categories:
 - Java
 - JDBC

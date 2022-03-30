@@ -3,6 +3,8 @@ layout: post
 title: "Install PostgreSQL for Windows users"
 date: 2022-01-19T06:53:44+07:00
 lang: postgresql
+authors:
+- dimasm93
 categories:
 - RDBMS
 - PostgreSQL

@@ -3,6 +3,8 @@ layout: post
 title: "Tipe data untuk bernilai Karakter"
 date: 2017-11-07T22:29:55+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - Java
 - Core

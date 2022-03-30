@@ -3,6 +3,8 @@ layout: post
 title: "Laravel deployment using compose file"
 date: 2021-09-12T14:40:46+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

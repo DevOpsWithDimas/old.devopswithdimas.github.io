@@ -3,6 +3,8 @@ layout: post
 title: "Minikube addons features"
 date: 2022-02-18T22:19:57+07:00
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

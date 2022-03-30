@@ -3,6 +3,8 @@ layout: post
 title: "Tipe data logika (true of false)"
 date: 2017-11-07T22:05:46+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - Java
 - Core

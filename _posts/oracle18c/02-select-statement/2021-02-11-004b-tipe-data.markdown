@@ -3,6 +3,8 @@ layout: post
 title: "Data Types di Oracle Database"
 date: 2021-02-11T10:04:41+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

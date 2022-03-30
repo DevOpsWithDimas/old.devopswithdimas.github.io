@@ -3,6 +3,8 @@ layout: post
 title: "Overview of Docker machines"
 date: 2022-03-22T04:36:37+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

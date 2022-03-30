@@ -3,6 +3,8 @@ layout: post
 title: "Use host networking"
 date: 2021-05-29T07:13:15+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

@@ -3,6 +3,8 @@ layout: post
 title: "DDL - Macam-macam Constraint di Oracle"
 date: 2021-02-24T14:48:11+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

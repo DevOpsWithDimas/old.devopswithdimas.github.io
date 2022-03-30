@@ -3,6 +3,8 @@ layout: post
 title: "Install Oracle JDK 8 di RedHad based (Fedora 25)"
 date: 2017-10-19T09:35:31+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - java
 - core

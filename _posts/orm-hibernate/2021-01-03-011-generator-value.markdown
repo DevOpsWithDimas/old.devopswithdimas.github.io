@@ -3,6 +3,8 @@ layout: post
 title: "Macam Macam Generator Value di Hibernate"
 date: 2021-01-03T16:41:23+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

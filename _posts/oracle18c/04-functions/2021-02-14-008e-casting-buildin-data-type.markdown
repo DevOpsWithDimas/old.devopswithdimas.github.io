@@ -3,6 +3,8 @@ layout: post
 title: "Casting Build-In Data Type di Oracle"
 date: 2021-02-14T20:50:29+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

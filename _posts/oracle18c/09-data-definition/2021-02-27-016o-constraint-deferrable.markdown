@@ -3,6 +3,8 @@ layout: post
 title: "DDL - Deferring Constraint Checks"
 date: 2021-02-27T10:07:36+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

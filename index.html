@@ -49,6 +49,9 @@ layout: default
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
+                            {% if a_last_post.date %}
+                                <span class="badge" data-badge-caption="">{{ a_last_post.date | date: "%-d/%b/%Y" }}</span>
+                            {% endif %} 
                             <div class="row">
                                 <span class="flow-text truncate">
                                     {% if topic.coming_soon == false and a_post %}
@@ -64,11 +67,6 @@ layout: default
                                     {% endif %}                            
                                 </span>
                             </div>
-                            <div class="row">
-                                {% if a_last_post.date %}
-                                <span class="badge" data-badge-caption="">Latest update: {{ a_last_post.date | date: "%-d %B %Y" }}</span>
-                                {% endif %} 
-                            </div>
                             {% if topic.udemy %}
                             <div class="row">
                                 {% if topic.udemy.couponCode %}
@@ -83,7 +81,7 @@ layout: default
                         <div class="card-action right-align">                            
                             {% if topic.udemy %}
                             <div class="row">
-                                <div class="col s12 m12 l6">
+                                <div class="col s12 m6 l6">
                                     <div class="right-align">
                                         {% if topic.udemy.discount %}
                                         <del class="gray-text">{{ topic.udemy.price }}</del>
@@ -95,7 +93,7 @@ layout: default
                                         {% endif %}
                                     </div>
                                 </div>
-                                <div class="col s12 m12 l6">
+                                <div class="col s12 m6 l6">
                                     <a target="_blank" 
                                         href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}" 
                                         class="tooltipped btn red accent-1" 

@@ -3,6 +3,8 @@ layout: post
 title: "Using thirdparty Editor untuk PostgreSQL Server"
 date: 2022-02-13T15:03:10+07:00
 lang: postgresql
+authors:
+- dimasm93
 categories:
 - RDBMS
 - PostgreSQL

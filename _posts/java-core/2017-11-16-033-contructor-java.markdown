@@ -3,6 +3,8 @@ layout: post
 title: "Contructor adalah method"
 date: 2017-11-16T21:56:08+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - Java
 - Core

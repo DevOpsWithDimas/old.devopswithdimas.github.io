@@ -3,6 +3,8 @@ layout: post
 title: "User, Volumes and Working Directory"
 date: 2021-06-20T21:02:55+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

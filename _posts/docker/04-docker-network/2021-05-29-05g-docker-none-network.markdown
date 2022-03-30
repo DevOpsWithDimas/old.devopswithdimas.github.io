@@ -3,6 +3,8 @@ layout: post
 title: "Disable networking for a container"
 date: 2021-05-29T11:40:22+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

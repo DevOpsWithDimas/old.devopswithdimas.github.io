@@ -3,6 +3,8 @@ layout: post
 title: "Like Predicate pada klausa where di Oracle"
 date: 2021-02-11T20:48:38+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

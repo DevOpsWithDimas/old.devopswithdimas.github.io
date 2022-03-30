@@ -3,6 +3,8 @@ layout: post
 title: "Organisasi class file dengan package"
 date: 2017-11-14T23:04:06+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - Java
 - Core

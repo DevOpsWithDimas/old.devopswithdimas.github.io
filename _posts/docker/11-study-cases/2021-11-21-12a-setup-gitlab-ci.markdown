@@ -3,6 +3,8 @@ layout: post
 title: "Setup environment for CI using Gitlab & Nexus OSS"
 date: 2021-11-21T14:16:22+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

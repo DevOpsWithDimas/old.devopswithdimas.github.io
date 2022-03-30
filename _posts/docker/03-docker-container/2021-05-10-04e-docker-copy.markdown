@@ -3,6 +3,8 @@ layout: post
 title: "Copying files/content between container and filesystem"
 date: 2021-05-10T06:21:24+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

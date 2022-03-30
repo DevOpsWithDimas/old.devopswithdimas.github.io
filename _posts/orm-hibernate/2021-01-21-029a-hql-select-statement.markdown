@@ -3,6 +3,8 @@ layout: post
 title: "Select Statement dengan HQL"
 date: 2021-01-21T11:57:38+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

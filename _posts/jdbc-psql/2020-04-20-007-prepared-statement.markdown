@@ -3,6 +3,8 @@ layout: post
 title: "Mengenal class java.sql.PreparedStatement"
 date: 2020-04-20T19:56:20+07:00
 lang: java-jdbc-psql
+authors:
+- dimasm93
 categories:
 - Java
 - JDBC

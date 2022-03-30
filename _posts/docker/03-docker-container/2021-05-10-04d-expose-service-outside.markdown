@@ -3,6 +3,8 @@ layout: post
 title: "Expose services to outside using ports"
 date: 2021-05-10T06:17:49+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

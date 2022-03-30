@@ -3,6 +3,8 @@ layout: post
 title: "Inherintance Mapping metode Table Per Class"
 date: 2021-01-16T20:40:16+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

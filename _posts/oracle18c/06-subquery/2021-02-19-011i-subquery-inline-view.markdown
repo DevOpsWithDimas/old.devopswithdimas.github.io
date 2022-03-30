@@ -3,6 +3,8 @@ layout: post
 title: "Sub Query Inline View di Oracle"
 date: 2021-02-19T20:04:07+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

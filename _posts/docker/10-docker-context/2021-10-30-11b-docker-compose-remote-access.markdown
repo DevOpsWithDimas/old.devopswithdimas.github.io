@@ -3,6 +3,8 @@ layout: post
 title: "Remote deployment using docker-compose"
 date: 2021-10-30T15:32:02+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

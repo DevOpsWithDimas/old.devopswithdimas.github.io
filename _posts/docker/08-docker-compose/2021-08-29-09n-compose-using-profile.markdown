@@ -3,6 +3,8 @@ layout: post
 title: "Using profiles with Compose file"
 date: 2021-08-29T16:08:14+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

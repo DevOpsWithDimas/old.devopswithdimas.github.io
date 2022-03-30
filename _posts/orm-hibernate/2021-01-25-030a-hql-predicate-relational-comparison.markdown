@@ -3,6 +3,8 @@ layout: post
 title: "Relational Comparison Predicate dengan HQL"
 date: 2021-01-25T13:29:57+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

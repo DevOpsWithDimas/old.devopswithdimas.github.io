@@ -3,6 +3,8 @@ layout: post
 title: "Using pgAdmin4 as PostgreSQL editor"
 date: 2022-02-06T15:15:41+07:00
 lang: postgresql
+authors:
+- dimasm93
 categories:
 - RDBMS
 - PostgreSQL

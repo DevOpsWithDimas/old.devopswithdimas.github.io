@@ -3,6 +3,8 @@ layout: post
 title: "Setup Develoment environment untuk Javascript"
 date: 2020-08-20T16:47:56+07:00
 lang: js
+authors:
+- dimasm93
 categories:
 - web
 - js

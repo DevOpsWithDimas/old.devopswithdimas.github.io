@@ -3,6 +3,8 @@ layout: post
 title: "Konversi tipe data otomatis di Java"
 date: 2017-11-09T23:40:58+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - Java
 - Core

@@ -3,6 +3,8 @@ layout: post
 title: "Aggregate Functions"
 date: 2021-02-15T04:27:54+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

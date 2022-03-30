@@ -3,6 +3,8 @@ layout: post
 title: "DDL - Managing Resource & Password dengan Profiles"
 date: 2021-03-15T08:47:39+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

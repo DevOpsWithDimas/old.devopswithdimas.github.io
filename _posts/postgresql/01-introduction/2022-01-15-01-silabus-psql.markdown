@@ -3,6 +3,8 @@ layout: post
 title: "Silabus - PostgreSQL: Pemula sampai Mahir"
 date: 2022-01-15T20:49:25+07:00
 lang: postgresql
+authors:
+- dimasm93
 categories:
 - RDBMS
 - PostgreSQL

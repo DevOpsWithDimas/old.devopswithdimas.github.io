@@ -3,6 +3,8 @@ layout: post
 title: "Conditional Expression dengan Case When di Oracle"
 date: 2021-02-21T14:43:29+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

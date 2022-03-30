@@ -3,6 +3,8 @@ layout: post
 title: "Grouping source code dengan class"
 date: 2017-11-14T21:52:33+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - Java
 - Core

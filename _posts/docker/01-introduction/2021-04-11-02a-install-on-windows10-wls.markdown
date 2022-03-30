@@ -3,6 +3,8 @@ layout: post
 title: "How to install Docker on Windows 10 with WSL"
 date: 2021-04-11T21:16:49+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

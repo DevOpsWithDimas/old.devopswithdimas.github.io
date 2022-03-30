@@ -3,6 +3,8 @@ layout: post
 title: "Inherintance Mapping metode MappedSuperclass"
 date: 2021-01-16T12:04:41+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

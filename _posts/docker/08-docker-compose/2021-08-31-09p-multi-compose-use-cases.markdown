@@ -3,6 +3,8 @@ layout: post
 title: "Example use case of multiple compose files"
 date: 2021-08-31T06:49:29+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

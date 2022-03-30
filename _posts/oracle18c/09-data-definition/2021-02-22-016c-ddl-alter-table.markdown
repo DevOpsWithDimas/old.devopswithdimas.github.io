@@ -3,6 +3,8 @@ layout: post
 title: "DDL - Merubah struktur table"
 date: 2021-02-22T15:21:08+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

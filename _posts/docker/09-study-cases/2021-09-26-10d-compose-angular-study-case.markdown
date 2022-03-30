@@ -3,6 +3,8 @@ layout: post
 title: "Angular deployment using compose file"
 date: 2021-09-26T13:44:07+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

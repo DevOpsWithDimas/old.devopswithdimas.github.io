@@ -3,6 +3,8 @@ layout: post
 title: "PHP deployment using compose file"
 date: 2021-09-10T07:14:36+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

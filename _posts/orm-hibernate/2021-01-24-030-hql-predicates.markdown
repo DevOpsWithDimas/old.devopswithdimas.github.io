@@ -3,6 +3,8 @@ layout: post
 title: "Predicates / Conditional Expressions dengan HQL"
 date: 2021-01-24T17:42:55+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

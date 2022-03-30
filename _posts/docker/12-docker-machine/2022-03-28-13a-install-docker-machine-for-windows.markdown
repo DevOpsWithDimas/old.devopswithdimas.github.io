@@ -3,6 +3,8 @@ layout: post
 title: "Install docker-machine on Windows"
 date: 2022-03-28T05:20:44+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

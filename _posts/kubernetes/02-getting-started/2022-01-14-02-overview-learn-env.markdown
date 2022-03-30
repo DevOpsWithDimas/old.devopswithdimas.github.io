@@ -3,6 +3,8 @@ layout: post
 title: "Overview learning environment with Minikube"
 date: 2022-01-14T10:08:49+07:00
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

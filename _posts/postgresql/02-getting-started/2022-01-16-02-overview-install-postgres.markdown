@@ -3,6 +3,8 @@ layout: post
 title: "Overview Installing PostgreSQL"
 date: 2022-01-16T13:13:27+07:00
 lang: postgresql
+authors:
+- dimasm93
 categories:
 - RDBMS
 - PostgreSQL

@@ -3,6 +3,8 @@ layout: post
 title: "Install Oracle JDK 8 di Linux Debian Based (UBuntu 16.04 dan 17.04)"
 date: 2017-10-19T01:32:10+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - java
 - core

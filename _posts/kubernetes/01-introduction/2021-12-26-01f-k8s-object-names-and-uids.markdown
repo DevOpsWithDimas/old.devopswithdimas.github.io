@@ -3,6 +3,8 @@ layout: post
 title: "Kubernetes Object Names and IDs"
 date: 2021-12-26T14:31:53+07:00
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

@@ -3,6 +3,8 @@ layout: post
 title: "Logging, Inspect, & Resource Usage Statistics Containers"
 date: 2021-05-10T09:09:41+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

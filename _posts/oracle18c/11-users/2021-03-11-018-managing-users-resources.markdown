@@ -3,6 +3,8 @@ layout: post
 title: "Managing Users and Resource di Oracle"
 date: 2021-03-11T11:25:26+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

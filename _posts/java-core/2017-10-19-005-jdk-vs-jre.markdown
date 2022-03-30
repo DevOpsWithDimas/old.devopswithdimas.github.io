@@ -3,6 +3,8 @@ layout: post
 title: "Perbedaan Java Development Kit dan Java Runtime Environment"
 date: 2017-10-19T11:57:07+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - java
 - core

@@ -3,6 +3,8 @@ layout: post
 title: "In Predicates pada klausa where di Oracle"
 date: 2021-02-12T19:43:04+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

@@ -3,6 +3,8 @@ layout: post
 title: "Perancangan / Design Table (Relationship)"
 date: 2021-03-22T14:49:26+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

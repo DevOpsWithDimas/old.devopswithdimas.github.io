@@ -3,6 +3,8 @@ layout: post
 title: "Submit value dengan Servlet menggunakan Http GET Method"
 date: 2020-08-29T19:28:39+07:00
 lang: java-web
+authors:
+- dimasm93
 categories:
 - java
 - web

@@ -3,6 +3,8 @@ layout: post
 title: "Persiapan Sebelum mulai belajar"
 date: 2021-02-10T18:04:50+07:00
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

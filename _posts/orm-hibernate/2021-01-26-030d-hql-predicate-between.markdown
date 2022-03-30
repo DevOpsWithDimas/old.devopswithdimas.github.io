@@ -3,6 +3,8 @@ layout: post
 title: "Predicate BETWEEN dengan HQL"
 date: 2021-01-26T14:07:53+07:00
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

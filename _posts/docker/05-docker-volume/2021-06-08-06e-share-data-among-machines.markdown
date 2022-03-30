@@ -3,6 +3,8 @@ layout: post
 title: "Share data among machines"
 date: 2021-06-08T05:18:06+07:00
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

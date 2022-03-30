@@ -3,6 +3,8 @@ layout: post
 title: "Menyimpan multiple value dalam sebuah variable"
 date: 2017-11-20T21:14:38+07:00
 lang: java-core
+authors:
+- dimasm93
 categories:
 - Java
 - Core
