@@ -42,6 +42,13 @@ titlecase: false
 mermaid:
   src: 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'
 
+pagination:
+  enabled: true
+  per_page: 25
+  permalink: '/page/:num/'
+  sort_reverse: true
+  sort_field: 'date'
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

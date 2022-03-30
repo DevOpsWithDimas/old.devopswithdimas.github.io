@@ -15,7 +15,7 @@ group :jekyll_plugins do
   gem "redcarpet"
   gem "nokogiri"
   gem 'jekyll-sitemap'
-  gem 'jekyll-paginate'
+  gem 'jekyll-paginate-v2'
   gem 'jemoji'
   gem 'jekyll-analytics'
   gem 'jekyll-mermaid'
