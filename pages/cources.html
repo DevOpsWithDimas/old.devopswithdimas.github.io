@@ -178,35 +178,28 @@ icon: library_books
                             <div class="card-image">
                                 <img class="activator responsive-img" 
                                     src="{{ "/resources/cources/banners/" | prepend: site.baseurl}}{{topic.url}}.png">
-                                    <span class="black white-text card-title flow-text truncate">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <div class="row">
                                         {% if topic.coming_soon == false and a_post %}                                        
                                         <a href="#modal-{{ topic.url }}"
                                             class="modal-trigger tooltipped" 
                                             data-position="bottom" 
                                             data-delay="50" 
                                             data-tooltip="Preview">
-                                            <span class="field-name">
+                                            <span class="field-name flow-text">
                                                 {{topic.name}}
                                             </span>
                                         </a>
                                         {% else %}
-                                        <span class="field-name">
-                                            <span class="badge yellow" data-badge-caption="soon"></span>
+                                        <span class="field-name flow-text">
+                                            <span class="new badge yellow black-text" data-badge-caption="comming soon"></span>
                                             {{topic.name}}
                                         </span>
-                                        {% endif %}                            
-                                    </span>
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    {% if a_last_post.date %}
-                                    <span class="badge" data-badge-caption="">{{ a_last_post.date | date: "%-d %B %Y" }}</span>
-                                    {% endif %} 
-                                    {% if topic.fullname %}
-                                    <div class="row">
-                                        <span class="field-fullname">{{ topic.fullname }}</span>
+                                        {% endif %}
                                     </div>
-                                    {% endif %}
+
                                     <div class="row">
                                         <p>
                                             {{ topic.descriptions }}
@@ -245,7 +238,7 @@ icon: library_books
                             <div class="card-reveal">
                                 <!-- title of card reveal -->
                                 <span class="card-title grey-text text-darken-4">
-                                    {{topic.name}}
+                                    {% if topic.fullname %} {{ topic.fullname }} {% else %} {{topic.name}} {% endif %}
                                     <i class="material-icons right">close</i>
                                 </span>
                                 <div class="row">
