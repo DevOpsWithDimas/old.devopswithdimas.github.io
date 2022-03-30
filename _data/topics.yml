@@ -692,8 +692,9 @@
   language: Java
   color: green accent-2
   tags:
+  - framework
   - java
-  - springframework
+  - spring-framework
   descriptions:
     Temen-temen akan belajar Konsep dan Implementasi Dependency Injection dengan menggunakan Spring Framework menggunakan Bahasa pemograman Java
   messages:

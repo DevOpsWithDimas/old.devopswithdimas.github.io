@@ -3,8 +3,9 @@ layout: {{ layout }}
 title: "{{ title }}"
 lang: spring-core
 categories:
+- framework
 - java
-- spring
+- spring-framework
 refs: 
 - https://spring.io/projects/spring-framework
 youtube: {{ youtube }}
