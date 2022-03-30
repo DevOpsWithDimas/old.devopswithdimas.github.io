@@ -1,19 +1,10 @@
-- name: PostgreSQL Database (DBA)
-  code: dba-postgres
+- name: Database Administrator (DBA)
+  code: dba
   description: 
   isNew: true
   courses: 
   - postgresql
-
-- name: Oracle Database (DBA)
-  code: dba-oracle
-  description: 
-  isNew: false
-  courses: 
   - oracle18c
-  - plsql-oracle18c
-  - dba-oracle18c
-  - ordb-oracle18c
 
 - name: Java Web Developer (Fundamental)
   code: java-web
@@ -41,12 +32,10 @@
   isNew: false
   description: 
   courses: 
-  - java-core  
+  - java-core
   - orm-hibernate
   - spring-core
-  - spring-webservice
-  - spring-security
-  - spring-oauth2
+  - spring-boot
 
 - name: Development & Operation (DevOps)
   code: devops

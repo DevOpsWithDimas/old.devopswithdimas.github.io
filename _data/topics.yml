@@ -85,7 +85,7 @@
   visible: true
 
 - name: ORM dengan Hibernate
-  fullname: 
+  fullname: 'Developer - ORM Hibernetes: Pemula sampai Mahir'
   url: orm-hibernate
   icon: "devicons devicons-java"
   language: Java
@@ -158,8 +158,8 @@
   coming_soon: true
   visible: false
 
-- name: Oracle DB - SQL
-  fullname: "DBA Oracle: Pemula sampai Mahir"
+- name: Oracle Database
+  fullname: "DBA - Oracle Database: Pemula sampai Mahir"
   url: oracle18c
   icon: "devicons devicons-java"
   language: Database
@@ -236,66 +236,8 @@
       description: ''
       deprecated: false
 
-- name: Oracle DB - PL/SQL
-  url: plsql-oracle18c
-  icon: "devicons devicons-java"
-  language: Database
-  color: blue lighten-5
-  tags:
-  - Oracle
-  - Database
-  - PL-SQL
-  descriptions:
-    Temen-teman akan belajar Relational Database Management System (RDBMS) dengan Oracle yang sifatnya Big Data.
-  messages:
-  publish: 2021-02-08T12:26:00+07:00
-  github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
-  youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvy6l51feh7ABmyyufPLnA6n
-  udemy: 
-  coming_soon: true
-  visible: false
-
-- name: Oracle DB - Administration
-  url: dba-oracle18c
-  icon: "devicons devicons-java"
-  language: Database
-  color: blue lighten-5
-  tags:
-  - Oracle
-  - Database
-  - DBA
-  descriptions:
-    Temen-teman akan belajar Relational Database Management System (RDBMS) dengan Oracle yang sifatnya Big Data.
-  messages:
-  publish: 2021-02-08T13:26:00+07:00
-  github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
-  youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvw3_SjMKQlKRlGdBiRr_1dh
-  udemy: 
-  coming_soon: true
-  visible: false
-
-- name: Oracle DB - ORDBMS
-  url: ordb-oracle18c
-  icon: "devicons devicons-java"
-  language: Database
-  color: blue lighten-5
-  tags:
-  - Oracle
-  - Database
-  - PL-SQL
-  - Object-Orited
-  descriptions:
-    Temen-teman akan belajar Relational Database Management System (RDBMS) dengan Oracle yang sifatnya Big Data.
-  messages:
-  publish: 2021-02-08T13:26:00+07:00
-  github: https://github.com/BootcampYoutubeChannel/belajar-rdbms-oraclexe-18c
-  youtube: https://www.youtube.com/playlist?list=PLV1-tdmPblvzvSZm8AZ_IAec0MJuxP3GR
-  udemy: 
-  coming_soon: true
-  visible: false
-
 - name: Docker
-  fullname: "DevOps Docker: Pemula sampai Mahir"
+  fullname: "DevOps - Docker: Pemula sampai Mahir"
   url: docker
   icon: "devicons devicons-java"
   language: DevOps
@@ -378,7 +320,7 @@
       deprecated: false
 
 - name: Kubernetes (k8s)
-  fullname: "DevOps Kubernetes: Pemula sampai Mahir"
+  fullname: "DevOps - Kubernetes: Pemula sampai Mahir"
   url: k8s
   icon: "devicons devicons-java"
   language: DevOps
@@ -466,7 +408,7 @@
       deprecated: false
 
 - name: Ansible
-  fullname: "DevOps Ansible: Pemula sampai Mahir"
+  fullname: "DevOps - RedHat Ansible: Pemula sampai Mahir"
   url: ansible
   icon: "devicons devicons-java"
   language: DevOps
@@ -522,8 +464,8 @@
       deprecated: false
     
 - name: Openshift
-  fullname: 'DevOps RedHat Openshift: Pemula sampai Mahir'
-  url: k8s-openshift
+  fullname: 'DevOps - RedHat Openshift: Pemula sampai Mahir'
+  url: redhat-openshift
   icon: "devicons devicons-java"
   language: DevOps
   color: white
@@ -550,7 +492,7 @@
       description: 'Eps 2: Getting started with free of Openshift using minishift'
 
 - name: Gitlab
-  fullname: 'GitOps Gitlab: Pemula sampai Mahir'
+  fullname: 'GitOps - Gitlab: Pemula sampai Mahir'
   url: gitlab
   icon: "devicons devicons-java"
   language: DevOps
@@ -597,7 +539,7 @@
       description: 'Eps 8: DevOps Tools'
 
 - name: PostgreSQL
-  fullname: "DBA PostgreSQL: Pemula sampai Mahir"
+  fullname: "DBA - PostgreSQL: Pemula sampai Mahir"
   url: postgresql
   icon: "devicons devicons-postgresql"
   language: Database
@@ -666,7 +608,7 @@
       description: ''
 
 - name: Java Essentials
-  fullname: "Java Developer: Essentials untuk Pemula sampai Mahir"
+  fullname: "Developer - Java Essentials: Pemula sampai Mahir"
   url: java-se
   icon: "devicons devicons-postgresql"
   language: Java
@@ -744,7 +686,7 @@
       description: 'Eps 16: Java Server Pages'
     
 - name: Spring Framework
-  fullname: 'Developer Spring Framework: Pemula sampai Mahir'
+  fullname: 'Developer - Spring Framework: Pemula sampai Mahir'
   url: spring-core
   icon: "devicons devicons-java"
   language: Java
@@ -777,7 +719,7 @@
       description: 'Eps 5: Validation, Data Binding, and Type Conversion'
 
 - name: Apache JMeter
-  fullname: 'DevOps Apache JMeter - LoadTest Performance: Pemula sampai Mahir'
+  fullname: 'DevOps - Apache JMeter: Pemula sampai Mahir'
   url: apache-jmeter
   icon: "devicons devicons-java"
   language: DevOps
