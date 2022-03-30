@@ -2,6 +2,8 @@
 layout: post
 title: "030-database-tunning"
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

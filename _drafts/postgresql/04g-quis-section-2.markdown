@@ -2,6 +2,8 @@
 layout: post
 title: "Time your practice (part 2)"
 lang: postgresql
+authors:
+- dimasm93
 categories:
 - RDBMS
 - PostgreSQL

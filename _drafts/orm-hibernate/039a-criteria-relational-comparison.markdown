@@ -2,6 +2,8 @@
 layout: post
 title: "Relational Comparison dengan Criteria API"
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

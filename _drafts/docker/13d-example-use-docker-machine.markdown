@@ -2,6 +2,8 @@
 layout: post
 title: "12d-example-use-docker-machine"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

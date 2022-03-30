@@ -2,6 +2,8 @@
 layout: post
 title: "12c-manage-virtual-machines"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

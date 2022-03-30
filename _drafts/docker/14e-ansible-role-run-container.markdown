@@ -2,6 +2,8 @@
 layout: post
 title: "14e-ansible-role-run-container"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

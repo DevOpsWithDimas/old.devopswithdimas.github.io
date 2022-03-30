@@ -2,6 +2,8 @@
 layout: post
 title: "Selecting a Wrapper dengan Criteria API"
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

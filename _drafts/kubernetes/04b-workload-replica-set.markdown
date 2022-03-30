@@ -2,6 +2,8 @@
 layout: post
 title: "04b-workload-replica-set"
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

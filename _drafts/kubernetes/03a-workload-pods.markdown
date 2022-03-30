@@ -2,6 +2,8 @@
 layout: post
 title: "Workload of Pods"
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

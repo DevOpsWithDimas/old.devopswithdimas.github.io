@@ -2,6 +2,8 @@
 layout: post
 title: "04c-workload-statefull-sets"
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

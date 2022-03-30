@@ -2,6 +2,8 @@
 layout: post
 title: "14a-install-ansible-linux"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

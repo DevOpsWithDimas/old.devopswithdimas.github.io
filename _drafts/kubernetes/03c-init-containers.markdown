@@ -2,6 +2,8 @@
 layout: post
 title: "03c-init-containers"
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

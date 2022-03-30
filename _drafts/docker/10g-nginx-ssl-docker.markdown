@@ -2,6 +2,8 @@
 layout: post
 title: "Deploy nginx with ssl/https on docker"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

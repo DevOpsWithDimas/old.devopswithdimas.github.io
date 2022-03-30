@@ -2,6 +2,8 @@
 layout: post
 title: "14c-ansible-role-install-docker-compose"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

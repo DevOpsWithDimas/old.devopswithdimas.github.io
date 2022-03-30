@@ -2,6 +2,8 @@
 layout: post
 title: "04-overview-workload-k8s-resources"
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

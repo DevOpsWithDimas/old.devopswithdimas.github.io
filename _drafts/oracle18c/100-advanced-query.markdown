@@ -2,6 +2,8 @@
 layout: post
 title: "018-advanced-query"
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

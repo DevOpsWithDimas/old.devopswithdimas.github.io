@@ -2,6 +2,8 @@
 layout: post
 title: "14b-install-ansible-macos"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

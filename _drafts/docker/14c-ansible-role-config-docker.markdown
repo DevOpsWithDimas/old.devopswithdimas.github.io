@@ -2,6 +2,8 @@
 layout: post
 title: "14c-ansible-role-config-docker"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

@@ -2,6 +2,8 @@
 layout: post
 title: "017-pivot-unpivot"
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

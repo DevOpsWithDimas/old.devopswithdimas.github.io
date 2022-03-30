@@ -2,6 +2,8 @@
 layout: post
 title: "04d-workload-daemon-sets"
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

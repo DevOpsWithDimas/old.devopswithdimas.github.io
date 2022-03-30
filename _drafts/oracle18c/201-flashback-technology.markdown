@@ -2,6 +2,8 @@
 layout: post
 title: "Oracle Flashback Technology"
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

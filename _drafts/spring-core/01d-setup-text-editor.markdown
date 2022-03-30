@@ -2,6 +2,8 @@
 layout: post
 title: "Install and Setup Integrated Development Editor (IDE)"
 lang: spring-core
+authors:
+- dimasm93
 categories:
 - java
 - spring

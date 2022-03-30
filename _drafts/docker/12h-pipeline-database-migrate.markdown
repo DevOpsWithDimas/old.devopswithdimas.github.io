@@ -2,6 +2,8 @@
 layout: post
 title: "Pipeline: Flyway Database Migration dengan Gitlab CI"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

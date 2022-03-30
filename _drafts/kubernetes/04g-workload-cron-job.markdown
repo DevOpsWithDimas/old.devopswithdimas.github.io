@@ -2,6 +2,8 @@
 layout: post
 title: "04f-workload-cron-job"
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

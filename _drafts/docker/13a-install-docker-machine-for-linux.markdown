@@ -2,6 +2,8 @@
 layout: post
 title: "Install docker-machine on Linux"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

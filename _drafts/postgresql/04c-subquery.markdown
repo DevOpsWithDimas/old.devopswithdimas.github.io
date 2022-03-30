@@ -2,6 +2,8 @@
 layout: post
 title: "Subqueries"
 lang: postgresql
+authors:
+- dimasm93
 categories:
 - RDBMS
 - PostgreSQL

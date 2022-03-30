@@ -2,6 +2,8 @@
 layout: post
 title: "018c-batch-insert"
 lang: oracle18c
+authors:
+- dimasm93
 categories:
 - RDBMS
 - Oracle18c

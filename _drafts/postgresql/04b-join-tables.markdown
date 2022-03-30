@@ -2,6 +2,8 @@
 layout: post
 title: "Joined Tables"
 lang: postgresql
+authors:
+- dimasm93
 categories:
 - RDBMS
 - PostgreSQL

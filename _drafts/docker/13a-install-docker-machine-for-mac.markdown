@@ -2,6 +2,8 @@
 layout: post
 title: "Install docker-machine on MacOS"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

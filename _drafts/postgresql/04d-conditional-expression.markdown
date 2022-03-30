@@ -2,6 +2,8 @@
 layout: post
 title: "Conditional Expressions"
 lang: postgresql
+authors:
+- dimasm93
 categories:
 - RDBMS
 - PostgreSQL

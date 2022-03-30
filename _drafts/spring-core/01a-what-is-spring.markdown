@@ -2,6 +2,8 @@
 layout: post
 title: "What is Spring Framework"
 lang: spring-core
+authors:
+- dimasm93
 categories:
 - java
 - spring

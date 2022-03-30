@@ -2,6 +2,8 @@
 layout: post
 title: "14-overview-ansible-for-docker"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

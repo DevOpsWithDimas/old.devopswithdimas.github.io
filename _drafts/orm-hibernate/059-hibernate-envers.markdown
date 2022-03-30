@@ -2,6 +2,8 @@
 layout: post
 title: "021-hibernate-envers"
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

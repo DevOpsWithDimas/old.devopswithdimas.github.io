@@ -2,6 +2,8 @@
 layout: post
 title: "Overview of Kubernetes Workloads"
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

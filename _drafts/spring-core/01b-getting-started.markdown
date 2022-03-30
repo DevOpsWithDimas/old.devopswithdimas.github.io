@@ -2,6 +2,8 @@
 layout: post
 title: "Getting started"
 lang: spring-core
+authors:
+- dimasm93
 categories:
 - java
 - spring

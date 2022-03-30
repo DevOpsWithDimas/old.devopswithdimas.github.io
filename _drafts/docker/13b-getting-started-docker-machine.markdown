@@ -2,6 +2,8 @@
 layout: post
 title: "12a-getting-started-docker-machine"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

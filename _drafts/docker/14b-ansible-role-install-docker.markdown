@@ -2,6 +2,8 @@
 layout: post
 title: "14b-ansible-role-install-docker"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

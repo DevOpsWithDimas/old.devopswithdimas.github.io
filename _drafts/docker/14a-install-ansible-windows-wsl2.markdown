@@ -2,6 +2,8 @@
 layout: post
 title: "14c-install-ansible-windows-wsl2"
 lang: docker
+authors:
+- dimasm93
 categories:
 - DevOps
 - Docker

@@ -2,6 +2,8 @@
 layout: post
 title: "Combining Queries (UNION, INTERSECT, EXCEPT)"
 lang: postgresql
+authors:
+- dimasm93
 categories:
 - RDBMS
 - PostgreSQL

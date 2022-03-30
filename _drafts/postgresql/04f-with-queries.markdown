@@ -2,6 +2,8 @@
 layout: post
 title: "WITH Queries (Common Table Expressions)"
 lang: postgresql
+authors:
+- dimasm93
 categories:
 - RDBMS
 - PostgreSQL

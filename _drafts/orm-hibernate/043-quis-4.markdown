@@ -2,6 +2,8 @@
 layout: post
 title: "Time is your to Practice"
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM
