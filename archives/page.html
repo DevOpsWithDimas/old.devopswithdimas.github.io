@@ -2,25 +2,26 @@
 layout: default
 title: Archives
 icon: archive
-pagination: 
-  enabled: true
+pagination:
+    enabled: true
+    permalink: '/archives/page/:num/'
 ---
+
+<div class="section white">
+    <div class="row container">
+        <h2 class="header">
+            Articles
+            <span class="new badge" data-badge-caption="Articles">{{paginator.total_posts}}</span>
+            <span class="new badge" data-badge-caption="Pages">{{paginator.total_pages}}</span>
+        </h2>
+        <p class="grey-text text-darken-3 lighten-3"></p>
+    </div>
+</div>
+
 
 <div class="row">
     <div class="container">
-        <div class="col m12 l9">
-            <ul class="collection with-header">
-                {% for post in paginator.posts %}
-                <li>
-                    <!-- This loops through the paginated posts -->
-                    <a href="{{ post.url }}">{{ post.title }}</a>
-                    <p class="author">
-                        <span class="date">{{ post.date }}</span>
-                    </p>
-                </li>
-                {% endfor %}
-
-            </ul>
+        <div class="col m12">
             <!-- Pagination links -->
             <div class="pagination">
                 {% if paginator.previous_page %}
@@ -38,6 +39,75 @@ pagination:
                 {% else %}
                 <span class="next ">Next</span>
                 {% endif %}
+            </div>
+
+            <ul class="collection">
+                {% for post in paginator.posts %}
+                <li class="collection-item avatar">
+                    <img src="{{ " /resources/images/" | prepend: site.baseurl }}{{ post.lang | append: '.png' }}"
+                        alt="" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">{{ post.date | date: "%A,
+                        %-d/%b/%Y"}}</span>
+                    <a href="{{ post.url | prepend: site.baseurl }}">
+                        <span class="title">{{ post.title }}</span>
+                        <p>
+                            {% for tag in post.categories %}
+                            <div class="chip">
+                                {{ tag }}
+                            </div>
+                            {% endfor %}
+                        </p>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <!-- Pagination links -->
+            <div class="pagination">
+                <ul class="pagination">
+
+                    <li class="waves-effect">
+                        <a href="{{ paginator.first_page_path }}" class="first">
+                            First
+                        </a>
+                    </li>
+
+                    {% if paginator.previous_page %}
+                        <li class="waves-effect">
+                            <a href="{{ paginator.previous_page_path }}" class="previous">
+                                Previous
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="disabled">
+                            <a href="#!"><span class="previous">Previous</span></a>
+                        </li>
+                    {% endif %}
+
+                    {% if paginator.page_trail %}
+                    {% for trail in paginator.page_trail %}
+                    <li {% if page.url==trail.path %}class="active waves-effect" {% endif %}>
+                        <a href="{{ trail.path | prepend: site.baseurl }}" title="{{trail.title}}">{{ trail.num }}</a>
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+
+                    {% if paginator.next_page %}
+                    <li>
+                        <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+                    </li>
+                    {% else %}
+                    <li class="disabled">
+                        <a href="#!"><span class="next">Next</span></a>
+                    </li>
+                    {% endif %}
+
+                    <li class="waves-effect">
+                        <a href="{{ paginator.last_page_path }}" class="last">
+                            Last
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

@@ -1,4 +1,10 @@
 <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="{{ "/archives/page.html" | prepend: site.baseurl }}">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
 {% for other-link in site.pages | sort: 'title' %}
 {% if other-link.url contains "/pages/" %}
 <li>

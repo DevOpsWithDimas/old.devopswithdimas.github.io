@@ -11,6 +11,12 @@
                 <i class="material-icons">menu</i>
             </a>
             <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="{{ "/archives/" | prepend: site.baseurl }}">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
                 {% for other-link in site.pages | sort: 'title' %}
                 {% if other-link.url contains "/pages/" %}
                 <li>

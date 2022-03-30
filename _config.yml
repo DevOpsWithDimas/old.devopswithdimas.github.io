@@ -48,6 +48,9 @@ pagination:
   permalink: '/page/:num/'
   sort_reverse: true
   sort_field: 'date'
+  trail: 
+    before: 2
+    after: 2
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
