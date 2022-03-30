@@ -2,6 +2,8 @@
 layout: {{ layout }}
 title: "{{ title }}"
 lang: maven
+authors:
+- dimasm93
 categories:
 - build-tools
 - java

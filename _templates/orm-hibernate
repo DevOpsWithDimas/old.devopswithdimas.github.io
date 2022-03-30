@@ -2,6 +2,8 @@
 layout: {{ layout }}
 title: "{{ title }}"
 lang: orm-hibernate
+authors:
+- dimasm93
 categories:
 - Java
 - ORM

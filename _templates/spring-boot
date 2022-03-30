@@ -2,6 +2,8 @@
 layout: {{ layout }}
 title: "{{ title }}"
 lang: spring-boot
+authors:
+- dimasm93
 categories:
 - framework
 - java

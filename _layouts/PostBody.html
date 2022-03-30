@@ -42,9 +42,20 @@ layout: default
                             </span>
                         </span>
                     </li>
+                    {% if page.authors %}
+                    {% for userId in page.authors %}
+                    {% assign author = site.data.authors | where: 'user', userId | first %}
+                    <li class="collection-item avatar">
+                        <img src="{{ "/resources/avatars/" | prepend : site.baseurl }}{{author.user}}.png" alt="{{ author.fullname }}" class="circle">
+                        <span class="title">{{ author.fullname }}</span>
+                        <p>{{ author.company }}</p>
+                    </li>
+                    {% endfor %}
+                    {% else %}
                     <li class="collection-item">
                         {{site.author}}
                     </li>
+                    {% endif %}
                 </ul>
             </div>
             <div>

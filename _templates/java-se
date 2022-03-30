@@ -2,6 +2,8 @@
 layout: {{ layout }}
 title: "{{ title }}"
 lang: java-se
+authors:
+- dimasm93
 categories:
 - language
 - java

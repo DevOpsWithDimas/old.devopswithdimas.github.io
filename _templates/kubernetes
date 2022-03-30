@@ -2,6 +2,8 @@
 layout: {{ layout }}
 title: "{{ title }}"
 lang: k8s
+authors:
+- dimasm93
 categories:
 - DevOps
 - Orchestration

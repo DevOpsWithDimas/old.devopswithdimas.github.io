@@ -2,6 +2,8 @@
 layout: {{ layout }}
 title: "{{ title }}"
 lang: js
+authors:
+- dimasm93
 categories:
 - web
 - js
