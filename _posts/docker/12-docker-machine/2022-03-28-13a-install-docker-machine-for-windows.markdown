@@ -8,6 +8,7 @@ authors:
 categories:
 - DevOps
 - Docker
+- Machine
 refs: 
 - https://github.com/docker/machine/blob/docs/docs/install-machine.md
 youtube: 
@@ -46,7 +47,6 @@ Otherwise, download one of the releases from the [docker/machine release](https:
 Docker machine membutuhkan backend atau driver untuk virtualization, Ada beberapa driver yang kita bisa gunakan yaitu
 
 1. [Virtualbox (`virtualbox`)](https://github.com/docker/machine/tree/master/drivers/virtualbox)
-master/drivers/vmwarefusion)
 2. [HyperV (`hyperv`)](https://github.com/docker/machine/tree/master/drivers/hyperv)
 
 Yang telah saya test dan juga work well yaitu `virtualbox` jadi kita akan menggunakan VirtualBox ya sebagai drivernya. Untuk menginstall virtualbox di Windows 10/11 kita juga bisa menggunakan Package manager atau download binary exe nya di [official website](https://www.virtualbox.org/wiki/Downloads) Oracle Virtualbox
@@ -61,9 +61,7 @@ Jika sudah ter-install pastikan di Virtualbox tersebut dapat membuat vm linux de
 
 Machine lets you create Docker hosts on your computer, on cloud providers, and inside your own data center. It creates servers, installs Docker on them, then configures the Docker client to talk to them.
 
-{% highlight powershell %}
-docker-machine create -d virtualbox --virtualbox-no-vtx-check default
-{% endhighlight %}
+{% gist page.gist "13a-run-docker-machine.bash" %}
 
 Jika dijalankan maka hasilnya seperti berikut:
 
