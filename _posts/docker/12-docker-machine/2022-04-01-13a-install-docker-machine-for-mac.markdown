@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Install docker-machine on MacOS"
+date: 2022-04-01T05:50:03+07:00
 lang: docker
 authors:
 - dimasm93
@@ -32,7 +33,7 @@ Ok langsung aja kita bahas materi yang pertama
 
 ## Install docker-machine binary
 
-n OS X and Windows, Machine is installed along with other Docker products when you install the Docker Toolbox / Docker Desktop.
+On OS X and Windows, Machine is installed along with other Docker products when you install the Docker Toolbox / Docker Desktop.
 
 Note: in Docker Desktop version 20.xx drop `docker-machine` from bundle, kita bisa install secara terpisah menggunakan package manager
 
