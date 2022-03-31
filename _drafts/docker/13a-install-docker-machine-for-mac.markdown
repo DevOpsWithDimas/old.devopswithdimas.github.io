@@ -10,6 +10,7 @@ categories:
 - Machine
 refs: 
 - https://github.com/docker/machine/blob/docs/docs/install-machine.md
+- https://stackoverflow.com/a/69743478
 youtube: 
 comments: true
 catalog_key: docker-machine
@@ -104,73 +105,7 @@ For more information, refer to vendor documentation or this Apple Technical Note
 
 ==> Downloading https://download.virtualbox.org/virtualbox/6.1.32/VirtualBox-6.1
 Already downloaded: /Users/dimasm93/Library/Caches/Homebrew/downloads/27dcc52623cd4b30f7ff19214f02f8a6bdc4514593de31e2fe271f096d788190--VirtualBox-6.1.32-149290-OSX.dmg
-==> Uninstalling Cask virtualbox
-==> Running uninstall script VirtualBox_Uninstall.tool
 
-Welcome to the VirtualBox uninstaller script.
-
-Executing: /usr/bin/kmutil showloaded --list-only --bundle-identifier org.virtualbox.kext.VBoxUSB
-No variant specified, falling back to release
-Executing: /usr/bin/kmutil showloaded --list-only --bundle-identifier org.virtualbox.kext.VBoxNetFlt
-No variant specified, falling back to release
-Executing: /usr/bin/kmutil showloaded --list-only --bundle-identifier org.virtualbox.kext.VBoxNetAdp
-No variant specified, falling back to release
-Executing: /usr/bin/kmutil showloaded --list-only --bundle-identifier org.virtualbox.kext.VBoxDrv
-No variant specified, falling back to release
-The following files and directories (bundles) will be removed:
-    /Users/dimasm93/Library/LaunchAgents/org.virtualbox.vboxwebsrv.plist
-    /usr/local/bin/VirtualBox
-    /usr/local/bin/VirtualBoxVM
-    /usr/local/bin/VBoxManage
-    /usr/local/bin/VBoxVRDP
-    /usr/local/bin/VBoxHeadless
-    /usr/local/bin/vboxwebsrv
-    /usr/local/bin/VBoxBugReport
-    /usr/local/bin/VBoxBalloonCtrl
-    /usr/local/bin/VBoxAutostart
-    /usr/local/bin/VBoxDTrace
-    /usr/local/bin/vbox-img
-    /Library/LaunchDaemons/org.virtualbox.startup.plist
-    /Library/Application Support/VirtualBox/LaunchDaemons/
-    /Library/Application Support/VirtualBox/VBoxDrv.kext/
-    /Library/Application Support/VirtualBox/VBoxUSB.kext/
-    /Library/Application Support/VirtualBox/VBoxNetFlt.kext/
-    /Library/Application Support/VirtualBox/VBoxNetAdp.kext/
-    /Applications/VirtualBox.app/
-
-And the following KEXTs will be unloaded:
-    org.virtualbox.kext.VBoxUSB
-    org.virtualbox.kext.VBoxNetFlt
-    org.virtualbox.kext.VBoxNetAdp
-    org.virtualbox.kext.VBoxDrv
-
-And the traces of following packages will be removed:
-    org.virtualbox.pkg.vboxkexts
-    org.virtualbox.pkg.virtualbox
-    org.virtualbox.pkg.virtualboxcli
-
-The uninstallation processes requires administrative privileges
-because some of the installed files cannot be removed by a normal
-user. You may be prompted for your password now...
-
-unloading org.virtualbox.kext.VBoxUSB
-Executing: /usr/bin/kmutil unload -b org.virtualbox.kext.VBoxUSB
-unloading org.virtualbox.kext.VBoxNetFlt
-Executing: /usr/bin/kmutil unload -b org.virtualbox.kext.VBoxNetFlt
-unloading org.virtualbox.kext.VBoxNetAdp
-Executing: /usr/bin/kmutil unload -b org.virtualbox.kext.VBoxNetAdp
-unloading org.virtualbox.kext.VBoxDrv
-Executing: /usr/bin/kmutil unload -b org.virtualbox.kext.VBoxDrv
-Successfully unloaded VirtualBox kernel extensions.
-Forgot package 'org.virtualbox.pkg.vboxkexts' on '/'.
-Forgot package 'org.virtualbox.pkg.virtualbox' on '/'.
-Forgot package 'org.virtualbox.pkg.virtualboxcli' on '/'.
-Done.
-==> Uninstalling packages; your password may be necessary:
-==> Removing files:
-/usr/local/bin/vboximg-mount
-==> Purging files for version 6.1.32,149290 of Cask virtualbox
-==> Installing Cask virtualbox
 ==> Running installer for virtualbox; your password may be necessary.
 Package installers may write to any location; options such as `--appdir` are ignored.
 installer: Package name is Oracle VM VirtualBox
@@ -180,3 +115,125 @@ installer: The install was successful.
 ==> Changing ownership of paths required by virtualbox; your password may be nec
 🍺  virtualbox was successfully installed!
 ```
+
+Jika sudah ter-install pastikan di Virtualbox kita berikut Assesibility di menu Setting -> Security & Privasi seperti berikut:
+
+![assesibility]({{ page.image_path | prepend: site.baseurl }}/01-grant-assesibility.png)
+
+Kemudian kita berikut setting Network host-only di virtualboxnya dengan step seperti berikut:
+
+1. Create a `vbox` folder in the `etc` directory with `sudo mkdir /etc/vbox`
+2. Create a file `networks.conf` in the `vbox` folder with `sudo touch /etc/vbox/networks.conf`
+3. Write inside file `network.conf` with `* 0.0.0.0/0 ::/0`
+
+## Create and run a Docker host using VirtualBox provider
+
+Machine lets you create Docker hosts on your computer, on cloud providers, and inside your own data center. It creates servers, installs Docker on them, then configures the Docker client to talk to them.
+
+{% gist page.gist "13a-run-docker-machine.bash" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```bash
+➜  ~ docker-machine create -d virtualbox default
+Running pre-create checks...
+Creating machine...
+(default) Copying /Users/dimasm93/.docker/machine/cache/boot2docker.iso to /Users/dimasm93/.docker/machine/machines/default/boot2docker.iso...
+(default) Creating VirtualBox VM...
+(default) Creating SSH key...
+(default) Starting the VM...
+(default) Check network to re-create if needed...
+(default) Found a new host-only adapter: "vboxnet4"
+(default) Waiting for an IP...
+Waiting for machine to be running, this may take a few minutes...
+Detecting operating system of created instance...
+Waiting for SSH to be available...
+Detecting the provisioner...
+Provisioning with boot2docker...
+Copying certs to the local machine directory...
+Copying certs to the remote machine...
+Setting Docker configuration on the remote daemon...
+Checking connection to Docker...
+Docker is up and running!
+To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env default
+➜  ~ docker-machine env default
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_CERT_PATH="/Users/dimasm93/.docker/machine/machines/default"
+export DOCKER_MACHINE_NAME="default"
+# Run this command to configure your shell:
+# eval $(docker-machine env default)
+
+➜  ~ docker-machine ls
+NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER      ERRORS
+default   -        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.12
+
+➜  ~ eval $(docker-machine env default)
+➜  ~ docker info
+Client:
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  buildx: Docker Buildx (Docker Inc., v0.8.1)
+  compose: Docker Compose (Docker Inc., v2.3.3)
+  scan: Docker Scan (Docker Inc., v0.17.0)
+
+Server:
+ Containers: 0
+  Running: 0
+  Paused: 0
+  Stopped: 0
+ Images: 0
+ Server Version: 19.03.12
+ Storage Driver: overlay2
+  Backing Filesystem: extfs
+  Supports d_type: true
+  Native Overlay Diff: true
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 7ad184331fa3e55e52b890ea95e65ba581ae3429
+ runc version: dc9208a3303feef5b3839f4323d9beb36df0a9dd
+ init version: fec3683
+ Security Options:
+  seccomp
+   Profile: default
+ Kernel Version: 4.19.130-boot2docker
+ Operating System: Boot2Docker 19.03.12 (TCL 10.1)
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 1
+ Total Memory: 985.4MiB
+ Name: default
+ ID: LLT3:F4SJ:NAJP:I5SF:A2PA:JS3Z:G5KJ:EAYU:7XFA:ATDL:V7EJ:FMBB
+ Docker Root Dir: /mnt/sda1/var/lib/docker
+ Debug Mode: false
+ Registry: https://index.docker.io/v1/
+ Labels:
+  provider=virtualbox
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+ Product License: Community Engine
+```
+
+Dengan seperti itu kita sudah bisa membuat docker server yang jalan di atas Virtualbox dengan ip `192.168.99.100`
+
+## Troubleshooting
+
+Docker Machine tries to do the right thing in a variety of scenarios but sometimes things do not go according to plan. Here is a quick troubleshooting guide which may help you to resolve of the issues you may be seeing.
+
+1. `docker-machine` hangs, A common issue with Docker Machine is that it will hang when attempting to start up the virtual machine. Since starting the machine is part of the `create` process, `create` is often where these types of errors show up. A hang could be due to a variety of factors, but the most common suspect is networking. Consider the following:
+    1. Are you using a VPN? If so, try disconnecting and see if creation will succeed without the VPN. Some VPN software aggressively controls routes and you may need to manually add the route.
+    2. Are you connected to a proxy server, corporate or otherwise? If so, take a look at the `--no-proxy` flag for `env` and at setting environment variables for the created Docker Engine.
+    3. Are there a lot of host-only interfaces listed by the command `VBoxManage list hostonlyifs`? If so, this has sometimes been known to cause bugs. Consider removing the ones you are not using (`VBoxManage hostonlyif remove name`) and trying machine creation again.
+
+2. Machine creation errors out before finishing, If you see messages such as `exit status 1` creating machines with VirtualBox, this frequently indicates that there is an issue with VirtualBox itself.
