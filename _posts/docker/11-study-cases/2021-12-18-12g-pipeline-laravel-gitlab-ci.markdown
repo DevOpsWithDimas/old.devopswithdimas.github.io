@@ -35,6 +35,8 @@ Hai semuanya, di materi study kasus kali ini kita akan membahas Pipeline untuk L
 
 Ok langsung kita ke pembahasan yang pertama yaitu
 
+<!--more-->
+
 ## Introduction to workflow deployment
 
 Berdasarkan materi-materi sebelumnya, kita sudah bisa membuat CI Pipeline untuk berbagai macam bahasa pemograman mulai dari JavaEE, PHP, Springboot dan Angular. 

@@ -19,6 +19,8 @@ downloads: []
 
 Sebelumnya kita udah meng-submit request dengan menggunakan `HTTP Method GET` nah sekarang kita akan menggunakan `HTTP Method POST` dan sekalian kita akan membaningkan perbedaan kedua HTTP Method tersebut.
 
+<!--more-->
+
 Padasarnya saya akan membuat hal yang sama yaitu menginputkan `nim` dan `nama` kemudian di submit dengan menggunakan method `POST`, sekarang coba anda buat halaman html dengan nama `submitpost.html` seperti berikut:
 
 {% gist page.gist "submitpost.html" %}

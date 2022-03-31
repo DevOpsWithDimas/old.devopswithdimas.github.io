@@ -32,7 +32,9 @@ Hai semuanya, di materi kali ini kita akan membahas dulu basic penggunaan dari m
 4. Multiple nodes on a cluster
 5. Accessing a node using ssh
 
-Ok langsung ja kita bahas materi yang pertama 
+Ok langsung ja kita bahas materi yang pertama
+
+<!--more-->
 
 ## Start/Stop kubernetes cluster
 

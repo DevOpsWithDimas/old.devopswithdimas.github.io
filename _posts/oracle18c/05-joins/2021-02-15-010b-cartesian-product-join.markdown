@@ -21,6 +21,8 @@ downloads: []
 
 Jika ke dua table yang di join tidak memiliki kondisi (natural join) dan tidak memiliki relasi antara column `primary key` dan `foreign key` maka Oracle akan menghasilkan Cartesian Product.
 
+<!--more-->
+
 Cartesian Product yaitu Oracle akan menggabungkan data setiap baris dalam sebuah table dari semua table. contohnya klo kita punya table `departments` berisi `10 baris` dan table `countries` berisi `10 baris` maka akan menghasilkan `100 baris`
 
 berikut contohnya:

@@ -20,6 +20,8 @@ downloads: []
 
 Hai semuanya, di materi kali ini kita akan membahas tentang System Requirement untuk menginstall Docker. Untuk memahami yang saya sampaikan, di harapkan temen-temen juga menginstall Docker sesuai dengan laptop dengan platform masing-masing. Nah jadi ada beberapa yang perlu kita siapkan diantaranya
 
+<!--more-->
+
 ## Pengguna Linux
 
 Untuk linux users, temen-temen diharuskan untuk memiliki laptop dengan spesifikasi minimum sebagai berikut:

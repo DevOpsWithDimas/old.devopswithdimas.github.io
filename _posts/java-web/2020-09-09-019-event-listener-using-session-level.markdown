@@ -20,6 +20,8 @@ downloads: []
 
 Event Listeners using Session Level yaitu Event atau kejadian yang biasanya di catch ketika session dibuat atau di destroy. Biasanya penggunaanya untuk authentication, mendapatkan user/session yang active.
 
+<!--more-->
+
 Berikut adalah contoh Event Listener using Session Level yang digunakan untuk menghitung jumlah user yang mengunjugi webapp.
 
 Pertama membuat halaman utama terlebih dahalu dengan URI seperti berikut dengan servlet `/listener/home`

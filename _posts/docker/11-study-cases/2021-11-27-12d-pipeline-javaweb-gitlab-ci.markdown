@@ -29,6 +29,8 @@ Pipeline yang kita buat diantaranya:
 2. Push to docker registry
 3. Add proxy / local caching from maven registry using Nexus OSS
 
+<!--more-->
+
 Ok langusung aja kita buat file `.gitlab-ci.yml` seperti berikut:
 
 {% gist page.gist "12d-gitlab-ci.yml" %}

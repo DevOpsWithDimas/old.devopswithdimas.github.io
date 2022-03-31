@@ -16,6 +16,8 @@ downloads: []
 
 Dibandingkan kita harus menggunakan perulangan dengan `for` biasa seperti berikut contohnya
 
+<!--more-->
+
 {% highlight java linenos %}
 package tdi.training.java.core.data;
 

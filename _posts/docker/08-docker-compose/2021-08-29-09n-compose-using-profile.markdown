@@ -29,6 +29,8 @@ Hai semuanya di materi kali ini kita akan membahas tentang profiles pada compose
 
 Ok langsung aja kita ke pembahasan yang pertama 
 
+<!--more-->
+
 ## What is profiles
 
 Profiles allow adjusting the Compose application model for various usages and environments by selectively enabling services. This is achieved by assigning each service to zero or more profiles. If unassigned, the service is always started but if assigned, it is only started if the profile is activated.

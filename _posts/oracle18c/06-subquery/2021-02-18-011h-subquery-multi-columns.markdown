@@ -20,6 +20,8 @@ downloads: []
 
 Selain Multiple Rows, kita juga bisa menggunakan Multiple Columns atau biasanya disebut pairwise subquery. tapi disini jumlah column predicate harus sama dengan jumlah column yang ada di inner query, berikut adalah contoh penggunaannya:
 
+<!--more-->
+
 {% gist page.gist "011h-subquery-pairwise.sql" %}
 
 Berikut hasilnya:

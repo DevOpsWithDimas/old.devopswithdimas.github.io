@@ -19,6 +19,8 @@ downloads: []
 
 Hi in this section `JasperReport`, temen-temen akan belajar membuat Reporting dengan JasperReport Studio untuk Java dan menggunakan Database PostgreSQL. Adapun materi yang akan kita bahas yaitu:
 
+<!--more-->
+
 1. Pengenalan JasperReport
 2. Setup Development Environment
 3. Pengenalan Text Editor JasperReport Studio
@@ -28,7 +30,6 @@ Hi in this section `JasperReport`, temen-temen akan belajar membuat Reporting de
     2. Menggunakan Parameter
     3. Menggunakan Variable
     4. Menggunakan Expression
-<!--more-->
 6. Styling
     1. Font
     2. Border

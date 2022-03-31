@@ -21,6 +21,8 @@ Setelah mengelesaikan latihan pertama, materi selajutnya adalah tentang flow ata
 
 Dengan flow control kita bisa ngatur aplikasi yang kita develop atau buat melakukan sesuatu dengan ketentuan tertentu dan melakukannya beberapa kali tanpa menulis ulang perintahnya.
 
+<!--more-->
+
 ## Decision making
 
 Di bahasa pemograman java percabangan atau selection ada 2 method yaitu dengan `if` statement dan `switch` statement. Masing-masing punya kelebihan-kekurangan dan kegunaannya masing-masing tapi pada dasarnya sama yaitu tujuannya melakukan making decision.

@@ -23,6 +23,8 @@ Dalam SQL, kita juga bisa melakukan operasi matematika seperti pertambahan, peng
 1. Operasi yang bernilai bilangan,
 2. Operasi yang bernilai Date
 
+<!--more-->
+
 ## Operasi pada bilangan
 
 Operasi pada bilangan pada dasarnya sama seperti operasi matematika biasa, seperti berikut table operasinya:

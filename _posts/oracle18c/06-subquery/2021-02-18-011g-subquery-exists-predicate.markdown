@@ -20,6 +20,8 @@ downloads: []
 
 Operator `EXISTS` digunakan untuk memeriksa apakah suatu inner query menghasilkan data atau tidak, kita inner query menghasilkan data minimal 1 data maka outer query akan di jalankan karena bernilai TRUE, tetapi jika bernilai FALSE maka outer query tidak akan di jalankan. Contoh penggunaannya seperti berikut:
 
+<!--more-->
+
 {% gist page.gist "011g-subquery-exist-predicate.sql" %}
 
 Berikut hasilnya:

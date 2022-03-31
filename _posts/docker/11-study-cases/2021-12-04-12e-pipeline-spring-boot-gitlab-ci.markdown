@@ -34,6 +34,8 @@ Hai semuanya, di materi study kasus kali ini kita akan membahas Gitlab CI untuk 
 
 Ok langsung bahas yang pertama yaitu
 
+<!--more-->
+
 ## Create unit/integration testing and run locally
 
 Testing is an integral part of enterprise software development. The benefits of the Spring Framework’s support for [integration testing](https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#integration-testing). 

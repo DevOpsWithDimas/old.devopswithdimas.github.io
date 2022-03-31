@@ -22,6 +22,8 @@ downloads: []
 
 Enterprice Applications khususnya data warehouse, biasanya memeliki jumlah datanya sangat besar bisa sampai ribuan gigabtypes atau bahkan sampai satuan terabytes data. Dari data sebanyak itu biasanya performa database akan semakin lambat dalam melakukan membaca (select) dan menulis (insert, update, dan delete). Salah satu pemecahan masalahnya yaitu dengan Database Scaling menggunakan Partitioning.
 
+<!--more-->
+
 Partitioning yaitu membagi Object Stored Database seperti (table, dan index) menjadi bagian yang kecil dan more manageable pieces. Contoh ilustrasinya seperti berikut
 
 ![partitioned-tables](https://docs.oracle.com/en/database/oracle/oracle-database/18/vldbg/img/vldbg008.gif)

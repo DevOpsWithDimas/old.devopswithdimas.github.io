@@ -16,6 +16,8 @@ downloads: []
 
 Ok pembahasan selanjutnya adalah variable dan tipe data di bahasa pemograman Java. Pembahasan pertama yaitu variable.
 
+<!--more-->
+
 ## Variable
 
 _Variable_ pada dasarnya perintah untuk komputer menyimpan suatu nilai di _memory_ (RAM atau _Random Access Memory_), untuk di proses oleh procesor di ALU (_Arithmetic Logic Unit_). 

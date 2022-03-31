@@ -27,6 +27,8 @@ Hai di materi kali ini saya mau membahas tantang Sub Query Qualifier, yap sepert
 3. `SOME`
 4. `ALL`
 
+<!--more-->
+
 Untuk operator `SOME` ini adalah synonim dengan `ANY` jadi hasilnya akan sama. Ok sekarang contohnya berikut adalah data yang saya gunakan di tabel `parentchild.employees`
 
 ![select-tables]({{ page.image_path | prepend: site.baseurl }}/select-tables.png)

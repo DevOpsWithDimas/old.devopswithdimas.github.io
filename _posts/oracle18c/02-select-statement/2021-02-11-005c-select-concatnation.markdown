@@ -20,6 +20,8 @@ downloads: []
 
 Apa itu concatenation?, Concatenation biasanya digunakan untuk mengkombinasikan, menyambungkan beberapa kolom dalam suatu query menjadi satu. 
 
+<!--more-->
+
 Ok misalnya saya punya struktur tabel seperti berikut:
 
 {% highlight sql %}

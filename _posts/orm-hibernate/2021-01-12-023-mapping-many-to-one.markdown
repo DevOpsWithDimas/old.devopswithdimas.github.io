@@ -22,6 +22,8 @@ downloads: []
 
 Untuk menggunakan mapping @ManyToOne kita akan buat mapping baru yaitu `mahasiswa` dan `kelas`, berikut adalah perancangannya databasenya:
 
+<!--more-->
+
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 
 contohnya seperti berikut:

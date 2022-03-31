@@ -22,6 +22,8 @@ downloads: []
 
 Hai pada kesempatan kali ini saya mau membahas tantang between dengan menggunakan Hibernate Query Language (HQL). berikut adalah contoh implementasi DAO:
 
+<!--more-->
+
 {% gist page.gist "HQLBetweenPredicateDao.java" %}
 
 Implementasi Unit Testing:

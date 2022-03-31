@@ -33,6 +33,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Minikube Addons for 
 
 Ok langsung aja kita ke pembahasan yang pertama
 
+<!--more-->
+
 ## Basic usage `addons` command
 
 Minikube has a built-in list of applications and services that may be easily deployed, such as Istio or Ingress. Untuk lebih detail temen-temen bisa lihat dokumentasinya menggunakan perintah

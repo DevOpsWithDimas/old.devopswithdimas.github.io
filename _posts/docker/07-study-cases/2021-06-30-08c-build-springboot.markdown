@@ -29,6 +29,8 @@ Hai semuanya, di materi kali ini kita akan membahas studi kasus menggunakan Java
 
 Ok langsung ja, kita bahas materi pertama 
 
+<!--more-->
+
 ## Create project `spring-boot`
 
 Untuk membuat project `spring-boot`, kita bisa menggunakan [start.spring.io](https://start.spring.io/) seperti berikut:

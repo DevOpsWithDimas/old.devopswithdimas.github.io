@@ -24,6 +24,8 @@ Hai semuanya di materi kali ini kita akan membahas tentang share volume between 
 
 Temen-temen masih ingat khan [materi sebelumnya]({% post_url docker/05-docker-volume/2021-06-05-06c-share-data-among-containers %}) untuk share data between container??
 
+<!--more-->
+
 Jadi di materi tersebut kita membuat local volume (named volume) kemudian di terapkan pada beberapa container sekaligus dan juga memiliki mounting point yang sama pada containernya seperti berikut:
 
 {% gist page.gist "06c-share-local-volume.bash" %}

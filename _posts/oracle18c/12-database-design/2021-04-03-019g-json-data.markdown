@@ -21,6 +21,8 @@ downloads: []
 JSON yaitu JavaScript Object Notation, Oracle Database sejak 10g support dengan JSON data natively. Oracle sendiri memiliki feature namanya **SODA (Simple Oracle Document Access)**.
 SODA sendiri yaitu API (Application Program Interface) untuk mengakses dan juga menyimpan JSON Data ke database.
 
+<!--more-->
+
 Contoh penggunaanya seperti berikut:
 
 {% gist page.gist "019g-json-column-table.sql" %}

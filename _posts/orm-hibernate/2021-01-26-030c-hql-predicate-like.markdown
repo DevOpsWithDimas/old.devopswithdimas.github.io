@@ -22,6 +22,8 @@ downloads: []
 
 Hai pada kesempatan kali ini saya mau membahas tentang operator like menggunakan Hibernate Query Language (HQL). pada dasarnya operator like di terapkan pada tipe data varchar atau String. selain itu juga jika kita biasa menggunakan escape character, string expression seperti `%` dan `_`.
 
+<!--more-->
+
 Berikut adalah contoh penggunaan operator like expression dengan menggunakan HQL. Implementasi DAO:
 
 {% gist page.gist "HQLLikePredicatesDao.java" %}

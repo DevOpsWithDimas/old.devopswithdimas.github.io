@@ -30,6 +30,8 @@ Hai semuanya di materi kali ini kita akan membahas tentang build docker image me
 
 Ok langsung ja kita ke pembahasan yang pertama 
 
+<!--more-->
+
 # Basic build docker image
 
 Configuration options that are applied at build time. `build` can be specified either as a string containing a path to the build context or, as an object with the path specified under context and optionally Dockerfile and args:

@@ -22,6 +22,8 @@ downloads: []
 
 Secara _default_ kalau kita melakukan perintah `select` terhadap suatu _table_ contohnya misalnya `departments`, di _table_ `departments` ada _columns_ diataranya `department_id, department_name, manager_id, location_id` jika saya melakukan perintah `select` seperti berikut:
 
+<!--more-->
+
 {% gist page.gist "005-select-all-departments.sql" %}
 
 Maka secara default nama _columns_ yang ditampilkan akan sesuai dengan nama asli dari _column_ yang ada di tabel `departments` seperti berikut:

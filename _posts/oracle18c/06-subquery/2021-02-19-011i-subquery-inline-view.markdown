@@ -20,6 +20,8 @@ downloads: []
 
 Di materi sebelumnya kita menggunakan Sub Query dengan di letakkan pada `select statement` dan `where predicates`. ada satu lagi yaitu inline view yang di letakan di `from`, 
 
+<!--more-->
+
 berikut contoh penggunaanya misalnya saya mau mencari pengelompokan `salary` berdasarkan `job_id` buat ranking dari yang paling besar gajinya ke terkecil.
 
 {% gist page.gist "011i-subquery-inline-view-ranking.sql" %}

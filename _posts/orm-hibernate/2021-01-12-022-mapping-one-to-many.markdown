@@ -22,6 +22,8 @@ downloads: []
 
 Untuk mencoba mapping OneToMany kita membutuhkan 3 table, contohnya `mahasiswa`, `alamat`, relasi antara `mahasiswa` dan `alamat` misal namanya kita sebut `mahasiswa_alamat_list`, berikut adalah perancangan tabelnya:
 
+<!--more-->
+
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 
 Untuk alamat kita masih menggunakan class yang sebelunya yaitu 

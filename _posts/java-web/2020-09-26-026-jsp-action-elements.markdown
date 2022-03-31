@@ -21,6 +21,8 @@ downloads: []
 
 JSP Action digunakan untuk meng-control servlet melalui XML syntax, contohnya seperti berikut:
 
+<!--more-->
+
 {% gist page.gist "scriptlet-action-usebean.jsp" %}
 
 berikuat kelas `Mahasiswa` yang di panggil dalam jsp tersebut:

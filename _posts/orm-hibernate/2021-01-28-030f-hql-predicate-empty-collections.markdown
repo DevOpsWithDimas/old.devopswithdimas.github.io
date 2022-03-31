@@ -22,6 +22,8 @@ downloads: []
 
 Hai, di materi kali ini saya mau membahas tentang operation `Empty Collection` menggunakan HQL. pada dasarnya operator empty collection terdiri dari `is empty` dan `is not empty` seperti berikut contoh implementasi DAO:
 
+<!--more-->
+
 {% gist page.gist "HQLEmptyCollectionPredicateDao.java" %}
 
 Implementasi Unit Testing: 

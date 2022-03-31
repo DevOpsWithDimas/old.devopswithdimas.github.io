@@ -30,6 +30,8 @@ Hai semuanya, pada studi kasus kali ini kita akan membahas salah satu syarat men
 
 Ok langsung aja kita ke pembahasan yang pertama
 
+<!--more-->
+
 ## Don't store data inside containers
 
 Jika temen-temen masih ingat pada materi sebelumya tentang [persistence volume]({% post_url docker/05-docker-volume/2021-06-01-06-docker-volume %}), kita tidak disarankan untuk menyimpan data ke dalam suatu container karena 

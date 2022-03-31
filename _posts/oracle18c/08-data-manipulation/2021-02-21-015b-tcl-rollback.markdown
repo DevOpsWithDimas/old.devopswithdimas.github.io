@@ -20,6 +20,8 @@ downloads: []
 
 Penggunaan `rollback` yaitu untuk mengembalikan data atau object ke commit terakhir, contohnya seperti berikut:
 
+<!--more-->
+
 {% gist page.gist "015b-tcl-rollback-single-query.sql" %}
 
 hasilnya seperti berikut:

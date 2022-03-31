@@ -22,6 +22,8 @@ downloads: []
 
 Hai, pada kesempatan kali ini saya mau membahas tentang Concatnation menggunakan JPQL dan HQL. untuk concatnation kita bisa menggunakan function `concat(...)` dan operator `||`
 
+<!--more-->
+
 Ok, sekarang kita buat dulu DTO / Model seperti berikut:
 
 {% gist page.gist "ConcatnationModel.java" %}

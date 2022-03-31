@@ -30,6 +30,8 @@ Untuk source-code angular saya ambil dari [study kasus sebelumnya]({% post_url d
 
 Ok lansung aja kita ke pembahasan yang pertama
 
+<!--more-->
+
 ## Dev on local environment
 
 Untuk development pada local environtment pada dasarnya kita membutuhkan software

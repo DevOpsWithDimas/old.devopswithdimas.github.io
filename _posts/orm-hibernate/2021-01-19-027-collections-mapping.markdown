@@ -30,6 +30,8 @@ Element Collection pada dasarnya teridiri dari:
 
 Hibernate menggunakan collection yang memiliki fitur lazy-loading, caching atau state chnage detection semantics. untuk menggunakan Element Collection kita hanya bisa menggunakan class 
 
+<!--more-->
+
 1. `java.util.Collection`
 2. `java.util.List`
 3. `java.util.Set`

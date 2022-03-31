@@ -16,6 +16,8 @@ downloads: []
 
 Mungkin dari temen-tement masih bingung apa itu _class_, klo misalnya kita googling pasti jawabanya
 
+<!--more-->
+
 > _class is blueprint_ blablabal...
 
 Tapi pasti diantara temen-temen klo ditanya apa itu blueprint belum tentu ngerti khan ya?

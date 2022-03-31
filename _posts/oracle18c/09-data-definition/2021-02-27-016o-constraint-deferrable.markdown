@@ -20,6 +20,8 @@ downloads: []
 
 Pengecekan data pada constraint secara default akan di lakukan setiap perintah manipulasi data di execute (`NOT DEFERREBLE`) sebagai contoh seperti berikut:
 
+<!--more-->
+
 ```sql
 SQL> insert into TEST_CONSTRAINT_CHECK(NIK, NAMA, SALDO, JENIS_KELAMIN)
 VALUES ('010101', 'Dimas Maryanto', 0, 'l');

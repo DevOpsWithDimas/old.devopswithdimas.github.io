@@ -28,6 +28,8 @@ Predicate Not yaitu Negasi, jadi nilai kebalikannya contoh klo kita pake kondisi
 6. Exists Predicate
 7. dan lain-lain.
 
+<!--more-->
+
 ## Relational Comparison
 
 {% gist page.gist "006g-not-relationa-comparison.sql" %}

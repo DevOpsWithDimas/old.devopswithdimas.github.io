@@ -16,6 +16,8 @@ downloads: []
 
 Function atau method, mungkin dari temen-temen masih aneh apa itu function atau method. Function atau method itu sebenarnya salah satu cara untuk mengelompokan suatu blok atau sekumpulan perintah dengan tujuan _reuseable_, _easy to debuging_, dan _readable_.
 
+<!--more-->
+
 Jaman sekarang banyak programmer menggunakan method ini sebagai _service_ atau memecah bagian yang besar menjadi lebih kecil, mungkin dari temen-temen akan bertanya
 
 > "Kang, memecah bagian menjadi lebih kecil itu gimana?

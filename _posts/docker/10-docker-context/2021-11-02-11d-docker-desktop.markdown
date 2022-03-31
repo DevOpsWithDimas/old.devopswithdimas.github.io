@@ -31,6 +31,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang dashboard menggunaka
 
 Ok langsung aja kita ke pembahasan pertama yaitu
 
+<!--more-->
+
 ## Docker desktop overview
 
 Docker Desktop is an easy-to-install application for your Mac or Windows environment that enables you to build and share containerized applications and microservices. Docker Desktop includes [Docker Engine](https://docs.docker.com/engine/), Docker CLI client, [Docker Compose](https://docs.docker.com/compose/), [Docker Content Trust](https://docs.docker.com/engine/security/trust/), [Kubernetes](https://github.com/kubernetes/kubernetes/), and [Credential Helper](https://github.com/docker/docker-credential-helpers/).

@@ -29,6 +29,8 @@ Hai semuanya, di materi kali ini kita akan membahas tantang `Dockerfile` Execute
 
 Ok langsung ja, kita akan membahasnya satu-per-satu. Yang pertama kita bahas dulu `RUN` Instruction 
 
+<!--more-->
+
 ## `RUN` Instruction
 
 The `RUN` instruction will execute any commands in a new layer on top of the current image and commit the results. The resulting committed image will be used for the next step in the `Dockerfile`. 

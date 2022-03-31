@@ -26,6 +26,8 @@ Hai semuanya, di materi kali ini kita akan membahas deployment untuk laravel men
 2. Development on docker environment using compose file
 3. Deployment using compose file
 
+<!--more-->
+
 ## Dev on local env using compose file
 
 Untuk development pada local environment pada dasarnya kita perlu install 

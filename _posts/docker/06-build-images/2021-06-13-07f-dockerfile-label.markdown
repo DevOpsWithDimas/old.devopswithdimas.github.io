@@ -21,6 +21,8 @@ downloads: []
 
 Hai semuanya, di materi kali ini kita akan membahas tentang Labeling pada suatu image yang kita build yaitu sebagai berikut:
 
+<!--more-->
+
 The `LABEL` instruction adds metadata to an image. A `LABEL` is a key-value pair. To include spaces within a `LABEL` value, use quotes and backslashes as you would in command-line parsing. A few usage examples:
 
 {% highlight docker %}

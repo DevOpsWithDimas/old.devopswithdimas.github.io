@@ -20,6 +20,8 @@ downloads: []
 
 Mulai dari Oracle 10g, Oracle mengenalkan feature Recyclebin dalam enginenya. jadi ketika kita menghapus object database dengan perintah drop, maka object tersebut akan dipindahkan ke recyclebin sebelum dihapus secara permanent.
 
+<!--more-->
+
 Ok langsung ja, kita coba buat table dengan perintah berikut:
 
 {% gist page.gist "016f-init-table-to-purge.sql" %}

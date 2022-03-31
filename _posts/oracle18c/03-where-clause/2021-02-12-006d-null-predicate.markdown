@@ -20,6 +20,8 @@ downloads: []
 
 Operator `IS NULL` digunakan untuk memfiter data yang bernilai null. Contoh kasusnya, saya mau menampilkan data karywan yang tidak memiliki manager. Berikut querynya:
 
+<!--more-->
+
 {% gist page.gist "006d-select-where-is-null.sql" %}
 
 Berikut hasilnya:

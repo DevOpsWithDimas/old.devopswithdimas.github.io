@@ -30,6 +30,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Externalized Configu
 
 Ok langsung aja sekarang kita ke pembahasan yang pertama yaitu 
 
+<!--more-->
+
 ## Externalized Configuration
 
 Spring Boot lets you externalize your configuration so that you can work with the same application code in different environments. You can use a variety of external configuration sources, include Java properties files, YAML files, environment variables, and command-line arguments.

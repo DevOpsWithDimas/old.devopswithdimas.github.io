@@ -30,6 +30,8 @@ Hai semuanya, di materi pertama kali ini kita akan membahas tentang pengangar un
 
 Ok langsung ja kita bahas materi pertama yaitu
 
+<!--more-->
+
 ## What is Kubernetes?
 
 Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available.

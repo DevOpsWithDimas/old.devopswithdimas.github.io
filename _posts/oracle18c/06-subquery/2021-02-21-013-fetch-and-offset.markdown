@@ -21,6 +21,8 @@ downloads: []
 
 Untuk membuat pagination di Oracle Database versi 12c ke atas atau lebih baru, kita bisa menggunakan `fetch` dan `offset` seperti berikut ilustrasinya:
 
+<!--more-->
+
 ![limit offset]({{ page.image_path | prepend: site.baseurl }}/konsep-limit-offset.png)
 
 Sebagai contoh disini kita akan menggunakan data pada tabel `employees` dengan jumlah data

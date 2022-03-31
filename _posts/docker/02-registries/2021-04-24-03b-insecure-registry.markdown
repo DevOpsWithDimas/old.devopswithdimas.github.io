@@ -33,6 +33,8 @@ Nah yang jadi pertanyaaan **apa itu Insecure Registry?**. Insecure Registry sama
     2. Unlimited private repository
     3. Push & Pull Docker Images more faster than Docker Hub
 
+<!--more-->
+
 ## Macam Macam Private Registry
 
 Private Registry untuk docker ada banyak diantaranya:

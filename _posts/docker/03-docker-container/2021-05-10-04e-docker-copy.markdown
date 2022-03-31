@@ -20,7 +20,11 @@ downloads: []
 ---
 
 
-Hai semuanya, di materi kali ini kita akan membahas cara meng-Copy files/contents dari atau ke container dengan menggunakan perintah `docker cp`. Berikut adalah dokumentasinya:
+Hai semuanya, di materi kali ini kita akan membahas cara meng-Copy files/contents dari atau ke container dengan menggunakan perintah `docker cp`. 
+
+<!--more-->
+
+Berikut adalah dokumentasinya:
 
 {% gist page.gist "04e-docker-cp-help.bash" %}
 

@@ -30,6 +30,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang pgAdmin4 sebagai edi
 
 Ok langsung saja kita bahas materi yang pertama
 
+<!--more-->
+
 ## Connecting to a Server
 
 Before you can use the pgAdmin client to manage the objects that reside on your Postgres server, you must define a connection to the server. 

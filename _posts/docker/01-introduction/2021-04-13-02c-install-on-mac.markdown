@@ -26,6 +26,8 @@ Hai semuanya di materi kali ini, kita akan membahas bagaimana cara install Docke
 3. Configure
 4. Setup development env
 
+<!--more-->
+
 ## Donwloading Docker Desktop
 
 Untuk download temen-temen bisa ke website [official docker](https://hub.docker.com/editions/community/docker-ce-desktop-mac/)

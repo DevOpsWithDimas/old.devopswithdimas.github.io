@@ -15,7 +15,11 @@ comments: true
 downloads: []
 ---
 
-Tipe data logika ini pada dasarnya adalah yang mengembalikan nilai boolean. Boolean hanya bernilai `true` or `false`. contohnya basicnya 
+Tipe data logika ini pada dasarnya adalah yang mengembalikan nilai boolean. Boolean hanya bernilai `true` or `false`. 
+
+<!--more-->
+
+contohnya basicnya 
 
 {% highlight java linenos %}
 public class TipeDataLogika {

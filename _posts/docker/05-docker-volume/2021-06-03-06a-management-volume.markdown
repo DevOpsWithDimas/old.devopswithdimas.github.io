@@ -28,6 +28,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Management Volume di
 3. Inspecting Volume
 4. Cleanup
 
+<!--more-->
+
 Sebelum itu, kita lihat dulu dokumentasi dari docker volume dengan perintah berikut:
 
 {% gist page.gist "06a-docker-volume-help.bash" %}

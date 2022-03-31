@@ -27,6 +27,8 @@ Docker Engine is an open source containerization technology for building and con
 2. APIs which specify interfaces that programs can use to talk to and instruct the Docker daemon.
 3. A command line interface (CLI) client `docker`.
 
+<!--more-->
+
 The CLI uses [Docker APIs](https://docs.docker.com/engine/api/) to control or interact with the Docker daemon through scripting or direct CLI commands. Many other Docker applications use the underlying API and CLI. The daemon creates and manage Docker objects, such as images, containers, networks, and volumes.
 
 Kalo temen-temen masih inget tentang arsitektur dari Docker seperti berikut:

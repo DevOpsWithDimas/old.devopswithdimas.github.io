@@ -33,6 +33,8 @@ Hai semuanya, di materi study kasus kali ini kita akan membahas tentang Setup en
 
 Ok langsung ja kita ke pembahasan pertama yaitu
 
+<!--more-->
+
 ## Introduction
 
 Seperti yang saya mention sebelumnya bahwa Docker ini bisa digunakan di berbagai lingkungan contohnya Development, CI/CD, Testing, bahkan Production. 

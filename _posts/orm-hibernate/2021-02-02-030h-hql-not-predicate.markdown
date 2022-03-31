@@ -22,6 +22,8 @@ downloads: []
 
 Hai di materi kali ini saya mau ngebahas tentang not predicate dengan Hibernate Query Language (HQL), ok langsung aja jadi berikut adalah implementasi DAO Not Predicate:
 
+<!--more-->
+
 {% gist page.gist "HQLNotPredicateDao.java" %}
 
 Berikut adalah unit testing not predicate

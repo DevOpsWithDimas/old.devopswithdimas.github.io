@@ -29,6 +29,8 @@ Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang `CMD` d
 
 Ok kita langsung ja ke materi yang pertama
 
+<!--more-->
+
 ## `CMD` as default parameter to `ENTRYPOINT`
 
 Seperti yang kita ketahui jika kita menggunakan `CMD` instruction maka default command di terapkan pada image di running, dan jika kita menggunakan `ENTRYPOINT` maka default command sifatnya mandatory dijalankan ketika image di running. Apa yang terjadi jika kedua perintah `CMD` dan `ENTRYPOINT` digabungkan?

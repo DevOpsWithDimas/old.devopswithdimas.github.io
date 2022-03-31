@@ -22,6 +22,8 @@ downloads: []
 
 Untuk filter data dengan klausa `having` di dalam `group by` secara ilustrasi bisa digambarkan seperti berikut:
 
+<!--more-->
+
 ![ilustrasi having]({{ page.image_path | prepend: site.baseurl }}/konsep-group-by-having.png)
 
 contoh kasusnya seperti berikut. Tampilkan jumlah karyawan per `manager_id` kemudian filter data karyawan yang jumlahnya lebih dari sama dengan `5`. Berikut querynya:

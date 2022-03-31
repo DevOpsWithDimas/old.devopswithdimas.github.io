@@ -21,6 +21,8 @@ downloads: []
 
 Hai semuanya, sekarang kita akan Menginstall PostgreSQL Database engine serta Text editornya. Diantaranya 
 
+<!--more-->
+
 1. Install PostgreSQL untuk Windows 10/11 users
 2. Install PostgreSQL untuk MacOS users
 3. Install PostgreSQL untuk Linux users

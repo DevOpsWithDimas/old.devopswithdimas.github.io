@@ -19,6 +19,8 @@ downloads: []
 
 > Menurut MDN (Mozilla Developer Network) JavaScript (JS) is a lightweight, interpreted, programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js and Apache CouchDB. JS is a prototype-based, multi-paradigm, dynamic scripting language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles.
 
+<!--more-->
+
 Dari penjelasan diatas coba kita extract kalimat berikut lightweight, interpreted, programming language with first-class functions.
 
 1. Lightweight, JavaScript adalah bahasa pemograman yang ringan dan portable magsudnya protable artinya tidak tergantung pada bahasa bahasa pemograman lain dan bisa juga diintegrasikan seperti PHP <-> JavaScript, Java Web <-> JavaScript, Ruby <-> JavaScript dll.

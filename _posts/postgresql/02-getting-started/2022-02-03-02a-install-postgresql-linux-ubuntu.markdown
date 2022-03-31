@@ -33,6 +33,8 @@ Hai semuanya, di materi kali ini kita akan membahas Install PostgreSQL di Linux 
 
 Ok langsung aja kita bahas ke materi yang pertama
 
+<!--more-->
+
 ## Install PostgreSQL Server for learning environment
 
 Untuk menginstall PostgreSQL di Linux, kita bisa menggunakan beberapa cara yaitu

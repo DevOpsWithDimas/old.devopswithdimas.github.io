@@ -20,6 +20,8 @@ downloads: []
 
 Tabel merupakan salah satu object di dalam database yang gunanya untuk menyimpan data, secara logical tabel di database berbentuk column dan rows jadi ibaratnya kita sedang menggunakan microsoft excel. Untuk membuat table kita perlu perintah disebut Data Definition Language atau singkatan DDL. 
 
+<!--more-->
+
 ## Create Table 
 
 Perintah untuk membuat table, simplenya adalah dengan 

@@ -29,6 +29,8 @@ dengan menggunakan:
 
 Ok yang pertama kita bahas dulu dengan menggunakan sequance generator:
 
+<!--more-->
+
 ## Sequance Generator
 
 Untuk menggunakan sequance yang pasti kita perlu check dulu apakah database yang kita gunakan support dengan sequance, jika tidak kita cukup dengan seperti berikut:

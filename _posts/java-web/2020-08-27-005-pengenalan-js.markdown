@@ -19,6 +19,8 @@ downloads: []
 
 Client side programming dalam 1 decade terakhir memang sedang jadi perbincangan, lantas apakah kita harus menggunakan?
 
+<!--more-->
+
 > Jawabanya bisa iya bisa juga gak, ya klo saya lebih konsern dengan kebutuhan. Artinya kalo kita mau buat aplikasi kita prosesnya dilakukan di setiap client baru kita gunakan contohnya seperti validasi, prediksi perhitungan dan lain-lain.
 
 Dengan adanya client side proccessing ini ada benefit dan kekuranganya:

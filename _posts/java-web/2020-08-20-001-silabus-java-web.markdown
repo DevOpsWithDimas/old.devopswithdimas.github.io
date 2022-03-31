@@ -16,9 +16,9 @@ image_path: /resources/posts/java-web/java-ee-intro
 downloads: []
 ---
 
-![java web logo]({{ page.image_path | prepend: site.baseurl }}/logo.png){:width="500px"}
-
 Hi, di materi kali ini 'Java Web' temen temen akan belajar tentang konsep dan implementasi Pemogranan Web menggunakan Teknology Java. Didalam materi ini membutuhkan pengentahuan tentang Java basic seperti variable, tipe data, class, looping, selection, OOP seperti materi yang pernah saya tulis [disini]({{site.baseurl}}{% post_url /java-core/2017-10-16-001-silabus-java %}).
+
+<!--more-->
 
 Materi yang akan dibahas yaitu sebagai berikut:
 

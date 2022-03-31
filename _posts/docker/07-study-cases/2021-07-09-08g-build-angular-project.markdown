@@ -29,6 +29,8 @@ Hai semuanya, di materi kali kita akan membahas tentang Build Docker image untuk
 4. Build & run docker image
 5. Cleanup
 
+<!--more-->
+
 ## Setup SDK  for Angular Project
 
 Untuk menggunakan angular project, kita memerlukan package dependency management yaitu

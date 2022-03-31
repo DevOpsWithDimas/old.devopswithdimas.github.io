@@ -19,6 +19,8 @@ downloads: []
 
 JavaScript is Object Oriented Programming. Untuk menulis object di JavaScript ada banyak cara yaitu cara paling sederhana adalah seperti berikut:
 
+<!--more-->
+
 ```js
 var mhs = { key:"value" };
 ```

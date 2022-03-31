@@ -25,6 +25,7 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Accessing a Database
 
 Ok langsung aja kita kepembahasan yang pertama
 
+<!--more-->
 
 ## Creating a Database
 

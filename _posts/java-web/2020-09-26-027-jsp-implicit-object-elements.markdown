@@ -21,6 +21,8 @@ downloads: []
 
 JSP Implicit Object adalah pre-defined atau reseved variable atau variable yang sudah dibuatkan oleh JSP / Servlet untuk mengakses object seperti `session`, `parameter`, `servlet context`, dan `exception handling`. Contohnya seperti berikut:
 
+<!--more-->
+
 {% gist page.gist "scriptlet-implicit.jsp" %}
 
 Sekarang coba request dengan url seperti berikut [host:port/context-path/jsp/scriplet-implicit.jsp?nim=1051148&namaLengkap=Dimas%20Maryanto&tanggalLahir=1991-01-01](http://localhost:8080/bootcamp-java-webapp/jsp/scriplet-implicit.jsp?nim=1051148&namaLengkap=Dimas%20Maryanto&tanggalLahir=1991-01-01)

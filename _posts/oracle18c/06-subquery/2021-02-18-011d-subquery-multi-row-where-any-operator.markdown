@@ -20,6 +20,8 @@ downloads: []
 
 Operator ANY digunakan untuk membandingkan data yang di cari dengan sekumpulan data yang ada pada inner query. Untuk menggunakan operator any harus di pasangkan dengan `>`, `<` dan `=`. 
 
+<!--more-->
+
 Misalnya inner query yang kita akan gunakan adalah seperti berikut:
 
 {% highlight sql %}

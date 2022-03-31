@@ -21,6 +21,8 @@ downloads: []
 
 Hai semuanya, di materi kali ini kita akan membahas Deprecated Engine Features yang mungkin banyak di lupakan buat sebagian orang. Kenapa ini penting di bahas? jawabannya simak sampai akhir ya!!
 
+<!--more-->
+
 ## Feature Deprecation Policy
 
 As changes are made to Docker there may be times when existing features need to be removed or replaced with newer features. Before an existing feature is removed it is labeled as “deprecated” within the documentation and remains in Docker for at least one stable release unless specified explicitly otherwise. After that time it may be removed.

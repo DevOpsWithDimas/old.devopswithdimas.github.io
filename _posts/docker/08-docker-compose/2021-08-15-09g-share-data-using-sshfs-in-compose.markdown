@@ -25,6 +25,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang share data between m
 
 Temen-temen masih inget khan terminologinya? aku lupa boleh baca-baca lagi [artikel ini]({% post_url docker/05-docker-volume/2021-06-08-06e-share-data-among-machines %}) Jadi kesimpulnya kita perlu ssh-server.
 
+<!--more-->
+
 Disini saya sudah siapkan, VM (Virtual Machine) yang telah terinstall Centos 8 dan juga ssh-server dengan setting seperti berikut:
 
 ```yaml

@@ -20,7 +20,11 @@ image_path: /resources/posts/orm-hibernate/orm-hibernate-27a
 downloads: []
 ---
 
-Hai, pada materi kali ini saya mau membahas tentang Element Collection As Value. berikut adalah perancangan tabelnya:
+Hai, pada materi kali ini saya mau membahas tentang Element Collection As Value.
+
+<!--more-->
+
+berikut adalah perancangan tabelnya:
 
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 

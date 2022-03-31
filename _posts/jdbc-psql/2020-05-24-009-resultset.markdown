@@ -20,6 +20,8 @@ downloads: []
 
 Hai pada pembahasan kali ini, kita akan berkenalan lebih dalam dengan class [ResultSet](https://docs.oracle.com/javase/7/docs/api/java/sql/ResultSet.html). ResultSet berfungsi me-maintainance cursor untuk pointing ke setiap nodes. Setiap nodes merepresentasikan baris pada sebuah table. Seperti pada gambar berikut:
 
+<!--more-->
+
 ![logic]({{ page.image_path | prepend: site.baseurl }}/resultset-pointer.png)
 
 Berikut contoh penggunaan single row response:

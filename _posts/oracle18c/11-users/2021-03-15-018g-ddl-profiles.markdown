@@ -22,6 +22,8 @@ downloads: []
 
 Profile yaitu sekumpulan Resource System (KERNEL) dan Password Management yang diterapkan ke pada User Database. User Account secara default memiliki profile `DEFAULT` dimana profile tersebut kita bisa liat di [Static Data Dictionary View](https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/managing-security-for-oracle-database-users.html#GUID-E97D53DC-BA9E-4F2C-B4C8-A450500234BE__BABGJFHJ) yang berkaitan dengan User dan Profiles
 
+<!--more-->
+
 ```sql
 sqlplus system/passwordnyaOracle18@XEPDB1
 

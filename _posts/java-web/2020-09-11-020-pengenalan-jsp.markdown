@@ -19,6 +19,8 @@ downloads: []
 
 JavaServer Page atau JSP yaitu Server-Side Programing Technology yang digunakan untuk membuat Web Aplikasi berupa content HTML menjadi dynamis. 
 
+<!--more-->
+
 JSP ini berextensi ```.jsp``` bukan ```.html``` dan media internet typenya yaitu ```application/jsp```.
 
 JSP component adalah sejenis dengan [Java Servlet](http://www.oracle.com/technetwork/java/index-jsp-135475.html) yang khusus di design supaya user membangun user interface dengan mudah untuk aplikasi java web. Dengan JSP kita bisa membuat halaman yang dinamis seperti input data, ngambil data dari database dan lain-lain.

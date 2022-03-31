@@ -27,6 +27,8 @@ Hai semuanya, di materi kali ini kita akan membahas lebih dalam tentang Env pada
 
 Ok kita langsung ja ke pembahasan yang pertama yaitu environtment variable
 
+<!--more-->
+
 ## Environtment Variable
 
 Environment variables (declared with the `ENV` statement) can also be used in certain instructions as variables to be interpreted by the `Dockerfile`. Escapes are also handled for including variable-like syntax into a statement literally.

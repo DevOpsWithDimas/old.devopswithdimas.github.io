@@ -22,6 +22,8 @@ downloads: []
 
 Sekarang saya akan membuat CRUD dengan menggunakan Hibernate Framework. Untuk membuat CRUD di hibernate sebenarnya sangat mudah, karena kita tidak perlu menggunakan query tetapi pemograman SQLnya masih tetap ada tapi nanti kita akan bahas di materi yang namananya Hibernate Query language atau yang lebih dikenal HQL.
 
+<!--more-->
+
 Sebelum membuat CRUD Operation biasanya saya akan membuat interface seperti berikut:
 
 {% gist page.gist "ReadRepository.java" %}

@@ -16,6 +16,8 @@ downloads: []
 
 pada dasarnya tipe data di JavaScript terdiri dari:
 
+<!--more-->
+
 1. Number
 2. String
 3. Boolean

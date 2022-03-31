@@ -32,6 +32,8 @@ Hai semuanya di materi kali ini kita akan membahas Environment variable khususny
 
 Ok langsung ja, kita ke pembahasan yang pertama yaitu
 
+<!--more-->
+
 ## Set environtment variable in container
 
 You can set environment variables in a service’s containers with the `environment` key, just like with `docker run -e VARIABLE=VALUE ...`:

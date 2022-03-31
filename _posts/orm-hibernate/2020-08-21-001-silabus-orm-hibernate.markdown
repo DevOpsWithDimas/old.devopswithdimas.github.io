@@ -22,6 +22,8 @@ downloads: []
 
 Hi, in this section 'ORM Hibernate' ini temen-temen akan belajar dan memahami konsep JPA dengan menggunakan framework Hibernate. Scope yang akan kita bahas diantaranya:
 
+<!--more-->
+
 1. Pengenalan JPA
 2. Sejarah JPA
 3. Setup Development Environment
@@ -29,7 +31,6 @@ Hi, in this section 'ORM Hibernate' ini temen-temen akan belajar dan memahami ko
 5. Configurasi hibernate.cfg
 6. Membuat simple Entity
 7. CRUD Sederhana dengan Hibernate
-<!--more-->
 8. Mapping
     1. Embedded
     2. OneToOne

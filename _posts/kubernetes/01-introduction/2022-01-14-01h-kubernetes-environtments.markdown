@@ -28,6 +28,8 @@ Hai semuannya, di materi kali ini kita akan membahas tentang Kubernetes cluster 
 1. Learning environments
 2. Development/Production environment
 
+<!--more-->
+
 Untuk sekarang kita akan membahas untuk Learning environment dulu ya. Untuk learning environtment juga terdiri 2 methode yaitu based on cloud (interactive browser) salah satunya yng di sediakan [katacoda](https://www.katacoda.com/courses/kubernetes) dan on-premise (local environtment) yaitu
 
 1. Docker-Kubernetes (Kind)

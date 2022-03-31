@@ -30,9 +30,9 @@ Hai semuanya, di materi kali ini kita membahas Container-Orchestration System me
 4. Web Server, Databases, Other services such as mail-server, nfs-server, ssh-server etc
 5. Basic Programming language such as Java, PHP, js etc
 
-<!--more-->
+Materi yang akan di bahas pada cource `DevOps - Kubernetes: Pemula sampai Mahir` diantaranya
 
-Materi yang akan di bahas pada cource `DevOps Kubernetes: Pemula sampai Mahir` diantaranya
+<!--more-->
 
 1. Kubernetes Overview
 2. Getting started

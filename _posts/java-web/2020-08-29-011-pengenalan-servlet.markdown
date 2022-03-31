@@ -19,6 +19,8 @@ downloads: []
 
 Sekarang saya mau membahas tentang basic pemograman Java Web yaitu Servlet. Apa itu Servlet?
 
+<!--more-->
+
 Pemograman Servlet, hal yang pertama yang anda harus ketahui jika kita ingin menggunakan teknologi Java Web karena sebelum kita menggunakan framework seperti JSP, SpringMVC, Struct2 dan lain-lain. Basic dari pemograman Java Web adalah Servlet. Nah sekarang kita masuk ke materi apa itu Servlet?
 
 > Servlet adalah bahasa pemograman java yang khusus dibuat untuk Web, servlet ini akan menghasilkan request dan response dari Web Server. Web Server akan me-request dinamic web page dengan tujuan (response) mengenerate page static berupa html ke client (browser).

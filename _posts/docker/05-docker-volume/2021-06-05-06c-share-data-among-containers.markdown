@@ -27,6 +27,7 @@ Hai semuanya, di materi kali ini kita akan membahas tentang share volume diantar
     2. Use bind mount
 3. Cleanup
 
+<!--more-->
 
 ## Isolate volume each container
 

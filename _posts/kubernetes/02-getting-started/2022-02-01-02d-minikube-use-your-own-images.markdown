@@ -30,6 +30,8 @@ Hai semuanya, di materi kali ini kita akan membahas Menggunakan image yang kita 
 
 Ok langsung aja kita ke pembahasan yang pertama
 
+<!--more-->
+
 ## Save/Load from archive `.tar` files
 
 Untuk menggunakan Save/Load Container image pada minikube, kita perlu build dulu image yang akan kita gunakan, contohnya berikut adalah file `Dockerfile` 

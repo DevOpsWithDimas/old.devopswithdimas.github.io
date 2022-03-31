@@ -22,6 +22,8 @@ downloads: []
 
 Sama halnya dengan menggunakan JDBC, untuk menggunakan Hibernate kita harus setup dulu connectionnya. Untuk menghubungkan antara `Database <-> Hibernate` kita membutuhkan hibernate configurasi yaitu dengan cara membuat file `hibernate.cfg.xml` dalam classpath karena kita menggunakan Apache Maven jadi kita simpan file tersebut di `src/main/resources`.
 
+<!--more-->
+
 ## Setup `hibernate.cfg.xml`
 
 Meng-konfigurasi hibernate sebenarnya ada 2 cara yaitu dengan Java Konfigurasi dan juga XML seperti yang sebelumnya saya sebutkan. nah kali ini saya mau menggunakan konfigurasi XML karena pada kenyataannya konfigurasi XML itu mudah untuk di baca tetapi jujur saja saya sih lebih prepare ke Java Konfigurasi karena sekarang XML udah mulai ditinggalkan orang-orang. tapi gak apa-apa, khan namanya belajar kita harus mulai dari yang paling mudah dulu.

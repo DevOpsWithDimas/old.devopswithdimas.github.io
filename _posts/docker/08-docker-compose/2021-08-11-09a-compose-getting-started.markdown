@@ -28,6 +28,8 @@ Hai semuanya, di materi kali ini kita akan membahas untuk memulai menggunakan Do
 2. Command-line completion (Optional for linux & mac)
 3. Getting started
 
+<!--more-->
+
 ## Install docker compose
 
 You can run Compose on macOS, Windows, and 64-bit Linux. Prerequisites:

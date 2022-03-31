@@ -25,6 +25,8 @@ Hai, di materi kali ini saya mau membahas tentang Join Entity menggunakan ORM Hi
 1. Implicit 
 2. Explicit
 
+<!--more-->
+
 ## Preparation
 
 Sebelum mencoba kita buat dulu satu record lagi di table `mapping.mahasiswa_onetoone` seperti berikut:

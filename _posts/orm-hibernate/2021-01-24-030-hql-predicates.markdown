@@ -22,6 +22,8 @@ downloads: []
 
 Hai, pada kesempatan kali ini kita akan membahas tentang Predicates atau Conditional Expression dengan menggunakan Hibernate Query Language (HQL). Pada dasarnya conditional expresion pada HQL sama seperti SQL tetapi ada beberapa feature tambahan.
 
+<!--more-->
+
 1. Relational Comparison Predicate
 2. Nullness Predicate
 3. Like Predicate

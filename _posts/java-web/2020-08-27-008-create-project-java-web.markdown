@@ -19,6 +19,8 @@ downloads: []
 
 kali ini saya akan membuat project Java Web dengan menggunakan Apache Maven dengan template project ```maven-archetype-webapp```. berikut adalah langkah-langkahnya:
 
+<!--more-->
+
 ## Create Project dengan Apache Maven
 
 {% highlight bash %}

@@ -23,6 +23,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Health Check pada Do
 
 The `HEALTHCHECK` instruction tells Docker how to test a container to check that it is still working. This can detect cases such as a web server that is stuck in an infinite loop and unable to handle new connections, even though the server process is still running.
 
+<!--more-->
+
 When a container has a healthcheck specified, it has a health status in addition to its normal status. This status is initially `starting`. Whenever a health check passes, it becomes healthy (whatever state it was previously in). After a certain number of consecutive failures, it becomes `unhealthy`.
 
 The HEALTHCHECK instruction has two forms:

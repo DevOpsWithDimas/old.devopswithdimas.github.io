@@ -20,6 +20,8 @@ downloads: []
 
 Sub Query akan memproses inner query terlebih dahulu kemudian outer query, Sub Query Correlate ini berbeda jadi outer query akan di proses terlebih dahulu baru inner query.
 
+<!--more-->
+
 Berikut adalah contoh penggunaan correlate query:
 
 {% gist page.gist "011f-subquery-correlate.sql" %}

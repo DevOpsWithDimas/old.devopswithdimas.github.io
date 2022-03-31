@@ -31,6 +31,8 @@ Hai semuanya, di materi kali ini akan membahas tentang Proxy To Backend dan Reve
 
 Ok langsung ja kita bahas yang pertama
 
+<!--more-->
+
 ## Setup proxy for local development
 
 Pada materi [sebelumnya]({% post_url docker/07-study-cases/2021-07-11-08h-build-angular-rest-api %}) kita telah membuat Angular project ini meng-consume Rest API dengan cara set Env host dan port. sebetulnya saya gak suka cara tersebut! saya lebih sering menggunakan Reverse proxy atau proxy to backend sesuai dengan rekomendasi dari article [angular ini](https://angular.io/guide/build#proxying-to-a-backend-server). ya let's do create proxy to backend:

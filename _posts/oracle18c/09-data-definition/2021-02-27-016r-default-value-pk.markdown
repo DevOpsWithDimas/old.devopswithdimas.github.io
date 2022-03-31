@@ -24,6 +24,8 @@ Kebanyakan oracle database menggunakan sequances untuk menjaga performa database
 1. Sering problem ketika data migration apalagi ketika ada merging databases
 2. Replication processes where duplication of the sequences occur
 
+<!--more-->
+
 Untuk menghandle masalah tersebut kita bisa menggunkan UUID (Universal Unique Indetifier aka `SYS_GUID`).
 
 {% gist page.gist "016r-create-table-sys-guid.sql" %}

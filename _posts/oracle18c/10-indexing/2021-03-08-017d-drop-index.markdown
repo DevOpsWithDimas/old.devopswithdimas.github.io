@@ -20,6 +20,8 @@ downloads: []
 
 Untuk mengetahui informasi tentang index, kita bisa menggunakan Static Data Dictionary View `USER_INDEXES` seperti berikut:
 
+<!--more-->
+
 {% gist page.gist "017d-select-all-user-indexes.sql" %}
 
 Misalnya kita akan menghapus index `IDX_BITMAP_JOIN_JK` jadi perintahnya seperti berikut:

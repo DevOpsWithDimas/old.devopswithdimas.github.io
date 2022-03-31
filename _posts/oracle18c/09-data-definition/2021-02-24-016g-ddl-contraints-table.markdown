@@ -20,6 +20,8 @@ downloads: []
 
 Sebuah **Constraint** digunakan untuk memvalidasi atau mengontrol data yang dapat di simpan pada sebuah table. **Constraint** dibagi menjadi beberapa macam yaitu:
 
+<!--more-->
+
 1. Not Null
 2. Unique
 3. Check

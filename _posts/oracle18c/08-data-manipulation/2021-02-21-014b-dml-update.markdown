@@ -22,6 +22,8 @@ Perintah update data, biasanya kita melakukan modifikasi data terhadap beberapa 
 
 Format penulisan update statement yaitu sebagai berikut:
 
+<!--more-->
+
 ```sql
 UPDATE table_name SET 
     column_update1 = <value1>, 

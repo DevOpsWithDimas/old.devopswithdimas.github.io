@@ -15,6 +15,8 @@ image_path: /resources/posts/java-core/java-quis-5
 downloads: []
 ---
 
+<!--more-->
+
 1. Buatlah sebuah _map_ untuk menyimpan data mahasiswa seperti berikut:
 ![Map value]({{ page.image_path | prepend: site.baseurl }}/map-1.png)
 2. Dalam _map_ yang dibuat sebelumnya, ambil menggunakan _key_ dengan nilai `010` kemudian tampilkan ke layar console seperti berikut:

@@ -22,6 +22,8 @@ downloads: []
 
 Hai semuanya di materi kali ini, kita akan membahas `Apa itu Container?`, tpi sebelum itu saya mau ceritain dulu sejarahnya Docker. 
 
+<!--more-->
+
 > Docker Inc. was founded by Kamel Founadi, Solomon Hykes, and Sebastien Pahl during the Y Combinator Summer 2010 startup incubator group and launched in 2011. The startup was also one of the 12 startups in Founder's Den first cohort. Hykes started the Docker project in France as an internal project within dotCloud, a platform-as-a-service company. Docker debuted to the public in Santa Clara at PyCon in 2013. It was released as open-source in March 2013.
 
 Adoption:

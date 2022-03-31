@@ -20,6 +20,8 @@ downloads: []
 
 Untuk fungsi text ini lumayan banyak, seperti berikut:
 
+<!--more-->
+
 | Function  | Keterangan                        |
 |:----------|:----------------------------------|
 | `ASCII`   | Menformat dari charater ke asci   |

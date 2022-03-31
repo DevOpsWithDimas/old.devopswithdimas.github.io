@@ -28,6 +28,8 @@ Database yaitu tempat untuk menyimpan data dan untuk memudahkan, membaca data, m
 6. synonym
 7. PL/SQL
 
+<!--more-->
+
 Pengelompokan object-object tersebut disebut `schema` atau `user` klo di oracle. Karena di Oracle biasanya hanya terdapat 1 database banyak schema. Didalam 1 schema banyak `table`, `sequance`, `view`, dll seperti pada gambar berikut:
 
 ![user-schema]({{ page.image_path | prepend: site.baseurl }}/oracle-schema.jpg)

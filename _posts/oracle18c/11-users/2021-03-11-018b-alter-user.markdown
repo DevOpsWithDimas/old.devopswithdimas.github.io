@@ -21,6 +21,8 @@ downloads: []
 
 Alter User yaitu Statement yang digunakan untuk memodifikasi User Account seperti ganti default tablespace atau profile, ganti password, dan juga unlock/lock Account pada User. Perintah `ALTER USER` akan berpengaruh pada session kedepan atau pada saat logout dan login kembali.
 
+<!--more-->
+
 Untuk melakukan memodifikasi user setting, account yang digunakan harus memiliki  `ALTER USER` privileges. Untuk implementasinya seperti berikut:
 
 1. Locking user account

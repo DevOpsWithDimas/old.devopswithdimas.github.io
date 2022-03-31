@@ -28,6 +28,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Limit dan Offset. Se
 
 Ok langsung aja kita bahas materi yang pertama:
 
+<!--more-->
+
 ## Limit clause
 
 Dengan `LIMIT` clause kita bisa membatasi data yang akan di tampilkan dari hasil yang di proses oleh query. Secara konsep fungsi limit jika kita gambarkan seperti berikut:

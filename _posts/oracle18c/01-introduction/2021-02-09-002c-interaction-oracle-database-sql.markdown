@@ -22,6 +22,8 @@ downloads: []
 
 Untuk berinteraksi dengan Database Management System khususnya pada Relational Database Management System (RDBMS) di Oracle Database kita bisa menggunakan SQL (Structural Query Language)
 
+<!--more-->
+
 ## Perintah SQL
 
 SQL atau Struktural Query Language yaitu bahasa yang digunakan untuk membaca, mengubah, hapus data di dalam Database dengan mengikuti spesifikasi ANSI/ISO Standard, artinya tidak hanya digunakan di oracle saja tpi bisa juga di gunakan di semua relational database contohnya seperti PostgreSQL, MySQL, MariaDB, Microsoft Access dan lain-lain.

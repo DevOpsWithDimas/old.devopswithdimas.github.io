@@ -16,6 +16,8 @@ downloads: []
 
 Di materi sebelumya kita tau klo _polymorpism_ ini merupakan salah satu fitur _Object Oriented Programming_. Beberapa fitur diataranya yaitu _Override_ dan _Overload_
 
+<!--more-->
+
 ## _Override_
 
 Mungkin dari temen-temen pasti tau apa itu _override_, yap dari namanya ja udah _override_ artinya kurang lebih sama kayak _rename_ atau _replace_. Jadi penjelasnya dari kelas _parent_ misalnya punya method dengan nama `hitung()` maka di kelas _child_ dibuat ulang dengan nama yang sama kemudian isinya pun memungkinkan berbeda. Contohnya seperti berikut:

@@ -18,6 +18,8 @@ Sebelum kita koding dengan bahasa pemograman berorientasi object ini (Java), kit
 
 ![JDK vs JRE]({{ page.image_path | prepend: site.baseurl }}/java-arc.png)
 
+<!--more-->
+
 ### Level Tools & Tools APIs
 1. `javac` untuk melakukan compilasi
 2. `java` untuk menjalankan hasil compilasi atau bytecode

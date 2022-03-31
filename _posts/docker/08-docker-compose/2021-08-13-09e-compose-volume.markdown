@@ -28,6 +28,8 @@ Hai semuanya di materi kali ini kita akan membahas tentang Docker Volume menggun
 
 Ok langsung aja kita ke pembahasan yang pertama yaitu
 
+<!--more-->
+
 ## Store data in volume
 
 Mount host paths or named volumes, specified as sub-options to a service. 

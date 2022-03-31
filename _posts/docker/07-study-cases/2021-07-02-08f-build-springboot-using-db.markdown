@@ -29,6 +29,8 @@ Hai semuanya, di materi kali ini kita akan membahas studi kasus menggunakan Data
 4. Best practice for local development and containerization
 5. Cleanup
 
+<!--more-->
+
 ## Setup Database & JDBC using spring-boot
 
 Suatu aplikasi bisnis, gak akan jauh-jauh dengan namanya database management system khsususnya Relation Database Management System (RDBMS). sekarang kita akan menggunakan Database PostgreSQL yang di koneksikan ke project `spring-boot` sebelumnya dengan 

@@ -37,6 +37,8 @@ Hai semuanya, di materi study kasus kali ini kita akan membahas tentang mengguna
 
 Ok langsung aja kita ke pembahasan yang pertama 
 
+<!--more-->
+
 ## Setup and Configure connection to Database
 
 Almost every modern web application interacts with a database. Laravel makes interacting with databases extremely simple across a variety of supported databases using raw SQL, a fluent query builder, and the Eloquent ORM. Currently, Laravel provides first-party support for four databases:

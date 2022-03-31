@@ -19,6 +19,8 @@ downloads: []
 
  Kali ini saya mau membahas tentang variable di JavaScript diantaranya pembahasanya local & global variable, dan inisialisasi variable.
 
+ <!--more-->
+
  ## Inisialisasi Variable
 
 Membuat variable pada dasarnya sama seperti bahasa pemograman lainnya yaitu Java, C++, PHP tapi disini JavaScript lebih mirip dengan PHP karena untuk variablenya tidak dibedakan dengan tipe data, dalam satu variable bisa support dengan berbagai macam tipe data. contohnya yaitu seperti berikut:

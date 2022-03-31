@@ -22,6 +22,8 @@ downloads: []
 
 Hai setelah temen-temen mempelajari mapping dengan ORM Hibernate, sekarang saatnya untuk temen-temen latihan ya supaya memahami semua materi yang telah kita bahas. Berikut adalah soalnya.
 
+<!--more-->
+
 Berikut adalah perancangan UI untuk modul `nasabah` dan `tabungan` dalam sebuah aplikasi Perbankan:
 
 - Form Nasabah Peorangan

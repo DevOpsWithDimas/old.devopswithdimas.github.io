@@ -22,6 +22,8 @@ downloads: []
 
 Hai, di materi kali ini saya akan membahas embedded mapping, Embedded mapping ini biasanya digunakan untuk mapping sebuah entity dengan model yang terpisah kedalam sebuah single database table. contohnya seperti berikut:
 
+<!--more-->
+
 Implementasi Embedded Model: 
 
 {% gist page.gist "AlamatEmbeddable.java" %}

@@ -36,6 +36,8 @@ Hai semuanya, di artikel sebelumnya kita sudah men-setup suatu environment untuk
 
 Ok lansung aja kita ke pembahasan yang pertama yaitu
 
+<!--more-->
+
 ## Introduction
 
 To use GitLab CI/CD, you need:

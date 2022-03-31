@@ -22,6 +22,8 @@ downloads: []
 
 Hai, di materi kali ini saya mau ngebahas tentang Parent-Child mapping. ok jadi berikut adalah perancangan tabelnya:
 
+<!--more-->
+
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 
 Berikut adalah implementasi Entity Employee:

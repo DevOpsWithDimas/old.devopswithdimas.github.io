@@ -30,6 +30,8 @@ Untuk menggunakan / mengakses object dalam database kita membutuhkan tools atau 
 3. [SQL Developer](https://www.oracle.com/database/technologies/appdev/sqldeveloper-landing.html)
 4. [sequelPro](https://www.sequelpro.com/) for mac only
 
+<!--more-->
+
 ![database-interaction]({{ page.image_path | prepend: site.baseurl }}/interface-database.jpg)
 
 Jadi berdasarkan gambar di atas, cara connect ke Database Oracle melalui network via `tcp/ip` dengan menggunakan `SID` atau `Service Name` untuk mengidetifikasi ke `Database Name` atau `Database Listener` selain itu juga biasanya menggunakan authentication menggunakan user/password. 

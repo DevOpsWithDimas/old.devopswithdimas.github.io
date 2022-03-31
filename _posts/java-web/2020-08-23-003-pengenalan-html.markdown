@@ -20,6 +20,8 @@ downloads: []
 
 Internet yang kita akses itu berisi document media type `application/html`, HTML (Hypertext Markup Language) yaitu dokument web yang static yang berisi text, image, video dan media lain-nya.
 
+<!--more-->
+
 Format HTML berbentuk XML contohnya seperti berikut:
 
 {% highlight html %}

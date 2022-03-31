@@ -31,6 +31,8 @@ Hai semuanya di materi kali ini kita akan membahas tentang system scale services
 
 Ok langsung aja kita ke pembahasan yang pertama yaitu
 
+<!--more-->
+
 ##  Scale up and down a service
 
 By default docker compose akan membuat semua servicenya dalam 1 instance, now we will create a web service, try to scale this service, and add load blancer.

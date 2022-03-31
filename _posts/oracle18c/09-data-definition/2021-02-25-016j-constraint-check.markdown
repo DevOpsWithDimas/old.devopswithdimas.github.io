@@ -20,6 +20,8 @@ downloads: []
 
 Constraint **Check** dapat diterapkan pada kolom tertentu dalam sebuah table, dengan tujuan memvalidasi data yang kita entry harus sesuai dengan criteria yang diterapkan pada constraint tersebut contohnya pada kolom `price` nilai minimal lebih besar dari `0`. Contoh penggunaanya seperti berikut:
 
+<!--more-->
+
 {% gist page.gist "016j-ddl-constraint-check.sql" %}
 
 Jadi dengan ddl untuk membuat table seperti diatas, maka kita tidak boleh entry data pada kolom `saldo` dengan nilai lebih kecil dari `0` dan pada kolom `jenis_kelamin` nilainya harus `L` atau `P`, nah sekarang kita coba untuk case yang error contoh dengan perintah entry seperti berikut:

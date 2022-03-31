@@ -33,6 +33,8 @@ ada banyak selali Operators, kita akan bahas beberapa yang menurut saya penting 
 
 Ok langsung aja kita bahas materi yang pertama
 
+<!--more-->
+
 ## Math operators
 
 Dalam SQL, kita juga bisa melakukan operasi matematika seperti pertambahan, pengurangan, pembagian, dan perkalian. Operasi tersebut dibagi-bagi lagi menjadi beberapa tipe yaitu

@@ -19,6 +19,8 @@ downloads: []
 
 Sebelumnya kita telah membuat servlet dengan menggunakan **xml-mapping**, jaman sekarang configurasi di xml udah usang atau jarang dipake. Sekarang udah **Zamannya Annotation** maka dari itu saya bakalan membahas tentang servlet dengan annotation.
 
+<!--more-->
+
 Buat kelas baru dengan nama `ServletAnnotation` seperti berikut:
 
 

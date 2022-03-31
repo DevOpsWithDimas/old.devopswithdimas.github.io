@@ -24,6 +24,8 @@ Operator like biasanya digunakan untuk tipe data `varchar` atau string, ada 2 ex
 1. `_` atau underscore, digunakan untuk mewakili expresion satu karakter.
 2. `%` atau persent, digunakan untuk mewakili expresion beberapa karakter.
 
+<!--more-->
+
 Contoh kasus untuk expresion `%`, saya ingin mencari nama depan karyawan yang diawali oleh huruf `A`. Berikut querynya:
 
 {% gist page.gist "006b-select-where-like-percent-el.sql" %}

@@ -20,6 +20,8 @@ downloads: []
 
 Format penulisan insert statement terdiri dari 2 statement yaitu `insert into values` dan `insert from select`:
 
+<!--more-->
+
 ## Insert into values
 
 Pertama kita bahas dulu menggunakan `insert into values`, berikut adalah format penulisannya:

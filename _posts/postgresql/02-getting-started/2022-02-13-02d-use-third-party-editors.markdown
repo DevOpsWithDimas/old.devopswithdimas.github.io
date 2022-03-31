@@ -41,6 +41,8 @@ Jadi di cource ini, kita akan menggunakan IntelliJ IDEA ya. Adapun pembahasannya
 
 Ok langsung aja kita ke pembahasan yang pertama
 
+<!--more-->
+
 ## Connection to PostgreSQL Server
 
 To issue a query to a database, you must create a data source connection. Data source is the location of your data and can be a server or a DDL file. The data source includes a name and connection settings that are dependent on the data source type.

@@ -22,6 +22,8 @@ downloads: []
 
 Hai, di materi kali ini saya mau ngebahas tentang Inherintance Mapping dengan Metode MappedSuperclass. Untuk mencoba mapping ini, kita membutuhkan 2 tabel yang memiliki column yang hampir sama contohnya `mobil` sama `motor` berikut adalah perancangan databasenya:
 
+<!--more-->
+
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 
 Implementasi Entity superclass:

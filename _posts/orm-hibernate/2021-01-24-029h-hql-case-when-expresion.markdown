@@ -22,6 +22,8 @@ downloads: []
 
 Hai, pada kesempatan kali ini saya mau membahas tentang `case-when` Expresion menggunakan Hibernate Query Language (HQL). seperti biasa sebelum kita mulai kita check dulu data dan tabel misalnya saya punya data seperti berikut:
 
+<!--more-->
+
 ![select-tables]({{ page.image_path | prepend: site.baseurl }}/select-tables.png)
 
 Selanjutnya berikut adalah implementasi DAO:

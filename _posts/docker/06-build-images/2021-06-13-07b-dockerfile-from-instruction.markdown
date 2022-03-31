@@ -21,6 +21,8 @@ downloads: []
 
 Hai semuanya, di materi kali ini kita akan membahas secara lebih mendalam tentang `Dockerfile` perintah `FROM` sebagai berikut:
 
+<!--more-->
+
 The `FROM` instruction initializes a new build stage and sets the [Base Image](https://docs.docker.com/glossary/#base_image) for subsequent instructions. As such, a valid `Dockerfile` must start with a `FROM` instruction. Berikut adalah format penulisan `FROM` instrustion
 
 {% highlight docker %}

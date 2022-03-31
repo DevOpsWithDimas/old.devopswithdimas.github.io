@@ -20,6 +20,8 @@ Operator pada dasarnya perintah untuk melakukan proses komputasi seperti pengelo
 3. Operator Perbandingan
 4. Konversi tipe data (casting)
 
+<!--more-->
+
 Simbol operator yang dapat digunakan di Java seperti tabel dibawah ini:
 
 | `+` | `-` | `*` | `/` | `&` | `%` |

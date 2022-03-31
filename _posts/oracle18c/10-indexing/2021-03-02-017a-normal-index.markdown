@@ -20,6 +20,8 @@ downloads: []
 
 B-Tree atau singkatan dari balanced tree yaitu most commons type database index di Oracle dengan tujuan mengelompokan data berdasarkan range. Sebagai contoh misalnya kita punya index dari table `departments` pada column `department_id` ketika di buat index maka secara logical akan dibuat pengelompokan seperti berikut:
 
+<!--more-->
+
 ![oracle-btree-index](https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/img/cncpt244.gif)
 
 ## Branch Block & Leaf Block

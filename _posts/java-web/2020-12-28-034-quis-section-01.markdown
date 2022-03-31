@@ -20,6 +20,8 @@ downloads: []
 
 Setelah kita belajar materi Java Web, sekarang saatnya kita membuat aplikasi contohnya seperti Berikut:
 
+<!--more-->
+
 ![master-nasabah]({{ page.image_path | prepend: site.baseurl }}/01-tambah-nasabah.png)
 
 ![list-nasabah]({{ page.image_path | prepend: site.baseurl }}/02-list-nasabah.png)

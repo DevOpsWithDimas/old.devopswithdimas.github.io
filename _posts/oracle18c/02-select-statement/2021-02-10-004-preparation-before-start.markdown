@@ -21,6 +21,8 @@ downloads: []
 
 Ok sebelum kita mulai, jadi di Oracle Database 18c XE ini secara default gak ada schema HR seperti pendahulunya yaitu Oracle Database 11g XE. jadi kita perlu execute query sendiri.
 
+<!--more-->
+
 ## Alter Session
 
 Pertama login as `system` dengan sqlplus, kemudian jalankan perintah berikut:

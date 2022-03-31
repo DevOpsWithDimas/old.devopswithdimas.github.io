@@ -30,6 +30,8 @@ Hai semuanya, di materi kali kita akan membahas tentang Access Rest API dari pro
 
 Ok langsung aja kita ke pembahasan yang partama
 
+<!--more-->
+
 ## Create service `http/client`
 
 Pada materi [sebelumnya]({% post_url docker/07-study-cases/2021-07-09-08g-build-angular-project %}) kita udah membuat angular project dan membuat Rest API service dengan [spring-boot]({% post_url docker/07-study-cases/2021-07-02-08f-build-springboot-using-db %}) yang sudah menjadi docker image, sekarang kita lanjutkan untuk mengakses Rest API tersebut menggunakan angular project ya. 

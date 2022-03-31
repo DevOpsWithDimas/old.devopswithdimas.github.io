@@ -20,6 +20,8 @@ downloads: []
 
 Di SQL juga mengenal yang namanya gerbang logica, do you remember??
 
+<!--more-->
+
 | operation | `true x true` | `true x false`    | `false x true`    | `false x false`   |
 | :---      | :---          | :---              | :---              | :---              |
 | AND       | `true`        | `false`           | `false`           | `false`           |

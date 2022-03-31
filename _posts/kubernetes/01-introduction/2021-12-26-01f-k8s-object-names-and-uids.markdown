@@ -29,6 +29,8 @@ Hai semuanya, Setelah kita mengetahui bagaimana cara beriteraksi dengan Kubernet
 
 Ok langsung aja kita ke pembahasan yang pertama yaitu
 
+<!--more-->
+
 ## Object Names and IDs
 
 Each object in your cluster has a Name that is unique for that type of resource. Every Kubernetes object also has a UID that is unique across your whole cluster. For example, you can only have one Pod named `myapp-1234` within the same [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), but you can have one Pod and one Deployment that are each named `myapp-1234`.

@@ -20,6 +20,8 @@ downloads: []
 
 Di Oracle 11g kebawah, kita gak bisa menggunakan `fetch` dan `offset` biasanya jadi kita gunakan sub query, berikut adalah implementasinya:
 
+<!--more-->
+
 {% gist page.gist "011j-subquery-paginate.sql" %}
 
 Berikut hasilnya:

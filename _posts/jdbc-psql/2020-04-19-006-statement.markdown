@@ -24,6 +24,8 @@ downloads: []
 
 Hi, setelah kita membuat connection, menyiapkan database schema dengan menggunakan flyway database migration. Sekarang kita akan mengambil data dari table yang ada di database. Tapi sebelum itu ada beberapa yang harus kita siapkan karena disini saya menggunakan Design pattern. Nah temen-temen mungkin binggung apa itu design pattern ya khan?...
 
+<!--more-->
+
 Ok design pattern in software engineering simple wordnya itu solusi untuk meminimalisir duplication (menulis hal yang sama dengan satu tujuan). tapi gak usah di pusingin dulu perlahan-lahan dengan pengalan menulis koding dan memahami isinya pasti nanti akan paham dengan sendirinya.
 
 Back to topic, seperti yang saya katakan tadi saya mau membuat sebuah interface dulu sebagai template dengan nama `CrudRepository` yang saya simpan di package `com.maryanto.dimas.bootcamp.dao` seperti berikut:

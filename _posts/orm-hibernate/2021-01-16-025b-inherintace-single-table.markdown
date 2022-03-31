@@ -20,7 +20,11 @@ image_path: /resources/posts/orm-hibernate/orm-hibernate-25b
 downloads: []
 ---
 
-Hai, di materi kali ini akan membahas Inherintance menggunakan metode Single Table. Untuk mencobanya disini masih menggunakan contoh kasus yang sama yaitu kendaran yang terdiri dari mobil dan motor. berikut adalah perancangan tabelnya:
+Hai, di materi kali ini akan membahas Inherintance menggunakan metode Single Table. Untuk mencobanya disini masih menggunakan contoh kasus yang sama yaitu kendaran yang terdiri dari mobil dan motor. 
+
+<!--more-->
+
+berikut adalah perancangan tabelnya:
 
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 

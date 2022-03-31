@@ -32,6 +32,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Basic penggunaan SQL
 
 Ok langsung saja kita bahas materi yang pertama
 
+<!--more-->
+
 ## Format penulisan Select statement
 
 To retrieve data from a table, the table is queried. An SQL `SELECT` statement is used to do this. The statement is divided into a select list (the part that lists the columns to be returned), a table list (the part that lists the tables from which to retrieve the data), and an optional qualification (the part that specifies any restrictions). 

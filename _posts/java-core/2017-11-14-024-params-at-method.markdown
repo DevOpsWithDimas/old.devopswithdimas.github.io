@@ -16,6 +16,8 @@ downloads: []
 
 Di materi sebelumnya kita udah belajar membuat function atau method, Jadi di function atau method pada dasarnya bisa mengeluarkan data `return` atau menerima data `parameterize`, Untuk menerima data ada istilah yang namanya `parameter` atau katalainnya `arguments` seperti berikut contohnya:
 
+<!--more-->
+
 {% highlight java linenos %}
 public class FunctionWithArgs {
 

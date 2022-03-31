@@ -21,6 +21,8 @@ Operator pada dasarnya dibagi 3 yaitu
 2. Assignment dan 
 3. Bitwise. 
 
+<!--more-->
+
 Kali ini saya mau membahas dulu tentang assignment atau penugasan (inisialisasi).
 
 ok sekarang coba perhatikan contoh koding berikut ini:

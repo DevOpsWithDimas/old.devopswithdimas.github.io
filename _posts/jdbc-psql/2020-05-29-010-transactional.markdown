@@ -18,6 +18,8 @@ downloads: []
 
 Hai pada pembahasan kali ini kita akan mempelajari tentang transactional di JDBC. seperti yang kita tau klo untuk mengaktifkan transaksi dengan cara sebagai berikut:
 
+<!--more-->
+
 ```sql
 begin;
 

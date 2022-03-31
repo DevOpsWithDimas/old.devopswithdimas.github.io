@@ -19,6 +19,8 @@ downloads: []
 
 Kita sudah memahami perbedaan tentang HTTP Method GET dan POST, sekarang saya mau membahas tentang mengirim multiple parameter ke sebuah servlet dengan method GET, kenapa menggunakan GET? jawabanya supaya kita tau apa yang dikirim ditampilkan di URL ya tapi klo digunakan untuk aplikasi sesunggunya disarankan menggunakan POST ya!!!.
 
+<!--more-->
+
 Jadi saya punya form seperti berikut:
 
 ![multiple select]({{ page.image_path | prepend: site.baseurl }}/multiselect.png)

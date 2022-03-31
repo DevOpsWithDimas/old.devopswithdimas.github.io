@@ -32,6 +32,8 @@ Berikut adalah daftar / list Object Privileges yang sering digunakan pada suatu 
 7. `REFERENCES`, mengijikan untuk membuat foreign key berdasarkan column pada table tersebut.
 8. `DEBUG`, mengijinkan untuk melihat log jika PL/SQL di execute
 
+<!--more-->
+
 Untuk lebih lengkapnya, boleh baca [disini](https://docs.oracle.com/en/database/oracle/oracle-database/18/sqlrf/GRANT.html#GUID-20B4E2C0-A7F8-4BC8-A5E8-BE61BDC41AC3__BGBCIIEG)
 
 Jadi misalnya disini kita login sebagai user `toko_online` sekarang saya mau coba select ke tablenya `employees` dari user / schema `hr` seperti berikut:

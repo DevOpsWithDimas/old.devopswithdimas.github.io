@@ -18,6 +18,8 @@ downloads: []
 
 Tipe **data array** seperti yang anda ketahui kalo array ini pada dasarnya adalah sebuah variable yang bisa menampung data lebih dari satu.
 
+<!--more-->
+
 Ok langsung aja kita lihat bagaimana array ini bekerja, jadi contohnya disini saya memempunyai sample kode untuk tipe data array seperti berikut:
 
 {% gist page.gist "array-basic.js" %}

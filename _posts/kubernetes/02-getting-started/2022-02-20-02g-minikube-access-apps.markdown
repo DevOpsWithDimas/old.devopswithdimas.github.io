@@ -28,6 +28,8 @@ Hai semuanya, di materi kali ini kita akan membahas bagaimana cara mengakses app
 
 Ok langsung aja kita ke pembahasan yang pertama
 
+<!--more-->
+
 ## Using `minikube service` command
 
 A NodePort service is the most basic way to get external traffic directly to your service. NodePort, as the name implies, opens a specific port, and any traffic that is sent to this port is forwarded to the service.

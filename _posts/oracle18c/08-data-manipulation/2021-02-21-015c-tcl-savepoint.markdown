@@ -20,6 +20,8 @@ downloads: []
 
 Perintah `savepoint` digunakan untuk mengelompokan suatu transaksi yang panjang menjadi beberapa tahap, contohnya jika kita main game balapan atau rpg misalnya nah di dalem storynya misalkan character yang kita mainkan mati di tengah2 permainnan nah maka game akan kembali ke save terakhir nah kurang lebih seperti itu lah gunanya `savepoint`.
 
+<!--more-->
+
 Untuk implementasinya, berikut adalah contoh querynya:
 
 {% gist page.gist "015c-tcl-savepoint.sql" %}

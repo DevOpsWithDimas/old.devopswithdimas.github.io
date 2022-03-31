@@ -22,6 +22,8 @@ downloads: []
 
 Untuk mencoba mapping OneToOne kita perlu 2 table, contohnya disini kita buat antara `mahasiswa` dan `alamat`, berikut adalah contoh perancangan tablenya:
 
+<!--more-->
+
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 
 pertama kita buat dulu entity untuk alamat seperti berikut

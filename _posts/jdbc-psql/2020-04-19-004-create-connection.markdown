@@ -20,6 +20,8 @@ downloads: []
 
 Hi, di materi kali kita akan menghubungkan antara Java dengan Database dengann menggunakan teknologi JDBC atau Java Database Connectivity setelah sebelumnya kita membuat project dengan Apache Maven. Object `connection` yang kita buat kali ini menggunakan framework/library connection pooling yaitu [HikariCP](https://github.com/brettwooldridge/HikariCP).
 
+<!--more-->
+
 Dengan menggunakan HikariCP, performa database kita akan selalu terjaga karena terkadang klo connection ke database di hit melamapui batas sering hang atau error too many connection. maka kita kali ini mencoba dengan HikariCP agar connection life cycle di terjaga.
 
 Ok sekarang kita akan membuat koneksi ke database, berikut stepnya:

@@ -23,6 +23,8 @@ downloads: []
 
 Hai semuanya di materi kali ini kita akan membahas lebih detail tentang specify custom network di compose file.
 
+<!--more-->
+
 Instead of just using the default app network, you can specify your own networks with the top-level `networks` key. This lets you create more complex topologies and specify custom network drivers and options. You can also use it to connect services to externally-created networks which aren’t managed by Compose.
 
 Each service can specify what networks to connect to with the service-level `networks` key, which is a list of names referencing entries under the top-level `networks` key.

@@ -19,6 +19,8 @@ downloads: []
 
 Sekarang kita akan membuat untuk menerima request dari Form dari HTML menggunakan Servlet. Berikut adalah implementasinya:
 
+<!--more-->
+
 Pertama kita buat dulu file `html` dalam folder `src/main/webapp` misalnya dengan nama `submitget.html` berikut isi filenya:
 
 {% gist page.gist "submitget.html" %}

@@ -26,6 +26,8 @@ Sub Query dengan single row result di `where` clause, pada dasarnya kita bisa me
 3. Between Predicates
 4. Not Predicates
 
+<!--more-->
+
 Berikut, adalah contoh penggunaan sub query dengan relational comparison predicate.
 
 {% gist page.gist "011a-select-sub-query-where.sql" %}

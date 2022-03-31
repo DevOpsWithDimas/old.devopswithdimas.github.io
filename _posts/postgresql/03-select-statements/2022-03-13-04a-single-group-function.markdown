@@ -32,6 +32,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Jenis dari Functions
 
 Ok langsung aja kita bahas materi yang pertama
 
+<!--more-->
+
 ## Using single row functions
 
 Single row function is Functions return a single result row for every row of a queried table or view. 

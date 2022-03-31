@@ -24,6 +24,8 @@ Hai semuanya di materi kali ini kita akan membahas tentang Networking menggunaka
 
 By default Compose sets up a single [network](https://docs.docker.com/engine/reference/commandline/network_create/) for your app. Each container for a service joins the default network and is both reachable by other containers on that network, and discoverable by them at a hostname identical to the container name.
 
+<!--more-->
+
 For example, suppose your app is in a directory called myapp, and your `docker-compose.yml` looks like this:
 
 {% gist page.gist "09i-simple-network.docker-compose.yaml" %}

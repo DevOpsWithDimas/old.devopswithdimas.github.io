@@ -22,6 +22,8 @@ downloads: []
 
 Hai pada kesempatan kali ini saya mau membahas cara install Oracle Database 18c Express Edition pada sistem operasi Windows 10
 
+<!--more-->
+
 ## Install Oracle 18c Express Edition
 
 Setelah selesai donwloadnya, kemudian di extract saja file `.zip` kemudian buka file `setup.exe` maka akan muncul dialog seperti berikut:

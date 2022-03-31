@@ -17,6 +17,8 @@ downloads: []
 
 Dari materi sebelumnya temen-temen ada yang bingung? tentang di materi _element collection_ kok beda cara penulisannya dengan _array_ biasa yaitu seperti berikut:
 
+<!--more-->
+
 {% highlight java linenos %}
 package tdi.training.java.core.data;
 

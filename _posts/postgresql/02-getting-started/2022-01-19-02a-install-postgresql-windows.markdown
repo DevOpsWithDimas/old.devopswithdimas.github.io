@@ -33,6 +33,8 @@ Hai semuanya, di materi kali ini kita akan membahas Install PostgreSQL di Window
 
 Ok langsung aja kita bahas materi yang pertama 
 
+<!--more-->
+
 ## Install PostgreSQL Server for Learning environtment
 
 Untuk melakukan installasi PostgreSQL server ada 2 cara yaitu Installer dan compile sendiri dari source. 

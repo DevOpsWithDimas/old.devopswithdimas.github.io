@@ -31,6 +31,8 @@ Hai semuanya, pada materi study kasus kali ini kita akan membahas tentang Multip
 
 Ok langsung aja kita ke pembahasan yang pertama
 
+<!--more-->
+
 ## Introduction
 
 Jaman sekarang itu hampir semua aplikasi menggunakan arsitektur micro-services, artinya semua service di pecah-pecah menjadi beberapa module. Dengan begitu biasanya setiap module akan di buatkan project gitnya seperti

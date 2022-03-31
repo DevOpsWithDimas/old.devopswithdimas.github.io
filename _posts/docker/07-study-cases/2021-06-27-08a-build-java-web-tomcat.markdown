@@ -30,6 +30,8 @@ Hai semuanya, di studi kasus yang pertama kita akan membahas tentang build docke
 
 Ok langsung aja, kita bahas ke materi yang pertama
 
+<!--more-->
+
 ## Create project dengan Apache Maven
 
 Untuk membuat project Java Web, sebetulnya temen-temen bebas tpi kalo jaman sekarang paling gampang ya pake Apache Maven. Berikut adalah perintah untuk membuat projectnya dan mengatur dependencynya:

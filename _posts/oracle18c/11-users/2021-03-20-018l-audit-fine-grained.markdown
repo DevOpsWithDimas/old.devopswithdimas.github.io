@@ -20,6 +20,8 @@ downloads: []
 
 Fine-Grained Audition yaitu policies yang di tujukan secara specifik kondisi untuk INSERT, UPDATE, DELETE, SELECT operation. Secara general **fine-grained audit policies adalah user-defined sql predicate pada suatu tabel untuk selective audition**.
 
+<!--more-->
+
 ## Syntax Fine-Grained Audit Policy
 
 Syntax untuk membuat FGA Policy, seperti berikut:

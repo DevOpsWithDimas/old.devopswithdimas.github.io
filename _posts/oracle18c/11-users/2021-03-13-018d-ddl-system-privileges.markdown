@@ -35,6 +35,8 @@ System Privileges yaitu hak akses untuk User Accounts me-execute Data Definition
 12. View
 13. Dan masih banyak lagi untuk lebih lengkapnya bisa check [di sini](https://docs.oracle.com/en/database/oracle/oracle-database/18/sqlrf/GRANT.html#GUID-20B4E2C0-A7F8-4BC8-A5E8-BE61BDC41AC3__BABEFFEE)
 
+<!--more-->
+
 Untuk mengetahui suatu user telah di berikan hak akses (privileges) tertentu kita bisa menggunakan query seperti berikut:
 
 {% gist page.gist "018d-ddl-system-privileges-info.sql" %}

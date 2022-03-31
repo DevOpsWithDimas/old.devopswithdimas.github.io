@@ -18,6 +18,8 @@ downloads: []
 
 perulangan sebenarnya juga gak ada yang aneh kurang lebih sama seperti bahasa pemograman yang lain contohnya perulangan menggunakan `for`, `do-while`, `while` dan `for-in`.
 
+<!--more-->
+
 ## Perulangan dengan FOR
 
 perulangan dengan for basicnya sama seperti biasa yaitu seperti berikut contohnya:

@@ -17,6 +17,8 @@ downloads: []
 
 Tipe data untuk karakter diaktegorikan ada 2 jenis yaitu single karakter dan multiple karakter (String).
 
+<!--more-->
+
 ## Tipe data single karakter
 
 Tipe data ini pada dasarnya sama seperti pendahulunya `C/C++` yaitu menggunakan `char` atau `Character` kharakter ini merepresentasikan huruf, angka dan simbol. Biasanya tipe data ini hanya dapat menyimpan single word, yang di simpan diatara `'` (single quotes) contohnya seperti berikut:

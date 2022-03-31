@@ -26,7 +26,9 @@ Hai semuanya di materi kali ini kita akan membahas lebih detail tentang docker c
 2. Deploying changes
 3. Running Compose on a single server
 
-When you define your app with Compose in development, you can use this definition to run your application in different environments such as CI, staging, and production. 
+When you define your app with Compose in development, you can use this definition to run your application in different environments such as CI, staging, and production.
+
+<!--more-->
 
 ## Modify your Compose file for production
 

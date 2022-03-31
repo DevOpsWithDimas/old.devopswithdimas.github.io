@@ -20,6 +20,8 @@ downloads: []
 
 Suatu Relationship dikatakan sebagai One To Many yaitu jika tabel yang merujuk di antara dua table, sebagai ilustrasi coba perhatikan gambar berikut:
 
+<!--more-->
+
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.jpg)
 
 Jika di perhatikan sama ya seperti One To One?? yapp betul secara assosiasi entity memang sama tapi secara data berbeda. artinya 

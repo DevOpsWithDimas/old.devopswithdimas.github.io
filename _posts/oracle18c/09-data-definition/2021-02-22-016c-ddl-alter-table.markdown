@@ -20,6 +20,8 @@ downloads: []
 
 Perintah ALTER table, digunakan untuk memodifikasi strukur object pada table contohnya 
 
+<!--more-->
+
 ## Pada Table
 
 1. Merubah nama tabel

@@ -33,6 +33,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Manage service dan a
 
 Ok langsung aja kita ke pembahasan yang pertama
 
+<!--more-->
+
 ## Introduction
 
 Jetbraint [IntelliJ IDEA](https://www.jetbrains.com/idea/) adalah salah satu Integrated Development Environment (IDE) favorite saya selama ini, biasanya saya gunakan untuk Coding, Database, dan lain-lain.

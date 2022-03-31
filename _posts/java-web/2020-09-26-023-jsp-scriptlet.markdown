@@ -23,6 +23,8 @@ downloads: []
 
 Scriptlet yaitu sintax yang memungkinkan statement Java seperti variables, method declaration atau expresion yang ditulis di web pages (HTML). Contohnya seperti berikut:
 
+<!--more-->
+
 {% gist page.gist "simple-scriptlet.jsp" %}
 
 ## 2. JSP Declaration

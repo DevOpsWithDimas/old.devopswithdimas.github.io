@@ -22,6 +22,8 @@ downloads: []
 
 Hai, pada kesempatan kali ini saya mau membahas tentang function `coalesce` dan `nullif` menggunakan Hibernate Query Language. ok seperti biasa kita siapkan dulu datanya. contohnya saya punya tabel dan data seperti berikut:
 
+<!--more-->
+
 ![select-tables]({{ page.image_path | prepend: site.baseurl }}/select-tables.png)
 
 Selanjutnya, kita buat DAO seperti berikut:

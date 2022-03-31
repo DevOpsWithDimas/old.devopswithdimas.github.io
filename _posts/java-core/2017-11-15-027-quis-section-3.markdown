@@ -15,6 +15,9 @@ downloads: []
 ---
 
 1. Buatlah file `LatihanNo1`, `LatihanNo2` dan `LatihanNo3` dengan struktur directory dan tempat menyipan _source code_ seperti berikut
+
+<!--more-->
+
 {% highlight bash %}
 ├── out
 └── src

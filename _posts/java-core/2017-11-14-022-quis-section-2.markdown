@@ -16,6 +16,8 @@ downloads: []
 
 Buatlah tampilan seperti berikut menggunakan perintah perulangan atau percabangan:
 
+<!--more-->
+
 1. Tampilkan bilangan genap dari `1 sd 100` menggunakan perulangan contohnya seperti berikut:
 ```sh
 2, 4, 6, 8 dst

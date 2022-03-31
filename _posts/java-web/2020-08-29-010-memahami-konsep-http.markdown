@@ -23,6 +23,8 @@ downloads: []
 
 Hypertext Transper Protocol atau yang sering di singkat HTTP yaitu sebuah protocol untuk distributed, collaboration, hypermedia information system. Http biasanya digunakan untuk bertukar data melalui World Wide Web.
 
+<!--more-->
+
 HTTP function terdiri dari request dan response protocol di jaringan yang memiliki model computasi client-server. seperti yang saya gambarkan pada gambar berikut:
 
 ![server-side]({{ page.image_path | prepend: site.baseurl }}/server-side.jpg)

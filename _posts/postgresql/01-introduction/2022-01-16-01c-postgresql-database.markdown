@@ -26,6 +26,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Object Relation Mana
 
 Ok langsung aja kita bahas materi yang pertama
 
+<!--more-->
+
 ## What is Object-Relational Database Management System?
 
 An object–relational database (ORD), or object–relational database management system (ORDBMS), is a database management system (DBMS) similar to a relational database, but with an object-oriented database model: objects, classes and inheritance are directly supported in database schemas and in the query language. In addition, just as with pure relational systems, it supports extension of the data model with custom data types and methods.

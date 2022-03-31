@@ -16,6 +16,8 @@ downloads: []
 
 Sebelumya kita udah mengenal array single dimentions, sekarang kita akan buat array dengan multidimention atau orang-orang sering menggunakan istilah kordinal `xy` jika 2 dimention dan untuk tiga dimention `xyz` conthnya seperti berikut:
 
+<!--more-->
+
 {% highlight java linenos %}
 public class Array2Dimension {
 	

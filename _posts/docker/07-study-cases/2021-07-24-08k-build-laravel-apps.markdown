@@ -29,6 +29,8 @@ Hai semuanya, di materi kali ini kita akan membahas Build docker image untuk PHP
 3. Build & Running docker image
 4. Cleanup
 
+<!--more-->
+
 ## Setup SDK Local environment
 
 Untuk meng-setup Software Development project Laravel sebetulnya ada banyak cara seperti yang di [Official Documentation Laravel](https://laravel.com/docs/8.x) Seperti contohnya 

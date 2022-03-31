@@ -31,6 +31,8 @@ Constraint pada dasarnya bisa juga di terapkan di Hibernate Framework yaitu:
 
 Ok mari kita bahas satu-per-satu, yang pertama kita bahas contraint `Not Null`
 
+<!--more-->
+
 ## Not Null
 
 Untuk contraint not null telah di jelaskan di materi sebelumnya, hanya bisa di terapkan pada annotation `@Column(nullable = trus / false)` jadi saya skip ja ya.

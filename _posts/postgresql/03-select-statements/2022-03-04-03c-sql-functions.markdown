@@ -35,6 +35,8 @@ ada banyak selali Fucntions, kita akan bahas beberapa yang menurut saya penting 
 
 Ok langsung aja kita bahas materi yang pertama
 
+<!--more-->
+
 ## String function
 
 This section describes functions for examining and manipulating string values. Strings in this context include values of the types `character`, `character varying`, and `text`. Except where noted, these functions are declared to accept and return type text.

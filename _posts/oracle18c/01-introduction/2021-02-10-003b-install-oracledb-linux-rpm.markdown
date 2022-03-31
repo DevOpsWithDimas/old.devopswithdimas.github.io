@@ -22,6 +22,8 @@ downloads: []
 
 Hai pada kesempatan kali ini saya mau membahas cara install Oracle Database 18c Express Edition pada sistem operasi Linux Centos / Fedora / RedHat / Oracle Solari
 
+<!--more-->
+
 ## Installing Oracle 18c XE
 
 Setelah di download software `oracle-database-xe-18c-x.x.rpm`, Sekarang kita coba install dengan perintah seperti berikut:

@@ -31,6 +31,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang SQL (Structure Query
 
 Ok langsung saja kita bahas materi yang pertama
 
+<!--more-->
+
 ## Apa itu SQL & Basic Consepts?
 
 SQL is the standard language for Relational Database System That means it is a computer language for storing, manipulating and retrieving data stored in a relational database. All the Relational Database Management Systems (RDMS) like MySQL, MS Access, Oracle, Sybase, Informix, Postgres and SQL Server use SQL as their standard database language.

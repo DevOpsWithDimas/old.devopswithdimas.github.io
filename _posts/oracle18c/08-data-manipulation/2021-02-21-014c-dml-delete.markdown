@@ -20,6 +20,8 @@ downloads: []
 
 Perintah delete data, biasanya kita gunakan untuk menghapus data dari table tertentu dengan / tanpa menggukanan where klausa.
 
+<!--more-->
+
 Format penulisan delete statement yaitu seperti berikut:
 
 ```sql

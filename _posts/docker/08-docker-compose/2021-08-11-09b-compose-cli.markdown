@@ -29,6 +29,8 @@ Hai semuanya di materi kali ini kita akan membahas tentang `docker-compose` CLI 
 
 Ok langsung aja kita ke pembahas yang pertama yaitu 
 
+<!--more-->
+
 ## Command options overview and help
 
 You can also see this information by running `docker-compose --help` from the command line. Outputnya seperti berikut:

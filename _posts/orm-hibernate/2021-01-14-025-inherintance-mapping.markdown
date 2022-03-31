@@ -20,7 +20,11 @@ image_path: /resources/posts/orm-hibernate/orm-hibernate-25
 downloads: []
 ---
 
-Hai, di materi kali ini kita akan membahas tentang Inheritance Mapping menggunakan ORM Hibernate Framework. nah FYI klo semua relational database tidak support inherintance ya! nah jadi di sini hibernate menawarkan beberapa solusi yaitu sebagai berikut: 
+Hai, di materi kali ini kita akan membahas tentang Inheritance Mapping menggunakan ORM Hibernate Framework. 
+
+<!--more-->
+
+nah FYI klo semua relational database tidak support inherintance ya! nah jadi di sini hibernate menawarkan beberapa solusi yaitu sebagai berikut: 
 
 1. MappedSupperclass
 2. Single Table

@@ -19,7 +19,11 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-If you want to completely disable the networking stack on a container, you can use the `--network none` flag when starting the container. Within the container, only the loopback device is created. The following example illustrates this.
+If you want to completely disable the networking stack on a container, you can use the `--network none` flag when starting the container. Within the container, only the loopback device is created. 
+
+<!--more-->
+
+The following example illustrates this.
 
 For Bash script:
 

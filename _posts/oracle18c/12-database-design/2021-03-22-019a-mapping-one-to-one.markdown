@@ -20,6 +20,8 @@ downloads: []
 
 Dalam perancangan tabel **One-To-One Relationship** yaitu adalah salah satu dari jenis cardinality yang merujuk ke relationship diantara ke dua table. Contohnya seperti pada ERD seperti berikut:
 
+<!--more-->
+
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.jpg)
 
 Maka implementasi menggunakan Oracle Database Seperti Berikut:

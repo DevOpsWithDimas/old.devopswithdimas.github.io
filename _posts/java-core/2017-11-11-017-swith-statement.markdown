@@ -16,6 +16,8 @@ downloads: []
 
 Percabagan ```switch-case``` sebenarnya tidak jauh berbeda tpi disini kita akan lihat bagaimana cara kerja dari percabagan ini, berikut adalah contoh kasus sederhaan dari kodingnya sering kita jumpai yaitu seperti berikut:
 
+<!--more-->
+
 {% highlight java linenos %}
 public class DeepSwichCaseStatement {
 

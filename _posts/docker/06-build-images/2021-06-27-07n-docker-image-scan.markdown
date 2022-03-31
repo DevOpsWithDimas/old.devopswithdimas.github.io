@@ -30,6 +30,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Scanning docker imag
 
 Ok langsung aja kita bahas ke materi yang pertama
 
+<!--more-->
+
 ## Vulnerability docker images
 
 Setelah kita melakukan build docker image, apa yang harus dilakukan selanjutnya? langsung kita push ke registry? ettss tunggu dulu, coba perhatikan tentang security issue dalam docker image apakah image yang kita build sudah aman? 

@@ -25,6 +25,8 @@ Hai semuanya, sebelumnya kita udah mempelajari tentang default bridge network se
 2. Create multiple containers in same user-defined bridge network and how to connected each other
 3. Cleanup
 
+<!--more-->
+
 ## Management Docker Network
 
 Untuk me-manage Docker Network kita bisa menggunakan perintah `docker network COMMAND`. Untuk lebih detailnya kita bisa lihat dokumentasinya.

@@ -26,6 +26,8 @@ Oracle Database, menyediakan beberapa unified audit policies tentang User Securi
 4. User Account and Privilege Management
 5. dan Masih banyak lagi... silahkan baca [disini](https://docs.oracle.com/en/database/oracle/oracle-database/18/dbseg/configuring-audit-policies.html#GUID-C43651C6-A35C-4EEF-BEA7-EADA408BFF67)
 
+<!--more-->
+
 ## Logon Failures Predefined Unified Audit Policy
 
 Audit `ORA_LOGON_FAILURES` melakukan tracking terhadap user yang mencoba login tetapi gagal authentication. Untuk Oracle Database 18c secara default `enabled` tetapi di versi sebelumnya belum aktif. Untuk Mengaktifkannya menggunakan perintah berikut:

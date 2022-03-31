@@ -24,6 +24,8 @@ downloads: []
 
 Hai semuanya di materi kali ini kita akan membahas tentang share data berbeda machine mengunakan [NFS (Network File System)](https://en.wikipedia.org/wiki/Network_File_System)
 
+<!--more-->
+
 Nah jadi sekarang kita memerlukan NFS Server, sebagai contoh disini saya udah sediakan VM (Virtual Machine) yang udah ter-install CentOS 8 dan ssh-server. Sekarang yang perlu kita lakukan adalah install NFS Server di vm pada ip (`192.168.88.110`) dengan menggunakan perintah seperti berikut: 
 
 {% gist page.gist "09h-install-nfs-server.bash" %}

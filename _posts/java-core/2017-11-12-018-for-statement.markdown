@@ -16,6 +16,8 @@ downloads: []
 
 Mungkin temen-temen dulu pernah mengalami kejadian dihukum sama guru atau dosen kita harus menulis di papan tulis atau di kertas selembar
 
+<!--more-->
+
 > "Saya minta maaf, saya akan lebih rajin dalam bejar dan tidak akan bolos lagi"
 
 Sebanyak 100x seperti ini:

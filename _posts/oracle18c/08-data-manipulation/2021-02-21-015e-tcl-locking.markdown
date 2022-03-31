@@ -22,6 +22,8 @@ downloads: []
 
 Untuk mendukung concurrent transaction, database oracle senantiasa menjamin bahwa data yang pada suatu tabel selalu valid. Hal ini dilakukan oleh oracle dengan makanisme Lock. Oracle menerapkan row-level lock pada setiap perintah modifikasi data jadi setiap ada perintah update atau delete pada suatu tabel akan dicheck dulu ada transaksi yang menggunakan tabel tersebut atau tidak. Berikut ilustrasinya:
 
+<!--more-->
+
 | No    | User 1   | User 2 |
 | :---  | :---     | :---   |
 | 1     | `select * from department where department_id in (10, 20)`| `select * from department where department_id in (10, 20)` |

@@ -22,6 +22,8 @@ downloads: []
 
 Data Manipulation atau singkatan dari DML yaitu sebuah statement yang digunakan untuk memanipulasi data dalam sebuah tabel di Database. Perintah DML terdiri dari 3 bagian yaitu
 
+<!--more-->
+
 1. Insert Data
 2. Update Data
 3. Delete Data

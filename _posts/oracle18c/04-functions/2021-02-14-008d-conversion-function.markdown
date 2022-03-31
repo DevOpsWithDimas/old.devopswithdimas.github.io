@@ -20,6 +20,8 @@ downloads: []
 
 Conversion function atau convert biasanya digunakan untuk memtransform nilai menjadi nilai lain, berikut contoh conversion function
 
+<!--more-->
+
 | Function              | Keterangan                                                    |
 |:----------            |:----------------------------------                            |
 | `ASCII`               | Melakukan conversi dari varchar ke asciii                     |

@@ -24,6 +24,8 @@ downloads: []
 
 Pada Oracle Database untuk konek ke Database perlu login menggunakan username yang telah terdaftar di System Database Oracle. Untuk mengetahui suatu account kita bisa lihat atau check di Static Data Dictionary View.
 
+<!--more-->
+
 {% highlight sql %}
 select * 
 from ALL_USERS;

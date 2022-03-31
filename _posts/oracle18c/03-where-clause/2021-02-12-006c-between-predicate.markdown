@@ -25,6 +25,8 @@ Operator `BETWEEN` digunakan untuk memfilter dengan interval/rentang tertentu di
 2. Date
 3. Character
 
+<!--more-->
+
 ## Number
 
 contoh kasusnya, Saya mau menampilkan data yang karywan yang memiliki gaji dari `4000` s/d `6000`. Berikut querynya:

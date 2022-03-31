@@ -28,6 +28,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang mount your data from
 
 Ok langsung aja kita bahas materi yang pertama:
 
+<!--more-->
+
 ## Using 9P Mounts
 
 9P mounts are flexible and work across all hypervisors, but suffers from performance and reliability issues when used with large folders (`>600 files`).

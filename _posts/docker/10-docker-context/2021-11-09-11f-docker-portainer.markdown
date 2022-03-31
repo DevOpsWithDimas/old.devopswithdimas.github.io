@@ -40,6 +40,8 @@ Nah sekarang kita bahas menggunakan yang paling populer ya yaitu [portainer.io](
 
 Ok langsung aja kita ke pembahas yang pertama
 
+<!--more-->
+
 ## Introduction
 
 Portainer Community Edition (CE) is our foundation. With over half a million regular users, CE is a powerful, open source toolset that allows you to easily build and manage containers in Docker, Docker Swarm, Kubernetes and Azure ACI.

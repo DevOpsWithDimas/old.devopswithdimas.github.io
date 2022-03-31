@@ -21,6 +21,8 @@ downloads: []
 
 Sequences yaitu object database yang digunakan untuk men-generate urutan nomor, Sequences bisa digunakan sebagai **default value untuk primary key**. Untuk membuat sequence kita bisa gunakan perintah berikut:
 
+<!--more-->
+
 {% highlight sql %}
 CREATE SEQUENCE [ schema. ] sequence
   [ SHARING = { METADATA | DATA | NONE } ]

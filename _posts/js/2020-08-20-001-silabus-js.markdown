@@ -17,6 +17,8 @@ downloads: []
 
 Hi, di materi kali ini 'JavaScript' membahas bahasa pemograman yang bersifat scriptiong language / bahasa pemograman yang berjalan di sisi client side, yang biasanya digunakan untuk menjadikan HTML dynamic atau kita bisa rubah DOM nya menggunakan bahasa pemograman Javascript.
 
+<!--more-->
+
 Ok jadi materi yang akan di bahas di section kali ini yaitu:
 
 1. Penenalan Javascript
@@ -29,7 +31,6 @@ Ok jadi materi yang akan di bahas di section kali ini yaitu:
 6. Variables
 7. Matematic Operator
 8. Function
-<!--more-->
 9. Selection
 10. Looping
 11. Array

@@ -20,6 +20,8 @@ downloads: []
 
 View merupakan pendefinisian query yang menakses satu atau banyak tabel, atau lebih sering disebut select statement yang dikasih nama dengan tujuan memudahkan pemanggilan query tersebut. Seperti berikut contohnya:
 
+<!--more-->
+
 {% highlight sql %}
 select empl.EMPLOYEE_ID,
        empl.FIRST_NAME,

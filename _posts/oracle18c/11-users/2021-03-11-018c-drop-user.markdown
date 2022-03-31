@@ -20,6 +20,8 @@ downloads: []
 
 Kita juga bisa menghapus usernya dengan perintah `DROP USER` tetapi usernya yang mau kita hapus sedang logged in maka tidak bisa di hapus atau akan muncul error log seperti berikut:
 
+<!--more-->
+
 ```sql
 ORA-01940: cannot drop a user that is currently connected
 ```

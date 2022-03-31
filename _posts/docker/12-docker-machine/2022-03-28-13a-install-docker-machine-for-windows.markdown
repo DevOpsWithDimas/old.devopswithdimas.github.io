@@ -27,6 +27,8 @@ Hai semuanya, di materi kali ini kita akan membahas Install docker-machine di OS
 
 Ok langsung aja kita bahas materi yang pertama
 
+<!--more-->
+
 ## Install `docker-machine` binary
 
 On OS X and Windows, Machine is installed along with other Docker products when you install the Docker Toolbox / Docker Desktop.

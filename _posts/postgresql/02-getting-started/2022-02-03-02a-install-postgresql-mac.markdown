@@ -32,6 +32,8 @@ Hai semuanya, di materi kali ini kita akan membahas Install PostgreSQL di Mac OS
 
 Ok langsung aja kita bahas ke materi yang pertama
 
+<!--more-->
+
 ## Install PostgreSQL Server for learning environment
 
 Untuk meng-Install PostgreSQL di Mac OS kita bisa menggunakan beberapa cara yaitu 

@@ -34,6 +34,8 @@ Hai semuanya, di Study Kasus kali ini kita akan membahas pipeline untuk Angular 
 
 Ok lansung aja kita ke materi yang pertama
 
+<!--more-->
+
 ## Build source-code to html, js, css Resouces
 
 Dalam deployment angular application, pada dasarnya kita harus melakukan compilasi dari Typescript menjadi static resource web seperti `html`, `js` dan `css`. Untuk workflownya 

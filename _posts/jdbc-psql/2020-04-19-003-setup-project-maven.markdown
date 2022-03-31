@@ -23,6 +23,8 @@ downloads: []
 
 Hi, di materi kali ini kita akan membuat project java dengan Apache Maven dengan kebutuhan CRUD (Create Read Update Delete) database dari Java Application. berikut stepnya:
 
+<!--more-->
+
 ## Create project
 
 Membuat project dengan maven, cukup mudah kita cukup buka Command line atau Command Promnt kemudian berikut perintanya:

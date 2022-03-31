@@ -51,6 +51,8 @@ Ilustrasi tersebut menggambarkan, suatu predicate atau `search_condition` yaitu 
 
 Ok kita bahas satu-per-satu ya, mulai dari relational predicate
 
+<!--more-->
+
 ## Relational predicate
 
 Relational predicates pada dasarnya adalah [comparison operators]({% post_url postgresql/03-select-statements/2022-02-28-03b-sql-operators %}#comparation-operators) yaitu

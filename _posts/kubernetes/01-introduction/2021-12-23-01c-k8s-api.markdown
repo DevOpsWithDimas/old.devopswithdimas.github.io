@@ -30,6 +30,8 @@ Hai semuanya, selanjutnya setelah kita membahas Komponen pada Kubernetes sekaran
 
 Ok sekarang lansung aja kita ke pembahasan yang pertama yaitu
 
+<!--more-->
+
 ## The Kubernetes API
 
 The core of Kubernetes control plane is the API server. The API server exposes an HTTP API that lets end users, different parts of your cluster, and external components communicate with one another.

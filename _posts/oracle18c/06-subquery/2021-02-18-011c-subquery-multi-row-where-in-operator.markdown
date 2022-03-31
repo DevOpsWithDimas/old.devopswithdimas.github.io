@@ -20,6 +20,8 @@ downloads: []
 
 Jika di [materi sebelumnya]({% post_url oracle18c/03-where-clause/2021-02-12-006e-in-predicate %}) kita udah menggunakan predicate in sebagai sekumpulan nilai, sekarang kita bisa juga menggunakan query yang menghasilkan banyak data, contohnya seperti berikut nilai pembandingnya:
 
+<!--more-->
+
 {% highlight sql %}
 SQL> select min(empl.SALARY) min_salary
 from EMPLOYEES empl

@@ -19,6 +19,8 @@ downloads: []
 
 Hai, [sebelumnya]() kita udah bisa mengambil data dengan menggunakan API class `Statement` sekarang kita bahas kaka-nya yaitu API class `java.sql.PreparedStatement`. Penggunaan API `PreparedStatement` biasanya digunakan untuk melakukan Insert, Update, Delete, Find By id, atau query yang membutuhkan parameter.
 
+<!--more-->
+
 Ok sekarang kita lanjutkan membuat Data Access Object-nya dengan menggunakan API class `PreparedStatement`. Masih ingetkann kemarin kita udah membuat interface `CrudRepository` nah sekarang kita implement semua methodnya di class `ExampleTableDao` sebagai berikut:
 
 

@@ -27,6 +27,8 @@ Hai semuanya, sekarang saatnya kita mulai belajar perintah-perintah docker. Basi
 5. View logs
 6. Cleanup
 
+<!--more-->
+
 ## Pulling image from registry
 
 {% gist page.gist "03-docker-pull-image.bash" %}

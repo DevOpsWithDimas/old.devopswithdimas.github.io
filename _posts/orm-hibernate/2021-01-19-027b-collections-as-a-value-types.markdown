@@ -22,6 +22,8 @@ downloads: []
 
 Hai, di materi kali ini saya mau membahas tentang element collection dengan embedded type. Berikut adalah perancangan tabelnya:
 
+<!--more-->
+
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 
 Untuk model embedded kita masih menggunakan embedded alamat seperti sebelumnya yaitu seperti berikut:

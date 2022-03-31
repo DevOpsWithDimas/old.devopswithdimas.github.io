@@ -21,6 +21,8 @@ downloads: []
 
 Materi kali ini kita akan bahas menggabungkan/meng-combine value, operator dan function menjadi expression. SQL Expression ada banyak sekali contohnya salah satunya adalah simple expression seperti berikut:
 
+<!--more-->
+
 {% highlight sql %}
 select (2 + 2)                                   as add_exp,           -- value expression
        N'Dimas''s iPad Pro 2018'                 as str_exp,           -- string expression

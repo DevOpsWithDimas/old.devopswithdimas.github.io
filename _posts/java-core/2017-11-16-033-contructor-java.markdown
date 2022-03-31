@@ -16,6 +16,8 @@ downloads: []
 
 Secara _default_ di Java constuktor akan dibuatkan otomatis ketika kita tidak mendefinisikan construktor di _class_ yang kita buat. Yang mungkin jadi pertanyaan, apa itu construktor?
 
+<!--more-->
+
 Construktor yaitu sama halnya dengan method atau _function_ tetapi namanya sama dengan nama _class_ contohnya disini saya punya _class_ dengan nama `Deposito` seperti berikut:
 
 {% highlight java linenos %}

@@ -20,7 +20,11 @@ downloads: []
 ---
 
 
-This document covers recommended best practices and methods for building efficient images. A Docker image consists of read-only layers each of which represents a Dockerfile instruction. The layers are stacked and each one is a delta of the changes from the previous layer. Consider this `Dockerfile`:
+This document covers recommended best practices and methods for building efficient images. A Docker image consists of read-only layers each of which represents a Dockerfile instruction. The layers are stacked and each one is a delta of the changes from the previous layer. 
+
+<!--more-->
+
+Consider this `Dockerfile`:
 
 {% highlight docker %}
 FROM ubuntu:18.04

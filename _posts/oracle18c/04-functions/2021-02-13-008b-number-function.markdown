@@ -21,6 +21,8 @@ downloads: []
 
 Ada beberapa function yang kita bisa gunakan untuk memformat number:
 
+<!--more-->
+
 | Function  | Keterangan                        |
 |:----------|:----------------------------------|
 | `CEIL`    | Untuk pembulatan ke atas          |

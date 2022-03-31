@@ -20,7 +20,11 @@ image_path: /resources/posts/orm-hibernate/orm-hibernate-25c
 downloads: []
 ---
 
-Hai pada materi kali ini saya mau mengebahas tentang annotation @Discriminator, dengan annotation tersebut kita bisa menubah property/column `dtype` yang hibernate buat. contohnya disini saya mau ganti menjadi `jenis_kendaraan` dengan pilihan class `MobilSingleTable = Mobil` dan `MotorSingleTable = Motor`. berikut Implementasi Entity Kendaraan:
+Hai pada materi kali ini saya mau mengebahas tentang annotation @Discriminator, dengan annotation tersebut kita bisa menubah property/column `dtype` yang hibernate buat. contohnya disini saya mau ganti menjadi `jenis_kendaraan` dengan pilihan class `MobilSingleTable = Mobil` dan `MotorSingleTable = Motor`. 
+
+<!--more-->
+
+berikut Implementasi Entity Kendaraan:
 
 {% gist page.gist "KendaraanSingleTableDiscriminatorEntity.java" %}
 

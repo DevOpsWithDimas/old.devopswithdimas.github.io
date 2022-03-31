@@ -28,6 +28,8 @@ Hai semuanya, di materi kali ini kita akan menggunakan `docker build` command un
 2. Run container
 3. Cleanup
 
+<!--more-->
+
 Ok langsung ja ke-materi, pertama yang perlu kita lihat adalah seperti biasanya yaitu dokumentasi. berikut perintahnya:
 
 {% gist page.gist "07a-docker-build-help.bash" %}

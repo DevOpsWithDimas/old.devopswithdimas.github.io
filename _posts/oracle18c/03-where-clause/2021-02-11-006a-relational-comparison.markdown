@@ -20,6 +20,8 @@ downloads: []
 
 Relational Comparison pada where di Oracle teridiri dari:
 
+<!--more-->
+
 | Symbol                        | Keterangan  |
 | :---                          | :---        |
 | `=`                           | Melakukan perbandingan dengan nilai yang **bernilai sama** |

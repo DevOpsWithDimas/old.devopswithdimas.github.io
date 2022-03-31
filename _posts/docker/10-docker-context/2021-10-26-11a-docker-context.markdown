@@ -29,6 +29,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang akses Docker Daemon 
 
 Ok langsung aja kita ke pembahasan yang pertama
 
+<!--more-->
+
 ## Introduction of Docker Context
 
 This guide shows how contexts make it easy for a single Docker CLI to manage multiple Swarm clusters, multiple Kubernetes clusters, and multiple individual Docker nodes.

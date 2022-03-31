@@ -20,6 +20,8 @@ downloads: []
 
 In predicate, digunakan untuk memfilter data berdasarkan daftar data tertentu, contohnya berikut kasusnya. Tampilkan data karyawan yang memiliki `job_id` = `AC_ACCOUNT`, `HR_REP`, `IT_PROG`, dan `ST_CLERK` maka berikut adalah implementasi querynya:
 
+<!--more-->
+
 {% gist page.gist "006e-select-where-in-predicate.sql" %}
 
 Maka berikut hasilnya:

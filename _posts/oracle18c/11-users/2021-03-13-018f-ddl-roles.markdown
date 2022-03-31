@@ -20,6 +20,8 @@ downloads: []
 
 Sebuah User Role yaitu kelompok dari privileges yang di terapkan ke user. Hal ini bisa mempermudah jika memiliki banyak user yang memiliki kesamaan privileges.
 
+<!--more-->
+
 ## Functionality of Roles
 
 Roles sangat berguna untuk mempercepat dan mempermudah memberikan hak akses kepada sebuah user atau kebeberapa user. berikut adalah kegunaan dari Roles:

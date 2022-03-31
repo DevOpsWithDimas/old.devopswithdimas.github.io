@@ -29,6 +29,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Learning environment
 
 Ok langung aja kita bahas materi yang pertama yaitu 
 
+<!--more-->
+
 ## What is minikube?
 
 Yess i know, install kubernetes cluster is hard. but with minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows for learning environtment. We recommend using minikube to helping application developers and new Kubernetes users learning kubernetes technology.

@@ -22,6 +22,8 @@ downloads: []
 
 Tipe data untuk yang bernilai number di bahasa pemograman Java pada dasarnya dibagi jadi 2 kategori yitu bilangan bulat dan bilangan pecahan baik positif dan negatif. Bilangan bulat dibagi lagi menjadi beberapa range yaitu kecil, sedang dan besar.
 
+<!--more-->
+
 ## Bilangan Bulat
 
 Bilangan bulat baik itu negatif maupun positif dibagi lagi menjadi 4 yaitu 

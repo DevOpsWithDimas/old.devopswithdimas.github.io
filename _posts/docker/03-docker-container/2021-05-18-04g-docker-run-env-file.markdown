@@ -26,6 +26,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Environment Variable
 2. Create Docker Container using Env Variables
 3. Using Env Files for Create Docker Containers
 
+<!--more-->
+
 ## What is Environtment Variable
 
 An environment variable is a dynamic-named value that can affect the way running processes will behave on a computer. They are part of the environment in which a process runs. For example, a running process can query the value of the TEMP environment variable to discover a suitable location to store temporary files, or the HOME or USERPROFILE variable to find the directory structure owned by the user running the process.

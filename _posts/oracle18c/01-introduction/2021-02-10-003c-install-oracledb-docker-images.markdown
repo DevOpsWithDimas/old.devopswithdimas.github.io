@@ -26,6 +26,8 @@ downloads:
 
 Sekarang kita download docker image buildenya [disini](https://github.com/oracle/docker-images/archive/main.zip) kemudian buka Command Promnt atau Terminal kemudian arahkan ke folder `OracleDatabase/SingleInstance/dockerfiles`.
 
+<!--more-->
+
 Kemudian masukin installer `oracle-database-xe-18c.x.x.rpm` ke folder `18.4.0` seperti berikut:
 
 ![installer]({{ page.image_path | prepend: site.baseurl }}/installer-oracle.png)

@@ -20,6 +20,8 @@ downloads: []
 
 Constraint **Foreign keys** dapat diterapkan pada sebuah kolom dengan table, dengan tujuan memvalidasi apakan nilai yang di entry terdaftar pada column di table acuannya. Contoh penggunaanya seperti berikut:
 
+<!--more-->
+
 {% gist page.gist "016l-constraint-foreignkey.sql" %}
 
 Nah jadi dari 2 table tersebut saling ber-relasi dengan menggunakan foreign key pada column `master_id` di table `test_fk_detail_table` yang mereferensi dari table `test_fk_master_table` pada column `id`. 

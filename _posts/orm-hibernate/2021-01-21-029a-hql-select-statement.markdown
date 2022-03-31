@@ -22,6 +22,8 @@ downloads: []
 
 Hai, di materi kali ini saya mau ngebahas tentang Select Statement dengan menggunakan HQL. OK misalnya disini saya menggunakan entity yang udah pernah saya buat di materi sebelumnya yaitu:
 
+<!--more-->
+
 {% gist page.gist "MataKuliahEntity.java" %}
 
 Dan berikut adalah implementasi DAO:

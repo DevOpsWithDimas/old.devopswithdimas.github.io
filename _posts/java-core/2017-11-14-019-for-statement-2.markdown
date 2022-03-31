@@ -17,6 +17,8 @@ downloads: []
 
 Di materi sebelumnya kita udah mengetahui bagaimana perulangan dengan perintah `for` statement. Sekarang kita, akan coba membuat satu kasus yaitu `for` dalam `for` atau didalam perulangan ada perlulangan contohnya seperti berikut:
 
+<!--more-->
+
 {% highlight java linenos %}
 public class LoopingInnerLoop {
 

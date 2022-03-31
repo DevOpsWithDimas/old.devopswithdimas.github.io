@@ -23,6 +23,8 @@ downloads: []
 
 Halo kali ini saya mau membahas salah satu framework yang sifatnya ORM (Object Relational Mapping) yaitu Hibernate Framework. Tapi sebelum kita mulai belajar koding saya mau cerita dulu nih. Jadi...
 
+<!--more-->
+
 Jaman dulu sebelum ada JPA (Java Persistance API) kita murni kita menggunakan JDBC, Dengan menggunakan JDBC semuanya kita harus atur mulai dari Open Connection ke database, Data Definision Language (DDL), Data Manipulation Language (DML), Transaction Control Management (TCL) dll. klo digambarin alurnya seperti beriku:
 
 1. Membuat DDL statement untuk membuat database, table.

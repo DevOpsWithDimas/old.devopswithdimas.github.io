@@ -24,6 +24,8 @@ Setiap database management system memiliki spesifikasi tipe data tersendiri, ada
 2. ANSI, SQL Data Type
 3. User-Defined Type
 
+<!--more-->
+
 ## Build-in Oracle Data Type
 
 Build-in Data Type ini pada dasarnya tipe data yang dibuat untuk optimisasi value yang disimpan sesuai dengan ketentuan Oracle Database, diantaranya seperti berikut

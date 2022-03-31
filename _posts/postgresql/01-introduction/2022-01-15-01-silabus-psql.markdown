@@ -22,6 +22,8 @@ Hai semuanya, di kali ini kita akan membahas Database yang sifatnya Relational m
 
 Materi yang akan dibahas adalah **version update tahun 2022**,  seperti temen-temen ketahui 4 tahun lalu saya pernah buat tutorial tentang PostgreSQL yang saya publish di youtube karena sudah **out of obsolate** jadi saya buat ulang materinya menyesuaikan dengan kebutuhan Industri saat ini, Adapun silabunya seperti berikut:
 
+<!--more-->
+
 ## Basic / Fundamental:
 
 1. Pengenalan SQL dengan PostgreSQL
@@ -52,7 +54,6 @@ Materi yang akan dibahas adalah **version update tahun 2022**,  seperti temen-te
 9. Manipulasi Data
     1. Data Manipulation Language
     2. Transaction Control Language
-<!--more-->
 10. Object dalam PostgreSQL
     1. Sequance
     2. View Table

@@ -26,6 +26,8 @@ Materi yang dibahas adalah versi terbaru yaitu `5.x` dan `6.x` dengan menggunaka
 
 Ok untuk materinya kita akan bagi menjadi 6 section yaitu 
 
+<!--more-->
+
 ## Core technologies
 
 1. Dependency injection
@@ -37,8 +39,6 @@ Ok untuk materinya kita akan bagi menjadi 6 section yaitu
 7. Type conversion
 8. Spring Expression Language (SpEL)
 9. Aspect Oriented programming
-
-<!--more-->
 
 ## Data Access
 

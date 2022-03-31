@@ -20,6 +20,8 @@ downloads: []
 
 Perintah `TRUNCATE TABLE` yaitu untuk menghapus semua data dari table, by default oracle akan deallocate semua space yang digunakan dalam disk. Mungkin temen-temen bingung apa bedanya dengan perintah `delete`
 
+<!--more-->
+
 Yap sebetulnya sama saja tujuannya adalah menghapus data, tapi disini bedanya adalah pemakaian space setelah di `delete` atau `truncate`. contohnya seperti berikut:
 
 {% gist page.gist "016e-ddl-truncate-table.sql" %}

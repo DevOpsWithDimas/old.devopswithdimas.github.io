@@ -21,6 +21,8 @@ downloads: []
 
 Nilai `NULL` bukan berarti tanpa karater, begitu pula sebaliknya. Kenapa saya bilang gitu karena berikut dari data hasil query ini:
 
+<!--more-->
+
 {% highlight sql %}
 
 SQL> select

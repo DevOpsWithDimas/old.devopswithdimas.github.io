@@ -20,6 +20,8 @@ downloads: []
 
 Hai semuanya, sebelum kita menggunakan Database PostgreSQL ada baiknya kita pahami dulu PostgreSQL system architecture-nya. 
 
+<!--more-->
+
 Understanding how the parts of PostgreSQL interact will make this chapter somewhat clearer. In database jargon, PostgreSQL uses a client/server model. A PostgreSQL session consists of the following cooperating processes (programs):
 
 1. **A server process**, which manages the database files, accepts connections to the database from client applications, and performs database actions on behalf of the clients. The database server program is called postgres.

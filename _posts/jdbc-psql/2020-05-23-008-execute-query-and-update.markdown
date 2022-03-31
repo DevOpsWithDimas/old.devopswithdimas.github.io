@@ -18,6 +18,8 @@ downloads: []
 
 Hai, [Pada post sebelumnya]() kita udah belajar tentang Class API [Statement](https://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html) dan [PreparedStatement](https://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html). Pembahasan kali ini kita akan lihat perbedaan antara method `executeUpdate()` dan `executeQuery()`. Ok yang pertama kita bahas dulu method `executeUpdate()`
 
+<!--more-->
+
 ## Method `executeUpdate()`
 
 Method `executeUpdate()` biasanya digunakan untuk meng-eksekusi perintah `insert`, `update`, `delete`, `alter`, `create` initinya query yang melakukan penambahan, perubahan pada struktur atau data.

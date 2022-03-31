@@ -21,6 +21,8 @@ downloads: []
 
 Sebuah index adalah optional structure yang dikaitkan ke table yang biasanya bisa mempercepat access data. Ketika kita membuat table dengan primary key by default kita otomatis akan di buatkan index b-tree berdasarkan column primary key tersebut. 
 
+<!--more-->
+
 ## Benefit of Indexes
 
 Sebuah index bekerja dengan cara menyiapkan jalur tercepat untuk mentukan suatu baris dalam tabel. Jadi dengan begitu akan mempercepat _speed of execution_ bukan _fetching data_. yang jadi pertannyaan kapan kita harus pakai index?

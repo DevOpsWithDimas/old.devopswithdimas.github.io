@@ -18,6 +18,8 @@ downloads: []
 
 Hi in this section `JDBC dengan PostgreSQL`, temen-temen akan belajar mengintegrasikan database PostgreSQL dengan Java untuk mengakses data pada sebuah Tabel dalam Database dengan menggunakan teknologi JDBC atau singkatan dari **Java Database Conectivity**.
 
+<!--more-->
+
 Adapun materi yang akan kita bahas yaitu,
 
 1. Pengenalan JDBC

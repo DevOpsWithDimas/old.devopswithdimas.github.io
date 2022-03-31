@@ -22,6 +22,8 @@ downloads: []
 
 Hai pada kesempatan kali ini saya mau membahas tentang `limit` dan `offset` dengan menggunakan Hibernate Query Language (HQL). ok langsung ja berikut adalah implementasi DAO:
 
+<!--more-->
+
 {% gist page.gist "HQLOffsetAndLimitDao.java" %}
 
 Berikut adalah implementasi Unit Testing: 

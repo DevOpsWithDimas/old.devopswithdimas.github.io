@@ -33,6 +33,8 @@ Untuk membuat User Account ada beberapa aturan yang berubah semenjak Oracle Data
 7. Temporary Tablespace untuk User
 8. Profiles untuk User
 
+<!--more-->
+
 ## About Common Users and Local Users
 
 Dalam sebuah multitenant environtment terdiri dari Common users and application common (CDB), dan local users spesific ke Plugging in Database (PDB)

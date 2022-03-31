@@ -22,6 +22,8 @@ downloads: []
 
 Sekarang kita akan membuat entity dengan menggunakan Annotation. Untuk membuat entity pada dasarnya sama dengan membuat JavaBeans hanya memiliki tambahan annotation seperti `@Entity`, `@Column`, `@Table` dan lain-lain nanti kita akan bahas lebih lanjut di masing-masing annotation pada hibernate.
 
+<!--more-->
+
 Ok sekarang kita buat kelas baru dengan nama `Mahasiswa` dalam package `com.maryanto.dimas.bootcamp.entity` seperti berikut:
 
 {% gist page.gist "Mahasiswa.java" %}

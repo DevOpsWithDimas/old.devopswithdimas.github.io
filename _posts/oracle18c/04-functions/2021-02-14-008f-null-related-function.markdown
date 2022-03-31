@@ -20,6 +20,8 @@ downloads: []
 
 Null Related Function pada dasarnya function yang digunakan untuk mengandle nilai `null` dengan ketentuan tertentu, berikut adalah function yang kita bisa gunakan di oracle
 
+<!--more-->
+
 | Function      | Keterangan                         |
 |:----------    |:---------------------------------- |
 | `COALESCE`    | Mengembalikan hasil pertama yang tidak null dari sebuah argument |

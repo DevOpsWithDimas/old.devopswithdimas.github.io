@@ -20,6 +20,8 @@ downloads: []
 
 Aggregate Function bertujuan memproses semua data yang di terjemahkan menjadi satu _result row based_. berikut adalah ilustrasinya:
 
+<!--more-->
+
 ![group function]({{ page.image_path | prepend: site.baseurl }}/konsep-group-funcation.png)
 
 Ada beberapa function yang kita bisa gunakan, diataranya seperti berikut:

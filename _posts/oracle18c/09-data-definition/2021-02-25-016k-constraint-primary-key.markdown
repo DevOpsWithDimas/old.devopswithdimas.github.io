@@ -20,6 +20,8 @@ downloads: []
 
 Constraint **Primary Key** diterapkan pada sebuah kolom dalam table, dengan tujuan menjadikan data dalam satu baris tersebuh menjadi pegangan atau acuan karena sebuah primary key adalah gabungan dari constraint `not null` dan `unique`. Contoh penggunaanya seperti berikut:
 
+<!--more-->
+
 {% gist page.gist "016k-constraint-primarykey.sql" %}
 
 Nah dari data di atas, akan lebih mudah jika kita menggunakan kolom `product_no` untuk mendapatkan informasi contohnya untuk menghapus data dengan nama `Apple Macbook Pro 13"` jadi querynya seperti berikut:

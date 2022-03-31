@@ -24,6 +24,8 @@ Materi yang di bahas adalah Java Standart Edition (Java SE) version `jdk-17-lts`
 
 Ok untuk materinya kita akan bagi menjadi 4 section yaitu 
 
+<!--more-->
+
 ## Basic
 
 1. Variables
@@ -40,8 +42,6 @@ Ok untuk materinya kita akan bagi menjadi 4 section yaitu
 2. Polymorphism
 3. Encapsulation
 4. Interfaces
-
-<!--more-->
 
 ## Functions programming
 

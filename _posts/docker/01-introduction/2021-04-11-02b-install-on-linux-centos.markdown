@@ -26,6 +26,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang, bagaimana install D
 3. Install Docker
 4. Expose Docker Daemon `http://localhost:2375` without TLS
 
+<!--more-->
+
 ## Set selinux = `permissive`
 
 Edit file `/etc/selinux/config` ganti `SELINUX=permissive` menjadi seperti berikut:

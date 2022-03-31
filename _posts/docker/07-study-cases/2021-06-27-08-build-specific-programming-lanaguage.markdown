@@ -22,6 +22,8 @@ downloads: []
 
 Hai semuanya, setelah kita mempelajari materi dasar `docker build` command kita langsung aja ke Studi Kasus yang nantinya temen-temen akan hadapi ketika menjadi DevOps (Development & Operations).
 
+<!--more-->
+
 Jadi menggunakan docker, tidak hanya menggunakan image yang sudah dibuat oleh orang lain, tetapi biasanya kita akan membuat docker image sendiri dengan spesifikasi tertentu, Contohnya berdasarkan bahasa pemograman. 
 
 Dalam build docker image menggunakan bahasa pemograman biasanya memiliki purpose tertentu contohnya jika kita familiar dengan teknologi bahasa pemograman di backend seperti Java, PHP, ruby, atau python. 

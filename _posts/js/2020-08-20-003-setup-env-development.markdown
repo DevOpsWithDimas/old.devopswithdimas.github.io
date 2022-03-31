@@ -18,6 +18,8 @@ downloads: []
 
 Untuk memulai belajar Javascript, kita perlu setup development environment. Tidak seperti Java, C++, Python. JavaScript tidak perlu menginstall software SDK karena **by default sudah tertanam di Browser** seperti (Internet Expoler, Mozilla Firefox, Google Chrome dll). yang perlu di install adalah **Text Editor**. Ada banyak text editor untuk JavaScript dari yang paling cangih seperti IDE [Netbeans](https://netbeans.org/), [InteliJIDE](https://www.jetbrains.com/idea/), [Eclipse](https://www.eclipse.org/) sampe ke text editor biasa seperti Nodepad, Gedit dll selain itu juga ada banyak pilihan lain diantaranya:
 
+<!--more-->
+
 * [Sublime text](http://www.sublimetext.com/)
 * [Microsoft Visual Studio Code](https://code.visualstudio.com)
 * [Atom](https://atom.io/)

@@ -24,6 +24,8 @@ Hai di materi kali ini saya mau membahas 'Oracle 18c', temen-temen akan belajar 
 
 Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
 
+<!--more-->
+
 1. Pengenalan SQL dengan Oracle 18c Express Edition
 2. Setup Development Environtment
     1. Install Database Oracle 18c Express Edition
@@ -53,7 +55,7 @@ Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:
 10. Manipulasi Data
     1. Data Manipulation Language
     2. Transaction Control Language
-<!--more-->
+
 11. Object dalam Oracle DB
     1. Sequance
     2. View Table

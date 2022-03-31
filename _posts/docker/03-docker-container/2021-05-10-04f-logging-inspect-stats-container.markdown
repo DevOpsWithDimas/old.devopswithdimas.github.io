@@ -30,6 +30,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang
 
 Ok langsung aja, jadi pertama saya akan membahas dulu tentang system logging pada Docker. 
 
+<!--more-->
+
 ## View Logging for a container 
 
 Perintah `docker logs`, digunakan untuk menampilkan proses yang catat (logged) a running container. The information that is logged and the format of the log depends almost entirely on the container’s endpoint command. Untuk lebih jelasnya kita bisa check dokumentasi dengan perintah seperti berikut:

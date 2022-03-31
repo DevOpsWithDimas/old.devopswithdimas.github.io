@@ -21,6 +21,8 @@ downloads: []
 
 Untuk menggunakan JavaServer Pages (JSP) kita harus meletakan file `.jsp` di dalam folder `src/main/webapp` jika menggunakan template `maven-archetype-webapp`
 
+<!--more-->
+
 ***noted: jika membuat project dari eclipse, netbeans akan berbeda lokasinya**
 
 Contohnya buka file `index.jsp` dalam folder `src/main/webapp/` maka isinya seperti berikut:

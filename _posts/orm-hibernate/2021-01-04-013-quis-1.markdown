@@ -23,6 +23,8 @@ downloads: []
 
 Hi, setelah kita belajar materi tentang hibernate supaya temen-temen lebih memahami dan meresap kita akan latihan dulu ya... ok berikut soal latihannya
 
+<!--more-->
+
 1. Buatlah project dengan menggunakan Apache Maven dengan archetype `maven-archetype-quistart` dengan konfirgurasi 
     ```properties
     artifactId=quis1-hibernate

@@ -20,6 +20,8 @@ downloads: []
 
 Single row function, yaitu digunakan untuk memformat data per baris. Berikut ilustrasinya:
 
+<!--more-->
+
 ![single row funcation]({{ page.image_path | prepend: site.baseurl }}/konsep.png)
 
 Single row function terdiri dari beberapa jenis berdasarkan tipe data:

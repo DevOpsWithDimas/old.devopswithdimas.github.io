@@ -20,7 +20,11 @@ image_path: /resources/posts/orm-hibernate/orm-hibernate-25d
 downloads: []
 ---
 
-Hai di materi kali ini saya mau ngebahas Inherintance Mapping dengan metode Join Table. masih dalam contoh yang sama yaitu `kendaraan` yaitu `mobil` dan `motor` namun kali ini berikut adalah perancangan tabelnya:
+Hai di materi kali ini saya mau ngebahas Inherintance Mapping dengan metode Join Table. 
+
+<!--more-->
+
+masih dalam contoh yang sama yaitu `kendaraan` yaitu `mobil` dan `motor` namun kali ini berikut adalah perancangan tabelnya:
 
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 

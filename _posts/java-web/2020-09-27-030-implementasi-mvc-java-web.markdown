@@ -18,6 +18,7 @@ downloads: []
 ---
 
 Berikut adalah implementasi konsep MVC dengan Java Web, 
+<!--more-->
 
 ## Model 
 

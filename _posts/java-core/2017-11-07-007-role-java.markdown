@@ -18,6 +18,8 @@ Mungkin dari sebagian dari temen-temen tanya kenapa sih di bahasa pemograman Jav
 
 Nah langsung ada saya sebutin ya yang harus di perhatikan dalam penulisan koding di Java diatarnya sebagai berikut:
 
+<!--more-->
+
 ## Penulisan nama file dan `class`
 
 1. Nama file harus sama dengan nama `class` contohnya klo saya punya file namanya `Halo.java` maka nama kelasnya adalah    

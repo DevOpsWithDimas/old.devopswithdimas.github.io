@@ -32,6 +32,8 @@ Hai semuanya, di materi kali ini kita akan membahas cara install minikube di Win
 
 Ok langsung aja kita bahas ke materi yang pertama
 
+<!--more-->
+
 ## What you’ll need?
 
 Untuk menginstall minikube di Windows 10/11 kita membutuhkan:

@@ -22,6 +22,8 @@ downloads: []
 
 Hai, di materi kali ini saya mau membahas tentang Query di ORM Hibernate Framework, Query pada ORM Hibernate terdiri:
 
+<!--more-->
+
 1. [Native Query (SQL)](https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html#sql)
 2. [Hibernate Query Language (HQL) dan Java Persistenct Query Language (JPQL)](https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html#hql)
 3. [Criteria API](https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html#criteria)

@@ -24,6 +24,8 @@ downloads: []
 
 Pada materi kali ini, kita akan berkenalan dengan database management system (DBMS) yaitu Oracle Database. Oracle adalah database ranking #1 berdasarkan [db-engines.com](https://db-engines.com/en/ranking) saat ini (February 2021) secara beberapa tahun berturut-turut, dan juga beberapa survey engine lainnya. 
 
+<!--more-->
+
 Oracle Database dibuat sejak 1980 oleh para insinyur Developer Oracle, Software oracle ada beberapa versi diantaranya
 
 | Version               | Release Date  | End Of Support    |

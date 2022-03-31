@@ -28,6 +28,8 @@ Halo, kali ini saya akan membahas tentang Deployment menggunakan Apache Tomcat. 
 5. [WildFly](https://www.wildfly.org/)
 6. Dan masih banyak lagi.
 
+<!--more-->
+
 Nah sekarang kita akan belajar melakukan Deploy aplikasi Java Web ke Web Server dengan menggunakan Apache Tomcat versi `8.5.x`. Sebelum kita mendeploy kita biasanya lakukan installasi dulu dan config server dulu.
 
 ## Install Web Server Apache Tomcat `8.5.x`

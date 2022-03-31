@@ -32,6 +32,8 @@ Hai semuanya, sebelumnya kita udah membahas tentang Objects pada Kubernetes seka
 
 Ok langsung aja kita bahas materi pertama 
 
+<!--more-->
+
 ## Management techniques
 
 The `kubectl` command-line tool supports several different ways to create and manage Kubernetes objects. A Kubernetes object should be managed using only one technique. Mixing and matching techniques for the same object results in undefined behavior.

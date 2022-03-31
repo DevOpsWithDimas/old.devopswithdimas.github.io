@@ -22,6 +22,8 @@ downloads: []
 
 Konfigurasi Hibernate pada dasarnya ada 2 jenis konfigurasi yaitu dengan Source Code java atau saya lebih sering sebut Java Config dan XML (hibernate.cfg.xml). Jaman sekarang Konfigurasi dengan XML udah sangat jarang karena mengikuti style Java yang berbau _annotation_ (`@Annotations`). Tpi gak apa karena kita mau niatnya belajar jadi Ya ikutin aja ya... karena klo kita menggunakan XML juga gak ada ruginya kok toh XML juga lebih mudah dibaca dibandingkan Java Config.
 
+<!--more-->
+
 Ok langsung aja buka lagi file `hibernate.cfg.xml` nya, kalo kita lihat seperti berikut:
 
 {% gist page.gist "hibernate.cfg.xml" %}

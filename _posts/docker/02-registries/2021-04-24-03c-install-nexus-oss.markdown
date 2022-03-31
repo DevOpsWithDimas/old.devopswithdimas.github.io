@@ -33,6 +33,8 @@ Hai semuanya, di materi kali ini kita akan membahas Insecure Registry dengan men
     2. Pulling docker image from an other registry using proxy repository
     3. Push own docker image to hosted registry.
 
+<!--more-->
+
 ## System Requirement
 
 Untuk install Nexus OSS, kita bisa install di Windows, Mac, atau Linux dengan system required seperti berikut

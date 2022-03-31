@@ -21,6 +21,8 @@ downloads: []
 
 Sebuah `foreign-key` digunakan untuk `maintanance data integrity` the problem is gimana klo kita hapus dari tabel yang menjadi acuan kita terus gimana nasibnya? invalid relation?
 
+<!--more-->
+
 Nah secara default, kita gak bisa update primary-key value yang udah digunakan karena secara default oracle menerapkan `option restrictions` contohnya seperti berikut:
 
 {% highlight sql %}

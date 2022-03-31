@@ -21,6 +21,8 @@ downloads: []
 
 Dalam Database Management System biasanya memiliki ketentuan tertentu yang biasanya terkait dengan system security, performance, optimization dan lain-lain, Khususnya di Oracle Database berikut adalah beberapa ketentuan dalam penulisan query, query performance, dan definisi sebuah object dalam Database Oracle:
 
+<!--more-->
+
 1. Perintah SQL bisa ditulis dengan huruf besar dan kecil (not case sensitive)
 2. Kita bisa menulis query SQL dalam satu baris atau banyak, biasanya di pisahkan dengan `;`
 3. Gunakan indentasi untuk setiap klausa supaya memudahkan kita untuk membacanya.

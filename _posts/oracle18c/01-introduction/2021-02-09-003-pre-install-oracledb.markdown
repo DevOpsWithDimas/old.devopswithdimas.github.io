@@ -22,6 +22,8 @@ gist:
 
 Untuk keberhasilan belajar, jadi temen-temen diharapkan untuk install Oracle Database 18c di komputer juga ya. Nah jadi ada beberapa yang harus di siapkan, jadi berikut adalah spesifikasi yang di perlukan untuk melakukan installasi Oracle Database 18c Express Edition.
 
+<!--more-->
+
 ## Hardware Requirement
 
 Berikut adalah spesifikasi Minimum:

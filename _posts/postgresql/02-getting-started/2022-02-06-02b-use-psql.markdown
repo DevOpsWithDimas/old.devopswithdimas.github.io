@@ -27,6 +27,8 @@ Hai semuanya, di materi kali ini kita akan membahas tenteng Menggunakan `psql` s
 
 Ok langsung aja kita bahas materi yang pertama
 
+<!--more-->
+
 ## Connecting to a database
 
 psql is a regular PostgreSQL client application. In order to connect to a database you need to know the name of your target database, the host name and port number of the server, and what user name you want to connect as. psql can be told about those parameters via command line options, namely `-d`, `-h`, `-p`, and `-U` respectively. If an argument is found that does not belong to any option it will be interpreted as the database name (or the user name, if the database name is already given). Not all of these options are required; there are useful defaults. If you omit the host name, psql will connect via a Unix-domain socket to a server on the `localhost`, or via `TCP/IP` to `localhost` on machines that don't have Unix-domain sockets. The default port number is determined at compile time. Since the database server uses the same default, you will not have to specify the port in most cases. The default user name is your operating-system user name, as is the default database name.

@@ -20,6 +20,8 @@ downloads: []
 
 Perintah / klausa `select` pada dasarnya adalah perintah yang dilakukan _query_ terhadap _database_ untuk mengambil atau mendapatkan data berupa baris (_rows_) dan kolom (_columns_) dalam sebuah _table_ seperti berikut:
 
+<!--more-->
+
 ![database-interaction]({{ page.image_path | prepend: site.baseurl }}/database-interaction.png)
 
 Nah seperti yang kita tahu kalo dalam **sebuah _database_** bisa terdiri dari **banyak _tables_**, dalam **sebuah _table_** terdiri **banyak _rows_ dan _colums_**, dalam **satu _row_ dan _column_** terdiri dari **sebuah nilai**.

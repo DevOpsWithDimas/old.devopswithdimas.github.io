@@ -25,6 +25,8 @@ Activities yang kita bisa audit yaitu diantaranya
 2. Object Actions
 3. Application Context Value
 
+<!--more-->
+
 Berikut adalah syntax untuk membuat unified audit policy
 
 {% highlight sql %}

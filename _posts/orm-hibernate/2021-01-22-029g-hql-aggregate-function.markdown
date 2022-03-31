@@ -28,6 +28,8 @@ Hai, pada kesempatan kali ini saya mau membahas tentang Aggregation Function den
 4. `MAX`
 5. `SUM`
 
+<!--more-->
+
 Berikut adalah contoh penggunaanya, ok sebelum itu saya mau buat DTO dulu seperti berikut:
 
 {% gist page.gist "AggregateFunctionModel.java" %}

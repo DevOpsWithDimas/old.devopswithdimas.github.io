@@ -29,6 +29,8 @@ Mapping pada ummumnya:
 3. ManyToOne Mapping
 4. ManyToMany Mapping
 
+<!--more-->
+
 Mapping tersebut ya yang biasanya terjadi pada database relational, nah karena Hibernate Framework ini sifatnya ORM atau Object Relational Mapping maka ada beberapa tambahan / feature yang kita bisa gunakan seperti
 
 1. Parent-Child Mapping

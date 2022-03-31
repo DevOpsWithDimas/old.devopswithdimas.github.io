@@ -26,6 +26,8 @@ Sekarang kita membahas mapping yang paling mudah dulu ya yaitu ENUM Ordinal & St
 
 Nah sekarang saya mau ngebahas dulu Enum yang sifatnya ordinal:
 
+<!--more-->
+
 ## Enum Ordinal
 
 Enum ordinal mapping padasarnya yaitu kita menyimpan data bertipe data Enum ke database dalam urutan angka yang dimulai dari index ke 0. berikut adalah contoh penggunaanya:

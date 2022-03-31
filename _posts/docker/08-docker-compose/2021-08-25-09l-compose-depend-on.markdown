@@ -22,6 +22,8 @@ downloads: []
 
 Hai semuanya, di materi kali ini kita akan membahas tentang Service Dependencies dalam Compose file.
 
+<!--more-->
+
 Service Dependency adalah the most-common dalam pengembangan aplikasi, component paling basic atau minimal biasanya kita memerlukan database atau external service. Sebagai contoh misalnya klo kita menjalankan aplikasi tapi tanpa database maka akan terjadi failure. 
 
 Pada Compose file, ada `depends_on`. Express dependency between services. Service dependencies cause the following behaviors:

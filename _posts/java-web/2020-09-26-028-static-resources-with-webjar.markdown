@@ -20,6 +20,8 @@ downloads: []
 
 Update your `pom.xml` dengan menambahkan [webjars](https://www.webjars.org/) library contohnya seperti [jQuery](https://jquery.com/), [Bootstrap](https://getbootstrap.com/), [DataTables](https://datatables.net/) seperti berikut:
 
+<!--more-->
+
 {% highlight xml %}
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">

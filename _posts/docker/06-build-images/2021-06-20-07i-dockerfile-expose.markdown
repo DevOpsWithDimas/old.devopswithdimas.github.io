@@ -25,6 +25,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang `Expose` Instruction
 2. Custom port
 3. Multiple port in same image
 
+<!--more-->
+
 ## Expose default port
 
 The `EXPOSE` instruction informs Docker that the container listens on the specified network ports at runtime. You can specify whether the port listens on `TCP` or `UDP`, and the default is `TCP` if the protocol is not specified.

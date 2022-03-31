@@ -20,6 +20,8 @@ downloads: []
 
 Pada materi kali ini kita akan membahas `Merge` statement, perintah `merge` biasanya digunakan untuk `update if exists and insert when not exists` contoh penggunaanya seperti berikut: 
 
+<!--more-->
+
 {% gist page.gist "014d-dml-merge-statement.sql" %}
 
 Berikut adalah hasilnya:

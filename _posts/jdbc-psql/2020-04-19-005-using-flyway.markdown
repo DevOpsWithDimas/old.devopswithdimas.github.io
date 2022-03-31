@@ -24,6 +24,8 @@ Database schema versioning ini bukanlah teknologi baru, udah ada semenjak dulu, 
 - [Flyway](https://flywaydb.org)
 - [Liquidbase](https://www.liquibase.org)
 
+<!--more-->
+
 Nah tapi di pembahasan kali ini saya mau pake yang mostly kita pake di PT. Tabeldata yaitu flyway. Selain itu juga flyway ini support banyak sekali database engine contohnya PostgreSQL, Oracle 11g or later, SQL server 2017 or later, dan masih banyak lagi.
 
 Untuk menggunakan flyway kita bisa menginstall as standalone script atau menggunakan sebagai plugin seperti yang kita buat kali ini. 

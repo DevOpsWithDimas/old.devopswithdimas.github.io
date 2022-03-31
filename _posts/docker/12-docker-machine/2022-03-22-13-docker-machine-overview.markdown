@@ -32,6 +32,8 @@ Ya sebelum kita menggunakan Docker machine, kita bahas dulu
 
 Ok langsung aja kita bahas materi yang pertama
 
+<!--more-->
+
 ## What is Docker Machine?
 
 Docker Machine is a tool that lets you install Docker Engine on virtual hosts, and manage the hosts with `docker-machine` commands. You can use Machine to create Docker hosts on your local Mac or Windows box, on your company network, in your data center, or on cloud providers like AWS or Digital Ocean.

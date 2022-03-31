@@ -20,6 +20,8 @@ downloads: []
 
 Operator `all` digunakan untuk membandingkan data yang di cari dengan sekumpulan data yang ada di inner query. Untuk menggunakan operator `ALL` kita harus menggunkan `< ALL` dan `> ALL`. 
 
+<!--more-->
+
 Misalnya inner query yang akan kita gunakan adalah seperti berikut:
 
 {% highlight sql %}

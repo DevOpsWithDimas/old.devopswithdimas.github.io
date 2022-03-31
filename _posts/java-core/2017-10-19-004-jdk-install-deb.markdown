@@ -16,6 +16,8 @@ downloads: []
 
 Setelah install di Windows 10, sekarang saya mau install di Sistem Operation Linux Debian based dengan distro `Ubuntu 16.04` . Kalo di ubuntu sih sebenernya gampang kita bisa install via ppa dengan menambahkan ```ppa:webupd8team/java``` berikut perintahnya
 
+<!--more-->
+
 
 ```sh
 sudo add-apt-repository ppa:webupd8team/java

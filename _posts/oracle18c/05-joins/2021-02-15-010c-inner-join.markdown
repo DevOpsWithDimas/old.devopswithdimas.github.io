@@ -20,6 +20,8 @@ downloads: []
 
 Inner Join, atau kebanyakan orang bilang **simple join** ini adalah table yang terdiri dari 2 atau lebih yang di gabungkan menjadi satu hasil berbentuk tabel dengan menggunakan kriteria tertentu, Biasanya dengan menggunakan klausa `on` sebagai penghubungnya.
 
+<!--more-->
+
 Contoh kasusnya, saya mau mencari data setiap department dan tampilkan siapa nama managernya. Berikut querynya:
 
 {% gist page.gist "010c-inner-join-on.sql" %}

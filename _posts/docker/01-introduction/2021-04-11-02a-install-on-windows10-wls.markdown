@@ -25,6 +25,8 @@ Hai semuanya di materi kali ini kita akan meng-install Docker di platform Window
 2. Install Docker Desktop
 3. Setup Development Env
 
+<!--more-->
+
 ## Backend for Docker Engine
 
 Untuk menggunakan docker di Windows kita perlu menggunakan virtualization, ada beberapa cara yaitu 

@@ -26,6 +26,8 @@ Hai semuanya, di materi pertama kali ini kita akan membahas tentang Pengatar unt
 
 Ok langsung aja kita bahas ke materi yang pertama yaitu
 
+<!--more-->
+
 ## What is PostgreSQL?
 
 PostgreSQL is an object-relational database management system (ORDBMS) based on `POSTGRES`,` Version 4.2`, developed at the University of California at Berkeley Computer Science Department. POSTGRES pioneered many concepts that only became available in some commercial database systems much later.

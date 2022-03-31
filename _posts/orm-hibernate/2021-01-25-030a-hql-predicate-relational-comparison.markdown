@@ -22,6 +22,8 @@ downloads: []
 
 Hai, di materi kali ini saya mau membahas tentang Relational Comparison Predicate dengan menggunakan HQL, berikut adalah operator 
 
+<!--more-->
+
 | Symbol                        | Keterangan    |
 | :---                          | :---          |
 | `=`                           | Melakukan perbandingan dengan nilai yang **bernilai sama** |

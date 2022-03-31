@@ -16,6 +16,8 @@ downloads: []
 
 Tidak jauh berbeda dengan perulangan dengan `for` statement di materi sebelumnya. Sekarang kita lihat cara bekerja untuk perulangan menggunakan `do-while` terlebih dahulu. berikut contohnya:
 
+<!--more-->
+
 {% highlight java linenos %}
 public class DoWhileStatement{
 

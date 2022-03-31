@@ -20,6 +20,7 @@ downloads: []
 
 Constraint **Not Null** diterapkan pada column tertentu dalam sebuah table, dengan tujuan untuk memvalidasi data yang kita entry tidak dapat bernilai null. Contoh penggunaanya seperti berikut:
 
+<!--more-->
 
 {% gist page.gist "016h-constraint-notnull.sql" %}
 

@@ -32,6 +32,8 @@ Hai semuanya, di materi study kasus kali ini kita akan membahas menggunakan Fron
 
 Ok langsung aja kita ke pembahasan yang pertama
 
+<!--more-->
+
 ## Using static Resource API
 
 Untuk membuat Resource API di Laravel kita buat controllernya dulu dengan menggunakan perintah:

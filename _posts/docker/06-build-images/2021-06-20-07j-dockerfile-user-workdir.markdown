@@ -28,6 +28,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang `USER` Instruction, 
 
 Ok lansung aja kita ke materi yang pertama yaitu `USER` Instruction
 
+<!--more-->
+
 ## `USER` Instruction
 
 The `USER` instruction sets the user name (or UID) and optionally the user group (or GID) to use when running the image and for any `RUN`, `CMD` and `ENTRYPOINT` instructions that follow it in the `Dockerfile`.

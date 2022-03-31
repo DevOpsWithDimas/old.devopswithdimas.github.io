@@ -22,6 +22,8 @@ downloads: []
 
 Hai semuanya, di materi sebelumnya kita sudah membahas basic tentang Select Statements, Build-in functions and operators, WHERE clause, Limit and Offset, dan yang terakhir Sorting menggunakan Order By clause. Sekakarang kita akan membahas lebih detail tentang Select statement diantarnaya:
 
+<!--more-->
+
 1. Single Row functions
 2. Group functions
 3. Joined Tables

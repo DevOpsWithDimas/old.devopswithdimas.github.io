@@ -34,6 +34,8 @@ Hai semuannya, di materi kali ini kita membahas Install PostgreSQL menggunakan D
 
 Ok langsung saja kita bahas ke materi yang pertama yaitu
 
+<!--more-->
+
 ## Install docker
 
 Buat temen-temen yang belum kenal dengan Docker, Docker adalah salah satu teknologi virtualization yang sedang naik daun 3 tahun terakhir karena memudahkan kita untuk melakukan install suatu software/service. Kita juga bisa memanfaatkan docker ini untuk belajar PostgreSQL sebagai Learning environment.

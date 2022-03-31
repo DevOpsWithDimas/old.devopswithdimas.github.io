@@ -18,6 +18,8 @@ downloads: []
 
 Kita sekarang akan membahas object dalam object kemudian mengaksesnya contohnya seperti berikut:
 
+<!--more-->
+
 {% gist page.gist "obj-2.js" %}
 
 Jadi cara membuat object dalam object seperti berikut:

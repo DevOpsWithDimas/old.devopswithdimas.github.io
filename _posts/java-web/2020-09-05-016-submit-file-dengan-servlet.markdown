@@ -21,7 +21,9 @@ image_path: /resources/posts/java-web/java-web-016
 downloads: []
 ---
 
-Setelah kita belajar mengirimkan data berupa text, sekarang kita akan membahas mengirimkan file menggunakan servlet dan attribute `enctype="multipart/form-data"`. Untuk menggunakan **attribute enctype hanya bisa digunakan dengan menggunakan `HTTP Method POST`** selain itu juga untuk meng-upload file ada beberapa kondisi yaitu 
+Setelah kita belajar mengirimkan data berupa text, sekarang kita akan membahas mengirimkan file menggunakan servlet dan attribute `enctype="multipart/form-data"`. Untuk menggunakan **attribute enctype hanya bisa digunakan dengan menggunakan `HTTP Method POST`** selain itu juga untuk meng-upload file ada beberapa kondisi yaitu
+
+<!--more-->
 
 1. Servlet spec 3.1 or newer, bisa menggunakan native API
 2. Servlet spec < 3.1, ada issue untuk method `getSubmittedFileName()` karena method tersebut baru di perkenalkan di web server seperti `Tomcat8`, `Jetty 9`, `WildFly 8`, `GlassFish 4`

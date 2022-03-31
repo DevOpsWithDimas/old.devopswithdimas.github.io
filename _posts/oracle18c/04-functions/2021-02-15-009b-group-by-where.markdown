@@ -21,6 +21,8 @@ downloads: []
 
 Untuk filter data dengan klausa `where` di dalam `group by` secara ilustrasi bisa digambarkan seperti berikut:
 
+<!--more-->
+
 ![ilustrasi filter dengan where]({{ page.image_path | prepend: site.baseurl }}/konsep-group-by-where.png)
 
 Jadi klausa dengan `whare` dia prosesnya akan melakukan filter terlebih dahulu sebelum dilakukan proses `group by`. berikut contoh kasusnya, Tampilkan jumlah karyawan yang memiliki gaji perbulan lebih sebesar sama dengan `5000` kemudian kategorikan berdasarkan `manager_id`. Berikut querynya:

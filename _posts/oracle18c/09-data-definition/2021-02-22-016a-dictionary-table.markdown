@@ -20,6 +20,8 @@ downloads: []
 
 Sebelum kita membahas lebih dalam tentang data definition language (DDL), saya mau ngebahas dulu tentang **Static Data Dictionary View**, Data Dictionary Table gak bisa di access secara langsung, tapi bisa di akses melalui dictionary view yang tujuannya adalah untuk mengetahui list object yang ada didatabase berdasarkan user tertentu.
 
+<!--more-->
+
 Penamaan Static Data Dictionary view terdiri dari
 
 | Prefix    | Description   | Contoh        |

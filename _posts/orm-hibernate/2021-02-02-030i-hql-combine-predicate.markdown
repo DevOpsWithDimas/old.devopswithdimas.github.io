@@ -27,6 +27,8 @@ Hai kesempatan kali ini saya mau membahas tentang Combine Predicate dengan mengg
 2. And Predicate
 3. gabungan
 
+<!--more-->
+
 berikut adalah implementasi DAO:
 
 {% gist page.gist "HQLCombinePredicateDao.java" %}

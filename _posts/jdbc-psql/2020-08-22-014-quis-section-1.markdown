@@ -17,6 +17,9 @@ downloads: []
 ---
 
 1. Buatlah aplikasi untuk, untuk menyimpan data nasabah baru dengan model seperti berikut:
+
+<!--more-->
+
 ```java
 public class Nasabah{
 

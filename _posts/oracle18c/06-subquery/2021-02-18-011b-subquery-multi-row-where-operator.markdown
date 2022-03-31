@@ -20,6 +20,8 @@ downloads: []
 
 Multi row sub-query adalah sub-query yang menghasilkan lebih dari satu row pada inner query. contohnya seperti berikut:
 
+<!--more-->
+
 {% highlight sql %}
 SQL> select *
 from EMPLOYEES

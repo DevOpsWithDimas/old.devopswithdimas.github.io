@@ -18,7 +18,7 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Hai semuanya, di artikel kali ini kita akan membahas tentang 
+Hai semuanya, di materi kali ini kita akan berkenalan dulu dengan teknology container menggunakan Docker. Adapun materinya seperti berikut
  
 1. Apa itu Docker?
 2. Manfaat menggunakan Docker Platform?
@@ -30,6 +30,8 @@ Hai semuanya, di artikel kali ini kita akan membahas tentang
     - Images
     - Containers
     - Isolated workspace
+
+<!--more-->
 
 ## Docker Overview
 

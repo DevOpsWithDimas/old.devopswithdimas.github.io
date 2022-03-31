@@ -22,6 +22,8 @@ Auditing yaitu Recording & Monitoring yang dilakukan oleh user dan non-database 
 
 Dari Oracle 12c, Auditing enabled by default. Semua audit record di tulis ke `UNIFIED_AUDIT_TRAIL` view dalam `AUDSYS` schema dan `SYSAUX` Tablespace. 
 
+<!--more-->
+
 ## Why Is Auditing Used?
 
 Beberapa manfaat dari system audit, diantaranya:

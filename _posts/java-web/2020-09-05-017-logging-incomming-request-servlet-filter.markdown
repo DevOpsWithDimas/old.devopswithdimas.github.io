@@ -20,6 +20,8 @@ downloads: []
 
 Servlet Filter yaitu sebuah object yang di trigger ketika sebelum atau sesudah suatu proces dari sebuah request ke web aplikasi.
 
+<!--more-->
+
 Filter biasanya digunakan untuk:
 
 1. Recording semua request yang masuk,

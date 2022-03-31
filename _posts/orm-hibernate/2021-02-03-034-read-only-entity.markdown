@@ -22,6 +22,8 @@ downloads: []
 
 Hai pada kesempatan kali ini saya mau membahas tentang `Read Only Entity`, nah jadi klo kita misalnya pake query kemudian kita set nilai yang baru masih dalam session maka biasanya akan automatic update, contohnya berikut implementasi DAO:
 
+<!--more-->
+
 {% gist page.gist "HQLReadOnlyEntityDao.java" %}
 
 Berikut adalah Unit Testing

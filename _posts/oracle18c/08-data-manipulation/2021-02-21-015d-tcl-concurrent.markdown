@@ -21,6 +21,8 @@ downloads: []
 
 Oracle database merupakan RDBMS yang multi user, sehingga memungkinkan untuk paralel transactions (berinteraksi secara bersamaan) ini disebut **Concurrent Transactions**.
 
+<!--more-->
+
 Misalnya seperti, coba buka dua windows sqlplus kemudian login dengan user yang sama lalu jalankan perintah berikut:
 
 | No    | User 1   | User 2 |

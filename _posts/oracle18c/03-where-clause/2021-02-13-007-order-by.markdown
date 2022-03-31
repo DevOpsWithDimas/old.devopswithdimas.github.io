@@ -20,6 +20,8 @@ downloads: []
 
 Pengurutan data ini bagian yang bisa dibilang penting juga, karena di database itu bisa ada ribuan bahkan jutaan yang klo di `select` urutannya tidak tentu, jadi terkadang kita harus mengurutkan misalnya dari `a - z`, `1 - 100`, berdasarkan tanggal dan lain-lain. Dengan perintah `order by` kita bisa dengan mudah mengimplementasikan pengurutan ini.
 
+<!--more-->
+
 Order by biasanya di letakan setelah perintah `select` atau `where` seperti berikut contohnya:
 
 ```sql

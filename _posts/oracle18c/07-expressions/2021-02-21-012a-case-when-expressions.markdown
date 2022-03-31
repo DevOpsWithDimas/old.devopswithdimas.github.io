@@ -21,6 +21,8 @@ downloads: []
 
 Di sql juga, bisa melakukan seleksi sama halnya dengan bahasa pemograman dengan `if/else` berikut contoh perintahnya:
 
+<!--more-->
+
 ```sql
 select CASE 
         WHEN condition THEN result

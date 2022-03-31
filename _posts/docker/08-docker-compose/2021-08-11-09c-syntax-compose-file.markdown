@@ -30,6 +30,8 @@ Hai semuanya di materi kali ini kita akan membahas basic syntax dalam penulisan 
 
 Ok langsung ja kita kepembahasan yang pertama yaitu
 
+<!--more-->
+
 ## Compose file version
 
 There are several versions of the Compose file format – `1`, `2`, `2.x`, and `3.x`.The Compose file formats are now described in these references, specific to each version.

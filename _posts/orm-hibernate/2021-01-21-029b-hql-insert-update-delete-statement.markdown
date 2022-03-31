@@ -22,6 +22,8 @@ downloads: []
 
 Hai, pada materi kali ini saya mau membahas tentang Insert, Update, dan Delete Statement menggunakan HQL (Hibernate Query Language). Ok nah jadi kita masih pake entity yang sama yaitu 
 
+<!--more-->
+
 {% gist page.gist "MataKuliahEntity.java" %}
 
 Dan berikut adalah implementasi DAO:

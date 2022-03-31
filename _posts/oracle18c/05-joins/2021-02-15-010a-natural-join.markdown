@@ -25,6 +25,8 @@ Natural join, query yang paling mudah untuk menerapkan join tetapi ada syaratnya
 1. Column name harus sama di antara ke dua tables
 2. Harus memiliki `constraint foreign key`
 
+<!--more-->
+
 Contohnya saya ingin menampilakan. selurauh data location  yang ditampilkan adalah `location_id`, `city`, `state_province`, `country_name` yang diambil dari table `countries`. Berikut querynya:
 
 {% gist page.gist "010a-natural-join.sql" %}

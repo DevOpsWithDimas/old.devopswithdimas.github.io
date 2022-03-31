@@ -19,6 +19,8 @@ downloads: []
 
 Setelah kita membuat project dengan maven menggunakan template `maven-archetype-webapp` berikut adalah struktur directory yang kita harus ketahui, berikut adalah folder dan file configurasinya:
 
+<!--more-->
+
 {% highlight bash %}
 .
 ├── pom.xml

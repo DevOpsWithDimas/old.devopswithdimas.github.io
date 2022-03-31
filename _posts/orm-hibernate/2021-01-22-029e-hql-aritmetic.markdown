@@ -22,6 +22,8 @@ downloads: []
 
 Hai, pada kesempatan kali ini saya mau ngebahas tentang operator arithmetic pada ORM Hibernate menggunakan HQL. Pada dasarnya Operator Aritmetic bisa di terapkan pada `select [operator] from ...` dan `select ... from ... where [operator]`
 
+<!--more-->
+
 Ok langsung aja, berikut adalah implementasi menggunakan Arithmetic dengan HQL.
 
 buat class DTO / Model seperti berikut: 

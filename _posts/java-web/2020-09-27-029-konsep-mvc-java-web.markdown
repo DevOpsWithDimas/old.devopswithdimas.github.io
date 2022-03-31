@@ -19,6 +19,8 @@ downloads: []
 
 Ada beberapa konsep design pattern yang popular dan membawa atau memberikan effect besar pada pengembangan aplikasi contohnya MVC (Model View Controller). MVC yaitu mecahkan masalah dengan membagi menjadi 2 kompenent yaitu 
 
+<!--more-->
+
 1. Model
 2. View
 3. Controller

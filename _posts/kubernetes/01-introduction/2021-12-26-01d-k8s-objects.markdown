@@ -31,6 +31,8 @@ Hai semuanya, di materi kali ini sebelum kita mencoba menggunakan Kubernetes kit
 
 Ok langsung saja kita bahas materi yang pertama
 
+<!--more-->
+
 ## Understanding Kubernetes Objects
 
 Kubernetes objects are persistent entities in the Kubernetes system. Kubernetes uses these entities to represent the state of your cluster. Specifically, they can describe:

@@ -33,6 +33,8 @@ Hai semuanya, di materi kali ini kita akan membahas salah satu plugin `maven-doc
 
 Ok langsung aja kita bahas pembahasan yang pertama 
 
+<!--more-->
+
 ## Build docker image menggunakan `dockerfile-maven`
 
 Docker maven plugin ini pada dasarnya digunakan oleh spotify untuk building docker image untuk Internal maupun External Java Service mereka. Projectnya di initialisasi pada 2014 ketika memulai menggunakan Docker. Jadi tujuannya menggunakan [docker-maven-plugin](https://github.com/spotify/docker-maven-plugin) adalah men-generate `Dockerfile` menggunakan format `pom.xml`.

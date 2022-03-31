@@ -16,6 +16,8 @@ downloads: []
 
 Hi, welcome back into this lecture 'Java Core'. Nah ini saya gak tau harus ngomong apa ya karena biasanya klo saya gak terlalu banyak ngomongnya `just do it #coding`. Tapi sekarang saya mau mencoba untuk menjelaskan ke temen-temen klo jadi programmer itu komunikasi, penting ya~. jadi gimana mau jadi programmer yang bisa **kerja sama team** kalo gak bisa komunikasi dengan programmer lain ya #ehMalahCurhat
 
+<!--more-->
+
 Ok, nah jadi Pemograman berorientasi objek itu initnya adalah bahasa pemograman yang dibungkus oleh kelas atau _class_ supaya bisa lebih modular atau menjadi bagian-bagian kecil dalam menyelesaikan suatu masalah. selain itu juga metodelogi ini (OOP) bisa merepresetnasikan kehidupan kita sehari-hari seperti objek (benda, alat, kehidupan dan lain-lain) mungkin perumpamaan ini **agak ambigu** dan pertanyaannya pasti `Object itu seperti apa?` nah jawabanya sederhana pada dasarnya kehidupan ini khan berupa object-object contohnya seorang manusia adalah sebuah object nah object manusia ini punya sifat dan cirinya masing-masing itulah kenapa dia disebut object
 
 Gak lengkap kalo bahas Pemograman berorientasi object tapi gak tau apa itu `class`, jadi `class` itu istilahnya bisa dikatakan sebagai tempat atau wadah yang berisi data (bahasa teknisnya), atau gampangnya bisa dibilang sekumpulan sifat dan prilaku yang dikumpulin di satu tempat yaitu `class` tersebut. Initnya adalah `class` itu Tipe data yang kita buat sendiri.

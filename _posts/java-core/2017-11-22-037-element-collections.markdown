@@ -19,6 +19,8 @@ downloads: []
 
 Di materi sebelumnya kita udah membuat _array_, nah kita tau kalo _array_ itu untuk menyimpan data yang lebih dari satu dalam sebuah _variable_, Tetapi dengan menggunakan _array_ tersebut memiliki kekurangan yaitu agak susah untuk menambahkan dan menghapus suatu _element_ dalam array tersebut
 
+<!--more-->
+
 Contohnya saya mendefinisikan sebuah _array_ dengan jumlah memory `10` ketika saya menambahkan element ke `11` contohnya itu tidak bisa secara langsung kita definisikan tetapi harus membuat array baru dengan jumlah memori yang baru juga seperti berikut
 
 {% highlight java linenos %}

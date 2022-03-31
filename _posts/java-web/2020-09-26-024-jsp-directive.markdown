@@ -21,6 +21,8 @@ downloads: []
 
 JSP Directive biasanya digunakan untuk merubah struktural pada servlet class yang akan di generate setelah di render. JSP Directive terdiri dari beberapa tag diantaranya `page`, `include` dan `taglib`.
 
+<!--more-->
+
 ### 4.1. Page Directive
 
 JSP Page Directive biasanya digunakan untuk menentukan behavior atau prilaku pada suatu jsp/servlet contohnya biasanya digunakan untuk import class, apakah kita mau mengaktifkan expression languge dan lain-lain. Contohnya seperti berikut

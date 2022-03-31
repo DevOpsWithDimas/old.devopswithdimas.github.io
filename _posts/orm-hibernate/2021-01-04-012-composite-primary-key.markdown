@@ -32,6 +32,8 @@ tentu aja bisa, ada 2 cara yaitu:
 
 Yang pertama kita bahas menggunakan EmbeddedId
 
+<!--more-->
+
 ## Embeddable
 
 Untuk EmbeddedId mapping, pertama kita define dulu primary keynya di class Embeddable yang wajib implement serializable seperti berikut:

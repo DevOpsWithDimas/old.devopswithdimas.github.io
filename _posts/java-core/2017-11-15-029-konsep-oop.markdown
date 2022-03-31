@@ -17,6 +17,8 @@ downloads: []
 
 Object Oriented Approach pada dasarnya ada 3 konsep yang bisa diimplementasikan. yaitu seperti berikut:
 
+<!--more-->
+
 1. Inheritance
 2. Polymorpism
 3. Encapsulation

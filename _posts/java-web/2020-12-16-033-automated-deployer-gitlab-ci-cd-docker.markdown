@@ -29,6 +29,8 @@ Automation deployment / delivery object sebetulnya ada beberapa cara dan tools c
 4. [Travis CI](https://travis-ci.org/)
 5. [Gitlab CI/CD](https://docs.gitlab.com/ce/ci/)
 
+<!--more-->
+
 Nah di materi kali ini saya akan menggunakan `Gitlab CI/CD` karena ada beberapa alasan sih
 
 1. Gitlab ecosystem, udah lumayan lengkap dan yang pasti gratis.

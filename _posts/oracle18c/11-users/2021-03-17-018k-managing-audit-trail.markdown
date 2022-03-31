@@ -26,6 +26,8 @@ Untuk melakukan adminstration Audit Trail, yang digunakan harus memiliki privile
 3. Archive Audit Trail
 4. Purge Audit Trail (Delete Permanently)
 
+<!--more-->
+
 ## When are Audit Record Created?
 
 Untuk Audit Record akan di generate automatis seketika atau juga bisa setelah execution phase dari Suatu SQL Statement, Jadi Oracle Database akan melakukan intercept bila ada SQL Statement yang sesuai dengan criteria dari Audit Policy-nya kemudian Audit Record dibuat dan disimpan ke `UNIFIED_AUDIT_TRAIL`.

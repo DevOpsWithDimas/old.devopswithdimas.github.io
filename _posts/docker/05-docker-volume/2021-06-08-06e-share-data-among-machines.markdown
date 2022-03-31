@@ -23,6 +23,8 @@ downloads: []
 
 Hai semuanya, di materi kali ini kita akan membahas tentang share data berbeda machine. 
 
+<!--more-->
+
 When building fault-tolerant applications, you might need to configure multiple replicas of the same service to have access to the same files.
 
 ![multiple-apps](https://docs.docker.com/storage/images/volumes-shared-storage.svg)

@@ -20,6 +20,8 @@ downloads: []
 
 Sebuah function-based index digunakan untuk menyimpan nilai ke index dari hasil perhitungan suatu function atau expression dari satu atau beberapa column. Function based index bisa berupa **B-Tree Index** dan juga **Bitmap Index**
 
+<!--more-->
+
 Function based index biasanya digunakan ketika sql statement yang kita panggil menggunakan arithmetic expression, user-defined PL/SQL function, package dan object lainnya.
 
 Contoh sederhanya seperti berikut:

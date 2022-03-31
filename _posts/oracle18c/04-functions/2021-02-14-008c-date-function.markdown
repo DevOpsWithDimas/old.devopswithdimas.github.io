@@ -20,6 +20,8 @@ downloads: []
 
 Berikut adalah beberapa function untuk tipe data Date & Time di Oracle:
 
+<!--more-->
+
 | Function              | Keterangan                                                            |
 |:----------            |:----------------------------------                                    |
 | `ADD_MONTHS`          | Mengembalikan tipe data tanggal dengan di tambah perameterize `int`   |

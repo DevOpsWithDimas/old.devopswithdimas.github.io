@@ -21,6 +21,8 @@ Mungkin dari temen-temen masih belum paham apa bedanya antara
 2. JDK (Java Development Kit) dan
 3. JRE (Java Runtime Environment)
 
+<!--more-->
+
 Nah ok ayok kita bahas satu-satu, yang pertama kita bahas dulu yang JDK (Java Development Kit). Jadi Java Development Kit itu biasanya digunakan sebagai tools untuk membuat aplikasi Java artinya biasanya diinstall di komputer Developer/Programmer sedangkan di Server biasaya tidak perlu di install. Karena Developer/Programmer memiliki kepentingan untuk melakukan compile dan execution source code `.java` seperti yang terlihat di gambar berikut:
 
 ![JDK vs JRE]({{ page.image_path | prepend: site.baseurl }}/java-arc.png)

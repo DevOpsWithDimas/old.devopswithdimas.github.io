@@ -27,6 +27,8 @@ Hai semuanya di materi kali ini kita akan membahas study kasus untuk PHP Develop
 
 Ok langsung aja kita bahas 
 
+<!--more-->
+
 ## PHP development environment
 
 Pada phase development untuk PHP, kita hanya membutuhkan web server seperti apache dan php engine untuk memproses source code PHP. Dalam penerapan di docker compose kita bisa menggunakan image [php:(version)-apache](https://hub.docker.com/_/php) dan mount-bind volume ke project directory source code nya. Seperti berikut:

@@ -22,6 +22,8 @@ downloads: []
 
 Halo di [postingan sebelumnya]({% post_url orm-hibernate/2020-11-21-002-pengenalan-jpa-with-hibernate %}) kita udah berkenalan nih dengan Hibernate Framework, jadi sekarang kita akan mulai untuk persiapan-persiapan apa aja yang perlu di setup sebelum memulai koding dengan Hibernate.
 
+<!--more-->
+
 ## Persiapan
 
 1. Install Java 1.8

@@ -22,6 +22,8 @@ downloads: []
 
 Untuk menggunakan mapping `@ManyToMany` kita akan buat table baru yaitu `mahasiswa` dan `matakuliah`, berikut adalah perancangan databasenya:
 
+<!--more-->
+
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 
 Implementasi Entity `Matakuliah`:

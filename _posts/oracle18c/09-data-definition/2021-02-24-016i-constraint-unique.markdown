@@ -20,6 +20,8 @@ downloads: []
 
 Constraint **Unique** diterapkan pada column tertentu dalam sebuah tabel, dengan tujuan untuk memvalidasi data yang kita entry tidak boleh sama dengan data yang telah tersedia di table pada kolom tersebut. Contoh pengguanya seperti berikut:
 
+<!--more-->
+
 {% gist page.gist "016i-constraint-simple-unique.sql" %}
 
 Jadi dengan ddl untuk membuat table diatas, maka kita tidak boleh entry data pada kolom `product_no` dengan nilai yang sama atau sudah ada di table tersebut. Contoh dengan perintah entry yang salah seperti berikut:

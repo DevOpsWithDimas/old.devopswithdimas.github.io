@@ -22,6 +22,8 @@ downloads: []
 
 Setelah temen-temen mempelajari materi Hibernate Query Language (HQL) dan supaya lebih memahami materinya jadi kita langsung ja ke studi kasusnya ya.
 
+<!--more-->
+
 Ok berikut adalah perancangan Entity Relational Diagramnya, 
 
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.jpg)

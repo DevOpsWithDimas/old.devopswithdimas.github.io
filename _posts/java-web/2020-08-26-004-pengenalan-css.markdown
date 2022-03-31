@@ -20,6 +20,8 @@ downloads: []
 
 Untuk memberikan warna berbeda pada halaman HTML kita bisa melakukan styling menggunakan CSS atau **Cascade Style Sheets**. Dalam menggunakan CSS harus tau dulu apa itu **selector** dan jenis dari **selector**
 
+<!--more-->
+
 ## Selector
 
 Macam macam seletor dalam penggunakan Javascript yaitu

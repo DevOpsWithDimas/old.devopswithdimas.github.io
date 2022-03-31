@@ -22,6 +22,8 @@ downloads: []
 
 Sekarang saya mau membahas tentang aturan-aturan dasar menggunakan hibernate dengan Annotation.
 
+<!--more-->
+
 ## `@Entity`
 
 `@Entity` mendakan bahwa Java Class tersebut akan dibuatkan menjadi sebuah table. contohnya seperti berikut:

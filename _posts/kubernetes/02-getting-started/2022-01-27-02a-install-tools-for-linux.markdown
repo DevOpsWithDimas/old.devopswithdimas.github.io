@@ -34,6 +34,8 @@ Hai semuanya, di materi kali ini kita akan membahas cara install minikube di Lin
 
 Ok langsung aja kita bahas ke materi yang pertama
 
+<!--more-->
+
 ## What you’ll need?
 
 Untuk menginstall minikube di Linux kita membutuhkan:

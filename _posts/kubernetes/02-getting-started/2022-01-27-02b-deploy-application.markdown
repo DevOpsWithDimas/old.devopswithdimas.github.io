@@ -30,6 +30,8 @@ Hai semuanya, di materi kali ini kita akan membahas Basic of Kubernetes untuk Co
 5. Update the containerized application with a new software version.
 6. Debug the containerized application.
 
+<!--more-->
+
 ## Deploy a containerized application on a cluster
 
 Once you have a running Kubernetes cluster, you can deploy your containerized applications on top of it. To do so, you create a Kubernetes Deployment configuration.

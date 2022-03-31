@@ -27,6 +27,8 @@ Setelah di download, kemudian extract dan jalankan
 - `./sqldeveloper.sh` untuk linux
 - `sqldeveloper.app` untuk Mac
 
+<!--more-->
+
 ## Create Connection
 
 Untuk membuat connection, klick button `+` pada tab `connections` maka muncul dialog seperti berikut:

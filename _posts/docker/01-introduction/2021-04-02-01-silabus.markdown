@@ -18,7 +18,13 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Hai semuanya, di materi kali ini kita akan membahas tentang Containerization dengan Docker.
+Hai semuanya, di cource ini `DevOps - Docker: Pemula sampai Mahir` kita akan membahas teknology container yang sedang popular saat ini yaitu Docker. 
+
+Dengan menggunakan teknology container kita bisa melakukan banyak hal mulai dari development, Automate testing, Automate deployment dan lain-lain. Adapun materi/silabus yang akan kita bahas di kelas ini kita akan bagi menjadi 3 section yaitu fundamental, intermediate dan Advanced. Diantaranya:
+
+<!--more-->
+
+## Fundamental
 
 1. Docker Overview
 2. Docker Architecture
@@ -50,6 +56,9 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Containerization den
     2. Using bind-mount
     3. Using share data among containers
     4. Using share data among machine `vieux/docker-volume-sshfs`
+
+## Intermediate
+
 9. Dockerfile
     1. Build your own image
     2. Publish your image to [hub.docker.com](https://hub.docker.com/)
@@ -61,7 +70,6 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Containerization den
     4. Build for ReactJS
     5. Build for PHP Native
     6. Build for PHP framework like Laravel, CakePHP dll
-<!--more-->
 11. Docker Compose CLI
     1. Overview
     2. Getting started dengan Docker Compose
@@ -72,6 +80,9 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Containerization den
     7. Build image
 12. Docker Daemon CLI
 13. Docker Dashboard
+
+## Advanced
+
 14. Orcestration container dengan Swarm
     1. Swarm Node
     2. Swarm Stack

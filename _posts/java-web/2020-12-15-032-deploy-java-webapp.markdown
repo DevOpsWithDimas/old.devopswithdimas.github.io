@@ -21,6 +21,8 @@ downloads: []
 
 Setelah kita install Apache Tomcat `8.x`, sekarang kita akan mendeploy aplikasi Java Web kita dengan menggunakan Automate Deployment Approach dengan bantuan plugin `cargo-maven-plugin` jadi kita perlu tambahkan plugin dulu di file `pom.xml` seperti berikut:
 
+<!--more-->
+
 {% highlight xml %}
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">

@@ -21,6 +21,8 @@ downloads: []
 
 Bitmap Index sedikit berbeda dengan normal index (b-tree) yang menyimpan satu index entry merepresentasi suatu baris, Suatu Bitmap Index biasanya di setiap index entry bisa mewakili banyak baris atau memiliki tingkat keragamannya rendah (low cardinality). Sebagai contoh berikut adalah tabelnya yang akan kita gunakan:
 
+<!--more-->
+
 {% gist page.gist "017b-create-table-for-bitmap.sql" %}
 
 Jadi pada table tersebut kita bisa gunakan index bitmap column `jenis_kelamin` karena secara data hanya memungkinkan ada `L` dan `P` saja.

@@ -22,6 +22,8 @@ Di Oracle Database dari dulu sampe sekarang (18c) masih menggunakan manual commi
 
 Berikut adalah contoh penggunaanya:
 
+<!--more-->
+
 {% gist page.gist "015a-single-commit.sql" %}
 
 Berikut hasilnya:

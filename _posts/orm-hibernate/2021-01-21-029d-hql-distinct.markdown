@@ -25,6 +25,8 @@ Hai, di materi kali ini saya mau membahas tentang clause `DISTINCT`. clausa dist
 1. Distinct with SQL Projections
 2. Distinct with Entity queries
 
+<!--more-->
+
 ## Distinct with SQL Projection
 
 Untuk menggunakan perintah distinct dengan projection kita perlu menambahkan data dulu ke table `enumeration.employee_string` untuk melakukan pengecheckannya seperti berikut:

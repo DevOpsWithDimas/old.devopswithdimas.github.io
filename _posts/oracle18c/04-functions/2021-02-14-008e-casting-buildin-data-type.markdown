@@ -20,6 +20,8 @@ downloads: []
 
 Casting Build-In Data Type biasanya digunakan untuk meng-conversi tipe data ke tipe data yang lain selama compatible. Berikut adalah table conversinya:
 
+<!--more-->
+
 | Destination Type      | from: `CHAR/VARCHAR2` | from: `Number`        | from: `Date`          | from: `Datetime`      |
 | :---                  | :---                  | :---                  | :---                  | :---                  |
 | to: `CHAR/VARCHAR2`   | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    |

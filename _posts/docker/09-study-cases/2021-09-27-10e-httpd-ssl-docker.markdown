@@ -25,6 +25,8 @@ downloads: []
 
 Hai semuanya, di video study kasus kali ini kita akan membahas tentang Configure ssl/https pada httpd berdasarkan study kasus [sebelumnya]({% post_url docker/09-study-cases/2021-09-12-10b-compose-laravel-study-case %}). 
 
+<!--more-->
+
 Untuk deployment Laravel application paling commons di production adalah menggunakan [SSL/TLS (Secure Sockets Layer / Transport Layer Security)](https://id.wikipedia.org/wiki/Transport_Layer_Security) Certificate atau dengan katalain menggunakan [https (Hypertext Transfer Protocol Secure)](https://id.wikipedia.org/wiki/HTTPS) yang khusus menangani web aplication.
 
 Ada banyak cara untuk deployment Laravel Application di production menggunakan https, Diantaranya yang akan kita bahas yaitu

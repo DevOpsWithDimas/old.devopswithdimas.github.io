@@ -20,6 +20,8 @@ downloads: []
 
 Oracle Database adalah salah satu database yang sudah support Object Oriented Database Management System sejak `10g`,
 
+<!--more-->
+
 Dalam Object Oriented memiliki konsep seperti Pewarisan atau Inherintance. Inherintance yaitu mewariskan atribut dan property yang di miliki oleh Object super klo di Oracle menyebutnya `supertype` berikut adalah ilustrasinya
 
 ![supertype hirarchy](https://docs.oracle.com/en/database/oracle/oracle-database/18/adobj/img/adobj027.gif)

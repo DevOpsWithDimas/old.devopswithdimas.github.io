@@ -18,6 +18,8 @@ downloads: []
 
 Hai [sebelumnya]() kita udah membahas tentang transactional di JDBC. nah sekarang kita akan melanjutkan pembahasan tentang batch proccessing atau orang-orang lebih sering menyebutnya bulk query. batch processing biasanya penerapannya untuk melakukan insert secara berulang seperti berikut contoh penerapan dalam sql:
 
+<!--more-->
+
 {% highlight sql linenos %}
 begin;
 

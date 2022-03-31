@@ -22,6 +22,7 @@ downloads: []
 
 Klause `distinct` digunakan untuk meng-eliminasi atau menghilankan nilai yang duplikat atau sama dalam suatu baris, contoh kasusnya saya mau mengambil data semua `job_id` yang terdaftar pada tabel `employees` secara unique, bagaimana cara ambil datanya? Jika menggunakan perintah berikut:
 
+<!--more-->
 
 {% highlight sql %}
 SQL> select job_id from employees;

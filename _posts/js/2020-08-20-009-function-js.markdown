@@ -18,6 +18,8 @@ downloads: []
 
 seperti yang ketahui JavaScript ini tidak mengenal yang namanya `Class` sebagai gantinya kita bisa menggunakan function sebagai pembungkusnya.
 
+<!--more-->
+
 Sekarang kita akan membuat function di JavaScript format dasarnya kurang lebih seperti berikut:
 
 {% gist page.gist "function-basic.js" %}

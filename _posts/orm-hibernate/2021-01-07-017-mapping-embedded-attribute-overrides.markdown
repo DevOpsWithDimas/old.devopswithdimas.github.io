@@ -22,6 +22,8 @@ downloads: []
 
 Hai, di materi kali ini saya mau ngebahas tentang mapping Embedded Override Attribute dengan model dari yang sebelumnya yaitu 
 
+<!--more-->
+
 {% gist page.gist "AlamatEmbeddable.java" %}
 
 Dengan penambahan property `alamatRumah` dan `alamatOrangTua` seperti berikut  Implementasi Entitynya: 

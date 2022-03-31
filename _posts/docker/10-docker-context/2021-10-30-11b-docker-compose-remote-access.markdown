@@ -28,6 +28,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang How to deploy on rem
 
 Ok langsung aja kita ke pembahasan yang pertama yaitu
 
+<!--more-->
+
 ## Introduction
 
 The docker-compose tool is pretty popular for running dockerized applications in a local development environment. All we need to do is write a Compose file containing the configuration for the application’s services and have a running Docker engine for deployment. From here, we can get the application running locally in a few seconds with a single  `docker-compose up` command.

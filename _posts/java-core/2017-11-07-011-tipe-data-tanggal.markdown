@@ -21,6 +21,8 @@ downloads: []
 
 Tipe data yang tidak terlupakan adalah untuk mengimpan tanggal dan waktu, di Java tipe data Tanggal ini ada beberapa macem mulai dari bawaan JDK Java bahkan library atau dependency.
 
+<!--more-->
+
 ## Date primitif
 
 Untuk tipe data tanggal dengan sudah ada sejak dulu yaitu `java.util.Date`, Tipe data ini merepresentasikan tahun, bulan, hari, jam, menit dan second yang bisa diformat ke pattern tertentu dengan menggunakan object `SimpleDateFormat` yang di import dari `java.text.SimpleDateFormat`. Untuk tipe data ini udah ada sejak JDK 1.0. cara Penggunaannya adalah sebagai berikut:

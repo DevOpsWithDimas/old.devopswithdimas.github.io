@@ -26,6 +26,8 @@ Hai semuanya, di materi study kasus kali ini kita akan membahas Spring-Boot depl
 2. Development on docker environment using compose file
 3. Deployment using compose file for production ready
 
+<!--more-->
+
 ## Dev on local environment
 
 Untuk development pada local environment pada dasarnya kita perlu install 

@@ -22,6 +22,8 @@ downloads: []
 
 Hai di materi kali ini kita akan membahas tentang Inherintance metode `TABLE_PER_CLASS` dengan perancangan tabel seperti berikut:
 
+<!--more-->
+
 ![erd]({{ page.image_path | prepend: site.baseurl }}/erd.png)
 
 Dan berikut adalah implementasi Entity Kendaraan:

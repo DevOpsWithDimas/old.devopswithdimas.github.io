@@ -20,6 +20,8 @@ downloads: []
 
 Clause `DROP TABLE` di oracle bukan untuk menghapus tetapi untuk memindahkan table ke recylebin.
 
+<!--more-->
+
 Untuk menghapus tabel ada beberapa perintah:
 
 ## Basic drop table

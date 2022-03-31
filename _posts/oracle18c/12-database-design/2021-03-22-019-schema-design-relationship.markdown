@@ -21,6 +21,8 @@ downloads: []
 
 Suatu Database yang sifatnya Relational intinya memiliki banyak table yang saling ber-relasi dalam Schema, Sebelum membuat table ada baiknya atau penting sekali untuk membuat perancangan / design table seperti structure tabel, relation mapping dan lain-lain.
 
+<!--more-->
+
 ## Importance of Database Schema Design
 
 Database digunakan untuk menyimpan semua data yang dibutuhkan oleh software application atau system, ini penting karena setidaknya database harus bisa menghandle downtime `0.01% of 100%`. 

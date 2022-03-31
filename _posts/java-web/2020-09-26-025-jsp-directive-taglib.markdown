@@ -23,6 +23,8 @@ JavaServet Page API mengijinkan untuk kita mendefinisikan custom JSP tag dengan 
 
 Fitur utamanya teridiri dari:
 
+<!--more-->
+
 1. Core Tag
 2. Formatting Tag
 3. SQL Tag

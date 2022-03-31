@@ -28,6 +28,8 @@ Pipeline yang kita akan buat diantaranya:
 1. Build Docker image
 2. Push to docker registry
 
+<!--more-->
+
 Ok langsung aja, kita buat file `.gitlab-ci.yml` seperti berikut:
 
 {% gist page.gist "12c-gitlab-ci.yml" %}

@@ -20,6 +20,8 @@ downloads: []
 
 JSP membutuhkan Web Server dengan spesifikasi JSP Proccessing tertentu, Contohnya seperti Apache Tomcat 7 yang kita gunakan yaitu memiliki spesifikasi servlet version `3.0`, JSP version `2.2` dan JDK yang disupport yaitu `7 or later`.
 
+<!--more-->
+
 Berikut adalah diagram dimana posisi JavaServer Page dalam container Web Server dalam Web Aplikasi
 
 ![jsp inside container]({{ page.image_path | prepend: site.baseurl }}/java-web-deployment-env.jpg)

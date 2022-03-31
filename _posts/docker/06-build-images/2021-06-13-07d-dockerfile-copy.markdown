@@ -26,6 +26,8 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Copying Resource ke 
 2. `ADD` Instruction
 3. Cleanup
 
+<!--more-->
+
 Copies new files/directory into image, kita bisa menggunakan perintah `ADD` dan `COPY`.
 
 The `ADD` instruction copies new files, directories or remote file URLs from <src> and adds them to the filesystem of the image at the path <dest>. The `COPY` instruction copies new files or directories from <src> and adds them to the filesystem of the container at the path <dest>. 

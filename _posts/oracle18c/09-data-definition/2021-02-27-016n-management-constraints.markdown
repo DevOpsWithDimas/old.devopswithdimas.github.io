@@ -25,6 +25,8 @@ Sometime kita perlu me-disable constraint secara temporary untuk mempercepat pro
 3. Import & Export semua data dalam table.
 4. Melepas rule supaya bisa input data yang secara rule dilarang (exception)
 
+<!--more-->
+
 Melakukan disabled constraint akan _improve performance operation_ khususnya pada data _warehouse configuration_. Untuk mencari informasi constraint kita bisa menggunakan perintah berikut:
 
 {% gist page.gist "016n-select-from-user-constraints.sql" %}

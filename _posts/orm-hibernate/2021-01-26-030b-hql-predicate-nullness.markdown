@@ -22,6 +22,8 @@ downloads: []
 
 Hai, pada kesempatan kali ini saya mau membahas predicate nullless, berikut adalah implementasi DAO:
 
+<!--more-->
+
 {% gist page.gist "HQLNullLessPredicateDao.java" %}
 
 Implementasi Unit Testing: 
