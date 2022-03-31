@@ -51,14 +51,15 @@ pagination:
                         <span class="title">{{ post.title }}</span>
                     </a>
                     <br>
+                    <br>
                     <div>
                         {% for category in post.categories %}
                         <div class="chip small">{{ category | prepend: '#' | downcase }}</div>
                         {% endfor %}
                     </div>
-                    <hr>
                     <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
                         {% if post.content contains '<!--more-->' %} 
+                        <hr>
                         {{ post.content | split:'<!--more-->' | first }}<br>
                         <a href="{{ post.url | prepend: site.baseurl }}">
                             <span>Lanjut membaca...</span>
