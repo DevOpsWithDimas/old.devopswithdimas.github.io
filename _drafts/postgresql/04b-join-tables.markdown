@@ -21,6 +21,8 @@ downloads: []
 
 Hai semuanya, di materi kali ini kita akan membahas Join Tables di PostgreSQL. A joined table is a table derived from two other (real or derived) tables according to the rules of the particular join type. Inner, outer, and cross-joins are available.
 
+<!--more-->
+
 The general syntax of a joined table is
 
 {% highlight sql %}
@@ -46,7 +48,3 @@ erDiagram
         int age
     }
 {% endmermaid %}
-
-<!--more-->
-
-asdsd

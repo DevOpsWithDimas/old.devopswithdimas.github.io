@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('#article-body img').addClass('materialboxed').addClass('responsive-img');
+    $('#archive-body img').addClass('responsive-img');
     $('#article-body svg').addClass('materialboxed').addClass('responsive-img');
     $('.post-body table')
         // not for highlight

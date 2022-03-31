@@ -20,8 +20,6 @@ catalog_key: select-statement
 downloads: []
 ---
 
-<!--more-->
-
 Hai semuanya di materi sebelumnya kita sudah membahas beberapa hal basic sepert SQL Select statement, build-in Functions and Operators, WHERE clause, dan limit serta offset. Untuk memahami materi sebelumnya saatnya temen-temen untuk mencoba dengan mengerjakan soal seperti berikut: 
 
 1. Buatlah _query_ untuk menampilkan seluruh data karyawan dari **table employees** yang **diurutkan berdasarkan email** paling terakhir.

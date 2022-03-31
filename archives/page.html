@@ -19,10 +19,10 @@ pagination:
 
 
 <div class="row">
-    <div class="container">
+    <div id="archive-body" class="container">
         <div class="col m12">
             <!-- Pagination links -->
-            <div class="pagination">
+            <div class="pagination right-align">
                 {% if paginator.previous_page %}
                 <a href="{{ paginator.previous_page_path }}" class="previous">
                     Previous
@@ -44,12 +44,19 @@ pagination:
                 {% for post in paginator.posts %}
                 <li class="collection-item avatar">
                     <img src="{{ " /resources/images/" | prepend: site.baseurl }}{{ post.lang | append: '.png' }}"
-                        alt="" class="circle">
+                        alt="{{post.lang}}" class="circle">
                     <span class="new badge yellow black-text" data-badge-caption="">{{ post.date | date: "%A,
                         %-d/%b/%Y"}}</span>
                     <a href="{{ post.url | prepend: site.baseurl }}">
                         <span class="title">{{ post.title }}</span>
                     </a>
+                    <br>
+                    <div>
+                        {% for category in post.categories %}
+                        <div class="chip small">{{ category | prepend: '#' | downcase }}</div>
+                        {% endfor %}
+                    </div>
+                    <hr>
                     <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
                         {% if post.content contains '<!--more-->' %} 
                         {{ post.content | split:'<!--more-->' | first }}<br>
@@ -63,7 +70,7 @@ pagination:
             </ul>
 
             <!-- Pagination links -->
-            <div class="pagination">
+            <div class="pagination center">
                 <ul class="pagination">
 
                     <li class="waves-effect">
