@@ -49,14 +49,15 @@ pagination:
                         %-d/%b/%Y"}}</span>
                     <a href="{{ post.url | prepend: site.baseurl }}">
                         <span class="title">{{ post.title }}</span>
-                        <p>
-                            {% for tag in post.categories %}
-                            <div class="chip">
-                                {{ tag }}
-                            </div>
-                            {% endfor %}
-                        </p>
                     </a>
+                    <p>
+                        {% if post.content contains '<!--more-->' %} 
+                        {{ post.content | split:'<!--more-->' | first }}<br>
+                        <a href="{{ post.url | prepend: site.baseurl }}">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        {% endif %}
+                    </p>
                 </li>
                 {% endfor %}
             </ul>

@@ -18,4 +18,7 @@ gist: dimMaryanto93/e8d2abb5361e811860d6a462270f119b
 image_path: /resources/posts/orm-hibernate-31
 ---
 
+asdfdsf
 <!--more-->
+
+asdfdsf
