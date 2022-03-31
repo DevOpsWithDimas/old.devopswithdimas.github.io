@@ -8,6 +8,7 @@ authors:
 categories:
 - DevOps
 - Docker
+- Machine
 refs: 
 - https://github.com/docker/machine/blob/docs/docs/install-machine.md
 youtube: 

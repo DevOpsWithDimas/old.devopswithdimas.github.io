@@ -7,6 +7,7 @@ authors:
 categories:
 - DevOps
 - Docker
+- Machine
 refs: 
 - https://github.com/docker/machine/blob/docs/docs/install-machine.md
 youtube: 
@@ -18,15 +19,15 @@ downloads: []
 ---
 
 
-description...
+Hai semuanya, di materi kali ini kita akan membahas Install docker-machine di OS Linux khususnya Ubuntu Desktop. Materi yang dibahas diantaranya:
+
+1. Install docker-machine binary
+2. Install VirtualBox as backend
+3. Create and run a Docker host using VirtualBox provider
+4. Troubleshooting
+
+Ok langsung aja kita bahas materi yang pertama
 
 <!--more-->
 
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+## Install docker-machine binary
