@@ -21,6 +21,8 @@ Untuk membuat unique value ada 2 type yang kita bisa gunakan yaitu dengan Sequen
 
 yang pertama kita bahas tentang sequential yaitu sebuah nilai generator yang secara value akan naik terus atau increment. Mengunakan sequence sebagai nilai default pada primary key, ada beberapa cara yaitu 
 
+<!--more-->
+
 1. Medefininsikan column bertipe data `serial` atau `bigserial`
 
     ```sql

@@ -14,3 +14,5 @@ downloads: []
 ---
 
 SubQuery atau istilah nya query dalam query. SubQuery bisa diterapkan di `column` dan di `where close`. 
+
+<!--more-->

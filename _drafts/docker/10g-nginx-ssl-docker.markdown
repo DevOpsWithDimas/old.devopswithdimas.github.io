@@ -26,6 +26,8 @@ Hai semuanya, di video study kasus kali ini kita akan membahas tentang Configure
 
 Ok langsung aja kita ke pembahasan yang pertama yaitu
 
+<!--more-->
+
 ## Setup ssh/https as reverse proxy
 
 Untuk setup ssl/https sebagai reverse proxy pada [nginx](https://www.nginx.com/) yang kita perlu siapakan, environment seperti berikut:

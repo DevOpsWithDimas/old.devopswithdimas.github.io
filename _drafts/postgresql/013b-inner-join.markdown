@@ -15,6 +15,8 @@ downloads: []
 
 Selain menggunakan `Natural join` kita bisa menggunakan klausa `on` dan juga `where` atau lebih dikenal dengan **Inner JOIN**. Dengan menggunakan klausa `on` atau `whare` kita bisa bebas menentukan column mana yang akan di relasikan contohnya seperti berikut:
 
+<!--more-->
+
 Contoh kasusnya, saya mau mencari data setiap department dan tampilkan siapa nama managernya. Berikut querynya:
 
 **Menggunakan klausa `on`**

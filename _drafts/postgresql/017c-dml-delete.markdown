@@ -19,6 +19,8 @@ Perintah delete data, biasanya kita gunakan untuk menghapus data dari table tert
 
 Format penulisan delete statement yaitu seperti berikut:
 
+<!--more-->
+
 ```sql
 DELETE FROM table_name 
 WHERE column_key = <valueKey>

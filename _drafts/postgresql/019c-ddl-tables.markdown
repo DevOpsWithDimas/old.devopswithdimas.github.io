@@ -20,6 +20,8 @@ Data Definition Lanagement pada Table, pada dasarnya terbagi menjadi seperti ber
 2. DROP
 3. ALTER
 
+<!--more-->
+
 Tapi sebelum kita membahas tentang membuat table, saya juga mau bahas dulu tipe data di PostgreSQL. Tipe data pada kolom terdiri dari 4 kategori yaitu
 
 |                   | Data Type                         | Descriptions  |

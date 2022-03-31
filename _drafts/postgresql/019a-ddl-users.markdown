@@ -24,6 +24,8 @@ Perintah ddl untuk management user authentication di PostgreSQL terdiri dari:
 
 Contoh penggunaan:
 
+<!--more-->
+
 ## Create
 
 Perintah `create` digunakan Untuk membuat user yang digunakan untuk login dari Database client editor seperti `psql`, `DataGrip`, `PgAdmin`, dan lain-lain. Kita bisa menggunakan perintah:

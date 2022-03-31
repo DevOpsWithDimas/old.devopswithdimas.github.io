@@ -24,6 +24,8 @@ Sebagai Database Administrator (DBA), kita bisa membuat `PLUGGABLE DATABASE` (PD
 
 Untuk melihat informasi pdb yang tersedia pada system, berikut adalah caranya:
 
+<!--more-->
+
 ```sql
 bash-4.2# su oracle
 [oracle@89f865b61452 /]$ sqlplus / as sysdba

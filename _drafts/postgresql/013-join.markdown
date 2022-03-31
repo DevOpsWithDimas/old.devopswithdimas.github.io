@@ -16,6 +16,8 @@ downloads: []
 
 Klausa `join` pada dasarnya untuk menghubungkan tabel yang terpisah menjadi satu berdasarkan `foreign key` contoh ilustrasinya seperti berikut:
 
+<!--more-->
+
 ![ilustrasi join]({{ page.image_path | prepend: site.baseurl }}/join-tables.png)
 
 Perintah join bisa di lakukan dengan beberapa cara yaitu

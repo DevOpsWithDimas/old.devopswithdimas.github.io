@@ -16,6 +16,8 @@ downloads: []
 
 Dengan klausa `join` ada juga kondisi lain, jika sebelumnya menggunakan `inner join` hanya mendapatkan data yang ada di antara kedua tabel atau istilahnya irisan. Ada juga kodisi yaitu dengan `outter join` seperti berikut ilustrasinya:
 
+<!--more-->
+
 ![diagram join]({{ page.image_path | prepend: site.baseurl }}/outer-join-definision.png)
 
 Berikut contoh kasus dalam bentuk gambar:

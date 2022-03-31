@@ -16,6 +16,8 @@ downloads: []
 
 Penggunaan rollback, contohnya seperit berikut, masih di table yang sama yaitu `regions`
 
+<!--more-->
+
 {% gist page.gist "tcl-rollback.sql" %}
 
 hasilnya seperti berikut:

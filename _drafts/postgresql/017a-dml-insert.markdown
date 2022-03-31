@@ -17,6 +17,8 @@ downloads: []
 
 Ketika tabel telah terbuat, biasanya tidak ada data yang tersedia di dalam tabel tersebut. Untuk mengisi datanya kita harus menjalankan perintah insert atau selain itu kita juga bisa menggunakan fitur backup/restore database, tpi fitur backup/restore tidak akan saya jelaskan di materi bootcamp sekarang. Jadi kita fokus ke materi dml dulu.
 
+<!--more-->
+
 Format penulisan insert statement yaitu sebagai berikut:
 
 ```sql

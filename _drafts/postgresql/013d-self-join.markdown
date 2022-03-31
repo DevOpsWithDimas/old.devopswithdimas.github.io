@@ -14,7 +14,10 @@ gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 downloads: []
 ---
 
+
 Selain `inner join`, `natural join` dan `outter join` ada juga `self join` yaitu merelasikan ke tabel dirinya sendiri, berikut ilustrasinya:
+
+<!--more-->
 
 ![gambar self join]({{ page.image_path | prepend: site.baseurl }}/self-join.png)
 

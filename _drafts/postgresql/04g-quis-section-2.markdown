@@ -21,6 +21,8 @@ downloads: []
 
 Hai semuanya di materi sebelumnya kita sudah membahas beberapa hal basic sepert SQL Select statement, build-in Functions and Operators, WHERE clause, dan limit serta offset. Untuk memahami materi sebelumnya saatnya temen-temen untuk mencoba dengan mengerjakan soal seperti berikut: 
 
+<!--more-->
+
 1. buatlah _query_ untuk menampilkan data sebagai berikut:
 ![Hasil soal no 1]({{ site.baseurl }}{{ page.image_path | prepend: site.baseurl }}/soal1.png)
 Dengan ketentuan:

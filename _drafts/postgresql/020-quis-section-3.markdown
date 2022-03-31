@@ -14,6 +14,8 @@ gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 downloads: []
 ---
 
+<!--more-->
+
 1. Tambahkan data ke tabel `countries` dengan data seperti berikut
 ![data insert query countries]({{ page.image_path | prepend: site.baseurl }}/soal1.png)
 2. Tambahkan data ke tabel `locations` dengan data seperti berikut

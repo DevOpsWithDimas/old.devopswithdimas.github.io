@@ -22,6 +22,8 @@ Sebuah **Constraint** digunakan untuk memvalidasi / mengontrol data yang dapat d
 4. Primary key
 5. Foreign keys
 
+<!--more-->
+
 ## Constraint Not Null
 
 Constraint **Not Null** diterapkan pada column tertentu dalam sebuah table, dengan tujuan untuk memvalidasi data yang kita entry tidak dapat bernilai null. Contoh penggunaanya seperti berikut:

@@ -16,4 +16,6 @@ downloads: []
 
 Penggunaan commit, contohnya seperit berikut masih di table yang sama yaitu `regions`
 
+<!--more-->
+
 {% gist page.gist "tcl-commit.sql" %}

@@ -21,6 +21,8 @@ Schema pada Database PostgreSQL terdiri dari beberapa object yang diurutkan berd
 2. Schema
 3. Tables, Sequences, Funcations dan lain-lain.
 
+<!--more-->
+
 Jika saya gambarkan maka seperti berikut ilustrasinya:
 
 ![database schema]({{ page.image_path | prepend: site.baseurl }}/postgresql-schema.png)
