@@ -50,14 +50,14 @@ pagination:
                     <a href="{{ post.url | prepend: site.baseurl }}">
                         <span class="title">{{ post.title }}</span>
                     </a>
-                    <p>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
                         {% if post.content contains '<!--more-->' %} 
                         {{ post.content | split:'<!--more-->' | first }}<br>
                         <a href="{{ post.url | prepend: site.baseurl }}">
                             <span>Lanjut membaca...</span>
                         </a>
                         {% endif %}
-                    </p>
+                    </div>
                 </li>
                 {% endfor %}
             </ul>
