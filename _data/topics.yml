@@ -352,23 +352,23 @@
   catalogs:
     - name: Pengenalan Kubernetes
       key: introduction
-      description: 'Eps 1: Pengenakan Kubernetes (k8s)'
+      description: 'Eps. 1 - Pengenakan Kubernetes (k8s)'
       deprecated: false
     - name: Getting started with minikube
       key: minikube
-      description: 'Eps 2: Getting started with Minikube Cluster'
+      description: 'Eps. 2 - Getting started with Minikube Cluster'
       deprecated: false
     - name: Kubernetes Workloads
       key: workloads
-      description: ''
+      description: 'Eps. 3 - Kubernetes Workloads'
       deprecated: false
     - name: 'Study Kasus: Workloads'
       key: study-cases-workloads
-      description: ''
+      description: 'Eps. 4 - Study kasus: Kubernetes workloads'
       deprecated: false
-    - name: 'Networking using Services'
+    - name: 'Kubernetes networking (service)'
       key: service
-      description: ''
+      description: 'Eps. 5 - Kubernetes networking (service)'
       deprecated: false
     - name: 'Study Kasus: Networking'
       key: study-cases-networking
@@ -631,9 +631,9 @@
   coming_soon: false
   visible: true
   catalogs:
-    - name: Pengenalan Java programming language
+    - name: Pengenalan Java language
       key: introduction
-      description: 'Eps 1: Pengenalan Java Programming'
+      description: 'Eps 1: Pengenalan Java Programming language'
     - name: Getting started
       key: getting-started
       description: 'Eps 2: Getting started with Java'

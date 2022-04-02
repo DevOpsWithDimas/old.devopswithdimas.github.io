@@ -1,6 +1,6 @@
 ---
-layout: {{ layout }}
-title: "{{ title }}"
+layout: post
+title: "01b-java-architecture"
 lang: java-se
 authors:
 - dimasm93
@@ -9,13 +9,14 @@ categories:
 - java
 refs: 
 - https://docs.oracle.com/en/java/javase/17/
-youtube: {{ youtube }}
+youtube: 
 comments: true
 gist: dimMaryanto93/96aad3c6bed60d010757c7d1acba930a
-catalog_key: getting-started
-image_path: /resources/posts/java-se/{{ title }}
+catalog_key: introduction
+image_path: /resources/posts/java-se/01b-java-architecture
 downloads: []
 ---
+
 
 description...
 
