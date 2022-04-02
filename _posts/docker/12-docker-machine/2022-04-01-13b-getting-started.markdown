@@ -24,7 +24,6 @@ Hai semuanya, setelah kita melakukan installasi `docker-machine` di Windows, Lin
 1. Use Machine to run Docker containers
 2. Accessing to a machine
 3. Run containers and experiment with Machine commands
-4. Start and stop machines
 
 Ok langsung aja kita bahas materi yang pertama:
 
@@ -40,7 +39,7 @@ To run a Docker container, you:
 
 1. create a new (or start an existing) Docker virtual machine
 2. switch your environment to your new VM
-4. use the docker client to create, load, and manage containers
+3. use the docker client to create, load, and manage containers
 
 Once you create a machine, you can reuse it as often as you like. Like any VirtualBox VM, it maintains its configuration between uses.
 
@@ -103,12 +102,3 @@ Run a container with docker run to verify your set up.
                         body { width: 35em; margin: 0 auto;
                         font-family: Tahoma, Verdana, Arial, sans-serif; }
     ```
-
-## Start and stop machines
-
-If you are finished using a host for the time being, you can stop it with `docker-machine stop` and later start it again with `docker-machine start`.
-
-{% highlight bash %}
-docker-machine stop default
-docker-machine start default
-{% endhighlight %}
