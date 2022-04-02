@@ -39,15 +39,13 @@ docker-machine start default
 
 ## Create and drop machines
 
-Create machines locally using VirtualBox. This driver requires VirtualBox 5+ to be installed on your host. Using VirtualBox 4.3+ should work but will give you a warning. Older versions will refuse to work.
+Create machines locally using VirtualBox. This driver requires VirtualBox `5+` to be installed on your host. Using VirtualBox `4.3+` should work but will give you a warning. Older versions will refuse to work.
 
 {% highlight bash %}
 docker-machine create --driver=virtualbox vbox-test
 {% endhighlight %}
 
 In another way, you can customize your machine like memory, cpus count, insecure-registries etc. The options:
-
-Options:
 
 -   `--virtualbox-memory`: Size of memory for the host in MB.
 -   `--virtualbox-cpu-count`: Number of CPUs to use to create the VM. Defaults to single CPU.
@@ -118,3 +116,67 @@ docker-machine rm -y <machine-name> ...
 
 ## Interaction with a machine
 
+Untuk berinteraksi dengan machine dalam docker-machine, ada beberapa command di antaranya:
+
+1. `ls`, List machines
+2. `inspect`, information about a machine as JSON.
+3. `ip`, Get the IP address of one or more machines.
+4. `env`, Set environment variables to dictate that `docker` should run a command against a particular machine.
+5. `active`, See which machine is "active" (a machine is considered active if the `DOCKER_HOST` environment variable points to it).
+6. `ssh`, Log into or run a command on a machine using SSH.
+7. `scp`, Copy files from your local host to a machine, from machine to machine, or from a machine to your local host using `scp`.
+8. `kill`, Kill (abruptly force stop) a machine
+9. `mount`, Mount or unmount a directory from a machine with SSHFS.
+
+Berikut contoh penggunaanya:
+
+```powershell
+➜ ~  docker-machine ls
+NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER      ERRORS
+default   -        virtualbox   Running   tcp://192.168.99.102:2376           v19.03.12
+
+➜ ~ ✗  docker-machine env default
+$Env:DOCKER_TLS_VERIFY = "1"
+$Env:DOCKER_HOST = "tcp://192.168.99.102:2376"
+$Env:DOCKER_CERT_PATH = "C:\Users\dimasm93\.docker\machine\machines\default"
+$Env:DOCKER_MACHINE_NAME = "default"
+$Env:COMPOSE_CONVERT_WINDOWS_PATHS = "true"
+# Run this command to configure your shell:
+# & "C:\ProgramData\chocolatey\lib\docker-machine\bin\docker-machine.exe" env default | Invoke-Expression
+
+➜ ~  & "C:\ProgramData\chocolatey\lib\docker-machine\bin\docker-machine.exe" env default | Invoke-Expression
+
+➜ ~  docker-machine ls
+NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER      ERRORS
+default   *        virtualbox   Running   tcp://192.168.99.102:2376           v19.03.12
+
+➜ ~  docker-machine active
+default
+
+➜ ~  docker-machine env --unset
+Remove-Item Env:\\DOCKER_TLS_VERIFY
+Remove-Item Env:\\DOCKER_HOST
+Remove-Item Env:\\DOCKER_CERT_PATH
+Remove-Item Env:\\DOCKER_MACHINE_NAME
+# Run this command to configure your shell:
+# & "C:\ProgramData\chocolatey\lib\docker-machine\bin\docker-machine.exe" env --unset | Invoke-Expression
+
+➜ ~  & "C:\ProgramData\chocolatey\lib\docker-machine\bin\docker-machine.exe" env --unset | Invoke-Expression
+
+➜ ~  docker-machine ssh default
+   ( '>')
+  /) TC (\   Core is distributed with ABSOLUTELY NO WARRANTY.
+ (/-_--_-\)           www.tinycorelinux.net
+
+docker@default:~$
+docker@default:~$ logout
+exit status 130
+
+➜ ~  docker-machine kill default
+Killing "default"...
+Machine "default" was killed.
+
+➜ ~  docker-machine ls
+NAME      ACTIVE   DRIVER       STATE     URL   SWARM   DOCKER    ERRORS
+default   -        virtualbox   Stopped                 Unknown
+```
