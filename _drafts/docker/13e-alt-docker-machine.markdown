@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Example usage of docker-machine"
+title: "Alternatives for provisioning install Docker HOST"
 lang: docker
 authors:
 - dimasm93
@@ -9,16 +9,19 @@ categories:
 - Docker
 - Machine
 refs: 
-- https://docs.docker.com/
+- https://maas.io/
+- https://www.ansible.com/
+- https://www.vagrantup.com/
 youtube: 
 comments: true
 catalog_key: docker-machine
-image_path: /resources/posts/docker/12d-example-use-docker-machine
+image_path: /resources/posts/docker/13e-alt-docker-machine
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Hai semuanya, di materi kali ini kita akan melihat bagaimana konsep 
+
+description...
 
 <!--more-->
 
