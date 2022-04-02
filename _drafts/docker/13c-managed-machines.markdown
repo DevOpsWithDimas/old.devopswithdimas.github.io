@@ -7,6 +7,7 @@ authors:
 categories:
 - DevOps
 - Docker
+- Machine
 refs: 
 - https://github.com/docker/machine/blob/docs/docs/drivers/virtualbox.md
 youtube: 
