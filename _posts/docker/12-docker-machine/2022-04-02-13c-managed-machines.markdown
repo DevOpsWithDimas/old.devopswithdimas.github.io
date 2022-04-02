@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Managing a machines in docker-machine"
+date: 2022-04-02T13:19:04+07:00
 lang: docker
 authors:
 - dimasm93
