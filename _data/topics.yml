@@ -264,59 +264,63 @@
   catalogs:
     - name: Pengenalan Docker
       key: introduction
-      description: ''
+      description: 'Eps. 1 - Pengenalan Container dengan Docker'
       deprecated: false
     - name: Docker Registry
       key: docker-registry
-      description: ''
+      description: 'Eps. 2 - Docker Registry'
       deprecated: false
     - name: Docker Container CLI
       key: docker-container
-      description: ''
+      description: 'Eps. 3 - Docker Container'
       deprecated: false
     - name: Docker Networks
       key: docker-network
-      description: ''
+      description: 'Eps. 4 - Docker Network'
       deprecated: false
     - name: Docker Volumes
       key: docker-volume
-      description: ''
+      description: 'Eps.5 - Docker Volumes'
       deprecated: false
     - name: Dockerfile
       key: dockerfile
-      description: ''
+      description: 'Eps.6 - Dockerfile'
       deprecated: false
     - name: 'Study Kasus: Build docker image'
       key: study-cases-dockerfile
-      description: ''
+      description: 'Eps.7 - Study kasus: building your own docker images'
       deprecated: false
     - name: Docker Compose
       key: docker-compose
-      description: ''
+      description: 'Eps.8 - Docker Compose'
       deprecated: false
     - name: 'Study Kasus: Docker Compose'
       key: study-cases-compose-files
-      description: ''
+      description: 'Eps.9 - Study kasus: run multiple container using docker-compose'
       deprecated: false
     - name: Docker Context
       key: docker-context
-      desciption: ''
+      desciption: 'Eps.10 - Docker Context'
       deprecated: false
     - name: 'Study Kasus: Docker for CI'
       key: study-cases-docker-ci
-      description: ''
+      description: 'Eps.11 - Study kasus: Docker for Continues Integration'
       deprecated: false
     - name: Docker Machine
       key: docker-machine
-      desctiption: ''
+      desctiption: 'Eps.12 - Docker Machine'
       deprecated: true
     - name: 'Study Kasus: Ansible for Docker'
       key: study-cases-ansible
-      desctiption: ''
+      desctiption: 'Eps.13 - Study kasus: Create multiple Docker Host'
       deprecated: false
     - name: Docker Swarm
       key: docker-swarm
-      desctiption: ''
+      desctiption: 'Eps.14 - Docker Swarm'
+      deprecated: false
+    - name: 'Study Kasus: Docker Swarm'
+      key: study-cases-docker-swarm
+      desctiption: 'Eps.15 - Study kasus: Orchestration with docker swarm'
       deprecated: false
 
 - name: Kubernetes (k8s)
