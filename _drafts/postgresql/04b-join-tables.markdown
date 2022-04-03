@@ -221,4 +221,12 @@ Qualified join terdiri dari
 3. `RIGHT OUTER JOIN`. First, an inner join is performed. Then, for each row in `T2` that does not satisfy the join condition with any row in `T1`, a joined row is added with `null` values in columns of `T1`. This is the converse of a left join: the result table will always have a row for each row in `T2`.
 4. `FULL OUTER JOIN`. First, an inner join is performed. Then, for each row in `T1` that does not satisfy the join condition with any row in `T2`, a joined row is added with `null` values in columns of `T2`. Also, for each row of `T2` that does not satisfy the join condition with any row in `T1`, a joined row with null values in the columns of `T1` is added.
 
+The general syntax of a qualifier join table is
+
+{% highlight sql %}
+T1 { [INNER] | { LEFT | RIGHT | FULL } [OUTER] } JOIN T2 ON boolean_expression
+T1 { [INNER] | { LEFT | RIGHT | FULL } [OUTER] } JOIN T2 USING ( join column list )
+T1 NATURAL { [INNER] | { LEFT | RIGHT | FULL } [OUTER] } JOIN T2
+{% endhighlight %}
+
 ## Qualified using `INNER JOIN`
