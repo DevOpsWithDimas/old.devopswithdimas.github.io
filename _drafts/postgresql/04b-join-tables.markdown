@@ -21,18 +21,20 @@ downloads: []
 
 Hai semuanya, di materi kali ini kita akan membahas Join Tables di PostgreSQL, Seperti biasa materinya karena akan lumayan panjang jadi kita bagi menjadi beberapa section ya diantaranya:
 
-1. Basic usage of Join Tables
-2. Cross join
-3. Qualified join
+1. What is join tables?
+2. Natural Join
+3. Cross join
+4. Qualified join
     1. Inner Joins
     2. Left or Right Outer Joins
     3. Full Outer Joins
+5. `join_condition` using `ON` and `WHERE` clause
 
 Ok langsung aja yuk kita bahas materi yang pertama:
 
 <!--more-->
 
-## Basic Join Tables
+## What is join tables?
 
 A joined table is a table derived from two other (real or derived) tables according to the rules of the particular join type. Inner, outer, and cross-joins are available.
 
@@ -76,6 +78,17 @@ SELECT *
 FROM employees natural join jobs;
 {% endhighlight %}
 
+## Natural Join
+
+A natural join is a join that creates an implicit join based on the same column names in the joined tables.
+
+The general syntax of a natural joined table is
+
+{% highlight sql %}
+SELECT select_list_expression
+FROM T1 NATURAL [INNER, LEFT, RIGHT] T2;
+{% endhighlight %}
+
 Join statement can be more than once, and Parentheses can be used around `JOIN` clauses to control the join order. In the absence of parentheses, `JOIN` clauses nest left-to-right.
 
 {% gist page.gist "04b-basic-join-tables.sql" %}
@@ -102,3 +115,39 @@ hr-# limit 10;
  FI_ACCOUNT | Accountant                    |         109 | Daniel     | 1297 Via Cola di Rie
 (10 rows)
 ```
+
+If you use the asterisk (`*`) in the `select_list`, the result will contain the following columns:
+
+1. All the common columns, which are the columns from both tables that have the same name.
+2. Every column from both tables, which is not a common column.
+
+However, you should avoid using the **NATURAL JOIN** whenever possible because sometimes it may cause an unexpected result.
+
+For example, See the following `customers` and `transactions` tables from the sample database:
+
+{% mermaid %}
+erDiagram
+    customers ||--o| transactions : cust_id
+    customers {
+        int         cust_id          PK
+        string      cust_name
+        datetime    last_updated
+    }
+    transactions
+    transactions {
+        int         pay_id          PK
+        string      cust_id         FK
+        datetime    last_updated
+    }
+{% endmermaid %}
+
+Both tables have the same `cust_id` column so you can use the NATURAL JOIN to join these tables as follows:
+
+{% highlight sql %}
+SELECT *
+FROM customers NATURAL JOIN transactions;
+{% endhighlight %}
+
+But both tables also have another common column called `last_update`, which cannot be used for the join (ambiguous).
+
+## Cross join
