@@ -12,7 +12,7 @@ categories:
 refs: 
 - https://www.postgresql.org/docs/14/queries-table-expressions.html#joined_tables
 youtube: 
-image_path: /resources/posts/postgresql/03h-join-tables
+image_path: /resources/posts/postgresql/04b-join-tables
 comments: true
 gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
 catalog_key: select-statement
@@ -210,9 +210,9 @@ hr=# select count(*) from departments cross join jobs;
 
 ## Qualified Join
 
-Qualified Join ini adalah sesuai artinya ya join yang memiliki criteria atau condition (`join_condition`). 
+Qualified Join ini adalah sesuai artinya join yang memiliki criteria atau condition (`join_condition`) tertentu. 
 
-Basicly the `join_condition` is specified in the `ON` or `USING` clause, or implicitly by the word `NATURAL`. The join condition determines which rows from the two source tables are considered to “match”, as explained in detail below.
+Basicly the `join_condition` is specified in the `ON` or `USING` or `WHERE` clause, or implicitly by the word `NATURAL`. The join condition determines which rows from the two source tables are considered to “match”, as explained in detail below.
 
 Qualified join terdiri dari
 
@@ -230,3 +230,55 @@ T1 NATURAL { [INNER] | { LEFT | RIGHT | FULL } [OUTER] } JOIN T2
 {% endhighlight %}
 
 ## Qualified using `INNER JOIN`
+
+Inner Join adalah Join table yang paling commons di gunakan untuk menggabungkan antara ke 2 tabel atau lebih. Secara konsep matematika `INNER JOIN` akan menggunakan condition yang jika T1 dan T2 bernilai sama seperti ilustrasi berikut:
+
+![inner-join]({{ page.image_path | prepend: site.baseurl }}/01-inner-join.png)
+
+Contohnya saya punya perancangan table seperti berikut 
+
+{% mermaid %}
+erDiagram
+    jobs ||--o| employees : job_id
+    jobs {
+        int     job_id          PK  "identifier of jobs"
+        string  job_title           "Job Name"
+    }
+    employees
+    employees {
+        int         employee_id     PK "identifier of employees"
+        string      first_name
+        string      last_name
+        int         job_id          FK "assigned to job"
+    }
+{% endmermaid %}
+
+Maka querynya seperti berikut:
+
+{% gist page.gist "04b-join.sql" %}
+
+Atau jiga kita bisa menggunakan lebih specify yaitu `INNER JOIN` seperti berikut:
+
+{% gist page.gist "04b-inner-join.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# SELECT emp.employee_id, emp.last_name, job.job_id, job.job_title
+hr-# FROM employees emp
+hr-#       inner join jobs job on (emp.job_id = job.job_id)
+hr-# LIMIT 10;
+ employee_id | last_name |   job_id   |           job_title
+-------------+-----------+------------+-------------------------------
+         100 | King      | AD_PRES    | President
+         101 | Kochhar   | AD_VP      | Administration Vice President
+         102 | De Haan   | AD_VP      | Administration Vice President
+         103 | Hunold    | IT_PROG    | Programmer
+         104 | Ernst     | IT_PROG    | Programmer
+         105 | Austin    | IT_PROG    | Programmer
+         106 | Pataballa | IT_PROG    | Programmer
+         107 | Lorentz   | IT_PROG    | Programmer
+         108 | Greenberg | FI_MGR     | Finance Manager
+         109 | Faviet    | FI_ACCOUNT | Accountant
+(10 rows)
+```
