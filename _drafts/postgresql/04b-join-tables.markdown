@@ -28,6 +28,7 @@ Hai semuanya, di materi kali ini kita akan membahas Join Tables di PostgreSQL, S
     1. Inner Joins
     2. Left or Right Outer Joins
     3. Full Outer Joins
+    4. Self Joins
 5. `join_condition` using `ON` and `WHERE` clause
 
 Ok langsung aja yuk kita bahas materi yang pertama:
