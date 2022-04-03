@@ -427,7 +427,9 @@ hr-#       FULL OUTER JOIN employees emp on dep.manager_id = emp.employee_id;
 
 ## Qualified for Self `JOIN`
 
-Inner Join adalah Join table yang paling commons di gunakan untuk menggabungkan antara ke 2 tabel atau lebih. Secara konsep matematika `INNER JOIN` akan menggunakan condition yang jika T1 dan T2 bernilai sama seperti ilustrasi berikut:
+Self JOIN pada dasarnya Join Table seperti layaknya `INNER JOIN` dan `OUTER JOIN` hanya saja menggabungkan antara 2 tabel atau lebih yang ke referensi yang sama. 
+
+Jika kita gambarkan Entity Relational Diagramnya seperti berikut:
 
 {% mermaid %}
 erDiagram
@@ -439,5 +441,34 @@ erDiagram
         int         manager_id      FK "manager of employee"
     }
 {% endmermaid %}
+
+Contoh kasusnya, tampilkan data karyawan berserta managernya maka querynya seperti berikut:
+
+{% gist page.gist "04b-self-join.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# SELECT  emp.employee_id "employee id",
+hr-#         emp.last_name as "employee name",
+hr-#         man.employee_id "manager id",
+hr-#         man.last_name "manager name"
+hr-# FROM employees emp
+hr-#   LEFT OUTER JOIN employees man on emp.manager_id = man.employee_id
+hr-# LIMIT 10;
+ employee id | employee name | manager id | manager name
+-------------+---------------+------------+--------------
+         100 | King          |            |
+         101 | Kochhar       |        100 | King
+         102 | De Haan       |        100 | King
+         103 | Hunold        |        102 | De Haan
+         104 | Ernst         |        103 | Hunold
+         105 | Austin        |        103 | Hunold
+         106 | Pataballa     |        103 | Hunold
+         107 | Lorentz       |        103 | Hunold
+         108 | Greenberg     |        101 | Kochhar
+         109 | Faviet        |        108 | Greenberg
+(10 rows)
+```
 
 ## `join_condition` expressions
