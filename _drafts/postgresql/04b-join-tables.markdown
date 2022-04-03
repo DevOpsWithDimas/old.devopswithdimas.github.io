@@ -152,3 +152,7 @@ FROM customers NATURAL JOIN transactions;
 But both tables also have another common column called `last_update`, which cannot be used for the join (ambiguous).
 
 ## Cross join
+
+Cross join is For every possible combination of rows from `T1` and `T2` (i.e., a Cartesian product), the joined table will contain a row consisting of all columns in `T1` followed by all columns in `T2`. If the tables have `N` and `M` rows respectively, the joined table will have `N * M` rows.
+
+`FROM T1 CROSS JOIN T2` is equivalent to `FROM T1 INNER JOIN T2 ON TRUE`
