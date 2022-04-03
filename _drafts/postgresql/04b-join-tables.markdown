@@ -348,7 +348,7 @@ hr-#       LEFT OUTER JOIN employees emp on dep.manager_id = emp.employee_id;
 
 Sedangkan berikut adalah implementasi `RIGHT OUTER JOIN` dengan query yang sama seperti berikut:
 
-{% gist paget "04b-right-outer-join.sql" %}
+{% gist page.gist "04b-right-outer-join.sql" %}
 
 Jika dijalankan maka hasilnya seperti berikut:
 
