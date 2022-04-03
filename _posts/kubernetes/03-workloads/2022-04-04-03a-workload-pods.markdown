@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Workload of Pods"
+date: 2022-04-04T03:47:37+07:00
 lang: k8s
 authors:
 - dimasm93
