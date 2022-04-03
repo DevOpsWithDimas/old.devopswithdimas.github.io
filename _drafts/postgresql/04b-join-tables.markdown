@@ -285,13 +285,105 @@ hr-# LIMIT 10;
 
 ## Qualified using Left or Right `OUTER JOIN`
 
-Inner Join adalah Join table yang paling commons di gunakan untuk menggabungkan antara ke 2 tabel atau lebih. Secara konsep matematika `INNER JOIN` akan menggunakan condition yang jika T1 dan T2 bernilai sama seperti ilustrasi berikut:
+Selain `INNER JOIN` terdapat `OUTER JOIN`. `OUTER JOIN` terdiri dari 2 kombinasi yaitu 
+
+1. `LEFT OUTER JOIN` 
+2. `RIGHT OUTER JOIN`
+
+Secara konsep matematika `OUTER JOIN` jika kita ilustrasi dengan diagram venn seperti berikut:
 
 ![outer-join]({{ page.image_path | prepend: site.baseurl }}/02-outer-join.png)
 
+Jadi position dari table pada saat join query menentukan datanya akan di tampilkan atau tidak. Misalnya disini saya punya design tabel seperti berikut:
+
+{% mermaid %}
+erDiagram
+    departments 
+    departments {
+        int     department_id   PK  "identifier of jobs"
+        string  department_name
+        int     manager_id      FK  "reff to employee"
+    }
+    employees ||--o| departments : manager_id
+    employees {
+        int         employee_id     PK "identifier of employees"
+        string      first_name
+        string      last_name
+    }
+{% endmermaid %}
+
+Berikut adalah contoh implementasi `LEFT OUTER JOIN` 
+
+{% gist page.gist "04b-left-outer-join.sql" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# SELECT dep.department_id, dep.department_name, emp.employee_id, emp.last_name
+hr-# FROM departments dep
+hr-#       LEFT OUTER JOIN employees emp on dep.manager_id = emp.employee_id;
+ department_id |   department_name    | employee_id | last_name
+---------------+----------------------+-------------+-----------
+           300 | System Analis        |             |
+            10 | Administration       |         200 | Whalen
+            20 | Marketing            |         201 | Hartstein
+            30 | Purchasing           |         114 | Raphaely
+            40 | Human Resources      |         203 | Mavris
+            50 | Shipping             |         121 | Fripp
+            60 | IT                   |         103 | Hunold
+            70 | Public Relations     |         204 | Baer
+            80 | Sales                |         145 | Russell
+            90 | Executive            |         100 | King
+           100 | Finance              |         108 | Greenberg
+           110 | Accounting           |         205 | Higgins
+           120 | Treasury             |             |
+           130 | Corporate Tax        |             |
+           140 | Control And Credit   |             |
+           150 | Shareholder Services |             |
+           250 | Retail Sales         |             |
+           260 | Recruiting           |             |
+           270 | Payroll              |             |
+(28 rows)
+```
+
+Sedangkan berikut adalah implementasi `RIGHT OUTER JOIN` dengan query yang sama seperti berikut:
+
+{% gist paget "04b-right-outer-join.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# SELECT dep.department_id, dep.department_name, emp.employee_id, emp.last_name
+hr-# FROM departments dep
+hr-#       RIGHT OUTER JOIN employees emp on dep.manager_id = emp.employee_id;
+ department_id | department_name  | employee_id |  last_name
+---------------+------------------+-------------+-------------
+            10 | Administration   |         200 | Whalen
+            20 | Marketing        |         201 | Hartstein
+            30 | Purchasing       |         114 | Raphaely
+            40 | Human Resources  |         203 | Mavris
+            50 | Shipping         |         121 | Fripp
+            60 | IT               |         103 | Hunold
+            70 | Public Relations |         204 | Baer
+            80 | Sales            |         145 | Russell
+            90 | Executive        |         100 | King
+           100 | Finance          |         108 | Greenberg
+           110 | Accounting       |         205 | Higgins
+               |                  |         106 | Pataballa
+               |                  |         120 | Weiss
+               |                  |         151 | Bernstein
+               |                  |         119 | Colmenares
+               |                  |         101 | Kochhar
+               |                  |         137 | Ladwig
+               |                  |         118 | Himuro
+               |                  |         130 | Atkinson
+               |                  |         144 | Vargas
+(107 rows)
+```
+
 ## Qualified using `FULL OUTER JOIN`
 
-Inner Join adalah Join table yang paling commons di gunakan untuk menggabungkan antara ke 2 tabel atau lebih. Secara konsep matematika `INNER JOIN` akan menggunakan condition yang jika T1 dan T2 bernilai sama seperti ilustrasi berikut:
+Selain `INNER JOIN` terdapat `OUTER JOIN`. Secara konsep matematika `OUTER JOIN` jika kita ilustrasi dengan diagram venn seperti berikut:
 
 ![full-outer-join]({{ page.image_path | prepend: site.baseurl }}/03-full-outer-join.png)
 
