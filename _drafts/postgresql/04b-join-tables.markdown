@@ -22,8 +22,8 @@ downloads: []
 Hai semuanya, di materi kali ini kita akan membahas Join Tables di PostgreSQL, Seperti biasa materinya karena akan lumayan panjang jadi kita bagi menjadi beberapa section ya diantaranya:
 
 1. Basic usage of Join Tables
-2. Join Types
-3. Qualified joins
+2. Cross join
+3. Qualified join
     1. Inner Joins
     2. Left or Right Outer Joins
     3. Full Outer Joins
