@@ -383,9 +383,47 @@ hr-#       RIGHT OUTER JOIN employees emp on dep.manager_id = emp.employee_id;
 
 ## Qualified using `FULL OUTER JOIN`
 
-Selain `INNER JOIN` terdapat `OUTER JOIN`. Secara konsep matematika `OUTER JOIN` jika kita ilustrasi dengan diagram venn seperti berikut:
+Pada `OUTER JOIN` juga terdapat `FULL OUTER JOIN` yang secara arti akan mengambil data secara keseluruhan. Secara konsep matematika `FULL OUTER JOIN` jika kita ilustrasi dengan diagram venn seperti berikut:
 
 ![full-outer-join]({{ page.image_path | prepend: site.baseurl }}/03-full-outer-join.png)
+
+Maka imlementasi query seperti berikut:
+
+{% gist page.gist "04b-full-outer-join.sql" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# SELECT dep.department_id, dep.department_name, emp.employee_id, emp.last_name
+hr-# FROM departments dep
+hr-#       FULL OUTER JOIN employees emp on dep.manager_id = emp.employee_id;
+ department_id |   department_name    | employee_id |  last_name
+---------------+----------------------+-------------+-------------
+           300 | System Analis        |             |
+            10 | Administration       |         200 | Whalen
+            20 | Marketing            |         201 | Hartstein
+            80 | Sales                |         145 | Russell
+            90 | Executive            |         100 | King
+           100 | Finance              |         108 | Greenberg
+           110 | Accounting           |         205 | Higgins
+           120 | Treasury             |             |
+           130 | Corporate Tax        |             |
+           140 | Control And Credit   |             |
+           220 | NOC                  |             |
+           230 | IT Helpdesk          |             |
+           240 | Government Sales     |             |
+           250 | Retail Sales         |             |
+           260 | Recruiting           |             |
+           270 | Payroll              |             |
+               |                      |         106 | Pataballa
+               |                      |         120 | Weiss
+               |                      |         151 | Bernstein
+               |                      |         183 | Geoni
+               |                      |         118 | Himuro
+               |                      |         130 | Atkinson
+               |                      |         144 | Vargas
+(124 rows)
+```
 
 ## Qualified for Self `JOIN`
 
@@ -402,4 +440,4 @@ erDiagram
     }
 {% endmermaid %}
 
-## `join_condition` using `ON`, `USING` and `WHERE` clause
+## `join_condition` expressions
