@@ -156,3 +156,56 @@ But both tables also have another common column called `last_update`, which cann
 Cross join is For every possible combination of rows from `T1` and `T2` (i.e., a Cartesian product), the joined table will contain a row consisting of all columns in `T1` followed by all columns in `T2`. If the tables have `N` and `M` rows respectively, the joined table will have `N * M` rows.
 
 `FROM T1 CROSS JOIN T2` is equivalent to `FROM T1 INNER JOIN T2 ON TRUE`
+
+For example:
+
+{% gist page.gist "04b-cross-join.sql" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```postgresql-console
+hr=# select count(*) from departments;
+ count
+-------
+    28
+(1 row)
+
+hr=# select count(*) from jobs;
+ count
+-------
+    19
+(1 row)
+
+hr=# SELECT dep.department_id, dep.department_name, job.job_id, job.job_title
+hr-# FROM departments dep
+hr-#      CROSS JOIN jobs job;
+ department_id |   department_name    |   job_id   |            job_title
+---------------+----------------------+------------+---------------------------------
+           300 | System Analis        | AD_PRES    | President
+           300 | System Analis        | AD_VP      | Administration Vice President
+           300 | System Analis        | AD_ASST    | Administration Assistant
+           300 | System Analis        | FI_MGR     | Finance Manager
+           300 | System Analis        | FI_ACCOUNT | Accountant
+           300 | System Analis        | IT_PROG    | Programmer
+           300 | System Analis        | MK_MAN     | Marketing Manager
+           300 | System Analis        | MK_REP     | Marketing Representative
+           300 | System Analis        | HR_REP     | Human Resources Representative
+           300 | System Analis        | PR_REP     | Public Relations Representative
+            10 | Administration       | AD_PRES    | President
+            10 | Administration       | AD_VP      | Administration Vice President
+            10 | Administration       | AD_ASST    | Administration Assistant
+            10 | Administration       | FI_MGR     | Finance Manager
+            10 | Administration       | FI_ACCOUNT | Accountant
+            10 | Administration       | AC_MGR     | Accounting Manager
+            10 | Administration       | AC_ACCOUNT | Public Accountant
+            10 | Administration       | SA_MAN     | Sales Manager
+(532 rows)
+
+hr=# select count(*) from departments cross join jobs;
+ count
+-------
+   532
+(1 row)
+```
+
+## Qualified using `INNER JOIN`
