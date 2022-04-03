@@ -19,9 +19,22 @@ catalog_key: select-statement
 downloads: []
 ---
 
-Hai semuanya, di materi kali ini kita akan membahas Join Tables di PostgreSQL. A joined table is a table derived from two other (real or derived) tables according to the rules of the particular join type. Inner, outer, and cross-joins are available.
+Hai semuanya, di materi kali ini kita akan membahas Join Tables di PostgreSQL, Seperti biasa materinya karena akan lumayan panjang jadi kita bagi menjadi beberapa section ya diantaranya:
+
+1. Basic usage of Join Tables
+2. Join Types
+3. Qualified joins
+    1. Inner Joins
+    2. Left or Right Outer Joins
+    3. Full Outer Joins
+
+Ok langsung aja yuk kita bahas materi yang pertama:
 
 <!--more-->
+
+## Basic Join Tables
+
+A joined table is a table derived from two other (real or derived) tables according to the rules of the particular join type. Inner, outer, and cross-joins are available.
 
 The general syntax of a joined table is
 
@@ -34,12 +47,12 @@ Joins of all types can be chained together, or nested: either or both `T1` and `
 
 {% mermaid %}
 erDiagram
-    jobs ||--o{ employees : job_id
+    jobs ||--o| employees : job_id
     jobs {
         int     job_id          PK  "identifier of jobs"
         string  job_title           "Job Name"
     }
-    locations ||--o{ employees : location_id
+    locations ||--o| employees : location_id
     locations {
         int     location_id     PK  "indentifier of location"
         string  street_address  
