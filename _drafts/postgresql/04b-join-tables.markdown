@@ -282,3 +282,5 @@ hr-# LIMIT 10;
          109 | Faviet    | FI_ACCOUNT | Accountant
 (10 rows)
 ```
+
+## Qualified using Left or Right `OUTER JOIN`
