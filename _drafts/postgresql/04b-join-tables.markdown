@@ -208,4 +208,17 @@ hr=# select count(*) from departments cross join jobs;
 (1 row)
 ```
 
+## Qualified Join
+
+Qualified Join ini adalah sesuai artinya ya join yang memiliki criteria atau condition (`join_condition`). 
+
+Basicly the `join_condition` is specified in the `ON` or `USING` clause, or implicitly by the word `NATURAL`. The join condition determines which rows from the two source tables are considered to “match”, as explained in detail below.
+
+Qualified join terdiri dari
+
+1. `INNER JOIN`. For each row `R1` of `T1`, the joined table has a row for each row in `T2` that satisfies the join condition with `R1`.
+2. `LEFT OUTER JOIN`. First, an inner join is performed. Then, for each row in `T1` that does not satisfy the join condition with any row in `T2`, a joined row is added with `null` values in columns of `T2`. Thus, the joined table always has at least one row for each row in `T1`.
+3. `RIGHT OUTER JOIN`. First, an inner join is performed. Then, for each row in `T2` that does not satisfy the join condition with any row in `T1`, a joined row is added with `null` values in columns of `T1`. This is the converse of a left join: the result table will always have a row for each row in `T2`.
+4. `FULL OUTER JOIN`. First, an inner join is performed. Then, for each row in `T1` that does not satisfy the join condition with any row in `T2`, a joined row is added with `null` values in columns of `T2`. Also, for each row of `T2` that does not satisfy the join condition with any row in `T1`, a joined row with null values in the columns of `T1` is added.
+
 ## Qualified using `INNER JOIN`
