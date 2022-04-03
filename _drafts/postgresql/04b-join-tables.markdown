@@ -284,3 +284,30 @@ hr-# LIMIT 10;
 ```
 
 ## Qualified using Left or Right `OUTER JOIN`
+
+Inner Join adalah Join table yang paling commons di gunakan untuk menggabungkan antara ke 2 tabel atau lebih. Secara konsep matematika `INNER JOIN` akan menggunakan condition yang jika T1 dan T2 bernilai sama seperti ilustrasi berikut:
+
+![outer-join]({{ page.image_path | prepend: site.baseurl }}/02-outer-join.png)
+
+## Qualified using `FULL OUTER JOIN`
+
+Inner Join adalah Join table yang paling commons di gunakan untuk menggabungkan antara ke 2 tabel atau lebih. Secara konsep matematika `INNER JOIN` akan menggunakan condition yang jika T1 dan T2 bernilai sama seperti ilustrasi berikut:
+
+![full-outer-join]({{ page.image_path | prepend: site.baseurl }}/03-full-outer-join.png)
+
+## Qualified for Self `JOIN`
+
+Inner Join adalah Join table yang paling commons di gunakan untuk menggabungkan antara ke 2 tabel atau lebih. Secara konsep matematika `INNER JOIN` akan menggunakan condition yang jika T1 dan T2 bernilai sama seperti ilustrasi berikut:
+
+{% mermaid %}
+erDiagram
+    employees ||--o| employees : manager_id
+    employees {
+        int         employee_id     PK "identifier of employees"
+        string      first_name
+        string      last_name
+        int         manager_id      FK "manager of employee"
+    }
+{% endmermaid %}
+
+## `join_condition` using `ON`, `USING` and `WHERE` clause
