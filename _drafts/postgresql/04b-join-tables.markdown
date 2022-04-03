@@ -29,7 +29,7 @@ Hai semuanya, di materi kali ini kita akan membahas Join Tables di PostgreSQL, S
     2. Left or Right Outer Joins
     3. Full Outer Joins
     4. Self Joins
-5. `join_condition` using `ON` and `WHERE` clause
+5. `join_condition` expressions
 
 Ok langsung aja yuk kita bahas materi yang pertama:
 
@@ -472,3 +472,59 @@ hr-# LIMIT 10;
 ```
 
 ## `join_condition` expressions
+
+The `ON` clause is the most general kind of join condition: it takes a Boolean value expression of the same kind as is used in a `WHERE` clause. A pair of rows from `T1` and `T2` match if the `ON` expression evaluates to `true`.
+
+{% gist page.gist "04b-on-join-conditions.sql" %}
+
+The `USING` clause is a shorthand that allows you to take advantage of the specific situation where both sides of the join use the same name for the joining column(s). It takes a comma-separated list of the shared column names and forms a join condition that includes an equality comparison for each one. For example, joining `T1` and `T2` with `USING (a, b)` produces the join condition `ON T1.a = T2.a AND T1.b = T2.b`.
+
+{% gist page.gist "04b-using-join-conditions.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# SELECT emp.employee_id, emp.last_name, job.job_id, job.job_title
+hr-# FROM employees emp
+hr-#       join jobs job using (job_id)
+hr-# LIMIT 10;
+ employee_id | last_name |   job_id   |           job_title
+-------------+-----------+------------+-------------------------------
+         100 | King      | AD_PRES    | President
+         101 | Kochhar   | AD_VP      | Administration Vice President
+         102 | De Haan   | AD_VP      | Administration Vice President
+         103 | Hunold    | IT_PROG    | Programmer
+         104 | Ernst     | IT_PROG    | Programmer
+         105 | Austin    | IT_PROG    | Programmer
+         106 | Pataballa | IT_PROG    | Programmer
+         107 | Lorentz   | IT_PROG    | Programmer
+         108 | Greenberg | FI_MGR     | Finance Manager
+         109 | Faviet    | FI_ACCOUNT | Accountant
+(10 rows)
+```
+
+Selain itu juga kita bisa menggunakan `WHERE` clause, seperti berikut:
+
+{% gist page.gist "04b-where-join-conditions.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```postgresql-console
+hr=# SELECT emp.employee_id, emp.last_name, job.job_id, job.job_title
+hr-# FROM employees emp, jobs job
+hr-# WHERE emp.job_id = job.job_id
+hr-# LIMIT 10;
+ employee_id | last_name |   job_id   |           job_title
+-------------+-----------+------------+-------------------------------
+         100 | King      | AD_PRES    | President
+         101 | Kochhar   | AD_VP      | Administration Vice President
+         102 | De Haan   | AD_VP      | Administration Vice President
+         103 | Hunold    | IT_PROG    | Programmer
+         104 | Ernst     | IT_PROG    | Programmer
+         105 | Austin    | IT_PROG    | Programmer
+         106 | Pataballa | IT_PROG    | Programmer
+         107 | Lorentz   | IT_PROG    | Programmer
+         108 | Greenberg | FI_MGR     | Finance Manager
+         109 | Faviet    | FI_ACCOUNT | Accountant
+(10 rows)
+```
