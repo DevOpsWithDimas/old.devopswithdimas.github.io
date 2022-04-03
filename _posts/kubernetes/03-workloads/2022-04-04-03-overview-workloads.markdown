@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Overview of Kubernetes Workloads"
+date: 2022-04-04T03:53:03+07:00
 lang: k8s
 authors:
 - dimasm93
