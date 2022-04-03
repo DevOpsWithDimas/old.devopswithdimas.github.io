@@ -20,6 +20,6 @@ downloads: []
 ---
 
 
-Hai semuanya
+Hai semuanya di materi kali ini kita akan membahas lebih detail tentang Kubernetes Workloads
 
 <!--more-->
