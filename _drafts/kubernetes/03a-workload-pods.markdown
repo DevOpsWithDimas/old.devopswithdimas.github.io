@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Workload of Pods"
+title: "Kubernetes Workloads with Pods"
 lang: k8s
 authors:
 - dimasm93
@@ -19,8 +19,13 @@ gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan bahas tentang Kubernetes Workload dengan Pods. Karena materinya lumayan panjang kita akan bagi menjadi beberapa section diantaranya:
 
-description...
+1. What is a Pod?
+2. Using Pods into your kubernetes cluster
+3. Workloads resources for managing pods
+4. How pods manage multiple containers
+5. Working with Pods
 
 <!--more-->
 
