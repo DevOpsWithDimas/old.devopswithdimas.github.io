@@ -1,3 +1,20 @@
+- cource: k8s
+  catalog: workloads
+  date: 2022-04-12T18:29:00+07:00
+  duration: "5jam"
+  tier: "free"
+  youtube: 
+  thumbnail:
+  visible: false
+  markers: |
+    What is Kubernetes Workloads?
+    Pods workloads
+    Deployment workloads
+    ReplicaSet workloads
+    StatefulSet workloads
+    DaemonSet workloads
+    Job & CronJob workloads
+
 - cource: docker
   catalog: docker-machine
   date: 2022-04-07T18:29:00+07:00
