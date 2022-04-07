@@ -28,24 +28,70 @@ icon: announcement
 			{% assign topic = site.data.topics | where: "url", news.cource | first %}
 			{% assign catalog = topic.catalogs | where: "key", news.catalog | first %}
 			<div class="col m12 l6">
-				<div class="card">
+				<div class="card hoverable sticky-action">
 					<div class="card-image">
 						{% if news.youtube %}
-						{% include youtubePlayer.html id=news.youtube %}
+							{% include youtubePlayer.html id=news.youtube %}
 						{% else %}
 						{% assign imageFileUrl = "/resources/thumbnails/" | append: news.cource | append: "/" | append:  news.catalog | append: ".png" %}
-						<img src="{{ imageFileUrl | prepend: site.baseurl }}" class="responsive-img">			
+						<img src="{{ imageFileUrl | prepend: site.baseurl }}" class="responsive-img activator">			
 						{% endif %}
 					</div>
 					<div class="card-content">
-						<span class="card-title">Card Title</span>
-						<p>I am a very simple card. I am good at containing small bits of information.
-							I am convenient because I require little markup to use effectively.</p>
+						<span class="card-title activator truncate">
+							{% if news.visible %}
+							<span class="new badge yellow black-text" data-badge-caption="">{{ news.date | date: "%A, %d/%m/%Y"}}</span>
+							{% else %}
+							<span class="new badge yellow black-text" data-badge-caption="">Comming soon</span>
+							{% endif %}
+							{{ catalog.description }} | {{ topic.name }}
+						</span>
+						<div>
+							
+						</div>
 					</div>
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">
+							<i class="material-icons right">close</i>
+							{{ catalog.description }}
+						</span>
+						<hr>
+						<div class="row">
+							{% if news.visible %}
+							<div class="col m3">
+								<b>Total duration:</b>
+								<pre><code>{{ news.duration }}</code></pre>
+							</div>
+							{% else %}
+							<div class="col m3">
+								<b>Estimasi duration:</b>
+								<pre><code>{{ news.duration }}</code></pre>
+							</div>
+							{% endif %}
+							<div class="col m3">
+								<b>Member tier:</b>
+								<pre><code>{{ news.tier }}</code></pre>
+							</div>
+						</div>
+						{% if news.messages %}
+						<div class="row">
+							<p class="col m12">{{ news.messages }}</p>
+						</div>
+						{% endif %}
+						<div class="row">
+							<div class="col m12">
+								<b>Table of Contents:</b>
+{% highlight html linenos %}
+{{ news.markers }}
+{% endhighlight %}
+							</div>
+						</div>
+					</div>
+					{% if topic.udemy %}
 					<div class="card-action">
-						<a href="#">This is a link</a>
-						<a href="#">This is a link</a>
+						<a class="title" href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}">{{ topic.fullname }}</a>
 					</div>
+					{% endif %}
 				</div>
 			</div>
 			<!-- <li>

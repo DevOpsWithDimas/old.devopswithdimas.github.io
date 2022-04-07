@@ -116,24 +116,31 @@
     - name: Pengenalan ORM Hibernate
       key: introduction
       description: ''
+      messages: ''
     - name: ORM Mappings
       key: orm-mapping
       description: ''
+      messages: ''
     - name: Hibernete Query Language (HQL)
       key: hql
       description: ''
+      messages: ''
     - name: Hibernete Criteria API
       key: criteria-api
       description: ''
+      messages: ''
     - name: Java Persistence Query Language (JPQL)
       key: jpql
       description: ''
+      messages: ''
     - name: Audit with Hibernete Envers
       key: hibernate-envers
       description: ''
+      messages: ''
     - name: Caching
       key: hibernate-cache
       description: ''
+      messages: ''
       
 - name: Reporting with JasperReport
   fullname: 
@@ -187,54 +194,67 @@
       key: introduction
       description: ''
       deprecated: false
+      messages: ''
     - name: SQL - Select Statement
       key: sql-select
       description: ''
       deprecated: false
+      messages: ''
     - name: SQL - Select with where clause
       key: sql-where-clause
       description: ''
       deprecated: false
+      messages: ''
     - name: SQL - Functions
       key: sql-functions
       description: ''
       deprecated: false
+      messages: ''
     - name: SQL - Join Tables
       key: sql-join-tables
       description: ''
       deprecated: false
+      messages: ''
     - name: SQL - Sub Queries
       key: sql-subquery
       description: ''
       deprecated: false
+      messages: ''
     - name: SQL - Expressions
       key: sql-expression
       description: ''
       deprecated: false
+      messages: ''
     - name: SQL - Data Manipulation Language
       key: sql-dml
       description: ''
+      messages: ''
       deprecated: false
     - name: SQL - Data Definition Language
       key: sql-ddl
       description: ''
       deprecated: false
+      messages: ''
     - name: Indexing
       key: index-table
       description: ''
       deprecated: false
+      messages: ''
     - name: DDL - User Management
       key: ddl-user-management
       description: ''
       deprecated: false
+      messages: ''
     - name: Monitor database activity
       key: monitor-audit-trail
       description: ''
+      messages: ''
       deprecated: false
     - name: Database Design
       key: design-db
       description: ''
       deprecated: false
+      messages: ''
 
 - name: Docker
   fullname: "DevOps - Docker: Pemula sampai Mahir"
@@ -266,66 +286,82 @@
       key: introduction
       description: 'Eps. 1 - Pengenalan Container dengan Docker'
       deprecated: false
+      messages: ''
     - name: Docker Registry
       key: docker-registry
       description: 'Eps. 2 - Docker Registry'
       deprecated: false
+      messages: ''
     - name: Docker Container CLI
       key: docker-container
       description: 'Eps. 3 - Docker Container'
       deprecated: false
+      messages: ''
     - name: Docker Networks
       key: docker-network
       description: 'Eps. 4 - Docker Network'
       deprecated: false
+      messages: ''
     - name: Docker Volumes
       key: docker-volume
       description: 'Eps.5 - Docker Volumes'
       deprecated: false
+      messages: ''
     - name: Dockerfile
       key: dockerfile
       description: 'Eps.6 - Dockerfile'
       deprecated: false
+      messages: ''
     - name: 'Study Kasus: Build docker image'
       key: study-cases-dockerfile
       description: 'Eps.7 - Study kasus: building your own docker images'
       deprecated: false
+      messages: ''
     - name: Docker Compose
       key: docker-compose
       description: 'Eps.8 - Docker Compose'
       deprecated: false
+      messages: ''
     - name: 'Study Kasus: Docker Compose'
       key: study-cases-compose-files
       description: 'Eps.9 - Study kasus: run multiple container using docker-compose'
       deprecated: false
+      messages: ''
     - name: Docker Context
       key: docker-context
       desciption: 'Eps.10 - Docker Context'
       deprecated: false
+      messages: ''
     - name: 'Study Kasus: Docker for CI'
       key: study-cases-docker-ci
       description: 'Eps.11 - Study kasus: Docker for Continues Integration'
       deprecated: false
+      messages: ''
     - name: Docker Machine
       key: docker-machine
       description: 'Eps.12 - Docker Machine'
       deprecated: true
+      messages: ''
     - name: 'Study Kasus: Vagrant + Ansible for Docker'
       key: study-cases-vagrant-ansible
       description: 'Eps.13 - Study kasus: Create multiple Docker Host'
       deprecated: false
+      messages: ''
     - name: Docker Swarm
       key: docker-swarm
       description: 'Eps.14 - Docker Swarm'
       deprecated: false
+      messages: ''
     - name: 'Study Kasus: Docker Swarm'
       key: study-cases-docker-swarm
       description: 'Eps.15 - Study kasus: Orchestration with docker swarm'
       deprecated: false
+      messages: ''
     - name: Docker on Cloud using GCP
       key: docker-cloud
       description: 'Eps.16 - Docker on Cloud using Google Cloud Platform'
       deprecated: false
+      messages: ''
 
 - name: Kubernetes (k8s)
   fullname: "DevOps - Kubernetes: Pemula sampai Mahir"
@@ -358,62 +394,77 @@
       key: introduction
       description: 'Eps. 1 - Pengenakan Kubernetes (k8s)'
       deprecated: false
+      messages: ''
     - name: Getting started with minikube
       key: minikube
       description: 'Eps. 2 - Getting started with Minikube Cluster'
       deprecated: false
+      messages: ''
     - name: Kubernetes Workloads
       key: workloads
       description: 'Eps. 3 - Kubernetes Workloads'
       deprecated: false
+      messages: ''
     - name: 'Study Kasus: Workloads'
       key: study-cases-workloads
       description: 'Eps. 4 - Study kasus: Kubernetes workloads'
       deprecated: false
+      messages: ''
     - name: 'Kubernetes networking (service)'
       key: service
       description: 'Eps. 5 - Kubernetes networking (service)'
       deprecated: false
+      messages: ''
     - name: 'Study Kasus: Networking'
       key: study-cases-networking
       description: ''
       deprecated: false
+      messages: ''
     - name: 'Store data using Volumes'
       key: volumes
       description: ''
       deprecated: false
+      messages: ''
     - name: 'ConfigMap, and Secrets'
       key: configmap
       description: ''
       deprecated: false
+      messages: ''
     - name: 'Study Kasus: Store data using Volumes'
       key: study-cases-volumes
       description: ''
       deprecated: false
+      messages: ''
     - name: 'Monitoring and Dashboard'
       key: monitoring
       description: ''
       deprecated: false
+      messages: ''
     - name: 'Package manager with helm'
       key: helm
       description: ''
       deprecated: false
+      messages: ''
     - name: 'Service mesh with istio'
       key: istio
       description: ''
       deprecated: false
+      messages: ''
     - name: 'Kubernetes for Production'
       key: kubeadm
       description: ''
       deprecated: false
+      messages: ''
     - name: 'Manage Administration Clusters'
       key: admin-cluster
       description: ''
       deprecated: false
+      messages: ''
     - name: 'CI/CD: with Gitlab'
       key: k8s-integration-gitlab
       description: ''
       deprecated: false
+      messages: ''
 
 - name: Ansible
   fullname: "DevOps - RedHat Ansible: Pemula sampai Mahir"
@@ -438,38 +489,47 @@
       key: introduction
       description: ''
       deprecated: false
+      messages: ''
     - name: Writing task, plays, and playbooks
       key: task
       description: ''
       deprecated: false
+      messages: ''
     - name: Working with inventory
       key: inventory
       description: ''
       deprecated: false
+      messages: ''
     - name: Interacting with data
       key: data
       description: ''
       deprecated: false
+      messages: ''
     - name: Structure control
       key: statement
       description: ''
       deprecated: false
+      messages: ''
     - name: Including & Importing
       key: include
       description: ''
       deprecated: false
+      messages: ''
     - name: Testing
       key: test
       description: ''
       deprecated: false
+      messages: ''
     - name: Ansible Collection
       key: collection
       description: ''
       deprecated: false
+      messages: ''
     - name: Ansible Galaxy
       key: galaxy
       description: ''
       deprecated: false
+      messages: ''
     
 - name: Openshift
   fullname: 'DevOps - RedHat Openshift: Pemula sampai Mahir'
@@ -495,9 +555,11 @@
     - name: Pengenalan RedHat Openshift
       key: introduction
       description: 'Eps 1: Pengenalan RedHat Openshift'
+      messages: ''
     - name: Getting started with minishift
       key: getting-started
       description: 'Eps 2: Getting started with free of Openshift using minishift'
+      messages: ''
 
 - name: Gitlab
   fullname: 'GitOps - Gitlab: Pemula sampai Mahir'
@@ -524,27 +586,35 @@
     - name: Pengenalan Git & Gitlab
       key: introduction
       description: 'Eps 1: Pengenalan Git & Gitlab'
+      messages: ''
     - name: Getting started with Git
       key: getting-started
       description: 'Eps 2: Getting started with vcs git'
+      messages: ''
     - name: Git Remote
       key: remote
       description: 'Eps 3: Git Remote'
+      messages: ''
     - name: Git Workflow
       key: workflow
       description: 'Eps 4: Git Workflow'
+      messages: ''
     - name: Git Submodules
       key: submodules
       description: 'Eps 5: Working with Git Submodules'
+      messages: ''
     - name: Issues Tracker
       key: issues-tracker
       description: 'Eps 6: Issues Tracker'
+      messages: ''
     - name: Release Management
       key: release-management
       description: 'Eps 7: Management Release'
+      messages: ''
     - name: DevOps Tools
       key: devops-tools
       description: 'Eps 8: DevOps Tools'
+      messages: ''
 
 - name: PostgreSQL
   fullname: "DBA - PostgreSQL: Pemula sampai Mahir"
@@ -575,45 +645,59 @@
     - name: Pengenalan PostgreSQL
       key: introduction
       description: 'Eps 1: Pengenalan PostgreSQL Database'
+      messages: ''
     - name: Getting started
       key: getting-started
       description: 'Eps 2: Getting Started with PostgreSQL Database for Learning env'
+      messages: ''
     - name: SQL - Select Statement
       key: select-statement
       description: 'Eps 3: Query with Select statement'
+      messages: ''
     - name: SQL - Data manipulation
       key: dml-statement
       description: ''
+      messages: ''
     - name: SQL - Data definition (Tables)
       key: ddl-statement-table
       description: ''
+      messages: ''
     - name: 'Study Kasus: Database design (Mapping)'
       key: study-cases-database-design
       description: ''
+      messages: ''
     - name: SQL - Indexes
       key: indexes
       description: ''
+      messages: ''
     - name: SQL - Users Management
       key: user-management
       description: ''
+      messages: ''
     - name: Type Conversion
       key: type-conversion
       description: ''
+      messages: ''
     - name: Query Performance Tips
       key: query-tunning-tips
       description: ''
+      messages: ''
     - name: 'Study Kasus: Tokopedia clone'
       key: study-cases-tokopedia-clone
       description: ''
+      messages: ''
     - name: 'Server Administration'
       key: server-administration
       description: ''
+      messages: ''
     - name: 'Pg/PL SQL'
       key: pg-plsql
       description: ''
+      messages: ''
     - name: 'Study Kasus: Backend engine'
       key: study-cases-backend-engine
       description: ''
+      messages: ''
 
 - name: Java Essentials
   fullname: "Developer - Java Essentials: Pemula sampai Mahir"
@@ -638,60 +722,79 @@
     - name: Pengenalan Java language
       key: introduction
       description: 'Eps 1: Pengenalan Java Programming language'
+      messages: ''
     - name: Getting started
       key: getting-started
       description: 'Eps 2: Getting started with Java'
+      messages: ''
     - name: Variables, Data Types and Methods
       key: basic
       description: 'Eps 3: Variables, Data Types and Methods'
+      messages: ''
     - name: Build-in Functions & Operators
       key: function-and-operators
       description: 'Eps 4: Build-in Function and Operators'
+      messages: ''
     - name: Classes and Packages
       key: class-package
       description: 'Eps 5: Classes and Packages'
+      messages: ''
     - name: Structure Control
       key: structure-control
       description: 'Eps 6: Structure Control'
+      messages: ''
     - name: Array, Collections & Generics
       key: collections-generics
       description: 'Eps 6: Array, Collections and Generics'
+      messages: ''
     - name: Object Oriented Programming (OOP)
       key: oop
       description: 'Eps 7: Object Oriented Programming (OOP)'
+      messages: ''
     - name: Exceptions Handling
       key: exceptions
       description: 'Eps 8: Exceptions Handling'
+      messages: ''
     - name: Lamda Expressions
       key: lamda
       description: 'Eps 8: Lamda Expressions'
+      messages: ''
     - name: Aggregate Operations
       key: aggregate
       description: 'Eps 9: Aggregate Operations'
+      messages: ''
     - name: Thread and Concurrency
       key: thread
       description: 'Eps 10: Thread and Concurrency'
+      messages: ''
     - name: Graphical User Interface - Swing
       key: gui-swing
       description: 'Eps 11: Graphical User Interface with Swing'
+      messages: ''
     - name: Database Access (JDBC)
       key: jdbc
       description: 'Eps 12: Java Database Connectivity (JDBC)'
+      messages: ''
     - name: Client / Server - JNDI
       key: jndi
       description: 'Eps 13: Java Naming and Directory Interface'
+      messages: ''
     - name: Client / Server - RMI
       key: rmi
       description: 'Eps 14: The Remote Method Invocation API'
+      messages: ''
     - name: 'Study Kasus: Membuat aplikasi'
       key: study-cases
       description: 'Eps 15: Study Kasus membuat aplikasi'
+      messages: ''
     - name: Java Web (Servlet)
       key: servlet
       description: 'Eps 16: Java Servlet'
+      messages: ''
     - name: Java Server Pages (JSP)
       key: jsp
       description: 'Eps 16: Java Server Pages'
+      messages: ''
     
 - name: Spring Framework
   fullname: 'Developer - Spring Framework: Pemula sampai Mahir'
@@ -717,15 +820,19 @@
     - name: Pengenalan Spring Framework
       key: introduction
       description: 'Eps 1: Pengenalan Spring Framework'
+      messages: ''
     - name: Dependency Injection
       key: dep-injection
       description: 'Eps 3: Dependency Injection'
+      messages: ''
     - name:  Handles Resources
       key: resources
       description: 'Eps 4: Resources'
+      messages: ''
     - name:  Validation, Data Binding, and Type Conversion
       key: validation
       description: 'Eps 5: Validation, Data Binding, and Type Conversion'
+      messages: ''
 
 - name: Spring Boot
   fullname: 'Developer - Spring Boot: Pemula sampai Mahir'
@@ -751,6 +858,7 @@
     - name: Pengenalan Spring Boot
       key: introduction
       description: 'Eps 1: Pengenalan Spring Boot'
+      messages: ''
 
 - name: Apache JMeter
   fullname: 'DevOps - Apache JMeter: Pemula sampai Mahir'
@@ -774,7 +882,9 @@
     - name: Pengenalan Apache JMeter
       key: introduction
       description: 'Eps 1: Pengenalan Apache JMeter'
+      messages: ''
     - name: Getting Started
       key: getting-started
       description: 'Eps 2: Getting Started with Apache JMeter'
+      messages: ''
     
