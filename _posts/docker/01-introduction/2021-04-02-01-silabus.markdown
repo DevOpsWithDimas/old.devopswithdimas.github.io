@@ -83,6 +83,12 @@ Dengan menggunakan teknology container kita bisa melakukan banyak hal mulai dari
 
 ## Advanced
 
+14. Docker Machine
+    1. Create simple machine
+    2. Create multiple machine
+    3. Configure insecure registry
+    4. Example use-cases for docker-machine
+    5. Alternative docker-machine
 14. Orcestration container dengan Swarm
     1. Swarm Node
     2. Swarm Stack
