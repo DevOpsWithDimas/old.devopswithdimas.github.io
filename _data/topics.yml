@@ -887,4 +887,31 @@
       key: getting-started
       description: 'Eps 2: Getting Started with Apache JMeter'
       messages: ''
+
+- name: Google Cloud Platform (GCP)
+  fullname: 'Cloud Computing - Google Cloud Platform: Pemula sampai Mahir'
+  url: cloud-gcp
+  language: DevOps
+  color: blue accent-2
+  tags:
+  - DevOps
+  - Cloud-Computing
+  descriptions:
+    Temen-temen akan belajar Cloud Computing dengan menggunakan Google Cloud Platform (GCP) seperti IaaS, PaaS dan SaaS
+  messages:
+  publish: 2022-05-06T16:26:00+07:00
+  github: 
+  youtube:
+  udemy:
+  coming_soon: true
+  visible: true
+  catalogs:
+    - name: Pengenalan Cloud Computing
+      key: introduction
+      description: 'Eps 1: Cloud computing dengan GCP'
+      messages: ''
+    - name: Getting Started with Google Cloud Platform
+      key: getting-started
+      description: 'Eps 2: Getting Started with Google Cloud Platform'
+      messages: ''
     
