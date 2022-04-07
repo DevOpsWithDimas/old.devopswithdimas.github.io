@@ -4,7 +4,7 @@
   duration: "2jam"
   tier: "free"
   youtube: 
-  thumbnails:
+  thumbnail:
   visible: false
   markers: |
     Pengenalan docker-machine
@@ -22,7 +22,7 @@
   duration: "8jam"
   tier: "free"
   youtube: 
-  thumbnails:
+  thumbnail:
   visible: false
   markers: |
     Pengenalan SQL
@@ -43,7 +43,7 @@
   duration: "4jam 40menit"
   tier: "free"
   youtube: uQj0mJxDpeE
-  thumbnails:
+  thumbnail:
   date: 2022-02-23T07:47:00+07:00
   markers: |
     00:00:00 Introduction
@@ -67,7 +67,7 @@
   duration: "3jam"
   tier: "free"
   youtube: UjxEMXePVRk
-  thumbnails:
+  thumbnail:
   visible: true
   markers: |
     00:00:00 Introduction
@@ -86,7 +86,7 @@
   visible: true
   duration: "2jam"
   youtube: agYCNlb8-rA
-  thumbnails:
+  thumbnail:
   tier: "free"
   date: 2022-01-28T14:29:00+07:00
   markers: |
@@ -108,7 +108,7 @@
   duration: "45menit"
   tier: "free"
   youtube: oH38ULCCuFo
-  thumbnails:
+  thumbnail:
   visible: true
   markers: |
     00:00:00 Introduction
