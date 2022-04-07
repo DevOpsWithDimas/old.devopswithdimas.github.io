@@ -187,7 +187,7 @@ icon: library_books
                                             </span>
                                         </a>
                                         {% else %}
-                                        <span class="field-name flow-text">
+                                        <span class="field-name flow-text activator">
                                             <span class="new badge yellow black-text" data-badge-caption="comming soon"></span>
                                             {{topic.name}}
                                         </span>
@@ -195,7 +195,7 @@ icon: library_books
                                     </div>
 
                                     <div class="row">
-                                        <p>
+                                        <p class="activator">
                                             {{ topic.descriptions }}
                                         </p>
                                     </div>
@@ -250,12 +250,23 @@ icon: library_books
                                     Last updated: 
                                     <code>{{ a_last_post.date | date: "%-d %B %Y" }}</code>
                                     {% endif %}
+                                </div>
+                                <div class="row">
                                     {% if topic.catalogs %}
                                     <br>
-                                    Kurikulum: <code>{{ topic.catalogs.size }}</code>
-                                    {% endif %} 
-                                    <br>
                                     Total Materi: <code>{{ post_list.size }}</code>
+                                    <br>
+                                    <ul class="collection  with-header">
+                                        <li class="collection-header">
+                                            <span class="badge blue new">{{ topic.catalogs.size }}</span>
+                                            <h5>Kurikulum:</h5>
+                                        </li>
+                                        {% for catalog in topic.catalogs %}
+                                        {% assign catalogName = catalog.name | prepend: '. ' | prepend: forloop.index %}
+                                        <li class="collection-item">{{ catalogName }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
                                 </div>
                                 <div class="row">
                                     <!-- tags -->
