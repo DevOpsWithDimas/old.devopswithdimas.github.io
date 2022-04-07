@@ -308,19 +308,23 @@
       deprecated: false
     - name: Docker Machine
       key: docker-machine
-      desctiption: 'Eps.12 - Docker Machine'
+      description: 'Eps.12 - Docker Machine'
       deprecated: true
-    - name: 'Study Kasus: Ansible for Docker'
-      key: study-cases-ansible
-      desctiption: 'Eps.13 - Study kasus: Create multiple Docker Host'
+    - name: 'Study Kasus: Vagrant + Ansible for Docker'
+      key: study-cases-vagrant-ansible
+      description: 'Eps.13 - Study kasus: Create multiple Docker Host'
       deprecated: false
     - name: Docker Swarm
       key: docker-swarm
-      desctiption: 'Eps.14 - Docker Swarm'
+      description: 'Eps.14 - Docker Swarm'
       deprecated: false
     - name: 'Study Kasus: Docker Swarm'
       key: study-cases-docker-swarm
-      desctiption: 'Eps.15 - Study kasus: Orchestration with docker swarm'
+      description: 'Eps.15 - Study kasus: Orchestration with docker swarm'
+      deprecated: false
+    - name: Docker on Cloud using GCP
+      key: docker-cloud
+      description: 'Eps.16 - Docker on Cloud using Google Cloud Platform'
       deprecated: false
 
 - name: Kubernetes (k8s)
