@@ -18,15 +18,14 @@ gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 
-Hai semuanya, di materi kali ini kita akan melihat bagaimana konsep 
+Hai semuanya, di materi kali ini kita akan membahas salah satu contoh penggunaannya untuk Docker Machine. Diantaranya
+
+1. Docker Host by Projects
+2. DC & DRC (Disaster Revovery Center) system.
+
+Ok langsung aja kita bahas materi yang pertama:
 
 <!--more-->
 
-Materi: 
+## Docker Host by projects
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
