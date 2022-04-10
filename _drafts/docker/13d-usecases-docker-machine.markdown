@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Example usage of docker-machine"
+title: "Example Use Cases of docker-machine"
 lang: docker
 authors:
 - dimasm93
@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: docker-machine
-image_path: /resources/posts/docker/12d-example-use-docker-machine
+image_path: /resources/posts/docker/13d-usecase-docker-machine
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
@@ -21,7 +21,7 @@ downloads: []
 Hai semuanya, di materi kali ini kita akan membahas salah satu contoh penggunaannya untuk Docker Machine. Diantaranya
 
 1. Multiple Docker Host by Projects
-2. DC & DRC (Disaster Revovery Center) system.
+2. DRC (Disaster Revovery Center) system.
 
 Ok langsung aja kita bahas materi yang pertama:
 
@@ -123,3 +123,39 @@ default     -        virtualbox   Stopped                                       
 project-a   -        virtualbox   Running   tcp://192.168.99.103:2376           v19.03.12
 project-b   *        virtualbox   Running   tcp://192.168.99.104:2376           v19.03.12
 ```
+
+## DRC (Disaster Recovery Center) system simulation.
+
+Dan selain untuk multiple project docker-machine juga bisa kita gunakan untuk meng-simulasi DRC (Disaster Recovery Center) system. Disaster Recovery System ini biasanya digunakan pada perusahan berscala menengah hinga besar, pemerintahan, dan beberapa startup karena untuk melindungi aplikasi, service, data agar tetap running jika terjadi bencana alam, hardware failure, network down dan lain-lain.
+
+Dalam best practice suatu Disaster Recovery Center biasanya di tentukan berdasarkan jarak lokasi penentuan Data Center dan replicasinya memiliki radius 60KM (Kilometer). secara Topology kalo kita gambarkan maka seperti berikut:
+
+![topology-drc]({{ page.image_path | prepend: site.baseurl }}/01-topology-drc.png)
+
+Jadi pada gambar tersebut, kita lihat ada 4 region dan 1 routing yaitu 
+
+1. `dc1` (Data Center utama)
+2. `drc1` (Replication)
+3. `drc2` (Replication)
+4. `drc3` (Replication)
+
+Setiap `dc` dan `drc` biasanya kita akan kita installkan aplikasi, service, database dan lain-lain. Nah sekarang kita coba implement dengan docker-machine ya berikut perintahnya:
+
+{% highlight bash %}
+docker-machine create -d virtualbox dc1;
+docker-machine create -d virtualbox drc1;
+docker-machine create -d virtualbox drc2;
+{% endhighlight %}
+
+Nah Untuk routing sendiri biasanya adalah hardware tersediri ada banyak sekali implementasinya bisa pake f5, cisco, microtic dan lain-lain. Tetapi karena disini kita menggunakan di local semua kita bisa manfaat loadbalancer seperti 
+
+1. [Traefik proxy](https://traefik.io/traefik/)
+2. [nginx load balancer](https://nginx.org/en/docs/http/load_balancing.html)
+3. [etcd](https://etcd.io/docs/v3.5/quickstart/)
+4. dan lain-lain.
+
+Ok sekarang kita coba implement untuk routingnya juga, dengan menggunakan docker-machine seperti berikut:
+
+{% highlight bash %}
+docker-machine create -d virtualbox routing;
+{% endhighlight %}
