@@ -106,7 +106,6 @@ $Env:COMPOSE_CONVERT_WINDOWS_PATHS = "true"
 ➜ ~  & "C:\ProgramData\chocolatey\lib\docker-machine\bin\docker-machine.exe" env project-b | Invoke-Expression
 
 ➜ ~  docker run -p 80:80 -d httpd
-
 ➜ ~  docker container ls
 CONTAINER ID   IMAGE     COMMAND              CREATED          STATUS          PORTS
 NAMES
