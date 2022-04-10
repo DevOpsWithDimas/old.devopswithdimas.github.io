@@ -160,8 +160,93 @@ Ok sekarang kita coba implement untuk routingnya juga, dengan menggunakan docker
 docker-machine create -d virtualbox routing;
 {% endhighlight %}
 
+Sebagai contoh kita akan menggunakan nginx loadbalancer menggunakan method least-connected. Berikut configurasinya:
+
+{% gist page.gist "13d-nginx-lb-leash-connected.template.conf" %}
+
 Jika di jalankan maka hasilnya seperti berikut:
 
 ```powershell
+➜ ~  docker-machine ls
+NAME              ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER      ERRORS
+machine-dc1       -        virtualbox   Running   tcp://192.168.99.105:2376           v19.03.12
+machine-drc1      -        virtualbox   Running   tcp://192.168.99.106:2376           v19.03.12
+machine-routing   -        virtualbox   Running   tcp://192.168.99.107:2376           v19.03.12
 
+## connect to machine dc1
+➜ ~  docker-machine env machine-dc1
+$Env:DOCKER_TLS_VERIFY = "1"
+$Env:DOCKER_HOST = "tcp://192.168.99.105:2376"
+$Env:DOCKER_CERT_PATH = "C:\Users\dimasm93\.docker\machine\machines\machine-dc1"
+$Env:DOCKER_MACHINE_NAME = "machine-dc1"
+$Env:COMPOSE_CONVERT_WINDOWS_PATHS = "true"
+
+➜ ~  & "C:\ProgramData\chocolatey\lib\docker-machine\bin\docker-machine.exe" env machine-dc1 | Invoke-Expression
+
+➜ ~  docker run -p 80:80 -d --restart always httpd
+
+## connect to machine drc1
+➜ ~  docker-machine env machine-drc1
+$Env:DOCKER_TLS_VERIFY = "1"
+$Env:DOCKER_HOST = "tcp://192.168.99.106:2376"
+$Env:DOCKER_CERT_PATH = "C:\Users\dimasm93\.docker\machine\machines\machine-drc1"
+$Env:DOCKER_MACHINE_NAME = "machine-drc1"
+$Env:COMPOSE_CONVERT_WINDOWS_PATHS = "true"
+
+➜ ~  & "C:\ProgramData\chocolatey\lib\docker-machine\bin\docker-machine.exe" env machine-drc1 | Invoke-Expression
+
+➜ ~  docker run -p 80:80 -d --restart always httpd
+
+## connect to machine routing
+➜ ~ ✗  docker-machine env machine-routing
+$Env:DOCKER_TLS_VERIFY = "1"
+$Env:DOCKER_HOST = "tcp://192.168.99.107:2376"
+$Env:DOCKER_CERT_PATH = "C:\Users\dimasm93\.docker\machine\machines\machine-routing"
+$Env:DOCKER_MACHINE_NAME = "machine-routing"
+$Env:COMPOSE_CONVERT_WINDOWS_PATHS = "true"
+
+➜ ~  & "C:\ProgramData\chocolatey\lib\docker-machine\bin\docker-machine.exe" env machine-routing | Invoke-Expression
+
+➜ 10-docker-machine git:(master)✗  docker run -p 80:80 -v nginx.least-connect.template.conf:/etc/nginx/templates/default.conf.template -d nginx
+
+➜ 10-docker-machine git:(master) docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                NAMES
+d8d1aa0410a7   nginx     "/docker-entrypoint.…"   10 seconds ago   Up 10 seconds   0.0.0.0:80->80/tcp   mystifying_dubinsky
+
+## Test all up
+➜ 10-docker-machine git:(master) curl $(docker-machine ip machine-routing)
+StatusCode        : 200
+StatusDescription : OK
+Content           : <html><body><h1>It works!</h1></body></html>
+
+## Test down dc1
+➜ 10-docker-machine git:(master) docker-machine stop machine-dc1
+Stopping "machine-dc1"...
+Machine "machine-dc1" was stopped.
+
+➜ 10-docker-machine git:(master) curl $(docker-machine ip machine-routing)
+StatusCode        : 200
+StatusDescription : OK
+Content           : <html><body><h1>It works!</h1></body></html>
+
+## Test down dc1 & drc1
+➜ 10-docker-machine git:(master) curl $(docker-machine ip machine-routing)
+curl : 502 Bad Gateway
+nginx/1.21.6
+
+## Test drc1 up again
+➜ 10-docker-machine git:(master)✗  docker-machine start machine-drc1
+Starting "machine-drc1"...
+Started machines may have new IP addresses. You may need to re-run the `docker-machine env` command.
+
+➜ 10-docker-machine git:(master) docker-machine ls
+NAME              ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER      ERRORS
+machine-dc1       -        virtualbox   Stopped                                       Unknown
+machine-drc1      *        virtualbox   Running   tcp://192.168.99.106:2376           v19.03.12
+machine-routing   -        virtualbox   Running   tcp://192.168.99.107:2376           v19.03.12
+
+➜ 10-docker-machine git:(master) curl $(docker-machine ip machine-routing)
+StatusCode        : 200
+StatusDescription : OK
+Content           : <html><body><h1>It works!</h1></body></html>
 ```
