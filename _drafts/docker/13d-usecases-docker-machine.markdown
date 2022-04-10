@@ -147,7 +147,7 @@ docker-machine create -d virtualbox drc1;
 docker-machine create -d virtualbox drc2;
 {% endhighlight %}
 
-Nah Untuk routing sendiri biasanya adalah hardware tersediri ada banyak sekali implementasinya bisa pake f5, cisco, microtic dan lain-lain. Tetapi karena disini kita menggunakan di local semua kita bisa manfaat loadbalancer seperti 
+Nah Untuk routing sendiri biasanya adalah hardware tersediri ada banyak sekali implementasinya bisa pake [f5](https://www.f5.com/), [cisco](https://www.cisco.com/c/en/us/index.html), microtic dan lain-lain. Tetapi karena disini kita menggunakan di local semua kita bisa manfaat loadbalancer/proxy seperti 
 
 1. [Traefik proxy](https://traefik.io/traefik/)
 2. [nginx load balancer](https://nginx.org/en/docs/http/load_balancing.html)
@@ -159,3 +159,9 @@ Ok sekarang kita coba implement untuk routingnya juga, dengan menggunakan docker
 {% highlight bash %}
 docker-machine create -d virtualbox routing;
 {% endhighlight %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+
+```
