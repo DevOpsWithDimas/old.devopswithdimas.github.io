@@ -10,9 +10,7 @@ categories:
 - Kubernetes
 - Workloads
 refs: 
-- https://docs.docker.com/
-- https://kubernetes.io/docs/home/
-- https://minikube.sigs.k8s.io/docs/
+- https://kubernetes.io/docs/concepts/workloads/pods/#working-with-pods
 youtube: 
 comments: true
 catalog_key: workloads
@@ -21,16 +19,22 @@ gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas Working with pods in kubernetes cluster. Seperti yang telah kita bahas di artikel sebelumnya mekipun kita sebetulnnya akan jarang sekali membuat pods secara explicit tapi gak ada salahnya untuk kita bahas lebih lanjut.
 
-description...
+Seperti biasa untuk pembahasan mengenai Working with pods ini kita akan bagi menjadi beberapa bagian diantaranya:
+
+1. Pods and Controllers
+2. Pod templates
+3. Pod update and replacement
+4. Resource sharing in pods
+5. Pod networking
+6. Privileged mode for containers
+7. Static pods
+8. Container probes
+
+Ok langsung ja kita bahas materi yang pertama
 
 <!--more-->
 
-Materi: 
+## Pods and Controllers
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
