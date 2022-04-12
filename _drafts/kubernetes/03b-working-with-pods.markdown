@@ -40,3 +40,10 @@ Ok langsung ja kita bahas materi yang pertama
 
 ## Pods and Controllers
 
+You can use workload resources to create and manage multiple Pods for you. A controller for the resource handles replication and rollout and automatic healing in case of Pod failure. For example, if a Node fails, a controller notices that Pods on that Node have stopped working and creates a replacement Pod. The scheduler places the replacement Pod onto a healthy Node.
+
+Here are some examples of workload resources that manage one or more Pods:
+
+1. **Deployment**, managed replicated application on your cluster
+2. **StatefulSet**, managed deployment and scalling of a set of Pods with durable storage and persisten identifiers for each Pod.
+3. **DaemonSet**, Ensures a copy of a Pod is running accress a set of nodes in a cluster 
