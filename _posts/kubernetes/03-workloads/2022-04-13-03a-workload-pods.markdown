@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Kubernetes Workloads with Pods"
+date: 2022-04-13T04:23:11+07:00
 lang: k8s
 authors:
 - dimasm93
