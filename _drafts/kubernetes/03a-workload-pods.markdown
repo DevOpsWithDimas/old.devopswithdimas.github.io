@@ -25,7 +25,6 @@ Hai semuanya, di materi kali ini kita akan bahas lebih detail tentang Kubernetes
 2. Using Pods into your kubernetes cluster
 3. Workloads resources for managing pods
 4. How pods manage multiple containers
-5. Working with Pods
 
 Ok langsung aja kita bahas materi pertama
 
@@ -91,3 +90,15 @@ spec:
 {% endhighlight %}
 
 Each Pod is meant to run a single instance of a given application. If you want to scale your application horizontally (to provide more overall resources by running more instances), you should use multiple Pods, one for each instance. In Kubernetes, this is typically referred to as replication. Replicated Pods are usually created and managed as a group by a workload resource and its controller.
+
+## How pods manage multiple containers
+
+Pods are designed to support multiple cooperating processes (as containers) that form a cohesive unit of service. The containers in a Pod are automatically co-located and co-scheduled on the same physical or virtual machine in the cluster. The containers can share resources and dependencies, communicate with one another, and coordinate when and how they are terminated.
+
+For example, you might have a container that acts as a web server for files in a shared volume, and a separate "sidecar" container that updates those files from a remote source, as in the following diagram:
+
+![pod-sidecar]({{ page.image_path | prepend: site.baseurl }}/01-pod-sidecar.png)
+
+Some Pods have init containers as well as app containers. Init containers run and complete before the app containers are started.
+
+Pods natively provide two kinds of shared resources for their constituent containers: networking and storage.
