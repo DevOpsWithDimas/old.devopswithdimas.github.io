@@ -19,9 +19,11 @@ gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
 
-Hai semuanya, di materi kali ini kita akan membahas Working with pods in kubernetes cluster. Seperti yang telah kita bahas di artikel sebelumnya mekipun kita sebetulnnya akan jarang sekali membuat pods secara explicit tapi gak ada salahnya untuk kita bahas lebih lanjut.
+Hai semuanya, di materi kali ini kita akan membahas Working with pods in kubernetes cluster. Seperti yang telah kita bahas di artikel sebelumnya mekipun kita sebetulnnya akan jarang sekali membuat pods secara explicit.
 
-Seperti biasa untuk pembahasan mengenai Working with pods ini kita akan bagi menjadi beberapa bagian diantaranya:
+This is because Pods are designed as relatively ephemeral, disposable entities. When a Pod gets created (directly by you, or indirectly by a controller), the new Pod is scheduled to run on a Node in your cluster. The Pod remains on that node until the Pod finishes execution, the Pod object is deleted, the Pod is evicted for lack of resources, or the node fails.
+
+Untuk pembahasan lebih lanjutnya, seperti biasa kita akan bagi menjadi beberapa bagian diantaranya:
 
 1. Pods and Controllers
 2. Pod templates
