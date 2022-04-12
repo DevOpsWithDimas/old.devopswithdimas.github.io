@@ -58,3 +58,36 @@ kubectl apply -f simple-nginx-pod.yaml
 {% endhighlight %}
 
 Pods are generally not created directly and are created using workload resources.
+
+## Workloads resources for managing pods
+
+Usually you don't need to create Pods directly, even singleton Pods. Instead, create them using workload resources such as Deployment or Job. If your Pods need to track state, consider the StatefulSet resource.
+
+Pods in a Kubernetes cluster are used in two main ways:
+
+1. **Pods that run a single container**. The "one-container-per-Pod" model is the most common Kubernetes use case; in this case, you can think of a Pod as a wrapper around a single container; Kubernetes manages Pods rather than managing the containers directly.
+
+2. **Pods that run multiple containers that need to work together**. A Pod can encapsulate an application composed of multiple co-located containers that are tightly coupled and need to share resources. These co-located containers form a single cohesive unit of service—for example, one container serving data stored in a shared volume to the public, while a separate sidecar container refreshes or updates those files. The Pod wraps these containers, storage resources, and an ephemeral network identity together as a single unit.
+
+> Note: Grouping multiple co-located and co-managed containers in a single Pod is a relatively advanced use case. You should use this pattern only in specific instances in which your containers are tightly coupled.
+
+For Example multiple container in a pods
+
+{% highlight yaml %}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: laravel
+    image: php:apache
+    ports:
+    - containerPort: 80
+  - name: mysql
+    image: mysql:8.0
+    ports:
+    - containerPort: 3306
+{% endhighlight %}
+
+Each Pod is meant to run a single instance of a given application. If you want to scale your application horizontally (to provide more overall resources by running more instances), you should use multiple Pods, one for each instance. In Kubernetes, this is typically referred to as replication. Replicated Pods are usually created and managed as a group by a workload resource and its controller.
