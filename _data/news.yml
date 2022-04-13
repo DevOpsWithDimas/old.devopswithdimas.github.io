@@ -17,12 +17,12 @@
 
 - cource: docker
   catalog: docker-machine
-  date: 2022-04-07T18:29:00+07:00
-  duration: "2jam"
+  date: 2022-04-14T18:29:00+07:00
+  duration: "2.5jam"
   tier: "free"
-  youtube: 
+  youtube: xpHIoSSZRbk
   thumbnail:
-  visible: false
+  visible: true
   markers: |
     Pengenalan docker-machine
     What is docker-machine?
