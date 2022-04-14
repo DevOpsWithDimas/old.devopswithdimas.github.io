@@ -15,6 +15,27 @@
     DaemonSet workloads
     Job & CronJob workloads
 
+- cource: postgresql
+  catalog: select-statement
+  date: 2022-02-25T18:29:00+07:00
+  duration: "8jam"
+  tier: "free"
+  youtube: 
+  thumbnail:
+  visible: false
+  markers: |
+    Pengenalan SQL
+    Select statement
+    Operators
+    Filter data with where clause
+    Ordering data with Order by
+    Limit and Offset data
+    Single row functions
+    Group functions
+    Join Tables
+    Sub Query / Nested Query
+    Control Statement
+
 - cource: docker
   catalog: docker-machine
   date: 2022-04-14T18:29:00+07:00
@@ -41,27 +62,6 @@
     01:46:05 Case 1: Multiple Docker Host by projects
     01:54:31 Case 2: Disaster Recovery System simulation with docker-machine
     02:22:01 Materi selanjutnya
-
-- cource: postgresql
-  catalog: select-statement
-  date: 2022-02-25T18:29:00+07:00
-  duration: "8jam"
-  tier: "free"
-  youtube: 
-  thumbnail:
-  visible: false
-  markers: |
-    Pengenalan SQL
-    Select statement
-    Operators
-    Filter data with where clause
-    Ordering data with Order by
-    Limit and Offset data
-    Single row functions
-    Group functions
-    Join Tables
-    Sub Query / Nested Query
-    Control Statement
     
 - cource: k8s
   catalog: minikube
