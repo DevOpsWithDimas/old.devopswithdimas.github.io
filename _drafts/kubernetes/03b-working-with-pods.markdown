@@ -86,3 +86,5 @@ Modifying the pod template or switching to a new pod template has no direct effe
 For example, the StatefulSet controller ensures that the running Pods match the current pod template for each StatefulSet object. If you edit the StatefulSet to change its pod template, the StatefulSet starts to create new Pods based on the updated template. Eventually, all of the old Pods are replaced with new Pods, and the update is complete.
 
 > Note: Each workload resource implements its own rules for handling changes to the Pod template.
+
+## Pod update and replacement

@@ -32,10 +32,29 @@
   isNew: false
   description: 
   courses: 
-  - java-core
+  - java-se
   - orm-hibernate
   - spring-core
   - spring-boot
+
+- name: Mobile Developer (MB)
+  code: mb-dev
+  isNew: false
+  description: 
+  courses: 
+  - dart
+  - flutter
+  - flutter-android
+  - flutter-ios
+
+- name: Fullstack Developer
+  code: fullstack-dev
+  isNew: true
+  description: 
+  courses: 
+  - spring-boot
+  - react
+  - flutter-android
 
 - name: Development & Operation (DevOps)
   code: devops
