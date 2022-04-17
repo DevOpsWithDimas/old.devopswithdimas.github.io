@@ -859,6 +859,30 @@
       key: introduction
       description: 'Eps 1: Pengenalan Spring Boot'
       messages: ''
+    - name: Getting started with Spring Boot
+      key: getting-started
+      description: 'Eps 2: Getting started with Spring Boot'
+      messages: ''
+    - name: Spring applications as stand-alone
+      key: stand-alone
+      description: 'Eps 3: Spring applications as stand-alone'
+      messages: ''
+    - name: Spring Web MVC
+      key: spring-mvc
+      description: 'Eps 4: Spring Web MVC'
+      messages: ''
+    - name: Spring Rest API
+      key: spring-rest
+      description: 'Eps 5: Spring Rest API'
+      messages: ''
+    - name: Spring Data JDBC
+      key: spring-data-jdbc
+      description: 'Eps 5: Spring Data JDBC'
+      messages: ''
+    - name: Spring Data JPA
+      key: spring-data-jpa
+      description: 'Eps 6: Spring Data JPA with Hibernate provider'
+      messages: ''
 
 - name: Apache JMeter
   fullname: 'DevOps - Apache JMeter: Pemula sampai Mahir'
