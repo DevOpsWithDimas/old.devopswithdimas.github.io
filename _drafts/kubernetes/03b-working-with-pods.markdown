@@ -88,3 +88,14 @@ For example, the StatefulSet controller ensures that the running Pods match the 
 > Note: Each workload resource implements its own rules for handling changes to the Pod template.
 
 ## Pod update and replacement
+
+As mentioned in the previous section, when the Pod template for a workload resource is changed, the controller creates new Pods based on the updated template instead of updating or patching the existing Pods.
+
+Kubernetes doesn't prevent you from managing Pods directly. It is possible to update some fields of a running Pod, in place. However, Pod update operations like `patch`, and `replace` have some limitations:
+
+1. Most of the metadata about a Pod is immutable. For example, you cannot change the `namespace`, `name`, `uid`, or `creationTimestamp` fields; the `generation` field is unique. It only accepts updates that increment the field's current value.
+
+2. If the `metadata.deletionTimestamp` is set, no new entry can be added to the `metadata.finalizers` list.
+
+3. Pod updates may not change fields other than `spec.containers[*].image`, `spec.initContainers[*].image`, `spec.activeDeadlineSeconds` or `spec.tolerations`. For `spec.tolerations`, you can only add new entries.
+
