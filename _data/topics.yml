@@ -914,4 +914,28 @@
       key: getting-started
       description: 'Eps 2: Getting Started with Google Cloud Platform'
       messages: ''
+    - name: Regions and Zones
+      key: regions-and-zones
+      description: 'Eps 3: Regions and Zones in Google Cloud Platform'
+      messages: ''
+    - name: Compute Engine
+      key: compute-engine
+      description: 'Eps 4: Compute Engine in Google Cloud Platform'
+      messages: ''
+    - name: Managed Services - IaaS, PaaS, and SAAS
+      key: cloud-services
+      description: 'Eps 5: Managed Cloud Services'
+      messages: ''
+    - name: Block, File and Object Storage as a Services
+      key: object-storage
+      description: 'Eps 6: Block, File and Object Storage as a Services'
+      messages: ''
+    - name: Database as a Services
+      key: database-sql
+      description: 'Eps 7: Database as a Services'
+      messages: ''
+    - name: Cloud IAM
+      key: iam
+      description: 'Eps 8: Cloud IAM'
+      messages: ''
     
