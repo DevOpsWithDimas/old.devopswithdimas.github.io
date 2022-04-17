@@ -99,3 +99,5 @@ Kubernetes doesn't prevent you from managing Pods directly. It is possible to up
 
 3. Pod updates may not change fields other than `spec.containers[*].image`, `spec.initContainers[*].image`, `spec.activeDeadlineSeconds` or `spec.tolerations`. For `spec.tolerations`, you can only add new entries.
 
+## Resource sharing in pods
+
