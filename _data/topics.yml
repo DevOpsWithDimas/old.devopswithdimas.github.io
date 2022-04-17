@@ -61,6 +61,84 @@
   coming_soon: false
   visible: true
 
+- name: Typescript Essentials
+  fullname: 'Developer - Typescript: Pemula sampai Mahir'
+  url: typescript
+  icon: "devicons devicons-js"
+  language: JavaScript
+  color: lime lighten-5
+  tags:
+  - web
+  - js
+  - ts
+  descriptions:
+    Temen-teman akan belajar tentang Pemograman scripting language menggunakan Typescript. 
+  messages:
+    Temen-temen diharapkan memahami dan mengimplementasikan pemograman Typescript di sebuah website yang teman-teman akan buat, sesuai dengan materi ini.
+  publish: 2022-04-17T13:32:00+07:00
+  github: 
+  youtube:
+  udemy:
+  coming_soon: false
+  visible: true
+  catalogs:
+    - name: Pengenalan Typescript
+      key: introduction
+      description: ''
+      messages: ''
+
+- name: Angular Framework
+  fullname: 'Frontend Dev - Angular: Pemula sampai Mahir'
+  url: angular-ts
+  icon: "devicons devicons-js"
+  language: JavaScript
+  color: lime lighten-5
+  tags:
+  - web
+  - js
+  - ts
+  - angular
+  descriptions:
+    Temen-teman akan belajar membuat aplikasi Web Single Pages Application (SPA) system dengan menggunakan Angular Framework.
+  messages:
+  publish: 2022-04-18T13:32:00+07:00
+  github: 
+  youtube:
+  udemy:
+  coming_soon: false
+  visible: true
+  catalogs:
+    - name: Pengenalan Angular Framework
+      key: introduction
+      description: ''
+      messages: ''
+
+- name: React Library
+  fullname: 'Frontend Dev - React: Pemula sampai Mahir'
+  url: react-ts
+  icon: "devicons devicons-js"
+  language: JavaScript
+  color: lime lighten-5
+  tags:
+  - web
+  - js
+  - ts
+  - react
+  descriptions:
+    Temen-teman akan belajar membuat aplikasi Web Single Pages Application (SPA) system dengan menggunakan React Library.
+  messages:
+  publish: 2022-04-19T13:32:00+07:00
+  github: 
+  youtube:
+  udemy:
+  coming_soon: false
+  visible: true
+  catalogs:
+    - name: Pengenalan React Library
+      key: introduction
+      description: ''
+      messages: ''
+
 - name: Java Web (Servlet & JSP)
   fullname: 
   url: java-web

@@ -22,10 +22,9 @@
   description: 
   courses: 
   - js
-  - ts
-  - angular
-  - react
-  - vue
+  - typescript
+  - angular-ts
+  - react-ts
 
 - name: Back-End Developer (BE)
   code: be-dev
@@ -53,7 +52,7 @@
   description: 
   courses: 
   - spring-boot
-  - react
+  - react-ts
   - flutter-android
 
 - name: Development & Operation (DevOps)
