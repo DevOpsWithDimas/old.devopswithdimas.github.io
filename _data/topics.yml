@@ -79,7 +79,7 @@
   github: 
   youtube:
   udemy:
-  coming_soon: false
+  coming_soon: true
   visible: true
   catalogs:
     - name: Pengenalan Typescript
@@ -105,7 +105,7 @@
   github: 
   youtube:
   udemy:
-  coming_soon: false
+  coming_soon: true
   visible: true
   catalogs:
     - name: Pengenalan Angular Framework
@@ -131,7 +131,7 @@
   github: 
   youtube:
   udemy:
-  coming_soon: false
+  coming_soon: true
   visible: true
   catalogs:
     - name: Pengenalan React Library
