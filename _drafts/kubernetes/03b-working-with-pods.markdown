@@ -471,3 +471,13 @@ kube-proxy-6l2r2                   1/1     Running   0            9h
 kube-scheduler-minikube            1/1     Running   0            9h
 storage-provisioner                1/1     Running   1 (9h ago)   9h
 ```
+
+## Container probes
+
+A probe is a diagnostic performed periodically by the kubelet on a container. To perform a diagnostic, the kubelet can invoke different actions:
+
+1. `ExecAction` (performed with the help of the container runtime)
+2. `TCPSocketAction` (checked directly by the kubelet)
+3. `HTTPGetAction` (checked directly by the kubelet)
+
+Untuk lebih detailnya nanti kita akan bahas di materi selanjutnya.
