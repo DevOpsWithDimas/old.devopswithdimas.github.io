@@ -32,8 +32,8 @@ Untuk pembahasan lebih lanjutnya, seperti biasa kita akan bagi menjadi beberapa 
 1. Pods and Controllers
 2. Pod templates
 3. Pod update and replacement
-4. Resource sharing in pods
-5. Pod networking
+4. Pod networking
+5. Resource sharing in pods
 6. Privileged mode for containers
 7. Static pods
 8. Container probes
@@ -163,6 +163,149 @@ Events:
   Normal  Started    3m33s (x3 over 21m)  kubelet            Started container nginx
   Normal  Killing    3m33s (x2 over 18m)  kubelet            Container nginx definition changed, will be restarted
   Normal  Pulled     3m33s                kubelet            Container image "nginx:latest" already present on machine
+```
+
+## Pod networking
+
+Each Pod is assigned a unique IP address for each address family. Every container in a Pod shares the network namespace, including the IP address and network ports. Inside a Pod (and only then), the containers that belong to the Pod can communicate with one another using `localhost`. When containers in a Pod communicate with entities outside the Pod, they must coordinate how they use the shared network resources (such as ports). Within a Pod, containers share an IP address and port space, and can find each other via `localhost`.
+
+For example if you run multiple containers with same image it will failed to start
+
+{% gist page.gist "03b-failed-port-same-binding.yaml" %}
+
+Jika di jalankan seperti berikut:
+
+```powershell
+➜ kubernetes  kubectl apply -f .\03-workloads\01-working-pods\failed-port-same-binding.yaml
+pod/webapps-same-image created
+
+➜ kubernetes  kubectl get pods webapps-same-image
+NAMESPACE     NAME                               READY   STATUS    RESTARTS        AGE
+default       webapps-same-image                 1/2     Error     1 (8s ago)      12s
+
+➜ kubernetes  kubectl describe pod webapps-same-image
+Name:         webapps-same-image
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Fri, 22 Apr 2022 10:53:31 +0700
+Labels:       app=webapps-same-image
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.4
+IPs:
+  IP:  172.17.0.4
+Containers:
+  nginx1:
+    Image:          nginx:mainline
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Fri, 22 Apr 2022 10:53:32 +0700
+    Ready:          True
+    Restart Count:  0
+  nginx2:
+    Image:          nginx
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Fri, 22 Apr 2022 10:59:50 +0700
+      Finished:     Fri, 22 Apr 2022 10:59:52 +0700
+    Ready:          False
+    Restart Count:  7
+
+➜ kubernetes ✗  kubectl logs webapps-same-image -c nginx2
+/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+/docker-entrypoint.sh: Configuration complete; ready for start up
+2022/04/22 03:54:25 [emerg] 1#1: bind() to 0.0.0.0:80 failed (98: Address already in use)
+nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+2022/04/22 03:54:25 [notice] 1#1: try again to bind() after 500ms
+2022/04/22 03:54:25 [emerg] 1#1: still could not bind()
+```
+
+Sekarang jika kita coba ganti imagenya dengan `bitnami/nginx` yang meng-expose port `8080` dengan perintah seperti berikut:
+
+{% highlight bash %}
+kubectl patch pods webapps-same-image --type='json' -p '[{"op": "replace", "path": "/spec/containers/1/image", "value": "bitnami/nginx"}]'
+{% endhighlight %}
+
+Sekarang jika kita jalankan dan lihat hasilnya seperti berikut:
+
+```powershell
+➜ kubernetes ✗  kubectl patch pods webapps-same-image --type='json' -p '[{"op": "replace", "path": "/
+spec/containers/1/image", "value": "bitnami/nginx"}]'
+pod/webapps-same-image patched
+
+➜ kubernetes  kubectl get pods webapps-same-image
+NAME                 READY   STATUS    RESTARTS        AGE
+webapps-same-image   2/2     Running   8 (2m55s ago)   9m16s
+
+➜ 01-working-pods  kubectl exec pod/webapps-same-image -c nginx1 -- curl localhost
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   615  100   615    0     0   600k      0 --:--:-- --:--:-- --:--:--  600k
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+
+➜ 01-working-pods  kubectl exec pod/webapps-same-image -c nginx1 -- curl localhost:8080
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   615  100   615    0     0   600k      0 --:--:-- --:--:-- --:--:--  600k
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
 ```
 
 ## Resource sharing in pods
