@@ -99,5 +99,204 @@ Kubernetes doesn't prevent you from managing Pods directly. It is possible to up
 
 3. Pod updates may not change fields other than `spec.containers[*].image`, `spec.initContainers[*].image`, `spec.activeDeadlineSeconds` or `spec.tolerations`. For `spec.tolerations`, you can only add new entries.
 
+Jika kita coba seperti berikut:
+
+```powershell
+➜ ~  kubectl run nginx --image nginx:mainline --port 80
+pod/nginx created
+
+➜ ~  kubectl get pods
+NAME    READY   STATUS    RESTARTS   AGE
+nginx   1/1     Running   0          33s
+
+➜ ~ kubectl patch pod nginx --type='json' -p='[{"op": "replace", "path": "/spec/containers/0/image", "value": "nginx:latest"}]'
+pod/nginx patched
+
+➜ ~  kubectl describe pod nginx
+Name:         nginx
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Fri, 22 Apr 2022 06:54:59 +0700
+Labels:       run=nginx
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.3
+IPs:
+  IP:  172.17.0.3
+Containers:
+  nginx:
+    Container ID:   docker://02537095696f9ddcb0075dc26267004fbf71ed50cdd419ce3ca576d372fb519e
+    Image:          nginx:latest
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Fri, 22 Apr 2022 07:13:10 +0700
+    Last State:     Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Fri, 22 Apr 2022 06:58:34 +0700
+      Finished:     Fri, 22 Apr 2022 07:13:10 +0700
+    Ready:          True
+    Restart Count:  2
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-b8jcq (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age                  From               Message
+  ----    ------     ----                 ----               -------
+  Normal  Scheduled  21m                  default-scheduler  Successfully assigned default/nginx to minikube
+  Normal  Pulling    21m                  kubelet            Pulling image "nginx:mainline"
+  Normal  Pulled     21m                  kubelet            Successfully pulled image "nginx:mainline" in 5.4689168s
+  Normal  Pulled     18m                  kubelet            Container image "nginx" already present on machine
+  Normal  Created    3m33s (x3 over 21m)  kubelet            Created container nginx
+  Normal  Started    3m33s (x3 over 21m)  kubelet            Started container nginx
+  Normal  Killing    3m33s (x2 over 18m)  kubelet            Container nginx definition changed, will be restarted
+  Normal  Pulled     3m33s                kubelet            Container image "nginx:latest" already present on machine
+```
+
 ## Resource sharing in pods
 
+Pods enable data sharing among their containers. A Pod can specify a set of shared storage volumes. All containers in the Pod can access the shared volumes, allowing those containers to share data. Volumes also allow persistent data in a Pod to survive in case one of the containers within needs to be restarted. See Storage for more information on how Kubernetes implements shared storage and makes it available to Pods.
+
+For example we'll create 2 containers using same volumes using `hostPath` driver, yang perlu kita siapkan adalah file `index.html` dan `pods.yaml` seperti berikut:
+
+{% gist page.gist "03b-index.html" %}
+
+{% gist page.gist "03b-pods-share-volumes.yaml" %}
+
+Jika kita jalankan seperti berikut:
+
+```powershell
+➜ kubernetes  minikube ssh
+Last login: Fri Apr 22 00:41:21 2022 from 192.168.49.1
+
+docker@minikube:~$ sudo mkdir -p /data/nginx/html
+
+docker@minikube:~$ sudo chmod -R 777 /data/nginx/html
+
+docker@minikube:~$ exit
+
+➜ kubernetes  minikube cp .\03-workloads\01-working-pods\index.html minikube:/data/nginx/html/index
+.html
+
+➜ kubernetes  minikube ssh
+Last login: Fri Apr 22 00:44:38 2022 from 192.168.49.1
+
+docker@minikube:~$ ls /data/nginx/html/
+index.html
+
+docker@minikube:~$ exit
+
+➜ kubernetes  kubectl apply -f .\03-workloads\01-working-pods\pod-storage-volume.yaml
+pod/webapps created
+
+➜ kubernetes  kubectl describe pod webapps
+Name:         webapps
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Fri, 22 Apr 2022 08:18:40 +0700
+Labels:       app=webapps
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.3
+IPs:
+  IP:  172.17.0.3
+Containers:
+  nginx:
+    Container ID:   docker://5d38a4c5ec182e594499560130cd621e4e5111196db63181f41269fa9665ed1e
+    Image:          nginx:mainline
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Fri, 22 Apr 2022 08:18:41 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      NGINX_PORT:  80
+    Mounts:
+      /usr/share/nginx/html/index.html from index-html-file (ro,path="index.html")
+  bitnami:
+    Container ID:   docker://21d739a004cddc6659892d3e8921950c4a7df4e6431804046f39d4b99717737b
+    Image:          bitnami/nginx
+    Port:           90/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Fri, 22 Apr 2022 08:18:58 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /app/index.html from index-html-file (ro,path="index.html")
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  index-html-file:
+    Type:          HostPath (bare host directory volume)
+    Path:          /data/nginx/html
+    HostPathType:  DirectoryOrCreate
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  85s   default-scheduler  Successfully assigned default/webapps to minikube
+  Normal  Pulled     84s   kubelet            Container image "nginx:mainline" already present on mac
+hine
+  Normal  Created    84s   kubelet            Created container nginx
+  Normal  Started    84s   kubelet            Started container nginx
+  Normal  Pulling    84s   kubelet            Pulling image "bitnami/nginx"
+  Normal  Pulled     67s   kubelet            Successfully pulled image "bitnami/nginx" in 16.8660425
+s
+  Normal  Created    67s   kubelet            Created container bitnami
+  Normal  Started    67s   kubelet            Started container bitnami
+
+➜ kubernetes ✗  kubectl exec -it pod/webapps -c nginx -- curl localhost
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimu
+m-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar Kubernetes</title>
+</head>
+<body>
+<h3>Halo from kubernetes same volume</h3>
+</body>
+</html>
+
+➜ kubernetes  kubectl exec -it pod/webapps -c bitnami -- curl localhost:8080
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimu
+m-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar Kubernetes</title>
+</head>
+<body>
+<h3>Halo from kubernetes same volume</h3>
+</body>
+</html>
+```
