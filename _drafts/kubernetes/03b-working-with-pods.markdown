@@ -443,3 +443,31 @@ m-scale=1.0">
 </body>
 </html>
 ```
+
+## Privileged mode for containers
+
+In Linux, any container in a Pod can enable privileged mode using the `privileged` (Linux) flag on the [security context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) of the container spec. This is useful for containers that want to use operating system administrative capabilities such as manipulating the network stack or accessing hardware devices.
+
+If your cluster has the `WindowsHostProcessContainers` feature enabled, you can create a [Windows HostProcess pod](https://kubernetes.io/docs/tasks/configure-pod-container/create-hostprocess-pod) by setting the `windowsOptions.hostProcess` flag on the security context of the pod spec. All containers in these pods must run as Windows HostProcess containers. HostProcess pods run directly on the host and can also be used to perform administrative tasks as is done with Linux privileged containers.
+
+Untuk lebih detailnya nanti kita bahas di section security.
+
+## Static pods
+
+Static Pods are managed directly by the kubelet daemon on a specific node, without the API server observing them. Whereas most Pods are managed by the control plane (for example, a Deployment), for static Pods, the kubelet directly supervises each static Pod (and restarts it if it fails).
+
+Static Pods are always bound to one Kubelet on a specific node. The main use for static Pods is to run a self-hosted control plane: in other words, using the kubelet to supervise the individual [control plane components](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components).
+
+For examples:
+
+```powershell
+➜ ~  kubectl get pods -n kube-system
+NAME                               READY   STATUS    RESTARTS     AGE
+coredns-64897985d-ltz54            1/1     Running   0            9h
+etcd-minikube                      1/1     Running   0            9h
+kube-apiserver-minikube            1/1     Running   0            9h
+kube-controller-manager-minikube   1/1     Running   0            9h
+kube-proxy-6l2r2                   1/1     Running   0            9h
+kube-scheduler-minikube            1/1     Running   0            9h
+storage-provisioner                1/1     Running   1 (9h ago)   9h
+```
