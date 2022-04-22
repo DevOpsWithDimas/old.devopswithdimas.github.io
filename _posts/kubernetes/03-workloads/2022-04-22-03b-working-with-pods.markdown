@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Working with Pods"
+date: 2022-04-22T15:41:53+07:00
 lang: k8s
 authors:
 - dimasm93
