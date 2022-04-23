@@ -24,7 +24,7 @@ Hai semuanya, di materi kali ini kita akan bahas lebih detail tentang Kubernetes
 
 1. What is a Pod?
 2. Using Pods into your kubernetes cluster
-3. Workloads resources for managing pods
+3. Containers inside a pod
 4. How pods manage multiple containers
 
 Ok langsung aja kita bahas materi pertama
@@ -59,9 +59,7 @@ kubectl apply -f simple-nginx-pod.yaml
 
 Pods are generally not created directly and are created using workload resources.
 
-## Workloads resources for managing pods
-
-Usually you don't need to create Pods directly, even singleton Pods. Instead, create them using workload resources such as Deployment or Job. If your Pods need to track state, consider the StatefulSet resource.
+## Container inside a pod
 
 Pods in a Kubernetes cluster are used in two main ways:
 
@@ -80,14 +78,12 @@ metadata:
   name: nginx
 spec:
   containers:
-  - name: laravel
-    image: php:apache
+  - name: backend
+    image: springboot:latest
     ports:
-    - containerPort: 80
-  - name: mysql
-    image: mysql:8.0
-    ports:
-    - containerPort: 3306
+    - containerPort: 8080
+  - name: agent
+    image: jaeger-agent:latest
 {% endhighlight %}
 
 Each Pod is meant to run a single instance of a given application. If you want to scale your application horizontally (to provide more overall resources by running more instances), you should use multiple Pods, one for each instance. In Kubernetes, this is typically referred to as replication. Replicated Pods are usually created and managed as a group by a workload resource and its controller.
