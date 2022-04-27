@@ -208,3 +208,115 @@ Types of probe, The kubelet can optionally perform and react to three kinds of p
 1. `livenessProbe`, Indicates whether the container is running. If the liveness probe fails, the kubelet kills the container, and the container is subjected to its restart policy. If a container does not provide a liveness probe, the default state is `Success`.
 2. `readinessProbe`, Indicates whether the container is ready to respond to requests. If the readiness probe fails, the endpoints controller removes the Pod's IP address from the endpoints of all Services that match the Pod. The default state of readiness before the initial delay is Failure. If a container does not provide a readiness probe, the default state is `Success`.
 3. `startupProbe`, Indicates whether the application within the container is started. All other probes are disabled if a startup probe is provided, until it succeeds. If the startup probe fails, the kubelet kills the container, and the container is subjected to its restart policy. If a container does not provide a startup probe, the default state is `Success`.
+
+Implementasinya seperti berikut:
+
+{% gist page.gist "03c-container-http-probes.yaml" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```powershell
+> kubectl apply -f .\02-workloads\01-pod\container-http-probes.yaml
+pod/webapp created
+
+> kubectl get pod
+NAME     READY   STATUS    RESTARTS   AGE
+webapp   1/1     Running   0          20s
+
+> kubectl describe pod webapp
+Name:         webapp
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Thu, 28 Apr 2022 05:06:36 +0700
+Labels:       app=webapp
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.3
+IPs:
+  IP:  172.17.0.3
+Containers:
+  webapp:
+    Image:          nginx:mainline
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 28 Apr 2022 05:06:37 +0700
+    Ready:          True
+    Restart Count:  0
+    Liveness:       http-get http://:8080/ delay=10s timeout=1s period=10s #success=1 #failure=3
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-x8q49 (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Events:
+  Type     Reason     Age               From               Message
+  ----     ------     ----              ----               -------
+  Normal   Scheduled  34s               default-scheduler  Successfully assigned default/webapp to
+ minikube
+  Normal   Pulled     33s               kubelet            Container image "nginx:mainline" alread
+y present on machine
+  Normal   Created    33s               kubelet            Created container webapp
+  Normal   Started    33s               kubelet            Started container webapp
+
+## wait 30s
+
+> kubectl get pod
+NAME     READY   STATUS      RESTARTS   AGE
+webapp   0/1     Completed   0          2m14s
+
+> kubectl describe pod webapp
+Name:         webapp
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Thu, 28 Apr 2022 05:06:36 +0700
+Labels:       app=webapp
+Annotations:  <none>
+Status:       Succeeded
+IP:           172.17.0.3
+IPs:
+  IP:  172.17.0.3
+Containers:
+  webapp:
+    Image:          nginx:mainline
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Thu, 28 Apr 2022 05:06:37 +0700
+      Finished:     Thu, 28 Apr 2022 05:07:16 +0700
+    Ready:          False
+    Restart Count:  0
+    Liveness:       http-get http://:8080/ delay=10s timeout=1s period=10s #success=1 #failure=3
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-x8q49 (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             False
+  ContainersReady   False
+  PodScheduled      True
+Events:
+  Type     Reason       Age                From               Message
+  ----     ------       ----               ----               -------
+  Normal   Scheduled    87s                default-scheduler  Successfully assigned default/webapp
+ to minikube
+  Normal   Pulled       86s                kubelet            Container image "nginx:mainline" alr
+eady present on machine
+  Normal   Created      86s                kubelet            Created container webapp
+  Normal   Started      86s                kubelet            Started container webapp
+  Warning  Unhealthy    47s (x3 over 67s)  kubelet            Liveness probe failed: Get "http://1
+72.17.0.3:8080/": dial tcp 172.17.0.3:8080: connect: connection refused
+  Normal   Killing      47s                kubelet            Stopping container webapp
+  Warning  FailedMount  14s (x7 over 46s)  kubelet            MountVolume.SetUp failed for volume
+"kube-api-access-x8q49" : object "default"/"kube-root-ca.crt" not registered
+```
+
