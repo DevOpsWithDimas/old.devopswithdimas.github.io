@@ -70,7 +70,20 @@ Here are the possible values for `phase`:
 
 5. `Unknown`, For some reason the state of the Pod could not be obtained. This phase typically occurs due to an error in communicating with the node where the Pod should be running.
 
-> Note: When a Pod is being deleted, it is shown as `Terminating` by some kubectl commands. This `Terminating` status is not one of the Pod phases
+> Note: When a Pod is being deleted, it is shown as `Terminating` by some `kubectl` commands. This `Terminating` status is not one of the Pod phases
+
+Jika kita gambarkan workflownya seperti berikut:
+
+{% mermaid %}
+flowchart LR
+    Pending --> Running --> IsRunning{ Is Running? }
+    IsRunning -- Yes --> Succeeded
+    IsRunning -- No --> Failed --> IsRestartable{ Restarted? } 
+    IsRunning -- No reason --> Unknown --> Terminating
+
+    IsRestartable -- Yes --> Running
+    IsRestartable -- No --> Terminating
+{% endmermaid %}
 
 ## Container states
 
@@ -87,6 +100,16 @@ Each state has a specific meaning:
 2. `Running`, The `Running` status indicates that a container is executing without issues.
 
 3. `Terminated`, A container in the `Terminated` state began execution and then either ran to completion or failed for some reason. When you use `kubectl` to query a Pod with a container that is `Terminated`, you see a reason, an exit code, and the start and finish time for that container's period of execution.
+
+Jika kita gambarkan workflownya seperti berikut:
+
+{% mermaid %}
+flowchart LR
+    Waiting --> Running --> IsRunning{ Is Running? }
+    IsRunning -- Yes --> Succeeded
+    IsRunning -- Completed --> Terminated
+    IsRunning -- Failed --> Terminated
+{% endmermaid %}
 
 ## Container restart policy
 
