@@ -87,3 +87,80 @@ Each state has a specific meaning:
 2. `Running`, The `Running` status indicates that a container is executing without issues.
 
 3. `Terminated`, A container in the `Terminated` state began execution and then either ran to completion or failed for some reason. When you use `kubectl` to query a Pod with a container that is `Terminated`, you see a reason, an exit code, and the start and finish time for that container's period of execution.
+
+## Container restart policy
+
+The spec of a Pod has a restartPolicy field with possible values `Always`, `OnFailure`, and `Never`. The default value is `Always`.
+
+The `restartPolicy` applies to all containers in the Pod. `restartPolicy` only refers to restarts of the containers by the kubelet on the same node. After containers in a Pod exit, the kubelet restarts them with an exponential back-off delay (`10s`, `20s`, `40s`, …), that is capped at five minutes. Once a container has executed for 10 minutes without any problems, the kubelet resets the restart backoff timer for that container.
+
+For example:
+
+{% gist page.gist "03c-container-restart-policy.yaml" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```bash
+> minikube start --driver docker --memory 2g
+
+
+> kubectl apply -f .\02-workloads\01-pod\pod-restart-policy.yaml
+pod/webapp created
+
+> kubectl get pod
+NAME     READY   STATUS    RESTARTS   AGE
+webapp   1/1     Running   0          90s
+
+> minikube stop
+* Stopping node "minikube"  ...
+* 1 node stopped.
+
+> minikube start
+* Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+> kubectl get pod
+NAME     READY   STATUS      RESTARTS   AGE
+webapp   0/1     Completed   0          106s
+
+> kubectl describe pod webapp
+Name:         webapp
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Thu, 28 Apr 2022 03:33:11 +0700
+Labels:       app=webapp
+Annotations:  <none>
+Status:       Succeeded
+IP:
+IPs:          <none>
+Containers:
+  webapp:
+    Image:          nginx:mainline
+    Port:           <none>
+    Host Port:      <none>
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Thu, 28 Apr 2022 03:33:41 +0700
+      Finished:     Thu, 28 Apr 2022 03:33:56 +0700
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             False
+  ContainersReady   False
+  PodScheduled      True
+  
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  2m3s  default-scheduler  Successfully assigned default/webapp to minikube
+  Normal  Pulling    2m3s  kubelet            Pulling image "nginx:mainline"
+  Normal  Pulled     93s   kubelet            Successfully pulled image "nginx:mainline" in 29.1412459s
+  Normal  Created    93s   kubelet            Created container webapp
+  Normal  Started    93s   kubelet            Started container webapp
+```
+
+## Container probes
