@@ -71,3 +71,19 @@ Here are the possible values for `phase`:
 5. `Unknown`, For some reason the state of the Pod could not be obtained. This phase typically occurs due to an error in communicating with the node where the Pod should be running.
 
 > Note: When a Pod is being deleted, it is shown as `Terminating` by some kubectl commands. This `Terminating` status is not one of the Pod phases
+
+## Container states
+
+As well as the phase of the Pod overall, Kubernetes tracks the state of each container inside a Pod.
+
+Once the scheduler assigns a Pod to a Node, the kubelet starts creating containers for that Pod using a container runtime. There are three possible container states: `Waiting`, `Running`, and `Terminated`.
+
+To check the state of a Pod's containers, you can use `kubectl describe pod <name-of-pod>`. The output shows the state for each container within that Pod.
+
+Each state has a specific meaning:
+
+1. `Waiting`, A container in the `Waiting` state is still running the operations it requires in order to complete start up: for example, pulling the container image from a container image registry, or applying Secret data.
+
+2. `Running`, The `Running` status indicates that a container is executing without issues.
+
+3. `Terminated`, A container in the `Terminated` state began execution and then either ran to completion or failed for some reason. When you use `kubectl` to query a Pod with a container that is `Terminated`, you see a reason, an exit code, and the start and finish time for that container's period of execution.
