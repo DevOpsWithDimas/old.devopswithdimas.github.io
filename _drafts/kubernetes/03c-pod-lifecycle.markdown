@@ -123,7 +123,7 @@ For example:
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```bash
+```powershell
 > minikube start --driver docker --memory 2g
 
 
@@ -320,3 +320,4 @@ eady present on machine
 "kube-api-access-x8q49" : object "default"/"kube-root-ca.crt" not registered
 ```
 
+## Termination of Pods
