@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "03c-init-containers"
+title: "Initialization of Containers"
 lang: k8s
 authors:
 - dimasm93
@@ -19,8 +19,7 @@ gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
 
-
-description...
+Hai semuanya, di materi kali 
 
 <!--more-->
 
