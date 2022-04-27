@@ -152,7 +152,7 @@ Conditions:
   Ready             False
   ContainersReady   False
   PodScheduled      True
-  
+
 Events:
   Type    Reason     Age   From               Message
   ----    ------     ----  ----               -------
@@ -164,3 +164,4 @@ Events:
 ```
 
 ## Container probes
+
