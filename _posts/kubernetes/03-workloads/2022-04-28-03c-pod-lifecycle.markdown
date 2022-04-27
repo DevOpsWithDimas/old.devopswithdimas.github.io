@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Pod & Container Lifecycle"
+date: 2022-04-28T05:41:45+07:00
 lang: k8s
 authors:
 - dimasm93
