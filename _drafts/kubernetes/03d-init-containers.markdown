@@ -11,6 +11,7 @@ categories:
 - Workloads
 refs: 
 - https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+- https://kubernetes.io/docs/concepts/containers/container-environment/
 youtube: 
 comments: true
 catalog_key: workloads
@@ -19,7 +20,9 @@ gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
 
-Hai semuanya, di materi kali 
+Hai semuanya, di materi kali kita akan membahas tentang Initialization of Containers dari suatu Pod. Init containers can contain utilities or setup scripts not present in an app image. 
+
+You can specify init containers in the Pod specification alongside the `containers` array (which describes app containers).
 
 <!--more-->
 
