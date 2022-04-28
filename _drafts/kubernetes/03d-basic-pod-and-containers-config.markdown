@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Basic Pods and Containers Configuration"
+title: "Basic Pods and Containers Configs"
 lang: k8s
 authors:
 - dimasm93
@@ -34,13 +34,37 @@ Ok karena materinya akan lumayan panjang kita akan bagi memjadi beberapa bagian 
 8. Using `ports`
 9. Using Resource request & limit
 
+Ok lansung aja kita bahas materi yang pertama
+
 <!--more-->
 
-Materi: 
+## Using Labels in a Pods
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+Labels can be used to organize and to select subsets of objects. Labels can be attached to objects at creation time and subsequently added and modified at any time. Each object can have a set of key/value labels defined. Each Key must be unique for a given object.
+
+Labels are key/value pairs. Valid label keys have two segments: an optional prefix and name, separated by a slash (`/`). The name segment is required and must be `63` characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between.
+
+The `kubernetes.io/` and `k8s.io/` prefixes are reserved for Kubernetes core components.
+
+Example labels:
+
+{% gist page.gist "03d-pod-labels.yaml" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ kubernetes git:(main) kubectl apply -f .\02-workloads\01-pod\pod-labels.yaml
+pod/webapp-prod created
+pod/webapp-test created
+
+➜ kubernetes git:(main) kubectl get pod --show-labels
+NAME          READY   STATUS    RESTARTS   AGE     LABELS
+webapp-prod   1/1     Running   0          2m40s   app=nginx,environment=production,release=stable,tier=frontend
+webapp-test   1/1     Running   0          2m40s   app=nginx,environment=qa,release=latest,tier=frontend
+
+➜ kubernetes git:(main) kubectl get pod -l environment=production
+NAME          READY   STATUS    RESTARTS   AGE
+webapp-prod   1/1     Running   0          3m16s
+```
+
+Selain digunakan untuk melakukan query tersebut, biasanya labels juga bisa digunakan untuk menentukan lokasih suatu pod di jalankan pada node tertentu. Hanya untuk kasus ini nanti kita akan bahas di materi selanjutnya ya.
