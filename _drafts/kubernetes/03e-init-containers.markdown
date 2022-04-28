@@ -11,7 +11,6 @@ categories:
 - Workloads
 refs: 
 - https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
-- https://kubernetes.io/docs/concepts/containers/container-environment/
 youtube: 
 comments: true
 catalog_key: workloads
