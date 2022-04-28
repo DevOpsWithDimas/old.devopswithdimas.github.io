@@ -12,6 +12,7 @@ categories:
 refs: 
 - https://kubernetes.io/docs/tasks/configure-pod-container/
 - https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/
+- https://kubernetes.io/docs/concepts/containers/images/
 youtube: 
 comments: true
 catalog_key: workloads
@@ -27,13 +28,14 @@ Ok karena materinya akan lumayan panjang kita akan bagi memjadi beberapa bagian 
 1. Using Labels in a Pods
 2. Using Namespace
 3. Using `image` & `imagePullPolicy` in containerSpec
-4. Using `env`
-5. Using Working directory in containerSpec
-6. Using Entrypoin (`command` and `args`)
-7. Using normal user or non-root to run container
-8. Using `ports`
-9. Using Resource request & limit
-10. Using privileged mode
+4. Using `imagePullSecrets` for pull image from private registry
+5. Using `env` (Environment Variables)
+6. Using Working directory in containerSpec
+7. Using Entrypoin (`command` and `args`)
+8. Using normal user or non-root to run container
+9. Using `ports`
+10. Using Resource request & limit
+11. Using privileged mode
 
 Ok lansung aja kita bahas materi yang pertama
 
@@ -124,3 +126,6 @@ Context "minikube" modified.
 NAME                READY   STATUS    RESTARTS   AGE     LABELS
 webapp-namespaced   1/1     Running   0          2m46s   app=nginx,release=latest,tier=frontend
 ```
+
+## Using `image` & `imagePullPolicy` in containerSpec
+
