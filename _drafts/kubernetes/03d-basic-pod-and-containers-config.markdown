@@ -33,6 +33,7 @@ Ok karena materinya akan lumayan panjang kita akan bagi memjadi beberapa bagian 
 7. Using normal user or non-root to run container
 8. Using `ports`
 9. Using Resource request & limit
+10. Using privileged mode
 
 Ok lansung aja kita bahas materi yang pertama
 
@@ -68,3 +69,58 @@ webapp-prod   1/1     Running   0          3m16s
 ```
 
 Selain digunakan untuk melakukan query tersebut, biasanya labels juga bisa digunakan untuk menentukan lokasih suatu pod di jalankan pada node tertentu. Hanya untuk kasus ini nanti kita akan bahas di materi selanjutnya ya.
+
+## Using Namespace in a Pods
+
+Namespaces are intended for use in environments with many users spread across multiple teams, or projects. Contohnya seperti yang telah kita praktek sebelumnya, kita memiliki 2 pod dengan specifikasi yang mirip hanya berbeda version dan environtment atau perpose untuk meng-organisasi object tersebut akan lebih mudah menggunakan Namespace tersebut.
+
+Pertama kita harus membuat object namespace tersebut dengan perintah 
+
+{% highlight bash %}
+kubectl create ns production;
+kubectl create namespace qa
+{% endhighlight %}
+
+Atau bisa juga menggunakan file `.yaml` seperti berikut:
+
+{% gist page.gist "03d-pod-namespaced.yaml" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ kubernetes git:(main) kubectl apply -f .\02-workloads\01-pod\pod-namespaced.yaml
+namespace/production created
+namespace/qa created
+pod/webapp-namespaced created
+pod/webapp-namespaced created
+
+➜ kubernetes git:(main) kubectl get pod --all-namespaces -l app=nginx
+NAMESPACE    NAME                READY   STATUS    RESTARTS   AGE
+default      webapp-prod         1/1     Running   0          30m
+default      webapp-test         1/1     Running   0          30m
+production   webapp-namespaced   1/1     Running   0          48s
+qa           webapp-namespaced   1/1     Running   0          48s
+
+➜ kubernetes git:(main) ✗ kubectl get pod -n production
+NAME                READY   STATUS    RESTARTS   AGE
+webapp-namespaced   1/1     Running   0          72s
+```
+
+You can permanently save the namespace for all subsequent kubectl commands in that context.
+
+{% highlight bash %}
+kubectl config set-context --current --namespace=qa
+# Validate it
+kubectl config view --minify | grep namespace:
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ kubernetes git:(main) kubectl config set-context --current --namespace=qa
+Context "minikube" modified.
+
+➜ kubernetes git:(main) kubectl get pod --show-labels
+NAME                READY   STATUS    RESTARTS   AGE     LABELS
+webapp-namespaced   1/1     Running   0          2m46s   app=nginx,release=latest,tier=frontend
+```
