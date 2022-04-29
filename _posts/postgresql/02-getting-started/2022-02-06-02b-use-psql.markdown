@@ -64,7 +64,7 @@ The following meta-commands are defined:
 
 Contoh penggunaannya, jika kita mau lihat semua object pada database kita bisa gunakan `\d` seperti berikut:
 
-```postgresql-console
+```shell
 bootcamp=# \d
                        List of relations
   Schema  |             Name              |   Type   |  Owner
@@ -86,7 +86,7 @@ bootcamp=# \d
 
 Selain itu juga jika kita mau lihat daftar table, kita bisa menggunakan `\dt object-name` seperti berikut:
 
-```postgresql-console
+```shell
 bootcamp=# \dt
                   List of relations
   Schema  |         Name          | Type  |  Owner
@@ -104,7 +104,7 @@ bootcamp=# \dt
 
 Dan misalnya kita mau lihat detail dari table tertentu kita bisa menggunakan perintah `\d <object-name>` seperti berikut:
 
-```postgresql-console
+```shell
 bootcamp=# \d departments
                                             Table "bootcamp.departments"
      Column      |         Type          | Collation | Nullable |                      Default

@@ -48,7 +48,7 @@ Contoh penggunaannya seperti berikut:
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT  UPPER(last_name) nama,
 hr-#         to_char(salary, '$L999,999.00') gaji_sebulan,
 hr-#         concat(first_name, ' ', last_name) as nama_lengkap
@@ -109,7 +109,7 @@ Dan masih banyak lagi, Berikut adalah contoh penggunaanya di SQL:
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT  max(salary) max_salary,
 hr-#         min(salary) min_salary,
 hr-#         avg(salary) avg_salary,
@@ -142,7 +142,7 @@ The effect is to combine each set of rows having common values into one group ro
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT  job_id
 hr-# FROM employees
 hr-# GROUP BY job_id;
@@ -167,7 +167,7 @@ In general, if a table is grouped, columns that are not listed in GROUP BY canno
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT  job_id,
 hr-#         count(*) count_employees_by_job,
 hr-#         sum(salary) salary_group_by_job
@@ -208,7 +208,7 @@ Expressions in the `HAVING` clause can refer both to grouped expressions and to 
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT  job_id,
 hr-#         count(*) count_employees_by_job,
 hr-#         sum(salary) salary_group_by_job
@@ -242,7 +242,7 @@ Jadi klausa dengan `WHERE` dia prosesnya akan melakukan filter terlebih dahulu s
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT  job_id,
 hr-#         count(*) count_employees_by_job,
 hr-#         sum(salary) salary_group_by_job
@@ -268,7 +268,7 @@ The data selected by the `FROM` and `WHERE` clauses is grouped separately by eac
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT manager_id, department_id, count(*), sum(salary)
 hr-# FROM employees
 hr-# GROUP BY GROUPING SETS ((manager_id), (department_id));

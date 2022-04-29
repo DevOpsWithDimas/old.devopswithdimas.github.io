@@ -48,7 +48,7 @@ from
 
 Contohnya di _database_ `hr` sekarang saya punya daftar _tables_ seperti berikut:
 
-{% highlight postgresql-console %}
+{% highlight shell %}
 hr=# \dt
  public | countries    | table | hr
  public | departments  | table | hr

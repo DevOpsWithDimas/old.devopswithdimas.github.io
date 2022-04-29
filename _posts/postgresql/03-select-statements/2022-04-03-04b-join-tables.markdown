@@ -97,7 +97,7 @@ Join statement can be more than once, and Parentheses can be used around `JOIN` 
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT emp.job_id, job.job_title, emp.employee_id, emp.first_name, loc.street_address
 hr-# FROM employees emp
 hr-#         natural join jobs job
@@ -164,7 +164,7 @@ For example:
 
 Jika di jalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select count(*) from departments;
  count
 -------
@@ -264,7 +264,7 @@ Atau jiga kita bisa menggunakan lebih specify yaitu `INNER JOIN` seperti berikut
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT emp.employee_id, emp.last_name, job.job_id, job.job_title
 hr-# FROM employees emp
 hr-#       inner join jobs job on (emp.job_id = job.job_id)
@@ -319,7 +319,7 @@ Berikut adalah contoh implementasi `LEFT OUTER JOIN`
 
 Jika di jalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT dep.department_id, dep.department_name, emp.employee_id, emp.last_name
 hr-# FROM departments dep
 hr-#       LEFT OUTER JOIN employees emp on dep.manager_id = emp.employee_id;
@@ -353,7 +353,7 @@ Sedangkan berikut adalah implementasi `RIGHT OUTER JOIN` dengan query yang sama 
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT dep.department_id, dep.department_name, emp.employee_id, emp.last_name
 hr-# FROM departments dep
 hr-#       RIGHT OUTER JOIN employees emp on dep.manager_id = emp.employee_id;
@@ -394,7 +394,7 @@ Maka imlementasi query seperti berikut:
 
 Jika di jalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT dep.department_id, dep.department_name, emp.employee_id, emp.last_name
 hr-# FROM departments dep
 hr-#       FULL OUTER JOIN employees emp on dep.manager_id = emp.employee_id;
@@ -449,7 +449,7 @@ Contoh kasusnya, tampilkan data karyawan berserta managernya maka querynya seper
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT  emp.employee_id "employee id",
 hr-#         emp.last_name as "employee name",
 hr-#         man.employee_id "manager id",
@@ -484,7 +484,7 @@ The `USING` clause is a shorthand that allows you to take advantage of the speci
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT emp.employee_id, emp.last_name, job.job_id, job.job_title
 hr-# FROM employees emp
 hr-#       join jobs job using (job_id)
@@ -510,7 +510,7 @@ Selain itu juga kita bisa menggunakan `WHERE` clause, seperti berikut:
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# SELECT emp.employee_id, emp.last_name, job.job_id, job.job_title
 hr-# FROM employees emp, jobs job
 hr-# WHERE emp.job_id = job.job_id

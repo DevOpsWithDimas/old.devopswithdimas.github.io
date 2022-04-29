@@ -55,7 +55,7 @@ Contoh penggunaannya seperti berikut:
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, salary, commission_pct
 hr-# from employees
 hr-# order by employee_id
@@ -98,7 +98,7 @@ Contoh penggunaannya seperti berikut:
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, salary, commission_pct
 hr-# from employees
 hr-# order by employee_id
@@ -137,7 +137,7 @@ Contoh penggunaannya seperti berikut:
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, salary, commission_pct
 hr-# from employees
 hr-# order by employee_id

@@ -32,10 +32,10 @@ Ok karena materinya akan lumayan panjang kita akan bagi memjadi beberapa bagian 
 4. Using `imagePullSecrets` for pull image from private registry
 5. Using `env` (Environment Variables)
 6. Define a Command and Args for a Container
+9. Using `ports`
 7. Using Working directory in containerSpec
 8. Using normal user or non-root to run container
-9. Using `ports`
-10. Using Resource request & limit
+10. Assign Memory Resources to Containers and Pods
 11. Using privileged mode
 
 Ok lansung aja kita bahas materi yang pertama
@@ -529,3 +529,6 @@ e-command-arg
 for volume "kube-api-access-xtgbq" : object "default"/"kube-root-ca.crt" not registered
 
 ```
+
+## Using Working directory in containerSpec
+

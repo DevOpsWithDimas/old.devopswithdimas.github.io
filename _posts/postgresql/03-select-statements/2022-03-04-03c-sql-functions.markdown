@@ -62,7 +62,7 @@ Berikut adalah implementasinya pada PostgreSQL:
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select  substring('Dimas Maryanto' from 1 for 3) as "substring from",
 hr-#         substr('Dimas Maryanto', 1, 5) as "substr",
 hr-#         lower('Ini Adalah Text BESAR dan Kecil') as "lower",
@@ -108,7 +108,7 @@ Berikut adalah implementasi SQLnya:
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select  abs(-10) "absolut",
 hr-#         div(10, 3) "division",
 hr-#         mod(5, 2) "mod",
@@ -157,7 +157,7 @@ Berikut adalah implementasi SQLnya:
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select  current_date tgl_sekarang,
 hr-#         now() datetime_sekarang_func,
 hr-#         current_timestamp as datetime_tz,
@@ -187,7 +187,7 @@ Berikut adalah implementasi SQLnya:
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select  COALESCE(null, 'data1', 'data2') return_data1,
 hr-#         COALESCE(null, null, 'data2') return_data2,
 hr-#         COALESCE(null, null, null) return_null,
@@ -247,7 +247,7 @@ Berikut adalah implementasi SQLnya:
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select  to_char(current_date, 'DD/MON/YYYY') date_indonesia,
 hr-#         to_char(current_timestamp, 'DD/MM/YYYY HH24:MM') datetime_indonesia,
 hr-#         to_char(1000000, 'RpL999,999,999.00-') sejuta_rupiah,

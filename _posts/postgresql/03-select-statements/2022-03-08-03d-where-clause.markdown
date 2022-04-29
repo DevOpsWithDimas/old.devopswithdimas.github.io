@@ -72,7 +72,7 @@ Contoh lainnya seperti berikut:
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, last_name, email, phone_number, job_id, salary
 hr-# from employees
 hr-# where salary >= 20000;
@@ -97,7 +97,7 @@ Contoh kasus untuk expresion `%`, saya ingin mencari nama depan karyawan yang di
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, last_name, email, phone_number, job_id, salary
 hr-# from employees
 hr-# where last_name like 'A%';
@@ -116,7 +116,7 @@ Sedangkan untuk contoh expresion `_`, saya ingin mencari huruf ke 2 dari kolom `
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, last_name, email, phone_number, job_id, salary
 hr-# from employees
 hr-# where last_name like '_t%';
@@ -137,7 +137,7 @@ Contoh kasusnya, Saya mau menampilkan data yang karywan yang memiliki gaji dari 
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, last_name, email, phone_number, job_id, salary
 hr-# from employees
 hr-# where salary between 17000 and 20000;
@@ -154,7 +154,7 @@ Atau berikut contoh lainnya, saya mau mengambil `first_name` yang mengandung hur
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, last_name
 hr-# from employees
 hr-# where substring(first_name from 2 for 1) between 'h' and 'j';
@@ -178,7 +178,7 @@ Contoh kasusnya, saya mau menampilkan data karywan yang tidak memiliki manager. 
 
 Jika dijalankan hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, last_name, job_id, manager_id
 hr-# from employees
 hr-# where manager_id is null;
@@ -202,7 +202,7 @@ Kasusnya saya mau mencari data karyawan yang berkerja di `department_id = 90` da
 
 Jika kita jalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, last_name, department_id, manager_id
 hr-# from employees
 hr-# where department_id = 90 and manager_id = 100;
@@ -219,7 +219,7 @@ Dan sedangkan untuk operator `or` seperti berikut:
 
 Jika kita jalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, last_name, department_id, manager_id
 hr-# from employees
 hr-# where department_id = 90 or manager_id = 100;
@@ -249,7 +249,7 @@ Dan yang terakhir kita juga bisa menggunakan `not` operator seperti berikut:
 
 Jika di jalankan maka hasilnya sebagai berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, last_name, job_id, manager_id, salary
 hr-# from employees
 hr-# where salary not between 3000 and 20000;
@@ -299,7 +299,7 @@ Salah satu penggunaanya seperti berikut:
 
 Jika di jalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, phone_number, job_id
 hr-# from employees
 hr-# where first_name similar to 'Ste(v|ph)en';
@@ -330,7 +330,7 @@ Salah satu penggunaanya seperti berikut:
 
 Jika di jalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, phone_number, job_id
 hr-# from employees
 hr-# where first_name ~ '^S.*(a|v|ph)';
@@ -379,7 +379,7 @@ Salah satu penggunaanya seperti berikut:
 
 Jika di jalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, phone_number, job_id
 hr-# from employees
 hr-# where job_id in ('IT_PROG', 'SA_MAN', 'MK_MAN');
@@ -414,7 +414,7 @@ The simple example is `= ANY` look like this:
 
 Jika di jalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, phone_number, job_id
 hr-# from employees
 hr-# where job_id = any (ARRAY['IT_PROG', 'SA_MAN', 'MK_MAN']);

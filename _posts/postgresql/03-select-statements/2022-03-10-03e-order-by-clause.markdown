@@ -59,7 +59,7 @@ Contoh lainnya seperti berikut:
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select location_id, department_id, department_name
 hr-# from departments
 hr-# order by location_id;
@@ -103,7 +103,7 @@ Contoh penggunaannya seperti berikut:
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select location_id, department_id, department_name
 hr-# from departments
 hr-# order by 2;
@@ -145,7 +145,7 @@ Contoh penggunaannya seperti berikut:
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select location_id, department_id, department_name
 hr-# from departments
 hr-# order by 
@@ -190,7 +190,7 @@ Contoh penggunaannya seperti berikut:
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```postgresql-console
+```shell
 hr=# select employee_id, first_name, salary, commission_pct
 hr-# from employees
 hr-# order by

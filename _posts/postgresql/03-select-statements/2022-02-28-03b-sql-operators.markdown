@@ -107,7 +107,7 @@ Apa itu concatenation?, Concatenation biasanya digunakan untuk mengkombinasikan,
 
 Ok misalnya saya punya struktur tabel seperti berikut:
 
-```postgresql-console
+```shell
 hr=# \d employees;
                                             Table "public.employees"
      Column     |         Type          | Collation | Nullable |                    Default
