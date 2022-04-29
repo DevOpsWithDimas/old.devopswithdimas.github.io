@@ -13,6 +13,7 @@ refs:
 - https://kubernetes.io/docs/tasks/configure-pod-container/
 - https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/
 - https://kubernetes.io/docs/concepts/containers/images/
+- https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/
 youtube: 
 comments: true
 catalog_key: workloads
@@ -30,8 +31,8 @@ Ok karena materinya akan lumayan panjang kita akan bagi memjadi beberapa bagian 
 3. Using `image` & `imagePullPolicy` in containerSpec
 4. Using `imagePullSecrets` for pull image from private registry
 5. Using `env` (Environment Variables)
-6. Using Working directory in containerSpec
-7. Using Entrypoint (`command` and `args`)
+6. Define a Command and Args for a Container
+7. Using Working directory in containerSpec
 8. Using normal user or non-root to run container
 9. Using `ports`
 10. Using Resource request & limit
@@ -452,5 +453,79 @@ mysql> show databases;
 2 rows in set (0.00 sec)
 ```
 
-## Using Working directory in containerSpec
+## Define a Commands and Args for a Container
 
+When you create a Pod, you can define a command and arguments for the containers that run in the Pod. To define a command, include the `command` field in the configuration file. To define arguments for the command, include the `args` field in the configuration file. The command and arguments that you define cannot be changed after the Pod is created.
+
+The command and arguments that you define in the configuration file override the default command and arguments provided by the container image. If you define args, but do not define a command, the default command is used with your new arguments.
+
+> Note: The `command` field corresponds to `entrypoint` in some container runtimes.
+
+For example:
+
+{% gist page.gist "03d-pod-command-args.yaml" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ kubectl -f .\02-workloads\01-pod\pod-command-args.yaml apply
+pod/override-command-arg created
+
+➜ kubectl get pod
+NAME                   READY   STATUS      RESTARTS   AGE
+override-command-arg   0/1     Completed   0          25s
+
+➜ kubernetes git:(main) kubectl logs override-command-arg
+Hai aku lagi belajar kubernetes
+
+➜ kubernetes git:(main) kubectl describe pod/override-command-arg
+Name:         override-command-arg
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Fri, 29 Apr 2022 19:32:21 +0700
+Labels:       app=override-command-arg
+Annotations:  <none>
+Status:       Succeeded
+IP:           172.17.0.3
+IPs:
+  IP:  172.17.0.3
+Containers:
+  override-command-arg:
+    Image:         alpine
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      echo
+    Args:
+      Hai aku lagi belajar kubernetes
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Fri, 29 Apr 2022 19:32:22 +0700
+      Finished:     Fri, 29 Apr 2022 19:32:22 +0700
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             False
+  ContainersReady   False
+  PodScheduled      True
+s
+Events:
+  Type     Reason       Age                From               Message
+  ----     ------       ----               ----               -------
+  Normal   Scheduled    98s                default-scheduler  Successfully assigned def
+ault/override-command-arg to minikube
+  Normal   Pulled       97s                kubelet            Container image "alpine"
+already present on machine
+  Normal   Created      97s                kubelet            Created container overrid
+e-command-arg
+  Normal   Started      97s                kubelet            Started container overrid
+e-command-arg
+  Warning  FailedMount  95s (x3 over 97s)  kubelet            MountVolume.SetUp failed
+for volume "kube-api-access-xtgbq" : object "default"/"kube-root-ca.crt" not registered
+
+```
