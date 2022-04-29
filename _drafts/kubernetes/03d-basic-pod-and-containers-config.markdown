@@ -31,7 +31,7 @@ Ok karena materinya akan lumayan panjang kita akan bagi memjadi beberapa bagian 
 4. Using `imagePullSecrets` for pull image from private registry
 5. Using `env` (Environment Variables)
 6. Using Working directory in containerSpec
-7. Using Entrypoin (`command` and `args`)
+7. Using Entrypoint (`command` and `args`)
 8. Using normal user or non-root to run container
 9. Using `ports`
 10. Using Resource request & limit
@@ -271,4 +271,129 @@ pod/pod-same-image created
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100   349  100   349    0     0   340k      0 --:--:-- --:--:-- --:--:--  340k
+```
+
+## Using `imagePullSecrets` for pull image from private registry
+
+Private registries may require keys to read images from them.
+Credentials can be provided in several ways:
+
+1. Configuring Nodes to Authenticate to a Private Registry
+2. Pre-pulled Images
+3. Specifying ImagePullSecrets on a Pod
+4. Vendor-specific or local extensions
+
+Berdasarkan beberapa cara tersebut, biasanya klo saya untuk development menggunakan cara pertama sedangkan untuk Production menggunakan cara yang ketiga yaitu Specifying ImagePullSecrets on a Pod. 
+
+Jadi sekarang kita akan menggunakan Specifying `ImagePullSecrets` on a Pod dengan cara membuat a Secret object dengan Docker config. 
+
+You need to know the `username`, registry `password` and client email address for authenticating to the registry, as well as its hostname. Run the following command, substituting the appropriate uppercase values:
+
+{% highlight bash %}
+kubectl create secret docker-registry <name> \
+--docker-server=DOCKER_REGISTRY_SERVER \
+--docker-username=DOCKER_USER \
+--docker-password=DOCKER_PASSWORD \
+--docker-email=DOCKER_EMAIL
+{% endhighlight %}
+
+If you already have a Docker credentials file then, rather than using the above command, you can import the credentials file as a Kubernetes Secrets.
+
+{% highlight bash %}
+kubectl create secret generic regcred \
+    --from-file=.dockerconfigjson=<path/to/.docker/config.json> \
+    --type=kubernetes.io/dockerconfigjson
+{% endhighlight %}
+
+Jika dijalankan seperti berikut:
+
+```bash
+➜ kubernetes git:(main) minikube ssh
+docker@minikube:~$
+
+docker@minikube:~$ docker login -u dimmaryanto93
+Password:
+WARNING! Your password will be stored unencrypted in /home/docker/.docker/config.json.
+Configure a credential helper to remove this warning.
+
+Login Succeeded
+
+docker@minikube:~$ ls ~/.docker/
+config.json
+
+docker@minikube:~$ exit
+➜ minikube cp minikube:/home/docker/.docker/config.json .docker/config.json
+
+➜ kubernetes git:(main) kubectl create secret generic dockerhub `
+> --from-file=.dockerconfigjson=.docker/config.json `
+> --type=kubernetes.io/dockerconfigjson
+secret/dockerhub created
+
+➜ kubernetes git:(main) kubectl get secret dockerhub
+NAME        TYPE                             DATA   AGE
+dockerhub   kubernetes.io/dockerconfigjson   1      22s
+
+➜ kubernetes git:(main) ✗ kubectl describe secret dockerhub
+Name:         dockerhub
+Namespace:    default
+
+Type:  kubernetes.io/dockerconfigjson
+
+Data
+====
+.dockerconfigjson:  124 bytes
+```
+
+Setelah itu kita bisa buat Workload resourcenya dari image yang di store di private registry atau Insecure Registry dengan manambahkan `ImagePullSecrets` seperti berikut:
+
+{% gist page.gist "03d-pod-private-registry-pull-secret.yaml" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```powershell
+➜ kubernetes git:(main) kubectl -f .\02-workloads\01-pod\pod-private-registry-pull-secret.yaml apply
+pod/webapp-private created
+
+➜ kubernetes git:(main) kubectl get pod
+NAME             READY   STATUS    RESTARTS   AGE
+webapp-private   1/1     Running   0          43s
+
+➜ kubernetes git:(main) kubectl describe pod webapp-private
+Name:         webapp-private
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Fri, 29 Apr 2022 16:34:52 +0700
+Labels:       app=webapp-private
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.3
+IPs:
+  IP:  172.17.0.3
+Containers:
+  webapp-private:
+    Image:          dimmaryanto93/kubernetes-udemy:1.0
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Fri, 29 Apr 2022 16:35:22 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-m95w2 (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  60s   default-scheduler  Successfully assigned default/webapp-private to minikube
+  Normal  Pulling    60s   kubelet            Pulling image "dimmaryanto93/kubernetes-udemy:1.0"
+  Normal  Pulled     30s   kubelet            Successfully pulled image "dimmaryanto93/kubernetes-udemy:1.0" in 29.075044s
+  Normal  Created    30s   kubelet            Created container webapp-private
+  Normal  Started    30s   kubelet            Started container webapp-private
 ```
