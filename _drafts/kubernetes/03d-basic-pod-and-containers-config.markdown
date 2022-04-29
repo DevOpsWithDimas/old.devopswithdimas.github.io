@@ -397,3 +397,57 @@ Events:
   Normal  Created    30s   kubelet            Created container webapp-private
   Normal  Started    30s   kubelet            Started container webapp-private
 ```
+
+## Using `env` (Environment Variables)
+
+When you create a Pod, you can set environment variables for the containers that run in the Pod. To set environment variables, include the `env` or `envFrom` field in the configuration file.
+
+For example, you create a Pod that runs one container. The configuration file for the Pod defines an environment variable with name `MYSQL_PASSWORD` and value "keepSecret". Here is the configuration manifest for the Pod:
+
+{% gist page.gist "03d-pod-env.yaml" %}
+
+Sekarang kita coba jalankan, maka hasilnya seperti berikut:
+
+```powershell
+➜ kubernetes git:(main) kubectl -f .\02-workloads\01-pod\pod-env.yaml apply
+pod/database-env created
+
+➜ kubernetes git:(main) kubectl get pod
+NAME           READY   STATUS    RESTARTS   AGE
+database-env   1/1     Running   0          48s
+
+➜ kubernetes git:(main) kubectl exec database-env -- printenv
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=database-env
+MYSQL_ROOT_PASSWORD=keepSecret
+MYSQL_USER=default
+MYSQL_PASSWORD=default
+MYSQL_DATABASE=bootcamp
+...
+MYSQL_MAJOR=5.7
+MYSQL_VERSION=5.7.38-1debian10
+HOME=/root
+
+➜ kubernetes git:(main) kubectl exec -it database-env -- mysql -u default -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.7.38 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| bootcamp           |
++--------------------+
+2 rows in set (0.00 sec)
+```
