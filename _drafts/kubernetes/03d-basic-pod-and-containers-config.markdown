@@ -32,7 +32,7 @@ Ok karena materinya akan lumayan panjang kita akan bagi memjadi beberapa bagian 
 4. Using `imagePullSecrets` for pull image from private registry
 5. Using `env` (Environment Variables)
 6. Define a Command and Args for a Container
-9. Using `ports`
+9. Using `ports` in containers
 7. Using Working directory in containerSpec
 8. Using normal user or non-root to run container
 10. Assign Memory Resources to Containers and Pods
@@ -530,5 +530,65 @@ for volume "kube-api-access-xtgbq" : object "default"/"kube-root-ca.crt" not reg
 
 ```
 
-## Using Working directory in containerSpec
+## Using `ports` in containers
 
+This array, defined in `spec.containers[].ports`, provides a list of ports that get exposed by the container. You don’t really need to specify this list—even if it’s empty, as long as your containers are listening on the port, they’ll still be available for network access. This just provides some extra information to Kubernetes.
+
+For examples:
+
+{% gist page.gist "03d-pod-containers-port.yaml" %}
+
+Jadi pada container `nginx` kita tahu bahwa container tersebut akan menggunakan port `80` dan `443` sedangkan untuk container `mysql` akan menggunakan port `3306`
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ kubectl -f .\02-workloads\01-pod\pod-containers-ports.yaml apply
+pod/container-ports created
+
+➜ kubectl get pod
+NAME              READY   STATUS    RESTARTS   AGE
+container-ports   2/2     Running   0          7s
+
+➜ kubectl describe pod/container-ports
+Name:         container-ports
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Sat, 30 Apr 2022 04:33:58 +0700
+Labels:       app=container-ports
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.3
+IPs:
+  IP:  172.17.0.3
+Containers:
+  nginx:
+    Image:          nginx
+    Ports:          80/TCP, 443/TCP
+    Host Ports:     0/TCP, 0/TCP
+    State:          Running
+      Started:      Sat, 30 Apr 2022 04:33:59 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-w9rc5 (ro
+)
+  mysql:
+    Image:          mysql:5.7
+    Port:           3306/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sat, 30 Apr 2022 04:33:59 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      MYSQL_ROOT_PASSWORD:  password
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+```
