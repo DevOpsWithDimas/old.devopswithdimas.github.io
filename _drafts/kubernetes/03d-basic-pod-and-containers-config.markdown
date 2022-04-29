@@ -32,11 +32,7 @@ Ok karena materinya akan lumayan panjang kita akan bagi memjadi beberapa bagian 
 4. Using `imagePullSecrets` for pull image from private registry
 5. Using `env` (Environment Variables)
 6. Define a Command and Args for a Container
-9. Using `ports` in containers
-7. Using Working directory in containerSpec
-8. Using normal user or non-root to run container
-10. Assign Memory Resources to Containers and Pods
-11. Using privileged mode
+7. Using `ports` in containerSpec
 
 Ok lansung aja kita bahas materi yang pertama
 
