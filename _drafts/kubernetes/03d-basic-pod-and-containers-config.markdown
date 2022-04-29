@@ -451,3 +451,6 @@ mysql> show databases;
 +--------------------+
 2 rows in set (0.00 sec)
 ```
+
+## Using Working directory in containerSpec
+
