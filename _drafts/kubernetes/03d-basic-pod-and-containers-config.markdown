@@ -152,3 +152,123 @@ Default image pull policy, When you (or a controller) submit a new Pod to the AP
 ImagePullBackOff, When a kubelet starts creating containers for a Pod using a container runtime, it might be possible the container is in Waiting state because of `ImagePullBackOff`.
 
 The status `ImagePullBackOff` means that a container could not start because Kubernetes could not pull a container image (for reasons such as invalid image name, or pulling from a private registry without `imagePullSecret`). The `BackOff` part indicates that Kubernetes will keep trying to pull the image, with an increasing back-off delay.
+
+For example, kita akan coba buat docker image berdasarkan `Dockerfile` berikut:
+
+{% gist page.gist "02d-dockerfile" %}
+
+Dan berikut adalah file `index.html` seperti berikut:
+
+{% gist page.gist "03d-index.html" %}
+
+Kemudian coba build dan push ke docker hub dengan image name `dimmaryanto93/kubernetes-cource:latest`
+
+Setelah itu coba jalankan container image tersebut dengan `pod-image-same.yaml` seperti berikut:
+
+{% gist page.gist "03d-pod-image-same-tag.yaml" %}
+
+Sekarang kita coba jalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ kubectl apply -f .\02-workloads\01-pod\pod-image-tag.yaml
+pod/pod-same-image created
+
+➜ kubectl get pod
+NAME             READY   STATUS    RESTARTS   AGE
+pod-same-image   1/1     Running   0          12s
+
+➜ kubernetes git:(main) kubectl exec pod/pod-same-image -- curl localhost
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   349  100   349    0     0   340k      0 --:--:-- --:--:-- --:--:--  340k
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Kubernetes: Pemula sampai Mahir</title>
+</head>
+<body>
+    <p>dimmaryanto93/kubernetes-cource v1.0</p>
+</body>
+</html>
+```
+
+Sekarang kita coba build ulang dengan meng-update textnya misalnya seperti berikut:
+
+{% highlight html %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DevOps Kubernetes: Pemula sampai Mahir</title>
+</head>
+<body>
+    <p>dimmaryanto93/kubernetes-cource v1.1</p>
+</body>
+</html>
+{% endhighlight %}
+
+Kemudian coba push kembali ke docker hub, dan coba delete Pod dan buat lagi dengan perintah berikut:
+
+{% highlight bash %}
+kubectl delete -f pod-image-same-tag.yaml
+kubectl apply -f pod-image-same-tag.yaml
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ kubernetes git:(main) kubectl -f .\02-workloads\01-pod\pod-image-tag.yaml delete
+pod "pod-same-image" deleted
+➜ kubernetes git:(main) kubectl -f .\02-workloads\01-pod\pod-image-tag.yaml apply
+pod/pod-same-image created
+
+➜ kubernetes git:(main) kubectl get pod
+NAME             READY   STATUS    RESTARTS   AGE
+pod-same-image   1/1     Running   0          28s
+
+➜ kubernetes git:(main) kubectl exec pod/pod-same-image -- curl localhost
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   349  100   349    0     0   340k      0 --:--:-- --:--:-- --:--:--  340k
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Kubernetes: Pemula sampai Mahir</title>
+</head>
+<body>
+    <p>dimmaryanto93/kubernetes-cource v1.0</p>
+</body>
+</html>
+```
+
+Klo kita liat dari hasil request curl tersebut imagenya belum ter-update karena kita menggunakan `imagePullPolicy: IfNotPresent` artinya karena imagenya sudah ada di hostnya maka tidak akan pull ulang, sekarang coba ganti `imagePullPolicy: Always` dan kemudian jalankan kembali maka hasilnya seperti berikut:
+
+```powershell
+➜ kubernetes git:(main) kubectl -f .\02-workloads\01-pod\pod-image-tag.yaml delete
+pod "pod-same-image" deleted
+
+➜ kubernetes git:(main) kubectl -f .\02-workloads\01-pod\pod-image-tag.yaml apply
+pod/pod-same-image created
+
+➜ kubernetes git:(main) kubectl exec pod/pod-same-image -- curl localhost
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Kubernetes: Pemula sampai Mahir</title>
+</head>
+<body>
+    <p>dimmaryanto93/kubernetes-cource v1.1</p>
+</body>
+</html>
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   349  100   349    0     0   340k      0 --:--:-- --:--:-- --:--:--  340k
+```
