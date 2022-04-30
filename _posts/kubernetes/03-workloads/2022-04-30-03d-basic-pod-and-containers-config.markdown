@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Basic Pods and Containers Configs"
+date: 2022-04-30T12:35:36+07:00
 lang: k8s
 authors:
 - dimasm93
