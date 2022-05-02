@@ -158,3 +158,27 @@ Events:
   Normal  Created    76s   kubelet            Created container backend-apps
   Normal  Started    76s   kubelet            Started container backend-apps
 ```
+
+Jika kita lihat secara sequance diagram maka seperti berikut:
+
+{% mermaid %}
+sequenceDiagram
+    participant k8s as Kubelet
+    participant db as PostgreSQL
+    participant init as initMigrateDB
+    participant run as runWeb
+
+    k8s ->> db: startup
+    db -->>+ k8s: running
+    activate db
+
+    activate init
+    k8s ->> init: run migration script
+    init -->> db: do migrate data
+    db -->> init: successfull migrated
+    init --> k8s: complete
+    deactivate init
+
+    k8s ->> run: run webapp
+    run -->+ k8s: running
+{% endmermaid %}
