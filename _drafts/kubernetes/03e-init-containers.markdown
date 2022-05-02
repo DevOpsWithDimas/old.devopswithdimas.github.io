@@ -66,4 +66,95 @@ Because init containers have separate images from app containers, they have some
 4. Because init containers run to completion before any app containers start, init containers offer a mechanism to block or delay app container startup until a set of preconditions are met. Once preconditions are met, all of the app containers in a Pod can start in parallel.
 5. Init containers can securely run utilities or custom code that would otherwise make an app container image less secure. By keeping unnecessary tools separate you can limit the attack surface of your app container image.
 
-The most commons of initContainer is, if your application need to run task before they can run for exaample migrate db, backup file config, cleanup systemfiles and etc.
+
+## Examples using `initContainers`
+
+The most commons of initContainer use for is, if your application need to run task before they can run for exaample migrate db, backup file config, cleanup systemfiles and etc.
+
+For example:
+
+{% gist page.gist "03e-init-containers.yaml" %} 
+
+Jika dijalankan maka outputnya seperti berikut:
+
+```powershell
+➜ kubectl -f 02-workloads/01-pod/init-containers.yaml apply 
+pod/postgres-db created
+service/postgres-db created
+pod/backend-apps created
+
+➜ kubectl get pod
+NAME           READY   STATUS     RESTARTS   AGE
+backend-apps   0/1     Init:0/1   0          8s
+postgres-db    1/1     Running    0          8s
+
+➜ kubectl get pod
+NAME           READY   STATUS    RESTARTS   AGE
+backend-apps   1/1     Running   0          45s
+postgres-db    1/1     Running   0          45s
+
+➜ kubectl describe pod backend-apps
+Name:         backend-apps
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.59.105
+Start Time:   Tue, 03 May 2022 05:05:27 +0700
+Labels:       app=backend-apps
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.4
+IPs:
+  IP:  172.17.0.4
+Init Containers:
+  migrate-db:
+    Image:         flyway/flyway
+    Port:          <none>
+    Host Port:     <none>
+    Args:
+      -url=$(DB_URL)
+      -user=$(DB_USER)
+      -password=$(DB_PASSWORD)
+      info
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Tue, 03 May 2022 05:05:33 +0700
+      Finished:     Tue, 03 May 2022 05:05:36 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      DB_URL:       jdbc:postgresql://postgres-db:5432/mydb
+      DB_USER:      postgres
+      DB_PASSWORD:  password
+Containers:
+  backend-apps:
+    Image:          nginx:latest
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Tue, 03 May 2022 05:05:37 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  86s   default-scheduler  Successfully assigned default/backend-apps to minikube
+  Normal  Pulling    85s   kubelet            Pulling image "flyway/flyway"
+  Normal  Pulled     80s   kubelet            Successfully pulled image "flyway/flyway" in 5.3909989s
+  Normal  Created    80s   kubelet            Created container migrate-db
+  Normal  Started    80s   kubelet            Started container migrate-db
+  Normal  Pulled     76s   kubelet            Container image "nginx:latest" already present on machine
+  Normal  Created    76s   kubelet            Created container backend-apps
+  Normal  Started    76s   kubelet            Started container backend-apps
+```
