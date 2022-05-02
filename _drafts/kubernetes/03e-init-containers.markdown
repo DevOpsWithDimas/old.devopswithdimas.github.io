@@ -25,7 +25,7 @@ Hai semuanya, setelah kita mempelajari tentang basic Container dan Pod configura
 2. Differences from regular containers
 3. what are `initContainers` for?
 4. Examples using `initContainers`
-5. Behavior of initContainers
+5. Behavior of `initContainers`
 
 Ok langsung aja kita bahas ke materi yang pertama
 
@@ -182,3 +182,25 @@ sequenceDiagram
     k8s ->> run: run webapp
     run -->+ k8s: running
 {% endmermaid %}
+
+## Behavior of `initContainers`
+
+During Pod startup, the kubelet delays running init containers until the networking and storage are ready. Then the kubelet runs the Pod's init containers in the order they appear in the Pod's spec.
+
+Each init container must exit successfully before the next container starts. If a container fails to start due to the runtime or exits with failure, it is retried according to the Pod `restartPolicy`. However, if the Pod `restartPolicy` is set to `Always`, the init containers use restartPolicy `OnFailure`.
+
+If the Pod restarts, or is restarted, all init containers must execute again. 
+
+Changes to the init container spec are limited to the container image field. Altering an init container image field is equivalent to restarting the Pod. Because init containers can be restarted, retried, or re-executed, init container code should be idempotent. In particular, code that writes to files on `EmptyDirs` should be prepared for the possibility that an output file already exists.
+
+
+The name of each app and init container in a Pod must be unique; a validation error is thrown for any container sharing a name with another.
+
+Given the ordering and execution for init containers, the following rules for resource usage apply:
+
+1. The highest of any particular resource request or limit defined on all init containers is the effective init request/limit. If any resource has no resource limit specified this is considered as the highest limit.
+2. The Pod's effective request/limit for a resource is the higher of:
+    1. the sum of all app containers request/limit for a resource
+    2. the effective init request/limit for a resource
+3. Scheduling is done based on effective requests/limits, which means init containers can reserve resources for initialization that are not used during the life of the Pod.
+4. The QoS (quality of service) tier of the Pod's effective QoS tier is the QoS tier for init containers and app containers alike.
