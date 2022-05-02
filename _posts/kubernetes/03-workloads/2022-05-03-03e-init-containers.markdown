@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Initialization of Containers"
+date: 2022-05-03T06:02:56+07:00
 lang: k8s
 authors:
 - dimasm93
