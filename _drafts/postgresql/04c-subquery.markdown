@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Subqueries"
+title: "Queries inside a query (subquery)"
 lang: postgresql
 authors:
 - dimasm93
@@ -19,8 +19,18 @@ catalog_key: select-statement
 downloads: []
 ---
 
+Hai semuanya, setelah kita membahas tentang Joined tables tahap selanjutnya kita akan membahas tentang Queries inside a query atau lebih di kenal dengan SubQuery. Seperti biasa karena pembahasannya akan lumayan panjang jadi kita akan bagi-bagi menjadi beberapa bagian ya diantaranya:
 
-description...
+1. What is SubQuery?
+2. Using SubQuery inline view
+3. Hander SubQuery from where clause
+4. Correlate SubQuery
+5. Pairwise SubQuery
+    1. Using `IN` predicate to handle multiple values
+    2. Using `ANY` & `SOME` predicate to handle multiple values
+    3. Using `ALL` predicate to handler multiple values
+    4. Using `EXIST` operator
+6. Lateral Subqueries
 
 <!--more-->
 
