@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "03d-pod-topology"
+title: "Pod Topology Spread Constraints"
 lang: k8s
 authors:
 - dimasm93
