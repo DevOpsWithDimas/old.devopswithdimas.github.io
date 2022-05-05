@@ -78,3 +78,6 @@ PostgreSQL executes the query that contains a subquery in the following sequence
 Untuk lebih detailnya seperti ilustrasi seperti berikut:
 
 ![subquery-execution-process]({{ page.image_path | prepend: site.baseurl }}/01-subquery-structure.png)
+
+## Using SubQuery inline view
+
