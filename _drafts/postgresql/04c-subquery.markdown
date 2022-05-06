@@ -610,3 +610,105 @@ Untuk query tersebut jika kita menggunakan logical operator maka querynya sepert
 {% highlight sql %}
 where job_id = 'PU_CLERK' and job_id = 'SH_CLERK' and salary = 2500 and ...
 {% endhighlight %}
+
+## Using `ANY` & `SOME` predicate to handle multiple values
+
+Sama halnya dengan `IN` predicates, `ANY` atau `SOME` bisa digunakan untuk menghandle subquery untuk multiple rows. Berikut syntax dasarnya:
+
+{% highlight sql %}
+expression operator ANY (subquery)
+expression operator SOME (subquery)
+{% endhighlight %}
+
+The right-hand side is a parenthesized subquery, which must return exactly one column. The left-hand expression is evaluated and compared to each row of the subquery result using the given operator, which must yield a Boolean result. The result of `ANY` is “true” if any `true` result is obtained. The result is “false” if no true result is found (including the case where the subquery returns no rows).
+
+`SOME` is a synonym for `ANY`. `IN` is equivalent to `= ANY`. As with `EXISTS`, it's unwise to assume that the subquery will be evaluated completely.
+
+{% highlight sql %}
+row_constructor operator ANY (subquery)
+row_constructor operator SOME (subquery)
+{% endhighlight %}
+
+For example
+
+{% gist page.gist "04c-subquery-any-eq.sql" %}
+
+Selain itu juga kita bisa menggunakan `> ANY` atau `< ANY` seperti berikut:
+
+{% gist page.gist "04c-subquery-any-higher.sql" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```shell
+hr=# select max(salary) max_salary
+hr-#     from employees
+hr-#     group by job_id
+hr-#     order by max_salary;
+ max_salary
+------------
+    3100.00
+    3600.00
+    4200.00
+    4400.00
+    6000.00
+    6500.00
+    8200.00
+    8300.00
+    9000.00
+    9000.00
+   10000.00
+   11000.00
+   11500.00
+   12000.00
+   12000.00
+   13000.00
+   14000.00
+   17000.00
+   24000.00
+(19 rows)
+
+hr=# select employee_id, first_name, salary, job_id
+hr-# from employees out
+hr-# where salary = any (
+hr(#     select max(salary) max_salary
+hr(#     from employees
+hr(#     group by job_id
+hr(#     order by max_salary
+hr(# )
+hr-# limit 10;
+ employee_id | first_name |  salary  |   job_id
+-------------+------------+----------+------------
+         100 | Steven     | 24000.00 | AD_PRES
+         101 | Neena      | 17000.00 | AD_VP
+         102 | Lex        | 17000.00 | AD_VP
+         103 | Alexander  |  9000.00 | IT_PROG
+         104 | Bruce      |  6000.00 | IT_PROG
+         107 | Diana      |  4200.00 | IT_PROG
+         108 | Nancy      | 12000.00 | FI_MGR
+         109 | Daniel     |  9000.00 | FI_ACCOUNT
+         110 | John       |  8200.00 | FI_ACCOUNT
+         114 | Den        | 11000.00 | PU_MAN
+(10 rows)
+
+hr=# select employee_id, first_name, salary, job_id
+hr-# from employees out
+hr-# where salary > any (
+hr(#     select max(salary) max_salary
+hr(#     from employees
+hr(#     group by job_id
+hr(#     order by max_salary
+hr(# )
+hr-# limit 10;
+ employee_id | first_name |  salary  |   job_id
+-------------+------------+----------+------------
+         100 | Steven     | 24000.00 | AD_PRES
+         101 | Neena      | 17000.00 | AD_VP
+         102 | Lex        | 17000.00 | AD_VP
+         103 | Alexander  |  9000.00 | IT_PROG
+         104 | Bruce      |  6000.00 | IT_PROG
+         105 | David      |  4800.00 | IT_PROG
+         106 | Valli      |  4800.00 | IT_PROG
+         107 | Diana      |  4200.00 | IT_PROG
+         108 | Nancy      | 12000.00 | FI_MGR
+         109 | Daniel     |  9000.00 | FI_ACCOUNT
+```
