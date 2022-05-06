@@ -196,10 +196,10 @@ hr-#        (select man.first_name
 hr(#         from employees man
 hr(#         where emp.manager_id = man.employee_id) manager_name
 hr-# from employees emp
+hr-# where emp.manager_id is not null
 hr-# limit 10;
  employee_id | employee_name | manager_name
 -------------+---------------+--------------
-         100 | Steven        |
          101 | Neena         | Steven
          102 | Lex           | Steven
          103 | Alexander     | Lex
@@ -209,10 +209,43 @@ hr-# limit 10;
          107 | Diana         | Alexander
          108 | Nancy         | Neena
          109 | Daniel        | Nancy
+         110 | John          | Nancy
 (10 rows)
 ```
 
-Jika temen-temen perhatikan pada subquery dengan where clause `emp.manager_id = man.employee_id` kita menggunakan column `manager_id` pada outer query.
+Jika temen-temen perhatikan pada subquery dengan where clause `emp.manager_id = man.employee_id` kita menggunakan column `manager_id` pada outer query. Dan jika kita mau ngambil data ke dua dari subquery, kita harus mendefinisikan column baru seperti berikut:
+
+{% gist page.gist "04c-subquery-more-correlate.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+hr=# select emp.employee_id,
+hr-#        emp.first_name                           employee_name,
+hr-#        emp.salary                               employee_salary,
+hr-#        (select man.first_name
+hr(#         from employees man
+hr(#         where emp.manager_id = man.employee_id) manager_name,
+hr-#        (select man.salary
+hr(#         from employees man
+hr(#         where emp.manager_id = man.employee_id) manager_salary
+hr-# from employees emp
+hr-# where emp.manager_id is not null
+hr-# limit 10;
+ employee_id | employee_name | employee_salary | manager_name | manager_salary
+-------------+---------------+-----------------+--------------+----------------
+         101 | Neena         |        17000.00 | Steven       |       24000.00
+         102 | Lex           |        17000.00 | Steven       |       24000.00
+         103 | Alexander     |         9000.00 | Lex          |       17000.00
+         104 | Bruce         |         6000.00 | Alexander    |        9000.00
+         105 | David         |         4800.00 | Alexander    |        9000.00
+         106 | Valli         |         4800.00 | Alexander    |        9000.00
+         107 | Diana         |         4200.00 | Alexander    |        9000.00
+         108 | Nancy         |        12000.00 | Neena        |       17000.00
+         109 | Daniel        |         9000.00 | Nancy        |       12000.00
+         110 | John          |         8200.00 | Nancy        |       12000.00
+(10 rows)
+```
 
 ## Using SubQuery inline view
 
