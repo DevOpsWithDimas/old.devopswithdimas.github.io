@@ -712,3 +712,156 @@ hr-# limit 10;
          108 | Nancy      | 12000.00 | FI_MGR
          109 | Daniel     |  9000.00 | FI_ACCOUNT
 ```
+
+## Using `ALL` predicate to handler multiple values
+
+Dan yang terakhir, untuk menghandle multiple row pada predicate subquery yaitu `ALL`. Basic syntaxnya:
+
+{% highlight sql %}
+expression operator ALL (subquery)
+{% endhighlight %}
+
+The right-hand side is a parenthesized subquery, which must return exactly one column. The left-hand expression is evaluated and compared to each row of the subquery result using the given operator, which must yield a Boolean result. The result of `ALL` is “true” if all rows yield true (including the case where the subquery returns no rows). The result is “false” if any false result is found. The result is `NULL` if no comparison with a subquery row returns false, and at least one comparison returns `NULL`.
+
+`NOT IN` is equivalent to `<> ALL`. As with `EXISTS`, it's unwise to assume that the subquery will be evaluated completely.
+
+{% highlight sql %}
+row_constructor operator ALL (subquery)
+{% endhighlight %}
+
+For example:
+
+{% gist page.gist "04c-subquery-all-not-eq.sql" %}
+
+Jika di jalankan hasilnya seperti berikut:
+
+```shell
+hr=# select min(salary) min_salary
+hr-#     from employees
+hr-#     group by job_id
+hr-#     order by min_salary;
+ min_salary
+------------
+    2100.00
+    2500.00
+    2500.00
+    4200.00
+    4400.00
+    5800.00
+    6000.00
+    6100.00
+    6500.00
+    6900.00
+    8300.00
+   10000.00
+   10500.00
+   11000.00
+   12000.00
+   12000.00
+   13000.00
+   17000.00
+   24000.00
+(19 rows)
+
+hr=# select employee_id, first_name, salary, job_id
+hr-# from employees out
+hr-# where salary <> ALL (
+hr(#     select min(salary) min_salary
+hr(#     from employees
+hr(#     group by job_id
+hr(#     order by min_salary
+hr(# );
+ employee_id | first_name  |  salary  |   job_id
+-------------+-------------+----------+------------
+         103 | Alexander   |  9000.00 | IT_PROG
+         105 | David       |  4800.00 | IT_PROG
+         106 | Valli       |  4800.00 | IT_PROG
+         109 | Daniel      |  9000.00 | FI_ACCOUNT
+         110 | John        |  8200.00 | FI_ACCOUNT
+         111 | Ismael      |  7700.00 | FI_ACCOUNT
+         112 | Jose Manuel |  7800.00 | FI_ACCOUNT
+         115 | Alexander   |  3100.00 | PU_CLERK
+         116 | Shelli      |  2900.00 | PU_CLERK
+         117 | Sigal       |  2800.00 | PU_CLERK
+         118 | Guy         |  2600.00 | PU_CLERK
+         120 | Matthew     |  8000.00 | ST_MAN
+         121 | Adam        |  8200.00 | ST_MAN
+         122 | Payam       |  7900.00 | ST_MAN
+         125 | Julia       |  3200.00 | ST_CLERK
+         126 | Irene       |  2700.00 | ST_CLERK
+         127 | James       |  2400.00 | ST_CLERK
+(73 rows)
+```
+
+Selain itu juga kita bisa menggunakan `> ALL` atau `< ALL` seperti berikut:
+
+{% gist page.gist "04c-subquery-all-lower.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```shell
+hr=# select max(salary) max_salary
+hr-#     from employees
+hr-#     group by job_id
+hr-#     order by max_salary;
+ max_salary
+------------
+    3100.00
+    3600.00
+    4200.00
+    4400.00
+    6000.00
+    6500.00
+    8200.00
+    8300.00
+    9000.00
+    9000.00
+   10000.00
+   11000.00
+   11500.00
+   12000.00
+   12000.00
+   13000.00
+   14000.00
+   17000.00
+   24000.00
+(19 rows)
+
+hr=# select employee_id, first_name, salary, job_id
+hr-# from employees out
+hr-# where salary < ALL (
+hr(#     select max(salary) max_salary
+hr(#     from employees
+hr(#     group by job_id
+hr(#     order by max_salary
+hr(# );
+ employee_id | first_name | salary  |  job_id
+-------------+------------+---------+----------
+         116 | Shelli     | 2900.00 | PU_CLERK
+         117 | Sigal      | 2800.00 | PU_CLERK
+         118 | Guy        | 2600.00 | PU_CLERK
+         119 | Karen      | 2500.00 | PU_CLERK
+         126 | Irene      | 2700.00 | ST_CLERK
+         127 | James      | 2400.00 | ST_CLERK
+         128 | Steven     | 2200.00 | ST_CLERK
+         130 | Mozhe      | 2800.00 | ST_CLERK
+         131 | James      | 2500.00 | ST_CLERK
+         132 | TJ         | 2100.00 | ST_CLERK
+         134 | Michael    | 2900.00 | ST_CLERK
+         135 | Ki         | 2400.00 | ST_CLERK
+         136 | Hazel      | 2200.00 | ST_CLERK
+         139 | John       | 2700.00 | ST_CLERK
+         140 | Joshua     | 2500.00 | ST_CLERK
+         143 | Randall    | 2600.00 | ST_CLERK
+         144 | Peter      | 2500.00 | ST_CLERK
+         182 | Martha     | 2500.00 | SH_CLERK
+         183 | Girard     | 2800.00 | SH_CLERK
+         187 | Anthony    | 3000.00 | SH_CLERK
+         190 | Timothy    | 2900.00 | SH_CLERK
+         191 | Randall    | 2500.00 | SH_CLERK
+         195 | Vance      | 2800.00 | SH_CLERK
+         197 | Kevin      | 3000.00 | SH_CLERK
+         198 | Donald     | 2600.00 | SH_CLERK
+         199 | Douglas    | 2600.00 | SH_CLERK
+(26 rows)
+```
