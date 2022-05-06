@@ -19,8 +19,15 @@ catalog_key: select-statement
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas tentang Conditional Expression atau salah satu structure control yaitu percabangan pada SQL khususnya menggunakan PostgreSQL. Seperti biasa karena materinya akan lumayan panjang jadi kita bagi jadi beberapa bagian diantaranya:
 
-description...
+1. What is Conditional Expression?
+2. Using `CASE-WHEN-ELSE` expression
+3. Using `COALESCE` expression
+4. Using `NULLIF` expression
+5. Using `GREATEST` and `LEAST` expression
+
+Ok langsung aja kita bahas materi yang pertama
 
 <!--more-->
 
