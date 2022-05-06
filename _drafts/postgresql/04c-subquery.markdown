@@ -429,8 +429,8 @@ hr(# );
 Kemudian, untuk operator yang kita bisa gunakan dalam SubQuery as Predicate terdiri dari behavior suatu subquery resultset (Single / Multiple Rows). Diantaranya
 
 1. Using Single-Row Comparison
-2. Using `IN` predicate to handle multiple values
-3. Using `EXISTS` operator
+2. Using `EXISTS` operator
+3. Using `IN` predicate to handle multiple values
 4. Using `ANY` & `SOME` predicate to handle multiple values
 5. Using `ALL` predicate to handler multiple values
 
@@ -512,6 +512,39 @@ Pada query tersebut, jika kita menggunakan logical operator seperti berikut:
 where salary >= 8876 or salary >= 20000 or job_id = IT_PROG
 {% endhighlight %}
 
+## Using `EXISTS` operator
+
+The argument of `EXISTS` is an arbitrary `SELECT` statement, or subquery. The subquery is evaluated to determine whether it returns any rows. If it returns at least one row, the result of `EXISTS` is “true”; if the subquery returns no rows, the result of EXISTS is “false”.
+
+{% highlight sql %}
+EXISTS (subquery)
+{% endhighlight %}
+
+For example
+
+{% gist page.gist "04c-subquery-exists-predicate.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```shell
+hr=# select employee_id, first_name, job_id, salary
+hr-# from employees out
+hr-# where exists(
+hr(#         select 1
+hr(#         from job_history
+hr(#         where employee_id = out.employee_id);
+ employee_id | first_name | job_id  |  salary
+-------------+------------+---------+----------
+         176 | Jonathon   | SA_REP  |  8600.00
+         101 | Neena      | AD_VP   | 17000.00
+         114 | Den        | PU_MAN  | 11000.00
+         200 | Jennifer   | AD_ASST |  4400.00
+         201 | Michael    | MK_MAN  | 13000.00
+         102 | Lex        | AD_VP   | 17000.00
+         122 | Payam      | ST_MAN  |  7900.00
+(7 rows)
+```
+
 ## Using `IN` predicate to handle multiple values
 
 Untuk menghandle resultset multiple rows yang di kembalikan oleh SubQuery salah satu method yang paling commons adalah menggunakan `IN` predicate. Secara syntax seperti berikut:
@@ -577,36 +610,3 @@ Untuk query tersebut jika kita menggunakan logical operator maka querynya sepert
 {% highlight sql %}
 where job_id = 'PU_CLERK' and job_id = 'SH_CLERK' and salary = 2500 and ...
 {% endhighlight %}
-
-## Using `EXISTS` operator
-
-The argument of `EXISTS` is an arbitrary `SELECT` statement, or subquery. The subquery is evaluated to determine whether it returns any rows. If it returns at least one row, the result of `EXISTS` is “true”; if the subquery returns no rows, the result of EXISTS is “false”.
-
-{% highlight sql %}
-EXISTS (subquery)
-{% endhighlight %}
-
-For example
-
-{% gist page.gist "04c-subquery-exists-predicate.sql" %}
-
-Jika dijalankan maka hasilnya seperti berikut:
-
-```shell
-hr=# select employee_id, first_name, job_id, salary
-hr-# from employees out
-hr-# where exists(
-hr(#         select 1
-hr(#         from job_history
-hr(#         where employee_id = out.employee_id);
- employee_id | first_name | job_id  |  salary
--------------+------------+---------+----------
-         176 | Jonathon   | SA_REP  |  8600.00
-         101 | Neena      | AD_VP   | 17000.00
-         114 | Den        | PU_MAN  | 11000.00
-         200 | Jennifer   | AD_ASST |  4400.00
-         201 | Michael    | MK_MAN  | 13000.00
-         102 | Lex        | AD_VP   | 17000.00
-         122 | Payam      | ST_MAN  |  7900.00
-(7 rows)
-```
