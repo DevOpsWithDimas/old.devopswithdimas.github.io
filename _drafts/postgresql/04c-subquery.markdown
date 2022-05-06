@@ -150,7 +150,7 @@ from jobs j;
 
 Jika di jalankan hasilnya seperti berikut:
 
-```powershell
+```shell
 hr=# select j.job_title,
 hr-#        (select h.start_date, h.start_date from job_history h limit 1)
 hr-# from jobs j;
@@ -177,10 +177,9 @@ Basic statement is:
 SELECT column1, column2, ....
 FROM table1 outer
 WHERE column1 operator
-                    (SELECT column1, column2
+                    (SELECT column3
                      FROM table2 inner
-                     WHERE inner.column1 = 
-                               outer.column1);
+                     WHERE inner.column1 = outer.column1);
 {% endhighlight %}
 
 For example 
@@ -189,7 +188,7 @@ For example
 
 Jika kita jalankan maka hasilnya seperti berikut:
 
-```powershell
+```shell
 hr=# select emp.employee_id,
 hr-#        emp.first_name                           employee_name,
 hr-#        (select man.first_name
@@ -219,7 +218,7 @@ Jika temen-temen perhatikan pada subquery dengan where clause `emp.manager_id = 
 
 Jika dijalankan maka hasilnya seperti berikut:
 
-```powershell
+```shell
 hr=# select emp.employee_id,
 hr-#        emp.first_name                           employee_name,
 hr-#        emp.salary                               employee_salary,
@@ -251,4 +250,119 @@ hr-# limit 10;
 
 The subquery specified in the `FROM` clause of a query is called an inline view. Because an inline view can replace a table in a query, it is also called a derived table. Sometimes, you may hear the term subselect, which is the same meaning as the inline view.
 
-An inline view is not a real view but a subquery in the `FROM` clause of a `SELECT` statement.
+An inline view is not a real view but a subquery in the `FROM` clause of a `SELECT` statement. The basic syntax:
+
+{% highlight sql %}
+SELECT column1, column2, ....
+FROM table1 outer, ( subquery_expression ) as subquery_alias, ...
+{% endhighlight %}
+
+For example:
+
+{% gist page.gist "04c-subquery-basic-inline-view.sql" %}
+
+Jika kita jalankan maka hasilnya seperti berikut:
+
+```shell
+hr=# select emp.employee_id, emp.first_name, emp.salary, func.rata2, func.minimun, func.maximum
+hr-# from employees emp,
+hr-#      (select round(avg(job.max_salary), 0) rata2,
+hr(#              min(job.max_salary)           minimun,
+hr(#              max(job.max_salary)           maximum
+hr(#       from jobs job) as func
+hr-# where emp.salary >= func.rata2;
+ employee_id | first_name |  salary  | rata2 | minimun | maximum
+-------------+------------+----------+-------+---------+---------
+         100 | Steven     | 24000.00 | 13211 |    5000 |   40000
+         101 | Neena      | 17000.00 | 13211 |    5000 |   40000
+         102 | Lex        | 17000.00 | 13211 |    5000 |   40000
+         145 | John       | 14000.00 | 13211 |    5000 |   40000
+         146 | Karen      | 13500.00 | 13211 |    5000 |   40000
+```
+
+## Lateral SubQueries
+
+Subqueries appearing in `FROM` can be preceded by the key word `LATERAL`. This allows them to reference columns provided by preceding FROM items. (Without `LATERAL`, each subquery is evaluated independently and so cannot cross-reference any other FROM item.) For example:
+
+{% highlight sql %}
+select emp.employee_id,
+       emp.first_name,
+       history.job_id,
+       history.start_date
+from employees emp,
+     (select job.job_id, job.start_date
+      from job_history job
+      where emp.employee_id = job.employee_id) as history
+{% endhighlight %}
+
+Jika kita execute maka hasilnya seperti berikut:
+
+```shell
+hr=# select emp.employee_id,
+hr-#        emp.first_name,
+hr-#        history.job_id,
+hr-#        history.start_date
+hr-# from employees emp,
+hr-#      (select job.job_id, job.start_date
+hr(#       from job_history job
+hr(#       where emp.employee_id = job.employee_id) as history;
+ERROR:  invalid reference to FROM-clause entry for table "emp"
+LINE 8:       where emp.employee_id = job.employee_id) as history;
+                    ^
+HINT:  There is an entry for table "emp", but it cannot be referenced from this part of the query.
+```
+
+A LATERAL item can appear at top level in the `FROM` list, or within a `JOIN` tree. In the latter case it can also refer to any items that are on the left-hand side of a `JOIN` that it is on the right-hand side of.
+
+The basic syntax is:
+
+{% highlight sql %}
+SELECT column1, column2, ....
+FROM table1 outer, LATERAL ( subquery_expression ) as subquery_alias, ...
+{% endhighlight %}
+
+When a `FROM` item contains `LATERAL` cross-references, evaluation proceeds as follows: for each row of the `FROM` item providing the cross-referenced column(s), or set of rows of multiple `FROM` items providing the columns, the `LATERAL` item is evaluated using that row or row set's values of the columns. The resulting row(s) are joined as usual with the rows they were computed from. This is repeated for each row or set of rows from the column source table(s).
+
+For example:
+
+{% gist page.gist "04c-subquery-lateral-corellate.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```shell
+hr=# select emp.employee_id,
+hr-#        emp.first_name,
+hr-#        history.job_id,
+hr-#        history.start_date
+hr-# from employees emp,
+hr-#      lateral (select job.job_id, job.start_date::date
+hr(#               from job_history job
+hr(#               where emp.employee_id = job.employee_id) as history
+hr-# order by employee_id, job_id
+hr-# ;
+ employee_id | first_name |   job_id   | start_date
+-------------+------------+------------+------------
+         101 | Neena      | AC_ACCOUNT | 1989-09-21
+         101 | Neena      | AC_MGR     | 1993-10-28
+         102 | Lex        | IT_PROG    | 1993-01-13
+         114 | Den        | ST_CLERK   | 1998-03-24
+         122 | Payam      | ST_CLERK   | 1999-01-01
+         176 | Jonathon   | SA_MAN     | 1999-01-01
+         176 | Jonathon   | SA_REP     | 1998-03-24
+         200 | Jennifer   | AC_ACCOUNT | 1994-07-01
+         200 | Jennifer   | AD_ASST    | 1987-09-17
+         201 | Michael    | MK_REP     | 1996-02-17
+(10 rows)
+```
+
+Query tersebut akan sama jika kita menggunakan join seperti berikut:
+
+{% highlight sql %}
+select emp.employee_id,
+       emp.first_name,
+       history.job_id,
+       history.start_date::date
+from employees emp
+         join job_history history on (emp.employee_id = history.employee_id)
+order by employee_id, job_id;
+{% endhighlight %}
