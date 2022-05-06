@@ -26,11 +26,12 @@ Hai semuanya, setelah kita membahas tentang Joined tables tahap selanjutnya kita
 3. Correlate SubQuery
 4. Using SubQuery inline view
 5. Lateral Subqueries
-6. Pairwise SubQuery
-    1. Using `IN` predicate to handle multiple values
-    2. Using `ANY` & `SOME` predicate to handle multiple values
-    3. Using `ALL` predicate to handler multiple values
-    4. Using `EXIST` operator
+6. SubQuery as predicate in where clause
+    1. Using Single-Row Comparison
+    2. Using `IN` predicate to handle multiple values
+    3. Using `EXIST` operator
+    4. Using `ANY` & `SOME` predicate to handle multiple values
+    5. Using `ALL` predicate to handler multiple values
 
 OK langsung aja kita ke pembahasan yang pertama
 
@@ -366,3 +367,65 @@ from employees emp
          join job_history history on (emp.employee_id = history.employee_id)
 order by employee_id, job_id;
 {% endhighlight %}
+
+## SubQuery as predicate in where clause
+
+Selanjutnya kita bahas SubQuery Expression atau SubQuery yang diletakan pada `WHERE` clause dengan beberapa operators atau predicates. Basic form of SubQuery:
+
+{% highlight sql %}
+select column_list, ...
+from table1, ...
+where column_expression operator (subquery_expression)
+{% endhighlight %}
+
+For example usage is:
+
+{% gist page.gist "04c-subquery-pairwaise-basic.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```shell
+hr=# select employee_id, first_name, salary, commission_pct
+hr-# from employees
+hr-# where salary >= (
+hr(#     select min(max_salary)
+hr(#     from jobs
+hr(#     where job_id = 'IT_PROG'
+hr(# )
+hr-# limit 10;
+ employee_id | first_name |  salary  | commission_pct
+-------------+------------+----------+----------------
+         100 | Steven     | 24000.00 |
+         101 | Neena      | 17000.00 |
+         102 | Lex        | 17000.00 |
+         108 | Nancy      | 12000.00 |
+         114 | Den        | 11000.00 |
+         145 | John       | 14000.00 |           0.40
+         146 | Karen      | 13500.00 |           0.30
+         147 | Alberto    | 12000.00 |           0.30
+         148 | Gerald     | 11000.00 |           0.30
+         149 | Eleni      | 10500.00 |           0.20
+(10 rows)
+```
+
+Selain itu juga kita bisa gunakan correlate SubQuery pada `WHERE` clause seperti berikut:
+
+{% gist page.gist "04c-subquery-pairwise-correlate.sql" %}
+
+Jika di jalankan hasilnya seperti berikut:
+
+```shell
+hr=# select employee_id, first_name, salary, commission_pct, job_id
+hr-# from employees emp
+hr-# where emp.salary = (
+hr(#     select avg(min_salary)
+hr(#     from jobs job
+hr(#     where emp.job_id = job.job_id
+hr(# );
+ employee_id | first_name | salary  | commission_pct |  job_id
+-------------+------------+---------+----------------+----------
+         119 | Karen      | 2500.00 |                | PU_CLERK
+         182 | Martha     | 2500.00 |                | SH_CLERK
+         191 | Randall    | 2500.00 |                | SH_CLERK
+(3 rows)
+```
