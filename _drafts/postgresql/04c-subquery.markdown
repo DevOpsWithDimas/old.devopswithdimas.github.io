@@ -23,8 +23,8 @@ Hai semuanya, setelah kita membahas tentang Joined tables tahap selanjutnya kita
 
 1. What is SubQuery?
 2. Using SubQuery specified in column_list
-3. Using SubQuery inline view
-4. Correlate SubQuery
+3. Correlate SubQuery
+4. Using SubQuery inline view
 5. Pairwise SubQuery
     1. Using `IN` predicate to handle multiple values
     2. Using `ANY` & `SOME` predicate to handle multiple values
@@ -160,6 +160,59 @@ LINE 2:        (select h.start_date, h.start_date from job_history h...
 ```
 
 Maka dari itu, kita harus memastikan data yang dikembalikan oleh subquery 1 row dan 1 column.
+
+## Correlate SubQuery
+
+Correlated subqueries are used for row-by-row processing. Each subquery is executed once for every row of the outer query.
+
+PostgreSQL executes the query that contains a subquery in the following sequence:
+
+1. Get a candiate row from outer query
+2. executes the inner query using candidate row value
+3. use value from inner query to quality or disqulity candidate row
+
+Basic statement is:
+
+{% highlight sql %}
+SELECT column1, column2, ....
+FROM table1 outer
+WHERE column1 operator
+                    (SELECT column1, column2
+                     FROM table2 inner
+                     WHERE inner.column1 = 
+                               outer.column1);
+{% endhighlight %}
+
+For example 
+
+{% gist page.gist "04c-subquery-simple-correlate.sql" %}
+
+Jika kita jalankan maka hasilnya seperti berikut:
+
+```powershell
+hr=# select emp.employee_id,
+hr-#        emp.first_name                           employee_name,
+hr-#        (select man.first_name
+hr(#         from employees man
+hr(#         where emp.manager_id = man.employee_id) manager_name
+hr-# from employees emp
+hr-# limit 10;
+ employee_id | employee_name | manager_name
+-------------+---------------+--------------
+         100 | Steven        |
+         101 | Neena         | Steven
+         102 | Lex           | Steven
+         103 | Alexander     | Lex
+         104 | Bruce         | Alexander
+         105 | David         | Alexander
+         106 | Valli         | Alexander
+         107 | Diana         | Alexander
+         108 | Nancy         | Neena
+         109 | Daniel        | Nancy
+(10 rows)
+```
+
+Jika temen-temen perhatikan pada subquery dengan where clause `emp.manager_id = man.employee_id` kita menggunakan column `manager_id` pada outer query.
 
 ## Using SubQuery inline view
 
