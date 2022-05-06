@@ -511,3 +511,69 @@ Pada query tersebut, jika kita menggunakan logical operator seperti berikut:
 {% highlight sql %}
 where salary >= 8876 or salary >= 20000 or job_id = IT_PROG
 {% endhighlight %}
+
+## Using `IN` predicate to handle multiple values
+
+Untuk menghandle resultset multiple rows yang di kembalikan oleh SubQuery salah satu method yang paling commons adalah menggunakan `IN` predicate. Secara syntax seperti berikut:
+
+{% highlight sql %}
+expression IN (subquery)
+{% endhighlight %}
+
+The right-hand side is a parenthesized subquery, which must return exactly one column. The left-hand expression is evaluated and compared to each row of the subquery result. The result of `IN` is “true” if any equal subquery row is found. The result is “false” if no equal row is found (including the case where the subquery returns no rows).
+
+Contoh penggunaanya seperti berikut:
+
+{% gist page.gist "04c-subquery-in-predicate.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```shell
+hr=# select employee_id, first_name, salary, job_id
+hr-# from employees out
+hr-# where job_id in (
+hr(#     select distinct job_id
+hr(#     from employees inq
+hr(#     where inq.department_id = 80)
+hr-# limit 10;
+ employee_id | first_name  |  salary  | job_id
+-------------+-------------+----------+--------
+         145 | John        | 14000.00 | SA_MAN
+         146 | Karen       | 13500.00 | SA_MAN
+         147 | Alberto     | 12000.00 | SA_MAN
+         148 | Gerald      | 11000.00 | SA_MAN
+         149 | Eleni       | 10500.00 | SA_MAN
+         150 | Peter       | 10000.00 | SA_REP
+         151 | David       |  9500.00 | SA_REP
+         152 | Peter       |  9000.00 | SA_REP
+         153 | Christopher |  8000.00 | SA_REP
+         154 | Nanette     |  7500.00 | SA_REP
+(10 rows)
+```
+
+Sama halnya seperti sebelumnya, pada `IN` predicate juga bisa menggunakan multiple column seperti berikut contohnya:
+
+{% gist page.gist "04c-subquery-in-predicate-multi-columns.sql" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```shell
+hr=# select employee_id, first_name, salary, job_id
+hr-# from employees out
+hr-# where (job_id, salary) in (
+hr(#     select distinct job_id, (select max(min_salary) from jobs where inq.job_id = job_id)
+hr(#     from employees inq
+hr(# )
+hr-# limit 10;
+ employee_id | first_name | salary  |  job_id
+-------------+------------+---------+----------
+         119 | Karen      | 2500.00 | PU_CLERK
+         182 | Martha     | 2500.00 | SH_CLERK
+         191 | Randall    | 2500.00 | SH_CLERK
+```
+
+Untuk query tersebut jika kita menggunakan logical operator maka querynya seperti berikut:
+
+{% highlight sql %}
+where job_id = 'PU_CLERK' and job_id = 'SH_CLERK' and salary = 2500 and ...
+{% endhighlight %}
