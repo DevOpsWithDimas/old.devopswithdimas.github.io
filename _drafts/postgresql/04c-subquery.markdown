@@ -11,6 +11,7 @@ categories:
 - select
 refs: 
 - https://www.postgresql.org/docs/14/queries-table-expressions.html#subqueries
+- https://postgresql.org/docs/current/functions-subquery.html
 youtube: 
 image_path: /resources/posts/postgresql/04c-subquery
 comments: true
@@ -27,11 +28,6 @@ Hai semuanya, setelah kita membahas tentang Joined tables tahap selanjutnya kita
 4. Using SubQuery inline view
 5. Lateral Subqueries
 6. SubQuery as predicate in where clause
-    1. Using Single-Row Comparison
-    2. Using `IN` predicate to handle multiple values
-    3. Using `EXIST` operator
-    4. Using `ANY` & `SOME` predicate to handle multiple values
-    5. Using `ALL` predicate to handler multiple values
 
 OK langsung aja kita ke pembahasan yang pertama
 
@@ -429,3 +425,16 @@ hr(# );
          191 | Randall    | 2500.00 |                | SH_CLERK
 (3 rows)
 ```
+
+Kemudian, untuk operator yang kita bisa gunakan dalam SubQuery as Predicate terdiri dari behavior suatu subquery resultset (Single / Multiple Rows). Diantaranya
+
+1. Using Single-Row Comparison
+2. Using `IN` predicate to handle multiple values
+3. Using `EXIST` operator
+4. Using `ANY` & `SOME` predicate to handle multiple values
+5. Using `ALL` predicate to handler multiple values
+
+Ok sekarang kita bahas satu-per-satu ya function tersebut.
+
+## Using SubQuery for Single-Row Comparison
+
