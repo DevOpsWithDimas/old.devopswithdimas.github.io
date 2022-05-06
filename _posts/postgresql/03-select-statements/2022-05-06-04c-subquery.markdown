@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Queries inside a query (subquery)"
+date: 2022-05-06T16:03:42+07:00
 lang: postgresql
 authors:
 - dimasm93
@@ -332,7 +333,7 @@ hr-#        emp.first_name,
 hr-#        history.job_id,
 hr-#        history.start_date
 hr-# from employees emp,
-hr-#      lateral (select job.job_id, job.start_date::date
+hr-#      lateral (select job.job_id, job.start_date
 hr(#               from job_history job
 hr(#               where emp.employee_id = job.employee_id) as history
 hr-# order by employee_id, job_id
@@ -358,7 +359,7 @@ Query tersebut akan sama jika kita menggunakan join seperti berikut:
 select emp.employee_id,
        emp.first_name,
        history.job_id,
-       history.start_date::date
+       history.start_date
 from employees emp
          join job_history history on (emp.employee_id = history.employee_id)
 order by employee_id, job_id;
