@@ -22,8 +22,8 @@ downloads: []
 Hai semuanya, setelah kita membahas tentang Joined tables tahap selanjutnya kita akan membahas tentang Queries inside a query atau lebih di kenal dengan SubQuery. Seperti biasa karena pembahasannya akan lumayan panjang jadi kita akan bagi-bagi menjadi beberapa bagian ya diantaranya:
 
 1. What is SubQuery?
-2. Using SubQuery inline view
-3. Hander SubQuery from where clause
+2. Using SubQuery specified in column_list
+3. Using SubQuery inline view
 4. Correlate SubQuery
 5. Pairwise SubQuery
     1. Using `IN` predicate to handle multiple values
@@ -79,5 +79,90 @@ Untuk lebih detailnya seperti ilustrasi seperti berikut:
 
 ![subquery-execution-process]({{ page.image_path | prepend: site.baseurl }}/01-subquery-structure.png)
 
+## Using SubQuery specified in `select_column_list`
+
+SubQuery yang paling umum pada Select statement, di letakan pada column_list dan where clause. Kali ini kita bahas dulu untuk SubQuery pada column_list. The basic query form is
+
+{% highlight sql %}
+select select_column_list, [(single_row_subquery_expression), ...]
+from from_tables
+[where ...]
+{% endhighlight %}
+
+For example
+
+{% gist page.gist "04c-subquery-select-column-list.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```shell
+hr=# SELECT j.job_title,
+hr-#        (SELECT min(h.start_date)::date FROM job_history h) as start_join
+hr-# FROM jobs j;
+            job_title            | start_join
+---------------------------------+------------
+ President                       | 1987-09-17
+ Administration Vice President   | 1987-09-17
+ Administration Assistant        | 1987-09-17
+ Finance Manager                 | 1987-09-17
+ Accountant                      | 1987-09-17
+ Accounting Manager              | 1987-09-17
+ Public Accountant               | 1987-09-17
+ Sales Manager                   | 1987-09-17
+ Sales Representative            | 1987-09-17
+ Purchasing Manager              | 1987-09-17
+ Purchasing Clerk                | 1987-09-17
+ Stock Manager                   | 1987-09-17
+ Stock Clerk                     | 1987-09-17
+ Shipping Clerk                  | 1987-09-17
+ Programmer                      | 1987-09-17
+ Marketing Manager               | 1987-09-17
+ Marketing Representative        | 1987-09-17
+ Human Resources Representative  | 1987-09-17
+ Public Relations Representative | 1987-09-17
+(19 rows)
+```
+
+Khusus untuk SubQuery pada select column_list, tidak bisa menggunakan subquery yang menghasilkan data lebih dari 1 baris, contohnya seperti berikut:
+
+{% highlight sql %}
+select j.job_title,
+       (select h.start_date from job_history h)
+from jobs j;
+{% endhighlight %}
+
+Maka jika di jalankan hasilnya seperti berikut:
+
+```powershell
+hr=# select j.job_title,
+hr-#        (select h.start_date from job_history h)
+hr-# from jobs j;
+ERROR:  more than one row returned by a subquery used as an expression
+```
+
+Dan juga tidak bisa menggunakan subquery yang mehasilkan lebih dari 1 kolom, contohnya seperti berikut:
+
+{% highlight sql %}
+select j.job_title,
+       (select h.start_date, h.start_date from job_history h limit 1)
+from jobs j;
+{% endhighlight %}
+
+Jika di jalankan hasilnya seperti berikut:
+
+```powershell
+hr=# select j.job_title,
+hr-#        (select h.start_date, h.start_date from job_history h limit 1)
+hr-# from jobs j;
+ERROR:  subquery must return only one column
+LINE 2:        (select h.start_date, h.start_date from job_history h...
+               ^
+```
+
+Maka dari itu, kita harus memastikan data yang dikembalikan oleh subquery 1 row dan 1 column.
+
 ## Using SubQuery inline view
 
+The subquery specified in the `FROM` clause of a query is called an inline view. Because an inline view can replace a table in a query, it is also called a derived table. Sometimes, you may hear the term subselect, which is the same meaning as the inline view.
+
+An inline view is not a real view but a subquery in the `FROM` clause of a `SELECT` statement.
