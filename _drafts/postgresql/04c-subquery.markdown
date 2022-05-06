@@ -438,3 +438,76 @@ Ok sekarang kita bahas satu-per-satu ya function tersebut.
 
 ## Using SubQuery for Single-Row Comparison
 
+SubQuery dengan `WHERE` clause pada Single Row Comparison pada dasarnya udah kita bahas di materi [sebelumnya]({% post_url postgresql/03-select-statements/2022-03-08-03d-where-clause %}) kita bisa menggunakan beberapa operator seperti
+
+1. Relational predicate
+2. Like predicates
+3. Between predicates
+4. Null predicate
+5. Logical predicate
+6. Regular Expression (Regex) predicate
+
+The basic form:
+
+{% highlight sql %}
+select column_list, ...
+from table1, ...
+where column_expression [| (columns_expression)] operator ( subquery_expression )
+{% endhighlight %}
+
+Contohnya seperti berikut:
+
+{% gist page.gist "04c-subquery-basic-single-row-comparison.sql" %}
+
+Jika di jalankan maka hasilnya seperti berikut:
+
+```shell
+hr=# select employee_id, first_name, salary
+hr-# from employees emp
+hr-# where emp.salary >= (select avg(max_salary) from jobs)
+hr-# order by salary;
+ employee_id | first_name |  salary
+-------------+------------+----------
+         146 | Karen      | 13500.00
+         145 | John       | 14000.00
+         101 | Neena      | 17000.00
+         102 | Lex        | 17000.00
+         100 | Steven     | 24000.00
+(5 rows)
+```
+
+Selain itu juga kita bisa menggunakan multiple columns, contohnya seperti berikut:
+
+{% gist page.gist "04c-subquery-multi-columns-single-row-comparison.sql" %}
+
+Jika di jalankan hasilnya seperti berikut:
+
+```shell
+hr=# select employee_id, first_name, salary, coalesce(commission_pct, 0), job_id
+hr-# from employees emp
+hr-# where (emp.salary, emp.salary, emp.job_id) >= (
+hr(#     select round(stddev(max_salary), 0), round(max(min_salary)), 'IT_PROG'
+hr(#     from jobs
+hr(# )
+hr-# order by salary
+hr-# limit 10;
+ employee_id | first_name |  salary  | coalesce |   job_id
+-------------+------------+----------+----------+------------
+         158 | Allan      |  9000.00 |     0.35 | SA_REP
+         109 | Daniel     |  9000.00 |        0 | FI_ACCOUNT
+         152 | Peter      |  9000.00 |     0.25 | SA_REP
+         103 | Alexander  |  9000.00 |        0 | IT_PROG
+         163 | Danielle   |  9500.00 |     0.15 | SA_REP
+         151 | David      |  9500.00 |     0.25 | SA_REP
+         157 | Patrick    |  9500.00 |     0.35 | SA_REP
+         170 | Tayler     |  9600.00 |     0.20 | SA_REP
+         150 | Peter      | 10000.00 |     0.30 | SA_REP
+         156 | Janette    | 10000.00 |     0.35 | SA_REP
+(10 rows)
+```
+
+Pada query tersebut, jika kita menggunakan logical operator seperti berikut:
+
+{% highlight sql %}
+where salary >= 8876 or salary >= 20000 or job_id = IT_PROG
+{% endhighlight %}
