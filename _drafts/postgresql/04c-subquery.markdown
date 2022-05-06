@@ -25,12 +25,12 @@ Hai semuanya, setelah kita membahas tentang Joined tables tahap selanjutnya kita
 2. Using SubQuery specified in column_list
 3. Correlate SubQuery
 4. Using SubQuery inline view
-5. Pairwise SubQuery
+5. Lateral Subqueries
+6. Pairwise SubQuery
     1. Using `IN` predicate to handle multiple values
     2. Using `ANY` & `SOME` predicate to handle multiple values
     3. Using `ALL` predicate to handler multiple values
     4. Using `EXIST` operator
-6. Lateral Subqueries
 
 OK langsung aja kita ke pembahasan yang pertama
 
