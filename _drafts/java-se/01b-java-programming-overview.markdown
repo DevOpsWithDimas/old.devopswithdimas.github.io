@@ -134,3 +134,26 @@ Thanks to its excellent features, Java has become a popular and useful programmi
 6. **Familiar, Simple and Small**, Java is simple thanks to its coding style, which is very clean and easy to understand. Also, it doesn’t use complex and difficult features of other languages, such as the concept of explicit pointers.
 7. **Multi-threaded and Interactive**, Also known as Thread-based Multitasking, multithreading is a feature that allows executing multiple threads simultaneously.
 8. **High Performance**, Bytecodes that the compiler generates are highly optimized, so the Virtual Machine can execute them much faster. This is why **Java is faster than other traditional interpreted programming languages**.
+
+## Berapa sih gaji jadi seorang Java Programmer di Indonesia?
+
+Kalo kita ngomongin soal pekerjaan sebagai Java Programmer, mungkin dari temen-temen ada yang bertanya bagaimana dengan Gajinya jika menjadi Java Programmer dan bagaimana dengan prospek kedepannya?
+
+Ok ini mungkin bisa di bilang pembahasan yang sedikit sensitif ya karena berkaitan dengan gaji seseorang, klo saya menjawab sih memang tidak ada yang pasti soal gaji ini balik lagi tergantu dari beberapa faktor
+
+1. Lokasi bekerja, (perusahaan kecil atau besar)?
+2. Sudah berapa lama berkerja?
+3. Pernah mengerjakaan apa saja?
+4. Jabatan / Posisi pernah dilalui seperti apa dan bagaimana jobdesk nya?
+5. Dan seterusnya
+
+Khususnya di Indonesia, Java Programming banyak sekali digunakan beberapa perusahaan besar seperti 
+
+1. Banking, contohnya Bank Mandiri, Bank BNI, BPD DKI Jakarta, BPD SUMUT, DAPEN BI dan lain-lain
+2. E-Commerse, contohnya Blibli, Lazada, Bukalapak
+3. Information Technology, contohnya PT. Multipolar technology, PT. Tabeldata Informatika dan lain-lain.
+4. dan lain-lain.
+
+Untuk range gaji rata2 untuk junior programmer, jika kita lihat di beberapa situ lowongan pekerjaan seperti LinkedIn, JobStreet, dan lain-lain ada di kisaran `4jt s/d 6jt per bulan` pada saat ini (May-2022). Nah lumayan bukan? ya klo menurut saya sih itu sudah lumayan besar dibandingkan jaman dulu saya bekerja memulai karir menjadi Junior Programmer. klo boleh saya cerita sedikit, dulu saya hanya di bayar 2jt/bulan (part time) karena dulu saya masih Kuliah. Seiring dengan berjalannya waktu skill dan pengalaman meningkat, semakin lama gaji pun akan meningkat.
+
+Mungkin kesimpulannya, buat temen-temen yang masih pemula saat ini Fokus saja dulu dengan apa yang ingin dipelajari karena klo soal gaji semakin lama (semakin berpengalan) maka akan gaji/income pun semakin besar kok!
