@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Overview of Java Programming"
+title: "Overview of Programming Languages"
 lang: java-se
 authors:
 - dimasm93
@@ -18,18 +18,16 @@ image_path: /resources/posts/java-se/01a-java-programming-overview
 downloads: []
 ---
 
-Hai semuanya, di materi kali ini kita akan membahas tentang Pengenalan bahasa Pemograman dengan Java Diantaranya:
+Hai semuanya, selamat datang di Kelas belajar `Java Programming: Pemula sampai Mahir`. Java adalah salah satu implementasi dari ribuan Programming Language yang tersedia, sebelum kita membahas tentang Java Programming ada baiknya kita lihat dulu yuuk apa itu Programming languages?
+
+Untuk materi yang kita bahas kali ini diantaranya:
 
 1. What is Programming language?
-2. Types of programming language
+2. Types & Methods of programming language
 3. Why you need programming language?
 4. The best programming language?
-5. What is Java Programming Language?
-6. Short history of Java Programming language?
-7. What Java Programming can Do?
-8. Berapa sih gaji jadi seorang Java Programmer di Indonesia?
 
-Menarik khan, Ok yuk langsung aja kita bahas materi yang pertama?
+Ok yuk langsung aja kita bahas materi yang pertama?
 
 <!--more-->
 
@@ -94,4 +92,12 @@ Jika hanya membutuhkan program yang simple, sebetulnya kita bisa juga menggunaka
 
 Setelah kita tau kita membutuhkan programming language, pertanyaan selanjutnya adalah Apa bahasa pemograman yang paling baik?
 
-Untuk menjawab pertanyaan tersebut juga sama seperti sebelumnya untuk saat ini belum ada yang pasti yang mana yang terbaik di bandingkan lainnya. karena setiap bahasa pemograman atau programming language memiliki kemapuan atau kelebihan kekurangan masing masing-masing.
+Untuk menjawab pertanyaan tersebut juga sama seperti sebelumnya untuk saat ini belum ada yang pasti yang mana yang terbaik di bandingkan lainnya. karena setiap bahasa pemograman atau programming language memiliki kemapuan atau kelebihan kekurangan masing-masing.
+
+Kemudian ada pertanyaan lagi, apakah dari sekian banyak Banyak Bahasa Pemograman kita harus kuasai semua?
+
+Menurut pendapat saya tidak harus bisa semua, akan lebih baik jika kita menguasai 1 atau 2 Bahasa Pemograman tetapi secara mendalam atau spesifik. Karena dengan begitu jika kita telah menguasai ke specifik bahasa pemograman secara utuh kedepannya jika kita ingin belajar bahasa pemograman lainnya kita hanya fokus belajar bahasanya saja karena untuk penggunaannya sendiri nantinya akan serupa atau mirip.
+
+Dan yang terakhir sebagai penutup, buat temen-temen yang pemula atau masih awam ingin belajar Programming language, belajar saja gak perlu terlalu pusing milih technology / programming yang harus pelajari. karena nanti semakin lama menguasai suatu programming language nanti akan menemukan yang mana yang bagus dan yang mana yang kurang dan juga jangan terlalu fokus ke bahasanya tetapi coba pahami algoritma, structur data, serta workflow dari bahasa pemograman tersebut.
+
+Karena di kelas ini menggunakan Java Programming, Jadi kita akan membahas semua itu secara mendalam ya. Mulai dari bahasa, algoritma, structur data dalam bahas Java.
