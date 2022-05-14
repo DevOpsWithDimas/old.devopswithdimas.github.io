@@ -121,12 +121,16 @@ Eventually, the name of this technology would become “Java” (meaning “coff
 
 Thanks to its excellent features, Java has become a popular and useful programming language. Sun characterized it as being:
 
-1. Compiled and Interpreted
-2. Platform Independent and Portable
-3. Object-Oriented
-4. Robust and Secure
-5. Distributed
-6. Familiar, Simple and Small
-7. Multi-threaded and Interactive
-8. High Performance
-9. Dynamic and Extensible
+1. **Compiled and Interpreted**, Java combines the power of compiled languages with the flexibility of interpreted languages. The compiler (`javac`) compiles the source code into bytecode, then the Virtual Machine (JVM) executes this bytecode by transforming it into machine-readable code.
+2. **Platform Independent and Portable**, The two-step compilation process is what lies behind Java's most significant feature: 
+    1. Platform independence, which allows for portability. Being platform-independent means a program compiled on **one machine can be executed on any other machine**, regardless of the OS, as long as there is a JVM installed.
+    2. The portability feature refers to the ability to run a program on different machines. In fact, the **same code will run identically on different platforms**, regardless of hardware compatibility or operating systems, with no changes such as recompilation or tweaks to the source code.
+3. **Object-Oriented**, Java strongly supports Object-Oriented Programming concepts such as encapsulation, abstraction, and inheritance. All the instructions and data in a Java program have to be added inside a class or object.
+4. **Robust and Secure**, Java includes several useful features that help us write robust and secure applications. 
+    1. One of the most important ones is the memory management system, along with **automatic garbage collection**. Compared to languages like C/C++, Java avoids the concept of explicit pointers, and doesn't require programmers to manually manage the allocated memory.
+    2. Instead, the GC will **take care of deleting unused objects** to free up memory.
+    3. In addition, Java is a strongly-typed language, which is a feature that can help lower the number of bugs in an application, and provides error handling mechanisms.
+5. **Distributed**, This feature is helpful when we develop large projects. We can split a program into many parts and store these parts on different computers. As a result, we can **easily create distributed and scalable applications that run on multiple nodes**. We can achieve this using the concept of RMI (Remote Method Invocation) and EJB (Enterprise JavaBeans).
+6. **Familiar, Simple and Small**, Java is simple thanks to its coding style, which is very clean and easy to understand. Also, it doesn’t use complex and difficult features of other languages, such as the concept of explicit pointers.
+7. **Multi-threaded and Interactive**, Also known as Thread-based Multitasking, multithreading is a feature that allows executing multiple threads simultaneously.
+8. **High Performance**, Bytecodes that the compiler generates are highly optimized, so the Virtual Machine can execute them much faster. This is why **Java is faster than other traditional interpreted programming languages**.
