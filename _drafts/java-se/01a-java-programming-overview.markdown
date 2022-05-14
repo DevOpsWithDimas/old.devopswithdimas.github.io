@@ -41,7 +41,7 @@ Java adalah salah satu dari sekian banyak bahas pemograman atau istilah kerennya
 
 > A programming language is any set of rules that converts strings, or graphical program elements in the case of visual programming languages, to various kinds of machine code output. Programming languages are one kind of computer language, and are used in computer programming to implement algorithms. Most programming languages consist of instructions for computers.
 
-Jadi klo kita simpulkan, Programing language itu sekumpulan proses yang akan dilakukan oleh komputer dari suatu kode program (source-code). Suatu source code dibuat oleh programming yang nantinya akan di baca komputer dengan cara di compiled ataupun Interpreted
+Jadi klo kita simpulkan, Programing language itu sekumpulan proses yang akan dilakukan oleh komputer dari suatu kode program (source-code). Suatu source code dibuat oleh programmer yang nantinya akan di baca komputer dengan cara di compiled ataupun Interpreted
 
 Ada banyak sekali programming language diataranya yang paling populer diantaranya:
 
@@ -81,3 +81,17 @@ Sedangkan untuk Bahasa Pemograman Java memiliki jenis
 3. The most popular used in Backend programming, but also you can used in Frontend such as Desktop or Mobile apps (Android)
 4. Compiled programming language
 5. Strong typing
+
+## Why you need programming language?
+
+Mungkin dari temen-temen bertanya kenapa sih kita menggunakan programming language untuk membuat program/aplikasi?
+
+Untuk menjawab pertanyaan tersebut sebetulnya gak ada yang pasti (ya/tidak) balik lagi tergantung kasus apa yang mau kita buat, seberapa komplex program yang kita buat dan seberapa custome?
+
+Jika hanya membutuhkan program yang simple, sebetulnya kita bisa juga menggunakan program yang sudah ada contohnya klo kita hanya menggunakan sales pada suatu perusahaan kecil sebetulnya hanya dengan Microsoft Excel saja mungkin sudah cukup, tetepi berbeda jika di Perusahaan besar atau multinasional mungkin membutuhkan perhitungan yang complex dan harus di custome. maka dari itu kita membutuhkan Program/aplikasi untuk memudahkan computasi untuk itulah kita membutuhkan programming language untuk membuat program tersebut.
+
+## The best programming language?
+
+Setelah kita tau kita membutuhkan programming language, pertanyaan selanjutnya adalah Apa bahasa pemograman yang paling baik?
+
+Untuk menjawab pertanyaan tersebut juga sama seperti sebelumnya untuk saat ini belum ada yang pasti yang mana yang terbaik di bandingkan lainnya. karena setiap bahasa pemograman atau programming language memiliki kemapuan atau kelebihan kekurangan masing masing-masing.
