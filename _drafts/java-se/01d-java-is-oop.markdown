@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01d-java-language"
+title: "Java is Object Oriented Programming"
 lang: java-se
 authors:
 - dimasm93

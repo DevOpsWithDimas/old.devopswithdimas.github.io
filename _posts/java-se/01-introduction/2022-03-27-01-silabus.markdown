@@ -22,7 +22,7 @@ Hai semuanya, di cource ini kita akan membahas bahasa pemograman Java untuk Pemu
 
 Materi yang di bahas adalah Java Standart Edition (Java SE) version `jdk-17-lts`. Mungkin buat temen-temen yang belum tau saya pernah buat tutorial Java secara free di youtube 5 tahun lalu nah sekarang adalah waktu yang pas untuk meng-update materinya supaya lebih lengkap dan terstruktur.
 
-Ok untuk materinya kita akan bagi menjadi 4 section yaitu 
+Ok untuk materinya kita akan bagi menjadi 7 section + Study kasusnya yaitu 
 
 <!--more-->
 
@@ -66,7 +66,15 @@ Ok untuk materinya kita akan bagi menjadi 4 section yaitu
 
 ## Java Web 
 
-1. Java Servlet
-2. Java Server Pages (JSP)
+1. HTML
+2. CSS
+3. JavaScript
+4. Java Servlet
+5. Java Server Pages (JSP)
+
+## Study Kasus
+
+1. Membuat aplikasi Point of Sales berbasis Desktop
+2. Membuat aplikasi e-commerce berbasis Web (Servlet & JSP)
 
 Selain itu juga masih banyak lagi yang akan kita bahas di cource ini, Ok mungkin sekian dulu yang bisa saya sampaikan terkati Silabus Belajar bahasa pemograman Java untuk Pemulai sampai Mahir. Sampai jumpa di cource!
