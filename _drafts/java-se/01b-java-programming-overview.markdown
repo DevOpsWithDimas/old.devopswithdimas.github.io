@@ -117,3 +117,16 @@ Eventually, the name of this technology would become “Java” (meaning “coff
 7. [Java + Minecraft](https://codakid.com/minecraft-coding/)
 8. [Java + MATLAB](https://www.mathworks.com/help/matlab/using-java-libraries-in-matlab.html)
 
+## What Java Programming can Do?
+
+Thanks to its excellent features, Java has become a popular and useful programming language. Sun characterized it as being:
+
+1. Compiled and Interpreted
+2. Platform Independent and Portable
+3. Object-Oriented
+4. Robust and Secure
+5. Distributed
+6. Familiar, Simple and Small
+7. Multi-threaded and Interactive
+8. High Performance
+9. Dynamic and Extensible
