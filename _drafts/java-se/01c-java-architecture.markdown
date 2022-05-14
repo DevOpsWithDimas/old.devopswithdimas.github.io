@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Java Architecture & Versions"
+title: "Java Platform, Architecture & Versions"
 lang: java-se
 authors:
 - dimasm93
