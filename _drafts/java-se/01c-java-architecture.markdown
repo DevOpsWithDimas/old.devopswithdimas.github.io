@@ -8,7 +8,7 @@ categories:
 - language
 - java
 refs: 
-- https://docs.oracle.com/en/java/javase/17/
+- https://docs.oracle.com/javaee/6/firstcup/doc/gkhoy.html
 youtube: 
 comments: true
 gist: dimMaryanto93/96aad3c6bed60d010757c7d1acba930a
@@ -31,11 +31,16 @@ Ok langsung aja kita bahas materi yang pertama:
 
 <!--more-->
 
-Materi: 
+## Java Platforms / Editions?
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+There are four platforms of the Java programming language:
+
+1. Java Platform, Standard Edition (Java SE)
+2. Java Platform, Enterprise Edition (Java EE)
+3. Java Platform, Micro Edition (Java ME)
+4. JavaFX
+
+All Java platforms consist of a Java Virtual Machine (VM) and an application programming interface (API). The Java Virtual Machine is a program, for a particular hardware and software platform, that runs Java technology applications. An API is a collection of software components that you can use to create other software components or applications. Each Java platform provides a virtual machine and an API, and this allows applications written for that platform to run on any compatible system with all the advantages of the Java programming language: platform-independence, power, stability, ease-of-development, and security.
+
+## Java Architecture
+
