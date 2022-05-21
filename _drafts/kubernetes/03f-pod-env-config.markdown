@@ -10,9 +10,8 @@ categories:
 - Kubernetes
 - Workloads
 refs: 
-- https://docs.docker.com/
-- https://kubernetes.io/docs/home/
-- https://minikube.sigs.k8s.io/docs/
+- https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/
+- https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/
 youtube: 
 comments: true
 catalog_key: workloads

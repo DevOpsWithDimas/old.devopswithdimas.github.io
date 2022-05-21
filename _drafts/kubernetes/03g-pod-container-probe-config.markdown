@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Configure a Container Probes"
+title: "Configure liveness, readiness, and startup probes"
 lang: k8s
 authors:
 - dimasm93
@@ -10,9 +10,7 @@ categories:
 - Kubernetes
 - Workloads
 refs: 
-- https://docs.docker.com/
-- https://kubernetes.io/docs/home/
-- https://minikube.sigs.k8s.io/docs/
+- https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 youtube: 
 comments: true
 catalog_key: workloads
