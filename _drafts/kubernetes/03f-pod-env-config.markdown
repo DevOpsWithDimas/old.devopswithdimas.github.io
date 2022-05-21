@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Environment Variables in Pod"
+title: "Configure env (Environment Variables) in a Pods"
 lang: k8s
 authors:
 - dimasm93
@@ -22,11 +22,12 @@ downloads: []
 ---
 
 
-Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Environment Variables pada Pod Specification diantaranya:
+Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Environment Variables pada Pod Specification, diantaranya:
 
 1. Basic Usage env-values
-2. Using ConfigMap as Ref envFrom
-3. Using Secret as Ref to envFrom
+2. Using ConfigMap as Ref `envFrom`
+3. Using Secret as Ref to `envFrom`
+4. Using `valueFrom`
 
 <!--more-->
 
