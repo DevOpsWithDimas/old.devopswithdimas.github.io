@@ -26,7 +26,7 @@ Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Environ
 1. Basic Usage env-values
 2. Using ConfigMap as Ref `envFrom`
 3. Using Secret as Ref to `envFrom`
-4. Using `valueFrom`
+4. Using `valueFrom` of ConfigMap or Secret
 
 <!--more-->
 
