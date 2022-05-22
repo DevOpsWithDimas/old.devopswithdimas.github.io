@@ -20,7 +20,6 @@ gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
 
-
 Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Environment Variables pada Pod Specification, diantaranya:
 
 1. Basic Usage env-values
@@ -31,13 +30,10 @@ Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Environ
 6. Using `valueFrom` of ConfigMap or Secret
 7. Motivation for using ConfigMap and Secret
 
+Ok langsung aja kita bahas materi yang pertama
+
 <!--more-->
 
-Materi: 
+## Basic Usage env-values
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+Seperti yang temen-temen ketahui suatu Environtment Variable ini biasanya digunakan untuk meng-inject data kedalam Container yang bisa dilakukan secara dynamicly.
