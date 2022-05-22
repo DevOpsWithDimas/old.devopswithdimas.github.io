@@ -24,9 +24,12 @@ downloads: []
 Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Environment Variables pada Pod Specification, diantaranya:
 
 1. Basic Usage env-values
-2. Using ConfigMap as Ref `envFrom`
-3. Using Secret as Ref to `envFrom`
-4. Using `valueFrom` of ConfigMap or Secret
+2. What is ConfigMap?
+3. Using ConfigMap as Ref `envFrom`
+4. What is Secret?
+5. Using Secret as Ref to `envFrom`
+6. Using `valueFrom` of ConfigMap or Secret
+7. Motivation for using ConfigMap and Secret
 
 <!--more-->
 
