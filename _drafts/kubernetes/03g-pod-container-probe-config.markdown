@@ -28,7 +28,7 @@ Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Contain
 5. Configure readiness probe in a Pod
 6. When should you use startup probe?
 7. Configure startup probe in a Pod
-8. Summary
+8. Motivation for using Container Probe
 
 <!--more-->
 
