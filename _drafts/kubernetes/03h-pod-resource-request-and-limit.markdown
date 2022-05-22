@@ -26,11 +26,11 @@ Hai semuanya, di materi kali ini kita membahas tentang Resources Limit and Reque
 2. Install prerequisite, Before you begin
 3. Specify a CPU request and a CPU limit
 4. Specify a CPU request that is too big for your Nodes
-5. If you do not specify a CPU limit
+5. If you do not specify a CPU limit?
 6. Specify a memory request and a memory limit
 7. Exceed a Container's memory limit 
 8. Specify a memory request that is too big for your Nodes
-9. If you do not specify a memory limit
+9. If you do not specify a memory limit?
 10. Motivation for requests and limits
 
 <!--more-->
