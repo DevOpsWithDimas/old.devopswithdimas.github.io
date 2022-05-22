@@ -328,3 +328,12 @@ Because Pods represent processes running on nodes in the cluster, it is importan
 The design aim is for you to be able to request deletion and know when processes terminate, but also be able to ensure that deletes eventually complete. When you request deletion of a Pod, the cluster records and tracks the intended grace period before the Pod is allowed to be forcefully killed. With that forceful shutdown tracking in place, the kubelet attempts graceful shutdown.
 
 Typically, the container runtime sends a TERM signal to the main process in each container. Many container runtimes respect the STOPSIGNAL value defined in the container image and send this instead of TERM. Once the grace period has expired, the KILL signal is sent to any remaining processes, and the Pod is then deleted from the API Server. If the kubelet or the container runtime's management service is restarted while waiting for processes to terminate, the cluster retries from the start including the full original grace period.
+
+An example flow:
+
+1. You use the `kubectl` tool to manually delete a specific Pod, with the default grace period (30 seconds).
+2. The Pod in the API server is updated with the time beyond which the Pod is considered "dead" along with the grace period. If you use kubectl describe to check on the Pod you're deleting, that Pod shows up as "Terminating". On the node where the Pod is running: as soon as the kubelet sees that a Pod has been marked as terminating (a graceful shutdown duration has been set), the kubelet begins the local Pod shutdown process.
+3. At the same time as the kubelet is starting graceful shutdown, the control plane removes that shutting-down Pod from Endpoints (and, if enabled, EndpointSlice) objects where these represent a Service with a configured selector.
+4. When the grace period expires, the kubelet triggers forcible shutdown. The container runtime sends `SIGKILL` to any processes still running in any container in the Pod. The kubelet also cleans up a hidden pause container if that container runtime uses one.
+5. The kubelet triggers forcible removal of Pod object from the API server, by setting grace period to 0 (immediate deletion).
+6. The API server deletes the Pod's API object, which is then no longer visible from any client.
