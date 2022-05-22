@@ -19,8 +19,16 @@ gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Container probe diantaranya Liveness, Readiness and Startup Probes dalam suatu Pod Specification diantaranya:
 
-description...
+1. What the different between liveness, readiness and startup probe?
+2. When should you use liveness probe?
+3. Configure liveness probe in a Pod
+4. When should you use readiness probe?
+5. Configure readiness probe in a Pod
+6. When should you use startup probe?
+7. Configure startup probe in a Pod
+8. Summary
 
 <!--more-->
 
