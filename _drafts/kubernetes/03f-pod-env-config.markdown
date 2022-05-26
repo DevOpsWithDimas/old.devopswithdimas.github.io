@@ -441,3 +441,177 @@ Data
 POSTGRES_PASSWORD:  9 bytes
 POSTGRES_USER:      9 bytes
 ```
+
+## Using Secret as Ref for `envFrom`
+
+When you have a Secret in your cluster, you can include all Secret data into your container using `envFrom` like this:
+
+{% highlight yaml %}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-env-envfrom-secret
+  labels:
+    app: postgres
+spec:
+  containers:
+    - name: database
+      image: postgres
+      imagePullPolicy: IfNotPresent
+      env:
+        - name: POSTGRES_DB
+          value: crud_apps
+      envFrom:
+        - secretRef:
+            name: db-credential
+            optional: false
+      ports:
+        - containerPort: 5432
+  restartPolicy: Always
+{% endhighlight %}
+
+Jika dijalankan seperti berikut:
+
+```powershell
+➜ kubernetes git:(main) kubectl apply -f .\02-workloads\01-pod\pod-env-envfrom-secret.yaml
+pod/pod-env-envfrom-secret created
+
+➜ kubernetes git:(main) kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+pod-env-envfrom-secret   1/1     Running   0          11s
+
+➜ kubernetes git:(main) kubectl describe pod pod-env-envfrom-secret
+Name:         pod-env-envfrom-secret
+Namespace:    default
+Priority:     0
+Node:         minikube-m03/192.168.49.4
+Start Time:   Thu, 26 May 2022 15:16:51 +0700
+Labels:       app=postgres
+Annotations:  <none>
+Status:       Running
+IP:           10.244.2.3
+IPs:
+  IP:  10.244.2.3
+Containers:
+  database:
+    Image:          postgres
+    Port:           5432/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 26 May 2022 15:16:52 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment Variables from:
+      db-credential  Secret  Optional: false
+    Environment:
+      POSTGRES_DB:  crud_apps
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  33s   default-scheduler  Successfully assigned default/pod-env-envfrom-secret to minikube-m03
+  Normal  Pulled     33s   kubelet            Container image "postgres" already present on machine
+  Normal  Created    33s   kubelet            Created container database
+  Normal  Started    33s   kubelet            Started container database
+
+➜ kubernetes git:(main) kubectl exec pod-env-envfrom-secret -- printenv
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/14/bin
+HOSTNAME=pod-env-envfrom-secret
+POSTGRES_USER=crud_apps
+POSTGRES_DB=crud_apps
+POSTGRES_PASSWORD=crud_apps
+GOSU_VERSION=1.14
+LANG=en_US.utf8
+PG_MAJOR=14
+PG_VERSION=14.3-1.pgdg110+1
+PGDATA=/var/lib/postgresql/data
+HOME=/root
+```
+
+Or you can define configmap in file too, like this:
+
+{% gist page.gist "03f-pod-env-envfrom-secret.yaml" %}
+
+Jika dijalankan seperti berikut:
+
+```powershell
+➜ kubernetes git:(main) kubectl apply -f .\02-workloads\01-pod\pod-env-envfrom-secret.yaml
+secret/db-cred created
+pod/pod-env-envfrom-secret created
+
+➜ kubernetes git:(main) kubectl get secret
+NAME                  TYPE                                  DATA   AGE
+db-cred               Opaque                                2      11s
+default-token-plxx7   kubernetes.io/service-account-token   3      74s
+
+➜ kubernetes git:(main) kubectl describe secret db-cred
+Name:         db-cred
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Type:  Opaque
+
+Data
+====
+POSTGRES_PASSWORD:  18 bytes
+POSTGRES_USER:      9 bytes
+
+➜ kubernetes git:(main) kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+pod-env-envfrom-secret   1/1     Running   0          40s
+
+➜ kubernetes git:(main) kubectl describe pod pod-env-envfrom-secret
+Name:         pod-env-envfrom-secret
+Namespace:    default
+Priority:     0
+Node:         minikube-m03/192.168.49.4
+Start Time:   Thu, 26 May 2022 15:23:18 +0700
+Labels:       app=postgres
+Annotations:  <none>
+Status:       Running
+IP:           10.244.2.4
+IPs:
+  IP:  10.244.2.4
+Containers:
+  database:
+    Image:          postgres
+    Port:           5432/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 26 May 2022 15:23:18 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment Variables from:
+      db-cred  Secret  Optional: false
+    Environment:
+      POSTGRES_DB:  crud_apps
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-gkxpf (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  59s   default-scheduler  Successfully assigned default/pod-env-envfrom-secret to minikube-m03
+  Normal  Pulled     59s   kubelet            Container image "postgres" already present on machine
+  Normal  Created    59s   kubelet            Created container database
+  Normal  Started    59s   kubelet            Started container database
+```
