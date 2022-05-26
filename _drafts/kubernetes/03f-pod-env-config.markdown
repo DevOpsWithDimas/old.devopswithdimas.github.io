@@ -45,3 +45,72 @@ Sometime, penggunaan `env` pada containerSpec tidak hanya itu saja. Suatu enviro
 {% gist page.gist "03f-pod-env-multiple.yaml" %}
 
 Nah terlihat pada podSpec diatas, ada beberapa value dari env yang sebetulnya kita bisa generalisasi karena menggunakan value yang sama yaitu (`DB_NAME == POSTGRES_DB`, `POSTGRES_USER == DB_USERNAME` dan `POSTGRES_PASSWORD == DB_PASSWORD`). Disinilah kita bisa menggunakan salah satu object dari kubernetes untuk me-maintanance data tersebut yaitu `ConfigMap` dan `Secret`
+
+## What is ConfigMap?
+
+Many applications rely on configuration which is used during either application initialization or runtime. Most of the times there is a requirement to adjust values assigned to configuration parameters. 
+
+ConfigMaps is the kubernetes way to inject application pods with configuration data. ConfigMaps allow you to decouple configuration artifacts from image content to keep containerized applications portable.
+
+You can use either kubectl create configmap or a ConfigMap generator in `kustomization.yaml` to create a ConfigMap.
+
+Use the `kubectl create configmap` command to create ConfigMaps from [directories](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#create-configmaps-from-directories), [files](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#create-configmaps-from-files), or [literal values](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#create-configmaps-from-literal-values):
+
+{% highlight bash %}
+kubectl create configmap <map-name> <data-source>
+{% endhighlight %}
+
+where `<map-name>` is the name you want to assign to the ConfigMap and `<data-source>` is the directory, file, or literal value to draw the data from. The name of a ConfigMap object must be a valid [DNS subdomain name](https://kubernetes.io/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+
+When you are creating a ConfigMap based on a file, the key in the `<data-source>` defaults to the basename of the file, and the value defaults to the file content.
+
+You can use `kubectl describe` or `kubectl get` to retrieve information about a ConfigMap.
+
+For Example, you can create ConfigMap using this command:
+
+{% highlight bash %}
+kubectl create configmap db-config \
+--from-literal=POSTGRES_PASSWORD=crud_apps \
+--from-literal=POSGRES_USER=crud_apps \
+--from-literal=POSGRES_DB=crud_apps
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```powershell
+➜ ~  kubectl create configmap db-config `
+> --from-literal=POSTGRES_PASSWORD=crud_app `
+> --from-literal=POSTGRES_USER=crud_app `
+> --from-literal=POSTGRES_DB=crud_app
+configmap/db-config created
+
+➜ ~  kubectl get configmap
+NAME               DATA   AGE
+db-config          3      27s
+kube-root-ca.crt   1      4d
+
+➜ ~  kubectl describe configmap db-config
+Name:         db-config
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+POSTGRES_DB:
+----
+crud_app
+POSTGRES_PASSWORD:
+----
+crud_app
+POSTGRES_USER:
+----
+crud_app
+
+BinaryData
+====
+
+Events:  <none>
+```
+
+Setelah ini kita bisa terapkan pada suatu container untuk digunakan menggunakan `envFrom` ataupun `valueFrom`
