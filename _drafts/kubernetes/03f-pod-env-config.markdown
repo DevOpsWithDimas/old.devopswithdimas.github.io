@@ -272,3 +272,111 @@ Events:
 
 ## Using ConfigMap as Ref for `valueFrom`
 
+Selain menggunakan `envFrom` yang meng-include semua environment variable dalam object ConfigMap, kita juga bisa gunakan sebagian data dari object ConfigMap tersebut menggunakan `valueFrom` dalam `env`.
+
+Hal ini berguna, untuk me-reused environment variable tersebut ke beberapa container atau pod atau workload resource lainnya. Contohnya seperti berikut:
+
+{% gist page.gist "03f-pod-env-valuefrom-configmap.yaml" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ kubernetes git:(main) ✗ kubectl apply -f .\02-workloads\01-pod\pod-env-valuefrom-configmap.yaml
+configmap/config-db3 created
+pod/pod-envfrom-configmap created
+
+➜ kubernetes git:(main) kubectl get pod
+NAME                    READY   STATUS    RESTARTS   AGE
+pod-envfrom-configmap   2/2     Running   0          11s
+
+➜ kubernetes git:(main) kubectl describe pod pod-envfrom-configmap
+Name:         pod-envfrom-configmap
+Namespace:    default
+Priority:     0
+Node:         minikube-m03/192.168.49.4
+Start Time:   Thu, 26 May 2022 12:16:49 +0700
+Labels:       app=postgres
+Annotations:  <none>
+Status:       Running
+IP:           10.244.2.5
+IPs:
+  IP:  10.244.2.5
+Containers:
+  database:
+    Image:          postgres
+    Port:           5432/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 26 May 2022 12:16:50 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      POSTGRES_PASSWORD:  <set to the key 'DB_PASSWORD' of config map 'config-db3'>  Optional: false
+      POSTGRES_USER:      <set to the key 'DB_USER' of config map 'config-db3'>      Optional: false
+      POSTGRES_DB:        <set to the key 'DB_NAME' of config map 'config-db3'>      Optional: false
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-2p4b8 (ro)
+  webapps:
+    Image:          nginx
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 26 May 2022 12:16:53 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      DATABASE_PASSWORD:  <set to the key 'DB_PASSWORD' of config map 'config-db3'>  Optional: false
+      DATABASE_USER:      <set to the key 'DB_USER' of config map 'config-db3'>      Optional: false
+      DATABASE_NAME:      <set to the key 'DB_NAME' of config map 'config-db3'>      Optional: false
+      DATABASE_HOST:      localhost
+      DATABASE_PORT:      5432
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-2p4b8 (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  28s   default-scheduler  Successfully assigned default/pod-envfrom-configmap to minikube-m03
+  Normal  Pulled     28s   kubelet            Container image "postgres" already present on machine
+  Normal  Created    28s   kubelet            Created container database
+  Normal  Started    28s   kubelet            Started container database
+  Normal  Pulling    28s   kubelet            Pulling image "nginx"
+  Normal  Pulled     25s   kubelet            Successfully pulled image "nginx" in 3.4689305s
+  Normal  Created    25s   kubelet            Created container webapps
+  Normal  Started    25s   kubelet            Started container webapps
+
+➜ kubernetes git:(main) ✗ kubectl exec pod-envfrom-configmap -c database -- printenv
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/14/bin
+HOSTNAME=pod-envfrom-configmap
+POSTGRES_DB=crud_apps
+POSTGRES_PASSWORD=crud_apps
+POSTGRES_USER=crud_apps
+GOSU_VERSION=1.14
+LANG=en_US.utf8
+PG_MAJOR=14
+PG_VERSION=14.3-1.pgdg110+1
+PGDATA=/var/lib/postgresql/data
+HOME=/root
+
+➜ kubernetes git:(main) ✗ kubectl exec pod-envfrom-configmap -c webapps -- printenv
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=pod-envfrom-configmap
+DATABASE_USER=crud_apps
+DATABASE_NAME=crud_apps
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_PASSWORD=crud_apps
+NGINX_VERSION=1.21.6
+NJS_VERSION=0.7.3
+PKG_RELEASE=1~bullseye
+HOME=/root
+```
