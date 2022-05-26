@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Configure env (Environment Variables) in a Pods"
+date: 2022-05-26T15:49:31+07:00
 lang: k8s
 authors:
 - dimasm93
@@ -31,7 +32,6 @@ Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Environ
 5. What is Secret?
 6. Using Secret as Ref for `envFrom`
 7. Using Secret as Ref for `valueFrom`
-8. Motivation for using ConfigMap and Secret
 
 Ok langsung aja kita bahas materi yang pertama
 
