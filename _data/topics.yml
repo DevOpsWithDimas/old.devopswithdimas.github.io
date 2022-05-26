@@ -538,6 +538,11 @@
       description: ''
       deprecated: false
       messages: ''
+    - name: 'Security RBAC'
+      key: security-rbac
+      description: ''
+      deprecated: false
+      messages: ''
     - name: 'CI/CD: with Gitlab'
       key: k8s-integration-gitlab
       description: ''

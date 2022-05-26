@@ -33,13 +33,8 @@ Hai semuanya, di materi kali ini kita membahas tentang Resources Limit and Reque
 9. If you do not specify a memory limit?
 10. Motivation for requests and limits
 
+Ok langsung aja kita bahas materi yang pertama
+
 <!--more-->
 
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+## What is Resource Request and Limit?
