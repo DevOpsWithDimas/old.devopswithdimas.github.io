@@ -10,7 +10,9 @@ categories:
 - Kubernetes
 - Workloads
 refs: 
+- https://kubernetes.io/docs/concepts/configuration/configmap/
 - https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/
+- https://kubernetes.io/docs/concepts/configuration/secret/
 - https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/
 youtube: 
 comments: true
@@ -49,11 +51,13 @@ Nah terlihat pada podSpec diatas, ada beberapa value dari env yang sebetulnya ki
 
 ## What is ConfigMap?
 
+A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume.
+
 Many applications rely on configuration which is used during either application initialization or runtime. Most of the times there is a requirement to adjust values assigned to configuration parameters. 
 
-ConfigMaps is the kubernetes way to inject application pods with configuration data. ConfigMaps allow you to decouple configuration artifacts from image content to keep containerized applications portable.
+ConfigMaps allow you to decouple configuration artifacts from image content to keep containerized applications portable.
 
-You can use either kubectl create configmap or a ConfigMap generator in `kustomization.yaml` to create a ConfigMap.
+You can use either `kubectl create configmap` or a ConfigMap generator in `kustomization.yaml` to create a ConfigMap.
 
 Use the `kubectl create configmap` command to create ConfigMaps from [directories](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#create-configmaps-from-directories), [files](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#create-configmaps-from-files), or [literal values](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#create-configmaps-from-literal-values):
 
@@ -379,4 +383,61 @@ NGINX_VERSION=1.21.6
 NJS_VERSION=0.7.3
 PKG_RELEASE=1~bullseye
 HOME=/root
+```
+
+## What is Secret?
+
+A Secret is an object that contains a small amount of sensitive data such as a password, a token, or a key. Such information might otherwise be put in a Pod specification or in a container image. Using a Secret means that you don't need to include confidential data in your application code.
+
+Because Secrets can be created independently of the Pods that use them, there is less risk of the Secret (and its data) being exposed during the workflow of creating, viewing, and editing Pods. Kubernetes, and applications that run in your cluster, can also take additional precautions with Secrets, such as avoiding writing secret data to nonvolatile storage.
+
+Secrets are similar to ConfigMaps but are specifically intended to hold confidential data.
+
+There are three main ways for a Pod to use a Secret:
+
+1. As files in a volume mounted on one or more of its containers.
+2. As container environment variable.
+3. By the kubelet when pulling images for the Pod.
+
+There are several options to create a Secret:
+
+1. create Secret using `kubectl create secret` command
+2. create Secret from config file
+3. create Secret using kustomize
+
+The values for all keys in the data field have to be base64-encoded strings. If the conversion to base64 string is not desirable, you can choose to specify the stringData field instead, which accepts arbitrary strings as values.
+
+If you want to skip the Base64 encoding step, you can create the same Secret using the `kubectl create secret` command. For example:
+
+{% highlight bash %}
+kubectl create secret generic db-credential \
+--from-literal='POSTGRES_PASSWORD=crud_apps' \
+--from-literal='POSTGRES_USER=crud_apps'
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ kubernetes git:(main) kubectl create secret generic db-credential `
+> --from-literal='POSTGRES_PASSWORD=crud_apps' `
+> --from-literal='POSTGRES_USER=crud_apps'
+secret/db-credential created
+
+➜ kubernetes git:(main) kubectl get secret
+NAME                  TYPE                                  DATA   AGE
+db-credential         Opaque                                2      10s
+default-token-5z46t   kubernetes.io/service-account-token   3      4d3h
+
+➜ kubernetes git:(main) kubectl describe secret db-credential
+Name:         db-credential
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Type:  Opaque
+
+Data
+====
+POSTGRES_PASSWORD:  9 bytes
+POSTGRES_USER:      9 bytes
 ```
