@@ -114,3 +114,98 @@ Events:  <none>
 ```
 
 Setelah ini kita bisa terapkan pada suatu container untuk digunakan menggunakan `envFrom` ataupun `valueFrom`
+
+## Using ConfigMap as Ref `envFrom`
+
+When you have a ConfigMap in your cluster, you can include all Environment Variables into your container using `envFrom` like this:
+
+{% highlight yaml %}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-env-envfrom
+  labels:
+    app: postgres
+spec:
+  containers:
+    - name: database
+      image: postgres
+      imagePullPolicy: IfNotPresent
+      envFrom:
+        - configMapRef:
+            name: db-config
+            optional: false
+      ports:
+        - containerPort: 5432
+  restartPolicy: Always
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ ~  kubectl get configmap
+NAME               DATA   AGE
+db-config          3      19m
+kube-root-ca.crt   1      4d
+
+➜ kubernetes git:(main) kubectl apply -f .\02-workloads\01-pod\pod-envfrom.yaml
+pod/pod-env-envfrom created
+
+➜ kubernetes git:(main) kubectl get pod
+NAME              READY   STATUS    RESTARTS   AGE
+pod-env-envfrom   1/1     Running   0          13s
+
+➜ kubernetes git:(main) kubectl describe pod pod-env-envfrom
+Name:         pod-env-envfrom
+Namespace:    default
+Priority:     0
+Node:         minikube-m03/192.168.49.4
+Start Time:   Thu, 26 May 2022 11:12:43 +0700
+Labels:       app=postgres
+Annotations:  <none>
+Status:       Running
+IP:           10.244.2.3
+IPs:
+  IP:  10.244.2.3
+Containers:
+  database:
+    Image:          postgres
+    Port:           5432/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 26 May 2022 11:12:44 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment Variables from:
+      db-config   ConfigMap  Optional: false
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-qzg9d (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  33s   default-scheduler  Successfully assigned default/pod-env-envfrom to minikube-m03
+  Normal  Pulled     33s   kubelet            Container image "postgres" already present on machine
+  Normal  Created    33s   kubelet            Created container database
+  Normal  Started    33s   kubelet            Started container database
+
+➜ kubernetes git:(main) kubectl exec pod-env-envfrom -- printenv
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/14/bin
+HOSTNAME=pod-env-envfrom
+POSTGRES_USER=crud_app
+POSTGRES_DB=crud_app
+POSTGRES_PASSWORD=crud_app
+GOSU_VERSION=1.14
+LANG=en_US.utf8
+PG_MAJOR=14
+PG_VERSION=14.3-1.pgdg110+1
+PGDATA=/var/lib/postgresql/data
+HOME=/root
+```
