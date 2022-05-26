@@ -209,3 +209,62 @@ PG_VERSION=14.3-1.pgdg110+1
 PGDATA=/var/lib/postgresql/data
 HOME=/root
 ```
+
+Or you can define configmap in file too, like this:
+
+{% gist page.gist "03f-pod-env-configmap.yaml" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```powershell
+➜ kubernetes git:(main) kubectl apply -f .\02-workloads\01-pod\pod-env-configmap.yaml
+configmap/config-db2 created
+pod/pod-envfrom-configmap created
+
+➜ kubernetes git:(main) kubectl get pod
+NAME                    READY   STATUS    RESTARTS   AGE
+pod-env-envfrom         1/1     Running   0          8m40s
+pod-envfrom-configmap   1/1     Running   0          13s
+
+➜ kubernetes git:(main) kubectl describe pod pod-envfrom-configmap
+Name:         pod-envfrom-configmap
+Namespace:    default
+Priority:     0
+Node:         minikube-m03/192.168.49.4
+Start Time:   Thu, 26 May 2022 11:21:10 +0700
+Labels:       app=postgres
+Annotations:  <none>
+Status:       Running
+IP:           10.244.2.4
+IPs:
+  IP:  10.244.2.4
+Containers:
+  database:
+    Image:          postgres
+    Port:           5432/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 26 May 2022 11:21:11 +0700
+    Ready:          True
+    Restart Count:  0
+    Environment Variables from:
+      db-config2   ConfigMap  Optional: false
+    Environment:  <none>
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  39s   default-scheduler  Successfully assigned default/pod-envfrom-configmap to minikube-m03
+  Normal  Pulled     38s   kubelet            Container image "postgres" already present on machine
+  Normal  Created    38s   kubelet            Created container database
+  Normal  Started    38s   kubelet            Started container database
+```
