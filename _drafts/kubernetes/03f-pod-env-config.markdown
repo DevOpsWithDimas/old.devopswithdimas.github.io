@@ -24,11 +24,12 @@ Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Environ
 
 1. Basic Usage env-values
 2. What is ConfigMap?
-3. Using ConfigMap as Ref `envFrom`
-4. What is Secret?
-5. Using Secret as Ref to `envFrom`
-6. Using `valueFrom` of ConfigMap or Secret
-7. Motivation for using ConfigMap and Secret
+3. Using ConfigMap as Ref for `envFrom`
+4. Using ConfigMap as Ref for `valueFrom`
+5. What is Secret?
+6. Using Secret as Ref for `envFrom`
+7. Using Secret as Ref for `valueFrom`
+8. Motivation for using ConfigMap and Secret
 
 Ok langsung aja kita bahas materi yang pertama
 
@@ -268,3 +269,6 @@ Events:
   Normal  Created    38s   kubelet            Created container database
   Normal  Started    38s   kubelet            Started container database
 ```
+
+## Using ConfigMap as Ref for `valueFrom`
+
