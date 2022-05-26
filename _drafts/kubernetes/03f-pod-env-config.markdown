@@ -537,7 +537,7 @@ PGDATA=/var/lib/postgresql/data
 HOME=/root
 ```
 
-Or you can define configmap in file too, like this:
+Or you can define Secret in file too, like this:
 
 {% gist page.gist "03f-pod-env-envfrom-secret.yaml" %}
 
