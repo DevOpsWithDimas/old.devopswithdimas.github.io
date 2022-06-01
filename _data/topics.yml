@@ -485,32 +485,42 @@
       messages: ''
     - name: 'Workload resources'
       key: workloads
-      description: 'Eps. 4 - Kubernetes workload resources'
+      description: 'Eps. 4 - Workload resources'
       deprecated: false
       messages: ''
-    - name: 'Kubernetes networking (service)'
+    - name: 'Study Kasus: Workload resources'
+      key: study-cases-workloads
+      description: 'Eps. 5 - Study Kasus: Workload resources'
+      deprecated: false
+      messages: ''
+    - name: 'Networking (service)'
       key: service
-      description: 'Eps. 5 - Kubernetes networking (service)'
+      description: 'Eps. 6 - Kubernetes networking (service)'
       deprecated: false
       messages: ''
     - name: 'Study Kasus: Networking'
       key: study-cases-networking
-      description: ''
+      description: 'Eps. 7 - Study Kasus: Networking'
       deprecated: false
       messages: ''
     - name: 'Store data using Volumes'
       key: volumes
-      description: ''
+      description: 'Eps. 8 - Kubernetes Volumes'
       deprecated: false
       messages: ''
     - name: 'ConfigMap, and Secrets'
       key: configmap
-      description: ''
+      description: 'Eps. 9 - ConfigMap and Secrets'
       deprecated: false
       messages: ''
     - name: 'Study Kasus: Store data using Volumes'
       key: study-cases-volumes
-      description: ''
+      description: 'Eps. 10 - Study Kasus: Kubernetes Volumes'
+      deprecated: false
+      messages: ''
+    - name: 'Kubernetes Client (kubectl, kustomize, helm)'
+      key: kubernetes-client
+      description: 'Eps. 11 - Kubernetes Client'
       deprecated: false
       messages: ''
     - name: 'Monitoring and Dashboard'
