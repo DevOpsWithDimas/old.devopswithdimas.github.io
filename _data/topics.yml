@@ -478,7 +478,7 @@
       description: 'Eps. 2 - Getting started with Minikube Cluster'
       deprecated: false
       messages: ''
-    - name: 'Pod and Containers'
+    - name: 'Pods and Containers'
       key: pod-container
       description: 'Eps. 3 - Pod and Containers configuration'
       deprecated: false
