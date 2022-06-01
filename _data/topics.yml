@@ -528,11 +528,6 @@
       description: ''
       deprecated: false
       messages: ''
-    - name: 'Package manager with helm'
-      key: helm
-      description: ''
-      deprecated: false
-      messages: ''
     - name: 'Service mesh with istio'
       key: istio
       description: ''
