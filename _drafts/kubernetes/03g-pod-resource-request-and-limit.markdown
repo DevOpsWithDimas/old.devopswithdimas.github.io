@@ -12,6 +12,7 @@ categories:
 refs: 
 - https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/
 - https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/
+- https://github.com/kubernetes/minikube/issues/13969#issuecomment-1101588469
 youtube: 
 comments: true
 catalog_key: pod-container
@@ -114,3 +115,50 @@ The kubelet reports the resource usage of a Pod as part of the Pod `status`.
 
 ## Install prerequisite, Before you begin
 
+You need to have a Kubernetes cluster, and the kubectl command-line tool must be configured to communicate with your cluster. If you do not already have a cluster, you can create one by using minikube or you can use one of these Kubernetes playgrounds.
+
+Each node in your cluster must have at least `300 MiB` of memory. A few of the steps on this page require you to run the metrics-server service in your cluster. If you have the metrics-server running, you can skip those steps.
+
+If you are running Minikube, run the following command to enable the metrics-server:
+
+{% highlight bash %}
+minikube start \
+--driver=docker \
+--memory=2G \
+--nodes=2 \
+--extra-config=kubelet.housekeeping-interfal=10s \
+--addons=metrics-server
+{% endhighlight %}
+
+To see whether the metrics-server is running, or another provider of the resource metrics API (`metrics.k8s.io`), run the following command:
+
+{% highlight bash %}
+kubectl get apiservices
+{% endhighlight %}
+
+If the resource metrics API is available, the output includes a reference to `metrics.k8s.io`.
+
+{% highlight bash %}
+NAME
+v1beta1.metrics.k8s.io
+{% endhighlight %}
+
+And make sure, you have to access `kubectl top node` and `kubectl top pod`: 
+
+```powershell
+➜ ~  kubectl top node
+NAME           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+minikube       213m         10%    694Mi           17%
+minikube-m02   51m          2%     169Mi           4%
+
+➜ ~  kubectl run webapp --image nginx --port 80
+pod/webapp created
+
+➜ ~  kubectl get pod
+NAME     READY   STATUS    RESTARTS   AGE
+webapp   1/1     Running   0          9s
+
+➜ ~  kubectl top pod webapp
+NAME     CPU(cores)   MEMORY(bytes)
+webapp   0m           0Mi
+```
