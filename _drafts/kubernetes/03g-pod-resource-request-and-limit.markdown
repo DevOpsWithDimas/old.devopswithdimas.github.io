@@ -96,3 +96,21 @@ Pay attention to the case of the suffixes. If you request `400m` of memory, this
 
 ## How Kubernetes applies resource requests and limits?
 
+When the kubelet starts a container as part of a Pod, the kubelet passes that container's requests and limits for memory and CPU to the container runtime.
+
+On Linux, the container runtime typically configures kernel cgroups that apply and enforce the limits you defined.
+
+1. The CPU limit defines a hard ceiling on how much CPU time that the container can use. During each scheduling interval (time slice), the Linux kernel checks to see if this limit is exceeded; if so, the kernel waits before allowing that cgroup to resume execution.
+2. The CPU request typically defines a weighting. If several different containers (cgroups) want to run on a contended system, workloads with larger CPU requests are allocated more CPU time than workloads with small requests.
+3. The memory request is mainly used during (Kubernetes) Pod scheduling. On a node that uses `cgroups` v2, the container runtime might use the memory request as a hint to set `memory.min` and `memory.low`.
+4. The memory limit defines a memory limit for that cgroup. If the container tries to allocate more memory than this limit, the Linux kernel out-of-memory subsystem activates and, typically, intervenes by stopping one of the processes in the container that tried to allocate memory. If that process is the container's PID 1, and the container is marked as restartable, Kubernetes restarts the container.
+5. The memory limit for the Pod or container can also apply to pages in memory backed volumes, such as an `emptyDir`. The kubelet tracks tmpfs `emptyDir` volumes as container memory use, rather than as local ephemeral storage.
+
+If a container exceeds its memory request and the node that it runs on becomes short of memory overall, it is likely that the Pod the container belongs to will be evicted.
+
+A container might or might not be allowed to exceed its CPU limit for extended periods of time. However, container runtimes don't terminate Pods or containers for excessive CPU usage.
+
+The kubelet reports the resource usage of a Pod as part of the Pod `status`.
+
+## Install prerequisite, Before you begin
+
