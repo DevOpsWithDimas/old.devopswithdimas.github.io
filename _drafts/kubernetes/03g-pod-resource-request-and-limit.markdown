@@ -10,8 +10,8 @@ categories:
 - Kubernetes
 - Workloads
 refs: 
-- https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/
 - https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/
+- https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/
 - https://github.com/kubernetes/minikube/issues/13969#issuecomment-1101588469
 youtube: 
 comments: true
@@ -28,13 +28,13 @@ Hai semuanya, di materi kali ini kita membahas tentang Resources Limit and Reque
 3. What is Resource units?
 4. How Kubernetes applies resource requests and limits?
 5. Install prerequisite, Before you begin
-6. Specify a CPU request and a CPU limit
-7. Specify a CPU request that is too big for your Nodes
-8. If you do not specify a CPU limit?
-9. Specify a memory request and a memory limit
-10. Exceed a Container's memory limit 
-11. Specify a memory request that is too big for your Nodes
-12. If you do not specify a memory limit?
+6. Specify a memory request and a memory limit
+7. Exceed a Container's memory limit 
+8. Specify a memory request that is too big for your Nodes
+9. If you do not specify a memory limit?
+10. Specify a CPU request and a CPU limit
+11. Specify a CPU request that is too big for your Nodes
+12. If you do not specify a CPU limit?
 13. Motivation for requests and limits
 
 Ok langsung aja kita bahas materi yang pertama
@@ -126,7 +126,7 @@ minikube start \
 --driver=docker \
 --memory=2G \
 --nodes=2 \
---extra-config=kubelet.housekeeping-interfal=10s \
+--extra-config=kubelet.housekeeping-interval=10s \
 --addons=metrics-server
 {% endhighlight %}
 
@@ -163,8 +163,82 @@ NAME     CPU(cores)   MEMORY(bytes)
 webapp   0m           0Mi
 ```
 
-## Specify a CPU request and a CPU limit
+## Specify a memory request and a memory limit
 
-To specify a CPU request for a container, include the resources:requests field in the Container resource manifest. To specify a CPU limit, include resources:limits.
+To specify a memory request for a Container, include the `resources:requests` field in the Container's resource manifest. To specify a memory limit, include `resources:limits`. For example, you create a Pod that has one Container. The Container has a memory request of `100 MiB` and a memory limit of `200 MiB`. Here's the configuration file for the Pod:
 
-In this exercise, you create a Pod that has one container. The container has a request of `0.5` CPU and a limit of `1` CPU. Here is the configuration file for the Pod:
+{% gist page.gist "03g-pod-resource-memory.yaml" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```powershell
+➜ kubectl apply -f .\02-workloads\01-pod\pod-resource-memory.yaml
+pod/pod-resource-memory created
+
+➜ kubernetes git:(main) kubectl get pod
+NAME                  READY   STATUS    RESTARTS   AGE
+pod-resource-memory   1/1     Running   0          90s
+
+➜ ~  kubectl describe pod pod-resource-memory
+Name:         pod-resource-memory
+Namespace:    default
+Priority:     0
+Node:         minikube-m02/192.168.49.3
+Start Time:   Tue, 07 Jun 2022 05:43:20 +0700
+Labels:       app=pod-resource-memory
+Annotations:  <none>
+Status:       Running
+IP:           10.244.1.2
+IPs:
+  IP:  10.244.1.2
+Containers:
+  pod-resource-memory:
+    Image:         polinux/stress
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      stress
+    Args:
+      --vm
+      1
+      --vm-bytes
+      150M
+      --vm-hang
+      1
+    State:          Running
+      Started:      Tue, 07 Jun 2022 05:43:28 +0700
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      memory:  200Mi
+    Requests:
+      memory:     100Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-dlp2d (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  2m4s  default-scheduler  Successfully assigned default/pod-resource-memory to minikube-m02
+  Normal  Pulling    2m4s  kubelet            Pulling image "polinux/stress"
+  Normal  Pulled     117s  kubelet            Successfully pulled image "polinux/stress" in 6.9189638s
+  Normal  Created    117s  kubelet            Created container pod-resource-memory
+  Normal  Started    117s  kubelet            Started container pod-resource-memory
+
+➜ kubernetes git:(main) kubectl top node
+NAME           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+minikube       98m          4%     1285Mi          32%
+minikube-m02   28m          1%     435Mi           11%
+
+➜ kubernetes git:(main) kubectl top pod pod-resource-memory
+NAME                  CPU(cores)   MEMORY(bytes)
+pod-resource-memory   16m          150Mi
+```
+
+The output shows that the Pod is using about `150 MiB`. This is greater than the Pod's `100 MiB` request, but within the Pod's `200 MiB` limit.
