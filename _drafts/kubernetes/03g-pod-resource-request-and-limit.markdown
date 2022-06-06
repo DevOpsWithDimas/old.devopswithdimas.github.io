@@ -175,11 +175,11 @@ Jika dijalankan hasilnya seperti berikut:
 ➜ kubectl apply -f .\02-workloads\01-pod\pod-resource-memory.yaml
 pod/pod-resource-memory created
 
-➜ kubernetes git:(main) kubectl get pod
+➜ kubectl get pod
 NAME                  READY   STATUS    RESTARTS   AGE
 pod-resource-memory   1/1     Running   0          90s
 
-➜ ~  kubectl describe pod pod-resource-memory
+➜ kubectl describe pod pod-resource-memory
 Name:         pod-resource-memory
 Namespace:    default
 Priority:     0
@@ -231,14 +231,17 @@ Events:
   Normal  Created    117s  kubelet            Created container pod-resource-memory
   Normal  Started    117s  kubelet            Started container pod-resource-memory
 
-➜ kubernetes git:(main) kubectl top node
+➜ kubectl top node
 NAME           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
 minikube       98m          4%     1285Mi          32%
 minikube-m02   28m          1%     435Mi           11%
 
-➜ kubernetes git:(main) kubectl top pod pod-resource-memory
+➜ kubectl top pod pod-resource-memory
 NAME                  CPU(cores)   MEMORY(bytes)
 pod-resource-memory   16m          150Mi
 ```
 
 The output shows that the Pod is using about `150 MiB`. This is greater than the Pod's `100 MiB` request, but within the Pod's `200 MiB` limit.
+
+## Exceed a Container's memory limit
+
