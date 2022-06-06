@@ -162,3 +162,9 @@ webapp   1/1     Running   0          9s
 NAME     CPU(cores)   MEMORY(bytes)
 webapp   0m           0Mi
 ```
+
+## Specify a CPU request and a CPU limit
+
+To specify a CPU request for a container, include the resources:requests field in the Container resource manifest. To specify a CPU limit, include resources:limits.
+
+In this exercise, you create a Pod that has one container. The container has a request of `0.5` CPU and a limit of `1` CPU. Here is the configuration file for the Pod:
