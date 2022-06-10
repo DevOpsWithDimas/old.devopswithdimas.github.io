@@ -10,8 +10,8 @@ categories:
 - Kubernetes
 - Workloads
 refs: 
-- https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/
 - https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/
+- https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/
 - https://github.com/kubernetes/minikube/issues/13969#issuecomment-1101588469
 youtube: 
 comments: true
@@ -245,3 +245,28 @@ The output shows that the Pod is using about `150 MiB`. This is greater than the
 
 ## Exceed a Container's memory limit
 
+A Container can exceed its memory `request` if the Node has memory available. But a Container is not allowed to use more than its memory `limit`. If a Container allocates more memory than its limit, the Container becomes a candidate for termination. If the Container continues to consume memory beyond its limit, the Container is terminated. If a terminated Container can be restarted, the kubelet restarts it, as with any other type of runtime failure.
+
+In this exercise, you create a Pod that attempts to allocate more memory than its limit. Here is the configuration file for a Pod that has one Container with a memory request of `50 MiB` and a memory limit of `100 MiB`:
+
+{% gist page.gist "03g-pod-resource-memory-more-limit.yaml" %}
+
+In the args section of the configuration file, you can see that the Container will attempt to allocate `250 MiB` of memory, which is well above the `100 MiB` limit.
+
+Jika kita coba jalankan hasilnya seperti berikut:
+
+```powershell
+
+```
+
+The output shows that the Container was killed because it is out of memory (OOM):
+
+```powershell
+lastState:
+   terminated:
+     containerID: 65183c1877aaec2e8427bc95609cc52677a454b56fcb24340dbd22917c23b10f
+     exitCode: 137
+     finishedAt: 2017-06-20T20:52:19Z
+     reason: OOMKilled
+     startedAt: null
+```
