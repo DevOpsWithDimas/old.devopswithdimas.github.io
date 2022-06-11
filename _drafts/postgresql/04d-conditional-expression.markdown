@@ -109,3 +109,5 @@ limit 15;
            114 |              | Tidak memiliki komisi
 (15 rows)
 ```
+
+## Using `COALESCE` expression
