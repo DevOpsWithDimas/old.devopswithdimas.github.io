@@ -359,3 +359,71 @@ cleanup:
 ```powershell
 kubectl delete pod --all
 ```
+
+## Specify a memory request that is too big for your Nodes
+
+Memory requests and limits are associated with Containers, but it is useful to think of a Pod as having a memory request and limit. The memory request for the Pod is the sum of the memory requests for all the Containers in the Pod. Likewise, the memory limit for the Pod is the sum of the limits of all the Containers in the Pod.
+
+Pod scheduling is based on requests. A Pod is scheduled to run on a Node only if the Node has enough available memory to satisfy the Pod's memory request.
+
+In this exercise, you create a Pod that has a memory request so big that it exceeds the capacity of any Node in your cluster. Here is the configuration file for a Pod that has one Container with a request for `2 GiB` of memory, which likely exceeds the capacity of any Node in your cluster:
+
+{% gist page.gist "03g-pod-resource-memory-request-big-then-node.yaml" %}
+
+Jika dijalankan seperti berikut:
+
+```powershell
+devops/kubernetes [main●] » kubectl apply -f 02-workloads/01-pod/pod-resource-memory-request-big-then-node.yaml
+pod/pod-resource-memory-more-limit created
+
+devops/kubernetes [main●] » kubectl get pod
+NAME                             READY   STATUS    RESTARTS   AGE
+pod-resource-memory-more-limit   0/1     Pending   0          15s
+
+devops/kubernetes [main●] » kubectl get pod
+NAME                             READY   STATUS    RESTARTS   AGE
+pod-resource-memory-more-limit   0/1     Pending   0          15s
+
+devops/kubernetes [main●] » kubectl describe pod pod-resource-memory-more-limit
+Name:         pod-resource-memory-more-limit
+Namespace:    default
+Priority:     0
+Node:         <none>
+Labels:       <none>
+Annotations:  <none>
+Status:       Pending
+IP:           
+IPs:          <none>
+Containers:
+  pod-resource-memory-more-limit:
+    Image:      polinux/stress
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      stress
+    Args:
+      --vm
+      1
+      --vm-bytes
+      250M
+      --vm-hang
+      1
+    Requests:
+      memory:     2Gi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-9wpjn (ro)
+Conditions:
+  Type           Status
+  PodScheduled   False 
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason            Age   From               Message
+  ----     ------            ----  ----               -------
+  Warning  FailedScheduling  34s   default-scheduler  0/1 nodes are available: 1 Insufficient memory
+```
+
+The output shows that the Pod status is PENDING. That is, the Pod is not scheduled to run on any Node, and it will remain in the PENDING state indefinitely
