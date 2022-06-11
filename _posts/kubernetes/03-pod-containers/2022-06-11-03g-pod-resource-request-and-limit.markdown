@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Configure Request and Limit of Resources (CPUs & Memory)"
+date: 2022-06-11T13:04:45+07:00
 lang: k8s
 authors:
 - dimasm93
