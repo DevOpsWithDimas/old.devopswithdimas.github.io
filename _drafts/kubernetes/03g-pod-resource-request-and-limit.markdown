@@ -543,3 +543,12 @@ Events:
 ```
 
 The output shows that the Pod status is Pending. That is, the Pod has not been scheduled to run on any Node, and it will remain in the Pending state indefinitely
+
+## If you do not specify a CPU limit or limit?
+
+If you do not specify a CPU limit for a Container, then one of these situations applies:
+
+1. The Container has no upper bound on the CPU resources it can use. The Container could use all of the CPU resources available on the Node where it is running.
+2. The Container is running in a namespace that has a default CPU limit, and the Container is automatically assigned the default limit. Cluster administrators can use a LimitRange to specify a default value for the CPU limit.
+
+If you specify a CPU limit for a Container but do not specify a CPU request, Kubernetes automatically assigns a CPU request that matches the limit. Similarly, if a Container specifies its own memory limit, but does not specify a memory request, Kubernetes automatically assigns a memory request that matches the limit.
