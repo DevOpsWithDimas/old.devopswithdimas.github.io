@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Configure Request and Limit of Resources (CPUs & Memory)"
+date: 2022-06-11T13:04:45+07:00
 lang: k8s
 authors:
 - dimasm93
@@ -146,19 +147,19 @@ v1beta1.metrics.k8s.io
 And make sure, you have to access `kubectl top node` and `kubectl top pod`: 
 
 ```powershell
-➜ ~  kubectl top node
+➜ kubectl top node
 NAME           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
 minikube       213m         10%    694Mi           17%
 minikube-m02   51m          2%     169Mi           4%
 
-➜ ~  kubectl run webapp --image nginx --port 80
+➜ kubectl run webapp --image nginx --port 80
 pod/webapp created
 
-➜ ~  kubectl get pod
+➜ kubectl get pod
 NAME     READY   STATUS    RESTARTS   AGE
 webapp   1/1     Running   0          9s
 
-➜ ~  kubectl top pod webapp
+➜ kubectl top pod webapp
 NAME     CPU(cores)   MEMORY(bytes)
 webapp   0m           0Mi
 ```
@@ -256,17 +257,306 @@ In the args section of the configuration file, you can see that the Container wi
 Jika kita coba jalankan hasilnya seperti berikut:
 
 ```powershell
+➜ kubectl apply -f 02-workloads/01-pod/pod-resource-memory-more-limit.yaml 
+pod/pod-resource-memory-more-limit created
 
+➜ kubectl get pod
+NAME                             READY   STATUS             RESTARTS      AGE
+pod-resource-memory-more-limit   0/1     CrashLoopBackOff   5 (19s ago)   3m43s
+
+➜ kubectl describe pod
+Name:         pod-resource-memory-more-limit
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.59.101
+Start Time:   Sat, 11 Jun 2022 09:59:23 +0700
+Labels:       <none>
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.4
+IPs:
+  IP:  172.17.0.4
+Containers:
+  pod-resource-memory-more-limit:
+    Image:         polinux/stress
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      stress
+    Args:
+      --vm
+      1
+      --vm-bytes
+      250M
+      --vm-hang
+      1
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       OOMKilled
+      Exit Code:    1
+      Started:      Sat, 11 Jun 2022 10:02:47 +0700
+      Finished:     Sat, 11 Jun 2022 10:02:47 +0700
+    Ready:          False
+    Restart Count:  5
+    Limits:
+      memory:  100Mi
+    Requests:
+      memory:     50Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-cg4sj (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-cg4sj:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+Events:
+  Type     Reason     Age                    From               Message
+  ----     ------     ----                   ----               -------
+  Normal   Scheduled  4m6s                   default-scheduler  Successfully assigned default/pod-resource-memory-more-limit to minikube
+  Normal   Pulled     3m57s                  kubelet            Successfully pulled image "polinux/stress" in 7.376668096s
+  Normal   Pulled     3m53s                  kubelet            Successfully pulled image "polinux/stress" in 3.19955887s
+  Normal   Pulled     3m36s                  kubelet            Successfully pulled image "polinux/stress" in 3.142850674s
+  Normal   Created    3m10s (x4 over 3m57s)  kubelet            Created container pod-resource-memory-more-limit
+  Normal   Started    3m10s (x4 over 3m57s)  kubelet            Started container pod-resource-memory-more-limit
+  Normal   Pulled     3m10s                  kubelet            Successfully pulled image "polinux/stress" in 3.17531734s
+  Warning  BackOff    2m34s (x8 over 3m52s)  kubelet            Back-off restarting failed container
+  Normal   Pulling    2m19s (x5 over 4m5s)   kubelet            Pulling image "polinux/stress"
 ```
 
 The output shows that the Container was killed because it is out of memory (OOM):
 
 ```powershell
-lastState:
-   terminated:
-     containerID: 65183c1877aaec2e8427bc95609cc52677a454b56fcb24340dbd22917c23b10f
-     exitCode: 137
-     finishedAt: 2017-06-20T20:52:19Z
-     reason: OOMKilled
-     startedAt: null
+Last State:     Terminated
+  Reason:       OOMKilled
+  Exit Code:    1
+  Started:      Sat, 11 Jun 2022 10:02:47 +0700
+  Finished:     Sat, 11 Jun 2022 10:02:47 +0700
 ```
+
+The output shows that the Container is killed, restarted, killed again, restarted again, and so on:
+
+```powershell
+➜ kubectl get pod -w
+NAME                             READY   STATUS             RESTARTS      AGE
+pod-resource-memory-more-limit   0/1     CrashLoopBackOff   1 (10s ago)   24s
+pod-resource-memory-more-limit   0/1     OOMKilled          2 (20s ago)   34s
+pod-resource-memory-more-limit   0/1     CrashLoopBackOff   2 (11s ago)   45s
+pod-resource-memory-more-limit   0/1     OOMKilled          3 (30s ago)   64s
+pod-resource-memory-more-limit   0/1     CrashLoopBackOff   3 (14s ago)   78s
+```
+
+cleanup:
+
+```powershell
+kubectl delete pod --all
+```
+
+## Specify a memory request that is too big for your Nodes
+
+Memory requests and limits are associated with Containers, but it is useful to think of a Pod as having a memory request and limit. The memory request for the Pod is the sum of the memory requests for all the Containers in the Pod. Likewise, the memory limit for the Pod is the sum of the limits of all the Containers in the Pod.
+
+Pod scheduling is based on requests. A Pod is scheduled to run on a Node only if the Node has enough available memory to satisfy the Pod's memory request.
+
+In this exercise, you create a Pod that has a memory request so big that it exceeds the capacity of any Node in your cluster. Here is the configuration file for a Pod that has one Container with a request for `2 GiB` of memory, which likely exceeds the capacity of any Node in your cluster:
+
+{% gist page.gist "03g-pod-resource-memory-request-big-then-node.yaml" %}
+
+Jika dijalankan seperti berikut:
+
+```powershell
+➜ kubectl apply -f 02-workloads/01-pod/pod-resource-memory-request-big-then-node.yaml
+pod/pod-resource-memory-more-limit created
+
+➜ kubectl get pod
+NAME                             READY   STATUS    RESTARTS   AGE
+pod-resource-memory-more-limit   0/1     Pending   0          15s
+
+➜ kubectl get pod
+NAME                             READY   STATUS    RESTARTS   AGE
+pod-resource-memory-more-limit   0/1     Pending   0          15s
+
+➜ kubectl describe pod pod-resource-memory-more-limit
+Name:         pod-resource-memory-more-limit
+Namespace:    default
+Priority:     0
+Node:         <none>
+Labels:       <none>
+Annotations:  <none>
+Status:       Pending
+IP:           
+IPs:          <none>
+Containers:
+  pod-resource-memory-more-limit:
+    Image:      polinux/stress
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      stress
+    Args:
+      --vm
+      1
+      --vm-bytes
+      250M
+      --vm-hang
+      1
+    Requests:
+      memory:     2Gi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-9wpjn (ro)
+Conditions:
+  Type           Status
+  PodScheduled   False 
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason            Age   From               Message
+  ----     ------            ----  ----               -------
+  Warning  FailedScheduling  34s   default-scheduler  0/1 nodes are available: 1 Insufficient memory
+```
+
+The output shows that the Pod status is PENDING. That is, the Pod is not scheduled to run on any Node, and it will remain in the PENDING state indefinitely
+
+## If you do not specify a memory limit?
+
+If you do not specify a memory limit for a Container, one of the following situations applies:
+
+1. The Container has no upper bound on the amount of memory it uses. The Container could use all of the memory available on the Node where it is running which in turn could invoke the OOM Killer. Further, in case of an OOM Kill, a container with no resource limits will have a greater chance of being killed.
+2. The Container is running in a namespace that has a default memory limit, and the Container is automatically assigned the default limit. Cluster administrators can use a LimitRange to specify a default value for the memory limit.
+
+{% gist page.gist "03g-pod-resource-memory-no-limit.yaml" %}
+
+Jika dijalankan seperti berikut:
+
+```powershell
+➜ kubectl apply -f 02-workloads/01-pod/pod-resource-memory-no-limit.yaml
+pod/pod-resource-memory-no-limit created
+
+➜ kubectl get pod
+NAME                           READY   STATUS    RESTARTS   AGE
+pod-resource-memory-no-limit   1/1     Running   0          15s
+
+➜ kubectl top node 
+NAME      CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+latihan   281m         14%    1593Mi          80% 
+
+➜ kubectl top pod pod-resource-memory-no-limit
+NAME                           CPU(cores)   MEMORY(bytes)   
+pod-resource-memory-no-limit   106m         251Mi
+```
+
+## Specify a CPU request and a CPU limit
+
+This page shows how to assign a CPU request and a CPU limit to a container. Containers cannot use more CPU than the configured limit. Provided the system has CPU time free, a container is guaranteed to be allocated as much CPU as it requests.
+
+Your cluster must have at least 1 CPU available for use to run the task examples:
+
+In this exercise, you create a Pod that has one container. The container has a request of `0.5 CPU` and a `limit of 1 CPU`. Here is the configuration file for the Pod:
+
+{% gist page.gist "03g-pod-resource-cpu-unit.yaml" %}
+
+The args section of the configuration file provides arguments for the container when it starts. The `-cpus "2"` argument tells the Container to attempt to use `2 CPUs`.
+
+Jika dijalankan hasilnya seperti berikut:
+
+```powershell
+➜ kubectl apply -f 02-workloads/01-pod/pod-resource-cpu-unit.yaml 
+pod/pod-resource-cpu created
+
+➜ kubectl get pod
+NAME               READY   STATUS    RESTARTS   AGE
+pod-resource-cpu   1/1     Running   0          9s
+
+➜ kubectl top node
+NAME      CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+latihan   1156m        57%    1350Mi          68%
+
+➜ kubectl top pod pod-resource-cpu
+NAME               CPU(cores)   MEMORY(bytes)   
+pod-resource-cpu   999m         1Mi 
+```
+
+Recall that by setting `-cpu "2"`, you configured the Container to attempt to use 2 CPUs, but the Container is only being allowed to use about `1 CPU`. The container's CPU use is being throttled, because the container is attempting to use more CPU resources than its limit.
+
+## Specify a CPU request that is too big for your Nodes
+
+CPU requests and limits are associated with Containers, but it is useful to think of a Pod as having a CPU request and limit. The CPU request for a Pod is the sum of the CPU requests for all the Containers in the Pod. Likewise, the CPU limit for a Pod is the sum of the CPU limits for all the Containers in the Pod.
+
+Pod scheduling is based on requests. A Pod is scheduled to run on a Node only if the Node has enough CPU resources available to satisfy the Pod CPU request.
+
+In this exercise, you create a Pod that has a CPU request so big that it exceeds the capacity of any Node in your cluster. Here is the configuration file for a Pod that has one Container. 
+
+{% gits page.gist "03g-pod-resource-cpus-more-than-node.yaml" %}
+
+Jika dijalankan seperti berikut:
+
+```powershell
+➜ kubectl apply -f 02-workloads/01-pod/pod-resource-cpu-more-than-nodes.yaml
+pod/pod-resource-cpu-more-than-node created
+
+➜ kubectl get pod
+NAME                              READY   STATUS    RESTARTS   AGE
+pod-resource-cpu-more-than-node   0/1     Pending   0          9s
+
+➜ kubectl describe pod pod-resource-cpu-more-than-node
+Name:         pod-resource-cpu-more-than-node
+Namespace:    default
+Priority:     0
+Node:         <none>
+Labels:       <none>
+Annotations:  <none>
+Status:       Pending
+IP:           
+IPs:          <none>
+Containers:
+  pod-1:
+    Image:      vish/stress
+    Port:       <none>
+    Host Port:  <none>
+    Args:
+      -cpus=2
+    Limits:
+      cpu:  5
+    Requests:
+      cpu:        3
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-rz4cm (ro)
+Conditions:
+  Type           Status
+  PodScheduled   False 
+Events:
+  Type     Reason            Age   From               Message
+  ----     ------            ----  ----               -------
+  Warning  FailedScheduling  30s   default-scheduler  0/1 nodes are available: 1 Insufficient cpu.
+```
+
+The output shows that the Pod status is Pending. That is, the Pod has not been scheduled to run on any Node, and it will remain in the Pending state indefinitely
+
+## If you do not specify a CPU limit or limit?
+
+If you do not specify a CPU limit for a Container, then one of these situations applies:
+
+1. The Container has no upper bound on the CPU resources it can use. The Container could use all of the CPU resources available on the Node where it is running.
+2. The Container is running in a namespace that has a default CPU limit, and the Container is automatically assigned the default limit. Cluster administrators can use a LimitRange to specify a default value for the CPU limit.
+
+If you specify a CPU limit for a Container but do not specify a CPU request, Kubernetes automatically assigns a CPU request that matches the limit. Similarly, if a Container specifies its own memory limit, but does not specify a memory request, Kubernetes automatically assigns a memory request that matches the limit.
+
+## Motivation for requests and limits
+
+By configuring the CPU & Memory requests and limits of the Containers that run in your cluster, you can make efficient use of the resources available on your cluster Nodes. By keeping a Pod CPU & Memory request low, you give the Pod a good chance of being scheduled. By having a CPU & Memory limit that is greater than the CPU & Memory request, you accomplish two things:
+
+1. The Pod can have bursts of activity where it makes use of CPU and memory resources that happen to be available.
+2. The amount of CPU & memory resources a Pod can use during a burst is limited to some reasonable amount.
