@@ -434,3 +434,24 @@ If you do not specify a memory limit for a Container, one of the following situa
 
 1. The Container has no upper bound on the amount of memory it uses. The Container could use all of the memory available on the Node where it is running which in turn could invoke the OOM Killer. Further, in case of an OOM Kill, a container with no resource limits will have a greater chance of being killed.
 2. The Container is running in a namespace that has a default memory limit, and the Container is automatically assigned the default limit. Cluster administrators can use a LimitRange to specify a default value for the memory limit.
+
+{% gist page.gist "03g-pod-resource-memory-no-limit.yaml" %}
+
+Jika dijalankan seperti berikut:
+
+```powershell
+devops/kubernetes [main●] » kubectl apply -f 02-workloads/01-pod/pod-resource-memory-no-limit.yaml
+pod/pod-resource-memory-no-limit created
+
+devops/kubernetes [main●] » kubectl get pod
+NAME                           READY   STATUS    RESTARTS   AGE
+pod-resource-memory-no-limit   1/1     Running   0          15s
+
+devops/kubernetes [main●] » kubectl top node 
+NAME      CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+latihan   281m         14%    1593Mi          80% 
+
+devops/kubernetes [main●] » kubectl top pod pod-resource-memory-no-limit
+NAME                           CPU(cores)   MEMORY(bytes)   
+pod-resource-memory-no-limit   106m         251Mi
+```
