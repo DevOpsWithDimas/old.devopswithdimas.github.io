@@ -146,19 +146,19 @@ v1beta1.metrics.k8s.io
 And make sure, you have to access `kubectl top node` and `kubectl top pod`: 
 
 ```powershell
-➜ ~  kubectl top node
+➜ kubectl top node
 NAME           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
 minikube       213m         10%    694Mi           17%
 minikube-m02   51m          2%     169Mi           4%
 
-➜ ~  kubectl run webapp --image nginx --port 80
+➜ kubectl run webapp --image nginx --port 80
 pod/webapp created
 
-➜ ~  kubectl get pod
+➜ kubectl get pod
 NAME     READY   STATUS    RESTARTS   AGE
 webapp   1/1     Running   0          9s
 
-➜ ~  kubectl top pod webapp
+➜ kubectl top pod webapp
 NAME     CPU(cores)   MEMORY(bytes)
 webapp   0m           0Mi
 ```
@@ -256,14 +256,14 @@ In the args section of the configuration file, you can see that the Container wi
 Jika kita coba jalankan hasilnya seperti berikut:
 
 ```powershell
-devops/kubernetes [main●] » kubectl apply -f 02-workloads/01-pod/pod-resource-memory-more-limit.yaml 
+➜ kubectl apply -f 02-workloads/01-pod/pod-resource-memory-more-limit.yaml 
 pod/pod-resource-memory-more-limit created
 
-devops/kubernetes [main●] » kubectl get pod
+➜ kubectl get pod
 NAME                             READY   STATUS             RESTARTS      AGE
 pod-resource-memory-more-limit   0/1     CrashLoopBackOff   5 (19s ago)   3m43s
 
-devops/kubernetes [main●] » kubectl describe pod
+➜ kubectl describe pod
 Name:         pod-resource-memory-more-limit
 Namespace:    default
 Priority:     0
@@ -345,7 +345,7 @@ Last State:     Terminated
 The output shows that the Container is killed, restarted, killed again, restarted again, and so on:
 
 ```powershell
-devops/kubernetes [main] » kubectl get pod -w
+➜ kubectl get pod -w
 NAME                             READY   STATUS             RESTARTS      AGE
 pod-resource-memory-more-limit   0/1     CrashLoopBackOff   1 (10s ago)   24s
 pod-resource-memory-more-limit   0/1     OOMKilled          2 (20s ago)   34s
@@ -373,18 +373,18 @@ In this exercise, you create a Pod that has a memory request so big that it exce
 Jika dijalankan seperti berikut:
 
 ```powershell
-devops/kubernetes [main●] » kubectl apply -f 02-workloads/01-pod/pod-resource-memory-request-big-then-node.yaml
+➜ kubectl apply -f 02-workloads/01-pod/pod-resource-memory-request-big-then-node.yaml
 pod/pod-resource-memory-more-limit created
 
-devops/kubernetes [main●] » kubectl get pod
+➜ kubectl get pod
 NAME                             READY   STATUS    RESTARTS   AGE
 pod-resource-memory-more-limit   0/1     Pending   0          15s
 
-devops/kubernetes [main●] » kubectl get pod
+➜ kubectl get pod
 NAME                             READY   STATUS    RESTARTS   AGE
 pod-resource-memory-more-limit   0/1     Pending   0          15s
 
-devops/kubernetes [main●] » kubectl describe pod pod-resource-memory-more-limit
+➜ kubectl describe pod pod-resource-memory-more-limit
 Name:         pod-resource-memory-more-limit
 Namespace:    default
 Priority:     0
@@ -440,18 +440,18 @@ If you do not specify a memory limit for a Container, one of the following situa
 Jika dijalankan seperti berikut:
 
 ```powershell
-devops/kubernetes [main●] » kubectl apply -f 02-workloads/01-pod/pod-resource-memory-no-limit.yaml
+➜ kubectl apply -f 02-workloads/01-pod/pod-resource-memory-no-limit.yaml
 pod/pod-resource-memory-no-limit created
 
-devops/kubernetes [main●] » kubectl get pod
+➜ kubectl get pod
 NAME                           READY   STATUS    RESTARTS   AGE
 pod-resource-memory-no-limit   1/1     Running   0          15s
 
-devops/kubernetes [main●] » kubectl top node 
+➜ kubectl top node 
 NAME      CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
 latihan   281m         14%    1593Mi          80% 
 
-devops/kubernetes [main●] » kubectl top pod pod-resource-memory-no-limit
+➜ kubectl top pod pod-resource-memory-no-limit
 NAME                           CPU(cores)   MEMORY(bytes)   
 pod-resource-memory-no-limit   106m         251Mi
 ```
@@ -471,18 +471,18 @@ The args section of the configuration file provides arguments for the container 
 Jika dijalankan hasilnya seperti berikut:
 
 ```powershell
-devops/kubernetes [main] » kubectl apply -f 02-workloads/01-pod/pod-resource-cpu-unit.yaml 
+➜ kubectl apply -f 02-workloads/01-pod/pod-resource-cpu-unit.yaml 
 pod/pod-resource-cpu created
 
-devops/kubernetes [main●] » kubectl get pod
+➜ kubectl get pod
 NAME               READY   STATUS    RESTARTS   AGE
 pod-resource-cpu   1/1     Running   0          9s
 
-devops/kubernetes [main●] » kubectl top node
+➜ kubectl top node
 NAME      CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
 latihan   1156m        57%    1350Mi          68%
 
-devops/kubernetes [main●] » kubectl top pod pod-resource-cpu
+➜ kubectl top pod pod-resource-cpu
 NAME               CPU(cores)   MEMORY(bytes)   
 pod-resource-cpu   999m         1Mi 
 ```
@@ -502,14 +502,14 @@ In this exercise, you create a Pod that has a CPU request so big that it exceeds
 Jika dijalankan seperti berikut:
 
 ```powershell
-devops/kubernetes [main●] » kubectl apply -f 02-workloads/01-pod/pod-resource-cpu-more-than-nodes.yaml
+➜ kubectl apply -f 02-workloads/01-pod/pod-resource-cpu-more-than-nodes.yaml
 pod/pod-resource-cpu-more-than-node created
 
-devops/kubernetes [main●] » kubectl get pod
+➜ kubectl get pod
 NAME                              READY   STATUS    RESTARTS   AGE
 pod-resource-cpu-more-than-node   0/1     Pending   0          9s
 
-devops/kubernetes [main●] » kubectl describe pod pod-resource-cpu-more-than-node
+➜ kubectl describe pod pod-resource-cpu-more-than-node
 Name:         pod-resource-cpu-more-than-node
 Namespace:    default
 Priority:     0
@@ -552,3 +552,10 @@ If you do not specify a CPU limit for a Container, then one of these situations 
 2. The Container is running in a namespace that has a default CPU limit, and the Container is automatically assigned the default limit. Cluster administrators can use a LimitRange to specify a default value for the CPU limit.
 
 If you specify a CPU limit for a Container but do not specify a CPU request, Kubernetes automatically assigns a CPU request that matches the limit. Similarly, if a Container specifies its own memory limit, but does not specify a memory request, Kubernetes automatically assigns a memory request that matches the limit.
+
+## Motivation for requests and limits
+
+By configuring the CPU & Memory requests and limits of the Containers that run in your cluster, you can make efficient use of the resources available on your cluster Nodes. By keeping a Pod CPU & Memory request low, you give the Pod a good chance of being scheduled. By having a CPU & Memory limit that is greater than the CPU & Memory request, you accomplish two things:
+
+1. The Pod can have bursts of activity where it makes use of CPU and memory resources that happen to be available.
+2. The amount of CPU & memory resources a Pod can use during a burst is limited to some reasonable amount.
