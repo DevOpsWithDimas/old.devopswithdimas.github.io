@@ -498,7 +498,7 @@ Pod scheduling is based on requests. A Pod is scheduled to run on a Node only if
 
 In this exercise, you create a Pod that has a CPU request so big that it exceeds the capacity of any Node in your cluster. Here is the configuration file for a Pod that has one Container. 
 
-{% gits page.gist "03g-pod-resource-cpus-more-than-node.yaml" %}
+{% gist page.gist "03g-pod-resource-cpus-more-than-node.yaml" %}
 
 Jika dijalankan seperti berikut:
 
