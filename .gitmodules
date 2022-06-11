@@ -1,6 +1,6 @@
 [submodule "_projects/devops/kubernetes"]
 	path = _projects/devops/kubernetes
-	url = git@repository.dimas-maryanto.com:youtube/devops/kubernetes.git
+	url = git@repository.dimas-maryanto.com:examples/k8s/belajar-kubernetes.git
 [submodule "_projects/devops/docker"]
 	path = _projects/devops/docker
-	url = git@repository.dimas-maryanto.com:youtube/devops/docker.git
+	url = git@repository.dimas-maryanto.com:examples/docker/belajar-docker.git
