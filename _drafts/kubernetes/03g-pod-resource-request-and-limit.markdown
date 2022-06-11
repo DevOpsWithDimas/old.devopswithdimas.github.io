@@ -256,17 +256,106 @@ In the args section of the configuration file, you can see that the Container wi
 Jika kita coba jalankan hasilnya seperti berikut:
 
 ```powershell
+devops/kubernetes [main●] » kubectl apply -f 02-workloads/01-pod/pod-resource-memory-more-limit.yaml 
+pod/pod-resource-memory-more-limit created
 
+devops/kubernetes [main●] » kubectl get pod
+NAME                             READY   STATUS             RESTARTS      AGE
+pod-resource-memory-more-limit   0/1     CrashLoopBackOff   5 (19s ago)   3m43s
+
+devops/kubernetes [main●] » kubectl describe pod
+Name:         pod-resource-memory-more-limit
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.59.101
+Start Time:   Sat, 11 Jun 2022 09:59:23 +0700
+Labels:       <none>
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.4
+IPs:
+  IP:  172.17.0.4
+Containers:
+  pod-resource-memory-more-limit:
+    Image:         polinux/stress
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      stress
+    Args:
+      --vm
+      1
+      --vm-bytes
+      250M
+      --vm-hang
+      1
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       OOMKilled
+      Exit Code:    1
+      Started:      Sat, 11 Jun 2022 10:02:47 +0700
+      Finished:     Sat, 11 Jun 2022 10:02:47 +0700
+    Ready:          False
+    Restart Count:  5
+    Limits:
+      memory:  100Mi
+    Requests:
+      memory:     50Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-cg4sj (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-cg4sj:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+Events:
+  Type     Reason     Age                    From               Message
+  ----     ------     ----                   ----               -------
+  Normal   Scheduled  4m6s                   default-scheduler  Successfully assigned default/pod-resource-memory-more-limit to minikube
+  Normal   Pulled     3m57s                  kubelet            Successfully pulled image "polinux/stress" in 7.376668096s
+  Normal   Pulled     3m53s                  kubelet            Successfully pulled image "polinux/stress" in 3.19955887s
+  Normal   Pulled     3m36s                  kubelet            Successfully pulled image "polinux/stress" in 3.142850674s
+  Normal   Created    3m10s (x4 over 3m57s)  kubelet            Created container pod-resource-memory-more-limit
+  Normal   Started    3m10s (x4 over 3m57s)  kubelet            Started container pod-resource-memory-more-limit
+  Normal   Pulled     3m10s                  kubelet            Successfully pulled image "polinux/stress" in 3.17531734s
+  Warning  BackOff    2m34s (x8 over 3m52s)  kubelet            Back-off restarting failed container
+  Normal   Pulling    2m19s (x5 over 4m5s)   kubelet            Pulling image "polinux/stress"
 ```
 
 The output shows that the Container was killed because it is out of memory (OOM):
 
 ```powershell
-lastState:
-   terminated:
-     containerID: 65183c1877aaec2e8427bc95609cc52677a454b56fcb24340dbd22917c23b10f
-     exitCode: 137
-     finishedAt: 2017-06-20T20:52:19Z
-     reason: OOMKilled
-     startedAt: null
+Last State:     Terminated
+  Reason:       OOMKilled
+  Exit Code:    1
+  Started:      Sat, 11 Jun 2022 10:02:47 +0700
+  Finished:     Sat, 11 Jun 2022 10:02:47 +0700
+```
+
+The output shows that the Container is killed, restarted, killed again, restarted again, and so on:
+
+```powershell
+devops/kubernetes [main] » kubectl get pod -w
+NAME                             READY   STATUS             RESTARTS      AGE
+pod-resource-memory-more-limit   0/1     CrashLoopBackOff   1 (10s ago)   24s
+pod-resource-memory-more-limit   0/1     OOMKilled          2 (20s ago)   34s
+pod-resource-memory-more-limit   0/1     CrashLoopBackOff   2 (11s ago)   45s
+pod-resource-memory-more-limit   0/1     OOMKilled          3 (30s ago)   64s
+pod-resource-memory-more-limit   0/1     CrashLoopBackOff   3 (14s ago)   78s
+```
+
+cleanup:
+
+```powershell
+kubectl delete pod --all
 ```
