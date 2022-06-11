@@ -455,3 +455,36 @@ devops/kubernetes [main●] » kubectl top pod pod-resource-memory-no-limit
 NAME                           CPU(cores)   MEMORY(bytes)   
 pod-resource-memory-no-limit   106m         251Mi
 ```
+
+## Specify a CPU request and a CPU limit
+
+This page shows how to assign a CPU request and a CPU limit to a container. Containers cannot use more CPU than the configured limit. Provided the system has CPU time free, a container is guaranteed to be allocated as much CPU as it requests.
+
+Your cluster must have at least 1 CPU available for use to run the task examples:
+
+In this exercise, you create a Pod that has one container. The container has a request of `0.5 CPU` and a `limit of 1 CPU`. Here is the configuration file for the Pod:
+
+{% gist page.gist "03g-pod-resource-cpu-unit.yaml" %}
+
+The args section of the configuration file provides arguments for the container when it starts. The `-cpus "2"` argument tells the Container to attempt to use `2 CPUs`.
+
+Jika dijalankan hasilnya seperti berikut:
+
+```powershell
+devops/kubernetes [main] » kubectl apply -f 02-workloads/01-pod/pod-resource-cpu-unit.yaml 
+pod/pod-resource-cpu created
+
+devops/kubernetes [main●] » kubectl get pod
+NAME               READY   STATUS    RESTARTS   AGE
+pod-resource-cpu   1/1     Running   0          9s
+
+devops/kubernetes [main●] » kubectl top node
+NAME      CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+latihan   1156m        57%    1350Mi          68%
+
+devops/kubernetes [main●] » kubectl top pod pod-resource-cpu
+NAME               CPU(cores)   MEMORY(bytes)   
+pod-resource-cpu   999m         1Mi 
+```
+
+Recall that by setting `-cpu "2"`, you configured the Container to attempt to use 2 CPUs, but the Container is only being allowed to use about `1 CPU`. The container's CPU use is being throttled, because the container is attempting to use more CPU resources than its limit.
