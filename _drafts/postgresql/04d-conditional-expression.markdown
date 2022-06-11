@@ -31,11 +31,22 @@ Ok langsung aja kita bahas materi yang pertama
 
 <!--more-->
 
-Materi: 
+## What is Conditional Expression?
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+Conditional statements/Expression in the SQL help you to define different logics and actions for different conditions. It allows you to perform different actions based on conditions defined within the statement. In real life, you perform many actions dependent on the outcome of some other activity or situation.
+
+Some real-time examples of SQL case statement are:
+
+1. If it rains tomorrow, I will plan on a road trip.
+2. If flight tickets are less than $400 from my city, then I will go on vacation in Europe, else I will prefer some nearby tourist spot.
+
+Di PostgreSQL, kita bisa menggunakan Conditional Statement/Expression dengan beberapa cara
+
+1. Case-When-Else
+2. Coalesce
+3. NullIF
+4. Greatest or Least
+
+Untuk lebih detail, yukk kita bahas satu-per-satu
+
+## Using `CASE-WHEN-ELSE` expression
