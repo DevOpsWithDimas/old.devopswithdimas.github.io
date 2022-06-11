@@ -56,8 +56,10 @@ pagination:
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
 exclude:
+  - .git/
   - _docker/
   - _ansible/
+  - _projects
   - _uml/
   - out/
   - vendor

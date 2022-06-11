@@ -12,6 +12,7 @@ categories:
 refs: 
 - https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/
 - https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/
+- https://github.com/kubernetes/minikube/issues/13969#issuecomment-1101588469
 youtube: 
 comments: true
 catalog_key: pod-container
@@ -25,15 +26,16 @@ Hai semuanya, di materi kali ini kita membahas tentang Resources Limit and Reque
 1. What is Resource Request and Limit?
 2. What is Resource types?
 3. What is Resource units?
-4. Install prerequisite, Before you begin
-5. Specify a CPU request and a CPU limit
-6. Specify a CPU request that is too big for your Nodes
-7. If you do not specify a CPU limit?
-8. Specify a memory request and a memory limit
-9. Exceed a Container's memory limit 
-10. Specify a memory request that is too big for your Nodes
-11. If you do not specify a memory limit?
-12. Motivation for requests and limits
+4. How Kubernetes applies resource requests and limits?
+5. Install prerequisite, Before you begin
+6. Specify a memory request and a memory limit
+7. Exceed a Container's memory limit 
+8. Specify a memory request that is too big for your Nodes
+9. If you do not specify a memory limit?
+10. Specify a CPU request and a CPU limit
+11. Specify a CPU request that is too big for your Nodes
+12. If you do not specify a CPU limit?
+13. Motivation for requests and limits
 
 Ok langsung aja kita bahas materi yang pertama
 
@@ -52,3 +54,219 @@ For example, if you set a memory request of `256 MiB` for a container, and that 
 If you set a memory limit of `4GiB` for that container, the kubelet (and container runtime) enforce the limit. The runtime prevents the container from using more than the configured resource limit. For example: when a process in the container tries to consume more than the allowed amount of memory, the system kernel terminates the process that attempted the allocation, with an out of memory (OOM) error.
 
 Limits can be implemented either reactively (the system intervenes once it sees a violation) or by enforcement (the system prevents the container from ever exceeding the limit). Different runtimes can have different ways to implement the same restrictions.
+
+## What is Resource types?
+
+CPU and memory are each a resource type. A resource type has a base unit. CPU represents compute processing and is specified in units of Kubernetes CPUs. Memory is specified in units of bytes. For Linux workloads, you can specify huge page resources. Huge pages are a Linux-specific feature where the node kernel allocates blocks of memory that are much larger than the default page size.
+
+For example, on a system where the default page size is `4KiB`, you could specify a limit, `hugepages-2Mi: 80Mi`. If the container tries allocating over 40 `2MiB` huge pages (a total of 80 MiB), that allocation fails.
+
+CPU and memory are collectively referred to as compute resources, or resources. Compute resources are measurable quantities that can be requested, allocated, and consumed. They are distinct from API resources. API resources, such as Pods and Services are objects that can be read and modified through the Kubernetes API server.
+
+For each container, you can specify resource limits and requests, including the following:
+
+{% highlight yaml %}
+spec:
+  containers:
+    - resources:
+        requests:
+          memory: "<memory-unit>"
+          cpu: "<cpu-unit>"
+        limits:
+          memory: "<memory-unit>"
+          cpu: "<cpu-unit>"
+{% endhighlight %}
+
+Although you can only specify requests and limits for individual containers, it is also useful to think about the overall resource requests and limits for a Pod. For a particular resource, a Pod resource request/limit is the sum of the resource requests/limits of that type for each container in the Pod.
+
+## What is Resource units?
+
+Limits and requests for CPU resources are measured in cpu units. In Kubernetes, 1 CPU unit is equivalent to **1 physical CPU core**, or **1 virtual core**, depending on whether the node is a physical host or a virtual machine running inside a physical machine.
+
+Fractional requests are allowed. When you define a container with `spec.containers[].resources.requests.cpu` set to `0.5`, you are requesting half as much CPU time compared to if you asked for `1.0` CPU. For CPU resource units, the quantity expression `0.1` is equivalent to the expression `100m`, which can be read as "one hundred millicpu". Some people say "one hundred millicores", and this is understood to mean the same thing.
+
+CPU resource is always specified as an absolute amount of resource, never as a relative amount. For example, `500m` CPU represents the roughly same amount of computing power whether that container runs on a single-core, dual-core, or 48-core machine.
+
+Limits and requests for `memory` are measured in bytes. You can express memory as a plain integer or as a fixed-point number using one of these quantity suffixes: `E`, `P`, `T`, `G`, `M`, `k`. You can also use the power-of-two equivalents: `Ei`, `Pi`, `Ti`, `Gi`, `Mi`, `Ki`. For example, the following represent roughly the same value:
+
+{% highlight csv %}
+128974848, 129e6, 129M,  128974848000m, 123Mi
+{% endhighlight %}
+
+Pay attention to the case of the suffixes. If you request `400m` of memory, this is a request for `0.4 bytes`. Someone who types that probably meant to ask for `400 mebibytes (400Mi)` or `400 megabytes (400M)`.
+
+## How Kubernetes applies resource requests and limits?
+
+When the kubelet starts a container as part of a Pod, the kubelet passes that container's requests and limits for memory and CPU to the container runtime.
+
+On Linux, the container runtime typically configures kernel cgroups that apply and enforce the limits you defined.
+
+1. The CPU limit defines a hard ceiling on how much CPU time that the container can use. During each scheduling interval (time slice), the Linux kernel checks to see if this limit is exceeded; if so, the kernel waits before allowing that cgroup to resume execution.
+2. The CPU request typically defines a weighting. If several different containers (cgroups) want to run on a contended system, workloads with larger CPU requests are allocated more CPU time than workloads with small requests.
+3. The memory request is mainly used during (Kubernetes) Pod scheduling. On a node that uses `cgroups` v2, the container runtime might use the memory request as a hint to set `memory.min` and `memory.low`.
+4. The memory limit defines a memory limit for that cgroup. If the container tries to allocate more memory than this limit, the Linux kernel out-of-memory subsystem activates and, typically, intervenes by stopping one of the processes in the container that tried to allocate memory. If that process is the container's PID 1, and the container is marked as restartable, Kubernetes restarts the container.
+5. The memory limit for the Pod or container can also apply to pages in memory backed volumes, such as an `emptyDir`. The kubelet tracks tmpfs `emptyDir` volumes as container memory use, rather than as local ephemeral storage.
+
+If a container exceeds its memory request and the node that it runs on becomes short of memory overall, it is likely that the Pod the container belongs to will be evicted.
+
+A container might or might not be allowed to exceed its CPU limit for extended periods of time. However, container runtimes don't terminate Pods or containers for excessive CPU usage.
+
+The kubelet reports the resource usage of a Pod as part of the Pod `status`.
+
+## Install prerequisite, Before you begin
+
+You need to have a Kubernetes cluster, and the kubectl command-line tool must be configured to communicate with your cluster. If you do not already have a cluster, you can create one by using minikube or you can use one of these Kubernetes playgrounds.
+
+Each node in your cluster must have at least `300 MiB` of memory. A few of the steps on this page require you to run the metrics-server service in your cluster. If you have the metrics-server running, you can skip those steps.
+
+If you are running Minikube, run the following command to enable the metrics-server:
+
+{% highlight bash %}
+minikube start \
+--driver=docker \
+--memory=2G \
+--nodes=2 \
+--extra-config=kubelet.housekeeping-interval=10s \
+--addons=metrics-server
+{% endhighlight %}
+
+To see whether the metrics-server is running, or another provider of the resource metrics API (`metrics.k8s.io`), run the following command:
+
+{% highlight bash %}
+kubectl get apiservices
+{% endhighlight %}
+
+If the resource metrics API is available, the output includes a reference to `metrics.k8s.io`.
+
+{% highlight bash %}
+NAME
+v1beta1.metrics.k8s.io
+{% endhighlight %}
+
+And make sure, you have to access `kubectl top node` and `kubectl top pod`: 
+
+```powershell
+➜ ~  kubectl top node
+NAME           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+minikube       213m         10%    694Mi           17%
+minikube-m02   51m          2%     169Mi           4%
+
+➜ ~  kubectl run webapp --image nginx --port 80
+pod/webapp created
+
+➜ ~  kubectl get pod
+NAME     READY   STATUS    RESTARTS   AGE
+webapp   1/1     Running   0          9s
+
+➜ ~  kubectl top pod webapp
+NAME     CPU(cores)   MEMORY(bytes)
+webapp   0m           0Mi
+```
+
+## Specify a memory request and a memory limit
+
+To specify a memory request for a Container, include the `resources:requests` field in the Container's resource manifest. To specify a memory limit, include `resources:limits`. For example, you create a Pod that has one Container. The Container has a memory request of `100 MiB` and a memory limit of `200 MiB`. Here's the configuration file for the Pod:
+
+{% gist page.gist "03g-pod-resource-memory.yaml" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```powershell
+➜ kubectl apply -f .\02-workloads\01-pod\pod-resource-memory.yaml
+pod/pod-resource-memory created
+
+➜ kubectl get pod
+NAME                  READY   STATUS    RESTARTS   AGE
+pod-resource-memory   1/1     Running   0          90s
+
+➜ kubectl describe pod pod-resource-memory
+Name:         pod-resource-memory
+Namespace:    default
+Priority:     0
+Node:         minikube-m02/192.168.49.3
+Start Time:   Tue, 07 Jun 2022 05:43:20 +0700
+Labels:       app=pod-resource-memory
+Annotations:  <none>
+Status:       Running
+IP:           10.244.1.2
+IPs:
+  IP:  10.244.1.2
+Containers:
+  pod-resource-memory:
+    Image:         polinux/stress
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      stress
+    Args:
+      --vm
+      1
+      --vm-bytes
+      150M
+      --vm-hang
+      1
+    State:          Running
+      Started:      Tue, 07 Jun 2022 05:43:28 +0700
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      memory:  200Mi
+    Requests:
+      memory:     100Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-dlp2d (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  2m4s  default-scheduler  Successfully assigned default/pod-resource-memory to minikube-m02
+  Normal  Pulling    2m4s  kubelet            Pulling image "polinux/stress"
+  Normal  Pulled     117s  kubelet            Successfully pulled image "polinux/stress" in 6.9189638s
+  Normal  Created    117s  kubelet            Created container pod-resource-memory
+  Normal  Started    117s  kubelet            Started container pod-resource-memory
+
+➜ kubectl top node
+NAME           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+minikube       98m          4%     1285Mi          32%
+minikube-m02   28m          1%     435Mi           11%
+
+➜ kubectl top pod pod-resource-memory
+NAME                  CPU(cores)   MEMORY(bytes)
+pod-resource-memory   16m          150Mi
+```
+
+The output shows that the Pod is using about `150 MiB`. This is greater than the Pod's `100 MiB` request, but within the Pod's `200 MiB` limit.
+
+## Exceed a Container's memory limit
+
+A Container can exceed its memory `request` if the Node has memory available. But a Container is not allowed to use more than its memory `limit`. If a Container allocates more memory than its limit, the Container becomes a candidate for termination. If the Container continues to consume memory beyond its limit, the Container is terminated. If a terminated Container can be restarted, the kubelet restarts it, as with any other type of runtime failure.
+
+In this exercise, you create a Pod that attempts to allocate more memory than its limit. Here is the configuration file for a Pod that has one Container with a memory request of `50 MiB` and a memory limit of `100 MiB`:
+
+{% gist page.gist "03g-pod-resource-memory-more-limit.yaml" %}
+
+In the args section of the configuration file, you can see that the Container will attempt to allocate `250 MiB` of memory, which is well above the `100 MiB` limit.
+
+Jika kita coba jalankan hasilnya seperti berikut:
+
+```powershell
+
+```
+
+The output shows that the Container was killed because it is out of memory (OOM):
+
+```powershell
+lastState:
+   terminated:
+     containerID: 65183c1877aaec2e8427bc95609cc52677a454b56fcb24340dbd22917c23b10f
+     exitCode: 137
+     finishedAt: 2017-06-20T20:52:19Z
+     reason: OOMKilled
+     startedAt: null
+```
