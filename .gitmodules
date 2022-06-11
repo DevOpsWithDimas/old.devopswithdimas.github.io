@@ -4,3 +4,6 @@
 [submodule "_projects/devops/docker"]
 	path = _projects/devops/docker
 	url = git@repository.dimas-maryanto.com:examples/docker/belajar-docker.git
+[submodule "_projects/database/postgres-14"]
+	path = _projects/database/postgres-14
+	url = git@repository.dimas-maryanto.com:examples/rdbms/belajar-postgresql-14.git
