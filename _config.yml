@@ -58,6 +58,7 @@ pagination:
 exclude:
   - _docker/
   - _ansible/
+  - _projects
   - _uml/
   - out/
   - vendor
