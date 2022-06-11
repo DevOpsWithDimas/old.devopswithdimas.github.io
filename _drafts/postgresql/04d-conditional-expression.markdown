@@ -22,10 +22,13 @@ downloads: []
 Hai semuanya, di materi kali ini kita akan membahas tentang Conditional Expression Seperti biasa karena materinya akan lumayan panjang jadi kita bagi jadi beberapa bagian diantaranya:
 
 1. What is Conditional Expression?
-2. Using `CASE-WHEN-ELSE` expression
-3. Using `COALESCE` expression
-4. Using `NULLIF` expression
-5. Using `GREATEST` and `LEAST` expression
+2. Using `CASE-WHEN` expression
+    1. More Complex `CASE-WHEN-ELSE` expression
+    2. Using Nested `CASE-WHEN` expression
+    3. Using `CASE-WHEN` expression in `WHERE` clause
+5. Using `COALESCE` expression
+6. Using `NULLIF` expression
+7. Using `GREATEST` and `LEAST` expression
 
 Ok langsung aja kita bahas materi yang pertama
 
