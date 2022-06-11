@@ -488,3 +488,58 @@ pod-resource-cpu   999m         1Mi
 ```
 
 Recall that by setting `-cpu "2"`, you configured the Container to attempt to use 2 CPUs, but the Container is only being allowed to use about `1 CPU`. The container's CPU use is being throttled, because the container is attempting to use more CPU resources than its limit.
+
+## Specify a CPU request that is too big for your Nodes
+
+CPU requests and limits are associated with Containers, but it is useful to think of a Pod as having a CPU request and limit. The CPU request for a Pod is the sum of the CPU requests for all the Containers in the Pod. Likewise, the CPU limit for a Pod is the sum of the CPU limits for all the Containers in the Pod.
+
+Pod scheduling is based on requests. A Pod is scheduled to run on a Node only if the Node has enough CPU resources available to satisfy the Pod CPU request.
+
+In this exercise, you create a Pod that has a CPU request so big that it exceeds the capacity of any Node in your cluster. Here is the configuration file for a Pod that has one Container. 
+
+{% gits page.gist "03g-pod-resource-cpus-more-than-node.yaml" %}
+
+Jika dijalankan seperti berikut:
+
+```powershell
+devops/kubernetes [main●] » kubectl apply -f 02-workloads/01-pod/pod-resource-cpu-more-than-nodes.yaml
+pod/pod-resource-cpu-more-than-node created
+
+devops/kubernetes [main●] » kubectl get pod
+NAME                              READY   STATUS    RESTARTS   AGE
+pod-resource-cpu-more-than-node   0/1     Pending   0          9s
+
+devops/kubernetes [main●] » kubectl describe pod pod-resource-cpu-more-than-node
+Name:         pod-resource-cpu-more-than-node
+Namespace:    default
+Priority:     0
+Node:         <none>
+Labels:       <none>
+Annotations:  <none>
+Status:       Pending
+IP:           
+IPs:          <none>
+Containers:
+  pod-1:
+    Image:      vish/stress
+    Port:       <none>
+    Host Port:  <none>
+    Args:
+      -cpus=2
+    Limits:
+      cpu:  5
+    Requests:
+      cpu:        3
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-rz4cm (ro)
+Conditions:
+  Type           Status
+  PodScheduled   False 
+Events:
+  Type     Reason            Age   From               Message
+  ----     ------            ----  ----               -------
+  Warning  FailedScheduling  30s   default-scheduler  0/1 nodes are available: 1 Insufficient cpu.
+```
+
+The output shows that the Pod status is Pending. That is, the Pod has not been scheduled to run on any Node, and it will remain in the Pending state indefinitely
