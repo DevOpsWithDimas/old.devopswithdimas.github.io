@@ -71,9 +71,7 @@ Jika kita gambarkan secara diagram flowchart seperti berikut:
 flowchart LR
     data --> condition1{ Condition }
     condition1 -- true --> conditionOk[ return OK ]
-    condition1 -- false --> condition2{ More Condition }
-    condition2 -- true --> conditionOk2[ return Yes ]
-    condition2 -- false --> End
+    condition1 -- false --> End
 {% endmermaid %}
 
 Berikut adalah contoh penggunaan dalam SQL:
@@ -86,14 +84,11 @@ Jika dijalankan hasilnya seperti berikut:
 hr=# select employee_id    as kode_karyawan,
        commission_pct as besar_komisi,
        case
-           when COALESCE(commission_pct, 0) = 0
+           when commission_pct is null
                then 'Tidak memiliki komisi'
-           else
-               concat('Memiliki komisi sebesar ', commission_pct)
-           end        as deskripsi
-from employees
-limit 15;
- kode_karyawan | besar_komisi |       deskripsi
+           end
+from employees;
+ kode_karyawan | besar_komisi |         case          
 ---------------+--------------+-----------------------
            100 |              | Tidak memiliki komisi
            101 |              | Tidak memiliki komisi
@@ -101,16 +96,64 @@ limit 15;
            103 |              | Tidak memiliki komisi
            104 |              | Tidak memiliki komisi
            105 |              | Tidak memiliki komisi
-           106 |              | Tidak memiliki komisi
-           107 |              | Tidak memiliki komisi
-           108 |              | Tidak memiliki komisi
-           109 |              | Tidak memiliki komisi
-           110 |              | Tidak memiliki komisi
-           111 |              | Tidak memiliki komisi
-           112 |              | Tidak memiliki komisi
-           113 |              | Tidak memiliki komisi
-           114 |              | Tidak memiliki komisi
-(15 rows)
+           145 |         0.40 | 
+           146 |         0.30 | 
+           147 |         0.30 | 
+           148 |         0.30 | 
+           149 |         0.20 | 
+           150 |         0.30 | 
+           151 |         0.25 | 
+           152 |         0.25 | 
+
+(107 rows)
 ```
 
-## Using `COALESCE` expression
+## More Complex `CASE-WHEN-ELSE` expression
+
+Selanjutnya kita akan membahas, `CASE-WHEN-ELSE` expression yang lebih kompleks lagi yaitu seperti berikut klo kita gambarkan secara diagram flowchart nya:
+
+{% mermaid %}
+flowchart LR
+    data --> condition1{ Condition }
+    condition1 -- true --> conditionOk[ return OK ]
+    condition1 -- false --> condition2{ More Condition }
+    condition2 -- true --> conditionOk[ return OK ]
+    condition2 -- else --> End[ return Something ]
+{% endmermaid %}
+
+Jadi disini kita memiliki lebih dari 2 kondisi, dimana ke dua kondisi tersebut memiliki nilai `return OK` sedangkan selain itu (`else`) `return something`. Berikut implementasi pada query sql:
+
+{% gist page.gist "04d-select-case-when-else.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# select employee_id    as kode_karyawan,
+hr-#        commission_pct as besar_komisi,
+hr-#        case
+hr-#            when commission_pct is null
+hr-#                then 'Tidak memiliki komisi'
+hr-#            when commission_pct >= 0.2
+hr-#                then 'Memiki komisi lebih besar dari 20%'
+hr-#            else 'Memiliki komisi lebih kecil dari 10%'
+hr-#            end
+hr-# from employees
+hr-# limit 50;
+ kode_karyawan | besar_komisi |                case                
+---------------+--------------+------------------------------------
+           100 |              | Tidak memiliki komisi
+           101 |              | Tidak memiliki komisi
+           102 |              | Tidak memiliki komisi
+           103 |              | Tidak memiliki komisi
+           104 |              | Tidak memiliki komisi
+           144 |              | Tidak memiliki komisi
+           145 |         0.40 | Memiki komisi lebih besar dari 20%
+           146 |         0.30 | Memiki komisi lebih besar dari 20%
+           147 |         0.30 | Memiki komisi lebih besar dari 20%
+           148 |         0.30 | Memiki komisi lebih besar dari 20%
+           149 |         0.20 | Memiki komisi lebih besar dari 20%
+(50 rows)
+```
+
+## Using Nested `CASE-WHEN` expression
+
