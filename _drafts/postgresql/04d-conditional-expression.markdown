@@ -22,13 +22,13 @@ downloads: []
 Hai semuanya, di materi kali ini kita akan membahas tentang Conditional Expression Seperti biasa karena materinya akan lumayan panjang jadi kita bagi jadi beberapa bagian diantaranya:
 
 1. What is Conditional Expression?
-2. Using `CASE-WHEN` expression
-    1. More Complex `CASE-WHEN-ELSE` expression
+2. `CASE-WHEN` expression
+    1. Using `CASE-WHEN-ELSE` expression
     2. Using Nested `CASE-WHEN` expression
     3. Using `CASE-WHEN` expression in `WHERE` clause
-5. Using `COALESCE` expression
-6. Using `NULLIF` expression
-7. Using `GREATEST` and `LEAST` expression
+3. Using `COALESCE` expression
+4. Using `NULLIF` expression
+5. Using `GREATEST` and `LEAST` expression
 
 Ok langsung aja kita bahas materi yang pertama
 
@@ -71,7 +71,7 @@ Jika kita gambarkan secara diagram flowchart seperti berikut:
 flowchart LR
     data --> condition1{ Condition }
     condition1 -- true --> conditionOk[ return OK ]
-    condition1 -- false --> End
+    condition1 -- false --> End[ return null ]
 {% endmermaid %}
 
 Berikut adalah contoh penggunaan dalam SQL:
@@ -108,9 +108,9 @@ from employees;
 (107 rows)
 ```
 
-## More Complex `CASE-WHEN-ELSE` expression
+## Using `CASE-WHEN-ELSE` expression
 
-Selanjutnya kita akan membahas, `CASE-WHEN-ELSE` expression yang lebih kompleks lagi yaitu seperti berikut klo kita gambarkan secara diagram flowchart nya:
+Selanjutnya kita akan membahas, `CASE-WHEN-ELSE` expression seperti berikut klo kita gambarkan secara diagram flowchart nya:
 
 {% mermaid %}
 flowchart LR
@@ -157,3 +157,60 @@ hr-# limit 50;
 
 ## Using Nested `CASE-WHEN` expression
 
+Selanjutnya kita akan membahas, Nested `CASE-WHEN` expression. Sama halnya seperti bahasa pemograman kita juga bisa menggunakan percabangan dalam percabangan atau istilah kerennya Nested Condition. Jika kita gambarkan flowchart-nya seperti berikut:
+
+{% mermaid %}
+flowchart LR
+    data --> condition1{ Outer Condition }
+    condition1 -- true --> condition2{ Inner Condition }
+    condition1 -- false --> End[ return Null ]
+    condition2 -- true --> conditionOk[ return OK ]
+    condition2 -- else --> End[ return Something ]
+{% endmermaid %}
+
+Berikut adalah contoh implementasi SQLnya:
+
+{% gist page.gist "04d-select-nested-case-when-else.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# select employee_id    as kode_karyawan,
+hr-#        commission_pct as besar_komisi,
+hr-#        case
+hr-#            when commission_pct is not null
+hr-#                then
+hr-#                case
+hr-#                    when commission_pct <= 0.1
+hr-#                        then 'Komisi sebesar 10%'
+hr-#                    when commission_pct <= 0.2
+hr-#                        then 'Komisi sebesar 20%'
+hr-#                    when commission_pct <= 0.3
+hr-#                        then 'Komisi sebesar 30%'
+hr-#                    else 'Komisi lebih besar dari 30%'
+hr-#                    end
+hr-#            else 'Tidak memiliki komisi'
+hr-#            end
+hr-# from employees
+hr-# limit 60;
+ kode_karyawan | besar_komisi |            case             
+---------------+--------------+-----------------------------
+           100 |              | Tidak memiliki komisi
+           101 |              | Tidak memiliki komisi
+           102 |              | Tidak memiliki komisi
+           103 |              | Tidak memiliki komisi
+           104 |              | Tidak memiliki komisi
+           105 |              | Tidak memiliki komisi
+           106 |              | Tidak memiliki komisi
+           145 |         0.40 | Komisi lebih besar dari 30%
+           146 |         0.30 | Komisi sebesar 30%
+           147 |         0.30 | Komisi sebesar 30%
+           148 |         0.30 | Komisi sebesar 30%
+           153 |         0.20 | Komisi sebesar 20%
+           154 |         0.20 | Komisi sebesar 20%
+           155 |         0.15 | Komisi sebesar 20%
+           156 |         0.35 | Komisi lebih besar dari 30%
+           157 |         0.35 | Komisi lebih besar dari 30%
+           158 |         0.35 | Komisi lebih besar dari 30%
+(60 rows)
+```
