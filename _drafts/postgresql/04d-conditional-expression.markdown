@@ -214,3 +214,54 @@ hr-# limit 60;
            158 |         0.35 | Komisi lebih besar dari 30%
 (60 rows)
 ```
+
+## Using `CASE-WHEN` expression in `WHERE` clause
+
+Selain pada select statement, `CASE-WHEN` Expression bisa juga di terapkan pada `where` clause dengan basic syntax seperti berikut:
+
+{% highlight sql %}
+select ...
+from ...
+where 
+    CASE WHEN condition THEN where_clause_exp
+        [WHEN ...]
+        [ELSE where_clause_exp]
+    END
+{% endhighlight %}
+
+Jadi selain value kita juga bisa mengkondisikan suatu kondisi dari where clause contoh implementasi dari SQL seperti berikut:
+
+{% gist page.gist "04d-where-case-when-else.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# select employee_id    as kode_karyawan,
+hr-#        commission_pct as besar_komisi,
+hr-#        salary         as gaji_sebulan
+hr-# from employees
+hr-# where case
+hr-#           when commission_pct is null and salary <= 2200
+hr-#               then true
+hr-#           when commission_pct is null
+hr-#               then false
+hr-#           when commission_pct is not null and salary < 8000
+hr-#               then salary in (7500, 7000, 7200)
+hr-#           when commission_pct is not null and salary < 12000
+hr-#               then salary = 11000
+hr-#           end;
+ kode_karyawan | besar_komisi | gaji_sebulan 
+---------------+--------------+--------------
+           128 |              |      2200.00
+           132 |              |      2100.00
+           136 |              |      2200.00
+           148 |         0.30 |     11000.00
+           154 |         0.20 |      7500.00
+           155 |         0.15 |      7000.00
+           160 |         0.30 |      7500.00
+           161 |         0.25 |      7000.00
+           164 |         0.10 |      7200.00
+           174 |         0.30 |     11000.00
+           178 |         0.15 |      7000.00
+(11 rows)
+```
