@@ -23,12 +23,9 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Conditional Expressi
 
 1. What is Conditional Expression?
 2. `CASE-WHEN` expression
-    1. Using `CASE-WHEN-ELSE` expression
-    2. Using Nested `CASE-WHEN` expression
-    3. Using `CASE-WHEN` expression in `WHERE` clause
-3. Using `COALESCE` expression
-4. Using `NULLIF` expression
-5. Using `GREATEST` and `LEAST` expression
+3. Using `CASE-WHEN-ELSE` expression
+4. Using Nested `CASE-WHEN` expression
+5. Using `CASE-WHEN` expression in `WHERE` clause
 
 Ok langsung aja kita bahas materi yang pertama
 
@@ -45,14 +42,14 @@ Some real-time examples of SQL case statement are:
 
 Di PostgreSQL, kita bisa menggunakan Conditional Statement/Expression dengan beberapa cara
 
-1. Case-When-Else
+1. Case-When
 2. Coalesce
 3. NullIF
 4. Greatest or Least
 
-Untuk lebih detail, yukk kita bahas satu-per-satu
+Karena untuk function `Coalesce`, `NullIF` sudah pernah kita bahas di artikel sebelumnya jadi kita akan bahas lebih detail untuk `Case-When` expressionnya.
 
-## Using `CASE-WHEN-ELSE` expression
+## Using `CASE-WHEN` expression
 
 The SQL CASE expression is a generic conditional expression, similar to if/else statements in other programming languages:
 
