@@ -17,24 +17,26 @@
 
 - cource: postgresql
   catalog: select-statement
-  date: 2022-02-25T18:29:00+07:00
+  date: 2022-06-25T18:29:00+07:00
   duration: "8jam"
   tier: "free"
-  youtube: 
+  youtube: ySrFe_Fu1rk
   thumbnail:
   visible: false
   markers: |
-    Pengenalan SQL
-    Select statement
-    Operators
-    Filter data with where clause
-    Ordering data with Order by
-    Limit and Offset data
-    Single row functions
-    Group functions
-    Join Tables
-    Sub Query / Nested Query
-    Control Statement
+    00:00:00 Introduction
+    00:29:46 Basic SQL of Select Statements
+    01:10:22 Build-in SQL operators
+    01:53:07 Build-in SQL Functions
+    02:32:28 Dilter data using where clause
+    03:30:40 Sorting a resultset
+    03:53:00 Limit and Offset clause
+    04:07:00 Time is your practice part 1
+    04:29:15 Single row and group functions
+    05:15:16 Joined tables
+    06:14:50 Queries inside query (Sub-Query)
+    07:49:39 Condition expression
+    08:19:21 Materi selanjutnya
 
 - cource: docker
   catalog: docker-machine
