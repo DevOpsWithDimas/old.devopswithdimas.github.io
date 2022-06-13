@@ -22,7 +22,7 @@
   tier: "free"
   youtube: ySrFe_Fu1rk
   thumbnail:
-  visible: false
+  visible: true
   markers: |
     00:00:00 Introduction
     00:29:46 Basic SQL of Select Statements
