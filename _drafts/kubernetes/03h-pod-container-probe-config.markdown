@@ -57,8 +57,8 @@ gantt
     Container started           :done,      containerStarted,   after startupTry1,      10second
     section Readiness Probe
     Check container is ready?   :           checkReady,     after containerStarted,     10second
-    Container Ready             :           containerReady, after checkReady,           30second
+    Container Ready             :done,      containerReady, after checkReady,           30second
     section Liveness Probe
     Check container is live?    :           checkLive,      after containerReady,       10second
-    Container Running           :           containerRun,   after checkLive,            30second
+    Container Running           :done,      containerRun,   after checkLive,            30second
 {% endmermaid %}
