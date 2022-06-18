@@ -1,17 +1,18 @@
 ---
 layout: {{ layout }}
 title: "{{ title }}"
-lang: git
+lang: gitlab
 authors:
 - dimasm93
 categories:
-- vcs
 - git
+- gitops
+- gitlab
 refs: 
 - https://git-scm.com/doc
 youtube: {{ youtube }}
 comments: true
-catalog_key: <change-this>
+catalog_key: introduction
 image_path: /resources/posts/git/{{ title }}
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []

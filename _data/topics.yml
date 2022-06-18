@@ -671,17 +671,17 @@
   coming_soon: true
   visible: true
   catalogs:
-    - name: Pengenalan Git & Gitlab
+    - name: Pengenalan Git
       key: introduction
-      description: 'Eps 1: Pengenalan Git & Gitlab'
+      description: 'Eps 1: Pengenalan Git Version Control'
       messages: ''
     - name: Getting started with Git
       key: getting-started
-      description: 'Eps 2: Getting started with vcs git'
+      description: 'Eps 2: Hands on Version Control with Git'
       messages: ''
-    - name: Git Remote
+    - name: Git Remote with Gitlab
       key: remote
-      description: 'Eps 3: Git Remote'
+      description: 'Eps 3: Git Remote with Gitlab Self Managed or SaaS'
       messages: ''
     - name: Git Workflow
       key: workflow
@@ -693,15 +693,27 @@
       messages: ''
     - name: Issues Tracker
       key: issues-tracker
-      description: 'Eps 6: Issues Tracker'
+      description: 'Eps 6: Gitlab for Project Manager'
       messages: ''
     - name: Release Management
       key: release-management
       description: 'Eps 7: Management Release'
       messages: ''
+    - name: Gitlab CI/CD
+      key: gitlab-cicd
+      description: 'Eps 9: Gitlab CI/CD'
+      messages: ''
+    - name: Gitlab Integration
+      key: gitlab-integration
+      description: 'Eps 10: Integration'
+      messages: ''
     - name: DevOps Tools
       key: devops-tools
       description: 'Eps 8: DevOps Tools'
+      messages: ''
+    - name: Gitlab Migration
+      key: gitlab-migration
+      description: 'Eps 11: Migrations from Bitbucket or Github'
       messages: ''
 
 - name: PostgreSQL
