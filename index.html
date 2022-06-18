@@ -47,6 +47,7 @@ layout: default
                                 src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
                         {% endif %}                        
                     </div>
+                    {% if topic.udemy %}
                     <a target="_blank" 
                         href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}"
                         class="btn-floating halfway-fab btn-large waves-effect tooltipped waves-light red accent-1"
@@ -55,6 +56,7 @@ layout: default
                         data-tooltip="Become a Premium Members">
                         <i class="material-icons white-text">shopping_cart</i>
                     </a>
+                    {% endif %}
                     <div class="card-stacked">
                         <div class="card-content">
                             <div class="row">

@@ -173,6 +173,16 @@ icon: library_books
                                 <img class="activator responsive-img" 
                                     src="{{ "/resources/cources/banners/" | prepend: site.baseurl}}{{topic.url}}.png">
                             </div>
+                            {% if topic.udemy %}
+                            <a target="_blank" 
+                                href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}"
+                                class="btn-floating halfway-fab btn-large waves-effect tooltipped waves-light red accent-1"
+                                data-position="bottom"                            
+                                data-delay="50" 
+                                data-tooltip="Become a Premium Members">
+                                <i class="material-icons white-text">shopping_cart</i>
+                            </a>
+                            {% endif %}
                             <div class="card-stacked">
                                 <div class="card-content">
                                     <div class="row">
@@ -200,34 +210,6 @@ icon: library_books
                                         </p>
                                     </div>
                                 </div>
-                                {% if topic.udemy %}
-                                <div class="card-action right-align">                          
-                                    <div class="row">
-                                        <div class="col s12 m12 l6">
-                                            <div class="right-align">
-                                                {% if topic.udemy.discount %}
-                                                <del class="gray-text">{{ topic.udemy.price }}</del>
-                                                <span class="flow-text">{{ topic.udemy.discount }}</span>
-                                                {% elsif topic.udemy.price %}
-                                                <span class="flow-text">{{ topic.udemy.price }}</span>
-                                                {% else %}
-                                                <span class="flow-text">Gratis</span>
-                                                {% endif %}
-                                            </div>
-                                        </div>
-                                        <div class="col s12 m12 l6">
-                                            <a target="_blank" 
-                                                href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}" 
-                                                class="tooltipped btn red accent-1" 
-                                                data-position="bottom"                            
-                                                data-delay="50" 
-                                                data-tooltip="Become a Premium Members">
-                                                    <i class="material-icons white-text">lock_open</i> Join
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endif %}
                             </div>
                             <div class="card-reveal">
                                 <!-- title of card reveal -->
