@@ -47,6 +47,14 @@ layout: default
                                 src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
                         {% endif %}                        
                     </div>
+                    <a target="_blank" 
+                        href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}"
+                        class="btn-floating halfway-fab btn-large waves-effect tooltipped waves-light red accent-1"
+                        data-position="bottom"                            
+                        data-delay="50" 
+                        data-tooltip="Become a Premium Members">
+                        <i class="material-icons white-text">shopping_cart</i>
+                    </a>
                     <div class="card-stacked">
                         <div class="card-content">
                             <div class="row">
@@ -78,7 +86,7 @@ layout: default
                         <div class="card-action right-align">                            
                             {% if topic.udemy %}
                             <div class="row">
-                                <div class="col s12 m6 l6">
+                                <div class="col m12 l6">
                                     <div class="right-align">
                                         {% if topic.udemy.discount %}
                                         <del class="gray-text">{{ topic.udemy.price }}</del>
@@ -89,16 +97,6 @@ layout: default
                                         <span class="flow-text">Gratis</span>
                                         {% endif %}
                                     </div>
-                                </div>
-                                <div class="col s12 m6 l6">
-                                    <a target="_blank" 
-                                        href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}" 
-                                        class="tooltipped btn red accent-1" 
-                                        data-position="bottom"                            
-                                        data-delay="50" 
-                                        data-tooltip="Become a Premium Members">
-                                            <i class="material-icons white-text">lock_open</i> Join
-                                    </a>
                                 </div>
                             </div>
                             {% endif %}
