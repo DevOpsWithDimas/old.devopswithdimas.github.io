@@ -49,9 +49,6 @@ layout: default
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
-                            {% if a_last_post.date %}
-                                <span class="badge" data-badge-caption="">{{ a_last_post.date | date: "%-d/%b/%Y" }}</span>
-                            {% endif %} 
                             <div class="row">
                                 <span class="flow-text truncate">
                                     {% if topic.coming_soon == false and a_post %}
