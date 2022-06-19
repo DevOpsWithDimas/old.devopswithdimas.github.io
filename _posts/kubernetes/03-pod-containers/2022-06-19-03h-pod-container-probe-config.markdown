@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Configure liveness, readiness, and startup probes"
+date: 2022-06-19T16:26:26+07:00
 lang: k8s
 authors:
 - dimasm93
