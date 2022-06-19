@@ -23,10 +23,10 @@ Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Contain
 
 1. What the different between liveness, readiness and startup probe?
 2. When should you use container probe?
-3. Configure liveness probe in a Pod
-4. Configure readiness probe in a Pod
-5. Configure startup probe in a Pod
-6. Motivation for using Container Probe
+3. Container probes of fields
+4. Configure liveness probe in a Pod
+5. Configure readiness probe in a Pod
+6. Configure startup probe in a Pod
 
 Ok langsung aja kita bahas materi yang pertama
 
@@ -83,6 +83,26 @@ Dan finally yang terakhir yaitu **Startup Probe**:
 Startup probes are useful for Pods that have containers that take a long time to come into service. Rather than set a long liveness interval, you can configure a separate configuration for probing the container as it starts up, allowing a time longer than the liveness interval would allow.
 
 If your container usually starts in more than `initialDelaySeconds + failureThreshold × periodSeconds`, you should specify a startup probe that checks the same endpoint as the liveness probe. The default for `periodSeconds` is `10s`. You should then set its `failureThreshold` high enough to allow the container to start, without changing the default values of the liveness probe. This helps to protect against deadlocks.
+
+## Container probes of fields
+
+**Probes** have a number of fields that you can use to more precisely control the behavior of liveness and readiness checks:
+
+1. `initialDelaySeconds`: Number of seconds after the container has started before liveness or readiness probes are initiated. Defaults to `0 seconds`. Minimum value is `0`.
+2. `periodSeconds`: How often (in seconds) to perform the probe. Default to `10 seconds`. Minimum value is `1`.
+3. `timeoutSeconds`: Number of seconds after which the probe times out. Defaults to `1 second`. Minimum value is `1`.
+4. `successThreshold`: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to `1`. Must be `1` for liveness and startup Probes. Minimum value is `1`.
+5. `failureThreshold`: When a probe fails, Kubernetes will try failureThreshold times before giving up. Giving up in case of liveness probe means restarting the container. In case of readiness probe the Pod will be marked Unready. Defaults to `3`. Minimum value is `1`.
+
+**HTTP probes** have additional fields that can be set on `httpGet`:
+
+1. `host`: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+2. `scheme`: Scheme to use for connecting to the host (HTTP or HTTPS). Defaults to HTTP.
+3. `path`: Path to access on the HTTP server. Defaults to `/`.
+4. `httpHeaders`: Custom headers to set in the request. HTTP allows repeated headers.
+5. `port`: Name or number of the port to access on the container. Number must be in the range `1 to 65535`.
+
+For a **TCP probe**, the kubelet makes the probe connection at the node, not in the pod, which means that you can not use a service name in the host parameter since the kubelet is unable to resolve it.
 
 ## Configure liveness command in a Pod
 
@@ -325,8 +345,3 @@ Events:
 NAME                     READY   STATUS    RESTARTS      AGE
 pod-probe-startup-http   1/1     Running   2 (23s ago)   2m23s
 ```
-
-
-## Motivation for using Container Probe
-
-Description here!
