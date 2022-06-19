@@ -214,13 +214,17 @@ pod-probe-liveness-tcp   1/1     Running   1 (40s ago)   80s
 
 ## Configure grpc liveness in a Pod
 
+If your application implements [gRPC Health Checking Protocol](https://github.com/grpc/grpc/blob/master/doc/health-checking.md), kubelet can be configured to use it for application liveness checks. You must enable the `GRPCContainerProbe` [feature gate](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/) in order to configure checks that rely on gRPC.
+
+Karena kami belum punya workload untuk menggunakan gRPC ini, jika menggunakan temen-temen boleh checkout di [dokumentasi resminya](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-grpc-liveness-probe) ya 
+
+Jadi kita skip aja ya untuk liveness menggunakan gRPC ini.
+
+## Configure readiness probes
+
 Description here!
 
 ## Protect slow starting container with startup probe
-
-Description here!
-
-## Configure readiness probes
 
 Description here!
 
