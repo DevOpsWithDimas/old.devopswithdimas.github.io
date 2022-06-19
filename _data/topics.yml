@@ -664,24 +664,24 @@
   descriptions:
     Temen-teman akan belajar GitOps dengan menggunakan Gitlab Stack terkait Automation Deployment, Monitoring, Issues Tracking, dan lain-lain.
   messages:
-  publish: 2022-03-06T13:26:00+07:00
+  publish: 2022-06-19T13:26:00+07:00
   github: 
   youtube: 
   udemy: 
-  coming_soon: true
+  coming_soon: false
   visible: true
   catalogs:
     - name: Pengenalan Git
       key: introduction
       description: 'Eps 1: Pengenalan Git Version Control'
       messages: ''
-    - name: Getting started with Git
-      key: getting-started
-      description: 'Eps 2: Hands on Version Control with Git'
+    - name: Git Remote with Gitlab SaaS
+      key: gitlab-saas
+      description: 'Eps 2: Git Remote with Gitlab SaaS'
       messages: ''
-    - name: Git Remote with Gitlab
-      key: remote
-      description: 'Eps 3: Git Remote with Gitlab Self Managed or SaaS'
+    - name: Gitlab self-managed service
+      key: gitlab-self-managed
+      description: 'Eps 3: Gitlab self-managed service'
       messages: ''
     - name: Git Workflow
       key: workflow
