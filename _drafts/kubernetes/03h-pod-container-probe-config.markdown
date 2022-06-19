@@ -102,7 +102,7 @@ When the container starts, it executes this command:
 
 Jika di jalankan hasilnya seperti berikut:
 
-```powershell
+```bash
 » kubectl apply -f 02-workloads/01-pod/pod-probe-liveness-command.yaml 
 pod/pod-probe-liveness-command created
 
@@ -134,19 +134,44 @@ Events:
   Normal   Killing    29s                kubelet            Container pod-probe-liveness-command failed liveness probe, will be restarted
 ```
 
+## Configure liveness HTTP in a Pod
+
+Another kind of liveness probe uses an HTTP GET request. Untuk menggunakan liveness probe HTTP GET request ini bisa menggunakan 2 cara yaitu number of port and named port. Karena pembahasan menggunakan number of port sudah kita bahas di materi sebelumnya jadi kita bahas menggunakan Named Port ya. Berikut adalah sample configurationnya:
+
+{% gist page.gist "03h-pod-probe-liveness-http-named-port.yaml" %}
+
+In the configuration file, you can see that the Pod has a single container. The `periodSeconds` field specifies that the kubelet should perform a liveness probe every `5 seconds`. The `initialDelaySeconds` field tells the kubelet that it should wait `5 seconds` before performing the first probe. To perform a probe, the kubelet sends an HTTP GET request to the server that is running in the container and listening on `port 80`. If the handler for the server's `/status` path returns a success code, the kubelet considers the container to be alive and healthy. If the handler returns a failure code, the kubelet kills the container and restarts it.
+
+Any code greater than or equal to `200` and less than `400` indicates success. Any other code indicates failure.
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+» kubectl apply -f 02-workloads/01-pod/pod-probe-liveness-http-named-port.yaml 
+pod/pod-probe-liveness-http-named-port created
+
+» kubectl get pod
+NAME                                 READY   STATUS    RESTARTS   AGE
+pod-probe-liveness-http-named-port   1/1     Running   0          6s
+
+» kubectl describe pod pod-probe-liveness-http-named-port
+Events:
+  Type     Reason     Age               From               Message
+  ----     ------     ----              ----               -------
+  Normal   Scheduled  22s               default-scheduler  Successfully assigned default/pod-probe-liveness-http-named-port to latihan
+  Normal   Pulled     17s               kubelet            Successfully pulled image "nginx" in 3.177382341s
+  Normal   Created    17s               kubelet            Created container pod-probe-liveness-http-named-port
+  Normal   Started    17s               kubelet            Started container pod-probe-liveness-http-named-port
+  Normal   Pulling    2s (x2 over 21s)  kubelet            Pulling image "nginx"
+  Warning  Unhealthy  2s (x3 over 12s)  kubelet            Liveness probe failed: HTTP probe failed with statuscode: 404
+  Normal   Killing    2s                kubelet            Container pod-probe-liveness-http-named-port failed liveness probe, will be restarted
+```
+
 ## Configure TCP liveness in a Pod
 
 Description here!
 
-## Configure liveness HTTP in a Pod
-
-Description here!
-
 ## Configure grpc liveness in a Pod
-
-Description here!
-
-## Use a named port
 
 Description here!
 
