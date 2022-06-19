@@ -816,12 +816,6 @@
   github: 
   youtube: 
   udemy: 
-    url: https://www.udemy.com/course/java-programming-pemula-sampai-mahir/
-    price: Rp.280.000,-
-    discount: Rp.99.000,-
-    couponCode: JUNI_2022
-    referralCode: 8080BE598C39D7652D33
-    expired: 10/03/2022
   coming_soon: false
   visible: true
   catalogs:
