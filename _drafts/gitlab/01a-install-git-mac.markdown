@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01a-install-git-mac"
+title: "How to Install git on MacOS"
 lang: gitlab
 authors:
 - dimasm93

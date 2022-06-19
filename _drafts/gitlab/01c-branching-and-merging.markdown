@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01c-branching-and-merging"
+title: "Branching and Merging"
 lang: gitlab
 authors:
 - dimasm93

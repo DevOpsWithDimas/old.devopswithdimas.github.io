@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01d-patching"
+title: "Patching"
 lang: gitlab
 authors:
 - dimasm93

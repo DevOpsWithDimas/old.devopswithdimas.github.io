@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01a-install-git-linux"
+title: "How to Install git on Linux"
 lang: gitlab
 authors:
 - dimasm93

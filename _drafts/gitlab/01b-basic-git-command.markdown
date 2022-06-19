@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01b-basic-git-command"
+title: "Getting started with git"
 lang: gitlab
 authors:
 - dimasm93

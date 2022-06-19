@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01a-install-git-windows"
+title: "How to Install git on Windows"
 lang: gitlab
 authors:
 - dimasm93
