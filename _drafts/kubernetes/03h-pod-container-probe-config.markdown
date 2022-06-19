@@ -207,7 +207,7 @@ Events:
   Warning  Unhealthy  2s    kubelet            Liveness probe failed: dial tcp 172.17.0.3:8080: connect: connection refused
 Error from server (NotFound): pods "pod" not found
 
-devops/kubernetes [main●] » kubectl get pod
+» kubectl get pod
 NAME                     READY   STATUS    RESTARTS      AGE
 pod-probe-liveness-tcp   1/1     Running   1 (40s ago)   80s
 ```
@@ -225,3 +225,5 @@ Description here!
 Description here!
 
 ## Motivation for using Container Probe
+
+Description here!
