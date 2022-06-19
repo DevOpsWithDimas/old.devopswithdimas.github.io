@@ -222,7 +222,60 @@ Jadi kita skip aja ya untuk liveness menggunakan gRPC ini.
 
 ## Configure readiness probes
 
-Description here!
+Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don't want to kill the application, but you don't want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.
+
+Readiness probes are configured similarly to liveness probes. The only difference is that you use the `readinessProbe` field instead of the `livenessProbe` field.
+
+**Caution:** Liveness probes do not wait for readiness probes to succeed. If you want to wait before executing a liveness probe you should use `initialDelaySeconds` or a `startupProbe`.
+
+Berikut contoh implementasinya:
+
+{% gist page.gist "03h-pod-probe-readiness-http.yaml" %}
+
+This example uses both readiness and liveness probes. The kubelet will send the first readiness probe `5 seconds` after the container starts. This will attempt to connect to the nginx container on port 80. If the probe succeeds, the Pod will be marked as ready. The kubelet will continue to run this check every `10 seconds`.
+
+Readiness and liveness probes can be used in parallel for the same container. Using both can ensure that traffic does not reach a container that is not ready for it, and that containers are restarted when they fail.
+
+Jika kita jalankan hasilnya seperti berikut:
+
+```bash
+» kubectl apply -f 02-workloads/01-pod/pod-probe-readiness-http.yaml  
+pod/pod-probe-readiness-http created
+
+» kubectl get pod
+NAME                       READY   STATUS    RESTARTS   AGE
+pod-probe-readiness-http   0/1     Running   0          6s
+
+» kubectl describe pod pod-probe-readiness-http
+Events:
+  Type     Reason     Age   From               Message
+  ----     ------     ----  ----               -------
+  Normal   Scheduled  17s   default-scheduler  Successfully assigned default/pod-probe-readiness-http to latihan
+  Normal   Pulling    16s   kubelet            Pulling image "nginx"
+  Normal   Pulled     12s   kubelet            Successfully pulled image "nginx" in 3.272050844s
+  Normal   Created    12s   kubelet            Created container pod-probe-readiness-http
+  Normal   Started    12s   kubelet            Started container pod-probe-readiness-http
+  Warning  Unhealthy  2s    kubelet            Liveness probe failed: HTTP probe failed with statuscode: 404
+
+# wait 15s, then execute again
+» kubectl describe pod pod-probe-readiness-http
+Events:
+  Type     Reason     Age               From               Message
+  ----     ------     ----              ----               -------
+  Normal   Scheduled  99s               default-scheduler  Successfully assigned default/pod-probe-readiness-http to latihan
+  Normal   Pulled     94s               kubelet            Successfully pulled image "nginx" in 3.272050844s
+  Normal   Pulled     50s               kubelet            Successfully pulled image "nginx" in 3.156701616s
+  Warning  Unhealthy  9s (x6 over 84s)  kubelet            Liveness probe failed: HTTP probe failed with statuscode: 404
+  Normal   Killing    9s (x2 over 54s)  kubelet            Container pod-probe-readiness-http failed liveness probe, will be restarted
+  Normal   Pulling    9s (x3 over 98s)  kubelet            Pulling image "nginx"
+  Normal   Created    5s (x3 over 94s)  kubelet            Created container pod-probe-readiness-http
+  Normal   Started    5s (x3 over 94s)  kubelet            Started container pod-probe-readiness-http
+  Normal   Pulled     5s                kubelet            Successfully pulled image "nginx" in 3.490931597s
+
+» kubectl get pod
+NAME                       READY   STATUS    RESTARTS      AGE
+pod-probe-readiness-http   1/1     Running   1 (31s ago)   2m1s
+```
 
 ## Protect slow starting container with startup probe
 
