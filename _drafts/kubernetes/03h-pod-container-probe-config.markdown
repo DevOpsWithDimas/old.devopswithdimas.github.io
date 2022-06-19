@@ -279,7 +279,53 @@ pod-probe-readiness-http   1/1     Running   1 (31s ago)   2m1s
 
 ## Protect slow starting container with startup probe
 
-Description here!
+Sometimes, you have to deal with legacy applications that might require an additional startup time on their first initialization. In such cases, it can be tricky to set up liveness probe parameters without compromising the fast response to deadlocks that motivated such a probe. The trick is to set up a startup probe with the same command, HTTP or TCP check, with a `failureThreshold * periodSeconds` long enough to cover the worse case startup time.
+
+So, the example would become:
+
+{% gist page.gist "03h-pod-probe-startup-http.yaml" %}
+
+Thanks to the startup probe, the application will have a maximum of 5 minutes (`30 * 10 = 300s`) to finish its startup. Once the startup probe has succeeded once, the liveness probe takes over to provide a fast response to container deadlocks. If the startup probe never succeeds, the container is killed after `300s` and subject to the pod's `restartPolicy`.
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+» kubectl apply -f 02-workloads/01-pod/pod-probe-startup-http.yaml 
+pod/pod-probe-startup-http created
+
+» kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+pod-probe-startup-http   0/1     Running   0          7s
+
+» kubectl describe pod pod-probe-startup-http
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  22s   default-scheduler  Successfully assigned default/pod-probe-startup-http to latihan
+  Normal  Pulling    21s   kubelet            Pulling image "nginx"
+  Normal  Pulled     18s   kubelet            Successfully pulled image "nginx" in 3.397200655s
+  Normal  Created    18s   kubelet            Created container pod-probe-startup-http
+  Normal  Started    18s   kubelet            Started container pod-probe-startup-http
+
+## wait 30s, then execute again and see the result
+» kubectl describe pod pod-probe-startup-http
+Events:
+  Type     Reason     Age                 From               Message
+  ----     ------     ----                ----               -------
+  Normal   Scheduled  113s                default-scheduler  Successfully assigned default/pod-probe-startup-http to latihan
+  Normal   Pulled     109s                kubelet            Successfully pulled image "nginx" in 3.397200655s
+  Normal   Pulling    53s (x2 over 112s)  kubelet            Pulling image "nginx"
+  Normal   Killing    53s                 kubelet            Container pod-probe-startup-http failed liveness probe, will be restarted
+  Normal   Created    50s (x2 over 109s)  kubelet            Created container pod-probe-startup-http
+  Normal   Pulled     50s                 kubelet            Successfully pulled image "nginx" in 3.373582023s
+  Normal   Started    49s (x2 over 109s)  kubelet            Started container pod-probe-startup-http
+  Warning  Unhealthy  8s (x5 over 83s)    kubelet            Liveness probe failed: HTTP probe failed with statuscode: 404
+
+» kubectl get pod
+NAME                     READY   STATUS    RESTARTS      AGE
+pod-probe-startup-http   1/1     Running   2 (23s ago)   2m23s
+```
+
 
 ## Motivation for using Container Probe
 
