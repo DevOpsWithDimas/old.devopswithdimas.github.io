@@ -132,6 +132,10 @@ Events:
   Normal   Started    72s                kubelet            Started container pod-probe-liveness-command
   Warning  Unhealthy  29s (x3 over 39s)  kubelet            Liveness probe failed: cat: cant open '/tmp/healthy': No such file or directory
   Normal   Killing    29s                kubelet            Container pod-probe-liveness-command failed liveness probe, will be restarted
+
+» kubectl get pod
+NAME                         READY   STATUS    RESTARTS   AGE
+pod-probe-liveness-command   1/1     Running   1          30s
 ```
 
 ## Configure liveness HTTP in a Pod
@@ -165,11 +169,48 @@ Events:
   Normal   Pulling    2s (x2 over 21s)  kubelet            Pulling image "nginx"
   Warning  Unhealthy  2s (x3 over 12s)  kubelet            Liveness probe failed: HTTP probe failed with statuscode: 404
   Normal   Killing    2s                kubelet            Container pod-probe-liveness-http-named-port failed liveness probe, will be restarted
+
+» kubectl get pod
+NAME                                 READY   STATUS    RESTARTS   AGE
+pod-probe-liveness-http-named-port   1/1     Running   1          25s
 ```
 
 ## Configure TCP liveness in a Pod
 
-Description here!
+A third type of liveness probe uses a TCP socket. With this configuration, the kubelet will attempt to open a socket to your container on the specified port. If it can establish a connection, the container is considered healthy, if it can't it is considered a failure.
+
+Berikut adalah sample configurationnya:
+
+{% gist page.gist "03h-pod-probe-liveness-tcp.yaml" %}
+
+As you can see, configuration for a TCP check is quite similar to an HTTP check. The kubelet will send the first readiness probe `5 seconds` after the container starts. This will attempt to connect to the nginx container on port `8080`. If the probe succeeds, the Pod will be marked as ready. The kubelet will continue to run this check every `10 seconds`.
+
+Jika kita coba jalankan hasilnya seperti berikut:
+
+```bash
+» kubectl apply -f 02-workloads/01-pod/pod-probe-liveness-tcp.yaml 
+pod/pod-probe-liveness-tcp created
+
+» kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+pod-probe-liveness-tcp   1/1     Running   0          7s
+
+» kubectl describe pod pod pod-probe-liveness-tcp
+Events:
+  Type     Reason     Age   From               Message
+  ----     ------     ----  ----               -------
+  Normal   Scheduled  22s   default-scheduler  Successfully assigned default/pod-probe-liveness-tcp to latihan
+  Normal   Pulling    21s   kubelet            Pulling image "nginx"
+  Normal   Pulled     17s   kubelet            Successfully pulled image "nginx" in 3.868622684s
+  Normal   Created    17s   kubelet            Created container pod-probe-liveness-tcp
+  Normal   Started    17s   kubelet            Started container pod-probe-liveness-tcp
+  Warning  Unhealthy  2s    kubelet            Liveness probe failed: dial tcp 172.17.0.3:8080: connect: connection refused
+Error from server (NotFound): pods "pod" not found
+
+devops/kubernetes [main●] » kubectl get pod
+NAME                     READY   STATUS    RESTARTS      AGE
+pod-probe-liveness-tcp   1/1     Running   1 (40s ago)   80s
+```
 
 ## Configure grpc liveness in a Pod
 
