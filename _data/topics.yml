@@ -675,45 +675,37 @@
       key: introduction
       description: 'Eps 1: Pengenalan Git Version Control'
       messages: ''
-    - name: Git Remote with Gitlab SaaS
+    - name: Gitlab SaaS
       key: gitlab-saas
-      description: 'Eps 2: Git Remote with Gitlab SaaS'
+      description: 'Eps 2: Gitlab SaaS'
       messages: ''
     - name: Gitlab self-managed service
       key: gitlab-self-managed
       description: 'Eps 3: Gitlab self-managed service'
       messages: ''
-    - name: Git Workflow
-      key: workflow
-      description: 'Eps 4: Git Workflow'
-      messages: ''
-    - name: Git Submodules
-      key: submodules
-      description: 'Eps 5: Working with Git Submodules'
-      messages: ''
     - name: Issues Tracker
       key: issues-tracker
-      description: 'Eps 6: Gitlab for Project Manager'
+      description: 'Eps 4: Gitlab for Project Manager'
       messages: ''
     - name: Release Management
       key: release-management
-      description: 'Eps 7: Management Release'
+      description: 'Eps 5: Management Release'
       messages: ''
     - name: Gitlab CI/CD
       key: gitlab-cicd
-      description: 'Eps 9: Gitlab CI/CD'
+      description: 'Eps 6: Gitlab CI/CD'
       messages: ''
     - name: Gitlab Integration
       key: gitlab-integration
-      description: 'Eps 10: Integration'
+      description: 'Eps 7: Integration'
       messages: ''
-    - name: DevOps Tools
-      key: devops-tools
-      description: 'Eps 8: DevOps Tools'
+    - name: Gitlab Monitoring
+      key: gitlab-monitor
+      description: 'Eps 8: Gitlab CI/CD'
       messages: ''
     - name: Gitlab Migration
       key: gitlab-migration
-      description: 'Eps 11: Migrations from Bitbucket or Github'
+      description: 'Eps 9: Migrations from Bitbucket'
       messages: ''
 
 - name: PostgreSQL
