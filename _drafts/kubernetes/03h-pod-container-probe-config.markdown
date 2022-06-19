@@ -86,7 +86,53 @@ If your container usually starts in more than `initialDelaySeconds + failureThre
 
 ## Configure liveness command in a Pod
 
-Description here!
+Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations.
+
+Contoh sederhannya seperti, misalnya kita menjalankan program yang sifatnya running di background / service. Untuk mendeteksi program tersebut tetap berjalan kita bisa check menggunakan output yang di keluarkan oleh program tersebut seperti log file dan lain-lain. Jadi klo kita coba buat configurasinya seperti berikut:
+
+{% gist page.gist "03h-pod-probe-liveness-command.yaml" %}
+
+In the configuration file, you can see that the Pod has a single Container. The `periodSeconds` field specifies that the kubelet should perform a liveness probe every `5 seconds`. The `initialDelaySeconds` field tells the kubelet that it should wait `5 seconds` before performing the first probe. To perform a probe, the kubelet executes the command cat `/tmp/healthy` in the target container. If the command succeeds, it `returns 0`, and the kubelet considers the container to be alive and healthy. If the command returns a `non-zero value`, the kubelet kills the container and restarts it.
+
+When the container starts, it executes this command:
+
+{% highlight bash %}
+/bin/sh -c "touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600"
+{% endhighlight %}
+
+Jika di jalankan hasilnya seperti berikut:
+
+```powershell
+» kubectl apply -f 02-workloads/01-pod/pod-probe-liveness-command.yaml 
+pod/pod-probe-liveness-command created
+
+» kubectl get pod
+NAME                         READY   STATUS    RESTARTS   AGE
+pod-probe-liveness-command   1/1     Running   0          19s
+
+» kubectl describe pod pod-probe-liveness-command                     
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  12s   default-scheduler  Successfully assigned default/pod-probe-liveness-command to latihan
+  Normal  Pulling    12s   kubelet            Pulling image "k8s.gcr.io/busybox"
+  Normal  Pulled     11s   kubelet            Successfully pulled image "k8s.gcr.io/busybox" in 986.394876ms
+  Normal  Created    10s   kubelet            Created container pod-probe-liveness-command
+  Normal  Started    10s   kubelet            Started container pod-probe-liveness-command
+
+## wait 30s then exeucute again, then see the container restated because failed container probe
+» kubectl describe pod pod-probe-liveness-command
+Events:
+  Type     Reason     Age                From               Message
+  ----     ------     ----               ----               -------
+  Normal   Scheduled  74s                default-scheduler  Successfully assigned default/pod-probe-liveness-command to latihan
+  Normal   Pulling    74s                kubelet            Pulling image "k8s.gcr.io/busybox"
+  Normal   Pulled     73s                kubelet            Successfully pulled image "k8s.gcr.io/busybox" in 986.394876ms
+  Normal   Created    72s                kubelet            Created container pod-probe-liveness-command
+  Normal   Started    72s                kubelet            Started container pod-probe-liveness-command
+  Warning  Unhealthy  29s (x3 over 39s)  kubelet            Liveness probe failed: cat: cant open '/tmp/healthy': No such file or directory
+  Normal   Killing    29s                kubelet            Container pod-probe-liveness-command failed liveness probe, will be restarted
+```
 
 ## Configure TCP liveness in a Pod
 
