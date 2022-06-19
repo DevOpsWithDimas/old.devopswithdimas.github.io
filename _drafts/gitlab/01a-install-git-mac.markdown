@@ -9,7 +9,8 @@ categories:
 - gitops
 - gitlab
 refs: 
-- https://git-scm.com/doc
+- https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+- https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
 youtube: 
 comments: true
 catalog_key: introduction

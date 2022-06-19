@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Remote hosting git repository"
+title: "Working with Remotes"
 lang: gitlab
 authors:
 - dimasm93

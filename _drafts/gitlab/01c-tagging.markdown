@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to Install git on Linux"
+title: "Working with Tags"
 lang: gitlab
 authors:
 - dimasm93
@@ -9,12 +9,11 @@ categories:
 - gitops
 - gitlab
 refs: 
-- https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-- https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
+- https://git-scm.com/doc
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts/git/01a-install-git-linux
+image_path: /resources/posts/git/01c-tagging
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---

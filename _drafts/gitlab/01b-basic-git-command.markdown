@@ -9,7 +9,10 @@ categories:
 - gitops
 - gitlab
 refs: 
-- https://git-scm.com/doc
+- https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository
+- https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
+- https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
+- https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things
 youtube: 
 comments: true
 catalog_key: introduction
