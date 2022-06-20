@@ -19,16 +19,16 @@ catalog_key: select-statement
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas tentang Menggabungkan beberapa query menjadi suatu resutlset atau klo bahas kerennya Combining Queries. Pada combining queries ini ada beberapa macam teknik atau metode diataranya
 
-description...
+1. UNION
+2. INTERSECT
+3. EXCEPT
+
+Dari setiap method tersebut memiliki fungsinya masing-masing, Untuk lebih jelasnya yukk langsung aja kita bahas satu-per-satu
 
 <!--more-->
 
-Materi: 
+## Using UNION queries
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+`UNION` effectively appends the result of **query2** to the result of **query1** (although there is no guarantee that this is the order in which the rows are actually returned). Furthermore, it eliminates duplicate rows from its result, in the same way as `DISTINCT`, unless `UNION ALL` is used.
