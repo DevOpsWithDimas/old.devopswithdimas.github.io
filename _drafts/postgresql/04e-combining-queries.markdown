@@ -93,3 +93,70 @@ hr(#      ) as data2;
        4 | abdul    | Abdul Rahman    | f
 (5 rows)
 ```
+
+## Using `INTERSECT` queries
+
+`INTERSECT` returns all rows that are both in the result of **query1** and in the result of **query2**. Duplicate rows are eliminated unless `INTERSECT ALL` is used.
+
+The syntax:
+
+{% highlight sql %}
+select ... from ... 
+INTERSECT [ ALL ]
+select ... from ...
+{% endhighlight %}
+
+Berikut adalah contohnya
+
+{% gist page.gist "04e-select-intersect.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (2, 'myusuf', 'Muhamad Yusuf', true),
+hr(#              (3, 'mpurwadi', 'Muhamad Purwadi', false)
+hr(#      ) as data1
+hr-# INTERSECT DISTINCT
+hr-# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (4, 'abdul', 'Abdul Rahman', false),
+hr(#              (3, 'mpurwadi', 'Muhamad Purwadi', false)
+hr(#      ) as data2;
+ column1 | column2  |     column3     | column4 
+---------+----------+-----------------+---------
+       3 | mpurwadi | Muhamad Purwadi | f
+       1 | dimasm93 | Dimas Maryanto  | t
+(2 rows)
+```
+
+Jika temen-temen perhatikan, `INTERSECT` hanya mengambil data yang sama saja pada kedua query tersebut, Sekarang kita coba menggunakan `INTERSECT ALL` dengan query seperti berikut:
+
+{% gist page.gist "04e-select-intersect-all.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (2, 'myusuf', 'Muhamad Yusuf', true),
+hr(#              (2, 'myusuf', 'Muhamad Yusuf', true),
+hr(#              (3, 'mpurwadi', 'Muhamad Purwadi', false)
+hr(#      ) as data1
+hr-# INTERSECT ALL
+hr-# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (4, 'abdul', 'Abdul Rahman', false),
+hr(#              (2, 'myusuf', 'Muhamad Yusuf', true),
+hr(#              (2, 'myusuf', 'Muhamad Yusuf', true),
+hr(#              (3, 'mpurwadi', 'Muhamad Purwadi', false)
+hr(#      ) as data2;
+ column1 | column2  |     column3     | column4 
+---------+----------+-----------------+---------
+       3 | mpurwadi | Muhamad Purwadi | f
+       2 | myusuf   | Muhamad Yusuf   | t
+       2 | myusuf   | Muhamad Yusuf   | t
+       1 | dimasm93 | Dimas Maryanto  | t
+(4 rows)
+```
