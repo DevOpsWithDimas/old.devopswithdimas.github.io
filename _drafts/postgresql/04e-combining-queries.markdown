@@ -199,7 +199,7 @@ hr(#      ) as data2;
 
 Jika temen-temen perhatikan dari hasil query diatas, dimana hasilnya adalah nilai yang tidak terdapat pada query keduanya. Atau jika analogikan kita bisa menggunakan `select ... from ... where id NOT IN (subquery)`. Sekarang kita coba menggunakan `EXCEPT ALL` berikut querynya:
 
-{% gist page.gist "04e-select-except.sql" %}
+{% gist page.gist "04e-select-except-all.sql" %}
 
 Jika dijalankan hasilnya seperti berikut:
 
