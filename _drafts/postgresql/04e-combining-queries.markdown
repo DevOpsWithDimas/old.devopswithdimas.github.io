@@ -160,3 +160,65 @@ hr(#      ) as data2;
        1 | dimasm93 | Dimas Maryanto  | t
 (4 rows)
 ```
+
+## Using `EXCEPT` queries
+
+`EXCEPT` returns all rows that are in the result of **query1** but not in the result of **query2**. (This is sometimes called the difference between two queries.) Again, duplicates are eliminated unless `EXCEPT ALL` is used.
+
+The syntax:
+
+{% highlight sql %}
+select ... from ... 
+EXCEPT [ ALL ]
+select ... from ...
+{% endhighlight %}
+
+Berikut adalah contohnya
+
+{% gist page.gist "04e-select-except.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (2, 'myusuf', 'Muhamad Yusuf', true),
+hr(#              (3, 'mpurwadi', 'Muhamad Purwadi', false)
+hr(#      ) as data1
+hr-# EXCEPT
+hr-# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (4, 'abdul', 'Abdul Rahman', false)
+hr(#      ) as data2;
+ column1 | column2  |     column3     | column4 
+---------+----------+-----------------+---------
+       3 | mpurwadi | Muhamad Purwadi | f
+       2 | myusuf   | Muhamad Yusuf   | t
+(2 rows)
+```
+
+Jika temen-temen perhatikan dari hasil query diatas, dimana hasilnya adalah nilai yang tidak terdapat pada query keduanya. Atau jika analogikan kita bisa menggunakan `select ... from ... where id NOT IN (subquery)`. Sekarang kita coba menggunakan `EXCEPT ALL` berikut querynya:
+
+{% gist page.gist "04e-select-except.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (2, 'myusuf', 'Muhamad Yusuf', true),
+hr(#              (3, 'mpurwadi', 'Muhamad Purwadi', false),
+hr(#              (3, 'mpurwadi', 'Muhamad Purwadi', false)
+hr(#      ) as data1
+hr-# EXCEPT ALL
+hr-# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (4, 'abdul', 'Abdul Rahman', false)
+hr(#      ) as data2;
+ column1 | column2  |     column3     | column4 
+---------+----------+-----------------+---------
+       3 | mpurwadi | Muhamad Purwadi | f
+       3 | mpurwadi | Muhamad Purwadi | f
+       2 | myusuf   | Muhamad Yusuf   | t
+(3 rows)
+```
