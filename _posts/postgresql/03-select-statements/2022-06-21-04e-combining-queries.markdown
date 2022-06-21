@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Combining Queries (UNION, INTERSECT, EXCEPT)"
+date: 2022-06-21T21:05:03+07:00
 lang: postgresql
 authors:
 - dimasm93
