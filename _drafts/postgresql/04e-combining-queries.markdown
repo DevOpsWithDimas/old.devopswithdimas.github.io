@@ -32,3 +32,64 @@ Dari setiap method tersebut memiliki fungsinya masing-masing, Untuk lebih jelasn
 ## Using UNION queries
 
 `UNION` effectively appends the result of **query2** to the result of **query1** (although there is no guarantee that this is the order in which the rows are actually returned). Furthermore, it eliminates duplicate rows from its result, in the same way as `DISTINCT`, unless `UNION ALL` is used.
+
+The syntax:
+
+{% highlight sql %}
+select ... from ... 
+UNION [ distinct | ALL ]
+select ... from ...
+{% endhighlight %}
+
+Berikut adalah contohnya
+
+{% gist page.gist "04e-select-union-distinct.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```sql
+hr=# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (2, 'myusuf', 'Muhamad Yusuf', true),
+hr(#              (3, 'mpurwadi', 'Muhamad Purwadi', false)
+hr(#      ) as data1
+hr-# union distinct
+hr-# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (4, 'abdul', 'Abdul Rahman', false)
+hr(#      ) as data2;
+ column1 | column2  |     column3     | column4 
+---------+----------+-----------------+---------
+       4 | abdul    | Abdul Rahman    | f
+       3 | mpurwadi | Muhamad Purwadi | f
+       2 | myusuf   | Muhamad Yusuf   | t
+       1 | dimasm93 | Dimas Maryanto  | t
+(4 rows)
+```
+
+Nah jadi klo temen-temen perhatikan dari hasil diatas, hasilnya akan dibersihkan dari nilai yang redudansi (duplicate). Klausa `UNION` by default menggunakan `DISTINCT`, jadi akan memfilter nilai yang duplicate. Jika mau menampilkan semuanya kita bisa klausa `UNION ALL` seperti berikut:
+
+{% gist page.gist "04e-select-union-all.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (2, 'myusuf', 'Muhamad Yusuf', true),
+hr(#              (3, 'mpurwadi', 'Muhamad Purwadi', false)
+hr(#      ) as data1
+hr-# union all
+hr-# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (4, 'abdul', 'Abdul Rahman', false)
+hr(#      ) as data2;
+ column1 | column2  |     column3     | column4 
+---------+----------+-----------------+---------
+       1 | dimasm93 | Dimas Maryanto  | t
+       2 | myusuf   | Muhamad Yusuf   | t
+       3 | mpurwadi | Muhamad Purwadi | f
+       1 | dimasm93 | Dimas Maryanto  | t
+       4 | abdul    | Abdul Rahman    | f
+(5 rows)
+```
