@@ -222,3 +222,61 @@ hr(#      ) as data2;
        2 | myusuf   | Muhamad Yusuf   | t
 (3 rows)
 ```
+
+## Using Combination all of them
+
+In order to calculate the union, intersection, or difference of two queries, the two queries must be “union compatible”, which means that they return the same number of columns and the corresponding columns have compatible data types
+
+Set operations can be combined:
+
+{% highlight sql %}
+query1 UNION query2 EXCEPT query3
+{% endhighlight %}
+
+which is equivalent to
+
+{% highlight sql %}
+(query1 UNION query2) EXCEPT query3
+{% endhighlight %}
+
+As shown here, you can use parentheses to control the order of evaluation. Without parentheses, `UNION` and `EXCEPT` associate left-to-right, but `INTERSECT` binds more tightly than those two operators. Thus
+
+{% highlight sql %}
+query1 UNION query2 INTERSECT query3
+{% endhighlight %}
+
+means
+
+{% highlight sql %}
+query1 UNION (query2 INTERSECT query3)
+{% endhighlight %}
+
+For examples:
+
+{% gist page.gist "04e-select-union-and-except.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (2, 'myusuf', 'Muhamad Yusuf', true),
+hr(#              (3, 'mpurwadi', 'Muhamad Purwadi', false)
+hr(#      ) as data1
+hr-# union
+hr-# distinct
+hr-# select *
+hr-# from (values (1, 'dimasm93', 'Dimas Maryanto', true),
+hr(#              (4, 'abdul', 'Abdul Rahman', false)
+hr(#      ) as data2
+hr-# except
+hr-# select *
+hr-# from (values (2, 'myusuf', 'Muhamad Yusuf', true)
+hr(#      ) as data3;
+ column1 | column2  |     column3     | column4 
+---------+----------+-----------------+---------
+       4 | abdul    | Abdul Rahman    | f
+       3 | mpurwadi | Muhamad Purwadi | f
+       1 | dimasm93 | Dimas Maryanto  | t
+(3 rows)
+```
