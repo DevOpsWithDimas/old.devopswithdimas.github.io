@@ -13,7 +13,6 @@ refs:
 - https://git-scm.com/book/en/v2/Getting-Started-A-Short-History-of-Git
 - https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F
 - https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line
-- 
 youtube: 
 comments: true
 catalog_key: introduction
