@@ -19,8 +19,20 @@ catalog_key: select-statement
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas tentang Common Table Expression yaitu menggunakan `WITH` Queries pada PostgreSQL. 
 
-description...
+The `WITH` query provides a way to write auxiliary statements for use in a larger query. It helps in breaking down complicated and large queries into simpler forms, which are easily readable. These statements often referred to as Common Table Expressions or CTEs, can be thought of as defining temporary tables that exist just for one query.
+
+Each auxiliary statement in a `WITH` clause can be a `SELECT`, `INSERT`, `UPDATE`, or `DELETE`; and the `WITH` clause itself is attached to a primary statement that can also be a `SELECT`, `INSERT`, `UPDATE`, or `DELETE`. Untuk pembahasan kali ini karena akan lumayan panjang jadi kita akan bagi-bagi menjadi beberapa bagian diataranya:
+
+1. Select in WITH
+2. More Advanced Select in WITH
+3. Recursive Queries
+4. Search order
+5. Cycle Detection
+6. Common Table Expression Materialization
+
+Ok langsung aja kita bahas materi yang pertama
 
 <!--more-->
 
