@@ -1,5 +1,42 @@
+- cource: gitlab
+  catalog: introduction
+  date: 2022-09-25T18:29:00+07:00
+  duration: "2jam"
+  tier: "free"
+  youtube: 
+  thumbnail:
+  visible: false
+  markers: |
+    Introduction
+    Overview Version Control with Git
+    Git Command
+    Branching & Merging
+    Tagging
+    Working with Remote repository
+    Patching
+    Submodules
+    Dashboard / GUI
+
+- cource: postgresql
+  catalog: dml-statement
+  date: 2022-08-25T18:29:00+07:00
+  duration: "3jam"
+  tier: "free"
+  youtube: 
+  thumbnail:
+  visible: false
+  markers: |
+    Introduction
+    Overview Data Manipulation
+    Insert Statements
+    Update Statements
+    Delete Statements
+    Transaction
+    Locking
+    Performance Tips
+
 - cource: k8s
-  catalog: workloads
+  catalog: pod-container
   date: 2022-07-26T18:29:00+07:00
   duration: "5jam"
   tier: "free"

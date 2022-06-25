@@ -748,7 +748,7 @@
       messages: ''
     - name: SQL - Data manipulation
       key: dml-statement
-      description: ''
+      description: 'Eps. 4: Data Manipulation'
       messages: ''
     - name: SQL - Data definition (Tables)
       key: ddl-statement-table
