@@ -4,8 +4,6 @@ title: "Promo"
 permalink: /pages/promo.html
 icon: grade
 ---
-
-{% assign topics = site.data.roadmap %}
 <link rel="stylesheet" type="text/css" href="{{ "/assets/timeline.css" | prepend: site.baseurl }}" />
 
 <div class="section white">
@@ -15,6 +13,137 @@ icon: grade
     </div>
 </div>
 
-<div class="container">
-  <h3>Under construction!</h3>
+{% assign pages_list = site.data.topics | where: 'visible', true | where_exp:"item", "item.udemy"  | sort:"publish" %}
+{% assign pages_list_count = pages_list.size %}
+<div id="cources" class="section white">
+  <div class="row container">
+      <div class="row">
+          <ul class="list">
+              {% assign topics = pages_list | sort:"publish" | reverse %}
+              {% for topic in topics %}
+              <li data-topic="{{ topic.name }}">
+                  {% assign post_list = site.posts | where: "lang", topic.url | sort:"date" %}
+                  {% assign a_last_post =  post_list.last %}
+                  <div class="col l12">
+                      <div class="card small horizontal hoverable">
+                          <div class="card-image">
+                              <img class="activator responsive-img" 
+                                  src="{{ "/resources/cources/banners/" | prepend: site.baseurl}}{{topic.url}}.png">
+                          </div>
+                          {% if topic.udemy %}
+                          <a target="_blank" 
+                              href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}"
+                              class="btn-floating halfway-fab btn-large waves-effect tooltipped waves-light red accent-1"
+                              data-position="bottom"                            
+                              data-delay="50" 
+                              data-tooltip="Become a Premium Members">
+                              <i class="material-icons white-text">shopping_cart</i>
+                          </a>
+                          {% endif %}
+                          <div class="card-stacked">
+                              <div class="card-content activator">
+                                  <div class="row">
+                                    <span class="field-name flow-text">
+                                        {{topic.name}}
+                                    </span>
+                                  </div>
+
+                                  <div class="row hide-on-small-only">
+                                      <p>
+                                          {{ topic.descriptions }}
+                                      </p>
+                                  </div>                                  
+                              </div>
+                              <div class="card-action">
+                                <div class="row">
+                                  <div class="col s12 m8">
+                                    <div class="row">
+                                      {% if topic.udemy.couponCode %}
+                                      <div class="col s12 m8">
+                                        CouponCode: <br>
+                                        <code><mark>{{ topic.udemy.couponCode }}</mark></code>
+                                      </div>
+                                      {% endif %}
+                                      {% if topic.udemy.expired %}
+                                      <div class="col s12 m4">
+                                        Expired: <br>
+                                        <code><mark>{{ topic.udemy.expired }}</mark></code>
+                                      </div>
+                                      {% endif %}
+                                    </div>
+                                  </div>
+                                  <div class="col s12 m4">
+                                    <div class="right-align">
+                                      {% if topic.udemy.discount %}
+                                      <del class="gray-text">{{ topic.udemy.price }}</del>
+                                      <span class="flow-text">{{ topic.udemy.discount }}</span>
+                                      {% elsif topic.udemy.price %}
+                                      <span class="flow-text">{{ topic.udemy.price }}</span>
+                                      {% else %}
+                                      <span class="flow-text">Gratis</span>
+                                      {% endif %}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="card-reveal">
+                              <!-- title of card reveal -->
+                              <span class="card-title grey-text text-darken-4">
+                                  {% if topic.fullname %} {{ topic.fullname }} {% else %} {{topic.name}} {% endif %}
+                                  <i class="material-icons right">close</i>
+                              </span>
+                              <div class="row">
+                                  <!-- message card revel -->
+                                  {% if topic.messages %}
+                                  <p>{{topic.messages}}</p>
+                                  {% elsif topic.descriptions %}
+                                  <p>{{ topic.descriptions }}</p>
+                                  {% else %}
+                                  <p>Belum ada deskripsi...</p>
+                                  {% endif %}
+                              </div>
+                              <div class="row">
+                                  {% if a_last_post.date %}
+                                  Last updated: 
+                                  <code>{{ a_last_post.date | date: "%-d %B %Y" }}</code>
+                                  {% endif %}
+                              </div>
+                              <div class="row">
+                                  {% if topic.catalogs %}
+                                  <br>
+                                  Total Materi: <code>{{ post_list.size }}</code>
+                                  <br>
+                                  <ul class="collection  with-header">
+                                      <li class="collection-header">
+                                          <span class="badge blue new">{{ topic.catalogs.size }}</span>
+                                          <h5>Kurikulum:</h5>
+                                      </li>
+                                      {% for catalog in topic.catalogs %}
+                                      {% assign catalogName = catalog.name | prepend: '. ' | prepend: forloop.index %}
+                                      <li class="collection-item">{{ catalogName }}</li>
+                                      {% endfor %}
+                                  </ul>
+                                  {% endif %}
+                              </div>
+                              <div class="row">
+                                  <!-- tags -->
+                                  {% for tag in topic.tags %}
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">{{tag}}</span>
+                                  </div>
+                                  {% endfor %}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+              {% endfor %}
+          </ul>
+      </div>
+      <div class="row">
+          <ul class="pagination"></ul>
+      </div>
+  </div>
 </div>
+
