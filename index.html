@@ -29,6 +29,24 @@ layout: default
         <br>
     
         <div class="row">
+            <nav>
+                <div class="nav-wrapper blue">
+                    <div class="col s12">
+                        <a href="#!" class="breadcrumb"><i class="large material-icons">star</i></a>
+                        <a class="breadcrumb"
+                            href="{{ '/pages/courses.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
+                            Cources
+                        </a>
+                        <a class="breadcrumb"
+                            href="{{ '/pages/promo.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
+                            View special discount...
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="row">
             {% assign topics = pages_list | where: 'visible', true | where: 'coming_soon', false | sort:"publish" | reverse  %}
             {% for topic in topics limit:4 %}
             {% assign post_list = site.posts | where: "lang", topic.url | sort:"date" %}
@@ -120,11 +138,6 @@ layout: default
                 </div>
             </div>
             {% endfor %}
-            <div class="col s12" >
-                <a class="btn waves-effect waves-light blue darken-4" href="{{ '/pages/courses.html' | prepend: site.baseurl }}" rel="noopener noreferrer">
-                    View more courses...
-                </a>
-            </div>
         </div>
     </div>
 </div>
