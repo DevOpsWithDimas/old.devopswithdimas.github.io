@@ -19,17 +19,19 @@ youtube: h9QjB61FwKU
     </div>
 </div>
 
+<div class="row"><br></div>
+
 <div class="section white">
-    <div class="row container">
-        <h2 class="header">Belajar Sekarang!</h2>
+    <div class="row">
         <div id="bg_start_learning" class="col s12 m6">
             {% include youtubePlayer.html id=page.youtube %}
         </div>
         <div class="col s12 m6">
-            <p class="grey-text text-darken-3 lighten-3">
+            <h2 class="header">Belajar Sekarang!</h2>
+            <p class="flow-text">
                 Hundreds of YouTube videos! Thousands of tutorial blog posts!
             </p>
-            <p>
+            <p class="flow-text grey-text text-darken-1 ">
                 Watching video tutorials is just the beginning. Get hands-on assignments with course videos that allow you to actually apply and implement what is being taught in the course material. This is active learning!
     
                 the key is <b>Watch. Learn. Do. Learn.</b>
@@ -43,8 +45,30 @@ youtube: h9QjB61FwKU
             </div>
         </div>
     </div>
+    <br>
+    <div class="row">
+        <div class="col s12 m6">
+            <h2 class="header">Your Learning Roadmap</h2>
+            <p class="flow-text">
+                A to Z to Rockstar Developer
+            </p>
+            <p class="flow-text grey-text text-darken-1">
+                Wouldn't it be nice if someone gave you a <b>full and clear path</b> to go from where you are to being a kickass developer? How about if every step of the way <b>had clear, detailed and job-oriented</b> online courses? How about if those courses also came with <b>hands-on assignments</b> that you can use to practice and develop confidence? You've come to the right place!
+            </p>
+            <div class="text-right">
+                <a id="btn-roadmap" class="waves-effect waves-light btn red accent-2" 
+                href="{{ '/pages/roadmap.html' | prepend: site.baseurl }}" 
+                rel="noopener noreferrer">
+                    Show me...
+                </a>
+            </div>
+        </div>
+        <div id="bg_roadmap" class="col s12 m6">
+            <img class="responsive-img" src="{{ 'resources/pictures/roadmap.webp' | prepend: site.baseurl }}" alt="" srcset="">
+        </div>
+    </div>
 </div>
-
+<br>
 <div class="parallax-container">
     <div class="parallax"><img src="{{ 'resources/pictures/start-coding.jpg' | prepend: site.baseurl }}">
     </div>
