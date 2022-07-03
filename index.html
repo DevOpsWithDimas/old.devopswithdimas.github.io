@@ -1,6 +1,9 @@
 ---
 layout: default
+youtube: h9QjB61FwKU
 ---
+
+<script src="{{ "/index.css" | prepend: site.baseurl }}"></script>
 
 {% assign pages_list = site.data.topics | sort:"publish" %}
 {% assign post_list_size = site.posts | size %}
@@ -10,6 +13,42 @@ layout: default
         $('#collapsibleNews').collapsible('open', 0);        
     })
 </script>
+
+<div class="parallax-container">
+    <div class="parallax"><img src="{{ 'resources/pictures/welcome-pages.jpg' | prepend: site.baseurl }}">
+    </div>
+</div>
+
+<div class="section white">
+    <div class="row container">
+        <h2 class="header">Belajar Sekarang!</h2>
+        <div id="bg_start_learning" class="col s12 m6">
+            {% include youtubePlayer.html id=page.youtube %}
+        </div>
+        <div class="col s12 m6">
+            <p class="grey-text text-darken-3 lighten-3">
+                Hundreds of YouTube videos! Thousands of tutorial blog posts!
+            </p>
+            <p>
+                Watching video tutorials is just the beginning. Get hands-on assignments with course videos that allow you to actually apply and implement what is being taught in the course material. This is active learning!
+    
+                the key is <b>Watch. Learn. Do. Learn.</b>
+            </p>
+            <div class="text-right">
+                <a id="btn-start-learning" class="waves-effect waves-light btn red accent-2" 
+                href="{{ '/pages/courses.html' | prepend: site.baseurl }}" 
+                rel="noopener noreferrer">
+                    Yuk mulai...
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="parallax-container">
+    <div class="parallax"><img src="{{ 'resources/pictures/start-coding.jpg' | prepend: site.baseurl }}">
+    </div>
+</div>
 
 <div class="section white">
     <div class="row container">
