@@ -29,7 +29,7 @@ layout: default
         <br>
     
         <div class="row">
-            {% assign topics = pages_list | where: 'visible', true | where_exp:"item", "item.udemy" | sort:"publish" | reverse  %}
+            {% assign topics = pages_list | where: 'visible', true | where: 'coming_soon', false | sort:"publish" | reverse  %}
             {% for topic in topics limit:4 %}
             {% assign post_list = site.posts | where: "lang", topic.url | sort:"date" %}
             {% assign a_post =  post_list.first %}
@@ -74,34 +74,11 @@ layout: default
                                     {% endif %}                            
                                 </span>
                             </div>
-                            {% if topic.udemy %}
                             <div class="row">
-                                {% if topic.udemy.couponCode %}
-                                <div>
-                                    CouponCode: <br>
-                                    <code><mark>{{ topic.udemy.couponCode }}</mark></code>
-                                </div>
-                                {% endif %}                                
+                                <p class="activator">
+                                    {{ topic.descriptions }}
+                                </p>
                             </div>
-                            {% endif %}
-                        </div>
-                        <div class="card-action right-align">                            
-                            {% if topic.udemy %}
-                            <div class="row">
-                                <div class="col m12 l6">
-                                    <div class="right-align">
-                                        {% if topic.udemy.discount %}
-                                        <del class="gray-text">{{ topic.udemy.price }}</del>
-                                        <span class="flow-text">{{ topic.udemy.discount }}</span>
-                                        {% elsif topic.udemy.price %}
-                                        <span class="flow-text">{{ topic.udemy.price }}</span>
-                                        {% else %}
-                                        <span class="flow-text">Gratis</span>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                            {% endif %}
                         </div>
                     </div>
                     {% if topic.coming_soon == false %}
