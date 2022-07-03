@@ -21,16 +21,19 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Hai semuanya, di materi kali ini kita akan membahas tentang Version Control menggunakan salah satu yang paling popular yaitu Git Source Code Management (SCM). Sebelum kita memulai menggunakan Git Version Control kita akan bahas dulu tentang Version Control itu sendiri Diantaranya:
 
-description...
+1. What is Version Control?
+2. Local VCS (Version Control System)
+3. Centralized VCS (Version Control System)
+4. Distribute VCS (Version Control System)
+5. What is Git SCM?
+6. A Short history of Git
+7. Git application
+
+Ok tanpa berlama-lama langsung aja kita bahas materi yang pertama
 
 <!--more-->
 
-Materi: 
+## What is Version Control System?
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
