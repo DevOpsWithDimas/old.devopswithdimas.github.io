@@ -1,0 +1,92 @@
+---
+layout: post
+title: "Silabus IaC - Ansible: Pemula sampai Mahir"
+date: 2022-07-06T04:47:42+07:00
+lang: ansible
+authors:
+- dimasm93
+categories:
+- DevOps
+- IaC
+- Ansible
+refs: 
+- https://docs.ansible.com/ansible-core/devel/index.html
+youtube: 
+comments: true
+catalog_key: introduction
+image_path: /resources/posts//00-silabus
+gist: dimMaryanto93/ab4bbfd903a7ae297349960787a45ff4
+downloads: []
+---
+
+Hai semuanya, di cource ini `IaC - Ansible: Pemula sampai Mahir` kita akan mengupas tuntas mengenai salah satu teknologi untuk IT Automation yang sangat popular sekali yaitu [RedHad Ansible](https://www.ansible.com).
+
+Materi yang di bahas mencakup, beberapa kategori. Mulai dari pemula sampai mahir (advanced) yaitu
+
+<!--more-->
+
+## Pengenalan Ansible
+
+1. Apa itu IT Automation?
+2. Tool apa yang berguna untuk IT Automation?
+3. Apa itu RedHat Ansible?
+4. Getting started with Ansible
+5. Install and Configuring Ansible
+6. Introduction to ad hoc commands
+
+## Pengenalan Ansible Playbook
+
+1. Playbook syntax
+2. Playbook execution
+3. Working with playbook
+    1. Templating (jinja2)
+    2. Advanced playbook features
+    3. Playbook study cases
+4. Undestanding privilages escalation: become
+5. Loops & Conditional
+6. Tests
+7. Blocks
+8. Handlers
+9. Error handling in playbooks
+10. Setting the remote environment
+
+## Pengenalan Ansible Roles
+
+1. Role directory structure
+2. Storing and finding roles
+3. Using roles
+4. Runing a role multiple time in one play
+5. Using role dependencies
+6. Embedding module and plugins in roles
+7. Sharing roles: Ansible Galaxy
+
+## Working with Inventory
+
+1. What is Inventory?
+2. Inventory basic: format, hosts, groups
+3. Adding variables to inventory
+4. Organization host and group variables
+5. Inventory scripts
+6. Dynamic inventory
+7. Static inventory
+8. Connection method and details
+
+## Working with Modules & Plugins
+
+1. What is Modules?
+2. Module Maintanances and Support
+3. What is Plugins?
+4. Using Module and Plugins
+
+## Using Collections
+
+1. Installing collection
+2. Using collection in a Playbooks
+
+## Study Kasus
+
+1. Ansible for Developer
+2. Ansible for DevOps
+3. Ansible for Network Engineer
+
+Selain itu juga masih banyak lagi yang akan kita bahas di cource ini, Ok mungkin sekian dulu yang bisa saya sampaikan terkati Silabus Belajar IT Automation Infrastructure As a Code menggunakan RedHat Ansible untuk Pemula sampai Mahir. Sampai jumpa di kelas!!
