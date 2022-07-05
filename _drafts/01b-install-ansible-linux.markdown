@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01b-install-ansible-linux"
+title: "Install and Configure Ansible on Linux"
 lang: ansible
 authors:
 - dimasm93
@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts//01b-install-ansible-linux
+image_path: /resources/posts/ansible/01b-install-ansible-linux
 gist: dimMaryanto93/ab4bbfd903a7ae297349960787a45ff4
 downloads: []
 ---

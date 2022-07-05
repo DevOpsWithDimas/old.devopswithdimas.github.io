@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01c-install-ansible-windows"
+title: "Install and Configure Ansible on Windows 10/11"
 lang: ansible
 authors:
 - dimasm93
@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts//01c-install-ansible-windows
+image_path: /resources/posts/ansible/01c-install-ansible-windows
 gist: dimMaryanto93/ab4bbfd903a7ae297349960787a45ff4
 downloads: []
 ---

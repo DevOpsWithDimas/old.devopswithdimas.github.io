@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts//01a-what-is-ansible
+image_path: /resources/posts/ansible/01a-what-is-ansible
 gist: dimMaryanto93/ab4bbfd903a7ae297349960787a45ff4
 downloads: []
 ---

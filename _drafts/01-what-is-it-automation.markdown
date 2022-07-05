@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts//01-what-is-it-automation
+image_path: /resources/posts/ansible/01-what-is-it-automation
 gist: dimMaryanto93/ab4bbfd903a7ae297349960787a45ff4
 downloads: []
 ---
