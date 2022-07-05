@@ -87,5 +87,6 @@ Materi yang di bahas mencakup, beberapa kategori. Mulai dari pemula sampai mahir
 
 1. Ansible for Developer
 2. Ansible for DevOps
+3. Ansible for Database Administrator
 
 Selain itu juga masih banyak lagi yang akan kita bahas di cource ini, Ok mungkin sekian dulu yang bisa saya sampaikan terkati Silabus Belajar IT Automation Infrastructure As a Code menggunakan RedHat Ansible untuk Pemula sampai Mahir. Sampai jumpa di kelas!!
