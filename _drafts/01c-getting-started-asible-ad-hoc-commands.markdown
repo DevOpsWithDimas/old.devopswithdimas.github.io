@@ -1,6 +1,6 @@
 ---
-layout: {{ layout }}
-title: "{{ title }}"
+layout: post
+title: "01c-getting-started-asible-ad-hoc-commands"
 lang: ansible
 authors:
 - dimasm93
@@ -10,13 +10,14 @@ categories:
 - Ansible
 refs: 
 - https://docs.ansible.com/ansible-core/devel/index.html
-youtube: {{ youtube }}
+youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts/ansible/{{ title }}
+image_path: /resources/posts//01c-getting-started-asible-ad-hoc-commands
 gist: dimMaryanto93/ab4bbfd903a7ae297349960787a45ff4
 downloads: []
 ---
+
 
 description...
 
