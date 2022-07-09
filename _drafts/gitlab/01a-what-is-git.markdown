@@ -25,13 +25,10 @@ Hai semuanya, setelah kita membahas tentang Apa itu Version Control sekarang kit
 3. How to work with Git?
 4. Short history of Git
 
+Yukk langsung aja kita bahas satu-per-satu:
+
 <!--more-->
 
-Materi: 
+## What is Git SCM?
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+So, what is Git? This is an important section to absorb, because if you understand what Git is and the fundamentals of how it works, then using Git effectively will probably be much easier for you. As you learn Git, try to clear your mind of the things you may know about other VCSs, such as CVS, Subversion or Perforce — doing so will help you avoid subtle confusion when using the tool. Even though Git’s user interface is fairly similar to these other VCSs, Git stores and thinks about information in a very different way, and understanding these differences will help you avoid becoming confused while using it.

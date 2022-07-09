@@ -185,7 +185,7 @@
     url: https://www.udemy.com/course/hibernate-orm-bahasa-indonesia/
     price: Rp280.000,-
     discount: Rp99.000,-
-    couponCode: GAJIAN_JUNI_2022
+    couponCode: KURBAN_2022
     referralCode: 8DA27E06BF0BA6935CCC
     expired: 30/06/2022
   coming_soon: false
@@ -262,7 +262,7 @@
     url: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
     price: Rp350.000,-
     discount: Rp99.000,-
-    couponCode: GAJIAN_JUNI_2022
+    couponCode: KURBAN_2022
     referralCode: D1F375D96C53FC20DB42
     expired: 30/06/2022
   coming_soon: false
@@ -354,7 +354,7 @@
     url: https://www.udemy.com/course/docker-pemula-sampai-mahir/
     price: Rp560.000,-
     discount: Rp99.000,-
-    couponCode: GAJIAN_JUNI_2022
+    couponCode: KURBAN_2022
     referralCode: 8D13D85D4D34027B76BE
     expired: 30/06/2022
   coming_soon: false
@@ -462,7 +462,7 @@
     url: https://www.udemy.com/course/devops-kubernetes-pemula-sampai-mahir/
     price: Rp280.000,-
     discount: Rp99.000,-
-    couponCode: GAJIAN_JUNI_2022
+    couponCode: KURBAN_2022
     referralCode: 58BDCE6103ADC4C9C11D
     expired: 30/06/2022
   coming_soon: false
@@ -729,7 +729,7 @@
     url: https://www.udemy.com/course/dba-postgresql-pemula-sampai-mahir/
     price: Rp.280.000,-
     discount: Rp.99.000,-
-    couponCode: GAJIAN_JUNI_2022
+    couponCode: KURBAN_2022
     referralCode: 8080BE598C39D7652D33
     expired: 30/06/2022
   coming_soon: false
