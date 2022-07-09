@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01a-what-is-git"
+title: "What is Git SCM"
 lang: gitlab
 authors:
 - dimasm93
@@ -9,7 +9,7 @@ categories:
 - gitops
 - gitlab
 refs: 
-- https://git-scm.com/doc
+- https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F
 youtube: 
 comments: true
 catalog_key: introduction
