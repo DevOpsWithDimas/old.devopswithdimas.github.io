@@ -66,6 +66,6 @@ However, this setup also has some serious downsides. The most obvious is the sin
 
 This is where Distributed Version Control Systems (DVCSs) step in. In a DVCS (such as [Git](https://git-scm.com), [Mercurial](https://www.mercurial-scm.org), [Bazaar](https://bazaar.canonical.com/en/) or [http://darcs.net]), clients don’t just check out the latest snapshot of the files; rather, they fully mirror the repository, including its full history. Thus, if any server dies, and these systems were collaborating via that server, any of the client repositories can be copied back up to the server to restore it. Every clone is really a full backup of all the data.
 
-![distributed version control]({{ page.image_path | prepend: site.baseurl }}/03-distributed-version-control)
+![distributed version control]({{ page.image_path | prepend: site.baseurl }}/03-distributed-version-control.png)
 
 Furthermore, many of these systems deal pretty well with having several remote repositories they can work with, so you can collaborate with different groups of people in different ways simultaneously within the same project. This allows you to set up several types of workflows that aren’t possible in centralized systems, such as hierarchical models.
