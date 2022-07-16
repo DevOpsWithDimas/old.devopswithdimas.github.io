@@ -154,3 +154,7 @@ Setelah itu kita include ke profile dengan menjalankan perintah `notepad $profil
 Import-Module posh-git
 oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\robbyrussel.omp.json | Invoke-Expression
 {% endhighlight %}
+
+Maka hasil looknya sekarang seperti berikut:
+
+![windows theme oh-my-posh]({{ page.image_path | prepend: site.baseurl }}/19-windows-terminal-git.png)
