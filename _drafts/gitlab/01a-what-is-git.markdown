@@ -22,8 +22,8 @@ Hai semuanya, setelah kita membahas tentang Apa itu Version Control sekarang kit
 
 1. Apa itu Git SCM?
 2. How to work with Git?
-3. Why we used Git SCM?
-4. Short history of Git
+3. Short history of Git
+4. Getting started - The command line
 
 Yukk langsung aja kita bahas satu-per-satu:
 
@@ -55,5 +55,25 @@ Secara workflow dengan menggunakan git version control hampir semua workflow bis
 4. **State of git**, the main thing to remember about Git if you want the rest of your learning process to go smoothly. Git has three main states that your files can reside in: **modified**, **staged**, and **committed**. This leads us to the three main sections of a Git project: the working tree, the staging area, and the Git directory.
     ![state of git]({{ page.image_path | prepend: site.baseurl }}/03-state-of-git.png)
 
-## Why we used Git SCM?
+## Short history of Git
 
+As with many great things in life, Git began with a bit of creative destruction and fiery controversy.
+
+The Linux kernel is an open source software project of fairly large scope. During the early years of the Linux kernel maintenance (1991–2002), changes to the software were passed around as patches and archived files. In 2002, the Linux kernel project began using a proprietary DVCS called BitKeeper.
+
+In 2005, the relationship between the community that developed the Linux kernel and the commercial company that developed BitKeeper broke down, and the tool’s free-of-charge status was revoked. This prompted the Linux development community (and in particular Linus Torvalds, the creator of Linux) to develop their own tool based on some of the lessons they learned while using BitKeeper. Some of the goals of the new system were as follows:
+
+1. Speed
+2. Simple design
+3. Strong support for non-linear development (thousands of parallel branches)
+4. Fully distributed
+
+Able to handle large projects like the Linux kernel efficiently (speed and data size)
+
+Since its birth in 2005, Git has evolved and matured to be easy to use and yet retain these initial qualities. It’s amazingly fast, it’s very efficient with large projects, and it has an incredible branching system for non-linear development (Git Branching).
+
+## Getting started - The command line
+
+There are a lot of different ways to use Git. There are the original command-line tools, and there are many graphical user interfaces of varying capabilities. We will be using Git on the command line. For one, the command line is the only place you can run all Git commands — most of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available.
+
+So we will expect you to know how to open Terminal in macOS or Command Prompt or PowerShell in Windows. If you don’t know what we’re talking about here, no problem we will teach you from begining.
