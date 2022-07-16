@@ -12,6 +12,7 @@ refs:
 - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 - https://git-scm.com/download/mac
 - https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
+- https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 youtube: 
 comments: true
 catalog_key: introduction
@@ -107,3 +108,65 @@ brew install vim tmux curl wget
 {% endhighlight %}
 
 ## Git initialization config
+
+Setelah kita setup terminal / commandline tools untuk berinteraksi dengan Git, Sebelum mulai ada beberapa hal yang perlu kita setting/config pada internal git seperti
+
+1. Setup your identity (username & email)
+2. Setup default editor
+3. Setup default branch pada git
+4. Setup generate ssh key untuk ssh-connection to git repository
+
+Git comes with a tool called `git config` that lets you get and set configuration variables that control all aspects of how Git looks and operates. These variables can be stored in three different places:
+
+1. `[path]/etc/gitconfig` file: Contains values applied to every user on the system and all their repositories. If you pass the option `--system` to `git config`, it reads and writes from this file specifically. Because this is a system configuration file, you would need administrative or superuser privilege to make changes to it.
+2. `~/.gitconfig` or `~/.config/git/config` file: Values specific personally to you, the user. You can make Git read and write to this file specifically by passing the `--global` option, and this affects all of the repositories you work with on your system.
+3. `config` file in the Git directory (that is, `.git/config`) of whatever repository you’re currently using: Specific to that single repository. You can force Git to read from and write to this file with the `--local option`, but that is in fact the default. Unsurprisingly, you need to be located somewhere in a Git repository for this option to work properly.
+
+{% highlight bash %}
+# set your username & email
+git config --global user.name "dimasm93"
+git config --global user.email "software.dimas_m@icloud.com"
+
+# set your default editor
+git config --global core.editor vim
+
+# set default branch name is main
+git config --global init.defaultBranch main
+
+# check all config
+git config --list
+{% endhighlight %}
+
+Dan kemudian yang terakhir, kita akan setup untuk generate ssh key jika kita mau menggunakan ssh connection ke git repository seperti GitHub, Gitlab, Bitbucket atau hosted repository lainnya dengan cara seperti berikut:
+
+{% highlight bash %}
+ssh-keygen -t ed25519 -C "your_email@example.com"
+{% endhighlight %}
+
+This creates a new SSH key, using the provided email as a label. 
+
+1. When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
+2. At the prompt, type a secure passphrase.
+3. Adding your SSH key to the ssh-agent
+4. Add your SSH private key to the ssh-agent and store your passphrase in the keychain.
+
+{% highlight bash %}
+eval "$(ssh-agent -s)"
+{% endhighlight %}
+
+If you're using macOS Sierra 10.12.2 or later, you will need to modify your `~/.ssh/config` file to automatically load keys into the ssh-agent and store passphrases in your keychain. Open your `~/.ssh/config` file, then modify the file to contain the following lines. If your SSH key file has a different name or path than the example code, modify the filename or path to match your current setup.
+
+{% highlight config %}
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+{% endhighlight %}
+
+Then save and exit, after that Add your SSH private key to the ssh-agent
+
+{% highlight bash %}
+ssh-add -K ~/.ssh/id_ed25519
+{% endhighlight %}
+
+And finaly you can add public key to git repository, But i will do it later on next capter.
