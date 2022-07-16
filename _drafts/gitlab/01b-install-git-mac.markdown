@@ -19,8 +19,11 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Hai semuanya, sebelum kita hand-on menggunakan Git SCM kita harus siapkan dulu environment di MacOS seperti:
 
-description...
+1. Installasi Git SCM
+2. Setup Terminal
+3. Git initialization config
 
 <!--more-->
 
