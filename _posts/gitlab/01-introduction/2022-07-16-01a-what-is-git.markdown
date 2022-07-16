@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "What is Git SCM"
+date: 2022-07-16T10:42:04+07:00
 lang: gitlab
 authors:
 - dimasm93
