@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "How to Install git on Windows"
+date: 2022-07-16T15:32:36+07:00
 lang: gitlab
 authors:
 - dimasm93
