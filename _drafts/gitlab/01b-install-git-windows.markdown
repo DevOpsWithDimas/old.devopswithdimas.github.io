@@ -110,4 +110,47 @@ git -v
 
 Maka hasilnya seperti berikut:
 
-![git installed]({{ page.image_path | prepend: site.baseurl }}/17-git-windows-terminal.png)
+![git installed]({{ page.image_path | prepend: site.baseurl }}/17-git-powershell.png)
+
+## Setup Terminal / Powershell
+
+Setelah kita menginstall Git di local machine kita, sebelum kita menggunakan Git kita akan setup dulu commandline / terminal supaya lebih nyaman dan menyenangkan menggunakannya. Adapun yang perlu kita lakukan adalah:
+
+1. Setup terminal application
+2. Setup [oh-my-posh](https://ohmyposh.dev)
+
+Ok, untuk terminal di Windows operation system terdiri dari `cmd`, dan Powershell. Temen-temen boleh bebas pilih kalau saya sendiri lebih sering menggunakan Powershell karena secara perintah lebih mirip UNIX dibandingkan cmd yang pure perintah windows. Untuk Powershell editor sendiri saya biasanya menggunakan [Windows Terminal](https://github.com/microsoft/terminal)
+
+By default Windows Terminal build-in with Windows 11 but in Windows 10 or above you can download from Windows Store. look like:
+
+![windows terminal]({{ page.image_path | prepend: site.baseurl }}/17-git-windows-terminal.png)
+
+Windows Terminal is a new, modern, feature-rich, productive terminal application for command-line users. It includes many of the features most frequently requested by the Windows command-line community including support for tabs, rich text, globalization, configurability, theming & styling, and more.
+
+Sebelum kita setup Windows Terminalnya, kita perlu aktifkan dulu developer mode dan execute any command from powershell seperti berikut:
+
+![windows-dev-mode]({{ page.image_path | prepend: site.baseurl }}/18-developer-mode.png)
+
+Buka Powershell as Adminstrator, jalankan perintah berikut:
+
+{% highlight powershell %}
+Set-ExecutionPolicy RemoteSigned | `
+Set-ExecutionPolicy Restricted
+{% endhighlight %}
+
+Kemudian restart, setelah restart buka kembali Powershell as normal user, kita akan memasang plugin dan theme tersebut dengan perintah seperti berikut:
+
+{% highlight powershell %}
+# install git plugin
+Install-Module posh-git -Scope CurrentUser
+
+# install oh-my-posh
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
+{% endhighlight %}
+
+Setelah itu kita include ke profile dengan menjalankan perintah `notepad $profile` kemudian masukan script berikut ke notepad:
+
+{% highlight config %}
+Import-Module posh-git
+oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\robbyrussel.omp.json | Invoke-Expression
+{% endhighlight %}
