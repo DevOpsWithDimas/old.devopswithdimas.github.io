@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "How to Install git on MacOS"
+date: 2022-07-16T13:08:14+07:00
 lang: gitlab
 authors:
 - dimasm93
