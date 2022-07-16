@@ -44,3 +44,16 @@ Git doesn’t think of or store its data this way. Instead, **Git thinks of its 
 This is an important distinction between Git and nearly all other VCSs. It makes Git reconsider almost every aspect of version control that most other systems copied from the previous generation. This makes Git more like a mini filesystem with some incredibly powerful tools built on top of it, rather than simply a VCS. We’ll explore some of the benefits you gain by thinking of your data this way when we cover Git branching in Git Branching.
 
 ## How to work with Git?
+
+Dengan menggunakan Git SCM, kita bisa menggunakan beberapa workflow yaitu Working in local and collaboration baik sifatnya public maupun internal. Contohnya Saya adalah seorang developer/programmer yang sedang mengerjakan project web aplikasi, saya hanya membutuhkan git engine saja di local PC/Laptop saya karena dengan Git hampir semua operation di lakukan di local. Dan ketika saya memiliki team untuk berkolaborasi dalam project tersebut kita bisa menggunakan distributed hosting Git Repository yang tersedia secara public ataupun self hosting. 
+
+Secara workflow dengan menggunakan git version control hampir semua workflow bisa dilakukan seperti pada contoh kasus diatas. Ok sekarang mungkin kita bahas Feature apa saja yang bisa di lakukan oleh Git:
+
+1. **Nearly every operation is Local**, Most operations in Git need only local files and resources to operate. generally no information is needed from another computer on your network. If you’re used to a CVCS where most operations have that network latency overhead, this aspect of Git will make you think that the gods of speed have blessed Git with unworldly powers. Because you have the entire history of the project right there on your local disk, most operations seem almost instantaneous.
+2. **Git has Integrity**, Everything in Git is checksummed before it is stored and is then referred to by that checksum. This means it’s impossible to change the contents of any file or directory without Git knowing about it. This functionality is built into Git at the lowest levels and is integral to its philosophy. You can’t lose information in transit or get file corruption without Git being able to detect it.
+3. **Git generaly only add data**, When you do actions in Git, nearly all of them only add data to the Git database. It is hard to get the system to do anything that is not undoable or to make it erase data in any way. As with any VCS, you can lose or mess up changes you haven’t committed yet, but after you commit a snapshot into Git, it is very difficult to lose, especially if you regularly push your database to another repository.
+4. **State of git**, the main thing to remember about Git if you want the rest of your learning process to go smoothly. Git has three main states that your files can reside in: **modified**, **staged**, and **committed**. This leads us to the three main sections of a Git project: the working tree, the staging area, and the Git directory.
+    ![state of git]({{ page.image_path | prepend: site.baseurl }}/03-state-of-git.png)
+
+## Why we used Git SCM?
+
