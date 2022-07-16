@@ -11,6 +11,7 @@ categories:
 refs: 
 - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 - https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
+- https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 youtube: 
 comments: true
 catalog_key: introduction
@@ -158,3 +159,49 @@ oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\robbyrussel.omp.json | Invok
 Maka hasil looknya sekarang seperti berikut:
 
 ![windows theme oh-my-posh]({{ page.image_path | prepend: site.baseurl }}/19-windows-terminal-git.png)
+
+## Git initialization config
+
+Setelah kita setup terminal / commandline tools untuk berinteraksi dengan Git, Sebelum mulai ada beberapa hal yang perlu kita setting/config pada internal git seperti
+
+1. Setup your identity (username & email)
+2. Setup generate ssh key untuk ssh-connection to git repository
+
+Git comes with a tool called git config that lets you get and set configuration variables that control all aspects of how Git looks and operates. These variables can be stored in three different places:
+
+1. `[path]/etc/gitconfig`, 
+2. `~/.gitconfig` or `~/.config/git/config` file
+3. `config` file in the Git directory (that is, `.git/config`)
+
+On Windows systems, Git looks for the `.gitconfig` file in the `$HOME` directory (`C:\Users\$USER` for most people). It also still looks for `[path]/etc/gitconfig`, although it’s relative to the **MSys root**, which is wherever you decide to install Git on your Windows system when you run the installer. If you are using version 2.x or later of Git for Windows, there is also a system-level config file at `C:\Documents` and `Settings\All Users\Application Data\Git\config` on Windows XP, and in `C:\ProgramData\Git\config` on Windows Vista and newer. This config file can only be changed by `git config -f <file>` as an admin.
+
+{% highlight powershell %}
+# set your username & email
+git config --global user.name "dimasm93"
+git config --global user.email "software.dimas_m@icloud.com"
+
+# check all config
+git config --list
+{% endhighlight %}
+
+Dan kemudian yang terakhir, kita akan setup untuk generate ssh key jika kita mau menggunakan ssh connection ke git repository seperti GitHub, Gitlab, Bitbucket atau hosted repository lainnya dengan cara seperti berikut:
+
+{% highlight powershell %}
+ssh-keygen -t ed25519 -C "your_email@example.com"
+{% endhighlight %}
+
+This creates a new SSH key, using the provided email as a label. 
+
+1. When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
+2. At the prompt, type a secure passphrase.
+3. Adding your SSH key to the ssh-agent (using Git Bash program)
+    {% highlight bash %}
+    eval "$(ssh-agent -s)"
+    {% endhighlight %}
+
+4. Add your SSH private key to the ssh-agent and store your passphrase in the keychain.
+    {% highlight bash %}
+    ssh-add ~/.ssh/id_ed25519
+    {% endhighlight %}
+
+And finaly you can add public key to git repository, But i will do it later on next capter.
