@@ -19,16 +19,19 @@ gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
 
+Hai semuanya, sebelum kita hand-on menggunakan Git SCM di Linux ada beberapa hal yang perlu kita siapkan. Diantaranya
 
-description...
+1. Install Git SCM
+2. Setup Terminal
+3. Git initialization config
+
+Ok tanpa berlama-lama. langsung saja kita bahas materi yang pertama:
 
 <!--more-->
 
-Materi: 
+## Install Git SCM
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+There are several options for installing Git on Linux distribution:
+
+1. Package manager, such as (apt, yum, zyper,etc)
+2. Binary installer
