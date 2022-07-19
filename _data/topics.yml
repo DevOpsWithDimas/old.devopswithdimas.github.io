@@ -576,7 +576,7 @@
   catalogs:
     - name: Pengenalan Ansible
       key: introduction
-      description: 'Eps.1 Pengenalan Infrastructure As a Code with Ansible'
+      description: 'Eps.1 Pengenalan IaC with Ansible'
       deprecated: false
       messages: ''
     - name: Writing task, plays, and playbooks

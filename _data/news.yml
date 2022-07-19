@@ -1,6 +1,40 @@
+- cource: ansible
+  catalog: introduction
+  date: 2022-10-25T18:29:00+07:00
+  duration: "3jam"
+  tier: "free"
+  youtube: 
+  thumbnail:
+  visible: false
+  markers: |
+    Introduction
+    What is IT Automation
+    What is Infrastructure as a Code
+    What is ansible
+    Install ansible 
+    Getting started with ansible
+
+- cource: postgresql
+  catalog: dml-statement
+  date: 2022-09-25T18:29:00+07:00
+  duration: "3jam"
+  tier: "free"
+  youtube: 
+  thumbnail:
+  visible: false
+  markers: |
+    Introduction
+    Overview Data Manipulation
+    Insert Statements
+    Update Statements
+    Delete Statements
+    Transaction
+    Locking
+    Performance Tips
+
 - cource: gitlab
   catalog: introduction
-  date: 2022-09-25T18:29:00+07:00
+  date: 2022-08-25T18:29:00+07:00
   duration: "2jam"
   tier: "free"
   youtube: 
@@ -16,24 +50,6 @@
     Patching
     Submodules
     Dashboard / GUI
-
-- cource: postgresql
-  catalog: dml-statement
-  date: 2022-08-25T18:29:00+07:00
-  duration: "3jam"
-  tier: "free"
-  youtube: 
-  thumbnail:
-  visible: false
-  markers: |
-    Introduction
-    Overview Data Manipulation
-    Insert Statements
-    Update Statements
-    Delete Statements
-    Transaction
-    Locking
-    Performance Tips
 
 - cource: k8s
   catalog: pod-container
