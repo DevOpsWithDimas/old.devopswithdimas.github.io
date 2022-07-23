@@ -38,11 +38,48 @@ Ok yukk langsung aja kita bahas materi yang pertama:
 
 <!--more-->
 
-Materi: 
+## Getting a Git Repository
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+This chapter covers every basic command you need to do the vast majority of the things you’ll eventually spend your time doing with Git. By the end of the chapter, you should be able to configure and initialize a repository, begin and stop tracking files, and stage and commit changes. We’ll also show you how to set up Git to ignore certain files and file patterns, how to undo mistakes quickly and easily, how to browse the history of your project and view changes between commits, and how to push and pull from remote repositories.
+
+You typically obtain a Git repository in one of two ways:
+
+1. You can take a local directory that is currently not under version control, and turn it into a Git repository
+2. You can clone an existing Git repository from elsewhere.
+
+In either case, you end up with a Git repository on your local machine, ready for work.
+
+If you have a project directory that is currently not under version control and you want to start controlling it with Git, you first need to go to that project’s directory. Than type:
+
+{% highlight bash %}
+git init
+{% endhighlight %}
+
+This creates a new subdirectory named `.git` that contains all of your necessary repository files — a Git repository skeleton. At this point, nothing in your project is tracked yet. If you want to start version-controlling existing files (as opposed to an empty directory), you should probably begin tracking those files and do an initial commit. You can accomplish that with a few `git add` commands that specify the files you want to track, followed by a `git commit`:
+
+{% highlight bash %}
+## create files & write some text
+touch README.md & echo "Halo saya sedang belajar git!" > README.md
+
+## tracking your files
+git add README.md
+
+## commit state
+git commit -m 'Initial project'
+{% endhighlight %}
+
+We’ll go over what these commands do in just a minute. At this point, you have a Git repository with tracked files and an initial commit.
+
+If you want to get a copy of an existing Git repository — for example, a project you’d like to contribute to — the command you need is `git clone`. You clone a repository with `git clone <url>`. For example, if you want to clone the repository called [ansible-role-nginx](https://github.com/dimMaryanto93/ansible-role-nginx), you can do so like this:
+
+{% highlight bash %}
+git clone https://github.com/dimMaryanto93/ansible-role-nginx.git
+{% endhighlight %}
+
+If you want to clone the repository into a directory named something other than `ansible-role-nginx`, you can specify the new directory name as an additional argument:
+
+{% highlight bash %}
+git clone https://github.com/dimMaryanto93/ansible-role-nginx.git role-nginx
+{% endhighlight %}
+
+Git has a number of different transfer protocols you can use. The previous example uses the `https://` protocol, but you may also see `git://` or `user@server:path/to/repo.git`, which uses the SSH transfer protocol.
