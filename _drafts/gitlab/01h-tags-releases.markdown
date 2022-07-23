@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Working with Tags"
+title: "01h-tags-releases"
 lang: gitlab
 authors:
 - dimasm93
@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts/git/01c-tagging
+image_path: /resources/posts/git/01h-tags-releases
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---

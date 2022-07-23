@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Working with Remotes"
+title: "01e-git-undoing-thing"
 lang: gitlab
 authors:
 - dimasm93
@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts/git/01e-remote-gitlab
+image_path: /resources/posts/git/01e-git-undoing-thing
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---

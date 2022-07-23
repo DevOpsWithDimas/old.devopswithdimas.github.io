@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Dashboard / GUI"
+title: "01d-git-view-history-commits"
 lang: gitlab
 authors:
 - dimasm93
@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts/git/01g-dashboard
+image_path: /resources/posts/git/01d-git-view-history-commits
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---

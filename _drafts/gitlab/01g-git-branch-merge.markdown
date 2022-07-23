@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Branching and Merging"
+title: "01g-git-branch-merge"
 lang: gitlab
 authors:
 - dimasm93
@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts/git/01c-branching-and-merging
+image_path: /resources/posts/git/01g-git-branch-merge
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---

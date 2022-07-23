@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01h-submodules"
+title: "01h-dashboard-gui"
 lang: gitlab
 authors:
 - dimasm93
@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts/git/01h-submodules
+image_path: /resources/posts/git/01h-dashboard-gui
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
