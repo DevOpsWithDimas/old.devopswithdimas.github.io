@@ -232,3 +232,93 @@ $ git commit -m "Adding a description to README.md"
 Now you’ve created your first commit! You can see that the commit has given you some output about itself: which branch you committed to (master), what `SHA-1` checksum the commit has (`463dc4f`), how many files were changed, and statistics about lines added and removed in the commit.
 
 Remember that the commit records the snapshot you set up in your staging area. Anything you didn’t stage is still sitting there modified; you can do another commit to add it to your history. Every time you perform a commit, you’re recording a snapshot of your project that you can revert to or compare to later.
+
+## Staging Modified Files
+
+Let’s change a file that was already tracked. If you change a previously tracked file called `README.md` and then run your `git status` command again, you get something that looks like this:
+
+{% highlight bash %}
+# create new file
+touch CONTRIBUTING.md
+
+# update file readme
+echo "\nSaya sudah berhasil meng-commit file" >> README.md
+
+# see the status now
+git status
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```bash
+$ git status
+On branch main
+Your branch is up-to-date with 'origin/main'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    new file:   CONTRIBUTING.md
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+    modified:   README.md
+```
+
+The `README.md` file appears under a section named “Changes not staged for commit” — which means that a file that is tracked has been modified in the working directory but not yet staged. To stage it, you run the `git add` command. `git add` is a multipurpose command — you use it to begin tracking new files, to stage files, and to do other things like marking merge-conflicted files as resolved. It may be helpful to think of it more as “add precisely this content to the next commit” rather than “add this file to the project”. Let’s run `git add` now to stage the `README.md` file, and then run `git status` again:
+
+```bash
+$ git add CONTRIBUTING.md
+$ git status
+On branch main
+Your branch is up-to-date with 'origin/main'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    new file:   CONTRIBUTING.md
+    modified:   README.md
+```
+
+Both files are staged and will go into your next commit. At this point, suppose you remember one little change that you want to make in `CONTRIBUTING.md` before you commit it. You open it again and make that change, and you’re ready to commit. However, let’s run git status one more time:
+
+{% highlight bash %}
+# update again file CONTRIBUTING.md
+echo "\nSaya sudah berhasil meng-commit file" >> CONTRIBUTING.md
+
+# see the status again
+git status
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+$ git status
+On branch main
+Your branch is up-to-date with 'origin/main'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    new file:   CONTRIBUTING.md
+    modified:   README.md
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+    modified:   CONTRIBUTING.md
+```
+
+What the heck? Now `CONTRIBUTING.md` is listed as both staged and unstaged. How is that possible? It turns out that Git stages a file exactly as it is when you run the `git add` command. If you commit now, the version of `CONTRIBUTING.md` as it was when you last ran the `git add` command is how it will go into the commit, not the version of the file as it looks in your working directory when you run `git commit`. If you modify a file after you run `git add`, you have to run `git add` again to stage the latest version of the file:
+
+```bash
+$ git add CONTRIBUTING.md
+$ git status
+On branch main
+Your branch is up-to-date with 'origin/main'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    new file:   README
+    modified:   CONTRIBUTING.md
+```
