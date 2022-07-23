@@ -32,7 +32,7 @@ Hai semuanya, setelah kita menyiapkan environment untuk belajar Git Version Cont
 5. Ignoring Files
 6. Viewing Your Staged and Unstaged Changes
 7. Committing Your Changes
-8. Removing Files
+8. Removing/Moving Files
 
 Ok yukk langsung aja kita bahas materi yang pertama:
 
