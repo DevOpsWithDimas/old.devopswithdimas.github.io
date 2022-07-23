@@ -35,3 +35,11 @@ There are several options for installing Git on Linux distribution:
 
 1. Package manager, such as (apt, yum, zyper,etc)
 2. Binary installer
+3. Build from source
+
+Untuk saya sendiri meng-install git menggunakan package manager. Karena saya di sini menggunakan Ubuntu Desktop v22.04 Unity. Untuk step-by-stepnya simple sekali, kita buka Terminal dan menggunakan command seperti berikut:
+
+{% highlight bash %}
+apt-get update && \
+apt-get install git vim tmux -y
+{% endhighlight %}
