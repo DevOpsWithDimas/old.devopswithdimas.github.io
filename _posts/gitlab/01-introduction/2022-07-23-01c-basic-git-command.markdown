@@ -330,7 +330,7 @@ Often, you’ll have a class of files that you don’t want Git to automatically
 
 Here is an example .gitignore file:
 
-```txt
+```config
 *.class
 target/
 *~
@@ -350,7 +350,7 @@ Glob patterns are like simplified regular expressions that shells use. An asteri
 
 Here is another example .gitignore file:
 
-```txt
+```config
 # ignore all .a files
 *.a
 
