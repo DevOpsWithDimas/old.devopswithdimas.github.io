@@ -16,7 +16,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts/git/01b-basic-git-command
+image_path: /resources/posts/git/01c-basic-git-command
 gist: dimMaryanto93/8f9f0ba4caf5a28c56111246499e97d0
 downloads: []
 ---
@@ -26,13 +26,14 @@ Hai semuanya, setelah kita menyiapkan environment untuk belajar Git Version Cont
 1. Getting a Git Repository 
     1. Create new Git Repository
     2. Cloning an Existing Repository
-2. Checking the Status of Your Files
-3. Tracking New Files
-4. Staging Modified Files
-5. Ignoring Files
-6. Viewing Your Staged and Unstaged Changes
-7. Committing Your Changes
-8. Removing/Moving Files
+2. Recording Changes to the Repository
+    1. Checking the Status of Your Files
+    2. Tracking New Files
+    3. Staging Modified Files
+3. Ignoring Files
+4. Viewing Your Staged and Unstaged Changes
+5. Committing Your Changes
+6. Removing/Moving Files
 
 Ok yukk langsung aja kita bahas materi yang pertama:
 
@@ -83,3 +84,74 @@ git clone https://github.com/dimMaryanto93/ansible-role-nginx.git role-nginx
 {% endhighlight %}
 
 Git has a number of different transfer protocols you can use. The previous example uses the `https://` protocol, but you may also see `git://` or `user@server:path/to/repo.git`, which uses the SSH transfer protocol.
+
+## Recording Changes to the Repository
+
+At this point, you should have a **bona fide** Git repository on your local machine, and a checkout or working copy of all of its files in front of you. Typically, you’ll want to start making changes and committing snapshots of those changes into your repository each time the project reaches a state you want to record.
+
+Remember that each file in your working directory can be in one of two states: `tracked` or `untracked`:
+
+1. Tracked files are files that were in the last snapshot, as well as any newly staged files; they can be unmodified, modified, or staged. In short, tracked files are files that Git knows about. 
+2. Untracked files are everything else — any files in your working directory that were not in your last snapshot and are not in your staging area.
+
+When you first clone a repository, all of your files will be tracked and unmodified because Git just checked them out and you haven’t edited anything. As you edit files, Git sees them as modified, because you’ve changed them since your last commit. As you work, you selectively stage these modified files and then commit all those staged changes, and the cycle repeats.
+
+The lifecycle of the status of your files:
+
+{% mermaid %}
+sequenceDiagram
+    participant untrack as Untracked
+    participant unmodif as Unmodified
+    participant modif as Modified
+    participant stage as Staged
+
+    untrack->>stage: Add the file
+    unmodif->>modif: Edit the file
+    modif->>stage: Stage the file
+    unmodif->>untrack: Remove the file
+    stage->>unmodif: Commit
+{% endmermaid %}
+
+## Checking the Status of Your Files
+
+The main tool you use to determine which files are in which state is the `git status` command. If you run this command directly after a clone:
+
+{% highlight bash %}
+git status
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+$ git status
+On branch main
+Your branch is up-to-date with 'origin/main'.
+nothing to commit, working tree clean
+```
+
+This means you have a clean working directory; in other words, none of your tracked files are modified. Git also doesn’t see any untracked files, or they would be listed here. Finally, the command tells you which branch you’re on and informs you that it has not diverged from the same branch on the server. For now, that branch is always `main`, which is the default; you won’t worry about it here. Git Branching will go over branches and references in detail.
+
+Let’s say you add a new file to your project, a simple README file. If the file didn’t exist before, and you run git status, you see your untracked file like so:
+
+{% highlight bash %}
+echo "\nSekarang saya sudah mulai paham dengan Git command" >> README.md
+git status
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+git status
+On branch main
+Your branch is up-to-date with 'origin/main'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+    README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+You can see that your new `README.md` file is untracked, because it’s under the “Untracked files” heading in your status output. Untracked basically means that Git sees a file you didn’t have in the previous snapshot (commit), and which hasn’t yet been staged; Git won’t start including it in your commit snapshots until you explicitly tell it to do so. It does this so you don’t accidentally begin including generated binary files or other files that you did not mean to include. You do want to start including `README.md`, so let’s start tracking the file.
+
+## Tracking New Files
