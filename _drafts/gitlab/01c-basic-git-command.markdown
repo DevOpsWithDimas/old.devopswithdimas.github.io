@@ -329,7 +329,7 @@ Often, you’ll have a class of files that you don’t want Git to automatically
 
 Here is an example .gitignore file:
 
-```.gitignore
+```txt
 *.class
 target/
 *~
@@ -349,7 +349,7 @@ Glob patterns are like simplified regular expressions that shells use. An asteri
 
 Here is another example .gitignore file:
 
-```.gitignore
+```txt
 # ignore all .a files
 *.a
 
@@ -368,3 +368,70 @@ doc/*.txt
 # ignore all .pdf files in the doc/ directory and any of its subdirectories
 doc/**/*.pdf
 ```
+
+## Removing/Moving Files
+
+To remove a file from Git, you have to remove it from your tracked files (more accurately, remove it from your staging area) and then commit. The `git rm` command does that, and also removes the file from your working directory so you don’t see it as an untracked file the next time around.
+
+If you simply remove the file from your working directory, it shows up under the “Changes not staged for commit” (that is, unstaged) area of your git status output:
+
+```bash
+$ rm PROJECTS.md
+$ git status
+On branch main
+Your branch is up-to-date with 'origin/main'.
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    PROJECTS.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Then, if you run `git rm`, it stages the file’s removal:
+
+```bash
+$ git rm PROJECTS.md
+rm 'PROJECTS.md'
+$ git status
+On branch main
+Your branch is up-to-date with 'origin/main'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    deleted:    PROJECTS.md
+```
+
+The next time you commit, the file will be gone and no longer tracked. If you modified the file or had already added it to the staging area, you must force the removal with the -f option. This is a safety feature to prevent accidental removal of data that hasn’t yet been recorded in a snapshot and that can’t be recovered from Git.
+
+Unlike many other VCSs, Git doesn’t explicitly track file movement. If you rename a file in Git, no metadata is stored in Git that tells it you renamed the file. However, Git is pretty smart about figuring that out after the fact — we’ll deal with detecting file movement a bit later.
+
+Thus it’s a bit confusing that Git has a mv command. If you want to rename a file in Git, you can run something like:
+
+{% highlight bash %}
+git mv file_from file_to
+{% endhighlight %}
+
+and it works fine. In fact, if you run something like this and look at the status, you’ll see that Git considers it a renamed file:
+
+```bash
+$ git mv README.md README
+$ git status
+On branch main
+Your branch is up-to-date with 'origin/main'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    renamed:    README.md -> README
+```
+
+However, this is equivalent to running something like this:
+
+{% highlight bash %}
+mv README.md README
+git rm README.md
+git add README
+{% endhighlight %}
+
+Git figures out that it’s a rename implicitly, so it doesn’t matter if you rename a file that way or with the mv command. The only real difference is that `git mv` is one command instead of three — it’s a convenience function. More importantly, you can use any tool you like to rename a file, and address the add/rm later, before you commit.
