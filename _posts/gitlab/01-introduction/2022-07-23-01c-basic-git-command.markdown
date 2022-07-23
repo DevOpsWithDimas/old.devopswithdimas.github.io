@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Getting started with git"
+date: 2022-07-23T12:41:05+07:00
 lang: gitlab
 authors:
 - dimasm93
