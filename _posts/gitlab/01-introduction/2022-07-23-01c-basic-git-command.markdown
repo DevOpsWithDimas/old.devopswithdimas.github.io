@@ -35,6 +35,7 @@ Hai semuanya, setelah kita menyiapkan environment untuk belajar Git Version Cont
 4. Viewing Your Staged and Unstaged Changes
 5. Committing Your Changes
 6. Removing/Moving Files
+7. Viewing the Commit History
 
 Ok yukk langsung aja kita bahas materi yang pertama:
 
@@ -61,7 +62,8 @@ This creates a new subdirectory named `.git` that contains all of your necessary
 
 {% highlight bash %}
 ## create files & write some text
-touch README.md & echo "Halo saya sedang belajar git!" > README.md
+touch README.md && \
+echo "Halo saya sedang belajar git! " > README.md
 
 ## tracking your files
 git add README.md
@@ -144,11 +146,10 @@ Jika dijalankan hasilnya seperti berikut:
 ```bash
 $ git status
 On branch main
-Your branch is up-to-date with 'origin/main'.
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-
-    README.md
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
@@ -436,3 +437,93 @@ git add README
 {% endhighlight %}
 
 Git figures out that it’s a rename implicitly, so it doesn’t matter if you rename a file that way or with the mv command. The only real difference is that `git mv` is one command instead of three — it’s a convenience function. More importantly, you can use any tool you like to rename a file, and address the add/rm later, before you commit.
+
+## Viewing the Commit History
+
+After you have created several commits, or if you have cloned a repository with an existing commit history, you’ll probably want to look back to see what has happened. 
+
+The most basic and powerful tool to do this is the `git log` command:
+
+{% highlight bash %}
+git log
+{% endhighlight %}
+
+When you run `git log` in this project, you should get output that looks something like this:
+
+```bash
+commit cd08659e7891816b875a0996a0be3e66a7ad2e4f (HEAD -> main)
+Author: dimasm93 <software.dimas_m@icloud.com>
+Date:   Sat Jul 23 14:04:58 2022 +0700
+
+    delete everything inside
+
+commit ee8c88cc1f8dcc092e1f39efb2a1af0419f850a4
+Author: dimasm93 <software.dimas_m@icloud.com>
+Date:   Sat Jul 23 14:04:02 2022 +0700
+
+    tracking new files
+
+commit c99c4562f072a6bc680e6300894206252ae4617d
+Author: dimasm93 <software.dimas_m@icloud.com>
+Date:   Sat Jul 23 13:59:32 2022 +0700
+
+    init project
+```
+
+By default, with no arguments, `git log` lists the commits made in that repository in reverse chronological order; that is, the most recent commits show up first. As you can see, this command lists each commit with its `SHA-1` checksum, the author’s name and email, the date written, and the commit message.
+
+A huge number and variety of options to the git log command are available to show you exactly what you’re looking for. Here, we’ll show you some of the most popular.
+
+One of the more helpful options is `-p` or `--patch`, which shows the difference (the patch output) introduced in each commit. You can also limit the number of log entries displayed, such as using `-2` to show only the last two entries.
+
+{% highlight bash %}
+git log -p -2
+{% endhighlight %}
+
+Jika di jalankan outputnya seperti berikut:
+
+```bash
+commit cd08659e7891816b875a0996a0be3e66a7ad2e4f (HEAD -> main)
+Author: dimasm93 <software.dimas_m@icloud.com>
+Date:   Sat Jul 23 14:04:58 2022 +0700
+
+    delete everything inside
+
+diff --git a/README.md b/README.md
+index c8df977..8b13789 100644
+--- a/README.md
++++ b/README.md
+@@ -1,3 +1 @@
+-Halo saya sedang belajar git!
+
+-Sekarang saya sudah mulai paham dengan git command
+
+commit ee8c88cc1f8dcc092e1f39efb2a1af0419f850a4
+Author: dimasm93 <software.dimas_m@icloud.com>
+Date:   Sat Jul 23 14:04:02 2022 +0700
+
+    tracking new files
+
+diff --git a/README.md b/README.md
+index 4a622a3..c8df977 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1,3 @@
+ Halo saya sedang belajar git!
++
++Sekarang saya sudah mulai paham dengan git command
+```
+
+Another really useful option is `--oneline`. The oneline value for this option prints each commit on a single line, which is useful if you’re looking at a lot of commits. In addition, the short, full, and fuller values show the output in roughly the same format but with less or more information, respectively:
+
+{% highlight bash %}
+git log --oneline
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+cd08659 (HEAD -> main) delete everything inside
+ee8c88c tracking new files
+c99c456 init project
+```
