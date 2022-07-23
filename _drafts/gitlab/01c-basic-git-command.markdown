@@ -141,7 +141,7 @@ git status
 Jika dijalankan hasilnya seperti berikut:
 
 ```bash
-git status
+$ git status
 On branch main
 Your branch is up-to-date with 'origin/main'.
 Untracked files:
@@ -155,3 +155,36 @@ nothing added to commit but untracked files present (use "git add" to track)
 You can see that your new `README.md` file is untracked, because it’s under the “Untracked files” heading in your status output. Untracked basically means that Git sees a file you didn’t have in the previous snapshot (commit), and which hasn’t yet been staged; Git won’t start including it in your commit snapshots until you explicitly tell it to do so. It does this so you don’t accidentally begin including generated binary files or other files that you did not mean to include. You do want to start including `README.md`, so let’s start tracking the file.
 
 ## Tracking New Files
+
+In order to begin tracking a new file, you use the command git add. To begin tracking the `README.md` file, you can run this:
+
+{% highlight bash %}
+git add README.md
+{% endhighlight %}
+
+If you run your status command again, you can see that your `README.md` file is now tracked and staged to be committed:
+
+```bash
+$ git status
+On branch main
+Your branch is up-to-date with 'origin/main'.
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+
+    new file:   README.md
+```
+
+You can tell that it’s staged because it’s under the “Changes to be committed” heading. If you commit at this point, the version of the file at the time you ran `git add` is what will be in the subsequent historical snapshot. You may recall that when you ran git init earlier, you then ran `git add <files>` — that was to begin tracking files in your directory. The `git add` command takes a path name for either a file or a directory; if it’s a directory, the command adds all the files in that directory recursively.
+
+{% highlight bash %}
+# for tracking file
+git add file
+
+# for tracking directory or subdirectory
+git add directory-path/files
+
+# for tracking with pattern regex
+git add * ## mean tracking all file or directory inside git project
+{% endhighlight %}
+
+## Committing Your Changes
