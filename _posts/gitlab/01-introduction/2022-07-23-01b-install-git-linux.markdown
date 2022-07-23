@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "How to Install git on Linux"
+date: 2022-07-23T08:26:13+07:00
 lang: gitlab
 authors:
 - dimasm93
