@@ -36,11 +36,12 @@ Ok langsung aja kita bahas materi yang pertama
 
 <!--more-->
 
-Materi: 
+## Select in WITH
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+The basic value of `SELECT` in WITH is to break down complicated queries into simpler parts. An example is:
+
+{% highlight sql %}
+WITH query_name as ( query1 ), ...
+SELECT ...
+FROM ...
+{% endhighlight %}
