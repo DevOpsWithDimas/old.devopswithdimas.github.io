@@ -153,3 +153,4 @@ hr-# from top3_salaries;
 Nah bagaimana? lebih mudah untuk di baca khan dibandingkan kita membuat dengan nested SUB-QUERY.
 
 ## Recursive Queries
+
