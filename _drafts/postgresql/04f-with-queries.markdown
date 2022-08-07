@@ -154,3 +154,5 @@ Nah bagaimana? lebih mudah untuk di baca khan dibandingkan kita membuat dengan n
 
 ## Recursive Queries
 
+The optional `RECURSIVE` modifier changes `WITH` from a mere syntactic convenience into a feature that accomplishes things not otherwise possible in standard SQL. Using `RECURSIVE`, a `WITH` query can refer to its own output. A very simple example is this query to sum the integers from `1` through `100`:
+
