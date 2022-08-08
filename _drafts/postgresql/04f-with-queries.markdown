@@ -215,3 +215,111 @@ hr-# from managed_by;
          206 | William     |        205
 (12 rows)
 ```
+
+## Search order
+
+When computing a tree traversal using a recursive query, you might want to order the results in either depth-first or breadth-first order. This can be done by computing an ordering column alongside the other data columns and using that to sort the results at the end. Note that this does not actually control in which order the query evaluation visits the rows; that is as always in SQL implementation-dependent. This approach merely provides a convenient way to order the results afterwards.
+
+To create a depth-first order, we compute for each result row an array of rows that we have visited so far. For example, consider the following query that searches a table tree using a `link` field:
+
+{% highlight sql %}
+WITH RECURSIVE search_tree(... , path) AS (
+    SELECT ... , ARRAY[t.column]
+    FROM tree t
+  UNION ALL
+    SELECT ... , path || t.column
+    FROM tree t, search_tree st
+    WHERE t.id = st.link
+)
+SELECT * FROM search_tree ORDER BY path;
+{% endhighlight %}
+
+Here the code:
+
+{% gist page.gist "04f-with-query-sortable.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# with recursive managed_by(manager_id, employee_id, first_name, path) as
+hr-#      (
+hr(#          select our_manager.manager_id,
+hr(#                 our_manager.employee_id,
+hr(#                 our_manager.first_name,
+hr(#                 array [our_manager.first_name]
+hr(#          from employees our_manager
+hr(#          where employee_id = 101
+hr(#          UNION ALL
+hr(#          select emp.manager_id,
+hr(#                 emp.employee_id,
+hr(#                 emp.first_name,
+hr(#                 array [emp.first_name]
+hr(#          from employees emp
+hr(#                   join managed_by man on (emp.manager_id = man.employee_id)
+hr(#      )
+hr-# select employee_id, first_name, manager_id
+hr-# from managed_by
+hr-# order by path desc;
+ employee_id | first_name  | manager_id 
+-------------+-------------+------------
+         206 | William     |        205
+         203 | Susan       |        101
+         205 | Shelley     |        101
+         101 | Neena       |        100
+         108 | Nancy       |        101
+         113 | Luis        |        108
+         112 | Jose Manuel |        108
+         110 | John        |        108
+         200 | Jennifer    |        101
+         111 | Ismael      |        108
+         204 | Hermann     |        101
+         109 | Daniel      |        108
+(12 rows)
+```
+
+Atau selain itu juga kita bisa multiple column order dengan with query recursive seperti berikut:
+
+{% gist page.gist "04f-with-query-sortable-multi-columns.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# with recursive managed_by(manager_id, employee_id, first_name, salary, department_id, path) as
+hr-#      (
+hr(#          select our_manager.manager_id,
+hr(#                 our_manager.employee_id,
+hr(#                 our_manager.first_name,
+hr(#                 our_manager.salary,
+hr(#                 our_manager.department_id,
+hr(#                 array [ROW (our_manager.department_id, our_manager.salary)]
+hr(#          from employees our_manager
+hr(#          where employee_id = 101
+hr(#          UNION ALL
+hr(#          select emp.manager_id,
+hr(#                 emp.employee_id,
+hr(#                 emp.first_name,
+hr(#                 emp.salary,
+hr(#                 emp.department_id,
+hr(#                 array [ROW (emp.department_id, emp.salary)]
+hr(#          from employees emp
+hr(#                   join managed_by man on (emp.manager_id = man.employee_id)
+hr(#      )
+hr-# select employee_id, first_name, manager_id, department_id, salary
+hr-# from managed_by
+hr-# order by path desc;
+ employee_id | first_name  | manager_id | department_id |  salary  
+-------------+-------------+------------+---------------+----------
+         205 | Shelley     |        101 |           110 | 12000.00
+         206 | William     |        205 |           110 |  8300.00
+         108 | Nancy       |        101 |           100 | 12000.00
+         109 | Daniel      |        108 |           100 |  9000.00
+         110 | John        |        108 |           100 |  8200.00
+         112 | Jose Manuel |        108 |           100 |  7800.00
+         111 | Ismael      |        108 |           100 |  7700.00
+         113 | Luis        |        108 |           100 |  6900.00
+         101 | Neena       |        100 |            90 | 17000.00
+         204 | Hermann     |        101 |            70 | 10000.00
+         203 | Susan       |        101 |            40 |  6500.00
+         200 | Jennifer    |        101 |            10 |  4400.00
+(12 rows)
+```
