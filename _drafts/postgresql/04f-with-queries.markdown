@@ -323,3 +323,5 @@ hr-# order by path desc;
          200 | Jennifer    |        101 |            10 |  4400.00
 (12 rows)
 ```
+
+## Cycle Detection
