@@ -45,3 +45,5 @@ Ketentuannya:
 ![Hasil no 4]({{ page.image_path | prepend: site.baseurl }}/soal4.png)
 5. Buatlah sebuah query untuk menampilkan semua data karyawan yang memiliki gaji lebih besar sama dengan nilai maximum setiap karyawan yang bekerja di department `IT_PROG` contohnya seperti berikut:
 ![hasil no 5]({{ page.image_path | prepend: site.baseurl }}/soal5.png)
+6. Buatlah sebuah query (**Menggunakan `WITH` query**) untuk menampikan semua manager yang menjabat pada suatu department di suatu `country_id = 'US'` yang di urutkan menggunakan salary terbesar, tampikan dengan format seperti berikut:
+![hasil no 6]({{ page.image_path | prepend: site.baseurl }}/soal6.png)
