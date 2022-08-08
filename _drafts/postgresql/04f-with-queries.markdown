@@ -26,7 +26,6 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Common Table Express
 3. Recursive Queries
 4. Search order
 5. Cycle Detection
-6. Common Table Expression Materialization
 
 Ok langsung aja kita bahas materi yang pertama
 
