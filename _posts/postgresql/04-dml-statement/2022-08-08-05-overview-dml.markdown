@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Overview of Data Manipulation Language (DML)"
+date: 2022-08-08T16:46:04+07:00
 lang: postgresql
 authors:
 - dimasm93
@@ -36,3 +37,5 @@ Hai semuanya, di materi kali ini kita akan membahas tentang Data Manipulation La
 7. Insert using WITH Queries
 8. Performance Tips
 9. Parallel Query
+
+Ok mungkin sekian dulu yang bisa saya sampaikan terkait materi Data Manipulantion Language (DML) yang akan di bahas di materi selanjutnya.
