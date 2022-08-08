@@ -325,3 +325,121 @@ hr-# order by path desc;
 ```
 
 ## Cycle Detection
+
+When working with recursive queries it is important to be sure that the recursive part of the query will eventually return no tuples, or else the query will loop indefinitely. Sometimes, using UNION instead of UNION ALL can accomplish this by discarding rows that duplicate previous output rows. However, often a cycle does not involve output rows that are completely duplicate: it may be necessary to check just one or a few fields to see if the same point has been reached before. The standard method for handling such situations is to compute an array of the already-visited values. For example, consider again the following query that searches a table graph using a link field:
+
+{% highlight sql %}
+WITH RECURSIVE search_graph(... , depth) AS (
+    SELECT ... , 0
+    FROM ...
+  UNION ALL
+    SELECT ... , sg.depth + 1
+    FROM ... , search_graph sg
+)
+SELECT * FROM search_graph;
+{% endhighlight %}
+
+The simple query example is:
+
+{% gist page.gist "04f-with-query-cycle-link-relation.sql" %}
+
+This query will loop if the link relationships contain cycles. Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# with recursive managed_by(manager_id, employee_id, first_name, depth) as
+hr-#      (
+hr(#          select our_manager.manager_id,
+hr(#                 our_manager.employee_id,
+hr(#                 our_manager.first_name,
+hr(#                 0
+hr(#          from employees our_manager
+hr(#          UNION ALL
+hr(#          select emp.manager_id,
+hr(#                 emp.employee_id,
+hr(#                 emp.first_name,
+hr(#                 man.depth + 1
+hr(#          from employees emp
+hr(#                   join managed_by man on (emp.manager_id = man.employee_id)
+hr(#      )
+hr-# select *
+hr-# from managed_by;
+ manager_id | employee_id | first_name  | depth 
+------------+-------------+-------------+-------
+            |         100 | Steven      |     0
+        100 |         101 | Neena       |     0
+        100 |         102 | Lex         |     0
+        102 |         103 | Alexander   |     0
+        103 |         104 | Bruce       |     0
+        103 |         105 | David       |     0
+        103 |         106 | Valli       |     0
+        100 |         122 | Payam       |     0
+        100 |         123 | Shanta      |     0
+        100 |         124 | Kevin       |     0
+        120 |         125 | Julia       |     0
+        120 |         126 | Irene       |     0
+        120 |         127 | James       |     0
+        100 |         146 | Karen       |     1
+        100 |         145 | John        |     1
+        100 |         124 | Kevin       |     1
+        100 |         123 | Shanta      |     1
+        100 |         122 | Payam       |     1
+        100 |         121 | Adam        |     1
+        100 |         120 | Matthew     |     1
+        100 |         114 | Den         |     1
+        100 |         102 | Lex         |     1
+        100 |         101 | Neena       |     1
+(315 rows)
+```
+
+Because we require a “depth” output, just changing `UNION ALL` to `UNION` would not eliminate the looping. Instead we need to recognize whether we have reached the same row again while following a particular path of links. We add two columns `is_cycle` and `path` to the loop-prone query:
+
+{% gist page.gist "04f-with-query-cycle-link-relation-path.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```sql
+hr=# with recursive managed_by(manager_id, employee_id, first_name, depth, is_cycle, path) as
+hr-#   (
+hr(#       select our_manager.manager_id,
+hr(#             our_manager.employee_id,
+hr(#             our_manager.first_name,
+hr(#             0,
+hr(#             false,
+hr(#             ARRAY [our_manager.employee_id]
+hr(#       from employees our_manager
+hr(#       UNION ALL
+hr(#       select emp.manager_id,
+hr(#             emp.employee_id,
+hr(#             emp.first_name,
+hr(#             man.depth + 1,
+hr(#             emp.employee_id = ANY (path),
+hr(#             path || emp.employee_id
+hr(#       from employees emp
+hr(#               join managed_by man on (emp.manager_id = man.employee_id)
+hr(#       where NOT is_cycle
+hr(#   )
+hr-# select *
+hr-# from managed_by;
+ manager_id | employee_id | first_name  | depth | is_cycle |       path        
+------------+-------------+-------------+-------+----------+-------------------
+            |         100 | Steven      |     0 | f        | {100}
+        100 |         101 | Neena       |     0 | f        | {101}
+        100 |         102 | Lex         |     0 | f        | {102}
+        102 |         103 | Alexander   |     0 | f        | {103}
+        101 |         205 | Shelley     |     0 | f        | {205}
+        205 |         206 | William     |     0 | f        | {206}
+        100 |         201 | Michael     |     1 | f        | {100,201}
+        100 |         149 | Eleni       |     1 | f        | {100,149}
+        100 |         148 | Gerald      |     1 | f        | {100,148}
+        100 |         147 | Alberto     |     1 | f        | {100,147}
+        100 |         146 | Karen       |     1 | f        | {100,146}
+        100 |         145 | John        |     1 | f        | {100,145}
+        100 |         124 | Kevin       |     1 | f        | {100,124}
+        100 |         123 | Shanta      |     1 | f        | {100,123}
+        100 |         122 | Payam       |     1 | f        | {100,122}
+        100 |         121 | Adam        |     1 | f        | {100,121}
+        100 |         120 | Matthew     |     1 | f        | {100,120}
+        100 |         114 | Den         |     1 | f        | {100,114}
+(315 rows)
+hr=#     
+```
