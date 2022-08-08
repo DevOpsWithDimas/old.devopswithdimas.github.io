@@ -156,3 +156,62 @@ Nah bagaimana? lebih mudah untuk di baca khan dibandingkan kita membuat dengan n
 
 The optional `RECURSIVE` modifier changes `WITH` from a mere syntactic convenience into a feature that accomplishes things not otherwise possible in standard SQL. Using `RECURSIVE`, a `WITH` query can refer to its own output. A very simple example is this query to sum the integers from `1` through `100`:
 
+{% highlight sql %}
+WITH RECURSIVE t(n) AS (
+    VALUES (1)
+  UNION ALL
+    SELECT n+1 FROM t WHERE n < 100
+)
+SELECT sum(n) FROM t;
+{% endhighlight %}
+
+The general form of a recursive WITH query is always a non-recursive term, then UNION (or UNION ALL), then a recursive term, where only the recursive term can contain a reference to the query's own output. Such a query is executed as follows:
+
+1. Evaluate the non-recursive term. For UNION (but not UNION ALL), discard duplicate rows. Include all remaining rows in the result of the recursive query, and also place them in a temporary working table.
+
+2. So long as the working table is not empty, repeat these steps:
+    1. Evaluate the recursive term, substituting the current contents of the working table for the recursive self-reference. For UNION (but not UNION ALL), discard duplicate rows and rows that duplicate any previous result row. Include all remaining rows in the result of the recursive query, and also place them in a temporary intermediate table.
+    2. Replace the contents of the working table with the contents of the intermediate table, then empty the intermediate table.
+
+Recursive queries are typically used to deal with hierarchical or tree-structured data. A usefull example is this query to find all the direct and indirect sub-employees of a manager, given only a table that show immediate includes:
+
+{% gist page.gist "04f-with-query-recursive.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# with recursive managed_by(manager_id, employee_id, first_name) as
+hr-#      (
+hr(#          select our_manager.manager_id,
+hr(#                 our_manager.employee_id,
+hr(#                 our_manager.first_name
+hr(#          from employees our_manager
+hr(#          where employee_id = 101
+hr(#          UNION ALL
+hr(#          select emp.manager_id,
+hr(#                 emp.employee_id,
+hr(#                 emp.first_name
+hr(#          from employees emp
+hr(#                   join managed_by man on (emp.manager_id = man.employee_id)
+hr(#      )
+hr-# select employee_id,
+hr-#        first_name,
+hr-#        manager_id
+hr-# from managed_by;
+
+ employee_id | first_name  | manager_id 
+-------------+-------------+------------
+         101 | Neena       |        100
+         108 | Nancy       |        101
+         200 | Jennifer    |        101
+         203 | Susan       |        101
+         204 | Hermann     |        101
+         205 | Shelley     |        101
+         109 | Daniel      |        108
+         110 | John        |        108
+         111 | Ismael      |        108
+         112 | Jose Manuel |        108
+         113 | Luis        |        108
+         206 | William     |        205
+(12 rows)
+```
