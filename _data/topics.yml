@@ -669,6 +669,12 @@
   github: 
   youtube: 
   udemy: 
+    url: https://www.udemy.com/course/gitops-gitlab-pemula-sampai-mahir/
+    price: Rp250.000,-
+    discount: Rp99.000,-
+    couponCode: PROMO_0808_22
+    referralCode: 8D13D85D4D34027B76BE
+    expired: 13/08/2022
   coming_soon: false
   visible: true
   catalogs:
