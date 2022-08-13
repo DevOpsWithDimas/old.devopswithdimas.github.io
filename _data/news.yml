@@ -39,7 +39,7 @@
   tier: "free"
   youtube: 
   thumbnail:
-  visible: false
+  visible: true
   markers: |
     00:00:00 Introduction
     00:02:38 Silabus belajar GitOps untuk Pemula sampai Mahir
