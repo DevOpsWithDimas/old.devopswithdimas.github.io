@@ -1,7 +1,7 @@
 - cource: ansible
   catalog: introduction
   date: 2022-10-25T18:29:00+07:00
-  duration: "3jam"
+  duration: "3 jam"
   tier: "free"
   youtube: 
   thumbnail:
@@ -17,7 +17,7 @@
 - cource: postgresql
   catalog: dml-statement
   date: 2022-09-25T18:29:00+07:00
-  duration: "3jam"
+  duration: "3 jam"
   tier: "free"
   youtube: 
   thumbnail:
@@ -34,27 +34,40 @@
 
 - cource: gitlab
   catalog: introduction
-  date: 2022-08-25T18:29:00+07:00
-  duration: "2jam"
+  date: 2022-08-17T18:29:00+07:00
+  duration: "3 jam 30 menit"
   tier: "free"
   youtube: 
   thumbnail:
   visible: false
   markers: |
-    Introduction
-    Overview Version Control with Git
-    Git Command
-    Branching & Merging
-    Tagging
-    Working with Remote repository
-    Patching
-    Submodules
-    Dashboard / GUI
+    00:00:00 Introduction
+    00:02:38 Silabus belajar GitOps untuk Pemula sampai Mahir
+    00:09:17 What is Version Control
+    00:13:02 Local VCS architecture
+    00:17:12 Centralized VCS architecture
+    00:22:09 Distributed VCS architecture
+    00:29:14 What is Git SCM
+    00:35:48 How to work with Git SCM
+    00:54:17 Installing git on macos
+    01:18:15 Installing git on Windows
+    01:46:09 Install git on Linux
+    01:47:17 How to install git on linux
+    02:06:25 Getting a git repository
+    02:28:24 Recording changes to the repository
+    02:34:07 Checking the status of your files
+    02:40:57 Tracking new or modified files
+    02:50:07 Commiting your changes
+    02:57:05 Staging modified files
+    03:08:12 Ignore files
+    03:23:16 Remove or moving files
+    03:32:45 Viewing the commit history
+    03:38:48 Materi selanjutnya
 
 - cource: k8s
   catalog: pod-container
   date: 2022-07-26T18:29:00+07:00
-  duration: "5jam"
+  duration: "5 jam"
   tier: "free"
   youtube: 
   thumbnail:
@@ -71,7 +84,7 @@
 - cource: postgresql
   catalog: select-statement
   date: 2022-06-25T18:29:00+07:00
-  duration: "8jam"
+  duration: "8 jam"
   tier: "free"
   youtube: ySrFe_Fu1rk
   thumbnail:
@@ -94,7 +107,7 @@
 - cource: docker
   catalog: docker-machine
   date: 2022-04-14T18:29:00+07:00
-  duration: "2.5jam"
+  duration: "2 jam 30 menit"
   tier: "free"
   youtube: xpHIoSSZRbk
   thumbnail:
@@ -121,7 +134,7 @@
 - cource: k8s
   catalog: minikube
   visible: true
-  duration: "4jam 40menit"
+  duration: "4 jam 40 menit"
   tier: "free"
   youtube: uQj0mJxDpeE
   thumbnail:
@@ -145,7 +158,7 @@
 - cource: postgresql
   catalog: getting-started
   date: 2022-02-15T18:29:00+07:00
-  duration: "3jam"
+  duration: "3 jam"
   tier: "free"
   youtube: UjxEMXePVRk
   thumbnail:
@@ -165,7 +178,7 @@
 - cource: k8s
   catalog: introduction
   visible: true
-  duration: "2jam"
+  duration: "2 jam"
   youtube: agYCNlb8-rA
   thumbnail:
   tier: "free"
@@ -186,7 +199,7 @@
 - cource: postgresql
   catalog: introduction
   date: 2022-02-12T14:29:00+07:00
-  duration: "45menit"
+  duration: "45 menit"
   tier: "free"
   youtube: oH38ULCCuFo
   thumbnail:
