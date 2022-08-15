@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Basic Create, Update, Delete statement"
+date: 2022-08-15T22:06:18+07:00
 lang: postgresql
 authors:
 - dimasm93
