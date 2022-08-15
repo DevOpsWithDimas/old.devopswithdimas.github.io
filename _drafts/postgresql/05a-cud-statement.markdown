@@ -8,7 +8,7 @@ categories:
 - RDBMS
 - PostgreSQL
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/docs/14/dml.html
 youtube: 
 image_path: /resources/posts/postgresql/05a-cud-statement
 comments: true
@@ -23,7 +23,6 @@ Hai semuanya di materi kali ini kita akan membahas basic dari Create, Update dan
 2. Update statement
 3. Delete statement
 4. Returning data from modified rows
-5. Error messeges in Data manipulation
 
 Ok tanpa bercerita panjang lebar, lansung aja kita bahas materi yang pertama:
 
@@ -141,4 +140,46 @@ hr=# select * from regions;
          4 | Middle East and Africa
          1 | Europe
 (4 rows)
+```
+
+## Returning data from modified rows
+
+Sometimes it is useful to obtain data from modified rows while they are being manipulated. The `INSERT`, `UPDATE`, and `DELETE` commands all have an optional `RETURNING` clause that supports this. Use of `RETURNING` avoids performing an extra database query to collect the data, and is especially valuable when it would otherwise be difficult to identify the modified rows reliably.
+
+In an `INSERT`, the data available to `RETURNING` is the row as it was inserted. This is not so useful in trivial inserts, since it would just repeat the data provided by the client. But it can be very handy when relying on computed default values. For example, when using a serial column to provide unique identifiers, `RETURNING` can return the ID assigned to a new row:
+
+{% highlight sql %}
+INSERT INTO <table-name> (<column1>[, ...])
+VALUES (<value1> [, ...]) 
+RETURNING <column_primary_key>
+{% endhighlight %}
+
+Sebagai contoh karena pada table `regions` memiliki default value untuk column `region_id` kita bisa ambil nilai default tersebut ketika di insert data kemudian return value yang di generate dari default value tersebut. berikut adalah perintahnya:
+
+{% gist page.gist "05a-simple-insert-returning.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# INSERT INTO regions (region_name)
+hr-# VALUES ('Asia Tenggara')
+hr-# RETURNING region_id;
+
+ region_id 
+-----------
+         6
+(1 row)
+
+INSERT 0 1
+
+hr=# select * from regions;
+
+ region_id |      region_name       
+-----------+------------------------
+         1 | Europe
+         2 | Americas
+         3 | Asia
+         4 | Middle East and Africa
+         6 | Asia Tenggara
+(5 rows)
 ```
