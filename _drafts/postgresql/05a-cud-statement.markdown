@@ -108,3 +108,37 @@ hr=# select * from regions;
          5 | Oceania
 (5 rows)
 ```
+
+## Delete statement
+
+So far we have explained how to add data to tables and how to change data. What remains is to discuss how to remove data that is no longer needed. Just as adding data is only possible in whole rows, you can only remove entire rows from a table.
+
+Therefore, removing rows can only be done by specifying conditions that the rows to be removed have to match. If you have a primary key in the table then you can specify the exact row. But you can also remove groups of rows matching a condition, or you can remove all rows in the table at once.
+
+You use the `DELETE` command to remove rows; the syntax is very similar to the `UPDATE` command. Format penulisan `delete` statement yaitu seperti berikut:
+
+{% highlight sql %}
+DELETE FROM <table_name> 
+WHERE <column_condition> = <value_condition>
+{% endhighlight %}
+
+Contoh penggunaanya adalah sebagai berikut, contohnya saya mau menghapus data yang telah saya insert tadi, yaitu dengan `region_id = 5`, maka berikut querynya:
+
+{% gist page.gist "05a-simple-delete.sql" %}
+
+berikut hasilnya:
+
+```sql
+hr=# delete from regions
+hr-# where region_id = 5;
+DELETE 1
+
+hr=# select * from regions;
+ region_id |      region_name       
+-----------+------------------------
+         2 | Americas
+         3 | Asia
+         4 | Middle East and Africa
+         1 | Europe
+(4 rows)
+```
