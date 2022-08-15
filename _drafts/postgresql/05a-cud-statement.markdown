@@ -70,3 +70,41 @@ hr=# select * from regions;
 
 ## Update statement
 
+The modification of data that is already in the database is referred to as updating. You can update individual rows, all the rows in a table, or a subset of all rows. Each column can be updated separately; the other columns are not affected.
+
+To update existing rows, use the `UPDATE` command. This requires three pieces of information:
+
+1. The name of the table and column to update
+2. The new value of the column
+3. Which row(s) to update
+
+Format penulisan update statement yaitu sebagai berikut:
+
+{% highlight bash %}
+UPDATE <table-name> 
+SET <column-name1> = <value1>[, ...]
+WHERE <column-condition> = <value-condition>
+{% endhighlight %}
+
+Contoh penggunaanya adalah sebagai berikut, contohnya saya mau update data pada table `regions` kolom `region_name` yang valuenya `Asia Tenggara` menjadi `Oceania`, maka berikut querynya:
+
+{% gist page.gist "05a-simple-update.sql" %}
+
+berikut hasilnya:
+
+```sql
+hr=# UPDATE regions 
+hr-# SET region_name = 'Oceania'
+hr-# WHERE region_id = 5;
+UPDATE 1
+
+hr=# select * from regions;
+ region_id |      region_name       
+-----------+------------------------
+         2 | Americas
+         3 | Asia
+         4 | Middle East and Africa
+         1 | Europe
+         5 | Oceania
+(5 rows)
+```
