@@ -19,20 +19,17 @@ downloads: []
 
 Hai semuanya, pada materi sebelumnya kita sudah membahas sedikit tentang Data Manipulation language atau di singkat DML. Nah sekarang kita akan bahas lebih detail khususnya untuk perintah INSERT statement diantaranya seperti berikut:
 
-1. Insert with `DEFAULT VALUE`
-2. Insert single and multiple rows
-3. Insert with `ON CONFLICT`
-4. Insert with `OVERRIDING` keyword
-4. Using with query in INSERT statement
-5. Error message on insert statement
+1. Advanced `INSERT` statement
+2. Insert with `DEFAULT VALUE`
+3. Insert single and multiple rows
+4. Insert with `ON CONFLICT`
+5. Insert with `OVERRIDING` keyword
+6. Using with query in INSERT statement
+7. Error message on insert statement
 
 Ok tanpa berlama-lama lagi, yuuk lansung aja kita bahas materi yang pertama:
 
 <!--more-->
 
-## Insert with `DEFAULT VALUE`
-
-
-
-## Insert single and multiple rows
+## Advanced `INSERT` statement
 
