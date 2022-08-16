@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "INSERT Statements"
+title: "Deep dive into INSERT statement"
 lang: postgresql
 authors:
 - dimasm93
@@ -8,25 +8,31 @@ categories:
 - RDBMS
 - PostgreSQL
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/docs/14/sql-insert.html
 youtube: 
-image_path: /resources/posts/postgresql/05a-dml-insert
+image_path: /resources/posts/postgresql/05b-dml-insert
 comments: true
 gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
 catalog_key: dml-statement
 downloads: []
 ---
 
+Hai semuanya, pada materi sebelumnya kita sudah membahas sedikit tentang Data Manipulation language atau di singkat DML. Nah sekarang kita akan bahas lebih detail khususnya untuk perintah INSERT statement diantaranya seperti berikut:
 
-description...
+1. Insert with `DEFAULT VALUE`
+2. Insert single and multiple rows
+3. Insert with `ON CONFLICT`
+4. Insert with `OVERRIDING` keyword
+4. Using with query in INSERT statement
+5. Error message on insert statement
+
+Ok tanpa berlama-lama lagi, yuuk lansung aja kita bahas materi yang pertama:
 
 <!--more-->
 
-Materi: 
+## Insert with `DEFAULT VALUE`
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+
+
+## Insert single and multiple rows
+
