@@ -237,4 +237,37 @@ Jadi kesimpulannya jika kita mau menggunakan default value kita bisa menggunakan
 
 ## Insert single and multiple rows
 
-`INSERT` statement is inserts new rows into a table. One can insert one or more rows specified by value expressions, or zero or more rows resulting from a query.
+`INSERT` statement is inserts new rows into a table. One can insert one or more rows specified by value expressions, or zero or more rows resulting from a query. Berikut syntax dasarnya:
+
+{% highlight sql %}
+INSERT INTO table_name [ AS alias ] [ ( column_name [, ...] ) ]
+    VALUES ( { expression | DEFAULT } [, ...] ) [, ( { expression | DEFAULT } , ... )] 
+{% endhighlight %}
+
+Implementasi pada querynya seperti berikut:
+
+{% gist page.gist "05b-dml-insert-multiple-rows.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# INSERT INTO countries (country_id, country_name, region_id)
+hr-# values ('ID', 'Indonesia', 3),
+hr-#        ('SI', 'Singapore', 3),
+hr-#        ('TH', 'Thailand', 3);
+INSERT 0 3
+
+hr=# select * from countries where country_id in ('ID', 'SI', 'TH');
+ country_id | country_name | region_id 
+------------+--------------+-----------
+ ID         | Indonesia    |         3
+ SI         | Singapore    |         3
+ TH         | Thailand     |         3
+(3 rows)
+```
+
+Meskipun kita bisa mengirimkan data lebih dari satu bahkan bisa ribuan data tpi temen-temen juga perlu pertimbahkan kerkait performa databasenya. Karena semakin banyak data yang dikirimkan dalam satu query biasanya akan menghambat proses lainnya. 
+
+Jadi biasanya jika misalnya saya akan mengimput jutaan data biasanya akan saya bagi-bagi menjadi beberapa bulk misalnya query pertama berisi 1000 baris, kemudian query kedua kita kirimkan lagi 1000 baris selanjutnya dan begitu pula selanjutnya sampai semua data selesai.
+
+## Insert with `ON CONFLICT`
