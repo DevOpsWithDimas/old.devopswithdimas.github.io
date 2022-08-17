@@ -153,6 +153,86 @@ All columns will be filled with their default values, as if `DEFAULT` were expli
 
 Each column not present in the explicit or implicit column list will be filled with a default value, either its declared default value or `null` if there is none.
 
+Sebagai contoh kita akan edit struktur table `employees` pada columnn `salary` dengan menambahkan default value dengan query seperti berikut:
+
+{% highlight sql %}
+alter table employees
+alter column salary SET default 0;
+{% endhighlight %}
+
+Nah sekarang kita lihat struktur tablenya seperti berikut:
+
+```sql
+hr=# \d employees
+                                            Table "public.employees"
+     Column     |         Type          | Collation | Nullable |                    Default                     
+----------------+-----------------------+-----------+----------+------------------------------------------------
+ employee_id    | integer               |           | not null | nextval('employees_employee_id_seq'::regclass)
+ first_name     | character varying(20) |           |          | 
+ last_name      | character varying(25) |           | not null | 
+ email          | character varying(25) |           | not null | 
+ phone_number   | character varying(20) |           |          | 
+ job_id         | character varying(10) |           |          | 
+ salary         | numeric(8,2)          |           |          | 0
+ commission_pct | numeric(2,2)          |           |          | 
+ manager_id     | integer               |           |          | 
+ department_id  | integer               |           |          | 
+```
+
+Kemudian jika kita lakukan insert data dengan query seperti berikut:
+
+{% gist page.gist "05b-dml-insert-no-specify-salary-column.sql" %}
+
+Jika di jalankan hasilnya seperti berikut:
+
+```sql
+hr=# INSERT INTO employees (email, first_name, last_name, job_id)
+hr-# values ('YUSUF', initcap('Muhamad'), initcap('yusuf'), upper('it_prog'));
+INSERT 0 1
+
+hr=# select * from employees where email = 'YUSUF';
+ employee_id | first_name | last_name | email | phone_number | job_id  | salary | commission_pct | manager_id | department_id 
+-------------+------------+-----------+-------+--------------+---------+--------+----------------+------------+---------------
+           3 | Muhamad    | Yusuf     | YUSUF |              | IT_PROG |   0.00 |                |            |              
+(1 row)
+```
+
+Kemudian jika kita specify column `salary` tetapi jika kita kasih nilai `null` dengan query seperti berikut:
+
+{% gist page.gist "05b-dml-insert-null-value-salary.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# INSERT INTO employees (email, first_name, last_name, job_id, salary)
+hr-# values ('PURWADI', initcap('muhamad'), initcap('purwadi'), upper('it_prog'), null);
+INSERT 0 1
+
+hr=# select * from employees where email = 'PURWADI';
+ employee_id | first_name | last_name |  email  | phone_number | job_id  | salary | commission_pct | manager_id | department_id 
+-------------+------------+-----------+---------+--------------+---------+--------+----------------+------------+---------------
+           4 | Muhamad    | Purwadi   | PURWADI |              | IT_PROG |        |                |            |              
+(1 row)
+```
+
+Kemudian bagaimana jika kita mau menggunakan nilai defaultnya jika kita specify column tersebut, kita bisa gunakan keyword `DEFAULT` seperti berikut:
+
+{% gist page.gist "05b-dml-insert-using-default-value.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# INSERT INTO employees (email, first_name, last_name, job_id, salary)
+hr-# values ('JUNAEDI', null, initcap('junaedi'), upper('it_prog'), DEFAULT);
+INSERT 0 1
+
+hr=# select * from employees where email  = 'JUNAEDI';
+ employee_id | first_name | last_name |  email  | phone_number | job_id  | salary | commission_pct | manager_id | department_id 
+-------------+------------+-----------+---------+--------------+---------+--------+----------------+------------+---------------
+           5 |            | Junaedi   | JUNAEDI |              | IT_PROG |   0.00 |                |            |              
+(1 row)
+```
+
 ## Insert single and multiple rows
 
 `INSERT` statement is inserts new rows into a table. One can insert one or more rows specified by value expressions, or zero or more rows resulting from a query.
