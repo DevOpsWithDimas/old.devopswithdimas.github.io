@@ -233,6 +233,8 @@ hr=# select * from employees where email  = 'JUNAEDI';
 (1 row)
 ```
 
+Jadi kesimpulannya jika kita mau menggunakan default value kita bisa menggunakan 2 cara yaitu tidak men-specify kolom yang kita input dan juga menggunakan expression atau keyword `DEFAULT` pada values form.
+
 ## Insert single and multiple rows
 
 `INSERT` statement is inserts new rows into a table. One can insert one or more rows specified by value expressions, or zero or more rows resulting from a query.
