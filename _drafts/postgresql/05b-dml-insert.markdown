@@ -271,3 +271,66 @@ Meskipun kita bisa mengirimkan data lebih dari satu bahkan bisa ribuan data tpi 
 Jadi biasanya jika misalnya saya akan mengimput jutaan data biasanya akan saya bagi-bagi menjadi beberapa bulk misalnya query pertama berisi 1000 baris, kemudian query kedua kita kirimkan lagi 1000 baris selanjutnya dan begitu pula selanjutnya sampai semua data selesai.
 
 ## Insert with `ON CONFLICT`
+
+The optional `ON CONFLICT` clause specifies an alternative action to raising a unique violation or exclusion constraint violation error. For each individual row proposed for insertion, either the insertion proceeds, or, if an arbiter constraint or index specified by `conflict_target` is violated, the alternative conflict_action is taken. `ON CONFLICT DO NOTHING` simply avoids inserting a row as its alternative action. `ON CONFLICT DO UPDATE` updates the existing row that conflicts with the row proposed for insertion as its alternative action.
+
+Berikut syntax dasarnya:
+
+{% highlight sql %}
+INSERT INTO table_name [ AS alias ] [ ( column_name [, ...] ) ]
+    { DEFAULT VALUES | VALUES ( { expression | DEFAULT } [, ...] ) [, ...] | query }
+    [ ON CONFLICT [ conflict_target ] conflict_action ]
+
+where conflict_target can be one of:
+
+    ( { index_column_name | ( index_expression ) } [ COLLATE collation ] [ opclass ] [, ...] ) [ WHERE index_predicate ]
+    ON CONSTRAINT constraint_name
+
+and conflict_action is one of:
+
+    DO NOTHING
+    DO UPDATE SET { column_name = { expression | DEFAULT } |
+                    ( column_name [, ...] ) = [ ROW ] ( { expression | DEFAULT } [, ...] ) |
+                    ( column_name [, ...] ) = ( sub-SELECT )
+                  } [, ...]
+              [ WHERE condition ]
+{% endhighlight %}
+
+Contoh yang paling umum adalah seperti berikut, misalnya saya mau insert data jika key sudah ada maka update value tersebut dengan perintah seperti berikut:
+
+{% gist page.gist "05b-dml-insert-on-conflict-update.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# INSERT INTO countries as newValue (country_id, country_name, region_id)
+hr-# values ('ID', 'Republic Indonesia', 3)
+hr-# on conflict (country_id) do update SET country_name = excluded.country_name,
+hr-#                                       region_id    = excluded.region_id;
+INSERT 0 1
+
+hr=# select * from countries where country_id = 'ID';
+ country_id |    country_name    | region_id 
+------------+--------------------+-----------
+ ID         | Republic Indonesia |         3
+(1 row)
+```
+
+Selain itu juga, misalnya ketika mau insert data jika key sudah ada maka jangan di update/insert dengan menggunakan perintah berikut:
+
+{% gist page.gist "05b-dml-insert-on-conflict-nothing.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut: 
+
+```sql
+hr=# INSERT INTO countries as newValue (country_id, country_name, region_id)
+hr-# values ('ID', 'Indonesia', 3)
+hr-# on conflict (country_id) do nothing;
+INSERT 0 0
+
+hr=# select * from countries where country_id = 'ID';
+ country_id |    country_name    | region_id 
+------------+--------------------+-----------
+ ID         | Republic Indonesia |         3
+(1 row)
+```
