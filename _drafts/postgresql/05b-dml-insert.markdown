@@ -274,6 +274,8 @@ Jadi biasanya jika misalnya saya akan mengimput jutaan data biasanya akan saya b
 
 The optional `ON CONFLICT` clause specifies an alternative action to raising a unique violation or exclusion constraint violation error. For each individual row proposed for insertion, either the insertion proceeds, or, if an arbiter constraint or index specified by `conflict_target` is violated, the alternative conflict_action is taken. `ON CONFLICT DO NOTHING` simply avoids inserting a row as its alternative action. `ON CONFLICT DO UPDATE` updates the existing row that conflicts with the row proposed for insertion as its alternative action.
 
+Pastikan jika temen-temen mau menggunakan feature ini harus menggunakan PostgreSQL Server versi minimum 9.5 atau lebih tinggi.
+
 Berikut syntax dasarnya:
 
 {% highlight sql %}
