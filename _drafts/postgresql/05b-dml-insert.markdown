@@ -59,15 +59,100 @@ and conflict_action is one of:
               [ WHERE condition ]
 {% endhighlight %}
 
-`INSERT` statement is inserts new rows into a table. One can insert one or more rows specified by value expressions, or zero or more rows resulting from a query.
-
-The target column names can be listed in any order. If no list of column names is given at all, the default is all the columns of the table in their declared order; or the first `N` column names, if there are only `N` columns supplied by the VALUES clause or query. The values supplied by the `VALUES` clause or query are associated with the explicit or implicit column list left-to-right.
-
-Each column not present in the explicit or implicit column list will be filled with a default value, either its declared default value or `null` if there is none.
-
-If the expression for any column is not of the correct data type, automatic type conversion will be attempted.
-
-Ya lumayan panjang juga ya, ok kalo gitu kita break down aja ya untuk masing-masing feature dari `INSERT` statement ini
+Nah lumayan banyak dan panjang juga ya ternyata untuk perintah insert yang kita bisa gunakan, jadi kita akan coba break down aja ya masing-masing feature
 
 ## Insert with specific columns and data type
 
+The target column names can be listed in any order. If no list of column names is given at all, the default is all the columns of the table in their declared order; or the first `N` column names, if there are only `N` columns supplied by the VALUES clause or query. The values supplied by the `VALUES` clause or query are associated with the explicit or implicit column list left-to-right.
+
+If the expression for any column is not of the correct data type, automatic type conversion will be attempted.
+
+{% highlight sql %}
+INSERT INTO <table_name> [ ( column_name [, ...] ) ]
+    { VALUES ( { expression | DEFAULT } [, ...] ) [, ...] }
+{% endhighlight %}
+
+Sebagai contoh, saya ingin menambahkan data pada table `employees` dengan struktur table seperti berikut
+
+```sql
+hr=# \d employees
+                                            Table "public.employees"
+     Column     |         Type          | Collation | Nullable |                    Default                     
+----------------+-----------------------+-----------+----------+------------------------------------------------
+ employee_id    | integer               |           | not null | nextval('employees_employee_id_seq'::regclass)
+ first_name     | character varying(20) |           |          | 
+ last_name      | character varying(25) |           | not null | 
+ email          | character varying(25) |           | not null | 
+ phone_number   | character varying(20) |           |          | 
+ job_id         | character varying(10) |           |          | 
+ salary         | numeric(8,2)          |           |          | 
+ commission_pct | numeric(2,2)          |           |          | 
+ manager_id     | integer               |           |          | 
+ department_id  | integer               |           |          | 
+```
+
+Data yang saya inputkan ke table `employees` tersebut adalah seperti berikut
+
+| first_name    | last_name  | email    | job_id    | salary    |
+| :---          | :---       | :---     | :---      | :---      |
+| Dimas         | Maryanto   | DIMAS    | IT_PROG   | 15000     |
+
+Berikut adalah querynya:
+
+{% gist page.gist "05b-dml-insert-specific-columns.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# INSERT INTO employees (email, first_name, last_name, job_id, salary)
+hr-# values ('DIMAS', initcap('dimas'), initcap('maryanto'), upper('it_prog'), 15000);
+INSERT 0 1
+
+hr=# select * from employees where email = 'DIMAS';
+ employee_id | first_name | last_name | email | phone_number | job_id  |  salary  | commission_pct | manager_id | department_id 
+-------------+------------+-----------+-------+--------------+---------+----------+----------------+------------+---------------
+           2 | Dimas      | Maryanto  | DIMAS |              | IT_PROG | 15000.00 |                |            |              
+(1 row)
+```
+
+Selain itu juga klo kita mau menyimpan data dengan tipe data date/timestamp misalnya pada table `job_history` seperti berikut struktur tablenya:
+
+```sql
+hr=# \d job_history
+                          Table "public.job_history"
+    Column     |            Type             | Collation | Nullable | Default 
+---------------+-----------------------------+-----------+----------+---------
+ employee_id   | integer                     |           |          | 
+ start_date    | timestamp without time zone |           |          | 
+ end_date      | timestamp without time zone |           |          | 
+ job_id        | character varying(10)       |           |          | 
+ department_id | integer                     |           |          | 
+```
+
+Maka querynya seperti berikut:
+
+{% gist page.gist "05b-dml-insert-specific-datatype.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# INSERT INTO job_history (employee_id, start_date, job_id) 
+hr-# VALUES (2, '2016-07-15', 'IT_PROG');
+INSERT 0 1
+
+hr=# select * from job_history where employee_id = 2;
+ employee_id |     start_date      | end_date | job_id  | department_id 
+-------------+---------------------+----------+---------+---------------
+           2 | 2016-07-15 00:00:00 |          | IT_PROG |              
+(1 row)
+```
+
+## Insert with `DEFAULT VALUE`
+
+All columns will be filled with their default values, as if `DEFAULT` were explicitly specified for each column. (An `OVERRIDING` clause is not permitted in this form.)
+
+Each column not present in the explicit or implicit column list will be filled with a default value, either its declared default value or `null` if there is none.
+
+## Insert single and multiple rows
+
+`INSERT` statement is inserts new rows into a table. One can insert one or more rows specified by value expressions, or zero or more rows resulting from a query.
