@@ -83,6 +83,22 @@ hr-# limit 5;
 
 Sepertinya telah saya jelaskan di section sebelumnya, The `WITH` Query pada dasarnya digunakan untuk mem-breakdown complicated queries menjadi lebih simple. berikut contohnya:
 
+{% highlight sql %}
+select employee_id, first_name, salary, department_id
+from employees
+where department_id in 
+  (
+    select distinct department_id as dep_id
+    from departments natural join locations
+    where country_id in ('UK', 'US')
+  )
+  and salary >= 10000
+order by salary desc
+limit 10;
+{% endhighlight %}
+
+Jika menggunakan WITH Queries maka seperti berikut implementasinya:
+
 {% gist page.gist "04f-complex-with-query.sql" %}
 
 which displays top 10 employees salary and filter by department location in `US` or `UK`. jika dijalankan hasilnya seperti berikut:

@@ -336,3 +336,6 @@ hr=# select * from countries where country_id = 'ID';
  ID         | Republic Indonesia |         3
 (1 row)
 ```
+
+## Insert with `OVERRIDING` keyword
+
