@@ -339,3 +339,15 @@ hr=# select * from countries where country_id = 'ID';
 
 ## Insert with `OVERRIDING` keyword
 
+The optional `OVERRIDING` clause specifies an alternative action to replace default or initialize value defined on Data Definition (DML). Berikut adalah contoh syntaxnya:
+
+{% highlight sql %}
+INSERT INTO table_name [ AS alias ] [ ( column_name [, ...] ) ]
+    [ OVERRIDING { SYSTEM | USER } VALUE ]
+    { DEFAULT VALUES | VALUES ( { expression | DEFAULT } [, ...] ) [, ...] | query }
+{% endhighlight %}
+
+Ada 2 clause pada `OVERRIDING` yaitu 
+
+1. `OVERRIDING SYSTEM VALUE`, If this clause is specified, then any values supplied for identity columns will override the default sequence-generated values.
+2. `OVERRIDING USER VALUE`, If this clause is specified, then any values supplied for identity columns are ignored and the default sequence-generated values are applied.
