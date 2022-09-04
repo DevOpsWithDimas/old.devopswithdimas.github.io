@@ -357,3 +357,78 @@ Karena disini kita belum punya workloadnya atau belum memiliki tabel dengan stru
 Mungkin nanti kita akan praktekan di section selanjutnya yaitu Data Definition Language (DDL).
 
 ## Using with query in INSERT statement
+
+The WITH clause allows you to specify one or more subqueries that can be referenced by name in the INSERT query.
+
+{% highlight sql %}
+[ WITH [ RECURSIVE ] with_query [, ...] ]
+    (SELECT * from ...)
+INSERT INTO table_name [ AS alias ] [ ( column_name [, ...] ) ]
+    { DEFAULT VALUES | VALUES ( { expression | DEFAULT } [, ...] ) [, ...] | query }
+    [ RETURNING * | output_expression [ [ AS ] output_name ] [, ...] ]
+{% endhighlight %}
+
+It is possible for the query (`SELECT` statement) to also contain a WITH clause. In such a case both sets of **with_query** can be referenced within the query, but the second one takes precedence since it is more closely nested.
+
+Sebagai contoh misalnnya saya mau insert ke tabel `employees` beserta `job_history` sekaligus dengan structur table seperti berikut:
+
+```sql
+hr=# \d employees
+                                            Table "public.employees"
+     Column     |         Type          | Collation | Nullable |                    Default
+----------------+-----------------------+-----------+----------+------------------------------------------------
+ employee_id    | integer               |           | not null | nextval('employees_employee_id_seq'::regclass)
+ first_name     | character varying(20) |           |          |
+ last_name      | character varying(25) |           | not null |
+ email          | character varying(25) |           | not null |
+ phone_number   | character varying(20) |           |          |
+ job_id         | character varying(10) |           |          |
+ salary         | numeric(8,2)          |           |          |
+ commission_pct | numeric(2,2)          |           |          |
+ manager_id     | integer               |           |          |
+ department_id  | integer               |           |          |
+Indexes:
+    "employees_pkey" PRIMARY KEY, btree (employee_id)
+Referenced by:
+    TABLE "departments" CONSTRAINT "fk_departments_manager_id" FOREIGN KEY (manager_id) REFERENCES employees(employee_id) ON UPDATE CASCADE ON DELETE CASCADE
+    TABLE "employees" CONSTRAINT "fk_employees_manager_id" FOREIGN KEY (manager_id) REFERENCES employees(employee_id) ON UPDATE CASCADE ON DELETE CASCADE
+
+hr=# \d job_history
+                          Table "public.job_history"
+    Column     |            Type             | Collation | Nullable | Default
+---------------+-----------------------------+-----------+----------+---------
+ employee_id   | integer                     |           |          |
+ start_date    | timestamp without time zone |           |          |
+ end_date      | timestamp without time zone |           |          |
+ job_id        | character varying(10)       |           |          |
+ department_id | integer                     |           |          |
+Foreign-key constraints:
+    "fk_job_history_department_id" FOREIGN KEY (department_id) REFERENCES departments(department_id) ON UPDATE CASCADE ON DELETE CASCADE
+    "fk_job_history_job_id" FOREIGN KEY (job_id) REFERENCES jobs(job_id) ON UPDATE CASCADE ON DELETE CASCADE
+```
+
+Karena `employee_id` by default digenerate oleh object sequance jadi kita perlu ambil dulu sequancenya kemudian kita masukan value hasil generate tersebut ke column `employee_id` pada tabel `job_history` berikut adalah implementasi querynya:
+
+{% gist page.gist "05b-nested-insert-with-query.sql" %}
+
+Maka jika dijalankan hasilnya seperti berikut
+
+```sql
+hr=# with insert_emp as (
+hr(#     insert into employees (first_name, last_name, email, job_id, salary, manager_id, department_id)
+hr(#         VALUES (initcap('Dimas'), initcap('Maryanto'), upper('dimas'), 'IT_PROG', 5000, 102, 90)
+hr(#         RETURNING employee_id, job_id, department_id
+hr(# )
+hr-# insert into job_history (employee_id, start_date, job_id, department_id)
+hr-# select employee_id, now(), job_id, department_id
+hr-# from insert_emp;
+INSERT 0 1
+
+hr=# select emp.employee_id, emp.first_name, emp.salary, h.start_date, h.department_id, h.job_id
+hr-# from employees emp
+hr-#          join job_history h on emp.employee_id = h.employee_id
+hr-# where email = upper('dimas');
+ employee_id | first_name | salary  |         start_date         | department_id | job_id
+-------------+------------+---------+----------------------------+---------------+---------
+           2 | Dimas      | 5000.00 | 2022-09-04 03:48:42.894234 |            90 | IT_PROG
+```
