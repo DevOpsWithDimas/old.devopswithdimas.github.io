@@ -1061,4 +1061,52 @@
       key: iam
       description: 'Eps 8: Cloud IAM'
       messages: ''
+
+- name: Nutanix AHV
+  fullname: 'Cloud Computing - Nutanix: Pemula sampai Mahir'
+  url: cloud-nutanix
+  language: DevOps
+  color: blue accent-2
+  tags:
+  - DevOps
+  - Cloud-Computing
+  - AHV
+  descriptions:
+    Temen-temen akan belajar Cloud Computing dengan menggunakan Nutanix AHV seperti Computing, Containers, Orhcestration, Database dan lain-lain.
+  messages:
+  publish: 2022-10-06T16:26:00+07:00
+  github: 
+  youtube:
+  udemy:
+  coming_soon: true
+  visible: true
+  catalogs:
+    - name: Pengenalan Nutanix AHV
+      key: introduction
+      description: 'Eps 1: Cloud computing dengan Nutanix AHV'
+      messages: ''
+    - name: Compute & Storage
+      key: compute-storage
+      description: 'Eps 2: Compute & Storage'
+      messages: ''
+    - name: Networking
+      key: networking
+      description: 'Eps 3: Networking'
+      messages: ''
+    - name: Karbon
+      key: karbon
+      description: 'Eps 4: Karbon (Kubernetes cluster)'
+      messages: ''
+    - name: Calm & Blueprint
+      key: calm
+      description: 'Eps 5: Calm & Blueprint'
+      messages: ''
+    - name: Nutanix Database
+      key: ndb
+      description: 'Eps 6: Nutanix Database'
+      messages: ''
+    - name: Adminstration & Operation
+      key: admin-operation
+      description: 'Eps 7: Nutanix Administration & Operation'
+      messages: ''
     
