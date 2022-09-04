@@ -351,3 +351,9 @@ Ada 2 clause pada `OVERRIDING` yaitu
 
 1. `OVERRIDING SYSTEM VALUE`, If this clause is specified, then any values supplied for identity columns will override the default sequence-generated values.
 2. `OVERRIDING USER VALUE`, If this clause is specified, then any values supplied for identity columns are ignored and the default sequence-generated values are applied.
+
+Karena disini kita belum punya workloadnya atau belum memiliki tabel dengan structure identity, jadi kita belum bisa praktekan tapi most commons `OVERRIDING` query digunakan untuk mengcopy data dari 1 tabel ke tabel lainnya dengan meng-replace value dari column yang menjadi primary key.
+
+Mungkin nanti kita akan praktekan di section selanjutnya yaitu Data Definition Language (DDL).
+
+## Using with query in INSERT statement
