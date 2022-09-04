@@ -432,3 +432,49 @@ hr-# where email = upper('dimas');
 -------------+------------+---------+----------------------------+---------------+---------
            2 | Dimas      | 5000.00 | 2022-09-04 03:48:42.894234 |            90 | IT_PROG
 ```
+
+## Error message on insert statement
+
+Jika temen-temen praktekan materi sebelumnya it's just works, but tidak selamanya pasti berhasil kadangkala kita akan menghadapi error yang sebetulnya di bagi jadi 3 yaitu syntax, semantic, dan logic tapi kita kali ini tidak akan membahas secara detail terkait itu tetapi kita memfokuskan beberapa kesalahan yang sering terjadi pada saat kita menggunakan Insert statement.
+
+Beberapa kesalahan yang sering terjadi bagi temen-temen yang masih pemula yaitu biasanya adalah typo, invalid syntax dan missing keyword. Terlepas dari itu ada juga kesalah yang secara syntax sudah betul tetapi begitu di execute erorr ini bisanya kita sebut runtime exception/error seperti 
+
+1. Duplicate constraint/key, contohnya duplicate primary key seperti berikut
+
+    ```sql
+    hr=# insert into regions(region_id, region_name) values (1, 'Other');
+    ERROR:  duplicate key value violates unique constraint "regions_pkey"
+    DETAIL:  Key (region_id)=(1) already exists.
+    ```
+
+2. Error validation, contohnya pada struktur table tidak boleh null tpi kita input null seperti berikut:
+
+    ```sql
+    hr=# insert into employees (first_name) values ('Dimas Maryanto');
+    ERROR:  null value in column "last_name" of relation "employees" violates not-null constraint
+    DETAIL:  Failing row contains (3, Dimas Maryanto, null, null, null, null, null, null, null, null).
+    ```
+
+3. Refference value does't match with foreign-key, contohnya kita ke tabel `employees` pada column `job_id` yang nilainya belum di definisikan pada table `jobs` seperti berikut:
+
+    ```sql
+    hr=# INSERT INTO employees (email, first_name, last_name, job_id)
+    hr-# values ('YUSUF', initcap('Muhamad'), initcap('yusuf'), 'IT');
+    ERROR:  insert or update on table "employees" violates foreign key constraint "fk_employees_job_id"
+    DETAIL:  Key (job_id)=(IT) is not present in table "jobs".
+    ```
+
+4. Invalid data type, contohnya column spec menggunakan date tetapi yang kita input tidak sesuai seperti berikut:
+
+    ```sql
+    ERROR:  date/time field value out of range: "2020/28/10"
+    LINE 2: values (100, '2020/28/10', 'IT_PROG', 90)
+                        ^
+    HINT:  Perhaps you need a different "datestyle" setting.
+    ```
+
+Selain itu juga masih ada beberapa failure yang terjadi karena factor external seperti service postgresql mati, server mati, network unreachable dan lain-lain.
+
+Ok begitulah kurang lebih ya beberapa kesalahan/error/failure yang mengebabkan data yang kita input tidak dapat di simpan pada Database PostgreSQL yang perlu temen-temen perhatikan adalah bagaimana cara troubleshoot dan handling error tersebut menggunakan beberapa strategi.
+
+Untuk strategi tersebut nanti kita akan bahas di materi server administration.
