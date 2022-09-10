@@ -37,14 +37,16 @@ Profesi Operation / Infrastructure mungkin udah gak aneh lagi dengan istilah IT 
 
 In this cases Software tools, frameworks and appliances conduct the tasks with minimum administrator intervention. The scope of IT automation ranges from single actions to discrete sequences and, ultimately, to an autonomous IT deployment that takes actions based on user behavior and other event triggers. 
 
-For example: jika dalam suatu project membutuhkan beberapa software seperti Database, Programming SDK (sofware development kit), Libraries maka ada beberapa task yang perlu kita lakukan yaitu
+For example: jika dalam suatu project membutuhkan beberapa software seperti Database, Programming language SDK (sofware development kit), Libraries maka ada beberapa task yang perlu kita lakukan yaitu
 
-1. Menyiapkan environment seperti server, vm, networking dan lain-lain
-2. Installing operation system dalam server tersebut
+1. Menyiapkan environment seperti server, virtual-machine, network dan lain-lain yang sifatnya infrastructure
+2. Installing Operation System (OS) dalam server tersebut
 3. Download dan Install software, dependency tersebut
-4. Maintanance & monitoring software tersebut 
-5. dan masih banyak hal lainnya yang biasanya di lakukan oleh IT Operation
+4. Maintanance & Monitoring hardware dan software 
+5. Update & Patch software.
+6. dan masih banyak hal lainnya yang biasanya di lakukan oleh IT Operation
 
-Dengan menggunakan IT Operation kita bisa me-replace task/job tersebut yang tadinya di execute manual menjadi automated bisa menggunakan Scripting atau UI (user interface)
+Dengan menggunakan IT automation kita bisa me-replace task/job tersebut yang tadinya di execute manual menjadi automated bisa menggunakan Scripting atau UI (user interface)
 
 ## How IT automation works and affects processes
+
