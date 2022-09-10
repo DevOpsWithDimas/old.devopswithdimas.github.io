@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Overview Study cases: IT Automation Platform for Docker Operations"
+date: 2022-09-10T11:48:17+07:00
 lang: docker
 authors:
 - dimasm93
