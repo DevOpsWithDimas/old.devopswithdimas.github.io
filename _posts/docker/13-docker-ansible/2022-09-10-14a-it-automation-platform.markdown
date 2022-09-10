@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "IT Automation Platform for Docker Operations"
+date: 2022-09-10T17:18:51+07:00
 lang: docker
 authors:
 - dimasm93
