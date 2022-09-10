@@ -1,21 +1,19 @@
 ---
 layout: post
-title: "14f-ansible-role-run-using-composefile"
+title: "IT Automation Platform for Docker Operations"
 lang: docker
 authors:
 - dimasm93
 categories:
 - DevOps
 - Docker
-- Ansible
-- Study-Cases
 refs: 
 - https://docs.docker.com/
 youtube: 
 comments: true
-catalog_key: study-cases-ansible
-image_path: /resources/posts/docker/14f-ansible-role-run-using-composefile
-gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
+catalog_key: <change-this>
+image_path: /resources/posts/docker/14a-it-automation-platform
+gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 

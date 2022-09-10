@@ -1,21 +1,18 @@
 ---
 layout: post
-title: "Pipeline: Flyway Database Migration dengan Gitlab CI"
+title: "14d-ansible-study-cases"
 lang: docker
 authors:
 - dimasm93
 categories:
 - DevOps
 - Docker
-- ci
-- Study-Cases
-- Gitlab-CI
 refs: 
 - https://docs.docker.com/
 youtube: 
 comments: true
-catalog_key: study-cases-docker-ci
-image_path: /resources/posts/docker/12h-pipeline-db-migrate
+catalog_key: <change-this>
+image_path: /resources/posts/docker/14d-ansible-study-cases
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---

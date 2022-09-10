@@ -1,21 +1,19 @@
 ---
 layout: post
-title: "14c-ansible-role-install-docker-compose"
+title: "Getting started with Ansible role, tasks for docker"
 lang: docker
 authors:
 - dimasm93
 categories:
 - DevOps
 - Docker
-- Ansible
-- Study-Cases
 refs: 
 - https://docs.docker.com/
 youtube: 
 comments: true
-catalog_key: study-cases-ansible
-image_path: /resources/posts/docker/14c-ansible-role-install-docker-compose
-gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
+catalog_key: <change-this>
+image_path: /resources/posts/docker/14c-ansible-for-docker-operation
+gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "14c-install-ansible-windows-wsl2"
+title: "How to Install RedHat Ansible"
 lang: docker
 authors:
 - dimasm93
@@ -18,7 +18,6 @@ image_path: /resources/posts/docker/14c-install-ansible-windows-wsl2
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
-
 
 description...
 
