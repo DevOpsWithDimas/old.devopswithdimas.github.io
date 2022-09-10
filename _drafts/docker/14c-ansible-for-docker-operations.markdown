@@ -11,7 +11,7 @@ refs:
 - https://docs.docker.com/
 youtube: 
 comments: true
-catalog_key: <change-this>
+catalog_key: study-cases-ansible
 image_path: /resources/posts/docker/14c-ansible-for-docker-operation
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
