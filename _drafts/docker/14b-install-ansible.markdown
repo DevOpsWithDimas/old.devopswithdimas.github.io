@@ -19,11 +19,11 @@ gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
 
-Hai semuanya, sebelum kita mulai ada beberapa hal yang perlu kita siapkan yaitu Ansible CLI dan Text editor seperti VS Code, Vim dan Terminal.
+Hai semuanya, sebelum kita mulai ada beberapa hal yang perlu kita siapkan yaitu Ansible CLI dan Text editor seperti VS Code, Vim dan Terminal. Adapun materi yang akan dibahas kali ini yaitu
 
-Ansible is an agentless automation tool that you install on a single host (referred to as the control node). From the control node, Ansible can manage an entire fleet of machines and other devices (referred to as managed nodes) remotely with SSH, Powershell remoting, and numerous other transports, all from a simple command-line interface with no databases or daemons required.
-
-For your control node (the machine that runs Ansible), you can use nearly any UNIX-like machine with Python 3.8 or newer installed. This includes Red Hat, Debian, Ubuntu, macOS, BSDs, and Windows under a Windows Subsystem for Linux (WSL) distribution. Windows without WSL is not natively supported as a control node;
+1. Install Ansible CLI for MacOs users
+2. Install Ansible CLI for Linux users
+3. Install Ansible CLI for Windows users
 
 Ok tanpa berlama-lama yukk langsung aja kita bahas materi yang pertama:
 
@@ -69,4 +69,5 @@ ansible-galaxy [core 2.13.3]
   libyaml = True
 ```
 
-## Install Ansible CLI on Windows users
+## Install Ansible CLI on Linux users
+

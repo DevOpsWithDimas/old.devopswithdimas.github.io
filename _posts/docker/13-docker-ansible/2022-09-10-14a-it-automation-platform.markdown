@@ -24,6 +24,7 @@ Hai semuanya di materi kali ini kita akan membahas salah satu topic yang lumayan
 1. What is IT Automation?
 2. What IT automation is used for?
 3. What kind a tools for IT automation?
+4. What is RedHat Ansible?
 
 Ok langsung aja kita bahas materi yang pertama:
 
@@ -80,3 +81,9 @@ Jadi kali ini kita akan membahas tentang Application Deploymment, Configuration 
 Ansible is an IT Automation platform that provides the simplest way to automate apps and IT infrastructure. It can be used for Application Deployment, Configuration Management, and Continuous Delivery. It is designed for multi-tire deployments. 
 
 Ansible has an efficient architecture. It will connect to your nodes and push out small programs called “Ansible Modules” to them. These programs will be the resource models of the desired state of the system. These modules will be executed by the Ansible and will remove them when finished. No servers, daemons, or databases will be required.
+
+## What is RedHat Ansible
+
+Ansible is an agentless automation tool that you install on a single host (referred to as the control node). From the control node, Ansible can manage an entire fleet of machines and other devices (referred to as managed nodes) remotely with SSH, Powershell remoting, and numerous other transports, all from a simple command-line interface with no databases or daemons required.
+
+For your control node (the machine that runs Ansible), you can use nearly any UNIX-like machine with Python 3.8 or newer installed. This includes Red Hat, Debian, Ubuntu, macOS, BSDs, and Windows under a Windows Subsystem for Linux (WSL) distribution. Windows without WSL is not natively supported as a control node;
