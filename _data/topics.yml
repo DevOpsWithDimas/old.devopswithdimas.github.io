@@ -420,8 +420,8 @@
       description: 'Eps.12 - Docker Machine'
       deprecated: true
       messages: ''
-    - name: 'Study Kasus: Vagrant + Ansible for Docker'
-      key: study-cases-vagrant-ansible
+    - name: 'Study Kasus: Ansible for Docker'
+      key: study-cases-ansible
       description: 'Eps.13 - Study kasus: Create multiple Docker Host'
       deprecated: false
       messages: ''

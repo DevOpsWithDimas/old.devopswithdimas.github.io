@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "14-overview-ansible-for-docker"
+title: "Overview Study cases: IT Automation Platform for Docker Operations"
 lang: docker
 authors:
 - dimasm93
@@ -19,16 +19,22 @@ gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
 
+Hai semuanya, sebelumnya kita udah membahas tentang Multiple docker host di local menggunakan docker-machine. Seperti yang temen-temen ketahui docker-machine yang sudah deprecated dan juga biasanya hanya digunakan untuk Local Development. Sekarang kita akan meng-automate deployment Docker host di physical machine atau virtual machine menggunakan IT Automation Platform yaitu Red Hat Ansible.
 
-description...
+Ok materi yang akan kita bahas di section kali ini tidak akan terlalu men-detail mengenai RedHat Ansible melainkan penggunaannya terkait Docker operation ya, jika temen-temen tertarik lebih detail mengenai IT Automation dengan RedHat Ansible nanti saya akan buatkan kelas tersendiri :)
+
+Jadi materinya yang akan kita bahas yaitu
 
 <!--more-->
 
-Materi: 
+1. What is IT Automation Platform?
+2. What is RedHat Ansible?
+3. How RedHat Ansible works compare with the other tools?
+4. Setup Pre-Requirement to begin
+    1. Create Virtual Machine
+    2. Installing Ansible cli on local machine
+5. Installing Docker engine using ansible role
+6. Running container using ansible tasks
+7. Execute docker-compose using ansible tasks
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+Ok mungkin sekian dulu yang saya bisa sampaikan terkait materi yang akan di pelajari mengenai IT Automation Platform with RedHat Ansible untuk Docker Operation, semoga temen-temen tertarik untuk mempelajarinnya lebih dalam lagi. See you next section!
