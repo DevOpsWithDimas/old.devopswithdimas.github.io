@@ -182,8 +182,14 @@ Setelah selesai proses installasi OS, Install beberapa package seperti `openssh-
 {% highlight bash %}
 apt-get update && \
 apt-get upgrade -y && \
-apt-get install -y openssh-server vim curl && \
-systemctl enable --now sshd
+apt-get install -y openssh-server vim curl network-manager sshpass && \
+systemctl enable --now ssh
+{% endhighlight %}
+
+Kemudian edit file `/etc/ssh/sshd_config` untuk property `PermiteRootLogin` menjadi `Yes` kemudian jalankan perintah berikut 
+
+{% highlight bash %}
+systemctl restart ssh
 {% endhighlight %}
 
 Jika sudah sekarang temen-temen bisa coba test remote ke server tersebut dengan menggunakan SSH protocol seperti berikut:
@@ -205,6 +211,46 @@ Warning: Permanently added '192.168.88.201' (ED25519) to the list of known hosts
 
 Last login: Sat Sep 10 08:46:10 2022 from 192.168.88.208
 [root@docker-ansible ~]$
+```
+
+Dan untuk selanjutnya kita bisa upload private key ssh kita ke server dengan perintah seperti berikut:
+
+{% highlight bash %}
+ssh-copy-id root@192.168.88.201
+{% endhighlight %}
+
+Jika dijalankan seperti berikut:
+
+```bash
+~ » ssh-copy-id -f root@192.168.88.201
+root@192.168.88.201''s password:
+
+Number of key(s) added:        1
+
+Now try logging into the machine, with:   "ssh 'root@192.168.88.201'"
+and check to make sure that only the key(s) you wanted were added.
+
+~ » ssh root@192.168.88.201
+Welcome to Ubuntu 22.04.1 LTS (GNU/Linux 5.15.0-43-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sun Sep 11 06:48:14 AM UTC 2022
+
+  System load:  0.0                Processes:              118
+  Usage of /:   26.0% of 24.44GB   Users logged in:        1
+  Memory usage: 5%                 IPv4 address for ens18: 192.168.88.201
+  Swap usage:   0%
+
+
+8 updates can be applied immediately.
+8 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+
+Last login: Sun Sep 11 06:45:17 2022 from 192.168.88.208
 ```
 
 Ok sudah bisa, temen-temen bisa lanjutkan ke tahap selanjutnya.
