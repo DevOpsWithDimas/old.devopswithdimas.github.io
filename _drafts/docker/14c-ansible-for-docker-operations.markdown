@@ -391,3 +391,47 @@ Commercial support is available at
 </html>
 * Connection #0 to host 192.168.88.203 left intact
 ```
+
+## Execute a container using ansible `docker_container_exec` module
+
+Selanjutnya selain me-manage container kita juga menggunakan execute command dalam container menggunakan ansible module `docker_container_exec` seperti berikut:
+
+Masih dalam file sebelumnya yaitu `site-docker-container-module.yaml` coba tambahkan tasks berikut:
+
+{% gist page.gist "14c-docker-container-exec.yaml" %}
+
+Kemudian coba jalankan perintah `ansible-playbook` berikut:
+
+{% highlight bash %}
+ansible-playbook -i <path-to-inventory>/inventory <path-to-playbook>/site-docker-container-module.yaml
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+devops/docker [master●] » ansible-playbook -i 11-ansible-docker/inventory 11-ansible-docker/site-docker-container-module.yaml --list-tasks
+playbook: 11-ansible-docker/site-docker-container-module.yaml
+
+  play #1 (dockerd): dockerd	TAGS: []
+    tasks:
+      Run nginx image	TAGS: []
+      Getting index.html	TAGS: []
+      print	TAGS: []
+
+devops/docker [master●] » ansible-playbook -i 11-ansible-docker/inventory 11-ansible-docker/site-docker-container-module.yaml
+PLAY [dockerd] *****************************************************************
+
+TASK [Run nginx image] *********************************************************
+ok: [192.168.88.203]
+
+TASK [Getting index.html] ******************************************************
+changed: [192.168.88.203]
+
+TASK [print] *******************************************************************
+ok: [192.168.88.203] => {
+    "index_html.stdout": "<!DOCTYPE html>\n<html>\n<head>\n<title>Welcome to nginx!</title>\n<style>\nhtml { color-scheme: light dark; }\nbody { width: 35em; margin: 0 auto;\nfont-family: Tahoma, Verdana, Arial, sans-serif; }\n</style>\n</head>\n<body>\n<h1>Welcome to nginx!</h1>\n<p>If you see this page, the nginx web server is successfully installed and\nworking. Further configuration is required.</p>\n\n<p>For online documentation and support please refer to\n<a href=\"http://nginx.org/\">nginx.org</a>.<br/>\nCommercial support is available at\n<a href=\"http://nginx.com/\">nginx.com</a>.</p>\n\n<p><em>Thank you for using nginx.</em></p>\n</body>\n</html>"
+}
+
+PLAY RECAP *********************************************************************
+192.168.88.203             : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
