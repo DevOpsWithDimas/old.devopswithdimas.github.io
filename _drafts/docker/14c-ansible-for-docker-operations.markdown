@@ -302,3 +302,92 @@ nginx        mainline   2b7d6430f78d   2 weeks ago   142MB
 ```
 
 Selain itu juga klo kita mau hapus, bisa update property `state=present` menjadi `state: absent` kemudian coba execute kembali `ansible-playbook` maka image `nginx:mainline` akan di hapus dari list docker image.
+
+## Manage a container using ansible `docker_container` module
+
+Selain kita bisa me-manage image dengan ansible module `docker_image` kita juga bisa me-manage containers dengan menggunakan ansible module `docker_container` seperti berikut:
+
+1. Create a container
+2. Running a container
+3. Remove a container
+4. Start/Restart a container
+5. Stop a running container
+
+Contohnya jika saya mau me-running container `nginx:mainline` dengan meng-expose port `80` serta restart container jika failed maka scriptnya seperti berikut:
+
+{% gist page.gist "14c-docker-container-module.yaml" %}
+
+Kemudian coba jalankan perintah `ansible-playbook` berikut:
+
+{% highlight bash %}
+ansible-playbook -i <path-to-inventory>/inventory <path-to-playbook>/site-docker-container-module.yaml
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+devops/docker [master] » curl 192.168.88.203
+curl: (7) Failed to connect to 192.168.88.203 port 80 after 32 ms: Connection refused
+
+devops/docker [master] » ansible-playbook -i 11-ansible-docker/inventory 11-ansible-docker/site-docker-container-module.yaml --list-tasks
+
+playbook: 11-ansible-docker/site-docker-container-module.yaml
+
+  play #1 (dockerd): dockerd	TAGS: []
+    tasks:
+      Run nginx image	TAGS: []
+
+devops/docker [master] » ansible-playbook -i 11-ansible-docker/inventory 11-ansible-docker/site-docker-container-module.yaml
+
+PLAY [dockerd] *****************************************************************
+
+TASK [Run nginx image] *********************************************************
+changed: [192.168.88.203]
+
+PLAY RECAP *********************************************************************
+192.168.88.203             : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+devops/docker [master] » curl 192.168.88.203 -v
+*   Trying 192.168.88.203:80...
+* Connected to 192.168.88.203 (192.168.88.203) port 80 (#0)
+> GET / HTTP/1.1
+> Host: 192.168.88.203
+> User-Agent: curl/7.79.1
+> Accept: */*
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Server: nginx/1.23.1
+< Date: Sun, 11 Sep 2022 12:08:12 GMT
+< Content-Type: text/html
+< Content-Length: 615
+< Last-Modified: Tue, 19 Jul 2022 14:05:27 GMT
+< Connection: keep-alive
+< ETag: "62d6ba27-267"
+< Accept-Ranges: bytes
+<
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+* Connection #0 to host 192.168.88.203 left intact
+```
