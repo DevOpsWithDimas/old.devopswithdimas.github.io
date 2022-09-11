@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Getting started with Ansible role, tasks for docker"
+date: 2022-09-11T20:26:35+07:00
 lang: docker
 authors:
 - dimasm93
