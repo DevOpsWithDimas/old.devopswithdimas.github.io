@@ -51,15 +51,15 @@ Ok yang perlu di siapkan adalah Ansible playbook script seperti berikut:
 
 2. Install dependency / ansible collections pada Control Node, seperti berikut
 
-    {% highlight bash %}
+    ```bash
     ansible-galaxy collection install -r requirement.yaml
-    {% endhighlight %}
+    ```
 
 3. Install package / ansible role pada Control Node, seperti berikut
 
-    {% highlight bash %}
+    ```bash
     ansible-galaxy role install -r requirement.yaml
-    {% endhighlight %}
+    ```
 
 4. Create file ansible playbook script dengan nama `site-docker.yaml` seperti berikut
 
@@ -67,9 +67,9 @@ Ok yang perlu di siapkan adalah Ansible playbook script seperti berikut:
 
 5. Kemudian jalankan ansible playbook script tersebut dengan perintah seperti berikut:
 
-    {% highlight bash %}
+    ```bash
     ansible-playbook -i <path-to-inventory>/inventory <path-to-playbook-script>/site-docker.yaml
-    {% endhighlight %}
+    ```
 
 Jika dijalankan hasilnya seperti berikut:
 
@@ -236,4 +236,4 @@ Server:
  Live Restore Enabled: false
 ```
 
-Nah jadi seperti itu ya untuk Install Docker Engine pada Linux menggunakan Ansible. Jadi nanti jika temen-temen ada server lagi yang ingin kita install Docker kita hanya perlu tambahkan host/ip address servernya pada `inventory` dan execute kembali scrpit a`nsible-playbook` 
+Nah jadi seperti itu ya untuk Install Docker Engine pada Linux menggunakan Ansible. Jadi nanti jika temen-temen ada server lagi yang ingin kita install Docker kita hanya perlu tambahkan host/ip address servernya pada `inventory` dan execute kembali script `ansible-playbook` 
