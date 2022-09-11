@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "How to Install RedHat Ansible"
+date: 2022-09-11T12:14:02+07:00
 lang: docker
 authors:
 - dimasm93
@@ -128,3 +129,80 @@ ansible-galaxy --version
 Jika dijalankan seperti berikut:
 
 ![wsl-ansible-console]({{ page.image_path | prepend: site.baseurl }}/wsl-ansible-console.png)
+
+## Create Virtual machine for Managed node
+
+Setelah kita menginstal Ansible dari Controled Node sekarang kita akan setup untuk Managed Node atau remote host. Untuk Managed Node ini bisa menggunakan Physical atau Virtual machine seperti
+
+1. Proxmox
+2. VMware
+3. VirtualBox
+4. Parallels
+5. Cloud provider based on VM (GCP, AWS, Alicloud)
+
+Untuk saya sendiri, akan menggunakan Proxmox yang ada di infrastructure network saya (on-premise), setelah kita tentukan vendor untuk Virtualization sekarang kita siapkan juga System Operation Linux Server. temen-temen biasa pake distro
+
+1. [Ubuntu Server](https://ubuntu.com/download/server)
+2. [CentOS](https://www.centos.org/download/)
+3. [RedHat Enterpice Linux Server](https://www.redhat.com/en/store/red-hat-enterprise-linux-server)
+4. [Debian](https://www.debian.org/)
+5. dan lain-lain
+
+klo saya sendiri lebih prefer menggunakan CentOS atau Ubuntu server, Ok langsung ja sekarang kita akan buat Virtual Machine menggunakan Proxmox seperti berikut:
+
+![system-info-summary]({{ page.image_path | prepend: site.baseurl }}/08-summary.png)
+
+Setelah membuat Virtual Machine di proxmox, sekarang kita Install OS nya menggunakan Ubuntu Server v22.04 LTS dengan configurasi seperti berikut:
+
+```yaml
+OS:
+  distribution: Ubuntu Server
+  version: 22.04 LTS
+Network:
+  static:
+    subnet: '192.168.88.0/24'
+    ip: '192.168.88.201'
+    gateway: '192.168.88.1'
+DISKs:
+  lvm:
+    lv-root:
+      partision: /
+      size: 25G
+    lv-var:
+      partision: /var
+      size: 45G
+  swap:
+    partision: swap
+    size: 4G
+```
+
+Setelah selesai proses installasi OS, Install beberapa package seperti `openssh-server`, `vim`, `curl` dengan perintah berikut:
+
+{% highlight bash %}
+apt-get update && \
+apt-get install -y openssh-server vim curl && \
+systemctl enable --now sshd
+{% endhighlight %}
+
+Jika sudah sekarang temen-temen bisa coba test remote ke server tersebut dengan menggunakan SSH protocol seperti berikut:
+
+{% highlight bash %}
+ssh root@192.168.88.201
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+~ » ssh root@192.168.88.201
+The authenticity of host '192.168.88.201 (192.168.88.201)' can't be established.
+ED25519 key fingerprint is SHA256:K0RdErApR0x306KHGs6gqTMliDR6r7PlXEnofn817Vc.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:1: docker-ansible
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '192.168.88.201' (ED25519) to the list of known hosts.
+
+Last login: Sat Sep 10 08:46:10 2022 from 192.168.88.208
+[root@docker-ansible ~]$
+```
+
+Ok sudah bisa, temen-temen bisa lanjutkan ke tahap selanjutnya.
