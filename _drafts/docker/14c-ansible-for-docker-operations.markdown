@@ -238,3 +238,67 @@ Nah jadi seperti itu ya untuk Install Docker Engine pada Linux menggunakan Ansib
 
 ## Manage docker image using ansible `docker_image` module
 
+Setelah kita meng-install Docker engine pada Managed Host dengan menggunakan Ansible role, kita juga bisa menggunakan docker `module` yang di sediakan oleh community ansible khususnya pada [docker_image](https://docs.ansible.com/ansible/latest/collections/community/docker/docker_image_module.html#ansible-collections-community-docker-docker-image-module) module yang biasanya digunakan untuk:
+
+Manage docker images seperti 
+1. Build docker image
+2. Load or Pull an image
+3. Tagging an image
+4. Pushing an image to a registry
+5. Archiving an image to a `.tar` file
+
+Sebagai contoh misalnya saya mau pull docker image `nginx:mainline` di Managed node, kita bisa menggunakan `docker_image` module ini dengan script berikut:
+
+{% gist page.gist "14c-docker-image-module.yaml" %}
+
+Kemudian coba jalankan perintah `ansible-playbook` berikut:
+
+{% highlight bash %}
+ansible-playbook -i <path-to-inventory>/inventory <path-to-playbook>/site-docker-image-module.yaml
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+~ » ssh root@192.168.88.203
+Welcome to Ubuntu 22.04.1 LTS (GNU/Linux 5.15.0-43-generic x86_64)
+Last login: Sun Sep 11 11:42:26 2022 from 192.168.88.207
+
+root@ansible-docker:~# docker images
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+
+root@ansible-docker:~# logout
+Connection to 192.168.88.203 closed.
+
+~ » cd Developer/dimas-maryanto.com/youtube/_projects/devops/docker
+devops/docker [master●] » ansible-playbook -i 11-ansible-docker/inventory 11-ansible-docker/site-docker-image-module.yaml --list-tasks
+
+playbook: 11-ansible-docker/site-docker-image-module.yaml
+
+  play #1 (dockerd): dockerd	TAGS: []
+    tasks:
+      Pull nginx image	TAGS: []
+
+devops/docker [master●] » ansible-playbook -i 11-ansible-docker/inventory 11-ansible-docker/site-docker-image-module.yaml
+
+PLAY [dockerd] *****************************************************************
+
+TASK [Pull nginx image] ********************************************************
+changed: [192.168.88.203]
+
+PLAY RECAP *********************************************************************
+192.168.88.203             : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+
+Jika sudah sekarang kita bisa check ke host tersebut apakah sudah ada docker image `nginx:mainline` seperti berikut:
+
+```bash
+devops/docker [master●] » ssh root@192.168.88.203
+Welcome to Ubuntu 22.04.1 LTS (GNU/Linux 5.15.0-43-generic x86_64)
+Last login: Sun Sep 11 11:48:05 2022 from 192.168.88.207
+root@ansible-docker:~# docker images
+REPOSITORY   TAG        IMAGE ID       CREATED       SIZE
+nginx        mainline   2b7d6430f78d   2 weeks ago   142MB
+```
+
+Selain itu juga klo kita mau hapus, bisa update property `state=present` menjadi `state: absent` kemudian coba execute kembali `ansible-playbook` maka image `nginx:mainline` akan di hapus dari list docker image.
