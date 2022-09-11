@@ -13,7 +13,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: study-cases-ansible
-image_path: /resources/posts/docker/14c-ansible-for-docker-operation
+image_path: /resources/posts/docker/14c-getting-started-ansible-docker-module
 gist: dimMaryanto93/ff00f4fbaf9d03de33b9a9a1bd159f6a
 downloads: []
 ---
