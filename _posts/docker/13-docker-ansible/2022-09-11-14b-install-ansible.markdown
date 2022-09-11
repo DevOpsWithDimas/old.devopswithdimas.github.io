@@ -152,12 +152,12 @@ klo saya sendiri lebih prefer menggunakan CentOS atau Ubuntu server, Ok langsung
 
 ![system-info-summary]({{ page.image_path | prepend: site.baseurl }}/08-summary.png)
 
-Setelah membuat Virtual Machine di proxmox, sekarang kita Install OS nya menggunakan Ubuntu Server v22.04 LTS dengan configurasi seperti berikut:
+Setelah membuat Virtual Machine di proxmox, sekarang kita Install OS nya menggunakan Ubuntu Server v20.04 LTS dengan configurasi seperti berikut:
 
 ```yaml
 OS:
   distribution: Ubuntu Server
-  version: 22.04 LTS
+  version: 20.04 LTS
 Network:
   static:
     subnet: '192.168.88.0/24'
