@@ -26,6 +26,7 @@ Hai semuanya, sebelum kita mulai ada beberapa hal yang perlu kita siapkan yaitu 
 2. Install Ansible CLI for Linux users
 3. Install Ansible CLI for Windows users
 4. Create Virtual machine for Managed node
+5. Create ansible inventory and testing using ad-hoc commanline
 
 Ok tanpa berlama-lama yukk langsung aja kita bahas materi yang pertama:
 
@@ -180,6 +181,7 @@ Setelah selesai proses installasi OS, Install beberapa package seperti `openssh-
 
 {% highlight bash %}
 apt-get update && \
+apt-get upgrade -y && \
 apt-get install -y openssh-server vim curl && \
 systemctl enable --now sshd
 {% endhighlight %}
@@ -206,3 +208,42 @@ Last login: Sat Sep 10 08:46:10 2022 from 192.168.88.208
 ```
 
 Ok sudah bisa, temen-temen bisa lanjutkan ke tahap selanjutnya.
+
+## Create ansible inventory and testing using ad-hoc commanline
+
+Ansible works against multiple managed nodes or “hosts” in your infrastructure at the same time, using a list or group of lists known as inventory. Once your inventory is defined, you use patterns to select the hosts or groups you want Ansible to run against. 
+
+The default location for inventory is a file called `/etc/ansible/hosts`. You can specify a different inventory file at the command line using the `-i <path>` option. Syntax used `.ini` format seperti berikut:
+
+{% highlight ini %}
+[group_name]
+domain.example.com ansible_variable_name=value
+{% endhighlight %}
+
+Jadi jika kita translate ke Virtual Machine yang sudah kita buat maka seperti berikut:
+
+```ini
+[dockerd]
+192.168.88.201  ansible_user=root ansible_port=22
+```
+
+Simpanlah dengan nama `inventory`, setelah itu kita akan coba test dengan menjalankan command ping ke google dengan perintah seperti berikut:
+
+{% highlight bash %}
+ansible dockerd -m ping -i <path-to-inventory>/inventory
+{% endhighlight %}
+
+Jika di jalankan seperti berikut
+
+```bash
+devops/docker [main] » ansible dockerd -i 11-ansible-docker/inventory -m ping
+192.168.88.201 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/libexec/platform-python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+```
+
+Jika mengeluarkan output seperti berikut, maka kita udah bisa menggunakan ansible dengan ad-hoc commandline menggunakan module [ping](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/ping_module.html)
