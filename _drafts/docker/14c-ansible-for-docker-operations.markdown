@@ -445,3 +445,126 @@ ok: [192.168.88.203] => {
 PLAY RECAP *********************************************************************
 192.168.88.203             : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
+
+## Manage multi-container using ansible `docker_compose` module
+
+Selain me-manage container, menjalankan command dalam container, kita juga me-manage multi-container docker application dengan Docker compose di ansible module dengan `docker_compose` module diantaranya:
+
+1. Uses Docker Compose to start, shutdown and scale services. This module requires `docker-compose < 2.0.0`.
+2. Configuration can be read from a `docker-compose.yml` or `docker-compose.yaml` file or inline using the definition option.
+3. Supports check mode.
+
+Sebagai contoh, saya mau menjalankan container db dengan image postgres dan web server dengan image http menggunakan docker-compose.yaml file maka jika terjemahkan ke `ansible-playbook` script seperti berikut:
+
+{% gist page.gist "14c-docker-compose-module.yaml" %}
+
+Kemudian coba jalankan perintah `ansible-playbook` berikut:
+
+{% highlight bash %}
+ansible-playbook -i <path-to-inventory>/inventory <path-to-playbook>/site-docker-compose-module.yaml
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+devops/docker [master●] » ansible-playbook -i 11-ansible-docker/inventory 11-ansible-docker/site-docker-compose-module.yaml --list-tasks
+playbook: 11-ansible-docker/site-docker-compose-module.yaml
+
+  play #1 (dockerd): dockerd	TAGS: []
+    tasks:
+      Run docker-compose.yaml	TAGS: []
+      Debug	TAGS: []
+
+devops/docker [master●] » ansible-playbook -i 11-ansible-docker/inventory 11-ansible-docker/site-docker-compose-module.yaml
+PLAY [dockerd] *****************************************************************
+
+TASK [Run docker-compose.yaml] *************************************************
+changed: [192.168.88.203]
+
+TASK [Debug] *******************************************************************
+ok: [192.168.88.203] => {
+    "docker_compose_run": {
+        "changed": true,
+        "failed": false,
+        "services": {
+            "db": {
+                "bootcamp_db_1": {
+                    "cmd": [
+                        "postgres"
+                    ],
+                    "image": "postgres:14.2",
+                    "labels": {
+                        "com.docker.compose.config-hash": "c472a78f7830908d61026f5972fe750722f48fb6ea0cb545c560ce5bb93b5ec2",
+                        "com.docker.compose.container-number": "1",
+                        "com.docker.compose.oneoff": "False",
+                        "com.docker.compose.project": "bootcamp",
+                        "com.docker.compose.project.config_files": "/tmp/ansiblepjrryury/docker-compose.yml",
+                        "com.docker.compose.project.working_dir": "/tmp/ansiblepjrryury",
+                        "com.docker.compose.service": "db",
+                        "com.docker.compose.version": "1.29.2"
+                    },
+                    "networks": {
+                        "bootcamp_default": {
+                            "IPAddress": "172.18.0.3",
+                            "IPPrefixLen": 16,
+                            "aliases": [
+                                "e54e1866f11d",
+                                "db"
+                            ],
+                            "globalIPv6": "",
+                            "globalIPv6PrefixLen": 0,
+                            "links": null,
+                            "macAddress": "02:42:ac:12:00:03"
+                        }
+                    },
+                    "state": {
+                        "running": true,
+                        "status": "running"
+                    }
+                }
+            },
+            "webapp": {
+                "bootcamp_webapp_1": {
+                    "cmd": [
+                        "httpd-foreground"
+                    ],
+                    "image": "httpd",
+                    "labels": {
+                        "com.docker.compose.config-hash": "770f5e93d0f67fc701b65f4c5bc1b3071a748a02b40bfaf887319488dcdfb418",
+                        "com.docker.compose.container-number": "1",
+                        "com.docker.compose.oneoff": "False",
+                        "com.docker.compose.project": "bootcamp",
+                        "com.docker.compose.project.config_files": "/tmp/ansiblepjrryury/docker-compose.yml",
+                        "com.docker.compose.project.working_dir": "/tmp/ansiblepjrryury",
+                        "com.docker.compose.service": "webapp",
+                        "com.docker.compose.version": "1.29.2"
+                    },
+                    "networks": {
+                        "bootcamp_default": {
+                            "IPAddress": "172.18.0.2",
+                            "IPPrefixLen": 16,
+                            "aliases": [
+                                "19b95e1f431b",
+                                "webapp"
+                            ],
+                            "globalIPv6": "",
+                            "globalIPv6PrefixLen": 0,
+                            "links": null,
+                            "macAddress": "02:42:ac:12:00:02"
+                        }
+                    },
+                    "state": {
+                        "running": true,
+                        "status": "running"
+                    }
+                }
+            }
+        }
+    }
+}
+
+PLAY RECAP *********************************************************************
+192.168.88.203             : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+
+Ok nah jadi dengan menggunakan ansible module docker ini, kita bisa secara repeated execute untuk me-manage container yang dijalankan.
