@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to Install RedHat Ansible"
+title: "Setup Ansible Control and Managed Nodes"
 date: 2022-09-11T12:14:02+07:00
 lang: docker
 authors:
