@@ -24,8 +24,7 @@ Hai semuanya, sebelum kita mulai ada beberapa hal yang perlu kita siapkan yaitu 
 1. Install Ansible CLI for MacOs users
 2. Install Ansible CLI for Linux users
 3. Install Ansible CLI for Windows users
-4. Create Virtual machine using VirtualBox
-5. Create Virtual machine using Proxmox
+4. Create Virtual machine for Managed node
 
 Ok tanpa berlama-lama yukk langsung aja kita bahas materi yang pertama:
 
@@ -116,3 +115,16 @@ ansible-playbook 2.10.8
 
 ## Install Ansible CLI for Windows users
 
+Untuk menginstall Ansible CLI di Windows kita membutuhkan Windows SubSystem Linux (WSL2). Karena saya sudah bahas install WSL kita bisa lanjut saja untuk install Distro WSLnya. Temen-temen bisa pasang [Ubuntu 22.04 LTS di Microsoft Store](https://apps.microsoft.com/store/detail/ubuntu-22041-lts/9PN20MSR04DW?hl=en-id&gl=id)
+
+Kemudian temen-temen jalankan Ubuntu 22.04 LTS dari Windows Terminal dan kemudian lakukan installasi seperti pada Linux sebelumnya. Jika sudah temen-temen bisa check dengan perintah berikut:
+
+{% highlight bash %}
+ansible --version 
+ansible-playbook --version
+ansible-galaxy --version
+{% endhighlight %}
+
+Jika dijalankan seperti berikut:
+
+![wsl-ansible-console]({{ page.image_path | prepend: site.baseurl }}/wsl-ansible-console.png)
