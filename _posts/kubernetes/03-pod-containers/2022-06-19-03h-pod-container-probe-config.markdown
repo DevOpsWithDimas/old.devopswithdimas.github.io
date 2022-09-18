@@ -49,18 +49,19 @@ Untuk lebih memahami berikut adalah diagram timeline state managementnya:
 gantt
     title Container Probe state managements
     dateFormat HH:mm
-    axisFormat %H:%M
+    axisFormat %H:%m
     section Startup Probe
-    Container starting          :           containerStart,     12:00,                      10second
-    Startup probe               :           startupTry1,        after containerStart,       1min
-    Container started           :done,      containerStarted,   after startupTry1,          10second
+    Container creating          :active,    containerCreate,    12:00,                      1s
+    Container starting          :           containerStart,     after containerCreate,      2s
+    Startup probe               :           startupTry1,        after containerStart,       10s
+    Container started           :done,      containerStarted,   after startupTry1,          3s
     section Readiness Probe
-    Check container is ready?   :           checkReady,         after containerStarted,     10second
-    Container Ready             :done,      containerReady,     after checkReady,           30second
+    Check container is ready?   :           checkReady,         after containerStarted,     2s
+    Container Ready             :done,      containerReady,     after checkReady,           10s
     section Liveness Probe
-    Check container is live?    :           checkLive,          after containerReady,       10second
-    Container Running           :           containerRun,       after checkLive,            30second
-    Container Healty            :done,      containerHealty,    after containerRun,         10second
+    Check container is live?    :           checkLive,          after containerReady,       2s
+    Container Running           :           containerRun,       after checkLive,            10s
+    Container Healty            :done,      containerHealty,    after containerRun,         2s
 {% endmermaid %}
 
 ## When should you use container probe?
