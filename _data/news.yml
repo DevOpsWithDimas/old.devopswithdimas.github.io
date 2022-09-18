@@ -51,17 +51,32 @@
   date: 2022-09-26T18:29:00+07:00
   duration: "9 jam"
   tier: "free"
-  youtube: 
+  youtube: BF9pmytVGvc
   thumbnail:
-  visible: false
+  visible: true
   markers: |
-    What is Kubernetes Workloads?
-    Pods workloads
-    Deployment workloads
-    ReplicaSet workloads
-    StatefulSet workloads
-    DaemonSet workloads
-    Job & CronJob workloads
+    00:00:00 Introduction
+    00:01:24 What is Kubernetes Workloads?
+    00:05:15 Build-in Workload resources on Kubernetes
+    00:11:06 Kubernetes workloads with Pods
+    00:35:20 Working with Pods
+    01:21:42 What is static pod
+    01:24:11 What is Container probes
+    01:26:47 Overview Pod and Container Configuration
+    01:28:58 Using labels in a Pods
+    01:39:19 Using Namespace in a Pods
+    01:50:08 Using image & imagePullPolicy in a Pods
+    02:17:57 Using image pull secret to pull from private registry
+    02:36:13 Using env in Pod
+    02:47:40 Define a Commands and Args for a Container
+    02:58:04 Using specify ports in containerSpec
+    03:10:02 Pod lifetime
+    03:15:33 Phase of Pods
+    03:21:55 Container state
+    03:25:37 Container restart policy
+    03:34:08 Container probe in a Pod
+    03:52:41 Termination of Pods
+    04:04:20 Materi selanjutnya
 
 - cource: gitlab
   catalog: introduction
