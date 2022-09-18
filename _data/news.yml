@@ -1,6 +1,6 @@
 - cource: ansible
   catalog: introduction
-  date: 2022-10-25T18:29:00+07:00
+  date: 2022-11-25T18:29:00+07:00
   duration: "3 jam"
   tier: "free"
   youtube: 
@@ -16,7 +16,7 @@
 
 - cource: postgresql
   catalog: dml-statement
-  date: 2022-09-25T18:29:00+07:00
+  date: 2022-10-25T18:29:00+07:00
   duration: "3 jam"
   tier: "free"
   youtube: 
@@ -32,10 +32,24 @@
     Locking
     Performance Tips
 
+- cource: docker
+  catalog: study-cases-ansible
+  date: 2022-10-25T18:29:00+07:00
+  duration: "3 jam"
+  tier: "premium"
+  youtube: 
+  thumbnail:
+  visible: false
+  markers: |
+    Introduction
+    Infrastructure as a Code
+    RedHat ansible
+    Docker operation with ansible
+
 - cource: k8s
   catalog: pod-container
-  date: 2022-07-26T18:29:00+07:00
-  duration: "5 jam"
+  date: 2022-09-26T18:29:00+07:00
+  duration: "9 jam"
   tier: "free"
   youtube: 
   thumbnail:
