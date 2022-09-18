@@ -571,7 +571,7 @@
   github: 
   youtube: 
   udemy: 
-  coming_soon: false
+  coming_soon: true
   visible: true
   catalogs:
     - name: Pengenalan Ansible
@@ -675,7 +675,7 @@
     couponCode: IT_AUTOMATION_2022
     referralCode: 8D13D85D4D34027B76BE
     expired: 25/09/2022
-  coming_soon: false
+  coming_soon: true
   visible: true
   catalogs:
     - name: Pengenalan Git
@@ -815,7 +815,7 @@
   github: 
   youtube: 
   udemy: 
-  coming_soon: false
+  coming_soon: true
   visible: true
   catalogs:
     - name: Pengenalan Java language
@@ -913,7 +913,7 @@
   github: 
   youtube:
   udemy:
-  coming_soon: false
+  coming_soon: true
   visible: true
   catalogs:
     - name: Pengenalan Spring Framework
