@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Deep dive into Delete statement"
+title: "Deep dive into DELETE statement"
 lang: postgresql
 authors:
 - dimasm93

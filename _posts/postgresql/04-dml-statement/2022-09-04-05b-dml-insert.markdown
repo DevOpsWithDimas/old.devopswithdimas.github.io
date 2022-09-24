@@ -20,24 +20,7 @@ catalog_key: dml-statement
 downloads: []
 ---
 
-Hai semuanya, pada materi sebelumnya kita sudah membahas sedikit tentang Data Manipulation language atau di singkat DML. Nah sekarang kita akan bahas lebih detail khususnya untuk perintah INSERT statement diantaranya seperti berikut:
-
-1. Advanced `INSERT` statement
-2. Insert with specific columns and data type
-3. Insert with `DEFAULT VALUE`
-4. Insert single and multiple rows
-5. Insert with `ON CONFLICT`
-6. Insert with `OVERRIDING` keyword
-7. Using with query in INSERT statement
-8. Error message on insert statement
-
-Ok tanpa berlama-lama lagi, yuuk lansung aja kita bahas materi yang pertama:
-
-<!--more-->
-
-## Advanced `INSERT` statement
-
-Perintah `INSERT` yang telah kita pelajari di materi sebelumnya hanyalah simple sebetulnya secara syntax perintahnya seperti berikut:
+Hai semuanya, pada materi sebelumnya kita sudah membahas sedikit tentang Data Manipulation language atau di singkat DML. Nah sekarang kita akan bahas lebih detail khususnya untuk perintah `INSERT` yang telah kita pelajari di materi sebelumnya hanyalah simple sebetulnya secara syntax perintahnya seperti berikut:
 
 {% highlight sql %}
 [ WITH [ RECURSIVE ] with_query [, ...] ]
@@ -62,7 +45,19 @@ and conflict_action is one of:
               [ WHERE condition ]
 {% endhighlight %}
 
-Nah lumayan banyak dan panjang juga ya ternyata untuk perintah insert yang kita bisa gunakan, jadi kita akan coba break down aja ya masing-masing feature
+Nah jadi jika kita perhatikan ada beberapa clause yang kita bisa gunakan diantaranya:
+
+1. Insert with specific columns and data type
+2. Insert with `DEFAULT VALUE`
+3. Insert single and multiple rows
+4. Insert with `ON CONFLICT`
+5. Insert with `OVERRIDING` keyword
+6. Using with query in INSERT statement
+7. Error message on insert statement
+
+Nah lumayan banyak dan panjang juga ya ternyata untuk perintah insert yang kita bisa gunakan, jadi kita akan coba break-down aja ya masing-masing feature:
+
+<!--more-->
 
 ## Insert with specific columns and data type
 
