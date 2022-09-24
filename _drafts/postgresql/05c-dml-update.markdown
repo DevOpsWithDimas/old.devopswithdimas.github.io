@@ -40,7 +40,10 @@ Nah jadi jika kita perhatikan ada beberapa clause yang kita bisa digunakan diant
 3. `WITH` clause
 4. UPDATE with `FROM` statement
 5. UPDATE with `RETURNING` statement
+7. Eerror message on update statement
 
 Nah jadi akan lebih enak jika kita break-down untuk pembahasanya masing-masing feature tersebut.
 
 <!--more-->
+
+## UPDATE with `DEFAULT` value clause
