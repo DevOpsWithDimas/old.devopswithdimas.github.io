@@ -8,6 +8,8 @@ authors:
 categories:
 - RDBMS
 - PostgreSQL
+- SQL
+- DML
 refs: 
 - https://www.postgresql.org/docs/current/
 youtube: 
