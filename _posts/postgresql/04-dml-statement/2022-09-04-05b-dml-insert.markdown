@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Deep dive into INSERT statement"
+title: "Deep dive into INSERT Statement"
 date: 2022-09-04T11:38:35+07:00
 lang: postgresql
 authors:
