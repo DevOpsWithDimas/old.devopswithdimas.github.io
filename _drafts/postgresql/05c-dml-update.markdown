@@ -19,7 +19,7 @@ catalog_key: dml-statement
 downloads: []
 ---
 
-Hai semuanya, setelah kita membahas Insert Statement perintah selanjutnya yang kita perlu perlajari adalah merubah data pada suatu tabel dengan menggunakan perintah Update statement. Seperti yang temen-temen telah pelajari di materi sebelumnya kita udah membahas sedikit tentang Update Statement sekarang kita akan membahas lebih detail lagi, karena pembahasanya ini akan panjang jadi kita bagi-bagi menjadi beberapa bagian seperti berikut:
+Hai semuanya, setelah kita membahas Insert Statement perintah selanjutnya yang kita perlu perlajari adalah merubah data pada suatu tabel dengan menggunakan perintah `UPDATE` statement. Seperti yang temen-temen telah pelajari di materi sebelumnya kita udah membahas sedikit tentang Update Statement sekarang kita akan membahas lebih detail lagi, karena pembahasanya ini akan panjang jadi kita bagi-bagi menjadi beberapa bagian seperti berikut:
 
 1. Advanced `UPDATE` Statement
 2. Update with `DEFAULT VALUE`
