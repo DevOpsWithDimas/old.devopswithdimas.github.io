@@ -35,18 +35,19 @@ UPDATE [ ONLY ] table_name [ * ] [ [ AS ] alias ]
 
 Nah jadi jika kita perhatikan ada beberapa clause yang kita bisa digunakan diantaranya:
 
-1. UPDATE with `DEFAULT` value clause
-2. UPDATE with sub-SELECT clause
-3. `WITH` clause
-4. UPDATE with `FROM` statement
-5. UPDATE with `RETURNING` statement
+1. UPDATE using `DEFAULT` value clause
+2. UPDATE using sub-SELECT clause
+3. UPDATE using column-list syntax
+4. UPDATE using `WITH` clause
+5. UPDATE using `FROM` statement
+6. UPDATE using `RETURNING` statement
 7. Eerror message on update statement
 
 Nah jadi akan lebih enak jika kita break-down untuk pembahasanya masing-masing feature tersebut.
 
 <!--more-->
 
-## UPDATE with `DEFAULT` value clause
+## UPDATE using `DEFAULT` value clause
 
 Sama halnya dengan perintah insert pada materi sebelumnya, jika kita memiliki struktur tabel yang menggunakan `DEFAULT VALUE` pada kolomnya jadi kita bisa menggunakan keywoard `DEFAULT` pada `SET` clause seperti berikut syntaxnya:
 
@@ -87,7 +88,7 @@ hr-# where department_id = 10;
 (1 row)
 ```
 
-## UPDATE with Sub-SELECT (Sub Query) clause
+## UPDATE using Sub-SELECT (Sub Query) clause
 
 Pada statement update kita bisa menggunakan sub-SELECT atau sub-query pada `SET` clause, data yang bisa di terima pada sub-SELECT bisa merupakan single-row query, corelate query maupun aggregate result. Berikut format syntaxnya:
 
@@ -129,3 +130,67 @@ hr-# where department_id = 10;
          200 | 3000.00
 (1 row)
 ```
+
+## UPDATE using column-list syntax
+
+Selain menggunakan format yang biasa, kita juga bisa menggunakan column-list pada `SET` clause, bentuk query dengan column-list seperti berikut:
+
+{% highlight sql %}
+UPDATE [ ONLY ] table_name [ * ] [ [ AS ] alias ]
+    SET ( column_name [, ...] ) = ( sub-SELECT )
+    [ WHERE condition ]
+{% endhighlight %}
+
+Contoh implementasinya, masih serupa dengan sebelumnya kita akan meng-update salary berserta commission_pct karyawan yang bekerja pada `department_id = 10` dengan nilai `max_salary` pada tabel `jobs` bedasarkan jabatan karyawan tersebut dan `commission_pct` sebesar `0.1`. Seperti berikut querynya:
+
+{% gist page.gist "05c-dml-update-set-column-list.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# select employee_id, salary, commission_pct, job_id
+hr-# from employees
+hr-# where department_id = 10;
+ employee_id | salary  | commission_pct | job_id
+-------------+---------+----------------+---------
+         200 | 3000.00 |                | AD_ASST
+(1 row)
+
+hr=# select *
+hr-# from jobs
+hr-# where job_id = 'AD_ASST';
+ job_id  |        job_title         | min_salary | max_salary
+---------+--------------------------+------------+------------
+ AD_ASST | Administration Assistant |       3000 |       6000
+(1 row)
+
+hr=# UPDATE employees emp
+hr-# SET (salary, commission_pct) = (
+hr(#     select min_salary,
+hr(#            0.1 as commission_pct
+hr(#     from jobs job
+hr(#     where emp.job_id = job.job_id)
+hr-# WHERE department_id = 10;
+UPDATE 1
+
+hr=# select employee_id, salary, commission_pct, job_id
+hr-# from employees
+hr-# where department_id = 10;
+ employee_id | salary  | commission_pct | job_id
+-------------+---------+----------------+---------
+         200 | 3000.00 |           0.10 | AD_ASST
+(1 row)
+```
+
+Nah jika temen-temen perhatikan, query tersebut hasilnya akan sama jika kita menggunakan query seperti berikut:
+
+{% highlight sql %}
+UPDATE employees emp
+SET salary = (select min_salary from jobs job where emp.job_id = job.job_id), 
+    commission_pct = 0.1
+WHERE department_id = 10;
+{% endhighlight %}
+
+## UPDATE using `WITH` clause
+
+The WITH clause allows you to specify one or more subqueries that can be referenced by name in the UPDATE query. 
