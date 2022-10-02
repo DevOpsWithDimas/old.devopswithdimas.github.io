@@ -19,7 +19,7 @@ catalog_key: dml-statement
 downloads: []
 ---
 
-Hai semuanya, setelah kita membahas Insert Statement perintah selanjutnya yang kita perlu perlajari adalah merubah data pada suatu tabel dengan menggunakan perintah `UPDATE` statement. Seperti yang temen-temen telah pelajari Perintah `UPDATE` statement yang telah kita pelajari sebelumnya masih hal yang simple, sebetulnya secara syntax perintahnya seperti berikut:
+Hai semuanya, setelah kita membahas Insert Statement perintah selanjutnya yang kita perlu perlajari adalah merubah data pada suatu tabel dengan menggunakan perintah `UPDATE` statement. Seperti yang temen-temen telah pelajari Perintah `UPDATE` statement yang telah bahas sebelumnya masih hal yang simple, sebetulnya secara syntax perintahnya seperti berikut:
 
 {% highlight sql %}
 [ WITH [ RECURSIVE ] with_query [, ...] ]
@@ -47,3 +47,32 @@ Nah jadi akan lebih enak jika kita break-down untuk pembahasanya masing-masing f
 <!--more-->
 
 ## UPDATE with `DEFAULT` value clause
+
+Sama halnya dengan perintah insert pada materi sebelumnya, jika kita memiliki struktur tabel yang menggunakan `DEFAULT VALUE` pada kolomnya jadi kita bisa menggunakan keywoard `DEFAULT` pada `SET` clause seperti berikut syntaxnya:
+
+{% highlight sql %}
+UPDATE [ ONLY ] table_name [ * ] [ [ AS ] alias ]
+    SET { column_name = { expression | DEFAULT }
+    [ WHERE condition ]
+{% endhighlight %}
+
+Contoh implementasinya, saya ingin meng-update salary pada karyawan yang bekerja pada `department_id = 10` dengan nilai default, maka berikut adalah sql querynya:
+
+{% gist page.gist "05c-dml-update-default-expression.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```sql
+hr=# UPDATE employees
+hr-# SET salary = DEFAULT
+hr-# WHERE department_id = 10;
+UPDATE 1
+
+hr=# select employee_id, first_name, salary
+hr-# from employees
+hr-# where department_id = 10;
+ employee_id | first_name | salary
+-------------+------------+--------
+         200 | Jennifer   |   0.00
+(1 row)
+```
