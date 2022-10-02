@@ -63,6 +63,16 @@ Contoh implementasinya, saya ingin meng-update salary pada karyawan yang bekerja
 Jika dijalankan maka hasilnya seperti berikut:
 
 ```sql
+hr=# \d employees
+                                            Table "public.employees"
+     Column     |         Type          | Collation | Nullable |                    Default
+----------------+-----------------------+-----------+----------+------------------------------------------------
+ employee_id    | integer               |           | not null | nextval('employees_employee_id_seq'::regclass)
+ first_name     | character varying(20) |           |          |
+ last_name      | character varying(25) |           | not null |
+ salary         | numeric(8,2)          |           |          | 0
+....
+
 hr=# UPDATE employees
 hr-# SET salary = DEFAULT
 hr-# WHERE department_id = 10;
@@ -74,5 +84,48 @@ hr-# where department_id = 10;
  employee_id | first_name | salary
 -------------+------------+--------
          200 | Jennifer   |   0.00
+(1 row)
+```
+
+## UPDATE with Sub-SELECT (Sub Query) clause
+
+Pada statement update kita bisa menggunakan sub-SELECT atau sub-query pada `SET` clause, data yang bisa di terima pada sub-SELECT bisa merupakan single-row query, corelate query maupun aggregate result. Berikut format syntaxnya:
+
+{% highlight sql %}
+UPDATE [ ONLY ] table_name [ * ] [ [ AS ] alias ]
+    SET ( column_name [, ...] ) = ( sub-SELECT )
+    [ WHERE condition ]
+{% endhighlight %}
+
+Contoh implementasinya, saya ingin meng-update salary karyawan yang bekerja pada `department_id = 10` dengan nilai `min_salary` pada tabel job berdasarkan jabatan karwayan tersebut. Seperti berikut querynya:
+
+{% gist page.gist "05c-dml-update-set-sub-select.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```sql
+hr=# select job_id from employees where department_id = 10;
+ job_id
+---------
+ AD_ASST
+(1 row)
+
+hr=# select min_salary from jobs where job_id = 'AD_ASST';
+ min_salary
+------------
+       3000
+(1 row)
+
+hr=# UPDATE employees emp
+hr-# SET salary = (select min_salary from jobs job where emp.job_id = job.job_id)
+hr-# WHERE department_id = 10;
+UPDATE 1
+
+hr=# select employee_id, salary
+hr-# from employees
+hr-# where department_id = 10;
+ employee_id | salary
+-------------+---------
+         200 | 3000.00
 (1 row)
 ```
