@@ -1,0 +1,31 @@
+---
+layout: post
+title: "02-what-is-apache-jmeter"
+lang: apache-jmeter
+authors:
+- dimasm93
+categories:
+- DevOps
+- Testing
+refs: 
+- https://jmeter.apache.org/usermanual/get-started.html
+youtube: 
+comments: true
+image_path: /resources/posts/apache-jmeter/02-what-is-apache-jmeter
+gist: dimMaryanto93/ab4bbfd903a7ae297349960787a45ff4
+downloads: []
+---
+
+
+description...
+
+<!--more-->
+
+Materi: 
+
+1. Topic1
+2. Topic2
+    1. Topic 2.a
+    2. Topic 2.b
+3. Topic 3
+4. Topic 4

@@ -991,7 +991,7 @@
   color: green accent-2
   tags:
   - DevOps
-  - LoadPerformance
+  - Testing
   descriptions:
     Temen-temen akan belajar LoadPerformance dengan menggunakan tools Apache JMeter untuk Web, Web Service, Jdbc, dan lain-lain.
   messages:
@@ -1001,15 +1001,7 @@
   udemy:
   coming_soon: true
   visible: true
-  catalogs:
-    - name: Pengenalan Apache JMeter
-      key: introduction
-      description: 'Eps 1: Pengenalan Apache JMeter'
-      messages: ''
-    - name: Getting Started
-      key: getting-started
-      description: 'Eps 2: Getting Started with Apache JMeter'
-      messages: ''
+  catalogs: []
 
 - name: Google Cloud Platform (GCP)
   fullname: 'Cloud Computing - Google Cloud Platform: Pemula sampai Mahir'
