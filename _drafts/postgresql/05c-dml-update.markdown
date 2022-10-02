@@ -193,4 +193,43 @@ WHERE department_id = 10;
 
 ## UPDATE using `WITH` clause
 
-The WITH clause allows you to specify one or more subqueries that can be referenced by name in the UPDATE query. 
+The WITH clause allows you to specify one or more subqueries that can be referenced by name in the UPDATE query. Berikut adalah formatnya: 
+
+{% highlight sql %}
+[ WITH [ RECURSIVE ] with_query [, ...] ]
+UPDATE [ ONLY ] table_name [ * ] [ [ AS ] alias ]
+    SET { column_name = { expression | DEFAULT } } [, ...]
+    [ WHERE condition | WHERE CURRENT OF cursor_name ]
+{% endhighlight %}
+
+Contoh implementasinya, masih serupa dengan sebelunya tapi kita akan optimalisasi dengan with clause. Maka berikut adalah querynya:
+
+{% gist page.gist "05c-dml-update-with-clause.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```sql
+hr=# select employee_id, salary, commission_pct, job_id
+hr-# from employees
+hr-# where department_id = 10;
+ employee_id | salary  | commission_pct | job_id
+-------------+---------+----------------+---------
+         200 | 3000.00 |           0.10 | AD_ASST
+(1 row)
+
+hr-# UPDATE employees emp
+hr-# SET (salary, commission_pct) = (
+hr(#     select ds.min_salary, ds.commission_pct
+hr(#     from default_salary ds
+hr(#     where ds.job_id = emp.job_id)
+hr-# where department_id = 10;
+UPDATE 1
+
+hr=# select employee_id, salary, commission_pct, job_id
+hr-# from employees
+hr-# where department_id = 10;
+ employee_id | salary  | commission_pct | job_id
+-------------+---------+----------------+---------
+         200 | 3000.00 |           0.20 | AD_ASST
+(1 row)
+```
