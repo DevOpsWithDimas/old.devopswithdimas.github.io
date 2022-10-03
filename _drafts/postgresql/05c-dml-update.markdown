@@ -39,8 +39,8 @@ Nah jadi jika kita perhatikan ada beberapa clause yang kita bisa digunakan diant
 2. UPDATE using sub-SELECT clause
 3. UPDATE using column-list syntax
 4. UPDATE using `WITH` clause
-5. UPDATE using `FROM` statement
-6. UPDATE using `RETURNING` statement
+5. UPDATE using `FROM` clause
+6. UPDATE using `RETURNING` clause
 7. Eerror message on update statement
 
 Nah jadi akan lebih enak jika kita break-down untuk pembahasanya masing-masing feature tersebut.
@@ -232,4 +232,59 @@ hr-# where department_id = 10;
 -------------+---------+----------------+---------
          200 | 3000.00 |           0.20 | AD_ASST
 (1 row)
+```
+
+## UPDATE using `FROM` clause
+
+Selain itu juga kita bisa menggunakan join form atau menggunakan `from` clause pada update. seperti berikut syntaxnya:
+
+{% highlight sql %}
+[ WITH [ RECURSIVE ] with_query [, ...] ]
+UPDATE [ ONLY ] table_name [ * ] [ [ AS ] alias ]
+    SET { column_name = { expression | DEFAULT } } [, ...]
+    [ FROM from_item [, ...] ]
+    [ WHERE condition | WHERE CURRENT OF cursor_name ]
+{% endhighlight %}
+
+Contoh implementasinya, masih sama dengan kasus sebelumnya hanya menggunakan `from` clause, tetapi disini jiga query yang di hasilkan pada `from` clause lebih dari satu baris biasanya akan menghasilkan unexpected results seperti berikut:
+
+{% gist page.gist "05c-dml-update-from-clause.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# select employee_id, salary, job_id
+hr-# from employees
+hr-# where department_id = 10;
+ employee_id | salary  | job_id
+-------------+---------+---------
+         200 | 3000.00 | AD_ASST
+(1 row)
+
+hr=# UPDATE employees emp
+hr-# SET salary         = min_salary,
+hr-#     commission_pct = 0.1
+hr-# FROM jobs job
+hr-# WHERE (job.job_id = emp.job_id)
+hr-#   and department_id = 10;
+UPDATE 1
+
+hr=# select employee_id, salary, commission_pct, job_id
+hr-# from employees
+hr-# where department_id = 10;
+ employee_id | salary  | commission_pct | job_id
+-------------+---------+----------------+---------
+         200 | 3000.00 |           0.10 | AD_ASST
+(1 row)
+
+hr=# UPDATE employees emp
+hr-# SET salary         = min_salary,
+hr-#     commission_pct = 0.1
+hr-# FROM jobs job
+hr-# WHERE job.job_id in (10, 20)
+hr-#   and department_id = 90;
+ERROR:  operator does not exist: character varying = integer
+LINE 5: WHERE job.job_id in (10, 20)
+                         ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
 ```
