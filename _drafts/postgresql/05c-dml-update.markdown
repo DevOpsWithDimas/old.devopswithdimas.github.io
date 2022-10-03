@@ -288,3 +288,48 @@ LINE 5: WHERE job.job_id in (10, 20)
                          ^
 HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
 ```
+
+## UPDATE using `RETURNING` clause
+
+If the `UPDATE` command contains a `RETURNING` clause, the result will be similar to that of a `SELECT` statement containing the columns and values defined in the `RETURNING` list, computed over the row(s) updated by the command.
+
+{% highlight sql %}
+UPDATE [ ONLY ] table_name [ * ] [ [ AS ] alias ]
+    SET { column_name = { expression | DEFAULT } |
+          ( column_name [, ...] ) = [ ROW ] ( { expression | DEFAULT } [, ...] ) |
+          ( column_name [, ...] ) = ( sub-SELECT )
+        } [, ...]
+    [ WHERE condition | WHERE CURRENT OF cursor_name ]
+    [ RETURNING * | output_expression [ [ AS ] output_name ] [, ...] ]
+{% endhighlight %}
+
+Contohnya masih dalam kasus yang sama dengan sebelumnya, jika kita menggunakan `RETURNING *` Maka kita bisa lihat semua column pada tabel tersebut dengan data yang sama untuk yang di update berserta jumlah row yang di execute seperti berikut implementasinya:
+
+{% gist page.gist "05c-dml-update-returning-clause.sql" %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```sql
+hr=# select employee_id, salary, commission_pct, job_id
+hr-# from employees
+hr-# where department_id = 10;
+ employee_id | salary  | commission_pct | job_id
+-------------+---------+----------------+---------
+         200 | 3000.00 |           0.10 | AD_ASST
+(1 row)
+
+hr=# UPDATE employees emp
+hr-# SET salary         = min_salary,
+hr-#     commission_pct = 0.3
+hr-# FROM jobs job
+hr-# WHERE (job.job_id = emp.job_id)
+hr-#   and department_id = 10
+hr-# returning *;
+ employee_id | first_name | last_name |  email  | phone_number | job_id  | salary  | commission_pct | manager_id | department_id | job_id  |        job_title         | min_salary | max_salary
+-------------+------------+-----------+---------+--------------+---------+---------+----------------+------------+---------------+---------+--------------------------+------------+------------
+         200 | Jennifer   | Whalen    | JWHALEN | 515.123.4444 | AD_ASST | 3000.00 |           0.30 |        101 |            10 | AD_ASST | Administration Assistant |       3000 |       6000
+(1 row)
+
+UPDATE 1
+```
+
