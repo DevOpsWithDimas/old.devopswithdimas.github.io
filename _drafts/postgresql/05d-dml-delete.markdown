@@ -19,22 +19,26 @@ catalog_key: dml-statement
 downloads: []
 ---
 
-Hai semuanya, Setelah kita membahas tentang Update statement perintah selanjutnya yang kita perlu perlajari untuk menghapus data pada suatu tabel yaitu `DELETE` statement. Seperti yang telah temen-temen pelajari sebelumnya kita akan bahas lebih mendalam lagi, jadi karena pembahasanya lumayan panjang jadi kita akan bagi-bagi menjadi seperti berikut:
+Hai semuanya, Setelah kita membahas tentang Update statement perintah selanjutnya yang kita perlu perlajari untuk menghapus data pada suatu tabel yaitu `DELETE` statement. Terkiat perintah delete yang temen-temen telah pelajari sebelumnya hanya sekilas saja sebetulnya secara mendetail perintah delete seperti berikut:
 
-1. Advanced `DELETE` Statement
-2. Delete with queries
-3. Delete with `RETURNING`
-4. Delete with `from_item`
+{% highlight sql %}
+[ WITH [ RECURSIVE ] with_query [, ...] ]
+DELETE FROM [ ONLY ] table_name [ * ] [ [ AS ] alias ]
+    [ USING from_item [, ...] ]
+    [ WHERE condition | WHERE CURRENT OF cursor_name ]
+    [ RETURNING * | output_expression [ [ AS ] output_name ] [, ...] ]
+{% endhighlight %}
+
+Jika temen-temen perhatikan ada beberapa feature dan yang kita bisa gunakan seperti:
+
+1. Delete using from_item
+2. Delete using `RETURNING`
+3. Delete using WITH queries
 
 Ok tanpa berlama-lama jadi lansung aja bahas materi yang pertama:
 
 <!--more-->
 
-Materi: 
+## Delete using from_item
 
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+There are two ways to delete rows in a table using information contained in other tables in the database: using sub-selects, or specifying additional tables in the `USING` clause. Which technique is more appropriate depends on the specific circumstances.
