@@ -114,3 +114,50 @@ hr-# RETURNING *;
 
 DELETE 2
 ```
+
+## Delete using WITH queries
+
+Seperti halnya pada Insert, Update pada Delete statement juga kita bisa menggunakan WITH Query yang berfungsi memecah query yang akan di gunakan pada perintah tersebut. The syntax is:
+
+{% highlight sql %}
+[ WITH [ RECURSIVE ] with_query [, ...] ]
+DELETE FROM [ ONLY ] table_name [ * ] [ [ AS ] alias ]
+    [ WHERE condition | WHERE CURRENT OF cursor_name ]
+{% endhighlight %}
+
+Contoh implementasinya, saya akan menghapus data karyawan yang sudah mulai kerja dari `1995-01-01` dari tabel `job_history` maka querynya seperti berikut:
+
+{% gist page.gist "05d-dml-delete-with-query.sql" %}
+
+Jika dilankan maka hasilnya seperti berikut:
+
+```sql
+hr=# select distinct employee_id
+hr-#     from job_history
+hr-#     where start_date > '1995-01-01';
+ employee_id
+-------------
+         176
+         114
+         201
+         122
+(4 rows)
+
+hr=# WITH history_emp_from_dep as (
+hr(#     select distinct employee_id
+hr(#     from job_history
+hr(#     where start_date > '1995-01-01'
+hr(# )
+hr-# DELETE
+hr-# FROM employees emp
+hr-#     USING history_emp_from_dep history
+hr-# where emp.employee_id = history.employee_id
+hr-# RETURNING *;
+ employee_id | first_name | last_name |  email   |    phone_number    | job_id |  salary  | commission_pct | manager_id | department_id | employee_id
+-------------+------------+-----------+----------+--------------------+--------+----------+----------------+------------+---------------+-------------
+         176 | Jonathon   | Taylor    | JTAYLOR  | 011.44.1644.429265 | SA_REP |  8600.00 |           0.20 |        149 |            80 |         176
+         201 | Michael    | Hartstein | MHARTSTE | 515.123.5555       | MK_MAN | 13000.00 |                |        100 |            20 |         201
+(2 rows)
+
+DELETE 2
+```
