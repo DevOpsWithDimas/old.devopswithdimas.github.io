@@ -31,7 +31,7 @@ DELETE FROM [ ONLY ] table_name [ * ] [ [ AS ] alias ]
 
 Jika temen-temen perhatikan ada beberapa feature dan yang kita bisa gunakan seperti:
 
-1. Delete using from_item
+1. Delete with `USING from_item` clause
 2. Delete using `RETURNING`
 3. Delete using WITH queries
 
@@ -39,6 +39,49 @@ Ok tanpa berlama-lama jadi lansung aja bahas materi yang pertama:
 
 <!--more-->
 
-## Delete using from_item
+## Delete with `USING from_item` clause 
 
 There are two ways to delete rows in a table using information contained in other tables in the database: using sub-selects, or specifying additional tables in the `USING` clause. Which technique is more appropriate depends on the specific circumstances.
+
+A table expression allowing columns from other tables to appear in the WHERE condition. This uses the same syntax as the `FROM` clause of a `SELECT` statement; for example, an alias for the table name can be specified. Do not repeat the target table as a `from_item` unless you wish to set up a self-join (in which case it must appear with an alias in the from_item). The syntax is:
+
+{% highlight sql %}
+DELETE FROM table_name [ [ AS ] alias ]
+    [ USING from_item [, ...] ]
+    [ WHERE condition ]
+{% endhighlight %}
+
+Contoh implementasinya, misalnya saya mau menghapus data karyawan yang pernah bekerja sebagai `ST_CLERK` maka querynya seperti berikut:
+
+{% gist page.gist "05d-dml-delete-using-from_item.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# select employee_id, start_date, department_id, job_id
+hr-# from job_history
+hr-# where job_id = 'ST_CLERK';
+ employee_id |     start_date      | department_id |  job_id
+-------------+---------------------+---------------+----------
+         114 | 1998-03-24 00:00:00 |            50 | ST_CLERK
+         122 | 1999-01-01 00:00:00 |            50 | ST_CLERK
+(2 rows)
+
+hr=# delete
+hr-# from employees emp
+hr-#     using job_history old
+hr-# where old.job_id = 'ST_CLERK'
+hr-#   and emp.employee_id = old.employee_id;
+DELETE 2
+
+hr=# select employee_id, first_name
+hr-# from employees
+hr-# where employee_id in (114, 122);
+ employee_id | first_name
+-------------+------------
+(0 rows)
+```
+
+Pada query tersebut akan sama jika kita menggunakan sub-query seperti berikut:
+
+{% gist page.gist "05d-dml-delete-where-sub-query.sql" %}
