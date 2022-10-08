@@ -85,3 +85,32 @@ hr-# where employee_id in (114, 122);
 Pada query tersebut akan sama jika kita menggunakan sub-query seperti berikut:
 
 {% gist page.gist "05d-dml-delete-where-sub-query.sql" %}
+
+## Delete using `RETURNING`
+
+If the `DELETE` command contains a `RETURNING` clause, the result will be similar to that of a `SELECT` statement containing the columns and values defined in the `RETURNING` list, computed over the row(s) deleted by the command. The syntax is:
+
+{% highlight sql %}
+DELETE FROM table_name [ [ AS ] alias ]
+    [ WHERE condition ]
+    [ RETURNING * | output_expression [ [ AS ] output_name ] [, ...] ]
+{% endhighlight %}
+
+Sebagai contoh, saya ingin menghapus data pada tabel `countries` untuk `country_id` sama dengan `ZM` dan `ZW` kemudian tampilan data selengkapnya seperti berikut:
+
+{% gist page.gist "05d-dml-dml-returning.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```sql
+hr=# DELETE FROM countries
+hr-# WHERE country_id in ('ZM', 'ZW')
+hr-# RETURNING *;
+ country_id | country_name | region_id
+------------+--------------+-----------
+ ZM         | Zambia       |         4
+ ZW         | Zimbabwe     |         4
+(2 rows)
+
+DELETE 2
+```
