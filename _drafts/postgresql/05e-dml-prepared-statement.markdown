@@ -33,12 +33,11 @@ EXPLAIN EXECUTE name(parameter_values);
 
 Jadi dengan kita mendefined prepared query tersebut, kita bisa meng-execute multiple times dengan parameter yang berbeda. Pada implemetasinya kita bisa gunakan untuk:
 
-1. Prepared statement for INSERT
-2. Prepared statement for UPDATE
-3. Prepared statement for DELETE
-4. Prepared statement for SELECT
-5. Show all prepared statement
-6. Remove prepared statement from a session.
+1. Create input parameterized with text editor
+2. Create a Prepared statement for INSERT, UPDATE, DELETE
+3. Execute multiple times a Prepared statement
+4. Show all prepared statement
+5. Remove prepared statement from a session.
 
 Ok tanpa berlama-lama kita bahas kemateri yang pertama:
 
