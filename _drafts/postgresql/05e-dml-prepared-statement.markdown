@@ -33,7 +33,7 @@ EXPLAIN EXECUTE name(parameter_values);
 
 Jadi dengan kita mendefined prepared query tersebut, kita bisa meng-execute multiple times dengan parameter yang berbeda. Pada implemetasinya kita bisa gunakan untuk:
 
-1. Create input parameterized with text editor
+1. Create input parameterized with text editor (Jetbraints Database)
 2. Create a Prepared statement for INSERT, UPDATE, DELETE
 3. Execute multiple times a Prepared statement
 4. Show all prepared statement
