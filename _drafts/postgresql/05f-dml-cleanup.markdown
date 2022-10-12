@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cleanup tables data"
+title: "Cleanup Data from Table"
 lang: postgresql
 authors:
 - dimasm93
