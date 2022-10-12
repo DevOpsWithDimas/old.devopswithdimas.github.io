@@ -25,7 +25,7 @@ icon: grade
   <div class="row container">
       <div class="row">
           <ul class="list">
-              {% assign topics = pages_list | sort:"publish" | reverse %}
+              {% assign topics = pages_list | where: "udemy.release", true | sort:"publish" | reverse %}
               {% for topic in topics %}
               <li data-topic="{{ topic.name }}">
                   {% assign post_list = site.posts | where: "lang", topic.url | sort:"date" %}

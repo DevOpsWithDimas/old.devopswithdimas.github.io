@@ -264,6 +264,7 @@
     discount: Rp99.000,-
     couponCode: DISKON1010
     referralCode: D1F375D96C53FC20DB42
+    release: true
     expired: 17/10/2022
   coming_soon: false
   visible: true
@@ -355,6 +356,7 @@
     price: Rp560.000,-
     discount: Rp99.000,-
     couponCode: DISKON1010
+    release: true
     referralCode: 8D13D85D4D34027B76BE
     expired: 17/10/2022
   coming_soon: false
@@ -463,6 +465,7 @@
     price: Rp280.000,-
     discount: Rp99.000,-
     couponCode: DISKON1010
+    release: true
     referralCode: 58BDCE6103ADC4C9C11D
     expired: 17/10/2022
   coming_soon: false
@@ -673,6 +676,7 @@
     price: Rp250.000,-
     discount: Rp99.000,-
     couponCode: DISKON1010
+    release: false
     referralCode: 8D13D85D4D34027B76BE
     expired: 17/10/2022
   coming_soon: true
@@ -736,6 +740,7 @@
     price: Rp.280.000,-
     discount: Rp.99.000,-
     couponCode: DISKON1010
+    release: true
     referralCode: 8080BE598C39D7652D33
     expired: 17/10/2022
   coming_soon: false
