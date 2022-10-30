@@ -60,3 +60,5 @@ hr-# from job_history;
      0
 (1 row)
 ```
+
+## Cleanup storage to reclaims occupied by dead tuples
