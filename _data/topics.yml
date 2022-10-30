@@ -185,9 +185,10 @@
     url: https://www.udemy.com/course/hibernate-orm-bahasa-indonesia/
     price: Rp280.000,-
     discount: Rp99.000,-
-    couponCode: DISKON1010
+    release: false
+    couponCode: GAJIAN_1022
     referralCode: 8DA27E06BF0BA6935CCC
-    expired: 17/10/2022
+    expired: 31/10/2022
   coming_soon: false
   visible: true
   catalogs:
@@ -262,10 +263,10 @@
     url: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
     price: Rp350.000,-
     discount: Rp99.000,-
-    couponCode: DISKON1010
+    couponCode: GAJIAN_1022
     referralCode: D1F375D96C53FC20DB42
     release: true
-    expired: 17/10/2022
+    expired: 31/10/2022
   coming_soon: false
   visible: true
   catalogs:
@@ -355,10 +356,10 @@
     url: https://www.udemy.com/course/docker-pemula-sampai-mahir/
     price: Rp560.000,-
     discount: Rp99.000,-
-    couponCode: DISKON1010
+    couponCode: GAJIAN_1022
     release: true
     referralCode: 8D13D85D4D34027B76BE
-    expired: 17/10/2022
+    expired: 31/10/2022
   coming_soon: false
   visible: true
   catalogs:
@@ -464,10 +465,10 @@
     url: https://www.udemy.com/course/devops-kubernetes-pemula-sampai-mahir/
     price: Rp280.000,-
     discount: Rp99.000,-
-    couponCode: DISKON1010
+    couponCode: GAJIAN_1022
     release: true
     referralCode: 58BDCE6103ADC4C9C11D
-    expired: 17/10/2022
+    expired: 31/10/2022
   coming_soon: false
   visible: true
   catalogs:
@@ -675,10 +676,10 @@
     url: https://www.udemy.com/course/gitops-gitlab-pemula-sampai-mahir/
     price: Rp250.000,-
     discount: Rp99.000,-
-    couponCode: DISKON1010
+    couponCode: GAJIAN_1022
     release: false
     referralCode: 8D13D85D4D34027B76BE
-    expired: 17/10/2022
+    expired: 31/10/2022
   coming_soon: true
   visible: true
   catalogs:
@@ -739,10 +740,10 @@
     url: https://www.udemy.com/course/dba-postgresql-pemula-sampai-mahir/
     price: Rp.280.000,-
     discount: Rp.99.000,-
-    couponCode: DISKON1010
+    couponCode: GAJIAN_1022
     release: true
     referralCode: 8080BE598C39D7652D33
-    expired: 17/10/2022
+    expired: 31/10/2022
   coming_soon: false
   visible: true
   catalogs:
