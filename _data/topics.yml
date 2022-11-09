@@ -512,19 +512,19 @@
       description: 'Eps. 8 - Kubernetes Volumes'
       deprecated: false
       messages: ''
-    - name: 'ConfigMap, and Secrets'
-      key: configmap
-      description: 'Eps. 9 - ConfigMap and Secrets'
-      deprecated: false
-      messages: ''
     - name: 'Study Kasus: Store data using Volumes'
       key: study-cases-volumes
       description: 'Eps. 10 - Study Kasus: Kubernetes Volumes'
       deprecated: false
       messages: ''
-    - name: 'Kubernetes Client (kubectl, kustomize, helm)'
+    - name: 'Kubernetes Client (kubectl, kustomize)'
       key: kubernetes-client
       description: 'Eps. 11 - Kubernetes Client'
+      deprecated: false
+      messages: ''
+    - name: 'Manage Administration Clusters'
+      key: admin-cluster
+      description: 'Eps. 12 - Manage Administration Cluster for Production'
       deprecated: false
       messages: ''
     - name: 'Monitoring and Dashboard'
@@ -537,23 +537,8 @@
       description: ''
       deprecated: false
       messages: ''
-    - name: 'Kubernetes for Production'
-      key: kubeadm
-      description: ''
-      deprecated: false
-      messages: ''
-    - name: 'Manage Administration Clusters'
-      key: admin-cluster
-      description: ''
-      deprecated: false
-      messages: ''
     - name: 'Security RBAC'
       key: security-rbac
-      description: ''
-      deprecated: false
-      messages: ''
-    - name: 'CI/CD: with Gitlab'
-      key: k8s-integration-gitlab
       description: ''
       deprecated: false
       messages: ''
