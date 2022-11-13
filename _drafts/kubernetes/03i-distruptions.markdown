@@ -32,3 +32,33 @@ Ok tanpa berlama-lama yuk lansung aja kita bahas materi yang pertama:
 
 <!--more-->
 
+## Voluntary and involuntary disruptions
+
+Pods do not disappear until someone (a person or a controller) destroys them, or there is an unavoidable hardware or system software error.
+
+We call these unavoidable cases involuntary disruptions to an application. Examples are:
+
+1. a hardware failure of the physical machine backing the node
+2. cluster administrator deletes VM (instance) by mistake
+3. cloud provider or hypervisor failure makes VM disappear
+4. a kernel panic
+5. the node disappears from the cluster due to cluster network partition
+6. eviction of a pod due to the node being out-of-resources.
+
+Except for the out-of-resources condition, all these conditions should be familiar to most users; they are not specific to Kubernetes.
+
+We call other cases voluntary disruptions. These include both actions initiated by the application owner and those initiated by a Cluster Administrator. 
+
+Typical application owner actions include:
+
+1. deleting the deployment or other controller that manages the pod
+2. updating a deployment's pod template causing a restart
+3. directly deleting a pod (e.g. by accident)
+
+Cluster administrator actions include:
+
+1. Draining a node for repair or upgrade.
+2. Draining a node from a cluster to scale the cluster down (learn about Cluster Autoscaling ).
+3. Removing a pod from a node to permit something else to fit on that node.
+
+These actions might be taken directly by the cluster administrator, or by automation run by the cluster administrator, or by your cluster hosting provider.
