@@ -24,9 +24,8 @@ Hai semuanya, sebelumnya kita sudah membahas secara detail tentang Pod Specifica
 So karena pembahasannya ini akan lumayan panjang jadi kita akan bagi-bagi menjadi beberapa bagian diantaranya:
 
 1. Voluntary and involuntary disruptions
-2. Dealing with disruptions
-3. Pod disruption budgets
-4. Pod disruption conditions
+2. Pod disruption budgets
+3. Pod disruption conditions
 
 Ok tanpa berlama-lama yuk lansung aja kita bahas materi yang pertama:
 
@@ -62,7 +61,15 @@ Typical application owner actions include:
 Cluster administrator actions include:
 
 1. Draining a node for repair or upgrade.
-2. Draining a node from a cluster to scale the cluster down (learn about Cluster Autoscaling ).
+2. Draining a node from a cluster to scale the cluster down (learn about Cluster Autoscaling).
 3. Removing a pod from a node to permit something else to fit on that node.
 
 These actions might be taken directly by the cluster administrator, or by automation run by the cluster administrator, or by your cluster hosting provider.
+
+Here are some ways to mitigate involuntary disruptions:
+
+1. Ensure your pod requests the resources it needs.
+2. Replicate your application if you need higher availability. (using replicated stateless and stateful applications)
+3. For even higher availability when running replicated applications, spread applications across racks (using anti-affinity) or across zones (if using a multi-zone cluster).
+
+The frequency of voluntary disruptions varies. On a basic Kubernetes cluster, there are no automated voluntary disruptions (only user-triggered ones). However, your cluster administrator or hosting provider may run some additional services which cause voluntary disruptions. For example, rolling out node software updates can cause voluntary disruptions. Also, some implementations of cluster (node) autoscaling may cause voluntary disruptions to defragment and compact nodes. Your cluster administrator or hosting provider should have documented what level of voluntary disruptions, if any, to expect. Certain configuration options, such as using PriorityClasses in your pod spec can also cause voluntary (and involuntary) disruptions.
