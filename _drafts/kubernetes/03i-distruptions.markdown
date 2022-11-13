@@ -14,7 +14,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: pod-container
-image_path: /resources/posts/kubernetes/03e-distruptions
+image_path: /resources/posts/kubernetes/03i-distruption
 gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
@@ -38,6 +38,8 @@ Pods do not disappear until someone (a person or a controller) destroys them, or
 
 We call these unavoidable cases involuntary disruptions to an application. Examples are:
 
+![deletes vm(instances)]({{ page.image_path | prepend: site.baseurl }}/01-cluster-deletes-vm.png)
+
 1. a hardware failure of the physical machine backing the node
 2. cluster administrator deletes VM (instance) by mistake
 3. cloud provider or hypervisor failure makes VM disappear
@@ -51,9 +53,11 @@ We call other cases voluntary disruptions. These include both actions initiated 
 
 Typical application owner actions include:
 
-1. deleting the deployment or other controller that manages the pod
-2. updating a deployment's pod template causing a restart
-3. directly deleting a pod (e.g. by accident)
+![delete resources]({{ page.image_path | prepend: site.baseurl }}/02-resource-k8s-deleted.png)
+
+1. Deleting the deployment or other controller that manages the pod
+2. Updating a deployment's pod template causing a restart
+3. Directly deleting a pod (e.g. by accident)
 
 Cluster administrator actions include:
 
