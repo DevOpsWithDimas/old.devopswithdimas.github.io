@@ -12,7 +12,6 @@ url: "https://youtube.dimas-maryanto.com" # the base hostname & protocol for you
 
 # Build settings
 markdown: kramdown
-
 kramdown:
   input: GFM
   syntax_highlighter: rouge
@@ -27,7 +26,6 @@ plugins:
   - rouge
   - jekyll-youtube
   - jekyll-sitemap
-  - jekyll-paginate
   - jemoji
   - jekyll-analytics
   - jekyll-mermaid
@@ -70,8 +68,17 @@ exclude:
   - README.md
   - CHANGELOG.md
   - CONTRIBUTING.md
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
 #   - node_modules
 #   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+defaults:
+  - scope:
+      path: "node_modules"
+    values:
+      image: true

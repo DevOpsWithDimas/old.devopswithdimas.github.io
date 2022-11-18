@@ -19,4 +19,4 @@ jobs:
       - uses: jeffreytse/jekyll-deploy-action@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          bundler_ver: 2.1.4
+          bundler_ver: 2.3.7
