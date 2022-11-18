@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Overview of Kubernetes Workloads"
-date: 2022-04-04T03:53:03+07:00
+date: 2022-11-18T03:53:03+07:00
 lang: k8s
 authors:
 - dimasm93
@@ -14,8 +14,8 @@ refs:
 - https://kubernetes.io/docs/concepts/workloads/
 youtube: 
 comments: true
-catalog_key: pod-container
-image_path: /resources/posts/kubernetes/03-k8s-workloads
+catalog_key: workloads
+image_path: /resources/posts/kubernetes/04-workloads
 gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
