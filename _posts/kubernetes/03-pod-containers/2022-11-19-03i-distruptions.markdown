@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Pod Disruptions"
+date: 2022-11-19T14:07:43+07:00
 lang: k8s
 authors:
 - dimasm93
