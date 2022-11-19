@@ -121,3 +121,18 @@ You can see how Kubernetes varies the rate at which disruptions can happen, acco
 3. how long it takes a new instance to start up
 4. the type of controller
 5. the cluster's resource capacity
+
+## Pod disruption conditions
+
+**Note**: In order to use this behavior, you must enable the PodDisruptionConditions [feature gate](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/) in your cluster.
+
+When enabled, a dedicated Pod `DisruptionTarget` condition is added to indicate that the Pod is about to be deleted due to a disruption. The reason field of the condition additionally indicates one of the following reasons for the Pod termination:
+
+1. `PreemptionByKubeScheduler`, Pod is due to be preempted by a scheduler in order to accommodate a new Pod with a higher priority.
+2. `DeletionByTaintManager`, Pod is due to be deleted by Taint Manager (which is part of the node lifecycle controller within `kube-controller-manager`) due to a `NoExecute` taint that the Pod does not tolerate; see taint-based evictions.
+3. `EvictionByEvictionAPI`, Pod has been marked for eviction using the Kubernetes API.
+4. `DeletionByPodGC`, Pod, that is bound to a no longer existing Node, is due to be deleted by [Pod garbage collection](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-garbage-collection).
+
+**Note**: A Pod disruption might be interrupted. The control plane might re-attempt to continue the disruption of the same Pod, but it is not guaranteed. As a result, the `DisruptionTarget` condition might be added to a Pod, but that Pod might then not actually be deleted. In such a situation, after some time, the Pod disruption condition will be cleared.
+
+When using a Job (or CronJob), you may want to use these Pod disruption conditions as part of your Job's Pod failure policy.
