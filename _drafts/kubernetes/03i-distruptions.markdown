@@ -76,3 +76,48 @@ The frequency of voluntary disruptions varies. On a basic Kubernetes cluster, th
 
 ## Pod disruption budgets
 
+Kubernetes offers features to help you run highly available applications even when you introduce frequent voluntary disruptions.
+
+As an application owner, you can create a PodDisruptionBudget (PDB) for each application. A PDB limits the number of Pods of a replicated application that are down simultaneously from voluntary disruptions. For example, a quorum-based application would like to ensure that the number of replicas running is never brought below the number needed for a quorum. A web front end might want to ensure that the number of replicas serving load never falls below a certain percentage of the total.
+
+Cluster managers and hosting providers should use tools which respect PodDisruptionBudgets by calling the [Eviction API](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#eviction-api) instead of directly deleting pods or deployments.
+
+For example, the `kubectl drain` subcommand lets you mark a node as going out of service. When you run `kubectl drain`, the tool tries to evict all of the Pods on the Node you're taking out of service. The eviction request that `kubectl` submits on your behalf may be temporarily rejected, so the tool periodically retries all failed requests until all Pods on the target node are terminated, or until a configurable timeout is reached.
+
+A PDB specifies the number of replicas that an application can tolerate having, relative to how many it is intended to have. For example, a Deployment which has a `.spec.replicas: 5` is supposed to have 5 pods at any given time. If its PDB allows for there to be `4` at a time, then the Eviction API will allow voluntary disruption of one (but not two) pods at a time.
+
+for Examples
+
+Consider a cluster with 3 nodes, `node-1` through `node-3`. The cluster is running several applications. One of them has 3 replicas initially called `pod-a`, `pod-b`, and `pod-c`. Another, unrelated pod without a PDB, called `pod-x`, is also shown. Initially, the pods are laid out as follows:
+
+![pdb-normal]({{ page.image_path | prepend: site.baseurl }}/03a-normal-cluster.png)
+
+All 3 pods are part of a deployment, and they collectively have a PDB which requires there be at least 2 of the 3 pods to be available at all times.
+
+For example, assume the cluster administrator wants to reboot into a new kernel version to fix a bug in the kernel. The cluster administrator first tries to drain `node-1` using the `kubectl drain` command. That tool tries to evict `pod-a` and `pod-x`. This succeeds immediately. Both pods go into the terminating state at the same time. This puts the cluster in this state:
+
+![kernel-new-version]({{ page.image_path | prepend: site.baseurl }}/03b-node-draining.png)
+
+The deployment notices that one of the pods is terminating, so it creates a replacement called `pod-d`. Since `node-1` is cordoned, it lands on another node. Something has also created `pod-y` as a replacement for `pod-x`.
+
+![node-down]({{ page.image_path | prepend: site.baseurl }}/03c-node-drained.png)
+
+At some point, the pods terminate, and the cluster looks like this:
+
+![node-up-to-date]({{ page.image_path | prepend: site.baseurl }}/03d-node-up-to-date.png)
+
+Now, the cluster administrator tries to drain `node-2`. The drain command will try to evict the two pods in some order, say `pod-b` first and then `pod-d`. It will succeed at evicting `pod-b`. But, when it tries to evict `pod-d`, it will be refused because that would leave only one pod available for the deployment.
+
+The deployment creates a replacement for `pod-b` called `pod-e`. Because there are not enough resources in the cluster to schedule `pod-e` the drain will again block. The cluster may end up in this state:
+
+![node-b-drain]({{ page.image_path | prepend: site.baseurl }}/03e-drain-second-node.png)
+
+At this point, the cluster administrator needs to add a node back to the cluster to proceed with the upgrade.
+
+You can see how Kubernetes varies the rate at which disruptions can happen, according to:
+
+1. how many replicas an application needs
+2. how long it takes to gracefully shutdown an instance
+3. how long it takes a new instance to start up
+4. the type of controller
+5. the cluster's resource capacity
