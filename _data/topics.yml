@@ -186,9 +186,9 @@
     price: Rp280.000,-
     discount: Rp99.000,-
     release: false
-    couponCode: PROMO_1111
+    couponCode: BOOTCAMP_DEVOPS_2211
     referralCode: 8DA27E06BF0BA6935CCC
-    expired: 15/11/2022
+    expired: 25/11/2022
   coming_soon: false
   visible: true
   catalogs:
@@ -263,10 +263,10 @@
     url: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
     price: Rp350.000,-
     discount: Rp99.000,-
-    couponCode: PROMO_1111
+    couponCode: BOOTCAMP_DEVOPS_2211
     referralCode: D1F375D96C53FC20DB42
     release: true
-    expired: 15/11/2022
+    expired: 25/11/2022
   coming_soon: false
   visible: true
   catalogs:
@@ -356,10 +356,10 @@
     url: https://www.udemy.com/course/docker-pemula-sampai-mahir/
     price: Rp560.000,-
     discount: Rp99.000,-
-    couponCode: PROMO_1111
+    couponCode: BOOTCAMP_DEVOPS_2211
     release: true
     referralCode: 8D13D85D4D34027B76BE
-    expired: 15/11/2022
+    expired: 25/11/2022
   coming_soon: false
   visible: true
   catalogs:
@@ -465,10 +465,10 @@
     url: https://www.udemy.com/course/devops-kubernetes-pemula-sampai-mahir/
     price: Rp280.000,-
     discount: Rp99.000,-
-    couponCode: PROMO_1111
+    couponCode: BOOTCAMP_DEVOPS_2211
     release: true
     referralCode: 58BDCE6103ADC4C9C11D
-    expired: 15/11/2022
+    expired: 25/11/2022
   coming_soon: false
   visible: true
   catalogs:
@@ -661,10 +661,10 @@
     url: https://www.udemy.com/course/gitops-gitlab-pemula-sampai-mahir/
     price: Rp250.000,-
     discount: Rp99.000,-
-    couponCode: PROMO_1111
+    couponCode: BOOTCAMP_DEVOPS_2211
     release: false
     referralCode: 8D13D85D4D34027B76BE
-    expired: 15/11/2022
+    expired: 25/11/2022
   coming_soon: true
   visible: true
   catalogs:
@@ -725,10 +725,10 @@
     url: https://www.udemy.com/course/dba-postgresql-pemula-sampai-mahir/
     price: Rp.280.000,-
     discount: Rp.99.000,-
-    couponCode: PROMO_1111
+    couponCode: BOOTCAMP_DEVOPS_2211
     release: true
     referralCode: 8080BE598C39D7652D33
-    expired: 15/11/2022
+    expired: 25/11/2022
   coming_soon: false
   visible: true
   catalogs:
