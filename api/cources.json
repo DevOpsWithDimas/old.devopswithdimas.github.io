@@ -1,0 +1,46 @@
+---
+layout: null
+---
+{% assign topics = site.data.topics | where: 'visible', true | where_exp:"item", "item.udemy" | sort:"publish" %}
+{% assign pages_list_count = topics.size %}
+{
+    "size": "{{ pages_list_count }}",
+    "cources": [
+        {% for topic in topics %}
+        {
+            "courceName": "{{ topic.name }}",
+            "courceUrl": "{{ topic.udemy.url }}",
+            {% assign posts_by_topic = site.posts | where: "lang", topic.url | sort: "date"  %}
+            "postSize": "{{ posts_by_topic.size }}",
+            {% if topic.catalogs %}
+            "courceSubjects": [
+                {% for category in topic.catalogs %}
+                {
+                    "subjectName": "{{ category.name }}",
+                    "subjectKey": "{{ category.key }}",
+                    {% assign post_by_category = posts_by_topic | where: "catalog_key", category.key | sort: "date"  %}
+                    "posts": [
+                        {% for post in post_by_category  %}
+                        {
+                            "title": "{{ post.title }}",
+                            "publishedDate": "{{ post.date | date_to_xmlschema }}"
+                        }{% unless forloop.last %},{% endunless %}
+                        {% endfor %}
+                    ]
+                }{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+            ]
+            {% else %}
+            "posts": {
+                {% for post in posts_by_topic  %}
+                {
+                    "title": "{{ post.title }}",
+                    "publishedDate": "{{ post.date | date_to_xmlschema }}"
+                }{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+            }
+            {% endif %}
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ]
+}
