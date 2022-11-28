@@ -9,7 +9,7 @@ categories:
 - DevOps
 - Orchestration
 - Kubernetes
-- Workloads
+- Pods
 refs: 
 - https://kubernetes.io/docs/tasks/configure-pod-container/
 - https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/

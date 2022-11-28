@@ -9,7 +9,7 @@ categories:
 - DevOps
 - Orchestration
 - Kubernetes
-- Workloads
+- Pods
 refs: 
 - https://kubernetes.io/docs/concepts/workloads/pods/#working-with-pods
 youtube: 

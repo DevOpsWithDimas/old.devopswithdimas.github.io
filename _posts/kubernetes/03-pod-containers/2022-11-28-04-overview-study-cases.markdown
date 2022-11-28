@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Overview Study Cases: Pod and Containers"
+date: 2022-11-28T22:03:44+07:00
 lang: k8s
 authors:
 - dimasm93
@@ -8,7 +9,7 @@ categories:
 - DevOps
 - Orchestration
 - Kubernetes
-- Workloads
+- Pods
 refs: 
 - https://docs.docker.com/
 - https://kubernetes.io/docs/home/

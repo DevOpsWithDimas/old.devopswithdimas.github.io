@@ -9,7 +9,7 @@ categories:
 - DevOps
 - Orchestration
 - Kubernetes
-- Workloads
+- Pods
 refs: 
 - https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/
 - https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/
