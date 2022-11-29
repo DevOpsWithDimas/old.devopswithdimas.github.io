@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "04a-study-cases-monolith-apps"
+title: "Study Cases: Monolith apps"
 lang: k8s
 authors:
 - dimasm93
@@ -21,8 +21,11 @@ gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
 
+Hai semuanya, di materi study cases untuk Pod dan Container specification kita coba create, build, convert contoh aplikasi monolith dengan framework Laravel dengan menggunakan method Web MVC (Model View Controller) dengan architecture seperti berikut:
 
-description...
+![architecture mvc]({{ page.image_path | prepend: site.baseurl }}/monolith-arch.png)
+
+Berdasarkan architecture tersebut, step by step yang akan kita lakukan adalah
 
 <!--more-->
 
