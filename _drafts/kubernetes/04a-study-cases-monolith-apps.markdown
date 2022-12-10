@@ -23,17 +23,20 @@ downloads: []
 
 Hai semuanya, di materi study cases untuk Pod dan Container specification kita coba create, build, convert contoh aplikasi monolith dengan framework Laravel dengan menggunakan method Web MVC (Model View Controller) dengan architecture seperti berikut:
 
-![architecture mvc]({{ page.image_path | prepend: site.baseurl }}/monolith-arch.png)
+![architecture mvc]({{ page.image_path | prepend: site.baseurl }}/monolith-architecture.png)
 
 Berdasarkan architecture tersebut, step by step yang akan kita lakukan adalah
 
+1. Develop aplikasi tersebut
+2. Containerize apps
+3. Deploy to Kubernetes
+    1. Running as a Pod
+    2. Run initContainer for database migration
+    3. Using container probe
+    4. Using resource request and limit
+
+Ok tanpa berlama-lama yuk langsung aja ke pembahasan yang pertama.
+
 <!--more-->
 
-Materi: 
-
-1. Topic1
-2. Topic2
-    1. Topic 2.a
-    2. Topic 2.b
-3. Topic 3
-4. Topic 4
+## Development aplikasi
