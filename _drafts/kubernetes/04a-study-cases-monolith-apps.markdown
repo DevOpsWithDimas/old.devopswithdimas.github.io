@@ -95,4 +95,5 @@ Kalo kita coba akses di browser hasilnya seperti berikut:
 
 ![laravel dev-mode]({{ page.image_path | prepend: site.baseurl }}/01-laravel-dev-mode.png)
 
-## Containerize
+## Containerize apps
+
