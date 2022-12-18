@@ -37,8 +37,9 @@ Kubernetes memprovide solusi terserbut dengan High Availablity, Self Healing, Au
 3. Deploy to Kubernetes
     1. Running as a Pod
     2. Specify resource request and limit
-    3. Run initContainer for database migration
-    4. Specify container probes (health check)
+    3. Using configmap and secret for connect to a database
+    4. Using initContainer to migrate db
+    5. Specify container probes (health check)
 
 Ok tanpa berlama-lama yuk langsung aja ke pembahasan yang pertama.
 
@@ -187,11 +188,11 @@ minikube addons configure registry-creds
 
 Nah sambil nungguin cluster kubernetes di-provision oleh minikube, kita akan buat kuberentes resourcenya dulu untuk deploy laravel seperti berikut:
 
-Buat file `pod.yaml` dalam folder `.kubernetes` seperti berikut:
+Buat file `pod-laravel.yaml` dalam folder `.kubernetes` seperti berikut:
 
 {% gist page.gist "04a-pod-laravel-monolith.yaml" %}
 
-Dan untuk expose ke networknya kita akan menggunakan **NodePort** dengan buat file baru namanya `service.yaml` dalam folder `.kubernetes` seperti berikut:
+Dan untuk expose ke networknya kita akan menggunakan **NodePort** dengan buat file baru namanya `service-laravel.yaml` dalam folder `.kubernetes` seperti berikut:
 
 {% gist page.gist "04a-service-laravel-monolith.yaml" %}
 
@@ -278,7 +279,6 @@ Maka kita bisa modifikasi kubernetes `pod.yaml` resourcenya, menjadi seperti ber
 Jika kita coba jalankan menggunakan perintah berikut:
 
 {% highlight bash %}
-kubectl delete -f .kubernetes && \
 kubectl apply -f .kubernetes
 {% endhighlight %}
 
@@ -328,3 +328,124 @@ examples/k8s-laravel-example [main●] » kubectl top pod laravel-apps
 NAME           CPU(cores)   MEMORY(bytes)   
 laravel-apps   35m          9Mi
 ```
+
+## Using configmap and secret for connect to a database
+
+Seperti yang temen-temen ketahui, `configmap` dan `secret` adalah suatu object yang di sediakan oleh kubernetes untuk menyimpan konfigurasi berupa key-value pair.
+
+Dalam aplikasi Laravel Web MVC yang telah kita buat tersebut menggunakan suatu database MySQL, jadi kita akan mengkomunikasikan antara Laravel Web dengan Database MySQL menggunakan konfigurasi yang di simpan pada object `configmap` dan `secret` tahap pertama kita akan buat dulu pod untuk database mysqlnya.
+
+Nah untuk membuatnya kita buat file baru dengan nama `config.yaml` seperti berikut:
+
+{% gist page.gist "04a-configmap-and-secret.yaml" %}
+
+Kemudian kita buat file baru lagi dengan nama `pod-mysql.yaml` seperti berikut:
+
+{% gist page.gist "04a-pod-mysql.yaml" %}
+
+dan yang terakhir buat file baru lagi dengan nama `service-mysql.yaml` seperti berikut:
+
+{% gist page.gist "04a-service-mysql.yaml" %}
+
+Sekarang kita jalankan dengan perintah berikut:
+
+{% highlight bash %}
+kubectl apply -f .kubernetes
+{% endhighlight %}
+
+Jika kita jalankan maka outputnya seperti berikut:
+
+```bash
+examples/k8s-laravel-example [main●] » kubectl apply -f .kubernetes
+configmap/mysql-config created
+secret/mysql-secret created
+pod/laravel-apps created
+pod/mysql-db created
+service/laravel-apps created
+service/mysql-db created
+
+examples/k8s-laravel-example [main●] » kubectl get pod
+NAME           READY   STATUS    RESTARTS   AGE
+laravel-apps   1/1     Running   0          17s
+mysql-db       1/1     Running   0          17s
+
+examples/k8s-laravel-example [main●] » kubectl exec -it pod/mysql-db -- mysql -u
+ root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| mahasiswa_db       |
++--------------------+
+5 rows in set (0.01 sec)
+```
+
+Ok nah jika sudah bisa connect dari `mysql` client sekarang kita coba komunikasi aplikasi Laravel Web dengan Database, kita coba rubah konfigurasi pod seperti berikut:
+
+{% gist page.gist "04a-pod-laravel-connect-db.yaml" %}
+
+kemudian coba jalankan dengan perintah berikut:
+
+{% highlight bash %}
+kubectl apply -f .kubernetes
+{% endhighlight %}
+
+Jika dijalankan outputnya seperti berikut:
+
+```bash
+examples/k8s-laravel-example [main●] » kubectl apply -f .kubernetes                     
+configmap/mysql-config unchanged
+secret/mysql-secret configured
+pod/laravel-apps created
+pod/mysql-db unchanged
+service/laravel-apps unchanged
+service/mysql-db unchanged
+```
+
+Kemudian kita coba jalankan database migrasionnya dengan menggunakan perintah berikut:
+
+{% highlight bash %}
+kubectl exec -it pod/laravel-apps -- php artisan migrate
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+examples/k8s-laravel-example [main●] » kubectl exec -it pod/laravel-apps -- php artisan migrate
+**************************************
+*     Application In Production!     *
+**************************************
+
+ Do you really wish to run this command? (yes/no) [no]:
+ > y
+
+Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table (123.39ms)
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table (137.38ms)
+Migrating: 2019_08_19_000000_create_failed_jobs_table
+Migrated:  2019_08_19_000000_create_failed_jobs_table (112.75ms)
+Migrating: 2021_08_09_164144_create_mahasiswa_table
+Migrated:  2021_08_09_164144_create_mahasiswa_table (162.61ms)
+```
+
+Dan sekarang kita bisa lihat hasilnya di alamat [http://cluster-ip:node-port/db](http://192.168.64.10:30225/db seperti berikut:
+
+![laravel-db]({{ page.image_path | prepend: site.baseurl }}/02-laravel-k8s-db.png)
+
+
+## Using initContainer to migrate db
+
+Seperti yang temen-temen ketahui, `initContainer` biasanya digunakan untuk menjalankan container yang sifatnya run to completion (jika sudah selesai prosesnya pasti di terminate) contoh imlementasinya sendiri adalah memberikan permission pada folder/file tertentu, me-migrasi database dan lain-lain. 
+
+Dalam aplikasi Laravel Web MVC tersebut menggunakan database, dan kita belum setting databasenya 
