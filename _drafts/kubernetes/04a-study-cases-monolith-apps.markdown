@@ -15,7 +15,7 @@ youtube:
 comments: true
 catalog_key: pod-container
 image_path: /resources/posts/kubernetes/04a-study-cases-monolith-apps
-gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
+gist: dimMaryanto93/c8e8b75d52f1266a6bd7c8f5939c91f4
 downloads: []
 ---
 
@@ -174,8 +174,10 @@ Setelah container image sudah di-build dan di-publish ke container registry, tah
 
 {% highlight bash %}
 minikube start -p laravel-monolith \
+--insecure-registry=192.168.88.50:8086 \
 --memory 2G \
---cpus 2
+--cpus 2 \
+--nodes 2
 
 minikube profile laravel-monolith
 
@@ -185,4 +187,61 @@ minikube addons configure registry-creds
 
 Nah sambil nungguin cluster kubernetes di-provision oleh minikube, kita akan buat kuberentes resourcenya dulu untuk deploy laravel seperti berikut:
 
+Buat file `pod.yaml` dalam folder `.kubernetes` seperti berikut:
+
 {% gist page.gist "04a-pod-laravel-monolith.yaml" %}
+
+Dan untuk expose ke networknya kita akan menggunakan **NodePort** seperti berikut:
+
+{% gist page.gist "04a-service-laravel-monolith.yaml" %}
+
+Sekarang kita coba execute menggunakan perintah berikut:
+
+{% highlight bash %}
+kubectl apply -f .kubernetes
+{% endhighlight %}
+
+Jika kita jalankan pada kubernetes clusternya seperti berikut hasilnya:
+
+```bash
+examples/k8s-laravel-example [main●] » kubectl apply -f .kubernetes 
+pod/laravel-apps created
+service/laravel-apps created
+
+examples/k8s-laravel-example [main●] » kubectl get pod
+NAME           READY   STATUS              RESTARTS   AGE
+laravel-apps   0/1     ContainerCreating   0          10s
+
+examples/k8s-laravel-example [main●] » kubectl get service
+NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes     ClusterIP   10.96.0.1       <none>        443/TCP          7m9s
+laravel-apps   NodePort    10.103.147.20   <none>        8000:30865/TCP   2m30s
+
+examples/k8s-laravel-example [main●] » kubectl cluster-info
+Kubernetes control plane is running at https://192.168.64.9:8443
+CoreDNS is running at https://192.168.64.9:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+examples/k8s-laravel-example [main●] » curl 192.168.64.9:30865 -v
+*   Trying 192.168.64.9:30865...
+* Connected to 192.168.64.9 (192.168.64.9) port 30865 (#0)
+> GET / HTTP/1.1
+> Host: 192.168.64.9:30865
+> User-Agent: curl/7.85.0
+> Accept: */*
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Date: Sun, 18 Dec 2022 08:44:48 GMT
+< Server: Apache/2.4.54 (Debian)
+< X-Powered-By: PHP/8.0.26
+< Cache-Control: no-cache, private
+< Set-Cookie: XSRF-TOKEN=eyJpdiI6ImZQSkowaGlDSi9FSE9QSkMxazNoTFE9PSIsInZhbHVlIjoiVjdMQitVdVFCL2V4d2xHWERxTEt6RkI2TlI3YlpIUmxKTEJyeXRTdFl1Nm14UGFrZzBaZXU1U0Urbm4welhGSUlIYXhRY2cwUGhzSFRUV1cwbS85ZkUwdGVxU0NQRDVZZC9EaE01eVphQkZDM0FLbjVkaGhhbG9Ba2NpT20vc20iLCJtYWMiOiI0Nzc0Y2M2YzhhZDFlNWVkNDllNGRiZDIzODVlNTE3NGIxZTBjMzFjZDQ3ODcwMjBlZjliYWU2ZjI4YTc4YmNhIiwidGFnIjoiIn0%3D; expires=Sun, 18-Dec-2022 10:44:49 GMT; Max-Age=7200; path=/; samesite=lax
+< Set-Cookie: udemy_kubernetes_pemula_sd_mahir_session=eyJpdiI6ImlxUERmNDBzTHlsRmpzSG9yZGRKdVE9PSIsInZhbHVlIjoiN1ZlRFpHaXJkWm9yTEphcXdyVFdEbnVOd25PMlhBdkI5cG1La3VhenpjTDhUM05udzRUWGh6SEhJdmpYTC9qeFd1Smt4SWx6cFlTSDQ0SVpnWHBBZno0TnFBSnZjY3NZRno1K3RyQmlnL0ZiN3lETWpPL2l3emtOdjd6eU5kOWIiLCJtYWMiOiI0YjkyZGM1NTMzOWM3MGMwY2Y5NmIxYThjNmM3ZjQ1YmViNWY2NDUzOWZhYjkxNmE1ODc1ZDBlYjU1MjBmZThkIiwidGFnIjoiIn0%3D; expires=Sun, 18-Dec-2022 10:44:49 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+< Vary: Accept-Encoding
+< Transfer-Encoding: chunked
+< Content-Type: text/html; charset=UTF-8
+```
+
+## Specify resources request and limit

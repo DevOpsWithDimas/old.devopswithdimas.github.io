@@ -17,7 +17,7 @@ youtube:
 comments: true
 catalog_key: pod-container
 image_path: /resources/posts/kubernetes/04b-study-cases-microservice-backend-apps
-gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
+gist: dimMaryanto93/c8e8b75d52f1266a6bd7c8f5939c91f4
 downloads: []
 ---
 
