@@ -36,9 +36,9 @@ Kubernetes memprovide solusi terserbut dengan High Availablity, Self Healing, Au
 2. Containerize apps
 3. Deploy to Kubernetes
     1. Running as a Pod
-    2. Run initContainer for database migration
-    3. Using container probe
-    4. Using resource request and limit
+    2. Specify resource request and limit
+    3. Run initContainer for database migration
+    4. Specify container probes (health check)
 
 Ok tanpa berlama-lama yuk langsung aja ke pembahasan yang pertama.
 
@@ -191,7 +191,7 @@ Buat file `pod.yaml` dalam folder `.kubernetes` seperti berikut:
 
 {% gist page.gist "04a-pod-laravel-monolith.yaml" %}
 
-Dan untuk expose ke networknya kita akan menggunakan **NodePort** seperti berikut:
+Dan untuk expose ke networknya kita akan menggunakan **NodePort** dengan buat file baru namanya `service.yaml` dalam folder `.kubernetes` seperti berikut:
 
 {% gist page.gist "04a-service-laravel-monolith.yaml" %}
 
@@ -245,3 +245,86 @@ examples/k8s-laravel-example [main●] » curl 192.168.64.9:30865 -v
 ```
 
 ## Specify resources request and limit
+
+Seperti yang temen-temen ketahui, jika kita tidak menentukan resource request dan limit maka by default container akan menggunakan seluruh resource (hardware) maka dari itu kita harus specify resource request dan limit.
+
+Tahap pertama kita perlu aktifkan dulu metric servernya dengan menggunakan perintah berikut:
+
+{% highlight bash %}
+minikube addons enable metrics-server
+{% endhighlight %}
+
+Jika pod `metrics-server` sudah aktif seperti berikut:
+
+```bash
+examples/k8s-laravel-example [main] » kubectl get deploy/metrics-server -n kube-system
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+metrics-server   0/1     1            0           83s
+
+examples/k8s-laravel-example [main] » kubectl top node
+NAME                   CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+laravel-monolith       611m         30%    1481Mi          75%       
+laravel-monolith-m02   363m         18%    977Mi           49%
+```
+
+Nah sekarang, saatnya temen-temen menentukan berapa resource request dan limit dari Aplikasi yang telah kita buat sebelumnya yaitu Laravel Web MVC. Pada resource request dan limit ada beberapa parameter yaitu `cpus`, `momory` dan `I/O` yang kita bisa set ke container tersebut. Menentukan besaran suatu resource yang digunakan pada aplikasi tidak bisa sembarangan harus menemukan titik keseimbangan jadi jangan teralu besar karena nantinya akan boros dan juga jangan terlalu kecil karena prosesnya akan di kill secara paksa. 
+
+Karena teknology yang kita gunakan adalah menggunakan PHP, yang secara termininology menggunakan resource ketika di gunakan dan di destroy ketika sudah selesai jadi untuk resource request kita tidak membutuhkan resource yang besar sebagai contoh `cpu = 100m` dan `memory = 500MB` sedangkan untuk limitnya kita bisa set di `cpu = 1500m` dan `memory = 1G`
+
+Maka kita bisa modifikasi kubernetes `pod.yaml` resourcenya, menjadi seperti berikut:
+
+{% gist page.gist "04a-pod-resource-request-and-limit.yaml" %}
+
+Jika kita coba jalankan menggunakan perintah berikut:
+
+{% highlight bash %}
+kubectl delete -f .kubernetes && \
+kubectl apply -f .kubernetes
+{% endhighlight %}
+
+Hasilnya seperti berikut:
+
+```bash
+examples/k8s-laravel-example [main●] » kubectl apply -f .kubernetes 
+pod/laravel-apps created
+service/laravel-apps created
+
+examples/k8s-laravel-example [main●] » kubectl get pod
+NAME           READY   STATUS    RESTARTS   AGE
+laravel-apps   1/1     Running   0          14s
+
+examples/k8s-laravel-example [main●] » kubectl describe pod/laravel-apps
+Name:             laravel-apps
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             laravel-monolith-m02/192.168.64.10
+Start Time:       Sun, 18 Dec 2022 17:57:45 +0700
+Labels:           app=laravel
+Annotations:      <none>
+Status:           Running
+IP:               10.244.1.7
+IPs:
+  IP:  10.244.1.7
+Containers:
+  laravel:
+    Image:          repository.dimas-maryanto.com:8086/dimmaryanto93/laravel-monolith-apps:v1
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sun, 18 Dec 2022 17:57:47 +0700
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     1500m
+      memory:  1000Mi
+    Requests:
+      cpu:     100m
+      memory:  500Mi
+    Environment:
+      APP_URL:  
+
+examples/k8s-laravel-example [main●] » kubectl top pod laravel-apps
+NAME           CPU(cores)   MEMORY(bytes)   
+laravel-apps   35m          9Mi
+```
