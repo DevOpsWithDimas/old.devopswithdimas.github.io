@@ -167,3 +167,22 @@ docker compose -f docker-compose.build.yaml push laravel
 {% endhighlight %}
 
 Jika sudah diexecute temen-temen bisa check di Docker HUB (docker registry)
+
+## Deploy to Kubernetes Cluster
+
+Setelah container image sudah di-build dan di-publish ke container registry, tahap selanjutnya kita coba deploy container tersebut ke Kubernetes cluster. Tetapi kita akan siapkan dulu kubernetes clusternya dengan perintah seperti berikut:
+
+{% highlight bash %}
+minikube start -p laravel-monolith \
+--memory 2G \
+--cpus 2
+
+minikube profile laravel-monolith
+
+minikube addons enable registry-creds && \
+minikube addons configure registry-creds
+{% endhighlight %}
+
+Nah sambil nungguin cluster kubernetes di-provision oleh minikube, kita akan buat kuberentes resourcenya dulu untuk deploy laravel seperti berikut:
+
+{% gist page.gist "04a-pod-laravel-monolith.yaml" %}
