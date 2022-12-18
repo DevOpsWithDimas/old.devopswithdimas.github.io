@@ -439,13 +439,173 @@ Migrating: 2021_08_09_164144_create_mahasiswa_table
 Migrated:  2021_08_09_164144_create_mahasiswa_table (162.61ms)
 ```
 
-Dan sekarang kita bisa lihat hasilnya di alamat [http://cluster-ip:node-port/db](http://192.168.64.10:30225/db seperti berikut:
+Dan sekarang kita bisa lihat hasilnya di alamat [http://cluster-ip:node-port/db](http://192.168.64.10:30225/db) seperti berikut:
 
 ![laravel-db]({{ page.image_path | prepend: site.baseurl }}/02-laravel-k8s-db.png)
-
 
 ## Using initContainer to migrate db
 
 Seperti yang temen-temen ketahui, `initContainer` biasanya digunakan untuk menjalankan container yang sifatnya run to completion (jika sudah selesai prosesnya pasti di terminate) contoh imlementasinya sendiri adalah memberikan permission pada folder/file tertentu, me-migrasi database dan lain-lain. 
 
-Dalam aplikasi Laravel Web MVC tersebut menggunakan database, dan kita belum setting databasenya 
+Nah karena dari section sebelumnnya kita perlu menjalankan database migrastion secara manual, kita akan jalankan database migrasion secara automatis ketika pod startup dengan menggunakan iniContainer. Tetapi ada beberapa perubahan yang perlu kita lakukan.
+
+Pertama kita buat dulu script entrypoint untuk menjalankan database migration, buat file baru dengan namma `migrate-db-entrypoint` dan simpan dalam folder `.docker` seperti berikut:
+
+{% gist page.gist "04a-init-db-entrypoint" %}
+
+Setelah itu kita juga update file `Dockerfile` untuk menginclude script entrypoint tersebut ke docker imagenya seperti berikut:
+
+{% highlight Dockerfile %}
+COPY .docker/migrate-db-entrypoint .docker/php-artisan-migrate
+{% endhighlight %}
+
+berikut file lengkapnya:
+
+{% gist page.gist "04a-dockerfile-v2" %}
+
+dan yang terakhir kita update juga file `docker-compose.build.yaml` untuk image versionnya menjadi `v2` seperti berikut:
+
+{% gist page.gist "04a-docker-compose-build-v2.yaml" %}
+
+Ok nah sekarang kita build ulang docker image tersebut dengan perintah
+
+{% highlight bash %}
+docker compose -f docker-compose.build.yaml build laravel && \
+docker compose -f docker-compose.build.yaml push laravel
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+examples/k8s-laravel-example [main●] » docker-compose -f docker-compose.build.yaml build laravel
+[+] Building 194.5s (25/25) FINISHED                                                                                                                                        
+ => [internal] load build definition from Dockerfile                                                                                                                   0.0s
+ => => transferring dockerfile: 69B                                                                                                                                    0.0s
+ => [internal] load .dockerignore                                                                                                                                      0.0s
+ => => transferring context: 72B                                                                                                                                       0.0s
+ => [internal] load metadata for docker.io/library/php:8.0-apache                                                                                                      1.7s
+ => [internal] load metadata for docker.io/library/node:14.15-alpine3.13                                                                                               2.0s
+ => [php_laravel 1/8] FROM docker.io/library/php:8.0-apache@sha256:250cc0aa50713360672b12342b8477cf6adbf7c6fa6ffd0a59bf5c95c48299db                                    0.0s
+ => FROM docker.io/library/composer:latest                                                                                                                             2.2s
+ => => resolve docker.io/library/composer:latest                                                                                                                       2.2s
+ => [internal] load build context                                                                                                                                      1.6s
+ => => transferring context: 958.90kB                                                                                                                                  1.5s
+ => [laramix_build 1/4] FROM docker.io/library/node:14.15-alpine3.13@sha256:03b86ea1f9071a99ee3de468659c9af95ca0bedbcd7d32bf31d61fa32c1a8ab3                           0.0s
+ => CACHED [laramix_build 2/4] WORKDIR /var/www/php                                                                                                                    0.0s
+ => CACHED [laramix_build 3/4] COPY . .                                                                                                                                0.0s
+ => [laramix_build 4/4] RUN npm install -q &&     npm run-script prod                                                                                                143.0s
+ => CACHED [php_laravel 2/8] RUN apt-get update && apt-get install -y   curl   git   libicu-dev   libpq-dev   libmcrypt-dev   mariadb-client   openssl   unzip   vim   0.0s
+ => CACHED [php_laravel 3/8] RUN pecl install mcrypt-1.0.4 &&   docker-php-ext-install fileinfo exif pcntl bcmath gd mysqli pdo_mysql &&   docker-php-ext-enable mcry  0.0s
+ => CACHED [php_laravel 4/8] COPY --from=composer /usr/bin/composer /usr/bin/composer                                                                                  0.0s
+ => CACHED [php_laravel 5/8] WORKDIR /var/www/php                                                                                                                      0.0s
+ => CACHED [php_laravel 6/8] COPY .docker/000-default.apache.conf /etc/apache2/sites-enabled/000-default.conf                                                          0.0s
+ => CACHED [php_laravel 7/8] COPY .docker/apache2-foreground .docker/apache2-foreground                                                                                0.0s
+ => [php_laravel 8/8] COPY .docker/php-artisan-migrate .docker/php-artisan-migrate                                                                                     0.3s
+ => [executeable 1/6] COPY . .                                                                                                                                         4.6s
+ => [executeable 2/6] COPY --from=laramix_build /var/www/php/public/css public/css                                                                                     0.1s
+ => [executeable 3/6] COPY --from=laramix_build /var/www/php/public/fonts public/fonts                                                                                 0.1s
+ => [executeable 4/6] COPY --from=laramix_build /var/www/php/public/js public/js                                                                                       0.0s
+ => [executeable 5/6] RUN mkdir -p public/storage &&     chmod -R 777 storage/* &&     chmod -R 777 public/storage &&     chmod -R 777 .docker/*                       0.4s
+ => [executeable 6/6] RUN php -r "file_exists('.env') || copy('.env.example', '.env');" &&     composer install --no-interaction --optimize-autoloader --no-dev &&    45.7s
+ => exporting to image                                                                                                                                                 1.4s
+ => => exporting layers                                                                                                                                                1.4s
+ => => writing image sha256:8c5f4fc094a2091f9bb22c177d200305ef38f5b83b088a68d21683c18e34f794                                                                           0.0s
+ => => naming to repository.dimas-maryanto.com:8087/dimmaryanto93/laravel-monolith-apps:v2                                                                             0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+
+examples/k8s-laravel-example [main●] » docker-compose -f docker-compose.build.yaml push laravel
+```
+
+Nah selanjutnya setelah kita build, kita update file `pod-laravel.yaml` untuk menambahkan initContainer seperti berikut:
+
+{% gist page.gist "04a-pod-laravel-init-container.yaml" %}
+
+Nah sekarang kita bisa coba execute dengan perintah berikut:
+
+{% highlight bash %}
+kubectl apply -f .kubernetes
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+examples/k8s-laravel-example [main●] » kubectl apply -f .kubernetes                             
+configmap/mysql-config created
+secret/mysql-secret created
+pod/laravel-apps created
+pod/mysql-db created
+service/laravel-apps created
+service/mysql-db created
+
+examples/k8s-laravel-example [main●] » kubectl get pod
+NAME           READY   STATUS     RESTARTS   AGE
+laravel-apps   0/1     Init:0/1   0          5s
+mysql-db       1/1     Running    0          5s
+
+examples/k8s-laravel-example [main●] » kubectl get pod
+NAME           READY   STATUS            RESTARTS   AGE
+laravel-apps   0/1     PodInitializing   0          55s
+mysql-db       1/1     Running           0          55s
+
+examples/k8s-laravel-example [main●] » kubectl get pod
+NAME           READY   STATUS    RESTARTS   AGE
+laravel-apps   1/1     Running   0          58s
+mysql-db       1/1     Running   0          58s
+
+examples/k8s-laravel-example [main●] » kubectl logs laravel-apps -c init-db
+Configuration cache cleared!
+Application cache cleared!
+Configuration cache cleared!
+Configuration cached successfully!
+Route cache cleared!
+Routes cached successfully!
+Files cached successfully!
+Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table (179.94ms)
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table (113.14ms)
+Migrating: 2019_08_19_000000_create_failed_jobs_table
+Migrated:  2019_08_19_000000_create_failed_jobs_table (156.36ms)
+Migrating: 2021_08_09_164144_create_mahasiswa_table
+Migrated:  2021_08_09_164144_create_mahasiswa_table (416.20ms)
+
+examples/k8s-laravel-example [main●] » kubectl exec -it pod/mysql-db -- mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| mahasiswa_db       |
+| mysql              |
++--------------------+
+5 rows in set (0.10 sec)
+
+mysql> use mahasiswa_db;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+mysql> show tables;
++------------------------+
+| Tables_in_mahasiswa_db |
++------------------------+
+| failed_jobs            |
+| mahasiswa              |
+| migrations             |
+| password_resets        |
+| users                  |
++------------------------+
+```
+
+Jika kita lihat di browser maka outputnya sama seperti pada section sebelumnnya.
