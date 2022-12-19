@@ -492,54 +492,44 @@
       description: 'Eps. 4 - Workload resources'
       deprecated: false
       messages: ''
-    - name: 'Study Kasus: Workload resources'
-      key: study-cases-workloads
-      description: 'Eps. 5 - Study Kasus: Workload resources'
-      deprecated: false
-      messages: ''
     - name: 'Networking (service)'
       key: service
-      description: 'Eps. 6 - Kubernetes networking (service)'
-      deprecated: false
-      messages: ''
-    - name: 'Study Kasus: Networking'
-      key: study-cases-networking
-      description: 'Eps. 7 - Study Kasus: Networking'
+      description: 'Eps. 5 - Kubernetes networking (service)'
       deprecated: false
       messages: ''
     - name: 'Store data using Volumes'
       key: volumes
-      description: 'Eps. 8 - Kubernetes Volumes'
+      description: 'Eps. 6 - Kubernetes Volumes'
       deprecated: false
       messages: ''
-    - name: 'Study Kasus: Store data using Volumes'
-      key: study-cases-volumes
-      description: 'Eps. 10 - Study Kasus: Kubernetes Volumes'
-      deprecated: false
-      messages: ''
-    - name: 'Kubernetes Client (kubectl, kustomize)'
+    - name: 'Kubernetes Client'
       key: kubernetes-client
-      description: 'Eps. 11 - Kubernetes Client'
-      deprecated: false
-      messages: ''
-    - name: 'Manage Administration Clusters'
-      key: admin-cluster
-      description: 'Eps. 12 - Manage Administration Cluster for Production'
-      deprecated: false
-      messages: ''
-    - name: 'Monitoring and Dashboard'
-      key: monitoring
-      description: ''
-      deprecated: false
-      messages: ''
-    - name: 'Service mesh with istio'
-      key: istio
-      description: ''
+      description: 'Eps. 7 - Kubernetes Client (kubectl, kustomize)'
       deprecated: false
       messages: ''
     - name: 'Security RBAC'
       key: security-rbac
-      description: ''
+      description: 'Eps. 8 - Security RBAC (Role Based Access Control)'
+      deprecated: false
+      messages: ''
+    - name: 'Kubernetes Package manager'
+      key: helm
+      description: 'Eps. 9 - Kubernetes Package manager (helm)'
+      deprecated: false
+      messages: ''
+    - name: 'Kubernetes cluster for Production grade'
+      key: admin-cluster
+      description: 'Eps. 10 - Kubernetes cluster for Production grade'
+      deprecated: false
+      messages: ''
+    - name: 'Service mesh with istio'
+      key: istio
+      description: 'Eps. 11 - Service mesh with istio'
+      deprecated: false
+      messages: ''
+    - name: 'Kubernetes on Cloud provider'
+      key: k8s-cloud
+      description: 'Kubernetes on Cloud provider (GCP/AWS)'
       deprecated: false
       messages: ''
 

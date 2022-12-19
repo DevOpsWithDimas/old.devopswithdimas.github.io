@@ -609,3 +609,6 @@ mysql> show tables;
 ```
 
 Jika kita lihat di browser maka outputnya sama seperti pada section sebelumnnya.
+
+## Specify container probes (health check)
+
