@@ -11,6 +11,7 @@ categories:
 - Pods
 refs: 
 - https://github.com/DevOpsWithDimas/kubernetes-laravel-monolith-apps
+- https://dev.to/pgoodjohn/liveness-and-readiness-probes-with-laravel-5d65
 youtube: 
 comments: true
 catalog_key: pod-container
@@ -612,3 +613,101 @@ Jika kita lihat di browser maka outputnya sama seperti pada section sebelumnnya.
 
 ## Specify container probes (health check)
 
+Seperti yang temen-temen ketahui, `Container probes` digunakan untuk health check pada suatu container. Di kubernetes ada 3 jenis container probes yaitu `liveness`, `readiness` dan `startupProbe` yang masing masing punya tujuan tertentu.
+
+Karena aplikasi kita berupa web service yang menggunakan connection based TCP khususnya HTTP jadi kita akan menggunakan HTTP request container probe dan yang akan kita check adalah aplication `startup` dan `liveness`. Dimana startup container probe ini untuk mengecheck web server sudah running dan liveness mengecheck connection ke database apakah sukses atau gagal. Untuk membuatnya health checknya ada beberapa hasil yang perlu kita rubah yaitu 
+
+Ubah file `web.php` pada routers folder dengan menambahkan endpoint seperti berikut:
+
+{% gist page.gist "04a-web-container-probe.php" %}
+
+Kemudian coba test dulu di local dengan menjalankan perintah 
+
+{% highlight bash %}
+php artisan serve
+{% endhighlight %}
+
+Kemudian coba akses di browser
+
+1. [http://localhost:8000/actuator/health/liveness](http://localhost:8000/actuator/health/liveness)
+2. [http://localhost:8000/actuator/health/readiness](http://localhost:8000/actuator/health/readiness)
+
+Selanjutnya kita build ulang docker imagenya dengan mengupdate file `docker-compose.build.yaml` ke `v3` dan build menggunakan perintah
+
+{% highlight bash %}
+docker compose -f docker-compose.build.yaml build laravel && \
+docker compose -f docker-compose.build.yaml push laravel
+{% endhighlight %}
+
+Setelah docker imagenya di build dan push, selanjutnya kita edit `pod-laravel.yaml` untuk mengimplementasikan container probe seperti berikut:
+
+{% gist page.gist "04a-pod-laravel-container-probe.yaml" %}
+
+Sekarang kita execute dengan perintah berikut:
+
+{% highlight bash %}
+kubectl apply -f .kubernetes
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+examples/k8s-laravel-example [main●] » kubectl apply -f .kubernetes                             
+configmap/mysql-config created
+secret/mysql-secret created
+pod/laravel-apps created
+pod/mysql-db created
+service/laravel-apps created
+service/mysql-db created
+
+examples/k8s-laravel-example [main●] » kubectl get pod
+NAME           READY   STATUS     RESTARTS   AGE
+laravel-apps   0/1     Init:0/1   0          17s
+mysql-db       1/1     Running    0          17s
+
+examples/k8s-laravel-example [main●] » kubectl get pod                  
+NAME           READY   STATUS    RESTARTS   AGE
+laravel-apps   1/1     Running   0          60s
+mysql-db       1/1     Running   0          60s
+
+examples/k8s-laravel-example [main●] » kubectl describe pod laravel-apps
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  81s   default-scheduler  Successfully assigned default/laravel-apps to laravel-monolith-m02
+  Normal  Pulling    79s   kubelet            Pulling image "repository.dimas-maryanto.com:8086/dimmaryanto93/laravel-monolith-apps:v3"
+  Normal  Pulled     46s   kubelet            Successfully pulled image "repository.dimas-maryanto.com:8086/dimmaryanto93/laravel-monolith-apps:v3" in 32.791370328s
+  Normal  Created    46s   kubelet            Created container init-db
+  Normal  Started    46s   kubelet            Started container init-db
+  Normal  Pulled     42s   kubelet            Container image "repository.dimas-maryanto.com:8086/dimmaryanto93/laravel-monolith-apps:v3" already present on machine
+  Normal  Created    42s   kubelet            Created container laravel
+  Normal  Started    41s   kubelet            Started container laravel
+
+examples/k8s-laravel-example [main●] » kubectl delete pod/mysql-db
+pod "mysql-db" deleted
+
+examples/k8s-laravel-example [main●] » kubectl get pod
+NAME           READY   STATUS    RESTARTS     AGE
+laravel-apps   0/1     Running   1 (3s ago)   2m53s
+
+examples/k8s-laravel-example [main●] » kubectl describe pod laravel-apps
+Events:
+  Type     Reason     Age                  From               Message
+  ----     ------     ----                 ----               -------
+  Normal   Scheduled  3m8s                 default-scheduler  Successfully assigned default/laravel-apps to laravel-monolith-m02
+  Normal   Pulling    3m6s                 kubelet            Pulling image "repository.dimas-maryanto.com:8086/dimmaryanto93/laravel-monolith-apps:v3"
+  Normal   Pulled     2m33s                kubelet            Successfully pulled image "repository.dimas-maryanto.com:8086/dimmaryanto93/laravel-monolith-apps:v3" in 32.791370328s
+  Normal   Created    2m33s                kubelet            Created container init-db
+  Normal   Started    2m33s                kubelet            Started container init-db
+  Normal   Killing    19s                  kubelet            Container laravel failed liveness probe, will be restarted
+  Normal   Pulled     17s (x2 over 2m29s)  kubelet            Container image "repository.dimas-maryanto.com:8086/dimmaryanto93/laravel-monolith-apps:v3" already present on machine
+  Normal   Created    17s (x2 over 2m29s)  kubelet            Created container laravel
+  Normal   Started    17s (x2 over 2m28s)  kubelet            Started container laravel
+  Warning  Unhealthy  1s (x5 over 25s)     kubelet            Liveness probe failed: HTTP probe failed with statuscode: 500
+
+examples/k8s-laravel-example [main●] » kubectl get pod
+NAME           READY   STATUS             RESTARTS     AGE
+laravel-apps   0/1     CrashLoopBackOff   4 (2s ago)   4m13s
+```
+
+Nah jadi dengan container probe ini, terjadi sesuatu pada container yang mengakibatkan web server tidak bisa meresponse dengan success atau response 200 maka container akan di restart dengan tujuan mengembalikan state semula atau fresh container.
