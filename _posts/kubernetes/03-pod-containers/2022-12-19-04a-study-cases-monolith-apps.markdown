@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Study Cases: Monolith apps (Laravel Web MVC)"
+date: 2022-12-19T21:25:03+07:00
 lang: k8s
 authors:
 - dimasm93
