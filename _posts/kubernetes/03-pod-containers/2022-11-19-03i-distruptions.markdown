@@ -34,6 +34,12 @@ Ok tanpa berlama-lama yuk lansung aja kita bahas materi yang pertama:
 
 ## Voluntary and involuntary disruptions
 
+Meskipun kubernetes system terlihat sudah sempurna dan matang (mature), tetapi posibility failure masih bisa terjadi lohh, salah satunya adalah voluntary dan involuntary distruption.
+
+Mungkin dari temen-temen ada yang binggung apa sih magsudnya voluntary dan involuntary distruption?
+
+Jadi meskipun feature unggulan dari kubernetes adalah HA (High Availables) tapi memang tidak bisa dipungkiri yang namanya system pasti tidak akan ada yang sempurna, baik software maupun hardware pasti ada celahnya (distruption). Failure system pada distruption bisa saja di sebabkan secara di sengaja (voluntary) dan juga tidak di sengaja (involuntary) ok kita bahas satu-per-satu dari involuntary distruption. 
+
 Pods do not disappear until someone (a person or a controller) destroys them, or there is an unavoidable hardware or system software error.
 
 We call these unavoidable cases involuntary disruptions to an application. Examples are:
