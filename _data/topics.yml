@@ -1036,16 +1036,15 @@
       messages: ''
 
 - name: Nutanix AHV
-  fullname: 'Cloud Computing - Nutanix: Pemula sampai Mahir'
-  url: cloud-nutanix
+  fullname: 'Nutanix AHV: Pemula sampai Mahir'
+  url: nutanix-ahv
   language: DevOps
   color: blue accent-2
   tags:
   - DevOps
-  - Cloud-Computing
   - AHV
   descriptions:
-    Temen-temen akan belajar Cloud Computing dengan menggunakan Nutanix AHV seperti Computing, Containers, Orhcestration, Database dan lain-lain.
+    Temen-temen akan belajar virtualization platform dengan menggunakan Nutanix AHV yang bisa digunakan untuk cloud-native workloads on-premise and in public clouds
   messages:
   publish: 2022-10-06T16:26:00+07:00
   github: 
@@ -1056,30 +1055,90 @@
   catalogs:
     - name: Pengenalan Nutanix AHV
       key: introduction
-      description: 'Eps 1: Cloud computing dengan Nutanix AHV'
+      description: 'Eps 1: Pengenalan Nutanix AHV'
       messages: ''
-    - name: Compute & Storage
-      key: compute-storage
-      description: 'Eps 2: Compute & Storage'
+    - name: PRISM Element
+      key: prism-element
+      description: 'Eps 2: Prism Element'
+      messages: ''
+    - name: PRISM Central
+      key: prism-central
+      description: 'Eps 3: Prism Central'
+      messages: ''
+    - name: Compute VM
+      key: compute-vm
+      description: 'Eps 4: Compute VM (Virtual Machine)'
       messages: ''
     - name: Networking
       key: networking
-      description: 'Eps 3: Networking'
+      description: 'Eps 5: Networking'
       messages: ''
-    - name: Karbon
-      key: karbon
-      description: 'Eps 4: Karbon (Kubernetes cluster)'
+    - name: Unified Storage
+      key: storage
+      description: 'Eps 6: Unified storage'
       messages: ''
-    - name: Calm & Blueprint
-      key: calm
-      description: 'Eps 5: Calm & Blueprint'
+    - name: IAM (Identity and Access Management)
+      key: iam
+      description: 'Eps 6: IAM (Identity and Access Management)'
       messages: ''
-    - name: Nutanix Database
-      key: ndb
-      description: 'Eps 6: Nutanix Database'
+    - name: Cluster Administration
+      key: cluster
+      description: 'Eps 7: Cluster Administration'
       messages: ''
-    - name: Adminstration & Operation
-      key: admin-operation
-      description: 'Eps 7: Nutanix Administration & Operation'
+    - name: Nutanix products
+      key: ntnx-products
+      description: 'Eps 5: Nutanix Products'
+      messages: ''
+
+- name: Nutanix Cloud Native
+  fullname: 'Nutanix Cloud Native: Pemula sampai Mahir'
+  url: nutanix-cloud-native
+  language: DevOps
+  color: blue accent-2
+  tags:
+  - DevOps
+  - Cloud-Native
+  - Kubernetes
+  descriptions:
+    Temen-temen akan belajar Cloud Native technologies seperti Containers, Object storage, Kubernetes dengan menggunakan platform Nutanix HCI (Hyper-Converged Infrastructure)
+  messages:
+  publish: 2022-10-06T16:26:00+07:00
+  github: 
+  youtube:
+  udemy:
+  coming_soon: true
+  visible: true
+  catalogs:
+    - name: Pengenalan Cloud native with Nutanix
+      key: introduction
+      description: 'Eps 1: Cloud Native with Nutanix'
+      messages: ''
+    - name: Containers
+      key: container
+      description: 'Eps 2: Containers'
+      messages: ''
+    - name: Kubernetes
+      key: ntnx-karbon
+      description: 'Eps 3: Nutanix Kubernetes'
+      messages: ''
+    - name: Nutanix Files
+      key: ntnx-files
+      description: 'Eps 4: Nutanix Files'
+      messages: ''
+    - name: Nutanix Objects
+      key: ntnx-files
+      description: 'Eps 5: Nutanix Object storage'
+      messages: ''
+    - name: Nutanix Database (ERA)
+      key: ntnx-era
+      description: 'Eps 6: Nutanix Database (ERA)'
+      messages: ''
+    - name: Nutanix CALM
+      key: ntnx-calm
+      description: 'Eps 7: CALM & Blueprint'
+      messages: ''
+    - name: Nutanix Runbook
+      key: ntnx-runbook
+      description: 'Eps 8: Scheduling and Runbook'
       messages: ''
     
