@@ -493,7 +493,7 @@
       deprecated: false
       messages: ''
     - name: 'Networking (service)'
-      key: service
+      key: networking
       description: 'Eps. 5 - Kubernetes networking (service)'
       deprecated: false
       messages: ''
