@@ -1,7 +1,6 @@
 ---
 layout: post
-title: "Overview of Kubernetes Workloads"
-date: 2022-11-18T03:53:03+07:00
+title: "Workload Resources (Controller API)"
 lang: k8s
 authors:
 - dimasm93
