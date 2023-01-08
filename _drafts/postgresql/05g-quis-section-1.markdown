@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Time is your to practice part 3"
+title: "Time your practice (part 3)"
 lang: postgresql
 authors:
 - dimasm93
@@ -19,8 +19,7 @@ catalog_key: dml-statement
 downloads: []
 ---
 
-
-description...
+Hai semuanya di materi sebelumnya kita sudah membahas perintah Data manipulation language sepertin `INSERT`, `UPDATE`, `DELETE` beserta combinasi antara `SELECT` dan DML tersebut, nah supaya temen-temen memahami materi yang telah saya sampaikan saatnya temen-temen untuk latihan / mengerjakan soal yang saya berikan seperti berikut:
 
 <!--more-->
 
