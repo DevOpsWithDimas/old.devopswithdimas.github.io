@@ -131,7 +131,7 @@ You can see how Kubernetes varies the rate at which disruptions can happen, acco
 
 ## Pod disruption conditions
 
-**Note**: In order to use this behavior, you must enable the PodDisruptionConditions [feature gate](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/) in your cluster.
+**Note**: In order to use this behavior, you must enable the `PodDisruptionConditions` [feature gate](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/) in your cluster.
 
 When enabled, a dedicated Pod `DisruptionTarget` condition is added to indicate that the Pod is about to be deleted due to a disruption. The reason field of the condition additionally indicates one of the following reasons for the Pod termination:
 
