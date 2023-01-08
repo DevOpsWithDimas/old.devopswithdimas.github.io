@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Cleanup Data from Table"
+date: 2023-01-08T10:49:22+07:00
 lang: postgresql
 authors:
 - dimasm93
