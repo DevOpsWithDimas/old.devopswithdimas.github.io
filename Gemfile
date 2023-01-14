@@ -18,6 +18,8 @@ group :jekyll_plugins do
   gem 'jemoji'
   gem 'jekyll-analytics'
   gem 'jekyll-mermaid'
+  gem 'faraday'
+  gem 'faraday-retry'
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -1,6 +1,6 @@
 ---
-layout: {{ layout }}
-title: "{{ title }}"
+layout: post
+title: "Overview Concurrency Control"
 lang: postgresql
 authors:
 - dimasm93
@@ -10,14 +10,15 @@ categories:
 - SQL
 - TCL
 refs: 
-- https://www.postgresql.org/docs/current/
-youtube: {{ youtube }}
-image_path: /resources/posts/postgresql/{{ title }}
+- https://www.postgresql.org/docs/14/mvcc.html
+youtube: 
+image_path: /resources/posts/postgresql/06-overview-tcl
 comments: true
 gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
 catalog_key: dml-statement
 downloads: []
 ---
+
 
 description...
 
