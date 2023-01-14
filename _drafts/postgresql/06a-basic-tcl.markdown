@@ -43,4 +43,46 @@ A PostgreSQL transaction is **atomic**, **consistent**, **isolated**, and **dura
 3. Isolation determines how transaction integrity is visible to other transactions.
 4. Durability makes sure that transactions that have been committed will be stored in the database permanently.
 
-By default PostgreSQL using auto-commit every single query executed by database atau setiap 1 query yang kita jalankan di database server PostgreSQL maka akan automatis di commit.
+By default PostgreSQL using auto-commit every single query executed by database atau setiap 1 query yang kita jalankan di database server PostgreSQL maka akan automatis di commit. Seperti berikut contohnya:
+
+{% highlight sql %}
+INSERT INTO regions(region_id, region_name)
+VALUES (6, 'Other');
+{% endhighlight %}
+
+Ketika di execute, maka secara default data akan bertambah ke dalam tabel dan simpan secara permanent. Tetapi jika kita ingin merubah behavior menjadi manual, kita perlu menggunakan keywork `BEGIN` pada awal statement seperti berikut:
+
+{% gist page.gist "06a-begin-transaction.sql" %}
+
+Jika kita execute, maka hasilnya seperti berikut:
+
+```bash
+database/postgres-14 [master●] » psql -U hr
+psql (14.6)
+Type "help" for help.
+
+hr=# begin;
+BEGIN
+hr=*# insert into regions(region_id, region_name)
+hr-*# values (7, 'Other 2');
+INSERT 0 1
+hr=*# select * from regions where region_id = 7;
+ region_id | region_name
+-----------+-------------
+         7 | Other 2
+(1 row)
+
+hr=*# exit
+database/postgres-14 [master●] » psql -U hr
+psql (14.6)
+Type "help" for help.
+
+hr=# select * from regions where region_id = 7;
+ region_id | region_name
+-----------+-------------
+(0 rows)
+
+hr=#
+```
+
+Nah terlihat hasilnya ketika query di execute, maka secara temporary data akan tersimpan ke tabel tetapi begitu session habis atau kita keluar dari session tersebut, maka datanya akan hilang.
