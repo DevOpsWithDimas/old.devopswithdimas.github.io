@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Overview of Concurrency Control"
+date: 2023-01-14T16:05:01+07:00
 lang: postgresql
 authors:
 - dimasm93
