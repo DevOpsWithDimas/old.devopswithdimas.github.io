@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "06a-getting-started-tcl"
+title: "06d-data-consistency-check"
 lang: postgresql
 authors:
 - dimasm93
@@ -12,7 +12,7 @@ categories:
 refs: 
 - https://www.postgresql.org/docs/current/
 youtube: 
-image_path: /resources/posts/postgresql/06a-getting-started-tcl
+image_path: /resources/posts/postgresql/06d-data-consistency-check
 comments: true
 gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
 catalog_key: dml-statement
