@@ -32,6 +32,7 @@ Jadi pada contoh kasus tersebut, kita memiliki system untuk transfer saldo dari 
 2. Inquery saldo rekening sumber
 3. Update saldo rekening A dengan menggurangi sejumlah yang di transfer
 4. Update saldo rekening B dengan menambah sejumlah yang di transfer
+5. Insert Data transaksi ke tabel journal
 
 Jika pada saat proses no 4 gagal, bisa di banyangkan apa yang terjadi???
 
