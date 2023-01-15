@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "04b-study-cases-microservice-backend-apps"
+title: "Study cases: Microservice apps (Springboot Rest API)"
 lang: k8s
 authors:
 - dimasm93
@@ -12,7 +12,7 @@ categories:
 refs: 
 - https://docs.docker.com/
 - https://kubernetes.io/docs/home/
-- https://minikube.sigs.k8s.io/docs/
+- https://spring.io/projects/spring-boot
 youtube: 
 comments: true
 catalog_key: pod-container
