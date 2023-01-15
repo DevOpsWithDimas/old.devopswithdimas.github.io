@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Getting started with Transaction Control (TCL)"
+date: 2023-01-15T10:31:46+07:00
 lang: postgresql
 authors:
 - dimasm93
@@ -13,6 +14,7 @@ refs:
 - https://www.postgresql.org/docs/current/sql-begin.html
 - https://www.postgresql.org/docs/14/sql-commit.html
 - https://www.postgresql.org/docs/14/sql-rollback.html
+- https://www.postgresql.org/docs/current/sql-savepoint.html
 youtube: 
 image_path: /resources/posts/postgresql/06a-basic-tcl
 comments: true
