@@ -50,7 +50,16 @@ INSERT INTO regions(region_id, region_name)
 VALUES (6, 'Other');
 {% endhighlight %}
 
-Ketika di execute, maka secara default data akan bertambah ke dalam tabel dan simpan secara permanent. Tetapi jika kita ingin merubah behavior menjadi manual, kita perlu menggunakan keywork `BEGIN` pada awal statement seperti berikut:
+Ketika di execute, maka secara default data akan bertambah ke dalam tabel dan simpan secara permanent. Tetapi jika kita ingin merubah behavior menjadi manual, kita perlu menggunakan keywork `BEGIN` pada awal statement.
+
+Syntaxnya seperti berikut
+
+{% highlight sql %}
+BEGIN;
+--- Select, Insert, Update, and Delete statement here
+{% endhighlight %}
+
+Berikut adalah implementasi penggunakan manual transaction:
 
 {% gist page.gist "06a-begin-transaction.sql" %}
 
@@ -61,23 +70,23 @@ database/postgres-14 [master●] » psql -U hr
 psql (14.6)
 Type "help" for help.
 
-hr=# begin;
+hr= begin;
 BEGIN
-hr=*# insert into regions(region_id, region_name)
-hr-*# values (7, 'Other 2');
+hr=* insert into regions(region_id, region_name)
+hr-* values (7, 'Other 2');
 INSERT 0 1
-hr=*# select * from regions where region_id = 7;
+hr=* select * from regions where region_id = 7;
  region_id | region_name
 -----------+-------------
          7 | Other 2
 (1 row)
 
-hr=*# exit
+hr=* exit
 database/postgres-14 [master●] » psql -U hr
 psql (14.6)
 Type "help" for help.
 
-hr=# select * from regions where region_id = 7;
+hr= select * from regions where region_id = 7;
  region_id | region_name
 -----------+-------------
 (0 rows)
@@ -86,3 +95,64 @@ hr=#
 ```
 
 Nah terlihat hasilnya ketika query di execute, maka secara temporary data akan tersimpan ke tabel tetapi begitu session habis atau kita keluar dari session tersebut, maka datanya akan hilang.
+
+## Using Commit clause
+
+Perintah `commit` digunakan untuk menyimpan perubahan yang dilakukan oleh perintah Data Manipulation secara permanent di database, Seperti pada section sebelumnya jika kita tidak menggunakan perintah `commit` di akhir statement maka data akan hilang jika kita hapus session connection.
+
+Perintah `commit` hanya bisa dilakukan jika diawali dengan menggunakan `begin` clause, tanpa perintah `begin` atau jika tidak memiliki transaction dalamnya maka, akan muncul warning `there is no transaction in progress`
+
+Syntaxnya seperti berikut:
+
+{% highlight sql %}
+BEGIN;
+
+--- Select, Insert, Update, and Delete statement here
+
+COMMIT;
+{% endhighlight %}
+
+Implementasinya seperti berikut:
+
+{% gist page.gist "06a-begin-commit-transaction.sql" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+database/postgres-14 [master●] » psql -U hr
+psql (14.6)
+Type "help" for help.
+
+hr= BEGIN;
+BEGIN
+
+hr=* INSERT INTO regions(region_id, region_name)
+hr-* VALUES (7, 'Other 2');
+INSERT 0 1
+
+hr=* COMMIT;
+COMMIT
+
+hr= select * from regions where region_id = 7;
+ region_id | region_name
+-----------+-------------
+         7 | Other 2
+(1 row)
+
+hr= exit
+
+database/postgres-14 [master●] » psql -U hr
+psql (14.6)
+Type "help" for help.
+
+hr= select * from regions where region_id = 7;
+ region_id | region_name
+-----------+-------------
+         7 | Other 2
+(1 row)
+```
+
+Nah jadi bisa kita perhatihan dari output diatas, meskipun kita close session connect data masih tersimpan di table `regions` tersebut karena kita sudah menggunakan perintah `commit`.
+
+## Using Rollback clause
+
