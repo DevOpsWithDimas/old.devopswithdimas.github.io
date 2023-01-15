@@ -29,8 +29,6 @@ Untuk lebih jelasnya, yuk kita bahas secara lebih detail. Adapun materi yang aka
 2. Using Commit clause
 3. Using Rollback clause
 4. Using Savepoint clause
-5. When you update data using diffrent sessions
-6. Transaction isolation
 
 Ok tanpa berlama-lama yuk langsung aja kita bahas materi yang pertama:
 
@@ -210,3 +208,73 @@ hr= SELECT * FROM regions WHERE region_id = 7;
 Nah jadi kita perhatikan pada output diatas, ketika kita jalankan perintah `update` dan juga `select` data sudah berubah di tabel begitu di rollback maka data akan kembali ke last update sebelumnya.
 
 ## Using Savepoint clause
+
+Perintah `savepoint` secara fungsi mirip seperti di game-game balapan yaitu checkpoint dimana jika kita melintas pada check point tersebut maka game akan tersimpan jika ada crash/tabrakan maka game tidak akan mengulang dari awal lagi tetapi dari last savepoint terkahir. Pada kenyataannya perintah `savepoint` ini akan berguna jika kita memiliki banyak query dalam suatu transaksi seperti berikut:
+
+![savepoint]({{ page.image_path | prepend: site.baseurl }}/sql-savepoint.png)
+
+So A savepoint is a special mark inside a transaction that allows all commands that are executed after it was established to be rolled back, restoring the transaction state to what it was at the time of the savepoint.
+
+Syntax seperti berikut
+
+{% highlight sql %}
+SAVEPOINT savepoint_name
+{% endhighlight %}
+
+Implementasinya seperti berikut:
+
+{% gist page.gist "06a-savepoint-transaction.sql" %}
+
+Jika dijalankan maka outputnya seperti berikut:
+
+```sql
+hr= BEGIN;
+BEGIN
+
+hr=* INSERT INTO regions(region_id, region_name)
+hr-* VALUES (8, 'Other 3');
+INSERT 0 1
+
+hr=* UPDATE regions
+hr-* set region_name = 'Other 3'
+hr-* WHERE region_id = 7;
+UPDATE 1
+
+hr=* SELECT * FROM regions WHERE region_id in (7, 8);
+ region_id | region_name
+-----------+-------------
+         7 | Other 3
+         8 | Other 3
+(2 rows)
+
+hr=* SAVEPOINT trx_1;
+SAVEPOINT
+
+hr=* UPDATE regions
+hr-* set region_name = 'Other 4'
+hr-* WHERE region_id = 7;
+UPDATE 1
+
+hr=* INSERT INTO regions(region_id, region_name)
+hr-* VALUES (8, 'Other 3');
+ERROR:  duplicate key value violates unique constraint "regions_pkey"
+DETAIL:  Key (region_id)=(8) already exists.
+
+hr=! SELECT * FROM regions WHERE region_id in (7, 8);
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
+
+hr=! ROLLBACK TO SAVEPOINT trx_1;
+ROLLBACK
+
+hr=* SELECT * FROM regions WHERE region_id in (7, 8);
+ region_id | region_name
+-----------+-------------
+         7 | Other 3
+         8 | Other 3
+(2 rows)
+
+hr=* COMMIT;
+COMMIT
+```
+
+Nah jadi kita kita lihat dari output tersebut, sesuai harapan kita kita bisa rollback ke terakhir savepoint jadi kita tidak harus melakukan task dari awal lagi.
