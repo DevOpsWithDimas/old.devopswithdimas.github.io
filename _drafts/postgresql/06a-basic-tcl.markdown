@@ -10,7 +10,9 @@ categories:
 - SQL
 - TCL
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/docs/current/sql-begin.html
+- https://www.postgresql.org/docs/14/sql-commit.html
+- https://www.postgresql.org/docs/14/sql-rollback.html
 youtube: 
 image_path: /resources/posts/postgresql/06a-basic-tcl
 comments: true
@@ -156,3 +158,55 @@ Nah jadi bisa kita perhatihan dari output diatas, meskipun kita close session co
 
 ## Using Rollback clause
 
+Perintah `rollback` digunakan untuk membatalkan transaksi yang sedang aktif untuk mengembalikan ke last state commit pada database. Sama halnya dengan perintah `commit` perintah `rollback` tidak akan berjalan jika tanpa `begin` atau transaction sedang tidak aktif.
+
+**NOTES:** Jika perintah `commit` sudah di execute kita tidak bisa mengembalikannya, perintah `rollback` hanya bisa mengembalikan perubahan ketika belum di `commit`.
+
+Syntaxnya seperti berikut:
+
+{% highlight sql %}
+BEGIN;
+
+--- Select, Insert, Update, and Delete statement here
+
+ROLLBACK;
+{% endhighlight %}
+
+Perintah rollback ini biasanya digunakan jika terjadi kesalahan baik dari human error, system error maupun runtime error diataranya:
+
+1. Salah input value pada data manipulation
+2. Error pada constraint (unique, foreign key, check)
+
+Contoh implementasinya seperti berikut:
+
+{% gist page.gist "06a-begin-rollback-transaction.sql" %}
+
+Jika dijalnakan maka outputnya seperti bertikut:
+
+```sql
+hr= BEGIN;
+BEGIN
+
+hr=* UPDATE regions set region_name = 'Other 3'
+hr-* WHERE region_id = 7;
+UPDATE 1
+
+hr=* SELECT * FROM regions WHERE region_id = 7;
+ region_id | region_name
+-----------+-------------
+         7 | Other 3
+(1 row)
+
+hr=* ROLLBACK;
+ROLLBACK
+
+hr= SELECT * FROM regions WHERE region_id = 7;
+ region_id | region_name
+-----------+-------------
+         7 | Other 2
+(1 row)
+```
+
+Nah jadi kita perhatikan pada output diatas, ketika kita jalankan perintah `update` dan juga `select` data sudah berubah di tabel begitu di rollback maka data akan kembali ke last update sebelumnya.
+
+## Using Savepoint clause
