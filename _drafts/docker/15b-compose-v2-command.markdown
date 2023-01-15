@@ -1,18 +1,20 @@
 ---
 layout: post
-title: "14d-ansible-study-cases"
+title: "docker compose commands"
 lang: docker
 authors:
 - dimasm93
 categories:
 - DevOps
 - Docker
+- Compose
+- V2
 refs: 
 - https://docs.docker.com/
 youtube: 
 comments: true
-catalog_key: study-cases-ansible
-image_path: /resources/posts/docker/14d-ansible-study-cases
+catalog_key: docker-compose
+image_path: /resources/posts/docker/15b-compose-v2-command
 gist: dimMaryanto93/d92bd18da1c73c230d7762361f738524
 downloads: []
 ---
