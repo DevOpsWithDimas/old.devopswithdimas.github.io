@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "04a-workload-deployment"
+title: "Deployment Object"
 lang: k8s
 authors:
 - dimasm93
@@ -14,7 +14,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: workloads
-image_path: /resources/posts/kubernetes/04a-workload-deployment
+image_path: /resources/posts/kubernetes/05b-deployment
 gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
