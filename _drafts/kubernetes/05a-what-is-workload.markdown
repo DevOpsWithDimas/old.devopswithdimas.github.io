@@ -19,11 +19,10 @@ gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
 
-
-Hai semuanya di materi kali ini kita akan membahas lebih detail tentang Kubernetes Workloads. Untuk pembahasannya kita akan bagi menjadi beberapa section yaitu
+Hai semuanya, sebelum kita mulai menggunakan Workload Resources ada baiknya kita lihat dulu apa sih itu Workload Resources secara definisi dan pemahaman. Karena kebanyak orang tidak memahami  dan juga salah menggunakan/menentukan object workload resource yang tepat maka akan menyebabkan problem di kemudian hari. Maka dari itu disini kita bahas
 
 1. What is Kubernetes Workloads?
-2. Build-in Workloads resources in Kubernetes?
+2. Build-in Workloads resources?
 
 Ok langsung aja kita bahas materi yang pertama
 
