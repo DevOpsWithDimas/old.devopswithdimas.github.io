@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Workload Resources (Controller API)"
-date: 2023-01-17T21:57:04+07:00
+date: 2023-01-17T20:57:04+07:00
 lang: k8s
 authors:
 - dimasm93
