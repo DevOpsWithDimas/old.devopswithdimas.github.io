@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Overview Kubernetes Worloads"
+title: "Overview Kubernetes Workloads resources"
 date: 2023-01-17T19:45:16+07:00
 lang: k8s
 authors:
