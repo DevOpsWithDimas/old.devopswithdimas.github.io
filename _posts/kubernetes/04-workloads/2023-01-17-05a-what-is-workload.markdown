@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Workload Resources (Controller API)"
+title: "What is Workload Resources?"
 date: 2023-01-17T20:07:04+07:00
 lang: k8s
 authors:
@@ -15,7 +15,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: workloads
-image_path: /resources/posts/kubernetes/04-workloads
+image_path: /resources/posts/kubernetes/05a-what-is-workload
 gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
@@ -24,6 +24,8 @@ Hai semuanya, sebelum kita mulai menggunakan Workload Resources ada baiknya kita
 
 1. What is Kubernetes Workloads?
 2. Build-in Workloads resources?
+3. How to working with Workload resources?
+4. Getting started with Workload Resources
 
 Ok langsung aja kita bahas materi yang pertama
 
@@ -47,3 +49,23 @@ Kubernetes provides several built-in workload resources:
 4. [Job](https://kubernetes.io/docs/concepts/workloads/controllers/job/) and [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) define tasks that run to completion and then stop. Jobs represent one-off tasks, whereas `CronJobs` recur according to a schedule.
 
 In the wider Kubernetes ecosystem, you can find third-party workload resources that provide additional behaviors. Using a [custom resource definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/), you can add in a third-party workload resource if you want a specific behavior that's not part of Kubernetes' core. For example, if you wanted to run a group of `Pods` for your application but stop work unless all the `Pods` are available (perhaps for some high-throughput distributed task), then you can implement or install an extension that does provide that feature.
+
+## How to working with Workload resources?
+
+Workload resources adalah suatu API untuk mengatur, me-manage, dan meng-control beberapa POD terkait specfikasi yang didefinisikan, jika kita ilustrasikan seperti berikut:
+
+![workload-resources]({{ page.image_path | prepend: site.baseurl }}/how-it-works.png)
+
+Jadi tahap pertama yang perlu kita lakukan adalah
+
+1. Mendefinisikan Workload Resources apa yang akan kita gunakan, contohnya Deployment, StatefulSet, DaemonSet, Job atau CronJob
+2. Kita execute/apply ke kubernetes cluster, dengan menggunakan salah satu dari 3 technique yaitu Imperative commands, Imperative object configuration, dan Declarative object configuration.
+3. Setelah di-execute Kubernetes API Server akan memerintahkan ke pada control-plane untuk menjadwalkan (schedule) suatu Pod ke worker/node
+4. beberapa Pod akan dijalankan pada suatu worker/node sesuai dengan ketentuan Pod Template pada workload
+
+Selain itu juga ada beberapa hal yang perlu kita perhatikan jika kita menggunakan Workload resources ini diantaranya:
+
+1. Penamaan suatu pod yang dibuat oleh Workload Resources menggunakan format `<resource-name>-<uid>` contohnya seperti berikut: `webapp-57f649bfb7-8p6gv`
+2. Jika kita menghapus object pod, maka pod tersebut akan membuat pod baru
+3. Jika kita update object workload resources, maka pod akan dihapus kemudian membuat pod baru dengan specifikasi workload resources baru
+4. Jika kita menghapus object workload resource, maka pod akan otomatis akan dihapus secara pemanent
