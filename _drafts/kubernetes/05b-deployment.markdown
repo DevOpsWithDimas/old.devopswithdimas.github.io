@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Deployment Object"
+title: "Workload with Deployment"
 lang: k8s
 authors:
 - dimasm93

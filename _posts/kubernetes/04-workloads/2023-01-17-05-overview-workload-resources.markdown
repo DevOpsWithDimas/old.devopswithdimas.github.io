@@ -29,10 +29,9 @@ Adapun yang kita akan bahas terkait Workload Resources diantaranya:
 <!--more-->
 
 1. Deployment
-2. ReplicaSet
-3. StatefulSet
-4. DaemonSets
-5. Jobs & CronJob
-6. ReplicationController
+2. StatefulSet
+3. DaemonSets
+4. Jobs & CronJob
+5. ReplicaSet & ReplicationController
 
 Okay mungkin sekian dulu apa yang bisa saya sampaikan terkait materi yang akan di bahas pada section Kubernetes Workload Resources, semoga temen-temen tertarik mempelajarinya dan mendapatkan benefit terkait feature yang ditawarkan oleh Kubernetes Workload ini. See you next post!!!
