@@ -12,6 +12,7 @@ categories:
 - Workloads
 refs: 
 - https://kubernetes.io/docs/concepts/workloads/
+- https://cloud.google.com/kubernetes-engine/docs/how-to/deploying-workloads-overview
 youtube: 
 comments: true
 catalog_key: workloads
@@ -23,7 +24,7 @@ downloads: []
 Hai semuanya, sebelum kita mulai menggunakan Workload Resources ada baiknya kita lihat dulu apa sih itu Workload Resources secara definisi dan pemahaman. Karena kebanyak orang tidak memahami  dan juga salah menggunakan/menentukan object workload resource yang tepat maka akan menyebabkan problem di kemudian hari. Maka dari itu disini kita bahas
 
 1. What is Kubernetes Workloads?
-2. Build-in Workloads resources?
+2. Types of workloads
 3. How to working with Workload resources?
 4. Getting started with Workload Resources
 
@@ -33,20 +34,51 @@ Ok langsung aja kita bahas materi yang pertama
 
 ## What is Kubernetes Workloads?
 
-A workload is an application running on Kubernetes. Whether your workload is a single component or several that work together, on Kubernetes you run it inside a set of [pods](https://kubernetes.io/docs/concepts/workloads/pods). In Kubernetes, a Pod represents a set of running containers on your cluster.
+Workload adalah suatu aplikasi yang running diatas Kubernetes cluster, dimana workload bisa single maupun beberapa component yang saling corporate (bekerjasama) berupa Pod dan container. Pada episode sebelumnya kita sudah mempelajari Pod dan Container specification, dimana kita bisa membuat dan menjalankan container dalam suatu pod. 
 
-Kubernetes pods have a [defined lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/). For example, once a pod is running in your cluster then a critical fault on the node where that pod is running means that all the pods on that node fail. Kubernetes treats that level of failure as final: you would need to create a new Pod to recover, even if the node later becomes healthy.
+Pada kasus tertentu terkadang kita ingin **workload aplikasi kita bisa support High Available, Cannary deployment, Replication, Load Balance workload dan lain-lain**. Yang jadi pertanyaan bagaiman caranya untuk membuat feature itu semua? apakah kita lakukan secara manual dengan membuat Pod satu-per-satu kemudian di load balance?
+
+For example, once a pod is running in your cluster then a critical fault on the node where that pod is running means that all the pods on that node fail. Kubernetes treats that level of failure as final: you would need to create a new Pod to recover, even if the node later becomes healthy.
+
+![pod-recovery]({{ page.image_path | prepend: site.baseurl }}/workload-recovery.png)
 
 However, to make life considerably easier, you don't need to manage each Pod directly. Instead, you can use workload resources that manage a set of pods on your behalf. These resources configure controllers that make sure the right number of the right kind of pod are running, to match the state you specified.
 
-## Build-in Workloads resources in Kubernetes
+## Types of workloads
 
-Kubernetes provides several built-in workload resources:
+Kubernetes provides different kinds of controller objects that correspond to different kinds of workloads you can run. Certain controller objects are better suited to representing specific types of workloads. The following sections describe some common types of workloads and the Kubernetes controller objects you can create to run them on your cluster, including:
 
-1. [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) and [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) (replacing the legacy resource ReplicationController). Deployment is a good fit for managing a stateless application workload on your cluster, where any Pod in the Deployment is interchangeable and can be replaced if needed.
-2. [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/) lets you run one or more related Pods that do track state somehow. For example, if your workload records data persistently, you can run a StatefulSet that matches each Pod with a [PersistentVolume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/). Your code, running in the Pods for that StatefulSet, can replicate data to other Pods in the same StatefulSet to improve overall resilience.
-3. [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) defines Pods that provide node-local facilities. These might be fundamental to the operation of your cluster, such as a networking helper tool, or be part of an add-on. Every time you add a node to your cluster that matches the specification in a DaemonSet, the control plane schedules a Pod for that DaemonSet onto the new node.
-4. [Job](https://kubernetes.io/docs/concepts/workloads/controllers/job/) and [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) define tasks that run to completion and then stop. Jobs represent one-off tasks, whereas `CronJobs` recur according to a schedule.
+1. Stateless applications
+2. Stateful applications
+3. Batch jobs
+4. Daemons
+5. Custom resource definition
+
+**The stateless applications**
+
+A stateless application does not preserve its state and saves no data to persistent storage — all user and session data stays with the client. Some examples of stateless applications include web frontends like Nginx, web servers like Apache Tomcat, and other web applications.
+
+You can create a Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) to deploy a stateless application, where any Pod in the Deployment is interchangeable and can be replaced if needed.
+
+**The stateful applications**
+
+A stateful application requires that its state be saved or persistent. Stateful applications use persistent storage, such as persistent volumes, to save data for use by the server or by other users. Examples of stateful applications include databases like MongoDB and message queues like Apache ZooKeeper.
+
+You can create a Kubernetes [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/) to deploy a stateful application. 
+
+**The batch jobs**
+
+Batch jobs represent finite, independent, and often parallel tasks which run to their completion. Some examples of batch jobs include automatic or scheduled tasks like sending emails, rendering video, and performing expensive computations.
+
+You can create a Kubernetes [Job](https://kubernetes.io/docs/concepts/workloads/controllers/job/) to execute and manage a batch task using [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) on your cluster.
+
+**The Daemons**
+
+Daemons perform ongoing background tasks in their assigned nodes without the need for user intervention. Examples of daemons include log collectors like Fluentd and monitoring services.
+
+You can create a Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) to deploy a daemon on your cluster. DaemonSets create one Pod per node, and you can choose a specific node to which the DaemonSet should deploy. Every time you add a node to your cluster that matches the specification in a DaemonSet, the control plane schedules a Pod for that DaemonSet onto the new node.
+
+**The custom resource definition**
 
 In the wider Kubernetes ecosystem, you can find third-party workload resources that provide additional behaviors. Using a [custom resource definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/), you can add in a third-party workload resource if you want a specific behavior that's not part of Kubernetes' core. For example, if you wanted to run a group of `Pods` for your application but stop work unless all the `Pods` are available (perhaps for some high-throughput distributed task), then you can implement or install an extension that does provide that feature.
 
