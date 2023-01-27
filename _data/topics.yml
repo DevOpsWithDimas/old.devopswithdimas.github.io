@@ -186,9 +186,9 @@
     price: Rp280.000,-
     discount: Rp99.000,-
     release: false
-    couponCode: NEW_JOURNEY_2023
+    couponCode: GAJIAN_JAN2023
     referralCode: 8DA27E06BF0BA6935CCC
-    expired: 23/01/2023
+    expired: 02/02/2023
   coming_soon: false
   visible: true
   catalogs:
@@ -263,10 +263,10 @@
     url: https://www.udemy.com/course/rdbms-oracle-18c-indonesia/
     price: Rp350.000,-
     discount: Rp99.000,-
-    couponCode: NEW_JOURNEY_2023
+    couponCode: GAJIAN_JAN2023
     referralCode: D1F375D96C53FC20DB42
     release: true
-    expired: 23/01/2023
+    expired: 02/02/2023
   coming_soon: false
   visible: true
   catalogs:
@@ -356,10 +356,10 @@
     url: https://www.udemy.com/course/docker-pemula-sampai-mahir/
     price: Rp560.000,-
     discount: Rp99.000,-
-    couponCode: NEW_JOURNEY_2023
+    couponCode: GAJIAN_JAN2023
     release: true
     referralCode: 8D13D85D4D34027B76BE
-    expired: 23/01/2023
+    expired: 02/02/2023
   coming_soon: false
   visible: true
   catalogs:
@@ -465,10 +465,10 @@
     url: https://www.udemy.com/course/devops-kubernetes-pemula-sampai-mahir/
     price: Rp280.000,-
     discount: Rp99.000,-
-    couponCode: NEW_JOURNEY_2023
+    couponCode: GAJIAN_JAN2023
     release: true
     referralCode: 58BDCE6103ADC4C9C11D
-    expired: 23/01/2023
+    expired: 02/02/2023
   coming_soon: false
   visible: true
   catalogs:
@@ -651,10 +651,10 @@
     url: https://www.udemy.com/course/gitops-gitlab-pemula-sampai-mahir/
     price: Rp250.000,-
     discount: Rp99.000,-
-    couponCode: NEW_JOURNEY_2023
+    couponCode: GAJIAN_JAN2023
     release: false
     referralCode: 8D13D85D4D34027B76BE
-    expired: 23/01/2023
+    expired: 02/02/2023
   coming_soon: true
   visible: true
   catalogs:
@@ -715,10 +715,10 @@
     url: https://www.udemy.com/course/dba-postgresql-pemula-sampai-mahir/
     price: Rp.280.000,-
     discount: Rp.99.000,-
-    couponCode: NEW_JOURNEY_2023
+    couponCode: GAJIAN_JAN2023
     release: true
     referralCode: 8080BE598C39D7652D33
-    expired: 23/01/2023
+    expired: 02/02/2023
   coming_soon: false
   visible: true
   catalogs:
