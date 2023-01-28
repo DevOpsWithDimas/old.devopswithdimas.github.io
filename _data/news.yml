@@ -19,18 +19,35 @@
   date: 2022-10-25T18:29:00+07:00
   duration: "3 jam"
   tier: "free"
-  youtube: 
+  youtube: Re1VK4xBgeo
   thumbnail:
-  visible: false
+  visible: true
   markers: |
-    Introduction
-    Overview Data Manipulation
-    Insert Statements
-    Update Statements
-    Delete Statements
-    Transaction
-    Locking
-    Performance Tips
+    00:00:00 Introduction
+    00:03:54 Basic insert statement
+    00:10:37 Basic update statement
+    00:16:32 Basic delete statement
+    00:22:40 Basic returning data from modified rows
+    00:33:44 Insert with specific columns and data types
+    00:52:01 Insert with Default value
+    01:00:52 Insert for multiple rows
+    01:10:20 Insert with On Conflict action
+    01:17:23 Insert with Overriding keyword
+    01:21:24 Multiple query using with query in insert statement
+    01:30:11 Error message on insert statement
+    01:38:48 Update using default value clause
+    01:43:31 Update using sub-SELECT clause
+    01:51:01 Update with column-list syntax
+    01:58:54 Update using WITH query
+    02:05:34 Update using FROM clause
+    02:13:15 Update using RETURNING clause
+    02:20:14 Delet with USING from_item clause
+    02:29:37 Delete using RETURNING clause
+    02:33:18 Delete using WITH Queries
+    02:43:19 Create prepared statement for CRUD
+    02:55:13 Manage prepared-statement
+    03:00:58 Create input parameterize with text editor
+    03:07:56 Materi selanjutnya
 
 - cource: docker
   catalog: study-cases-ansible
