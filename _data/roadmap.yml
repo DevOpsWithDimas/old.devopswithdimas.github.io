@@ -1,22 +1,12 @@
 - name: Database Administrator (DBA)
   code: dba
   description: 
-  isNew: true
+  isNew: false
   courses: 
   - postgresql
   - oracle18c
 
-- name: Java Web Developer (Fundamental)
-  code: java-web
-  description: 
-  isNew: false
-  courses: 
-  - java-core
-  - postgresql
-  - java-jdbc-psql
-  - java-web
-
-- name: Front-End Developer (FE)
+- name: Frontend Developer
   code: fe-dev
   isNew: false
   description: 
@@ -26,45 +16,47 @@
   - angular-ts
   - react-ts
 
-- name: Back-End Developer (BE)
+- name: Backend Java Developer
   code: be-dev
   isNew: false
   description: 
   courses: 
-  - java-se
+  - java-core
+  - postgresql
+  - java-jdbc-psql
   - orm-hibernate
+  - java-web
   - spring-core
   - spring-boot
 
-- name: Mobile Developer (MB)
-  code: mb-dev
+- name: Mobile Android Developer
+  code: mobile-android-dev
   isNew: false
   description: 
   courses: 
+  - java-core
+  - kotlit-android
   - dart
   - flutter
-  - flutter-android
-  - flutter-ios
 
-- name: Fullstack Developer
-  code: fullstack-dev
-  isNew: true
+- name: Mobile iOS Developer
+  code: mobile-ios-dev
+  isNew: false
   description: 
   courses: 
-  - spring-boot
-  - react-ts
-  - flutter-android
+  - swift
+  - dart
+  - flutter
 
 - name: Development & Operation (DevOps)
   code: devops
-  isNew: true
+  isNew: false
   description: 
   courses: 
+  - gitlab
   - docker 
   - k8s
   - ansible
-  - k8s-openshift
-  - gitlab
   - apache-jmeter
   - nutanix-ahv
   - nutanix-cloud-native
