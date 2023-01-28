@@ -66,4 +66,5 @@
   - k8s-openshift
   - gitlab
   - apache-jmeter
-  - cloud-gcp
+  - nutanix-ahv
+  - nutanix-cloud-native
