@@ -50,10 +50,10 @@ You describe a desired state in a Deployment, and the Deployment Controller chan
 The following are typical use cases for Deployments:
 
 1. Create a Deployment to rollout a ReplicaSet. The ReplicaSet creates Pods in the background. Check the status of the rollout to see if it succeeds or not.
-2. Declare the new state of the Pods by updating the PodTemplateSpec of the Deployment. A new ReplicaSet is created and the Deployment manages moving the Pods from the old ReplicaSet to the new one at a controlled rate. Each new ReplicaSet updates the revision of the Deployment.
+2. Declare the new state of the Pods by updating the `PodTemplateSpec` of the Deployment. A new ReplicaSet is created and the Deployment manages moving the Pods from the old ReplicaSet to the new one at a controlled rate. Each new ReplicaSet updates the revision of the Deployment.
 3. Rollback to an earlier Deployment revision if the current state of the Deployment is not stable. Each rollback updates the revision of the Deployment.
 4. Scale up the Deployment to facilitate more load.
-5. Pause the rollout of a Deployment to apply multiple fixes to its PodTemplateSpec and then resume it to start a new rollout.
+5. Pause the rollout of a Deployment to apply multiple fixes to its `PodTemplateSpec` and then resume it to start a new rollout.
 6. Use the status of the Deployment as an indicator that a rollout has stuck.
 7. Clean up older ReplicaSets that you don't need anymore.
 
