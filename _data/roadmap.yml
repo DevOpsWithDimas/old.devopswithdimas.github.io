@@ -1,17 +1,17 @@
 - name: Database Administrator (DBA)
   code: dba
-  description: 
+  description: Database administrator yaitu Profesi IT yang spesialis menangani Software untuk menyimpan dan meng-organiasi data, contohnya seperti Oracle Database, PostgreSQL, MySQL, MongoDB dan lain-lain.
   isNew: false
   isVisible: true
   courses: 
   - postgresql
   - oracle18c
 
-- name: Frontend Developer
+- name: Web - Frontend Developer
   code: fe-dev
   isNew: false
   isVisible: false
-  description: 
+  description: Frontend Developer yaitu Profesi IT yang spesialis menangani graphical user interface dari suatu website dengan menggunakan HTML, Javascript dan CSS berserta frameworknya
   courses: 
   - js
   - typescript
@@ -22,7 +22,7 @@
   code: be-dev
   isNew: false
   isVisible: true
-  description: 
+  description: Backend Developer yaitu Profesi IT yang specialis menangani suatu mekanisme pemrosesan data pada suatu website dengan menggunakan teknology server side programming seperti Java, Ruby, PHP dan lain-lain.
   courses: 
   - java-core
   - postgresql

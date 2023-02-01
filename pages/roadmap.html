@@ -24,32 +24,26 @@ icon: assessment
     </div>
 </div>
 
-<div class="row"><br></div>
-
-<div class="container">
-    <div class="row">
+<div class="row">
+    <div class="container">
         {% assign show_items = topics | where: 'isVisible', true %}
         {% for topic in show_items %}
         <div class="col s12 m4 l4">
-            <div class="card small horizontal hoverable">
+            <div class="card small hoverable">
                 <div class="card-image">
+                    <!-- <img class="activator responsive-img" 
+                        src="{{ "/resources/roadmap/" | prepend: site.baseurl}}{{ topic.code }}.png">                  -->
                     <img class="activator responsive-img" 
-                        src="{{ "/resources/roadmap/" | prepend: site.baseurl}}{{ topic.code }}.png">                 
+                        src="https://via.placeholder.com/300/09f/fff.png">
+                    <span class="card-title flow-text truncate">
+                        {{ topic.name }}
+                    </span>
                 </div>                
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <div class="row">
-                                <a class="flow-text truncate" href="#{{ topic.code }}">{{ topic.name }}</a>
-                            {% if topic.isNew %}
-                            <span class="new badge yellow black-text" data-badge-caption="baru"></span>
-                            {% endif %}
-                        </div>
-                        <div class="row">
-                            <p class="activator">
-                                {{ topic.description }}
-                            </p>
-                        </div>
-                    </div>
+                <div class="card-content">
+                    {{ topic.description }}
+                </div>
+                <div class="card-action">
+                    <a href="#{{ topic.code }}">Mindmap</a>
                 </div>
             </div>
         </div>
