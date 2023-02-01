@@ -16,7 +16,44 @@ icon: assessment
 <div class="section white">
     <div class="row container">
       <h2 class="header">Roadmap</h2>
-      <p class="grey-text text-darken-3 lighten-3">Learn through online classes and guided learning maps. Level up your skills and jumpstart your career</p>
+      <p class="grey-text text-darken-3 lighten-3">Temen-temen akan belajar beberapa skil-set yang perlu dipelajari tergantung dari minat dan bakat, untuk menempuh jenjang karir sebagai Profesi IT (Information Teknology). Roadmap ini adalah salah satu jalur temen-temen untuk mencapai impian yaitu bekerja atau ber-profesi yang berkaitan dengan IT terlebih di dunia industri IT.</p>
+
+      <p>Ada banyak sekali Profesi IT saat ini yang sedang dibutuhkan oleh beberapa perusahaan besar mulai dari <b>Programer, Database Administator, DevOps (Development and Operation), Research and Development, Data Engineer, Data Analist, Metaverse Engineer, Project/Product Manager, dan lain-lain</b></p>
+
+      <p>Untuk menjawab semua itu, disinilah saya kumpulkan beberapa Roadmap supaya temen-temen juga bisa belajar, sehinga temen-temen bisa mejadi <b>Talenta Digital</b> dikemudian hari!</p>
+    </div>
+</div>
+
+<div class="row"><br></div>
+
+<div class="container">
+    <div class="row">
+        {% assign show_items = topics | where: 'isVisible', true %}
+        {% for topic in show_items %}
+        <div class="col s12 m4 l4">
+            <div class="card small horizontal hoverable">
+                <div class="card-image">
+                    <img class="activator responsive-img" 
+                        src="{{ "/resources/roadmap/" | prepend: site.baseurl}}{{ topic.code }}.png">                 
+                </div>                
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <div class="row">
+                                <a class="flow-text truncate" href="#{{ topic.code }}">{{ topic.name }}</a>
+                            {% if topic.isNew %}
+                            <span class="new badge yellow black-text" data-badge-caption="baru"></span>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <p class="activator">
+                                {{ topic.description }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
 
