@@ -30,7 +30,7 @@ icon: assessment
         <br>
         {% assign show_items = topics | where: 'isVisible', true %}
         {% for topic in show_items %}
-        <div class="col s12 m4 l4">
+        <div class="col s12 m6 l4">
             <div class="card medium hoverable sticky-action">
                 <div class="card-image ">
                     <!-- <img class="activator responsive-img" 
@@ -43,10 +43,13 @@ icon: assessment
                     <p class="activator grey-text text-lighten-1">{{ topic.description | truncate: 100 }}</p>
                 </div>
                 <div class="card-action">
-                    <a href="#{{ topic.code }}">{{ topic.name }}</a>
-                    {% if topic.isNew %}
-                        <span class="new badge yellow black-text" data-badge-caption="baru"></span>
-                    {% endif %}
+                    <a class="modal-trigger" href="#{{ topic.code }}">
+                        {{ topic.name }}
+                        {% if topic.isNew %}
+                            <span class="new badge yellow black-text" data-badge-caption="baru"></span>
+                        {% endif %}
+                    </a>
+                    <!-- <a href="#{{ topic.code }}"></a> -->
                 </div>
                 <div class="card-reveal">
                     <span class="card-title grey-text text-darken-4">
@@ -62,97 +65,48 @@ icon: assessment
     </div>
 </div>
 
-<hr>
-<div class="container">
-    <div class="row">
-        <div class="col m12 l9">
-            <div>
-                {% for topic in topics %}
-                <div id="{{ topic.code }}" class="section scrollspy">
-                    <h3  class="center">{{ topic.name }}</h3>
-                    <p class="">
-                        {{ topic.description }}
-                    </p>
-                    <div class="timeline">
-                        {% for course in topic.courses %}
-                        {% assign article = site.data.topics | where: 'url', course | first %}
-                        {% if article %}
-                        {% assign a_post = site.posts | where: 'lang', course | sort: 'date' | first %}
-                        <div class="timeline-event">
-                            <div class="timeline-content">
-                                <ul class="collection z-depth-3">
-                                    <li class="collection-item avatar">
-                                        {% if article.coming_soon == true %}
-                                        <span class="new badge black white-text" data-badge-caption="">Coming Soon</span>
-                                        {% endif %}
-                                        <img class="responsive-img circle" src="{{ "/resources/images/" | prepend: site.baseurl }}{{course}}.png">
-                                        <span class="title"><b>{{article.name}}</b></span>
-                                        <p class="grey-text text-lighten-1">{{ article.descriptions | truncate: 150 }}</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="timeline-badge blue white-text">
-                                <!-- show first page of content -->
-                                {% if article.coming_soon == false and a_post %}
-                                <a href="{{ a_post.url | prepend: site.baseurl }}" class="tooltipped white-text waves-effect waves-block waves-light" data-position="left" data-delay="50" data-tooltip="Start Learning">
-                                    <i class="material-icons">launch</i>
-                                </a>
-                                {% endif %}
-                            </div>
-                        </div>
-                        {% endif %} 
-                        {% endfor %}       
-                    </div>
+<!-- Modal Structure -->
+{% for topic in topics %}
+<div id="{{ topic.code }}" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>{{ topic.name }}</h4>
+        <p>{{ topic.description }}</p>
+        <div class="timeline">
+            {% for course in topic.courses %}
+            {% assign article = site.data.topics | where: 'url', course | first %}
+            {% if article %}
+            {% assign a_post = site.posts | where: 'lang', course | sort: 'date' | first %}
+            <div class="timeline-event">
+                <div class="timeline-content">
+                    <ul class="collection z-depth-3">
+                        <li class="collection-item avatar">
+                            {% if article.coming_soon == true %}
+                            <span class="new badge black white-text" data-badge-caption="">Coming Soon</span>
+                            {% endif %}
+                            <img class="responsive-img circle" src="{{ "/resources/images/" | prepend: site.baseurl }}{{course}}.png">
+                            <span class="title"><b>{{article.name}}</b></span>
+                            <p class="grey-text text-lighten-1">{{ article.descriptions | truncate: 150 }}</p>
+                        </li>
+                    </ul>
                 </div>
-                {% endfor %}
+                <div class="timeline-badge blue white-text">
+                    <!-- show first page of content -->
+                    {% if article.coming_soon == false and a_post %}
+                    <a href="{{ a_post.url | prepend: site.baseurl }}" class="tooltipped white-text waves-effect waves-block waves-light" data-position="left" data-delay="50" data-tooltip="Start Learning">
+                        <i class="material-icons">launch</i>
+                    </a>
+                    {% endif %}
+                </div>
             </div>
+            {% endif %} 
+            {% endfor %}       
         </div>
     </div>
-
-    <div class="fixed-action-btn click-to-toggle hide-on-large-only">
-        <a href="#" data-activates="slide-out-roadmap" class="btn-floating btn-large waves-effect waves-light red button-collapse">
-            <i class="large material-icons">menu</i>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">
+            <i class="material-icons right">close</i>
         </a>
     </div>
 </div>
+{% endfor %}
 
-<ul id="slide-out-roadmap" class="side-nav">
-    <li>
-        {% include side-nav/profile.html %}
-    </li>
-    <li>
-        <a href="{{ "/" | prepend : site.baseurl }}">
-            <i class="material-icons left">home</i> {{site.title}}
-        </a>
-    </li>
-
-    <li>
-        <div class="divider"></div>
-    </li>
-    <li>
-        <a class="subheader">To becomming a</a>
-    </li>
-    {% for topic in topics %}
-    <li>
-        <a href="#{{ topic.code }}">{{ topic.name }}</a>
-    </li>
-    {% endfor %}
-
-    <li>
-        <div class="divider"></div>
-    </li>
-
-    {% include side-nav/pages.html %}
-
-    <li>
-        <div class="divider"></div>
-    </li>
-    
-    {% include side-nav/socials.html %}
-    
-    <li>
-        <div class="divider"></div>
-    </li>
-
-    {% include side-nav/others.html %}
-</ul>
