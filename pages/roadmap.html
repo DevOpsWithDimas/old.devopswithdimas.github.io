@@ -71,6 +71,7 @@ icon: assessment
     <div class="modal-content">
         <h4>{{ topic.name }}</h4>
         <p>{{ topic.description }}</p>
+        <p>Materi yang akan diajarkan pada roadmap ini yaitu:</p>
         <div class="timeline">
             {% for course in topic.courses %}
             {% assign article = site.data.topics | where: 'url', course | first %}
