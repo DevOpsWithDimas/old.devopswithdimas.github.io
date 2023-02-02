@@ -6,21 +6,33 @@
   courses: 
   - postgresql
   - oracle18c
+  mermaidjs: >
+    mindmap
+      root((mindmap))
+        Origins
+          Long history
+        Research
+          On effectiveness<br/>and features
+          On Automatic creation            
+        Tools
+          Pen and paper
+          Mermaid
 
 - name: Web - Frontend Developer
   code: fe-dev
   isNew: false
-  isVisible: false
+  isVisible: true
   description: Frontend Developer yaitu Profesi IT yang spesialis menangani graphical user interface dari suatu website dengan menggunakan HTML, Javascript dan CSS berserta frameworknya
   courses: 
   - js
   - typescript
   - angular-ts
   - react-ts
+  mermaidjs: >
 
 - name: Java - Backend Developer
   code: be-dev
-  isNew: false
+  isNew: true
   isVisible: true
   description: Backend Developer yaitu Profesi IT yang specialis menangani suatu mekanisme pemrosesan data pada suatu website dengan menggunakan teknology server side programming seperti Java, Ruby, PHP dan lain-lain.
   courses: 
@@ -31,6 +43,7 @@
   - java-web
   - spring-core
   - spring-boot
+  mermaidjs: >
 
 - name: Mobile Android Developer
   code: mobile-android-dev
@@ -42,6 +55,7 @@
   - kotlit-android
   - dart
   - flutter
+  mermaidjs: >
 
 - name: Mobile iOS Developer
   code: mobile-ios-dev
@@ -52,17 +66,29 @@
   - swift
   - dart
   - flutter
+  mermaidjs: >
 
 - name: Development & Operation (DevOps)
   code: devops
   isVisible: true
   isNew: false
-  description: 
+  description: DevOps atau singkatan dari Development and Operation adalah Profesi IT yang sedang hype lagi saat ini, Profesi ini menangani suatu mekanisme release management pada suatu atau beberapa perusahan tergantung dari culture yang diterapkan.
   courses: 
   - gitlab
   - docker 
   - k8s
   - ansible
   - apache-jmeter
+  mermaidjs: >
+
+- name: Nutanix HCI
+  code: nutanix
+  isVisible: true
+  isNew: true
+  description: 
+  courses: 
   - nutanix-ahv
+  - nutanix-era
+  - nutanix-calm
   - nutanix-cloud-native
+  mermaidjs: >

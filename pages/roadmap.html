@@ -26,46 +26,45 @@ icon: assessment
 
 <div class="row">
     <div class="container">
+        <h4>Topics</h4>
+        <br>
         {% assign show_items = topics | where: 'isVisible', true %}
         {% for topic in show_items %}
         <div class="col s12 m4 l4">
-            <div class="card small hoverable">
-                <div class="card-image">
+            <div class="card medium hoverable sticky-action">
+                <div class="card-image ">
                     <!-- <img class="activator responsive-img" 
                         src="{{ "/resources/roadmap/" | prepend: site.baseurl}}{{ topic.code }}.png">                  -->
-                    <img class="activator responsive-img" 
+                    <img class="responsive-img activator" 
                         src="https://via.placeholder.com/300/09f/fff.png">
-                    <span class="card-title flow-text truncate">
-                        {{ topic.name }}
-                    </span>
-                </div>                
+                    
+                </div>
                 <div class="card-content">
-                    {{ topic.description }}
+                    <p class="activator grey-text text-lighten-1">{{ topic.description | truncate: 100 }}</p>
                 </div>
                 <div class="card-action">
-                    <a href="#{{ topic.code }}">Mindmap</a>
+                    <a href="#{{ topic.code }}">{{ topic.name }}</a>
+                    {% if topic.isNew %}
+                        <span class="new badge yellow black-text" data-badge-caption="baru"></span>
+                    {% endif %}
                 </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">
+                        <i class="material-icons right">close</i>
+                        {{ topic.name }}
+                    </span>
+                    <hr>
+                    {{ topic.description }}
+                </div>                
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
 
+<hr>
 <div class="container">
     <div class="row">
-        <div id="topic-navigation" class="col m12 l3 hide-on-med-and-down">
-            <ul class="collection with-header section table-of-contents">
-                <li class="collection-item with-header">Topics</li>
-                {% for topic in topics %}
-                <li class="collection-item">
-                    <a href="#{{ topic.code }}">{{ topic.name }}</a>
-                    {% if topic.isNew %}
-                    <span class="new badge yellow black-text" data-badge-caption="baru"></span>
-                    {% endif %}
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
         <div class="col m12 l9">
             <div>
                 {% for topic in topics %}
