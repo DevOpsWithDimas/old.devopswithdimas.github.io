@@ -11,6 +11,7 @@ icon: assessment
 </div>
 
 {% assign topics = site.data.roadmap %}
+{% assign roles = site.data.roles %}
 <link rel="stylesheet" type="text/css" href="{{ "/assets/timeline.css" | prepend: site.baseurl }}" />
 
 <div class="section white">
@@ -24,11 +25,12 @@ icon: assessment
     </div>
 </div>
 
+{% for role in roles %}
 <div class="row">
     <div class="container">
-        <h4>Topics</h4>
+        <h4>Topics - {{ role.name }}</h4>
         <br>
-        {% assign show_items = topics | where: 'isVisible', true %}
+        {% assign show_items = topics | where: 'roleId', role.id | where: 'isVisible', true %}
         {% for topic in show_items %}
         <div class="col s12 m6 l4">
             <div class="card medium hoverable sticky-action">
@@ -66,6 +68,8 @@ icon: assessment
         {% endfor %}
     </div>
 </div>
+<hr>
+{% endfor %}
 
 <!-- Modal Structure -->
 {% for topic in topics %}

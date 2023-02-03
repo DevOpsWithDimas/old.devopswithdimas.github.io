@@ -52,7 +52,7 @@
   isVisible: true
   roleId: programming
   image: programming.png
-  description: Backend Developer yaitu Profesi IT yang specialis menangani suatu mekanisme pemrosesan data pada suatu website dengan menggunakan teknology server side programming seperti Java, Ruby, PHP dan lain-lain.
+  description: 
   courses: 
   - java-core
   - java-jdbc-psql
@@ -126,4 +126,16 @@
   - nutanix-era
   - nutanix-calm
   - nutanix-cloud-native
+  mermaidjs: >
+
+- name: Automation Testing
+  code: test
+  isVisible: true
+  isNew: false
+  image: sysadmin.png
+  roleId: other
+  description: 
+  courses: 
+  - apache-jmeter
+  - selenium
   mermaidjs: >
