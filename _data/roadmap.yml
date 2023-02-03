@@ -20,12 +20,12 @@
           Pen and paper
           Mermaid
 
-- name: NoSQL Database Administrator
+- name: No-SQL Database Administrator
   code: nosql-dba
   roleId: database
   description: Database administrator yaitu Profesi IT yang spesialis menangani Software untuk menyimpan dan meng-organiasi data, contohnya seperti MongoDB, Apache Casandra, CouchbaseDB dan lain-lain.
   isNew: false
-  isVisible: false
+  isVisible: true
   courses: 
   - mongodb
   - casandra
@@ -87,7 +87,7 @@
 - name: Mobile - Android Developer
   code: mb-android
   isNew: false
-  isVisible: false
+  isVisible: true
   roleId: programming
   image: mobile-dev.png
   description: 
@@ -123,7 +123,7 @@
   - docker 
   - k8s
   - ansible
-  - apache-jmeter
+  - grafana
   mermaidjs: >
 
 - name: Nutanix HCI
@@ -140,11 +140,22 @@
   - nutanix-cloud-native
   mermaidjs: >
 
+- name: Google Cloud Provider
+  code: gcp
+  isVisible: true
+  isNew: true
+  image: server.png
+  roleId: server
+  description: 
+  courses: 
+  - cloud-gcp
+  mermaidjs: >
+
 - name: Automation Testing
   code: test
   isVisible: true
   isNew: false
-  image: sysadmin.png
+  image: testing.png
   roleId: other
   description: 
   courses: 
