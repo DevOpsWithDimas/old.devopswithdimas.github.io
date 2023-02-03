@@ -35,9 +35,11 @@ icon: assessment
                 <div class="card-image ">
                     <!-- <img class="activator responsive-img" 
                         src="{{ "/resources/roadmap/" | prepend: site.baseurl}}{{ topic.code }}.png">                  -->
-                    <img class="responsive-img activator" 
-                        src="https://via.placeholder.com/300/09f/fff.png">
-                    
+                    {% if topic.image %}
+                    <img class="responsive-img activator" src="{{ "/resources/roadmap/" | prepend: site.baseurl }}{{ topic.image }}">
+                    {% else %}
+                    <img class="responsive-img activator" src="https://via.placeholder.com/300/09f/fff.png">
+                    {% endif %}
                 </div>
                 <div class="card-content">
                     <p class="activator grey-text text-lighten-1">{{ topic.description | truncate: 100 }}</p>

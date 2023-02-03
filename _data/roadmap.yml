@@ -6,6 +6,7 @@
   courses: 
   - postgresql
   - oracle18c
+  image: dba.png
   mermaidjs: >
     mindmap
       root((mindmap))
@@ -22,6 +23,7 @@
   code: fe-dev
   isNew: false
   isVisible: true
+  image: frontend-dev.png
   description: Frontend Developer yaitu Profesi IT yang spesialis menangani graphical user interface dari suatu website dengan menggunakan HTML, Javascript dan CSS berserta frameworknya
   courses: 
   - js
@@ -33,6 +35,7 @@
   code: fe-dev
   isNew: false
   isVisible: true
+  image: frontend-dev.png
   description: Frontend Developer yaitu Profesi IT yang spesialis menangani graphical user interface dari suatu website dengan menggunakan HTML, Javascript dan CSS berserta frameworknya
   courses: 
   - js
@@ -40,17 +43,26 @@
   - react-ts
   mermaidjs: >
 
-- name: Java - Backend Developer
-  code: be-dev
+- name: Java Programming
+  code: java
   isNew: true
   isVisible: true
+  image: programming.png
   description: Backend Developer yaitu Profesi IT yang specialis menangani suatu mekanisme pemrosesan data pada suatu website dengan menggunakan teknology server side programming seperti Java, Ruby, PHP dan lain-lain.
   courses: 
   - java-core
-  - postgresql
   - java-jdbc-psql
   - orm-hibernate
   - java-web
+  mermaidjs: >
+
+- name: Java - Backend Developer
+  code: java-be
+  isNew: true
+  isVisible: true
+  image: backend-dev.png
+  description: Backend Developer yaitu Profesi IT yang specialis menangani suatu mekanisme pemrosesan data pada suatu website dengan menggunakan teknology server side programming seperti Java, Ruby, PHP dan lain-lain.
+  courses: 
   - spring-core
   - spring-boot
   mermaidjs: >
@@ -59,6 +71,7 @@
   code: mobile-android-dev
   isNew: false
   isVisible: false
+  image: mobile-dev.png
   description: 
   courses: 
   - java-core
@@ -71,6 +84,7 @@
   code: mobile-ios-dev
   isNew: false
   isVisible: false
+  image: mobile-dev.png
   description: 
   courses: 
   - swift
@@ -82,6 +96,7 @@
   code: devops
   isVisible: true
   isNew: false
+  image: sysadmin.png
   description: DevOps atau singkatan dari Development and Operation adalah Profesi IT yang sedang hype lagi saat ini, Profesi ini menangani suatu mekanisme release management pada suatu atau beberapa perusahan tergantung dari culture yang diterapkan.
   courses: 
   - gitlab
@@ -95,6 +110,7 @@
   code: nutanix
   isVisible: true
   isNew: true
+  image: server.png
   description: 
   courses: 
   - nutanix-ahv
