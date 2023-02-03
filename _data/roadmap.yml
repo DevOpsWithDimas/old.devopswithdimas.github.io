@@ -1,7 +1,7 @@
 - name: Relational Database Administrator
   code: rdbms-dba
   roleId: database
-  description: Database administrator yaitu Profesi IT yang spesialis menangani Software untuk menyimpan dan meng-organiasi data, contohnya seperti Oracle Database, PostgreSQL, MySQL, MongoDB dan lain-lain.
+  description: Database administrator yaitu Profesi IT yang spesialis menangani Software untuk menyimpan dan meng-organiasi data, contohnya seperti Oracle Database, PostgreSQL, MySQL dan lain-lain.
   isNew: false
   isVisible: true
   courses: 
@@ -20,8 +20,30 @@
           Pen and paper
           Mermaid
 
+- name: NoSQL Database Administrator
+  code: nosql-dba
+  roleId: database
+  description: Database administrator yaitu Profesi IT yang spesialis menangani Software untuk menyimpan dan meng-organiasi data, contohnya seperti MongoDB, Apache Casandra, CouchbaseDB dan lain-lain.
+  isNew: false
+  isVisible: false
+  courses: 
+  - mongodb
+  - casandra
+  image: dba.png
+  mermaidjs: >
+    mindmap
+      root((mindmap))
+        Origins
+          Long history
+        Research
+          On effectiveness<br/>and features
+          On Automatic creation            
+        Tools
+          Pen and paper
+          Mermaid
+
 - name: Angular - Frontend Developer
-  code: fe-dev
+  code: fe-angular
   isNew: false
   isVisible: true
   roleId: programming
@@ -34,7 +56,7 @@
   mermaidjs: >
 
 - name: React - Frontend Developer
-  code: fe-dev
+  code: fe-react
   isNew: false
   isVisible: true
   roleId: programming
@@ -46,8 +68,8 @@
   - react-ts
   mermaidjs: >
 
-- name: Java Programming
-  code: java
+- name: Java - Backend Developer
+  code: be-java
   isNew: true
   isVisible: true
   roleId: programming
@@ -58,22 +80,12 @@
   - java-jdbc-psql
   - orm-hibernate
   - java-web
-  mermaidjs: >
-
-- name: Java - Backend Developer
-  code: java-be
-  isNew: true
-  isVisible: true
-  roleId: programming
-  image: backend-dev.png
-  description: Backend Developer yaitu Profesi IT yang specialis menangani suatu mekanisme pemrosesan data pada suatu website dengan menggunakan teknology server side programming seperti Java, Ruby, PHP dan lain-lain.
-  courses: 
   - spring-core
   - spring-boot
   mermaidjs: >
 
-- name: Mobile Android Developer
-  code: mobile-android-dev
+- name: Mobile - Android Developer
+  code: mb-android
   isNew: false
   isVisible: false
   roleId: programming
@@ -86,8 +98,8 @@
   - flutter
   mermaidjs: >
 
-- name: Mobile iOS Developer
-  code: mobile-ios-dev
+- name: Mobile - iOS Developer
+  code: mb-ios
   isNew: false
   isVisible: false
   roleId: programming
