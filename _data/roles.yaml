@@ -1,0 +1,11 @@
+- id: programming
+  name: Bahasa Pemograman
+
+- id: database
+  name: Basis Data
+
+- id: server
+  name: Server
+
+- id: other
+  name: Others

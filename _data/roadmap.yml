@@ -1,5 +1,6 @@
-- name: Database Administrator (DBA)
-  code: dba
+- name: Relational Database Administrator
+  code: rdbms-dba
+  roleId: database
   description: Database administrator yaitu Profesi IT yang spesialis menangani Software untuk menyimpan dan meng-organiasi data, contohnya seperti Oracle Database, PostgreSQL, MySQL, MongoDB dan lain-lain.
   isNew: false
   isVisible: true
@@ -23,6 +24,7 @@
   code: fe-dev
   isNew: false
   isVisible: true
+  roleId: programming
   image: frontend-dev.png
   description: Frontend Developer yaitu Profesi IT yang spesialis menangani graphical user interface dari suatu website dengan menggunakan HTML, Javascript dan CSS berserta frameworknya
   courses: 
@@ -35,6 +37,7 @@
   code: fe-dev
   isNew: false
   isVisible: true
+  roleId: programming
   image: frontend-dev.png
   description: Frontend Developer yaitu Profesi IT yang spesialis menangani graphical user interface dari suatu website dengan menggunakan HTML, Javascript dan CSS berserta frameworknya
   courses: 
@@ -47,6 +50,7 @@
   code: java
   isNew: true
   isVisible: true
+  roleId: programming
   image: programming.png
   description: Backend Developer yaitu Profesi IT yang specialis menangani suatu mekanisme pemrosesan data pada suatu website dengan menggunakan teknology server side programming seperti Java, Ruby, PHP dan lain-lain.
   courses: 
@@ -60,6 +64,7 @@
   code: java-be
   isNew: true
   isVisible: true
+  roleId: programming
   image: backend-dev.png
   description: Backend Developer yaitu Profesi IT yang specialis menangani suatu mekanisme pemrosesan data pada suatu website dengan menggunakan teknology server side programming seperti Java, Ruby, PHP dan lain-lain.
   courses: 
@@ -71,6 +76,7 @@
   code: mobile-android-dev
   isNew: false
   isVisible: false
+  roleId: programming
   image: mobile-dev.png
   description: 
   courses: 
@@ -84,6 +90,7 @@
   code: mobile-ios-dev
   isNew: false
   isVisible: false
+  roleId: programming
   image: mobile-dev.png
   description: 
   courses: 
@@ -97,6 +104,7 @@
   isVisible: true
   isNew: false
   image: sysadmin.png
+  roleId: server
   description: DevOps atau singkatan dari Development and Operation adalah Profesi IT yang sedang hype lagi saat ini, Profesi ini menangani suatu mekanisme release management pada suatu atau beberapa perusahan tergantung dari culture yang diterapkan.
   courses: 
   - gitlab
@@ -111,6 +119,7 @@
   isVisible: true
   isNew: true
   image: server.png
+  roleId: server
   description: 
   courses: 
   - nutanix-ahv
