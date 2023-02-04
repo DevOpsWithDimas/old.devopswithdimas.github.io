@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01-what-is-nutanix-hci"
+title: "01c-nutanix-cloud-platform"
 lang: nutanix-ahv
 authors:
 - dimasm93
@@ -14,7 +14,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts/nutanix-ahv/01-what-is-nutanix-hci
+image_path: /resources/posts/nutanix-ahv/01c-nutanix-cloud-platform
 gist: 
 downloads: []
 ---
