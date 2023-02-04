@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01e-getting-started-prism-element"
+title: "01e-nutanix-test-drive-trail"
 lang: nutanix-ahv
 authors:
 - dimasm93
@@ -14,7 +14,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts/nutanix-ahv/01e-getting-started-prism-element
+image_path: /resources/posts/nutanix-ahv/01e-nutanix-test-drive-trail
 gist: 
 downloads: []
 ---

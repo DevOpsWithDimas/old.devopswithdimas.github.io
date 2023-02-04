@@ -19,8 +19,10 @@ gist:
 downloads: []
 ---
 
+Hai semuanya, selamat datang di kelas 'SRE - Nutanix AHV untuk Pemula sampai Mahir' di section pertama kali ini kita akan membahas technology yang biasanya digunakan oleh team Infra/Operation yaitu Hyperconverged Infrastructure. 
 
-description...
+Nah dengan kecanggihan teknology jaman sekarang, technologies dapat membantu mendorong kemajuan suatu perusahan dalam meningkatan performa dalam menentukan goals. Selain itu juga dengan technology perusahaan dapat menentukan flexibility, choice, agility, and cost efficiency supaya memastikan bahwa perusahaan tersebut bisa competitive in the marketplace and innovate, bringing new services and products to their customers faster than ever.
+
 
 <!--more-->
 
