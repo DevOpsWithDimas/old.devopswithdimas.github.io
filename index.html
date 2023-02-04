@@ -128,7 +128,7 @@ youtube: TtfwvbyWQMo
                                 src="{{ "/resources/images/" | prepend: site.baseurl}}{{topic.url}}.png">
                         {% endif %}                        
                     </div>
-                    {% if topic.udemy %}
+                    {% if topic.udemy.release == true %}
                     <a target="_blank" 
                         href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}&couponCode={{ topic.udemy.couponCode }}"
                         class="btn-floating halfway-fab btn-large waves-effect tooltipped waves-light red accent-1"
@@ -288,7 +288,7 @@ youtube: TtfwvbyWQMo
                                 </div>
                             </div>
                         </div>
-                        {% if topic.udemy %}
+                        {% if topic.udemy.release == true %}
                         <div class="card-action">
                             <a class="title" href="{{ topic.udemy.url }}?referralCode={{ topic.udemy.referralCode }}">{{ topic.fullname }}</a>
                         </div>
