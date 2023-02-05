@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "01a-servers"
+title: "Server Infrastructure"
 lang: nutanix-ahv
 authors:
 - dimasm93
@@ -14,13 +14,12 @@ refs:
 youtube: 
 comments: true
 catalog_key: introduction
-image_path: /resources/posts/nutanix-ahv/01a-servers
+image_path: /resources/posts/nutanix-ahv/01a-what-is-infra
 gist: 
 downloads: []
 ---
 
-
-description...
+Hai semuanya, 
 
 <!--more-->
 
