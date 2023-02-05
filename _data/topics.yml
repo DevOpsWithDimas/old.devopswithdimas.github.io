@@ -1070,8 +1070,15 @@
   publish: 2022-10-06T16:26:00+07:00
   github: 
   youtube:
-  udemy:
-  coming_soon: true
+  udemy: 
+    url: https://www.udemy.com/course/nutanix-ahv-pemula-sampai-mahir/
+    price: Rp.280.000,-
+    discount: Rp.99.000,-
+    couponCode: GAJIAN_JAN2023
+    release: false
+    referralCode: 8080BE598C39D7652D33
+    expired: 02/02/2023
+  coming_soon: false
   visible: true
   catalogs:
     - name: Pengenalan Nutanix AHV

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Welcome to the Nutanix HCF (Hybrid Cloud Fundamental)"
+date: 2023-02-05T12:00:40+07:00
 lang: nutanix-ahv
 authors:
 - dimasm93
