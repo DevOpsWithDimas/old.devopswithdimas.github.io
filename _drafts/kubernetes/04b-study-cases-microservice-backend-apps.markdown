@@ -51,6 +51,7 @@ Dalam mendevelop aplikasi, ada beberapa hal yang perlu di persiapakan yaitu Soft
 5. Apache Maven
 6. Text editor seperti InteliJ IDEA, Visual Studio Code dan lain-lain
 7. Rest API client seperti Postman, curl dan lain-lain
+8. Docker
 
 Jadi temen-temen perlu install software development kita tersebut untuk cara installnya sudah pernah saya bahas di kelas [DevOps - Docker untuk Pemula s/d Mahir](https://youtube.dimas-maryanto.com/posts/devops/docker/dockerfile/study-cases/08c-build-springboot). Jika sudah temen bisa check dengan command seperti berikut:
 
@@ -83,3 +84,151 @@ Setelah temen-temen menginstall semua Software Development Kit, kemudian yang ki
 {% highlight bash %}
 git clone git@github.com:DevOpsWithDimas/kubernetes-springboot-microservice-apps.git
 {% endhighlight %}
+
+Setelah di clone kita coba jalankan projectnya, tetapi pertama kita perlu configure dulu databasenya. supaya gak ribet kita akan menggunakan `docker-compose.yaml` seperti berikut:
+
+{% gist page.gist "04b-docker-compose.depedency.yaml" %}
+
+Kemudian coba jalankan dengan perintah berikut:
+
+{% highlight bash %}
+docker compose up -d && \
+docker compose ps
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+```bash
+devops/k8s-springboot-microservice [main●] » docker compose ps
+NAME                                     IMAGE               COMMAND                  SERVICE             CREATED             STATUS              PORTS
+k8s-springboot-microservice-mysql-1      mysql:8.0           "docker-entrypoint.s…"   mysql               47 seconds ago      Up 41 seconds       0.0.0.0:3306->3306/tcp, 33060/tcp
+k8s-springboot-microservice-postgres-1   postgres:15         "docker-entrypoint.s…"   postgres            47 seconds ago      Up 42 seconds       0.0.0.0:5432->5432/tcp
+```
+
+Setelah semua database running, sekarang kita jalankan masing-masing service dengan menggunakan perintah `mvn clean -pl <module-name> spring-boot:run` seperti berikut
+
+{% highlight bash %}
+mvn clean -pl customer spring-boot:run
+{% endhighlight %}
+
+maka outputnya seperti berikut:
+
+```bash
+devops/k8s-springboot-microservice [main●] » mvn clean -pl customer spring-boot:run
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.2)
+
+2023-02-12T12:05:11.295+07:00  INFO 9448 --- [  restartedMain] c.m.d.udemy.customer.MainApplication     : Starting MainApplication using Java 19.0.1 with PID 9448 (/Users/dimasm93/Developer/dimas-maryanto.com/youtube/_projects/devops/k8s-springboot-microservice/customer/target/classes started by dimasm93 in /Users/dimasm93/Developer/dimas-maryanto.com/youtube/_projects/devops/k8s-springboot-microservice/customer)
+2023-02-12T12:05:11.298+07:00  INFO 9448 --- [  restartedMain] c.m.d.udemy.customer.MainApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-02-12T12:05:11.392+07:00  INFO 9448 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+
+2023-02-12T12:05:13.303+07:00  INFO 9448 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-02-12T12:05:13.319+07:00  INFO 9448 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-02-12T12:05:13.319+07:00  INFO 9448 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-02-12T12:05:13.400+07:00  INFO 9448 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-02-12T12:05:13.402+07:00  INFO 9448 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2007 ms
+2023-02-12T12:05:13.612+07:00  INFO 9448 --- [  restartedMain] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.5.1 by Redgate
+2023-02-12T12:05:14.208+07:00  INFO 9448 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-02-12T12:05:14.248+07:00  INFO 9448 --- [  restartedMain] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://localhost:3306/customer4p1 (MySQL 8.0)
+2023-02-12T12:05:14.373+07:00  INFO 9448 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.030s)
+2023-02-12T12:05:14.435+07:00  INFO 9448 --- [  restartedMain] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table `customer4p1`.`flyway_schema_history` ...
+2023-02-12T12:05:14.575+07:00  INFO 9448 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema `customer4p1`: << Empty Schema >>
+2023-02-12T12:05:14.590+07:00  INFO 9448 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema `customer4p1` to version "20230211170102 - schema-customer"
+2023-02-12T12:05:14.694+07:00  INFO 9448 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema `customer4p1`, now at version v20230211170102 (execution time 00:00.131s)
+2023-02-12T12:05:14.806+07:00  INFO 9448 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-02-12T12:05:16.662+07:00  INFO 9448 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-02-12T12:05:16.666+07:00  INFO 9448 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-02-12T12:05:16.686+07:00  WARN 9448 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-02-12T12:05:16.706+07:00  INFO 9448 --- [  restartedMain] c.m.d.udemy.customer.MainApplication     : Started MainApplication in 6.034 seconds (process running for 6.653)
+```
+
+Sekarang kita coba check service custemer bisa meresponse api yang kita request dengan menggunakan perintah curl seperti berikut:
+
+{% highlight bash %}
+curl --location --request GET 'localhost:9090/api/customer/v1/findById/cust01'
+{% endhighlight %}
+
+Maka jika dijalankan outputnya seperti berikut:
+
+```bash
+Last login: Sun Feb 12 11:33:28 on ttys002
+~ » curl --location --request GET 'localhost:9090/api/customer/v1/findById/cust01' -v
+Note: Unnecessary use of -X or --request, GET is already inferred.
+*   Trying 127.0.0.1:9090...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
+> GET /api/customer/v1/findById/cust01 HTTP/1.1
+< HTTP/1.1 200
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Sun, 12 Feb 2023 05:12:26 GMT
+
+{"id":"cust01","userId":"dimasm93","fullname":"Dimas Maryanto","alamat":"Bandung, Jawa Barat"}%
+```
+
+Itu artinya sudah ok, selanjutnya kita coba jalankan service order dengan perintah seperti berikut:
+
+{% highlight bash %}
+mvn clean -pl orders spring-boot:run
+{% endhighlight %}
+
+Maka outputnya seperti berikut:
+
+```bash
+devops/k8s-springboot-microservice [main●] » mvn clean -pl orders spring-boot:run
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.2)
+
+2023-02-12T12:16:07.346+07:00  INFO 11255 --- [  restartedMain] c.m.dimas.udemy.orders.MainApplication   : Starting MainApplication using Java 19.0.1 with PID 11255 (/Users/dimasm93/Developer/dimas-maryanto.com/youtube/_projects/devops/k8s-springboot-microservice/orders/target/classes started by dimasm93 in /Users/dimasm93/Developer/dimas-maryanto.com/youtube/_projects/devops/k8s-springboot-microservice/orders)
+2023-02-12T12:16:07.350+07:00  INFO 11255 --- [  restartedMain] c.m.dimas.udemy.orders.MainApplication   : No active profile set, falling back to 1 default profile: "default"
+2023-02-12T12:16:09.296+07:00  INFO 11255 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2023-02-12T12:16:09.322+07:00  INFO 11255 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-02-12T12:16:09.608+07:00  INFO 11255 --- [  restartedMain] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.5.1 by Redgate
+2023-02-12T12:16:10.187+07:00  INFO 11255 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-02-12T12:16:10.217+07:00  INFO 11255 --- [  restartedMain] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:postgresql://localhost:5432/order4p1 (PostgreSQL 15.2)
+2023-02-12T12:16:10.364+07:00  INFO 11255 --- [  restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.047s)
+2023-02-12T12:16:10.460+07:00  INFO 11255 --- [  restartedMain] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2023-02-12T12:16:10.605+07:00  INFO 11255 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2023-02-12T12:16:10.627+07:00  INFO 11255 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "20230211171555 - create-order"
+2023-02-12T12:16:10.696+07:00  INFO 11255 --- [  restartedMain] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v20230211171555 (execution time 00:00.107s)
+2023-02-12T12:16:12.807+07:00  INFO 11255 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2023-02-12T12:16:12.813+07:00  WARN 11255 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-02-12T12:16:12.866+07:00  INFO 11255 --- [  restartedMain] c.m.dimas.udemy.orders.MainApplication   : Started MainApplication in 6.225 seconds (process running for 6.76)
+```
+
+Sekarang kita coba check service order dengan menggunakan perintah curl berikut:
+
+{% highlight bash %}
+curl --location --request POST 'localhost:9091/api/order/v1/checkout' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "userId": "cust01",
+    "item": "Macbook Pro 13\" (A1723)",
+    "qty": "2"
+}' -v
+
+Note: Unnecessary use of -X or --request, POST is already inferred.
+*   Trying 127.0.0.1:9091...
+* Connected to localhost (127.0.0.1) port 9091 (#0)
+> POST /api/order/v1/checkout HTTP/1.1
+> Content-Type: application/json
+> Content-Length: 82
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200
+< Content-Type: application/json
+< Date: Sun, 12 Feb 2023 05:19:32 GMT
+
+{"id":"1a02d9bd-8413-43f8-b6ac-bf3b7f8f3438","createdDate":"2023-02-12T12:19:31.905439","customer":{"id":"cust01","userId":"dimasm93","fullname":"Dimas Maryanto","alamat":"Bandung, Jawa Barat"},"item":"Macbook Pro 13\" (A1723)","qty":2}%
+{% endhighlight %}
+
+Ok ini artinya sudah okay semua.
