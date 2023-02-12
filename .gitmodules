@@ -7,3 +7,9 @@
 [submodule "_projects/database/postgres-14"]
 	path = _projects/database/postgres-14
 	url = git@repository.dimas-maryanto.com:examples/rdbms/belajar-postgresql-14.git
+[submodule "_projects/devops/k8s-springboot-microservice"]
+	path = _projects/devops/k8s-springboot-microservice
+	url = git@repository.dimas-maryanto.com:examples/k8s/kubernetes-springboot-microservice-apps.git
+[submodule "_projects/devops/k8s-laravel-monolith"]
+	path = _projects/devops/k8s-laravel-monolith
+	url = git@repository.dimas-maryanto.com:examples/k8s/kubernetes-laravel-microservice-apps.git
