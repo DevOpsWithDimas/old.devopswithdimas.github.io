@@ -28,13 +28,14 @@ Hai semuanya, di materi study cases untuk Pod and Container specification kali i
 Okay nah terlihat sedikit berbeda dengan application monolith sebelumnya, disini setiap service akan saling berkomunikasi dengan menggunakan protocol yang lightwith (ringan) seperti Rest API, grpc, messaging bus, database shared dan lain-lain. Pada study kasus kali ini terlihat pada diagram tersebut masih menggunakan physical / virtual-machine deployement kita akan migrasikan menggunakan orchestration container system dengan Kubernetes. Adapun tahap-tahap yang perlu kita lakukan yaitu
 
 1. Develop aplikasi
-2. Containerize apps
-3. Deploy to Kubernetes
+2. How code works (Code Review)
+3. Containerize apps
+4. Deploy to Kubernetes
     1. Running as a Pod with namespace
     2. Specify resource request and limit
     3. Using configmap and secret for connect to backing service
     3. Specify container probes (health check)
-4. Implement API Gateway using nginx reverse proxy
+5. Implement API Gateway using nginx reverse proxy
 
 Ok tanpa berlama-lama yuk langsung aja kita bahas materi yang pertama:
 
@@ -232,3 +233,7 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 {% endhighlight %}
 
 Ok ini artinya sudah okay semua.
+
+## How code works (Code Review)
+
+Setelah kita mencoba menjalankan program tersebut tahap selanjutnya adalah memahami bagaimana aplikasi bisa running dengan cara code review. ini juga menjadi hal yang terpenting dalam proses deliver dari Programmer/Developer ke DevOps Engineer
