@@ -462,3 +462,12 @@ k8s-springboot-microservice-mysql-1      repository.dimas-maryanto.com:8086/mysq
 k8s-springboot-microservice-orderAPI-1   repository.dimas-maryanto.com:8087/dimmaryanto93/example/order-api:latest   "java -Djava.securit…"   orderAPI            About a minute ago   Up 56 seconds       0.0.0.0:9091->9091/tcp
 k8s-springboot-microservice-postgres-1   repository.dimas-maryanto.com:8086/postgres:15                              "docker-entrypoint.s…"   postgres            About a minute ago   Up 58 seconds       0.0.0.0:5432->5432/tcp
 ```
+
+Jika semua service sudah running dengan baik, sekarang coba temen-temen test lagi service tersebut apakah berjalan dengan baik di atas single container? jika sudah ok. Yeeey selamat temen-temen udah melewati level 1.
+
+Berikutnya adalah temen-temen bisa push ke container registry. boleh ke DockerHub atau private registry dengan menggunakan perintah berikut:
+
+{% highlight bash %}
+docker compose push customerAPI && \
+docker compose push orderAPI 
+{% endhighlight %}
