@@ -359,3 +359,106 @@ Berdasarkan diagram tersebut kita akan bagi menjadi 3 namespace yaitu `default`,
 
 ## Containerize apps
 
+Setelah kita men-design architecturenya untuk deploy ke orchestration container system seperti kubernetes. Tahap awal meng-implementasikan semua konsep tersebut adalah melakukan kontainerisasi (container image). Di tahap ini adalah paling dasar sebelum kita deploy diatas kubernetes, jika service/aplikasi tidak bisa dibuild ke container image maka sudah dipastikan tidak akan bisa lanjut ke tahap selanjutnya.
+
+Okay langsung aja kita mulai buat containernya. Tetapi sebelum itu kita lihat lagi bagaimana cara deploy manual seperti section sebelumnya. Apa yang kita perlukan untuk menjalankan service tersebut???
+
+1. Java Development Kit (jdk-17 or later)
+2. Binary execute (jar)
+
+Untuk vendor JDK yang kita gunakan di local environment menggunakan Oracle JDK 19, nah ini sebisa mungkin untuk versi dari SDK harus sama persis dengan yang terdapat di container. Karena Oracle JDK tidak tersedia secara public di docker hub, kita akan menggunakan vendor yang open-source yaitu OpenJDK dengan version yang sama yaitu [openjdk-19](https://hub.docker.com/_/openjdk/tags?page=1&name=19-oracle)
+
+Sedangkan untuk binary execute atau file bundle yang telah dicomple kita bisa peroleh dengan menjalankan perintah:
+
+{% highlight bash %}
+mvn clean -DskipTests package
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+devops/k8s-springboot-microservice [main] » mvn clean -DskipTests package
+[INFO] Reactor Summary for springboot-microservice 0.0.1-SNAPSHOT:
+[INFO] 
+[INFO] springboot-microservice ............................ SUCCESS [  1.777 s]
+
+[INFO] --- jar:3.3.0:jar (default-jar) @ customer-api ---
+[INFO] Building jar: /Users/dimasm93/Developer/dimas-maryanto.com/youtube/_projects/devops/k8s-springboot-microservice/customer/target/customer-api.jar
+[INFO] customer-api ....................................... SUCCESS [  6.182 s]
+
+[INFO] --- jar:3.3.0:jar (default-jar) @ orders-api ---
+[INFO] Building jar: /Users/dimasm93/Developer/dimas-maryanto.com/youtube/_projects/devops/k8s-springboot-microservice/orders/target/orders-api.jar
+[INFO] orders-api ......................................... SUCCESS [  2.735 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+```
+
+Okay setelah semua kebutuhan terpenuhi, tahap selanjutnya kita buat `Dockerfile` seperti berikut:
+
+1. Dockerfile untuk customerAPI, simpan dalam folder `customer/Dockerfile` seperti berikut:
+  {% gist page.gist "04b-dockerfile-customer-api" %}
+
+2. Dockerfile untuk orderAPI, simpan dalam folder `order/Dockerfile` seperti berikut:
+  {% gist page.gist "04b-dockerfile-order-api" %}
+
+3. Dan yang terakhir, tambahkan service `customerAPI` dan `orderAPI` dalam `docker-compose.yaml` seperti berikut:
+  {% gist page.gist "04b-docker-compose-build.yaml" %}
+
+Sekerang coba jalankan perintah berikut: 
+
+{% highlight bash %}
+docker compose build
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+devops/k8s-springboot-microservice [main] » docker compose build customerAPI orderAPI
+[+] Building 5.1s (7/7) FINISHED
+=> [internal] load metadata for docker.io/library/openjdk:19-oraclelinux8                                                                  4.7s
+ => [1/2] FROM docker.io/library/openjdk:19-oraclelinux8@sha256:a5f2327c217367af3729670628c7ad66799cd890bde4e14fad02c2ae59552424           0.0s
+ => [internal] load build context                                                                                                          0.0s
+ => => transferring context: 145B                                                                                                          0.0s
+ => CACHED [2/2] ADD target/orders-api.jar spring-boot.jar                                                                                 0.0s
+ => exporting to image                                                                                                                     0.1s
+ => => naming to repository.dimas-maryanto.com:8087/dimmaryanto93/example/order-api:latest
+
+=> [internal] load metadata for docker.io/library/openjdk:19-oraclelinux8                                                                  4.7s
+ => [1/2] FROM docker.io/library/openjdk:19-oraclelinux8@sha256:a5f2327c217367af3729670628c7ad66799cd890bde4e14fad02c2ae59552424           0.0s
+ => [internal] load build context                                                                                                          0.0s
+ => => transferring context: 145B  
+=> CACHED [2/2] ADD target/customer-api.jar spring-boot.jar                                                                                0.0s
+ => exporting to image                                                                                                                     1.8s
+ => => naming to repository.dimas-maryanto.com:8087/dimmaryanto93/example/customer-api:latest
+
+devops/k8s-springboot-microservice [main] » docker images
+REPOSITORY                                                              TAG           IMAGE ID       CREATED          SIZE
+repository.dimas-maryanto.com:8087/dimmaryanto93/example/order-api      latest        f27ba96797db   17 minutes ago   522MB
+repository.dimas-maryanto.com:8087/dimmaryanto93/example/customer-api   latest        9d589fe904f0   26 minutes ago   523MB
+```
+
+Setelah container image di build, sekarang coba jalankan dengan perintah berikut:
+
+{% highlight bash %}
+docker compose up -d
+{% endhighlight %}
+
+Maka seperti berikut outputnya:
+
+```bash
+devops/k8s-springboot-microservice [main] » docker compose up -d
+[+] Running 7/7
+ ⠿ Network k8s-springboot-microservice_default          Created        0.2s
+ ⠿ Volume "k8s-springboot-microservice_pg_data"         Created        0.0s
+ ⠿ Volume "k8s-springboot-microservice_mysql_data"      Created        0.0s
+ ⠿ Container k8s-springboot-microservice-mysql-1        Started        3.2s
+ ⠿ Container k8s-springboot-microservice-postgres-1     Started        3.0s
+ ⠿ Container k8s-springboot-microservice-customerAPI-1  Started        4.9s
+ ⠿ Container k8s-springboot-microservice-orderAPI-1     Started        4.9s
+
+devops/k8s-springboot-microservice [main] » docker compose ps
+NAME                                     IMAGE                                                                       COMMAND                  SERVICE             CREATED              STATUS              PORTS
+k8s-springboot-microservice-mysql-1      repository.dimas-maryanto.com:8086/mysql:8.0                                "docker-entrypoint.s…"   mysql               About a minute ago   Up 58 seconds       0.0.0.0:3306->3306/tcp, 33060/tcp
+k8s-springboot-microservice-orderAPI-1   repository.dimas-maryanto.com:8087/dimmaryanto93/example/order-api:latest   "java -Djava.securit…"   orderAPI            About a minute ago   Up 56 seconds       0.0.0.0:9091->9091/tcp
+k8s-springboot-microservice-postgres-1   repository.dimas-maryanto.com:8086/postgres:15                              "docker-entrypoint.s…"   postgres            About a minute ago   Up 58 seconds       0.0.0.0:5432->5432/tcp
+```
