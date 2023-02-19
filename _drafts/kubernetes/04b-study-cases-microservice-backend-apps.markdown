@@ -236,4 +236,104 @@ Ok ini artinya sudah okay semua.
 
 ## How code works (Code Review)
 
-Setelah kita mencoba menjalankan program tersebut tahap selanjutnya adalah memahami bagaimana aplikasi bisa running dengan cara code review. ini juga menjadi hal yang terpenting dalam proses deliver dari Programmer/Developer ke DevOps Engineer
+Setelah kita mencoba menjalankan program tersebut tahap selanjutnya adalah memahami bagaimana aplikasi bisa running dengan cara code review. Hal ini juga menjadi yang terpenting ketika proses deliver dari Programmer/Developer ke DevOps Engineer untuk di deploy ke environment.
+
+Sebagai seorang DevOps kita harus mengetahui dan mengerti setiap service dari microservice yang telah di deliver oleh programmer untuk di implementasikan, Dengan cara melakukan assesment, diskusi, atau technical meeting dengan team Developer/Programmer. Salah satu prosedure yang biasanya saya lakukan adalah 
+
+1. Developer/Programmer menjelaskan overview architecture service
+2. Developer/Programmer menjelaskan service communication
+3. Developer/Programmer menjelaskan how to configure communication between service
+4. DevOps menyimpulkan & Memberikan saran terkait perancangan architecture baru
+5. DevOps mengimplementasikan perancangan architecture tersebut ke environment
+6. Developer/Programmer dan DevOps melakukan Testing functional secara berdampingan
+7. DevOps melakukan Performance/Stress testing
+
+Okay kita tidak akan membahas semuanya ya, karena keterbatasan waktu. Jadi kita bahas beberapa yang dirasa penting seperti point no `1`, `2`, `3`, dan `4`. Pada point no 1, kita sudah bahas dibahas section awal jadi kita skip. Selanjutnya kita bahas point no 2 yaitu Service Communication.
+
+Service communication ini pada dasarnya menjelaskan setiap service memiliki dependency ke mana saja dan seperti apa komunikasinya. Pada dasarnya service communication ada beberapa cara yaitu menggunakan Shared Database, Rest API, RPC (khususnya grpc), dan Messaging bus. Untuk service `customer` dan `orders` ini basicly kita menggunakan Rest API, Okay untuk lebih jelas kita lihat diagram berikut:
+
+1. Customer API - find by id
+  ![customer-findbyid]({{ page.image_path | prepend: site.baseurl }}/01-flow-customer-findbyid.png)
+
+2. Orders API - create new order
+  ![create-new-order]({{ page.image_path | prepend: site.baseurl }}/02-flow-create-new-orders.png)
+
+Jadi klo kita perhatikan diagram no 1, flownya sangat simple hanya menggunakan database tetapi untuk no 2 selain database perlu call service customerAPI melalui Rest API. Yang jadi pertanyaan selanjutnya bagaimana konfigurasi koneksinya? Okay sekarang kita coba bedah kodingnya / code review.
+
+Kalo kita lihat di project `orders` seperti berikut:
+
+{% highlight java %}
+// orders/src/main/java/com/maryanto/dimas/udemy/orders/controller/OrderController.java
+package com.maryanto.dimas.udemy.orders.controller;
+
+@Slf4j
+@RestController
+@RequestMapping("/api/order/v1")
+public class OrderController {
+
+  @PostMapping("/checkout")
+    public ResponseEntity<?> placeOrder(@RequestBody RequestOrderDTO order) {
+        ResponseEntity<CustomerDTO> responseCustomer = this.serviceCustomer.findById(order.getUserId());
+        if (responseCustomer.getStatusCode() != HttpStatus.OK) {
+            return ResponseEntity.badRequest().body("Customer not found!");
+        }
+
+        CustomerDTO customer = responseCustomer.getBody();
+        Order purchaseOrder = new Order();
+        // set value here!
+        try {
+          purchaseOrder = this.repo.save(purchaseOrder);
+          OrderDTO output = new OrderDTO();
+          // set value here!
+          return ResponseEntity.ok(output);
+        } catch (Exception ex) {
+            log.error("Can't proses checkout", ex);
+            return ResponseEntity.internalServerError()
+              .body("Transaction can't be processed!!! \nPlease report to adminstrator");
+        }
+    }
+}
+
+// orders/src/main/java/com/maryanto/dimas/udemy/orders/service/CustomerService.java
+package com.maryanto.dimas.udemy.orders.service;
+
+@Service
+public class CustomerService {
+  @Autowired
+  public CustomerService(
+          RestTemplate rest,
+          @Value("${services.customer.host}") String host,
+          @Value("${services.customer.port}") String port,
+          @Value("${services.customer.proto}") String proto,
+          @Value("${services.customer.context-path}") String contextPath) {
+      this.customerHost = host;
+      this.customerPort = port;
+      this.customerProto = proto;
+      this.customerContextPath = contextPath;
+      this.rest = rest;
+  }
+
+  public ResponseEntity<CustomerDTO> findById(String id) {
+      String baseUrl = String.format(
+              "%s://%s:%s%s/api/customer/v1/findById/",
+              this.customerProto, this.customerHost, this.customerPort, this.customerContextPath);
+      return this.rest.getForEntity(baseUrl + "{userId}", CustomerDTO.class, id);
+  }
+}
+{% endhighlight %}
+
+Dan selain itu juga, berikut adalah file `application.yaml` untuk menyimpan semua environment variable yang dipanggil pada source code tersebut:
+
+{% highlight yaml %}
+# orders/src/main/resources/application.yaml
+services:
+  customer:
+    host: ${SERVICE_CUSTOMER_HOST:localhost}
+    port: ${SERVICE_CUSTOMER_PORT:9090}
+    context-path: ${SERVICE_CUSTOMER_CONTEXT_PATH:}
+    proto: ${SERVICE_CUSTOMER_PROTO:http}
+{% endhighlight %}
+
+Okay sekarang perhatikan penggalan code diatas, jadi cara kita mengconfigurasi koneksi ke service `customerAPI` yaitu menggunakan envionment variable yang tertera pada `application.yaml` seperti `SERVICE_CUSTOMER_HOST`, `SERVICE_CUSTOMER_PORT`, `SERVICE_CUSTOMER_CONTEXT_PATH`, `SERVICE_CUSTOMER_PROTO` So kita bisa pasang/override nilainya pada saat dijalankan diatas container.
+
+Nah setelah kita breakdown cara kerja atau code review, semoga temen-temen bisa memahami dan mulai merumuskan architecture yang bisa menunjang workload tersebut.
