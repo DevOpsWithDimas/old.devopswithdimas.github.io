@@ -29,13 +29,14 @@ Okay nah terlihat sedikit berbeda dengan application monolith sebelumnya, disini
 
 1. Develop aplikasi
 2. How code works (Code Review)
-3. Containerize apps
-4. Deploy to Kubernetes
+3. The new architecture for orchestration container system
+4. Containerize apps
+5. Deploy to Kubernetes
     1. Running as a Pod with namespace
     2. Specify resource request and limit
     3. Using configmap and secret for connect to backing service
     3. Specify container probes (health check)
-5. Implement API Gateway using nginx reverse proxy
+6. Implement API Gateway using nginx reverse proxy
 
 Ok tanpa berlama-lama yuk langsung aja kita bahas materi yang pertama:
 
@@ -337,3 +338,24 @@ services:
 Okay sekarang perhatikan penggalan code diatas, jadi cara kita mengconfigurasi koneksi ke service `customerAPI` yaitu menggunakan envionment variable yang tertera pada `application.yaml` seperti `SERVICE_CUSTOMER_HOST`, `SERVICE_CUSTOMER_PORT`, `SERVICE_CUSTOMER_CONTEXT_PATH`, `SERVICE_CUSTOMER_PROTO` So kita bisa pasang/override nilainya pada saat dijalankan diatas container.
 
 Nah setelah kita breakdown cara kerja atau code review, semoga temen-temen bisa memahami dan mulai merumuskan architecture yang bisa menunjang workload tersebut.
+
+## The new architecture
+
+Setelah kita melihat, diskusi, technical meeting, serta code review tahap selanjutnya adalah merumuskan architecture yang sesuai dengan workload dari service tersebut. 
+
+Karena aplikasi yang dibuat merupakan microservice architecture yang memiliki backing service (dependency) seperti database, atau bahkan service lainnya Maka kita perlu buat scope dan boundaries dari services tersebut. Adapun scope dan boundaries tersebut dibagi menjadi Primary dan Secondary backing service
+
+> **Primary backing service** yaitu Aplikasi yang tidak akan bisa startup ketika di running dalam suatu environment jika tanpa/menggunakan service tersebut (Mandatory), sedangkan **Secondary backing service** yaitu Aplikasi masih bisa berjalan tetapi secara functional belum lengkap.
+
+Karena tujuan kita adalah deploy ke orchestration container system menggunakan kubernetes jadi, langsung aja disini saya gambarkan menggunakan pendekatan kubernetes object resource seperti berikut:
+
+![architecture-k8s-objects]({{ page.image_path | prepend: site.baseurl }}/03-architecture-k8s-object.png)
+
+Berdasarkan diagram tersebut kita akan bagi menjadi 3 namespace yaitu `default`, `orders` dan `customer`. Dalam masing-masing namespace memiliki service yang kita pisahkan berdasarkan scopenya yaitu
+
+1. Namespace `default`, terdiri dari pod dengan workload: `nginx` berfungsi untuk routing (API Gateway) ke service-service seperti `order` dan `customer`
+2. Namespace `customer`, terdiri dari pod dengan workload: `customerAPI` dan `MySQL` sebagai primary backing service
+3. Namespace `order`, terdiri dari pod dengan workload: `orderAPI` dan `PostgreSQL` sebagai primary backing service.
+
+## Containerize apps
+
