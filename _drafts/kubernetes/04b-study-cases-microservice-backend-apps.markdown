@@ -33,9 +33,9 @@ Okay nah terlihat sedikit berbeda dengan application monolith sebelumnya, disini
 4. Containerize apps
 5. Deploy to Kubernetes
     1. Running as a Pod with namespace
-    2. Specify resource request and limit
-    3. Using configmap and secret for connect to backing service
-    3. Specify container probes (health check)
+    2. Connecting other service from the another namespace
+    3. Specify resource request and limit
+    4. Specify container probes (health check)
 6. Implement API Gateway using nginx reverse proxy
 
 Ok tanpa berlama-lama yuk langsung aja kita bahas materi yang pertama:
@@ -471,3 +471,5 @@ Berikutnya adalah temen-temen bisa push ke container registry. boleh ke DockerHu
 docker compose push customerAPI && \
 docker compose push orderAPI 
 {% endhighlight %}
+
+## Deploy to kubernetes cluster
