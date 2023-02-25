@@ -683,22 +683,26 @@ Enter password:
 | flyway_schema_history  |
 +------------------------+
 
-~ » kubectl exec customer-api -n customer-module -- curl localhost:9090 -v
-* Rebuilt URL to: localhost:9090/
+~ » kubectl exec customer-api -n customer-module -- curl --location --request GET 'localhost:9090/api/customer/v1/findById/cust01' -v
+Note: Unnecessary use of -X or --request, GET is already inferred.
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying ::1...
 * TCP_NODELAY set
 * Connected to localhost (::1) port 9090 (#0)
-> GET / HTTP/1.1
+> GET /api/customer/v1/findById/cust01 HTTP/1.1
 > Host: localhost:9090
 > User-Agent: curl/7.61.1
 > Accept: */*
 >
-< HTTP/1.1 404
-100    89    0    89    0     0   4684      0 --:--:-- --:--:-- --:--:--  4944
-* Connection #0 to host localhost left intact
-{"timestamp":"2023-02-25T06:50:29.274+00:00","status":404,"error":"Not Found","path":"/"}%
+  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0< HTTP/1.1 200
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Sat, 25 Feb 2023 07:14:25 GMT
+<
+{ [100 bytes data]
+100    94    0    94    0     0     30      0 --:--:--  
+{"id":"cust01","userId":"dimasm93","fullname":"Dimas Maryanto","alamat":"Bandung, Jawa Barat"}
 ```
 
 Selanjutnya kita deploy untuk namespace `orders` seperti berikut:
