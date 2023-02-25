@@ -473,3 +473,135 @@ docker compose push orderAPI
 {% endhighlight %}
 
 ## Deploy to kubernetes cluster
+
+Setelah container image di-build dan publish ke container registry, tahap selanjutnya adalah deploy ke kubernetes cluster. Tetapi sebelum itu siapkan dulu kubernetes cluster untuk workload tersebut. Settingan cluster untuk microservice ini agak berbeda dengan sebelumnya yaitu seperti berikut:
+
+```yaml
+nodes: 
+  controlplane: 
+    cpus: '2 cores'
+    memory: '2 GB'
+  worker-1:
+    cpus: '2 cores'
+    memory: '4 GB'
+  worker-2:
+    cpus: '2 cores'
+    memory: '4 GB'
+```
+
+Jadi kita akan buat menggunakan perintah berikut:
+
+{% highlight bash %}
+minikube start -p springboot-microservice \
+--cpus 2 \
+--memory 4G \
+--insecure-registry 192.168.88.50:8086 \
+--nodes 3
+
+minikube profile springboot-microservice
+
+minikube addons enable registry-creds && \
+minikube addons configure registry-creds
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+~ » minikube start -p springboot-microservice \
+--cpus 2 \
+--memory 4G \
+--insecure-registry 192.168.88.50:8086 \
+--nodes 3
+😄  [springboot-microservice] minikube v1.29.0 on Darwin 13.2.1
+✨  Using the hyperkit driver based on user configuration
+👍  Starting control plane node springboot-microservice in cluster springboot-microservice
+🔥  Creating hyperkit VM (CPUs=2, Memory=4096MB, Disk=20000MB) ...
+📦  Preparing Kubernetes v1.26.1 on containerd 1.6.15 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔗  Configuring CNI (Container Networking Interface) ...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🔎  Verifying Kubernetes components...
+🌟  Enabled addons: default-storageclass, storage-provisioner
+
+👍  Starting worker node springboot-microservice-m02 in cluster springboot-microservice
+🔥  Creating hyperkit VM (CPUs=2, Memory=4096MB, Disk=20000MB) ...
+
+👍  Starting worker node springboot-microservice-m03 in cluster springboot-microservice
+🔥  Creating hyperkit VM (CPUs=2, Memory=4096MB, Disk=20000MB) ...
+
+🔎  Verifying Kubernetes components...
+🏄  Done! kubectl is now configured to use "springboot-microservice" cluster and "default" namespace by default
+
+~ » minikube profile springboot-microservice
+✅  minikube profile was successfully set to springboot-microservice
+
+~ » minikube addons enable registry-creds
+❗  registry-creds is a 3rd party addon and is not maintained or verified by minikube maintainers, enable at your own risk.
+❗  registry-creds does not currently have an associated maintainer.
+    ▪ Using image docker.io/upmcenterprises/registry-creds:1.10
+🌟  The 'registry-creds' addon is enabled
+
+~ » minikube addons configure registry-creds
+Do you want to enable AWS Elastic Container Registry? [y/n]: n
+
+Do you want to enable Google Container Registry? [y/n]: n
+
+Do you want to enable Docker Registry? [y/n]: y
+-- Enter docker registry server url: 192.168.88.50:8086
+-- Enter docker registry username: admin
+-- Enter docker registry password:
+
+Do you want to enable Azure Container Registry? [y/n]: n
+✅  registry-creds was successfully configured
+
+~ » kubectl get node
+NAME                          STATUS   ROLES           AGE     VERSION
+springboot-microservice       Ready    control-plane   4m52s   v1.26.1
+springboot-microservice-m02   Ready    <none>          3m4s    v1.26.1
+springboot-microservice-m03   Ready    <none>          86s     v1.26.1
+```
+
+Setelah cluster kubernetes ready, kita coba membuat simple 2 pod yang simple menggunakan `nginx` dan `httpd` setelah itu kita coba test cni antara ke dua pod tersebut dengan perintah seperti berikut:
+
+{% highlight bash %}
+kubectl run web1 --image 192.168.88.50:8086/nginx:mainline --port 80 && \
+kubectl expose pod/web1 --port 80 --type ClusterIP
+
+kubectl run web2 --image 192.168.88.50:8086/httpd:latest --port 80 && \
+kubectl expose pod/web2 --port 80 --type ClusterIP
+
+kubectl exec web1 -- curl http://web2
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```bash
+~ » kubectl run web1 --image 192.168.88.50:8086/nginx:mainline --port 80 && \
+kubectl expose pod/web1 --port 80 --type ClusterIP
+pod/web1 created
+service/web1 exposed
+
+~ » kubectl get pod
+NAME   READY   STATUS              RESTARTS   AGE
+web1   1/1     Running             0          56s
+
+~ » kubectl run web2 --image 192.168.88.50:8086/httpd:latest --port 80 && \
+kubectl expose pod/web2 --port 80 --type ClusterIP
+pod/web2 created
+service/web2 exposed
+
+~ » kubectl get pod
+NAME   READY   STATUS              RESTARTS   AGE
+web1   1/1     Running             0          71s
+web2   1/1     Running             0          30s
+
+~ » kubectl exec web1 -- curl http://web2
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    45  100    45    0     0    918      0 --:--:-- --:--:<html><body><h1>It works!</h1></body></html>
+-- --:--:--   918
+```
+
+Jika temen-temen perhatikan pada saat membuat cluster, mengapa cluster ini menggunakan memory yang lebih besar yaitu `4G` di setiap nodenya, Jadi menentukan resource tidak hanya di sisi Pod dan Containernya saja tetapi juga pada cluster nodenya juga kita harus sesuaikan.
