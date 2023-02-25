@@ -13,6 +13,7 @@ refs:
 - https://kubernetes.io/docs/home/
 - https://hub.docker.com/_/openjdk
 - https://spring.io/projects/spring-boot
+- https://www.urosht.dev/blog/kubernetes-probes-with-spring-boot/
 youtube: 
 comments: true
 catalog_key: pod-container
@@ -34,8 +35,8 @@ Okay nah terlihat sedikit berbeda dengan application monolith sebelumnya, disini
 5. Deploy to Kubernetes
     1. Running as a Pod with namespace
     2. Connecting other service from the another namespace
-    3. Specify resource request and limit
-    4. Specify container probes (health check)
+    3. Specify container probes (health check)
+    4. Specify resource request and limit
 6. Implement API Gateway using nginx reverse proxy
 
 Ok tanpa berlama-lama yuk langsung aja kita bahas materi yang pertama:
@@ -502,6 +503,8 @@ minikube profile springboot-microservice
 
 minikube addons enable registry-creds && \
 minikube addons configure registry-creds
+
+minikube addons enable metrics-server
 {% endhighlight %}
 
 Jika dijalankan hasilnya seperti berikut:
@@ -561,6 +564,12 @@ NAME                          STATUS   ROLES           AGE     VERSION
 springboot-microservice       Ready    control-plane   4m52s   v1.26.1
 springboot-microservice-m02   Ready    <none>          3m4s    v1.26.1
 springboot-microservice-m03   Ready    <none>          86s     v1.26.1
+
+~ » minikube addons enable metrics-server
+💡  metrics-server is an addon maintained by Kubernetes. For any concerns contact minikube on GitHub.
+You can view the list of minikube maintainers at: https://github.com/kubernetes/minikube/blob/master/OWNERS
+    ▪ Using image registry.k8s.io/metrics-server/metrics-server:v0.6.2
+🌟  The 'metrics-server' addon is enabled
 ```
 
 Setelah cluster kubernetes ready, kita coba membuat simple 2 pod yang simple menggunakan `nginx` dan `httpd` setelah itu kita coba test cni antara ke dua pod tersebut dengan perintah seperti berikut:
@@ -914,3 +923,161 @@ postgresql   1/1     Running   0          166m
 ```
 
 Okay sampai sini kita sudah berhasil membuat microservice berjalan dengan baik di kubernetes, selanjutnya adalah kita buat feature kubernetes lebih advance lagi.
+
+## Specify container probes
+
+Okay, sebelumnya kita khan sudah deploy container springboot untuk service `customer-api` dan `orders-api` ke Kubernetes cluster, hanya masih belum optimal contohnya startup service masih lama, kemudian jika database connection mati belum ada feature auto recover. Nah jadi untuk menambahkan feature tersebut ada yang perlu kita tambahkan pada framework springboot tersebut yaitu menggunakan lib `spring-boot-starter-actuator` yang kita tambahkan ke file `pom.xml` seperti berikut:
+
+{% highlight xml %}
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+<!-- project settings -->
+
+<dependencies>
+  <!-- other dependency -->
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+  </dependency>
+</dependencies>
+
+</project>
+{% endhighlight %}
+
+Dan edit/tambahkan property `management.health` pada file `src/main/resources/application.yaml` seperti berikut:
+
+{% highlight yaml %}
+## other properties
+management:
+  endpoint:
+    health:
+      enabled: true
+      probes:
+        enabled: true
+      group:
+        readiness.include: db
+      show-components: always
+    metrics:
+      enabled: true
+    startup:
+      enabled: true
+{% endhighlight %}
+
+Jika sudah coba jalankan dengan menggunakan perintah berikut
+
+{% highlight bash %}
+mvn clean -pl customer spring-boot:run
+{% endhighlight %}
+
+Jika sudah coba akses endpoint [localhost:9090/actuator/health](http://localhost:9090/actuator/health) hasilnya seperti berikut:
+
+```bash
+~ » curl localhost:9090/actuator/health
+{"status":"UP","components":{"db":{"status":"UP"},"diskSpace":{"status":"UP"},"livenessState":{"status":"UP"},"ping":{"status":"UP"},"readinessState":{"status":"UP"}},"groups":["liveness","readiness"]}%
+```
+
+Jika sudah seperti itu outputnya, lakukan hal yang sama dengan service `orders-api` dan kemudian coba re-build container image kemudian push menggunakan perintah berikut:
+
+{% highlight bash %}
+docker compose build && \
+docker compose push
+{% endhighlight %}
+
+Setelah kita push container image dari kedua service tersebut, sekarang kita bisa tambahkan feature container probe di kubernetes resource object pod seperti berikut:
+
+{% gist page.gist "04b-pod-container-probe.yaml" %}
+
+Sekarang coba jalankan dengan perintah berikut:
+
+{% highlight bash %}
+kubectl delete pod customer-api -n customer-module && \
+kubectl delete pod orders-api -n orders-module
+
+kubectl apply -f kubernetes/pod-container-probes.yaml
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+```bash
+~ » kubectl delete -f kubernetes/pod-container-probes.yaml
+pod "orders-api" deleted
+pod "customer-api" deleted
+
+~ » kubectl apply -f kubernetes/pod-container-probes.yaml
+pod/orders-api created
+pod/customer-api created
+
+~ » kubectl get pod -A
+NAMESPACE         NAME             READY   STATUS              RESTARTS   AGE
+customer-module   customer-api     0/1     ContainerCreating   0          6s
+customer-module   mysql            1/1     Running             0          9m29s
+orders-module     orders-api       0/1     Running             0          6s
+orders-module     postgresql       1/1     Running             0          9m12s
+
+~ » kubectl describe pod customer-api -n customer-module
+Name:             customer-api
+Namespace:        customer-module
+Priority:         0
+Service Account:  default
+Node:             springboot-microservice-m03/192.168.64.25
+Start Time:       Sat, 25 Feb 2023 23:53:15 +0700
+Labels:           app=customer-api
+                  project=customer
+                  tier=backend
+Status:           Running
+IP:               10.244.2.9
+IPs:
+  IP:  10.244.2.9
+
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  20s   default-scheduler  Successfully assigned customer-module/customer-api to springboot-microservice-m03
+  Normal  Pulled     18s   kubelet            Container image "192.168.88.50:8086/dimmaryanto93/example/customer-api:v2" already present on machine
+  Normal  Created    17s   kubelet            Created container customer-api
+  Normal  Started    17s   kubelet            Started container customer-api
+
+~ » kubectl get pod -n customer-module
+NAME           READY   STATUS    RESTARTS   AGE
+customer-api   1/1     Running   0          57s
+mysql          1/1     Running   0          19m
+
+~ » kubectl get pod -n orders-module
+NAME         READY   STATUS    RESTARTS   AGE
+orders-api   0/1     Running   0          14s
+postgresql   1/1     Running   0          20m
+
+~ » kubectl describe pod orders-api -n orders-module
+Name:             orders-api
+Namespace:        orders-module
+Priority:         0
+Service Account:  default
+Node:             springboot-microservice-m03/192.168.64.25
+Start Time:       Sun, 26 Feb 2023 00:03:58 +0700
+Labels:           app=orders-api
+                  project=orders-api
+                  tier=backend
+Annotations:      <none>
+Status:           Running
+IP:               10.244.2.14
+IPs:
+  IP:  10.244.2.14
+
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  26s   default-scheduler  Successfully assigned orders-module/orders-api to springboot-microservice-m03
+  Normal  Pulled     25s   kubelet            Container image "192.168.88.50:8086/dimmaryanto93/example/order-api:v2" already present on machine
+  Normal  Created    25s   kubelet            Created container orders-api
+  Normal  Started    25s   kubelet            Started container orders-api
+
+~ » kubectl get pod -n orders-module
+NAME         READY   STATUS    RESTARTS   AGE
+orders-api   1/1     Running   0          70s
+postgresql   1/1     Running   0          20m
+```
+
+## Specify resource request and limit
