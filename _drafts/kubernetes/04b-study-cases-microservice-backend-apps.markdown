@@ -10,8 +10,8 @@ categories:
 - Kubernetes
 - Pods
 refs: 
-- https://docs.docker.com/
 - https://kubernetes.io/docs/home/
+- https://hub.docker.com/_/openjdk
 - https://spring.io/projects/spring-boot
 youtube: 
 comments: true
@@ -25,7 +25,7 @@ Hai semuanya, di materi study cases untuk Pod and Container specification kali i
 
 ![architecture-deploy]({{ page.image_path | prepend: site.baseurl }}/microservice-architecture.png)
 
-Okay nah terlihat sedikit berbeda dengan application monolith sebelumnya, disini setiap service akan saling berkomunikasi dengan menggunakan protocol yang lightwith (ringan) seperti Rest API, grpc, messaging bus, database shared dan lain-lain. Pada study kasus kali ini terlihat pada diagram tersebut masih menggunakan physical / virtual-machine deployement kita akan migrasikan menggunakan orchestration container system dengan Kubernetes. Adapun tahap-tahap yang perlu kita lakukan yaitu
+Okay nah terlihat sedikit berbeda dengan application monolith sebelumnya, disini setiap service akan saling berkomunikasi dengan menggunakan protocol yang lightweight (ringan) seperti Rest API, grpc, messaging bus, database shared dan lain-lain. Pada study kasus kali ini terlihat pada diagram tersebut masih menggunakan physical / virtual-machine deployement kita akan migrasikan menggunakan orchestration container system dengan Kubernetes. Adapun tahap-tahap yang perlu kita lakukan yaitu
 
 1. Develop aplikasi
 2. How code works (Code Review)
@@ -779,3 +779,138 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 ```
 
 ## Connecting other service from the another namespace
+
+Setelah kita deploy ke kubernetes cluster, jika temen-temen perhatikan kembali output yang dihasilkan dari service `orders-api` kita melakukan request ke endpoint `/api/order/v1/checkout` hasilnya `HTTP/Status 500, Internal Server Error` klo kita lihat dari log errornya pada service tersebut seperti berikut:
+
+```bash
+~ » kubectl logs orders-api -n orders-module
+ith path [] threw exception [Request processing failed: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:9090/api/customer/v1/findById/cust01": Connection refused] with root cause
+
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:535) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:585) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:666) ~[na:na]
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:178) ~[na:na]
+```
+
+Nah jika temen-temen perhatikan pada log tersebut, terlihat ada error gak bisa connect ke `localhost:9090/api/xxx/xxx` dari `orders-api`, Sedangkan kita mau ngambil data dari service `customer-api`. Lantas gimana caranya?
+
+Kita sebelumnya udah membuat service untuk masing-masing pod seperti berikut:
+
+```bash
+~ » kubectl get service -n orders-module
+NAME         TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+orders-api   NodePort   10.109.82.183   <none>        9091:31963/TCP   144m
+postgresql   NodePort   10.100.81.138   <none>        5432:32759/TCP   144m
+
+~ » kubectl get service -n customer-module
+NAME           TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+customer-api   NodePort   10.99.232.190   <none>        9090:31920/TCP   122m
+mysql          NodePort   10.96.9.233     <none>        3306:32554/TCP   172m
+```
+
+Nah jadi kalau dari kasus sebelumnya kita mau koneksi ke database maka kita bisa menggunakan hostname dari nama service tersebut misalnya `jdbc:postgresql://postgresql:5432/xxxx` nah serupa dengan hal tersebut dengan mengkases service `customer-api` dari `orders-api` tapi bagaimana dengan berbeda namespase.
+
+Kita bisa menggunakan Kubernetes DNS queries untuk memangil service lain yang terletak pada namespace lain, seperti berikut:
+
+```conf
+# /etc/resolv.conf
+search <namespace>.svc.cluster.local <service>.<namespace>.cluster.local
+```
+
+Kita coba panggil service `customer-api` dari pod `order-api` dengan simple `curl` seperti berikut:
+
+{% highlight bash %}
+kubectl exec orders-api -n orders-module -- curl --location --request GET 'http://customer-api.customer-module:9090/api/customer/v1/findById/cust01' -v
+{% endhighlight %}
+
+Coba klo kita jalankan outputnya seperti berikut:
+
+```bash
+~ » kubectl exec orders-api -n orders-module -- curl --location --request GET 'http://customer-api.customer-module:9090/api/customer/v1/findById/cust01' -v
+Note: Unnecessary use of -X or --request, GET is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 10.99.232.190...
+* TCP_NODELAY set
+* Connected to customer-api.customer-module (10.99.232.190) port 9090 (#0)
+> GET /api/customer/v1/findById/cust01 HTTP/1.1
+> Host: customer-api.customer-module:9090
+> User-Agent: curl/7.61.1
+> Accept: */*
+>
+< HTTP/1.1 200
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+100    94    0    94    0     0    209      0 --:--:-- --:--:-- --:--:--   209
+* Connection #0 to host customer-api.customer-module left intact
+{"id":"cust01","userId":"dimasm93","fullname":"Dimas Maryanto","alamat":"Bandung, Jawa Barat"}
+```
+
+Nah sekarang sudah okay bisa mendapatkan response, kita coba update specifikasi podnya dengan menambahkan variable `SERVICE_CUSTOMER_HOST`, `SERVICE_CUSTOMER_PORT`, `SERVICE_CUSTOMER_PROTO` dengan membuat configmap dan tambahkan ke spec pod `orders-api` seperti berikut:
+
+{% gist page.gist "04b-cm-orders-api-integrasi.yaml" %}
+
+Sekarang kita coba jalankan dengan perintah berikut:
+
+{% highlight bash %}
+kubectl delete pod/orders-api -n orders-module
+kubectl apply -f kubernetes/ns-orders-api.yaml
+{% endhighlight %}
+
+Jika dijalankan outputnya seperti berikut:
+
+```bash
+~ » kubectl delete pod/orders-api -n orders-module
+pod "orders-api" deleted
+
+~ » kubectl apply -f kubernetes/ns-orders-api.yaml
+configmap/orders-api created
+pod/orders-api created
+
+~ » kubectl get pod -n orders-module
+NAME         READY   STATUS    RESTARTS   AGE
+orders-api   1/1     Running   0          40s
+postgresql   1/1     Running   0          166m
+
+~ » kubectl logs orders-api -n orders-module
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.2)
+
+2023-02-25T09:51:19.825Z  INFO 1 --- [           main] c.m.dimas.udemy.orders.MainApplication   : Started MainApplication in 42.845 seconds (process running for 46.726)
+
+~ » kubectl exec orders-api -n orders-module -- curl --location --request POST 'localhost:9091/api/order/v1/checkout' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "userId": "cust01",
+    "item": "Macbook Pro 13\" (A1723)",
+    "qty": "2"
+}' -v
+
+* TCP_NODELAY set
+* Connected to localhost (::1) port 9091 (#0)
+> POST /api/order/v1/checkout HTTP/1.1
+> Host: localhost:9091
+> User-Agent: curl/7.61.1
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 82
+>
+} [82 bytes data]
+* upload completely sent off: 82 out of 82 bytes
+100    82    0     0  100    82      0     19  0:00:04  0:00:04 --:--:--    19
+
+{"id":"bb9f7d1e-92ef-4307-b412-ce112fbc01f6","createdDate":"2023-02-25T09:52:58.443768159","customer":{"id":"cust01","userId":"dimasm93","fullname":"Dimas Maryanto","alamat":"Bandung, Jawa Barat"},"item":"Macbook Pro 13\" (A1723)","qty":2}
+
+< HTTP/1.1 200
+```
+
+Okay sampai sini kita sudah berhasil membuat microservice berjalan dengan baik di kubernetes, selanjutnya adalah kita buat feature kubernetes lebih advance lagi.
