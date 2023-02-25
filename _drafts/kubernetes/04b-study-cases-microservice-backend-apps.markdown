@@ -754,20 +754,28 @@ postgresql   1/1     Running   0          15s
 2023-02-25T07:05:24.876Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
 2023-02-25T07:05:25.288Z  INFO 1 --- [           main] c.m.dimas.udemy.orders.MainApplication   : Started MainApplication in 25.583 seconds (process running for 28.329)
 
-~ » kubectl exec orders-api -n orders-module -- curl localhost:9091 -v
-* Rebuilt URL to: localhost:9091/
+~ » kubectl exec orders-api -n orders-module -- curl --location --request POST 'localhost:9091/api/order/v1/checkout' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "userId": "cust01",
+    "item": "Macbook Pro 13\" (A1723)",
+    "qty": "2"
+}' -v
+Note: Unnecessary use of -X or --request, POST is already inferred.
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying ::1...
 * TCP_NODELAY set
 * Connected to localhost (::1) port 9091 (#0)
-> GET / HTTP/1.1
-> Host: localhost:9091
-> User-Agent: curl/7.61.1
-> Accept: */*
+> POST /api/order/v1/checkout HTTP/1.1
 >
-< HTTP/1.1 404
-100    89    0    89    0     0   3708      0 --:--:-- --:--:-- --:--:--  4045
-{"timestamp":"2023-02-25T07:09:12.900+00:00","status":404,"error":"Not Found","path":"/"}%
+} [82 bytes data]
+* upload completely sent off: 82 out of 82 bytes
+< HTTP/1.1 500
+< Content-Type: application/json
+
+{"timestamp":"2023-02-25T08:05:26.037+00:00","status":500,"error":"Internal Server Error","path":"/api/order/v1100   204    0   122  100    82    163    109 --:--:-- --:--:-- --:--:--   273
+* Closing connection 0
 ```
 
+## Connecting other service from the another namespace
