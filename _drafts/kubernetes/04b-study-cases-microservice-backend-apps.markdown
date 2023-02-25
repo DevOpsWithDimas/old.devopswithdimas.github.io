@@ -472,7 +472,7 @@ docker compose push customerAPI && \
 docker compose push orderAPI 
 {% endhighlight %}
 
-## Deploy to kubernetes cluster
+## Create kubernetes cluster on local
 
 Setelah container image di-build dan publish ke container registry, tahap selanjutnya adalah deploy ke kubernetes cluster. Tetapi sebelum itu siapkan dulu kubernetes cluster untuk workload tersebut. Settingan cluster untuk microservice ini agak berbeda dengan sebelumnya yaitu seperti berikut:
 
@@ -605,3 +605,165 @@ web2   1/1     Running             0          30s
 ```
 
 Jika temen-temen perhatikan pada saat membuat cluster, mengapa cluster ini menggunakan memory yang lebih besar yaitu `4G` di setiap nodenya, Jadi menentukan resource tidak hanya di sisi Pod dan Containernya saja tetapi juga pada cluster nodenya juga kita harus sesuaikan.
+
+## Deploy to Kubernetes cluster
+
+Setelah cluster kubernetes siap dan kita coba test network connection antar pod bisa juga, tahap selanjutnya adalah kita buat Kubernetes resourcesnya sepert Pod, dan Service yang masing-masing di kelompokan berdasarkan Namespace berdasarkan design architecture Kubernetes resources sebelumnya. 
+
+Secara sturuktur kita kelompokan seperti berikut:
+
+```yaml
+namespaces: 
+  - default:
+      - nginx
+  - customer:
+      - customer-api
+      - mysql
+  - orders:
+      - orders-api
+      - postgresql
+```
+
+Seperti berikut untuk kubernetes resources dengan namespace `customer-module`
+
+{% gist page.gist "04b-ns-customer-api.yaml" %}
+
+Kemudian kita coba jalankan dengan perintah berikut:
+
+{% highlight bash %}
+kubectl apply -f kubernetes/ns-customer-api.yaml
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+```bash
+~ » kubectl apply -f kubernetes/ns-customer-api.yaml
+namespace/customer-module created
+configmap/mysql created
+secret/mysql created
+pod/mysql created
+service/mysql created
+pod/customer-api created
+service/customer-api created
+
+~ » kubectl get pod -n customer-module
+NAME           READY   STATUS    RESTARTS   AGE
+customer-api   1/1     Running   0          13s
+mysql          1/1     Running   0          6m36s
+
+~ » kubectl logs customer-api -n customer-module
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.2)
+
+2023-02-25T06:49:26.684Z  INFO 1 --- [           main] c.m.d.udemy.customer.MainApplication     : Starting MainApplication v0.0.1-SNAPSHOT using Java 19 with PID 1 (/spring-boot.jar started by root in /)
+2023-02-25T06:49:31.550Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-02-25T06:49:33.287Z  INFO 1 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-02-25T06:49:33.356Z  INFO 1 --- [           main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:mysql://mysql:3306/customer_api (MySQL 8.0)
+2023-02-25T06:49:33.728Z  INFO 1 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.090s)
+2023-02-25T06:49:33.815Z  INFO 1 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table `customer_api`.`flyway_schema_history` ...
+2023-02-25T06:49:34.140Z  INFO 1 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema `customer_api`: << Empty Schema >>
+2023-02-25T06:49:34.184Z  INFO 1 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema `customer_api` to version "20230211170102 - schema-customer"
+2023-02-25T06:49:34.298Z  INFO 1 --- [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema `customer_api`, now at version v20230211170102 (execution time 00:00.190s)
+2023-02-25T06:49:38.606Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-02-25T06:49:38.639Z  WARN 1 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-02-25T06:49:38.685Z  INFO 1 --- [           main] c.m.d.udemy.customer.MainApplication     : Started MainApplication in 15.321 seconds (process running for 17.433)
+
+~ » kubectl exec mysql -n customer-module -it -- mysql -e 'show tables;' --database customer_api -u customer_api -p
+Enter password:
++------------------------+
+| Tables_in_customer_api |
++------------------------+
+| customer               |
+| flyway_schema_history  |
++------------------------+
+
+~ » kubectl exec customer-api -n customer-module -- curl localhost:9090 -v
+* Rebuilt URL to: localhost:9090/
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 9090 (#0)
+> GET / HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.61.1
+> Accept: */*
+>
+< HTTP/1.1 404
+100    89    0    89    0     0   4684      0 --:--:-- --:--:-- --:--:--  4944
+* Connection #0 to host localhost left intact
+{"timestamp":"2023-02-25T06:50:29.274+00:00","status":404,"error":"Not Found","path":"/"}%
+```
+
+Selanjutnya kita deploy untuk namespace `orders` seperti berikut:
+
+{% gist page.gist "04b-ns-orders-api.yaml" %}
+
+Kemudian kita coba jalankan dengan perintah berikut:
+
+{% highlight bash %}
+kubectl apply -f kubernetes/ns-orders-api.yaml
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```bash
+~ » kubectl apply -f kubernetes/ns-orders-api.yaml
+namespace/orders-module created
+configmap/postgresql created
+secret/postgresql created
+pod/postgresql created
+service/postgresql created
+pod/orders-api created
+service/orders-api created
+
+~ » kubectl get pod -n orders-module
+NAME         READY   STATUS    RESTARTS   AGE
+orders-api   1/1     Running   0          15s
+postgresql   1/1     Running   0          15s
+
+~ » kubectl logs orders-api -n orders-module
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.2)
+
+2023-02-25T07:05:01.905Z  INFO 1 --- [           main] c.m.dimas.udemy.orders.MainApplication   : Starting MainApplication v0.0.1-SNAPSHOT using Java 19 with PID 1 (/spring-boot.jar started by root in /)
+2023-02-25T07:05:06.506Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2023-02-25T07:05:07.808Z  INFO 1 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-02-25T07:05:07.888Z  INFO 1 --- [           main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:postgresql://postgresql:5432/order_api (PostgreSQL 15.1)
+2023-02-25T07:05:07.985Z  INFO 1 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.041s)
+2023-02-25T07:05:08.013Z  INFO 1 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2023-02-25T07:05:08.127Z  INFO 1 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2023-02-25T07:05:08.160Z  INFO 1 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "20230211171555 - create-order"
+2023-02-25T07:05:08.225Z  INFO 1 --- [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v20230211171555 (execution time 00:00.121s)
+2023-02-25T07:05:24.876Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2023-02-25T07:05:25.288Z  INFO 1 --- [           main] c.m.dimas.udemy.orders.MainApplication   : Started MainApplication in 25.583 seconds (process running for 28.329)
+
+~ » kubectl exec orders-api -n orders-module -- curl localhost:9091 -v
+* Rebuilt URL to: localhost:9091/
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 9091 (#0)
+> GET / HTTP/1.1
+> Host: localhost:9091
+> User-Agent: curl/7.61.1
+> Accept: */*
+>
+< HTTP/1.1 404
+100    89    0    89    0     0   3708      0 --:--:-- --:--:-- --:--:--  4045
+{"timestamp":"2023-02-25T07:09:12.900+00:00","status":404,"error":"Not Found","path":"/"}%
+```
+
