@@ -958,12 +958,15 @@ management:
       probes:
         enabled: true
       group:
-        readiness.include: db
+        liveness:
+          include:
+            - db
       show-components: always
-    metrics:
-      enabled: true
-    startup:
-      enabled: true
+logging:
+  level:
+    org.springframework: fatal
+    org.flywaydb.core.internal.license: fatal
+    org.hibernate: fatal
 {% endhighlight %}
 
 Jika sudah coba jalankan dengan menggunakan perintah berikut
