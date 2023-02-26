@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Study cases: Microservice apps (Springboot Rest API)"
+date: 2023-02-26T16:19:54+07:00
 lang: k8s
 authors:
 - dimasm93
