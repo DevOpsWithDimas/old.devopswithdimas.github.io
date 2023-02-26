@@ -14,6 +14,7 @@ refs:
 - https://hub.docker.com/_/openjdk
 - https://spring.io/projects/spring-boot
 - https://www.urosht.dev/blog/kubernetes-probes-with-spring-boot/
+- https://www.redhat.com/en/topics/api/what-does-an-api-gateway-do#:~:text=and%20serverless%20environments-,Overview,and%20return%20the%20appropriate%20result.
 youtube: 
 comments: true
 catalog_key: pod-container
@@ -1274,3 +1275,67 @@ springboot-microservice       151m         7%     1349Mi          34%
 springboot-microservice-m02   62m          3%     1861Mi          47%
 springboot-microservice-m03   45m          2%     1184Mi          30%
 ```
+
+## Implement API Gateway using nginx reverse proxy
+
+Okay sebelumnya kita sudah deploy workload ke kubernetes cluster, kemudian juga sudah lakukan tuning workloadnya supaya bisa berjalan dengan baik di kubernetes dengan menambahkan container probe dan resource request & limit. Ini adalah ujung dari studikasus ini yaitu kita akan memasang API Gateway. okay temen-temen ada yang tau apa itu API Gateway? mengapa harus menggunakan API Gateway?
+
+An API gateway is an API management tool that sits between a client and a collection of backend services. An API gateway acts as a reverse proxy to accept all application programming interface (API) calls, aggregate the various services required to fulfill them, and return the appropriate result.
+
+Nah karena kita punya banyak services (microservices) jadi pada implementasinya exposing service tersebut tidak satu-per-satu atau setiap service memiliki port sendiri tetapi biasanya menggunakan methode DMZ (Demilitarized Zone) atau satu gerbang untuk beberapa service jika kita ilustrasikan seperti berikut:
+
+![dmz-services]({{ page.image_path | prepend: site.baseurl }}/05-dmz-system.png)
+
+Untuk implementasi API Gateway ini ada lumayan banyak salah satunya adalah [apisix](https://apisix.apache.org/), [nginx](https://www.nginx.com/), [KrakenD](https://www.krakend.io/) dan lain-lain. Untuk kasus kali ini kita akan menggunakan yang simple dulu ya yaitu Nginx reverse proxy dengan configurasi seperti berikut:
+
+{% gist page.gist "04b-api-gateway.yaml" %}
+
+Sekarang coba jalankan dengan perintah berikut:
+
+{% highlight bash %}
+kubectl apply -f kubernetes/api-gateway.yaml
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+```bash
+~ » kubectl apply -f kubernetes/api-gateway 
+configmap/api-gateway unchanged
+pod/api-gateway created
+service/api-gateway configured
+
+~ » kubectl get pod,service
+NAME              READY   STATUS    RESTARTS   AGE
+pod/api-gateway   1/1     Running   0          54s
+
+NAME                  TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+service/api-gateway   NodePort    10.107.243.20    <none>        80:30001/TCP   167m
+service/kubernetes    ClusterIP   10.96.0.1        <none>        443/TCP        27h
+
+~ » kubectl cluster-info
+Kubernetes control plane is running at https://192.168.64.23:8443
+CoreDNS is running at https://192.168.64.23:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+~ » curl http://192.168.64.23:30001/customers/api/customer/v1/findById/cust01 -v
+*   Trying 192.168.64.23:30001...
+* Connected to 192.168.64.23 (192.168.64.23) port 30001 (#0)
+> GET /customer/api/customer/v1/findById/cust01 HTTP/1.1
+{"id":"cust01","userId":"dimasm93","fullname":"Dimas Maryanto","alamat":"Bandung, Jawa Barat"}
+
+~ » curl --location --request POST 'http://192.168.64.23:30001/orders/api/order/v1/checkout' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "userId": "cust01",
+    "item": "Macbook Pro 13\" (A1723)",
+    "qty": "2"
+}' -v
+Note: Unnecessary use of -X or --request, POST is already inferred.
+*   Trying 192.168.64.23:30001...
+* Connected to 192.168.64.23 (192.168.64.23) port 30001 (#0)
+> POST /order/api/order/v1/checkout HTTP/1.1
+{"id":"2c25434d-00ec-46e6-b37f-c080291019b2","createdDate":"2023-02-26T09:15:03.570489716","customer":{"id":"cust01","userId":"dimasm93","fullname":"Dimas Maryanto","alamat":"Bandung, Jawa Barat"},"item":"Macbook Pro 13\" (A1723)","qty":2}%
+```
+
+Nah jadi disini kesimpulannya yang kita expose adalah ip `192.168.64.23` dengan port `30001` saja ke router/loadbalancer yang selanjutnya kita bisa lakukan untuk port forwarding ke ip public.
