@@ -1084,3 +1084,193 @@ postgresql   1/1     Running   0          20m
 ```
 
 ## Specify resource request and limit
+
+Tahap selanjutnya untuk mengoptimalkan penggunaan resource node/worker kita harus specifikasi resource request dan limit. Resource request dan limit ini sangat membantu untuk menambahkan alert pada system kubernetes agar pod tidak menggunakan resource yang berlebih atau masih bisa mencukupi resource yang ada (resource availablity).
+
+Untuk menentukan resource request dan limit ini kita harus mengetahui dulu titik minimum dari workload aplikasi kita dan titik optimal (rata-rata operational) dengan cara melihat activity process, metrics untuk penggunaan cpus dan memory. Sebagai contoh disini saya menggunakan Activity Monitor untuk melihat penggunaan system memory dan cpus.
+
+Berikut adalah cpu yang terpakai dari workload `customer-api`:
+
+![cpu-usage]({{ page.image_path | prepend: site.baseurl }}/04-cpus-usage.png)
+
+Berikut adalah memory yang terpakai:
+
+![memory-usage]({{ page.image_path | prepend: site.baseurl }}/04-memory-usage.png)
+
+Atau selain itu juga kita bisa expose dari service tersebut dengan menambahkan beberapa property `metrics` pada `src/main/resources/application.yaml` seperti berikut:
+
+{% highlight yaml %}
+## other properties
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics
+{% endhighlight %}
+
+Kemudian coba jalankan dengan perintah:
+
+{% highlight bash %}
+mvn clean -pl customer spring-boot:run
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+~ » curl localhost:9090/actuator/metrics
+{
+  "names": [
+    "application.ready.time",
+    "application.started.time",
+    "disk.free",
+    "disk.total",
+    "hikaricp.connections",
+    "hikaricp.connections.acquire",
+    "hikaricp.connections.active",
+    "hikaricp.connections.creation",
+    "hikaricp.connections.idle",
+    "hikaricp.connections.max",
+    "hikaricp.connections.min",
+    "hikaricp.connections.pending",
+    "hikaricp.connections.timeout",
+    "hikaricp.connections.usage",
+    "http.server.requests.active",
+    "jdbc.connections.active",
+    "jdbc.connections.idle",
+    "jdbc.connections.max",
+    "jdbc.connections.min",
+    "jvm.buffer.count",
+    "jvm.buffer.memory.used",
+    "jvm.buffer.total.capacity",
+    "jvm.classes.loaded",
+    "jvm.classes.unloaded",
+    "jvm.compilation.time",
+    "jvm.gc.live.data.size",
+    "jvm.gc.max.data.size",
+    "jvm.gc.memory.allocated",
+    "jvm.gc.memory.promoted",
+    "jvm.gc.overhead",
+    "jvm.info",
+    "jvm.memory.committed",
+    "jvm.memory.max",
+    "jvm.memory.usage.after.gc",
+    "jvm.memory.used",
+    "jvm.threads.daemon",
+    "jvm.threads.live",
+    "jvm.threads.peak",
+    "jvm.threads.states",
+    "logback.events",
+    "process.cpu.usage",
+    "process.files.max",
+    "process.files.open",
+    "process.start.time",
+    "process.uptime",
+    "system.cpu.count",
+    "system.cpu.usage",
+    "system.load.average.1m",
+    "tomcat.sessions.active.current",
+    "tomcat.sessions.active.max",
+    "tomcat.sessions.alive.max",
+    "tomcat.sessions.created",
+    "tomcat.sessions.expired",
+    "tomcat.sessions.rejected"
+  ]
+}%
+
+~ » curl localhost:9090/actuator/metrics/jvm.info
+{
+  "name": "jvm.info",
+  "description": "JVM version info",
+  "measurements": [
+    {
+      "statistic": "VALUE",
+      "value": 1
+    }
+  ],
+  "availableTags": [
+    {
+      "tag": "vendor",
+      "values": [
+        "Oracle Corporation"
+      ]
+    },
+    {
+      "tag": "runtime",
+      "values": [
+        "Java(TM) SE Runtime Environment"
+      ]
+    },
+    {
+      "tag": "version",
+      "values": [
+        "19.0.1+10-21"
+      ]
+    }
+  ]
+}
+```
+
+Temen-temen bisa check menggunakan beberapa property seperti `jvm.memory.used`, `system.cpu.usage`, `process.cpu.usage` dan lain-lain. Okay selanjutnya kita build ulang container imagenya supaya metrics tersebut terexpose dengan perintah
+
+{% highlight bash %}
+mvn clean -DskipTests package
+
+docker compose build customerAPI && \
+docker compose push customerAPI
+{% endhighlight %}
+
+Okay jadi disini saya simpulkan bahwa batas minimum atau resource request yaitu `cpu = 100m` dan `memory = 250Mi` sedangkan untuk maximum limit yaitu `cpu = 1500m` dan `memory = 2000Mi`. Sekarang kita coba update file pod.yaml menjadi seperti berikut:
+
+{% gist page.gist "04b-pod-resource-request-limit.yaml" %}
+
+Sekarang kita coba jalankan file tersebut dengan perintah berikut:
+
+{% highlight bash %}
+kubectl delete pod customer-api -n customer-module && \
+kubectl delete pod orders-api -n orders-module
+
+kubectl apply -f kubernetes/pod-resource-request-limit.yaml
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+```bash
+~ » kubectl delete pod customer-api -n customer-module && \
+kubectl delete pod orders-api -n orders-module
+pod "customer-api" deleted
+pod "orders-api" deleted
+
+~ » kubectl top node
+NAME                          CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+springboot-microservice       497m         24%    1360Mi          34%
+springboot-microservice-m02   266m         13%    1571Mi          40%
+springboot-microservice-m03   491m         24%    919Mi           23%
+
+~ » kubectl apply -f kubernetes/pod-resource-request-limit.yaml
+pod/customer-api created
+pod/orders-api created
+
+~ » kubectl get pod -n customer-module
+NAME           READY   STATUS    RESTARTS   AGE
+customer-api   1/1     Running   0          55s
+mysql          1/1     Running   0          6m53s
+
+~ » kubectl top pod customer-api -n customer-module
+NAME           CPU(cores)   MEMORY(bytes)
+customer-api   536m         260Mi
+
+~ » kubectl get pod -n orders-module
+NAME         READY   STATUS    RESTARTS   AGE
+orders-api   1/1     Running   0          91s
+postgresql   1/1     Running   0          7m6s
+
+~ » kubectl top pod orders-api -n orders-module
+NAME         CPU(cores)   MEMORY(bytes)
+orders-api   9m           273Mi
+
+~ » kubectl top node
+NAME                          CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+springboot-microservice       151m         7%     1349Mi          34%
+springboot-microservice-m02   62m          3%     1861Mi          47%
+springboot-microservice-m03   45m          2%     1184Mi          30%
+```
