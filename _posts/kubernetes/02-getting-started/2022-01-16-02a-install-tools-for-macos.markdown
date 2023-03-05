@@ -66,12 +66,6 @@ Jika sudah terinstall maka tampilannya seperti berikut:
 
 ![virtualbox]({{ page.image_path | prepend: site.baseurl }}/02-install-virtualbox.png)
 
-Untuk proses installasi Hyperkit, simple kita bisa menggunakan package manager seperti [homebrew](https://brew.sh/), kemudian jalankan perintah berikut:
-
-{% highlight bash %}
-brew install hyperkit
-{% endhighlight %}
-
 ## Installing minikube binary
 
 Untuk install minikube juga kita bisa menggunakan beberapa cara yaitu
@@ -451,3 +445,60 @@ CONTAINER ID   IMAGE                                 COMMAND                  CR
 ```
 
 Setelah itu kita bisa, menggunakan kubernetes clusternya untuk learning environtment.
+
+## Create cluster using Hyperkit driver
+
+Selain menggunakan virtualbox yang secara performa akan memakan resource karena secara architecture menggunakan dedicated resource cpu serta memory dan juga jika temen-temen menggunakan OS Ventura jadi gak bisa jalan virtual-machinenya. Ada alternative lainnya yaitu menggunakan [hyperkit](https://github.com/moby/hyperkit)
+
+> HyperKit is a toolkit for embedding hypervisor capabilities in your application. It includes a complete hypervisor, based on xhyve/bhyve, which is optimized for lightweight virtual machines and container deployment.
+
+HyperKit currently only supports macOS using the Hypervisor.framework. It is a core component of Docker Desktop for Mac.
+
+Untuk proses installasi Hyperkit, simple kita bisa menggunakan package manager seperti [homebrew](https://brew.sh/), kemudian jalankan perintah berikut:
+
+{% highlight bash %}
+brew install hyperkit
+{% endhighlight %}
+
+Setelah terinstall temen-temen bisa check dengan menggunakan perintah 
+
+{% highlight bash %}
+hyperkit -h
+{% endhighlight %}
+
+Nah sekarang kita buat clusternya dengan perintah seperti berikut:
+
+{% gist page.gist "02a-start-hyperkit-cluster-mac.bash" %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+~ » minikube start --driver hyperkit --memory 3G --cpus 2
+😄  minikube v1.29.0 on Darwin 13.2.1
+✨  Using the hyperkit driver based on user configuration
+👍  Starting control plane node minikube in cluster minikube
+🔥  Creating hyperkit VM (CPUs=2, Memory=3072MB, Disk=20000MB) ...
+❗  This VM is having trouble accessing https://registry.k8s.io
+💡  To pull new external images, you may need to configure a proxy: https://minikube.sigs.k8s.io/docs/reference/networking/proxy/
+📦  Preparing Kubernetes v1.26.1 on containerd 1.6.15 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔗  Configuring bridge CNI (Container Networking Interface) ...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🔎  Verifying Kubernetes components...
+🌟  Enabled addons: storage-provisioner, default-storageclass
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+~ » minikube status
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+~ » kubectl get node -o wide
+NAME       STATUS   ROLES           AGE   VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE               KERNEL-VERSION   CONTAINER-RUNTIME
+minikube   Ready    control-plane   77s   v1.26.1   192.168.64.26   <none>        Buildroot 2021.02.12   5.10.57          containerd://1.6.15
+```
