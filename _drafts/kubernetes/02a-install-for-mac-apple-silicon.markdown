@@ -28,8 +28,8 @@ Hai semuanya, di materi kali ini kita akan membahas membuat kubernetes cluster d
 1. What you’ll need?
 2. Installing Container or virtual machine as backend minikube
 3. Installing minikube binary & kubernetes client
-5. Create cluster using qemu driver
-6. Create cluster using Docker driver (apple silicon)
+4. Create cluster using qemu driver
+5. Create cluster using Docker driver (apple silicon)
 
 Ok langsung aja kita bahas ke materi yang pertama
 
@@ -161,4 +161,110 @@ jika dijalankan maka hasilnya seperti berikut:
   },
   "kustomizeVersion": "v4.5.7"
 }
+```
+
+## Create cluster using qemu driver
+
+Setelah semua depedency, tools di install, sekarang kita akan membuat kubernetes cluster di minikube dengan menggunakan `qemu` driver. Sekarang kita akan config dulu default value pada `minikube config` command seperti berikut:
+
+{% highlight bash %}
+minikube config set kubernetes-version 1.26.0 && \
+minikube config set insecure-registry "192.168.88.50:8086" && \
+minikube config set container-runtime containerd && \
+minikube config set disable-driver-mounts true && \
+minikube config set vm-driver qemu2 && \
+minikube config set driver qemu2
+{% endhighlight %}
+
+Jika dijalankan outputnya seperti berikut:
+
+```bash 
+~ » minikube config set kubernetes-version 1.26.0 && \
+minikube config set insecure-registry "192.168.88.50:8086" && \
+minikube config set container-runtime containerd && \
+minikube config set disable-driver-mounts true && \
+minikube config set driver qemu2
+❗  These changes will take effect upon a minikube delete and then a minikube start
+❗  These changes will take effect upon a minikube delete and then a minikube start
+❗  These changes will take effect upon a minikube delete and then a minikube start
+
+~ » minikube config view
+- driver: qemu2
+- insecure-registry: 192.168.88.50:8086
+- kubernetes-version: 1.26.0
+- container-runtime: containerd
+- disable-driver-mounts: true
+```
+
+Nah sekarang temen-temen bisa buat clusternya dengan menggunakan perintah `minikube start` seperti berikut:
+
+{% highlight bash %}
+minikube start --memory 2G --cpus 2 --nodes 2 --insecure-registry "192.168.88.50:8086"
+{% endhighlight %}
+
+Jika dijalankan hasilnya seperti berikut:
+
+```bash
+~ » minikube start --memory 2G --cpus 2 --nodes 2 --insecure-registry "192.168.88.50:8086"
+😄  minikube v1.29.0 on Darwin 13.2.1 (arm64)
+✨  Using the qemu2 driver based on user configuration
+🌐  Automatically selected the socket_vmnet network
+👍  Starting control plane node minikube in cluster minikube
+💾  Downloading Kubernetes v1.26.0 preload ...
+    > preloaded-images-k8s-v18-v1...:  357.35 MiB / 357.35 MiB  100.00% 6.40 Mi
+🔥  Creating qemu2 VM (CPUs=2, Memory=2048MB, Disk=20000MB) ...
+📦  Preparing Kubernetes v1.26.0 on containerd 1.6.15 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔗  Configuring CNI (Container Networking Interface) ...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: storage-provisioner, default-storageclass
+🔎  Verifying Kubernetes components...
+
+👍  Starting worker node minikube-m02 in cluster minikube
+🔥  Creating qemu2 VM (CPUs=2, Memory=2048MB, Disk=20000MB) ...
+🌐  Found network options:
+    ▪ NO_PROXY=192.168.105.19
+📦  Preparing Kubernetes v1.26.0 on containerd 1.6.15 ...
+    ▪ env NO_PROXY=192.168.105.19
+🔎  Verifying Kubernetes components...
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+~ » kubectl get node
+NAME           STATUS   ROLES           AGE    VERSION
+minikube       Ready    control-plane   105s   v1.26.0
+minikube-m02   Ready    <none>          63s    v1.26.0
+
+~ » kubectl get pod -A
+NAMESPACE     NAME                               READY   STATUS    RESTARTS   AGE
+kube-system   coredns-787d4945fb-4kxjc           1/1     Running   0          101s
+kube-system   etcd-minikube                      1/1     Running   0          114s
+kube-system   kindnet-4kk2g                      1/1     Running   0          74s
+kube-system   kindnet-dk58l                      1/1     Running   0          100s
+kube-system   kube-apiserver-minikube            1/1     Running   0          115s
+kube-system   kube-controller-manager-minikube   1/1     Running   0          113s
+kube-system   kube-proxy-7rpd4                   1/1     Running   0          100s
+kube-system   kube-proxy-qxd6m                   1/1     Running   0          74s
+kube-system   kube-scheduler-minikube            1/1     Running   0          114s
+kube-system   storage-provisioner                1/1     Running   0          113s
+
+~ » kubectl create deploy webapp1 --image nginx:mainline --port 80
+deployment.apps/webapp1 created
+~ » kubectl create deploy webapp2 --image httpd:latest --port 80
+deployment.apps/webapp2 created
+~ » kubectl expose deploy/webapp2 --port 80
+service/webapp2 exposed
+~ » kubectl get pod
+
+~ » kubectl get pod
+NAME                       READY   STATUS    RESTARTS   AGE
+webapp1-57858cffbf-42cpm   1/1     Running   0          43s
+webapp2-cf4d9c9bd-mxbd8    1/1     Running   0          27s
+
+~ » kubectl exec deploy/webapp1 -- curl http://webapp2
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    45  100    45    0     0   7500      0 --:--:-- --:--:-- --:--:--  7500
+<html><body><h1>It works!</h1></body></html>
 ```
