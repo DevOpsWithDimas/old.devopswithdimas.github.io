@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Install minikube on Mac (Intel/Apple silicon)"
+title: "Install minikube on Mac (Intel Chip)"
 date: 2022-01-16T14:36:35+07:00
 lang: k8s
 authors:
@@ -23,14 +23,14 @@ gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
 downloads: []
 ---
 
-Hai semuanya, di materi kali ini kita akan membahas cara install minikube di Mac Os diantaranya:
+Hai semuanya, di materi kali ini kita akan membahas membuat kubernetes cluster di local/learning environment menggunakan minikube di Mac OS (Intel Based)
 
 1. What you’ll need?
 2. Installing Container or virtual machine as backend minikube
-3. Installing minikube binary
-4. Installing kubernetes client
-5. Create cluster using Virtualbox driver
-6. Create cluster using Docker driver (alternative apple silicon)
+3. Installing minikube, kubernetes client
+4. Create cluster using Virtualbox driver (Deprecated)
+5. Create cluster using Docker driver
+6. Create cluster using hyperkit driver
 
 Ok langsung aja kita bahas ke materi yang pertama
 
@@ -48,23 +48,15 @@ Untuk menginstall minikube di Mac OS kita membutuhkan:
 
 Klo saya sendiri disini masih menggunakan Macbook Pro 13" four thunderbold 2017 dengan specification seperti berikut:
 
-![virtualbox]({{ page.image_path | prepend: site.baseurl }}/01-mac-system.png)
-
-## Installing Container or virtual machine as backend minikube
+![system properties]({{ page.image_path | prepend: site.baseurl }}/01-mac-system.png)
 
 Untuk Mac yang menggunakan architecture intel kita bisa menggunakan beberapa driver yaitu
 
 1. [Docker]({% post_url docker/01-introduction/2021-04-13-02c-install-on-mac %}) / Podman
-2. Virtualbox
+2. Virtualbox (Deprecated)
 3. VMware fusion
 4. Parallels
-
-Sedangkan Mac yang menggunakan architecture apple silicon bisa menggunakan beberapa driver yaitu
-
-1. Docker / Podman
-2. Parallels
-
-Karena saya menggunakan intell, saya akan menginstal menggunakan Docker dan Virtualbox. 
+5. Hyperkit
 
 Untuk proses installasi docker di mac sudah pernah saya bahas di [artikel berikut]({% post_url docker/01-introduction/2021-04-13-02c-install-on-mac %})
 
@@ -73,6 +65,12 @@ Untuk proses installasi Virtualbox, simple kita tinggal download file `dmg` pada
 Jika sudah terinstall maka tampilannya seperti berikut:
 
 ![virtualbox]({{ page.image_path | prepend: site.baseurl }}/02-install-virtualbox.png)
+
+Untuk proses installasi Hyperkit, simple kita bisa menggunakan package manager seperti [homebrew](https://brew.sh/), kemudian jalankan perintah berikut:
+
+{% highlight bash %}
+brew install hyperkit
+{% endhighlight %}
 
 ## Installing minikube binary
 
@@ -130,7 +128,7 @@ jika dijalankan maka hasilnya seperti berikut:
 Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.1", GitCommit:"86ec240af8cbd1b60bcc4c03c20da9b98005b92e", GitTreeState:"clean", BuildDate:"2021-12-16T11:33:37Z", GoVersion:"go1.17.5", Compiler:"gc", Platform:"darwin/amd64"}
 ```
 
-## Create cluster using Virtualbox driver
+## Create cluster using Virtualbox driver (Deprecated)
 
 Setelah kita menginstall tools untuk belajar kubernetes seperti `virtualbox` atau `docker` sebagai kubernetes runtime serta `minikube` ,`kubectl` dan `kustomize`. Sekarang kita akan membuat single kubernetes cluster dengan minikube menggunakan driver virtualbox.
 
@@ -401,7 +399,7 @@ kube-system   kube-dns     ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,
 
 Nah sekarang kita sudah bisa menggunakan kubernetes cluster tersebut untuk belajar atau sebagai learning environment kita.
 
-## Create cluster using Docker driver (alternative apple silicon)
+## Create cluster using Docker driver
 
 Selain menggunakan virtualbox yang hanya support dengan processor intel saja saat ini, kita juga bisa menggunakan Docker sebagai drivernya minikube. Dengan Docker driver ini jadi kita bisa gunakan untuk MacOS dengan processor Apple silicon.
 
