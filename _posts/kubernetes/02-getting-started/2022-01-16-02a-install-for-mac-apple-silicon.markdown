@@ -172,7 +172,6 @@ minikube config set kubernetes-version 1.26.0 && \
 minikube config set insecure-registry "192.168.88.50:8086" && \
 minikube config set container-runtime containerd && \
 minikube config set disable-driver-mounts true && \
-minikube config set vm-driver qemu2 && \
 minikube config set driver qemu2
 {% endhighlight %}
 
