@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Install minikube on Mac (Apple silicon Chip)"
-lang: k8s
 date: 2022-01-16T14:37:35+07:00
+lang: k8s
 authors:
 - dimasm93
 categories:
