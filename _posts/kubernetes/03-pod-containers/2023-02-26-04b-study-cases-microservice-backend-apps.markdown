@@ -574,6 +574,38 @@ You can view the list of minikube maintainers at: https://github.com/kubernetes/
 🌟  The 'metrics-server' addon is enabled
 ```
 
+Jika pada pod `registry-creds` error, temen-temen bisa menggunakan alternative lain yaitu dengan membuat sebuah secret dengan perintah serperti berikut:
+
+{% highlight bash %}
+kubectl create secret docker-registry regcred \
+--docker-server=<your-registry-server> \
+--docker-username=<your-name> \
+--docker-password=<your-pword> \
+--docker-email=<your-email>
+{% endhighlight %}
+
+where:
+
+- `<your-registry-server>` is your Private Docker Registry FQDN. Use `https://index.docker.io/v1/` for DockerHub otherwise `192.168.88.50:8086` for private registry
+- `<your-name>` is your Docker username.
+- `<your-pword>` is your Docker password.
+- `<your-email>` is your Docker email.
+
+Dan setelah itu, jika mau menjalankan pod dari insecure registry temen-temen perlu nambahkan property `imagePullSecrets` seperti berikut contohnya:
+
+{% highlight yaml %}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-reg
+spec:
+  containers:
+  - name: private-reg-container
+    image: <your-private-image>
+  imagePullSecrets:
+  - name: regcred
+{% endhighlight %}
+
 Setelah cluster kubernetes ready, kita coba membuat simple 2 pod yang simple menggunakan `nginx` dan `httpd` setelah itu kita coba test cni antara ke dua pod tersebut dengan perintah seperti berikut:
 
 {% highlight bash %}
