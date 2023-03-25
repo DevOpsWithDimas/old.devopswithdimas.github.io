@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "06b-transaction-isolation"
+title: "Transaction isolation"
 lang: postgresql
 authors:
 - dimasm93
@@ -10,9 +10,9 @@ categories:
 - SQL
 - TCL
 refs: 
-- https://www.postgresql.org/docs/current/
+- https://www.postgresql.org/docs/14/transaction-iso.html
 youtube: 
-image_path: /resources/posts/postgresql/06b-transaction-isolation
+image_path: /resources/posts/postgresql/06b-trx-isolation
 comments: true
 gist: dimMaryanto93/7ae7632f9418feb724bc431eff412a3f
 catalog_key: dml-statement
