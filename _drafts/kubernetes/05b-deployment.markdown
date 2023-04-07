@@ -23,12 +23,12 @@ downloads: []
 Hai semuanya, materi sebelumnya kita sudah mencoba menggunakan Kubernetes workload resources dengan Object Deployment yang paling simple. Sekarang kita akan membahas yang lebih detail tentang Object Deployment. Karena pembahasan kali ini lumayan panjang jadi kita bagi2 jadi beberapa bagian diantaranya:
 
 1. What is Deployment Object?
-2. Create Deployment using yaml file
-3. Writing a Deployment Spec
-4. Deployment status
-5. Updating a Deployment
-6. Scalling a Deployment
-7. Rolling back a Deployment
+2. Create a Deployment
+3. Updating a Deployment
+4. Rolling back a Deployment
+5. Scalling a Deployment
+6. Deployment status
+7. Writing a Deployment Spec
 8. Clean up policy
 
 Okay tanpa berlama-lama yuk langsung aja kita bahas materi yang pertama:
