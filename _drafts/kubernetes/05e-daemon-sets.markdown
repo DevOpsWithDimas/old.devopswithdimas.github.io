@@ -15,7 +15,7 @@ youtube:
 comments: true
 catalog_key: workloads
 image_path: /resources/posts/kubernetes/04d-workload-daemon-sets
-gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
+gist: dimMaryanto93/96f6954c9a27a6b1934113b10223196a
 downloads: []
 ---
 

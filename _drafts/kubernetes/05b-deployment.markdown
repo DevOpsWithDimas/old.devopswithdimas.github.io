@@ -16,7 +16,7 @@ youtube:
 comments: true
 catalog_key: workloads
 image_path: /resources/posts/kubernetes/05b-deployment
-gist: dimMaryanto93/a3a01b83910cf07914935a25a62d30ce
+gist: dimMaryanto93/96f6954c9a27a6b1934113b10223196a
 downloads: []
 ---
 
@@ -45,8 +45,6 @@ You describe a desired state in a Deployment, and the Deployment Controller chan
 
 ![deployment-flow]({{ page.image_path | prepend: site.baseurl }}/deployment-flow.png)
 
-**Note:** Do not manage ReplicaSets owned by a Deployment. Consider opening an issue in the main Kubernetes repository if your use case is not covered below.
-
 The following are typical use cases for Deployments:
 
 1. Create a Deployment to rollout a ReplicaSet. The ReplicaSet creates Pods in the background. Check the status of the rollout to see if it succeeds or not.
@@ -58,3 +56,50 @@ The following are typical use cases for Deployments:
 7. Clean up older ReplicaSets that you don't need anymore.
 
 ## Create Deployment using yaml file
+
+Untuk membuat object deployment bisa menggunakan imperative command (`kubectl create deploy`) dan declarative seperti membuat file extension `.yaml` atau `.json` yang kemudian di execute menggunakan perintah `kubectl apply -f filename.yaml`.
+
+Berikut adalah basic Deployment spec yang digunakan untuk membuat/menjalankan 3 buah pod dengan container image `nginx` seperti berikut:
+
+{% gist page.gist "05b-basic-deploy-nginx.yaml" %}
+
+Kemudian coba jalankan menggunakan perintah:
+
+{% highlight bash %}
+kubectl apply -f basic-deployment.yaml
+{% endhighlight %}
+
+Jika kita lihat hasilnya seperti berikut:
+
+```bash
+➡ kubectl apply -f 03-workloads/01-basic-deploy/basic-deployment.yaml
+deployment.apps/nginx-deploy created
+
+➜  kubernetes git:(main) ✗ kubectl get deploy
+NAME           READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deploy   3/3     3            3           3m21s
+
+➜  kubernetes git:(main) ✗ kubectl get rs
+NAME                     DESIRED   CURRENT   READY   AGE
+nginx-deploy-c9bcb48d4   3         3         3       3m39s
+
+➜  kubernetes git:(main) ✗ kubectl get pod
+NAME                           READY   STATUS    RESTARTS   AGE
+nginx-deploy-c9bcb48d4-5s7zs   1/1     Running   0          82s
+nginx-deploy-c9bcb48d4-nrsr7   1/1     Running   0          3m54s
+nginx-deploy-c9bcb48d4-rbc8s   1/1     Running   0          82s
+```
+
+In this example:
+
+1. A Deployment named `nginx-deploy` is created, indicated by the `.metadata.name` field. This name will become the basis for the ReplicaSets and Pods which are created later. See [Writing a Deployment Spec](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#writing-a-deployment-spec) for more details.
+
+2. The Deployment creates a ReplicaSet that creates three replicated Pods, indicated by the `.spec.replicas` field.
+
+3. The `.spec.selector` field defines how the created ReplicaSet finds which Pods to manage. In this case, you select a label that is defined in the Pod template (`app: nginx`, `env: test`). However, more sophisticated selection rules are possible, as long as the Pod template itself satisfies the rule.
+
+4. The `template` field contains the following sub-fields:
+
+    1. The Pods are labeled `app: nginx` using the `.metadata.labels` field.
+    2. The Pod template's specification, or `.template.spec` field, indicates that the Pods run one container, `nginx`, which runs the `nginx` Docker [Hub image](https://hub.docker.com/_/nginx) at version [mainline].
+    3. Create one container and name it `nginx` using the `.spec.template.spec.containers[0].name` field.
