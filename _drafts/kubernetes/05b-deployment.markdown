@@ -514,8 +514,134 @@ kubectl get rs -w
 deployment.apps/rollingupdate-nginx-deploy image updated
 
 NAME                                    DESIRED   CURRENT   READY   AGE
+rollingupdate-nginx-deploy-cd8ddf7d8    10        10        10      0s
+rollingupdate-nginx-deploy-cd8ddf7d8    8         8         8       1s
 rollingupdate-nginx-deploy-77599d4db8   10        10        8       3s
-rollingupdate-nginx-deploy-cd8ddf7d8    2         2         2       49s
-rollingupdate-nginx-deploy-cd8ddf7d8    0         0         0       49s
+rollingupdate-nginx-deploy-cd8ddf7d8    2         2         2       4s
+rollingupdate-nginx-deploy-cd8ddf7d8    0         0         0       4s
 rollingupdate-nginx-deploy-77599d4db8   10        10        10      5s
+```
+
+## Pause and Resume rollout of a Deployment
+
+When you update a Deployment, or plan to, you can pause rollouts for that Deployment before you trigger one or more updates. When you're ready to apply those changes, you resume rollouts for the Deployment. This approach allows you to apply multiple fixes in between pausing and resuming without triggering unnecessary rollouts.
+
+For example:
+
+Get the rollout status:
+
+{% highlight bash %}
+kubectl get rs
+{% endhighlight %}
+
+Jika dijalankan outputnya seperti berikut:
+
+```bash
+➜ kubectl get deploy
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+rollingupdate-nginx-deploy   10/10   10           10          33m
+
+➜ kubectl get rs
+NAME                                    DESIRED   CURRENT   READY   AGE
+rollingupdate-nginx-deploy-77599d4db8   10        10        10      26m
+```
+
+Pause by running the following command:
+
+{% highlight bash %}
+kubectl rollout pause deploy/rollingupdate-nginx-deploy
+{% endhighlight %}
+
+Then when you update the deployment, such as image version using `kubectl set image deploy/rollingupdate-nginx-deploy nginx=nginx:1.16.1` The output look like:
+
+```bash
+➜ kubectl rollout pause deploy/rollingupdate-nginx-deploy
+deployment.apps/rollingupdate-nginx-deploy paused
+
+➜ kubectl set image deploy/rollingupdate-nginx-deploy nginx=nginx:1.16.1
+deployment.apps/rollingupdate-nginx-deploy image updated
+
+➜ kubectl rollout history deploy/rollingupdate-nginx-deploy
+deployment.apps/rollingupdate-nginx-deploy
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+
+➜ kubectl rollout status deploy/rollingupdate-nginx-deploy
+Waiting for deployment "rollingupdate-nginx-deploy" rollout to finish: 0 out of 10 new replicas have been updated...
+
+➜  kubernetes git:(main) kubectl describe deploy rollingupdate-nginx-deploy
+Name:                   rollingupdate-nginx-deploy
+Namespace:              default
+CreationTimestamp:      Sat, 08 Apr 2023 15:52:55 +0700
+Labels:                 app=nginx
+                        env=test
+Annotations:            deployment.kubernetes.io/revision: 2
+Selector:               app=nginx,env=test
+Replicas:               10 desired | 0 updated | 10 total | 10 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  2 max unavailable, 3 max surge
+Pod Template:
+  Labels:  app=nginx
+           env=test
+  Containers:
+   nginx:
+    Image:        nginx:1.16.1
+    Port:         80/TCP
+    Host Port:    0/TCP
+Conditions:
+  Type           Status   Reason
+  ----           ------   ------
+  Available      True     MinimumReplicasAvailable
+  Progressing    Unknown  DeploymentPaused
+OldReplicaSets:  rollingupdate-nginx-deploy-77599d4db8 (10/10 replicas created)
+NewReplicaSet:   <none>
+```
+
+Notice that no new rollout started, because the object has been pause. to solve this you need run resume rollout with this command:
+
+{% highlight bash %}
+kubectl rollout resume deploy/rollingupdate-nginx-deploy
+{% endhighlight %}
+
+Maka outputnya seperti berikut:
+
+```bash
+➜ kubectl rollout status deploy/rollingupdate-nginx-deploy
+deployment "rollingupdate-nginx-deploy" successfully rolled out
+
+➜ kubectl rollout history deploy/rollingupdate-nginx-deploy
+deployment.apps/rollingupdate-nginx-deploy
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+3         <none>
+
+➜ kubectl describe deploy/rollingupdate-nginx-deploy
+Name:                   rollingupdate-nginx-deploy
+Namespace:              default
+CreationTimestamp:      Sat, 08 Apr 2023 15:52:55 +0700
+Labels:                 app=nginx
+                        env=test
+Annotations:            deployment.kubernetes.io/revision: 3
+Selector:               app=nginx,env=test
+Replicas:               10 desired | 10 updated | 10 total | 10 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  2 max unavailable, 3 max surge
+Pod Template:
+  Labels:  app=nginx
+           env=test
+  Containers:
+   nginx:
+    Image:        nginx:1.16.1
+    Port:         80/TCP
+    Host Port:    0/TCP
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+NewReplicaSet:   rollingupdate-nginx-deploy-679cf9c85d (10/10 replicas created)
 ```
