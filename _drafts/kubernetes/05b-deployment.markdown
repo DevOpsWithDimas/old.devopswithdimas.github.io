@@ -420,3 +420,67 @@ Events:
   Normal  ScalingReplicaSet  4m54s              deployment-controller  Scaled down replica set nginx-deploy-65cbcc896b to 0 from 1
   Normal  ScalingReplicaSet  61s (x6 over 63s)  deployment-controller  (combined from similar events): Scaled down replica set nginx-deploy-5c7b8c97f6 to 0 from 1
 ```
+
+## Scalling a Deployment
+
+Selain kita bisa meng-update specifikasi pod dan container, kita juga bisa melakukan scalling suatu Deployment object dengan menggunakan beberapa cara yaitu
+
+1. Using `kubectl scale deploy/<deploy-name> --replicas=<number-of-instance>` command
+2. Using `kubectl edit deploy/<deploy-name>`
+3. Update `deployment.yaml` file then using `kubectl apply -f`
+
+For example, saya mau update secara langsung dengan perintahnya seperti berikut:
+
+{% highlight bash %}
+kubectl scale deploy/nginx-deploy --replicas=5
+{% endhighlight %}
+
+Jika kita coba jalankan maka seperti berikut:
+
+```bash
+➡ kubectl scale deploy/nginx-deploy --replicas=5
+deployment.apps/nginx-deploy scaled
+
+➜  kubernetes git:(main) kubectl get deploy
+NAME           READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deploy   5/5     5            5           3m20s
+
+➜  kubernetes git:(main) kubectl get rs
+NAME                     DESIRED   CURRENT   READY   AGE
+nginx-deploy-c9bcb48d4   5         5         5       3m34s
+
+➜  kubernetes git:(main) kubectl get pod
+NAME                           READY   STATUS    RESTARTS   AGE
+nginx-deploy-c9bcb48d4-blnpp   1/1     Running   0          69s
+nginx-deploy-c9bcb48d4-bsgsr   1/1     Running   0          3m46s
+nginx-deploy-c9bcb48d4-rh76q   1/1     Running   0          3m46s
+nginx-deploy-c9bcb48d4-sg97l   1/1     Running   0          3m46s
+nginx-deploy-c9bcb48d4-tvtq8   1/1     Running   0          69s
+```
+
+Selain itu juga, kita bisa menggunakan Horizontal Pod autoscalling, tetapi Assuming [horizontal Pod autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) is enabled in your cluster. Untuk lebih detailnya kita akan bahas di materi selanjutnya ya...
+
+kita perlu memasang `metrics-server` di cluster kita supaya container/pod bisa expose penggunaan resources seperti cpu, memory dan lain-lain. Karena kita menggunakan minikube kita bisa jalankan menggunakan perintah 
+
+{% highlight bash %}
+minikube addons enable metrics-server
+{% endhighlight %}
+
+you can set up an autoscaler for your Deployment and choose the minimum and maximum number of Pods you want to run based on the CPU utilization of your existing Pods. Untuk menggunakan autoscaling kita harus menentukan dulu resources request & limit pada pod tersebut seperti berikut:
+
+{% gist page.gist "05b-autoscalling-deployment.yaml" %}
+
+Kemudian coba jalankan dengan perintah 
+
+```bash
+➜ kubectl apply -f autoscalling-deployment.yaml
+deployment.apps/autoscale-nginx-deploy created
+horizontalpodautoscaler.autoscaling/autoscale-nginx-deploy created
+
+➜ kubectl get deploy
+NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+autoscale-nginx-deploy   3/3     3            3           112s
+nginx-deploy             5/5     5            5           63m
+
+
+```
