@@ -458,29 +458,64 @@ nginx-deploy-c9bcb48d4-sg97l   1/1     Running   0          3m46s
 nginx-deploy-c9bcb48d4-tvtq8   1/1     Running   0          69s
 ```
 
-Selain itu juga, kita bisa menggunakan Horizontal Pod autoscalling, tetapi Assuming [horizontal Pod autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) is enabled in your cluster. Untuk lebih detailnya kita akan bahas di materi selanjutnya ya...
+## RollingUpdate a Deployment
 
-kita perlu memasang `metrics-server` di cluster kita supaya container/pod bisa expose penggunaan resources seperti cpu, memory dan lain-lain. Karena kita menggunakan minikube kita bisa jalankan menggunakan perintah 
+RollingUpdate Deployments support running multiple versions of an application at the same time. When you or an autoscaler scales a RollingUpdate Deployment that is in the middle of a rollout (either in progress or paused), the Deployment controller balances the additional replicas in the existing active ReplicaSets (ReplicaSets with Pods) in order to mitigate risk. This is called proportional scaling.
+
+For example, you are running a Deployment with 10 replicas, `maxSurge=3`, and `maxUnavailable=2`. Configuration look like:
+
+{% gist page.gist "05b-rollingupdate-deployment.yaml" %}
+
+Kemudian coba jalankan dengan perintah berikut:
 
 {% highlight bash %}
-minikube addons enable metrics-server
+kubectl apply -f rollingupdate-deployment.yaml
 {% endhighlight %}
 
-you can set up an autoscaler for your Deployment and choose the minimum and maximum number of Pods you want to run based on the CPU utilization of your existing Pods. Untuk menggunakan autoscaling kita harus menentukan dulu resources request & limit pada pod tersebut seperti berikut:
-
-{% gist page.gist "05b-autoscalling-deployment.yaml" %}
-
-Kemudian coba jalankan dengan perintah 
+Maka outputnya seperti berikut:
 
 ```bash
-➜ kubectl apply -f autoscalling-deployment.yaml
-deployment.apps/autoscale-nginx-deploy created
-horizontalpodautoscaler.autoscaling/autoscale-nginx-deploy created
+➜ kubectl apply -f 03-workloads/01-basic-deploy/rollingupdate-deployment.yaml
+deployment.apps/rollingupdate-nginx-deploy created
 
-➜ kubectl get deploy
-NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
-autoscale-nginx-deploy   3/3     3            3           112s
-nginx-deploy             5/5     5            5           63m
+➜ kubectl get deploy rollingupdate-nginx-deploy
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+rollingupdate-nginx-deploy   10/10   10           10          2m25s
 
+NAME                                   DESIRED   CURRENT   READY   AGE
+rollingupdate-nginx-deploy-cd8ddf7d8   10        10        10      9s
 
+➜  kubernetes git:(main) ✗ kubectl get pod
+NAME                                         READY   STATUS    RESTARTS   AGE
+rollingupdate-nginx-deploy-cd8ddf7d8-7ffkl   1/1     Running   0          30s
+rollingupdate-nginx-deploy-cd8ddf7d8-7p5x2   1/1     Running   0          30s
+rollingupdate-nginx-deploy-cd8ddf7d8-f2pcm   1/1     Running   0          30s
+rollingupdate-nginx-deploy-cd8ddf7d8-fxvbb   1/1     Running   0          30s
+rollingupdate-nginx-deploy-cd8ddf7d8-hw67p   1/1     Running   0          30s
+rollingupdate-nginx-deploy-cd8ddf7d8-j2zls   1/1     Running   0          30s
+rollingupdate-nginx-deploy-cd8ddf7d8-rwln8   1/1     Running   0          30s
+rollingupdate-nginx-deploy-cd8ddf7d8-tw8m5   1/1     Running   0          30s
+rollingupdate-nginx-deploy-cd8ddf7d8-v5kt2   1/1     Running   0          30s
+rollingupdate-nginx-deploy-cd8ddf7d8-zzt44   1/1     Running   0          30s
+```
+
+Sekarang kita coba update image menjadi latest dengan perintah berikut:
+
+{% highlight bash %}
+kubectl set image deploy/rollingupdate-nginx-deploy nginx=nginx:latest && \
+kubectl get rs -w
+{% endhighlight %}
+
+Maka outputnya seperti berikut:
+
+```bash
+➜ kubectl set image deploy/rollingupdate-nginx-deploy nginx=nginx:latest && \
+kubectl get rs -w
+deployment.apps/rollingupdate-nginx-deploy image updated
+
+NAME                                    DESIRED   CURRENT   READY   AGE
+rollingupdate-nginx-deploy-77599d4db8   10        10        8       3s
+rollingupdate-nginx-deploy-cd8ddf7d8    2         2         2       49s
+rollingupdate-nginx-deploy-cd8ddf7d8    0         0         0       49s
+rollingupdate-nginx-deploy-77599d4db8   10        10        10      5s
 ```
