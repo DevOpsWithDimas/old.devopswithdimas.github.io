@@ -1,0 +1,2129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> DevOps with Dimas Maryanto - Overview of Java Programming </title>
+    <meta name="description" content="Hai semuanya, di materi kali ini kita akan membahas tentang Java Programming diataranya:">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevOps with Dimas Maryanto" />
+    <meta property="og:description" content="Hai semuanya, di materi kali ini kita akan membahas tentang Java Programming diataranya:"
+/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/node_modules/materialize-css/dist/css/materialize.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/devicons/css/devicons.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/sintax.css" />
+
+<script src="/assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/assets/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="/assets/responsive-content.js"></script>
+<script src="/assets/list.min.js"></script>
+<script src="/assets/sintax.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $('.button-collapse').sideNav({
+            menuWidth: 370
+        });
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+    })
+</script>
+
+
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82058496-1');
+</script>
+
+<!-- Global - Google Adsense -->
+<script data-ad-client="ca-pub-3067429629551793" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82058496-1', 'auto');
+	ga('send', 'pageview', { 'page': location.pathname + location.search + location.hash});
+	ga('set', 'anonymizeIp', false);
+    </script>
+    <!-- End Google Analytics -->
+    </head>
+<body>
+<header>
+    
+
+<div class="navbar-fixed hide-on-med-and-down">
+    <nav class="blue darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons right">home</i>&nbsp;
+                <span>Materi Bootcamp</span>
+            </a>
+            <a href="#" data-activates="slide-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/archives/">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/courses.html">
+                        <i class="material-icons left">library_books</i> 
+                        <span>Cources</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/news.html">
+                        <i class="material-icons left">announcement</i> 
+                        <span>News</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/promo.html">
+                        <i class="material-icons left">grade</i> 
+                        <span>Promo</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/roadmap.html">
+                        <i class="material-icons left">assessment</i> 
+                        <span>ROADMAP</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="fixed-action-btn click-to-toggle hide-on-large-only">
+    <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+        <i class="large material-icons">menu</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    <li><a class="subheader">Daftar Kategori</a></li>
+<li class="no-padding">
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Java
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/core/001-silabus-java">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">42</span>
+                                Java Basic
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                JDBC with Postgresql
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/web/war/001-silabus-java-web">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">32</span>
+                                Java Web (Servlet & JSP)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">57</span>
+                                ORM dengan Hibernate
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/language/java/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">3</span>
+                                Java
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                JavaScript
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/web/js/001-silabus-js">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                Javascript
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Database
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">116</span>
+                                Oracle Database
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">39</span>
+                                PostgreSQL
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                DevOps
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">36</span>
+                                Kubernetes (k8s)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">7</span>
+                                Gitlab
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">2</span>
+                                Nutanix AHV
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/docker/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">113</span>
+                                Docker
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+</li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</header>
+
+<section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="postBody" class="row container post-body">
+    <div class="col s12 m12 l4 hide-on-med-and-down">
+        <div class="row">
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons blue-text">person</i> Penulis:
+                        <span>
+                            <span class="badge new" data-badge-caption="">
+                                <time datetime="2022-05-14T11:29:26+00:00" itemscope="datePublished">
+                                    14 May 2022
+                                </time>
+                            </span>
+                        </span>
+                    </li>
+                    
+                    
+                    
+                    <li class="collection-item avatar">
+                        <img src="/resources/avatars/dimasm93.png" alt="Dimas Maryanto" class="circle">
+                        <span class="title">Dimas Maryanto</span>
+                        <p>PT. Tabeldata Informatika</p>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">account_balance_wallet</i>
+                        Donasi via:
+                    </li>
+                          
+                    <li class="collection-item">
+                        <a href="https://saweria.co/DimasMaryanto" target="_blank">
+                            Saweria a/n Dimas Maryanto
+                        </a>
+                    </li>              
+                    
+                </ul>
+            </div>
+            <!-- edit this for multiple premium members -->
+            
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">lock_open</i>
+                        Join Premium Members:
+                    </li>
+                    
+                    <li class="collection-item">
+                        <a href="https://www.udemy.com/course/pemograman-java-pemula-sampai-mahir/?referralCode=8080BE598C39D7652D33">
+                            Udemy.com
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            
+        </div>
+        <!-- 
+        
+        
+        <div class="row">
+            <ul class="collection with-header">
+                <li class="collection-item avatar">
+                    <img src="/resources/images/java-se.png" alt="" class="circle responsive-img">
+                    <span>Daftar materi
+                        <span class="badge new blue" data-badge-caption="materi">3</span>
+                    </span>
+                    
+                    <p class="title">
+                        JAVA
+                    </p>
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/language/java/01-silabus">
+                        1. Silabus - Java: Pemula sampai Mahir
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/language/java/01a-programming-language-overview">
+                        2. Overview of Programming Languages
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <div>
+                        <span class="badge" data-badge-caption="">
+                            <i class="material-icons">turned_in</i>
+                        </span>
+                        3. Overview of Java Programming
+                    </div>
+                    
+                </li>
+                
+            </ul>
+        </div>
+         -->
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collapsible with-header" data-collapsible="accordion">
+                <li class="collection-header">
+                    <div class="collapsible-header">
+                        Daftar Materi
+                    </div>                    
+                </li>
+
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            1. Pengenalan Java language
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            3
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/language/java/01-silabus">
+                                            <span class="truncate">1. Silabus - Java: Pemula sampai Mahir</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/language/java/01a-programming-language-overview">
+                                            <span class="truncate">2. Overview of Programming Languages</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/language/java/01b-java-programming-overview">
+                                            <span class="truncate">3. Overview of Java Programming</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            2. Getting started
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            3. Variables, Data Types and Methods
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            4. Build-in Functions & Operators
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            5. Classes and Packages
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            6. Structure Control
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            7. Array, Collections & Generics
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            8. Object Oriented Programming (OOP)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            9. Exceptions Handling
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            10. Lamda Expressions
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            11. Aggregate Operations
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            12. Thread and Concurrency
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            13. Graphical User Interface - Swing
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            14. Database Access (JDBC)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            15. Client / Server - JNDI
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            16. Client / Server - RMI
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            17. Study Kasus: Membuat aplikasi
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            18. Java Web (Servlet)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            19. Java Server Pages (JSP)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                               
+            </ul>
+        </div>
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collection with-header">
+                <li class="collapsible-header">
+                    Lastest Posts
+                </li>
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                        <span class="badge">09 Apr 23</span>
+                        Working with Deployment object
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                        <span class="badge">26 Feb 23</span>
+                        Study cases: Microservice apps (...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/01-welcome-nutanix-class">
+                        <span class="badge">05 Feb 23</span>
+                        Welcome to the Nutanix HCF (Hybr...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                        <span class="badge">04 Feb 23</span>
+                        Silabus SRE - Nutanix AHV: Pemul...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                        <span class="badge">17 Jan 23</span>
+                        What is Workload Resources?
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                        <span class="badge">17 Jan 23</span>
+                        Overview Kubernetes Workloads re...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl">
+                        <span class="badge">15 Jan 23</span>
+                        Getting started with Transaction...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06-overview-concurrent-control">
+                        <span class="badge">14 Jan 23</span>
+                        Overview of Concurrency Control
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05g-quis-section-1">
+                        <span class="badge">14 Jan 23</span>
+                        Time your practice (part 3)
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05f-dml-cleanup">
+                        <span class="badge">08 Jan 23</span>
+                        Cleanup Data from Table
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    <div class="col s12 m12 l8">
+        <div id="paginate-top" class="right">
+            <ul class="pagination hide-on-small-only">
+                <!-- current page info -->
+                <li>
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        3 to 3
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+            </ul>
+            <br>
+        </div>
+        <div>            
+            <div>
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <section id="article-body">
+        <div class="center">
+            <h1>
+                Overview of Java Programming
+            </h1>
+        </div>
+        <div>
+            <div class="post-content"
+                 style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: large">
+                <p>Hai semuanya, di materi kali ini kita akan membahas tentang Java Programming diataranya:</p>
+
+<ol>
+  <li>What is Java Programming Language?</li>
+  <li>Short history of Java Programming language?</li>
+  <li>What Java Programming can Do?</li>
+  <li>Berapa sih gaji jadi seorang Java Programmer di Indonesia?</li>
+</ol>
+
+<p>Menarik khan, ok yukk langsung aja kita bahas materi yang pertama</p>
+
+<!--more-->
+
+<h2 id="what-is-java-programming-language">What is Java Programming Language?</h2>
+
+<p>Java is a programming language and computing platform first released by Sun Microsystems in 1995.</p>
+
+<p>Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let programmers write once, run anywhere (WORA), meaning that compiled Java code can run on all platforms that support Java without the need to recompile.</p>
+
+<p>Java applications are typically compiled to bytecode that can run on any Java virtual machine (JVM) regardless of the underlying computer architecture. The syntax of Java is similar to C and C++, but has fewer low-level facilities than either of them.</p>
+
+<p>Developers or users that like to learn Java programming should install Java Development Kit (JDK) on local machine. Is Java free to download? Yes, Java is free to download for personal use and for development. developers can find all the development kits and other useful tools at <a href="https://www.oracle.com/javadownload/">www.oracle.com</a>.</p>
+
+<h2 id="short-history-of-java-programming">Short history of Java Programming?</h2>
+
+<p>The project was born in 1991, behind the scenes of a Sun Microsystems team, when three engineers, James Gosling, Mike Sheridan, and Patrick Naughton <strong>sought to design a language applicable to small electrical devices</strong>.</p>
+
+<p>Soon after, they launched the Green Project to study the impact of convergence between digitally controlled home appliances and computers. Using a syntax similar to that of C++, they made a digital remote control, equipped with a graphic and animated touch screen.</p>
+
+<p><img src="https://www.oracle.com/a/ocom/img/cb71-javatimeline-1991-1994-a.jpg" alt="java-tv" /></p>
+
+<p>in 1995, James Gosling unveiled a browser called WebRunner that was capable of showing HTML content mixed with Applets. then [java.sun.com] officially opened to the public.</p>
+
+<p>Eventually, the name of this technology would become “Java” (meaning “coffee” in American slang), in honor of the programmer’s favorite drink, namely coffee, part of the production of which comes from the island of Java.</p>
+
+<p><strong>in 1996,</strong></p>
+
+<ol>
+  <li>Java Development Kit 1.0 is released.</li>
+  <li>The Java operating system (JavaOS) is introduced. JavaOS is written primarily in Java and is intended for network computers and embedded systems.</li>
+</ol>
+
+<p><strong>in 1997 s/d 2000,</strong></p>
+
+<ol>
+  <li>Java Development Kit <code class="language-plaintext highlighter-rouge">1.1</code> is released with the key features of inner classes, JavaBeans, RMI Complier, Reflection, the just-in-time (JIT) compiler, internationalization, and Unicode support.</li>
+  <li>Java Development Kit <code class="language-plaintext highlighter-rouge">1.2</code> is released and is rebranded as Java 2 Platform, Standard Edition (<code class="language-plaintext highlighter-rouge">J2SE 1.2</code>). New features include Swing, Java 2D, and the Collections Framework.</li>
+  <li><code class="language-plaintext highlighter-rouge">J2SE 1.3</code> is released with new features that include the HotSpot Java VM, Java Naming and Directory Interface, and Java Platform Debugger Architecture.</li>
+</ol>
+
+<p><strong>in 2001 s/d 2004,</strong></p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">J2SE 1.4</code> is released with the key features of Java Web Start, non-blocking I/O, the Logging API, the Preferences API, and regular expressions.</li>
+  <li>The [java.com] website is launched to allow consumers to download a Java runtime package onto desktops and laptops to enable them to run Java applications.</li>
+  <li>NASA demonstrates a Mars rover prototype onstage at JavaOne, showing how Java technology will help remotely guide it from NASA’s Mission Control Center.
+ <img src="https://www.oracle.com/a/ocom/img/cb71-2001-2004a.jpg" alt="nasa-mars-rover" /></li>
+  <li><code class="language-plaintext highlighter-rouge">J2SE 5.0</code> is released with the key features of generics, annotations, enumerations, and variable arguments (varargs).</li>
+</ol>
+
+<p><strong>in 2006 s/d 2008,</strong></p>
+
+<ol>
+  <li>Sun releases Java to open source development under the GNU General Public License, the same license that governs the use and development of the Linux operating system.</li>
+  <li><code class="language-plaintext highlighter-rouge">Java SE 6</code> is released.</li>
+  <li>The Duke mascot image is open sourced under the BSD license.</li>
+</ol>
+
+<p><img src="https://www.oracle.com/a/ocom/img/cc01-2006-2008a.jpg" alt="duke-mascot" /></p>
+
+<p><strong>in 2009 s/d 2011</strong>,</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Java SE 7</code> is released with new features that include Project Coin, invokedynamic, the fork/join framework, and a new file system API (NIO.2).</li>
+</ol>
+
+<p><strong>in 2012 s/d 2014</strong>,</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Java SE 8</code> is released with the key features of lambda expressions, annotation of Java types, and the Date and Time API.</li>
+  <li>97 percent of enterprise desktops run Java.</li>
+  <li>More than 9 million developers worldwide use Java by the end of 2014.</li>
+</ol>
+
+<p><strong>in 2015 s/d 2016</strong>,</p>
+
+<ol>
+  <li><a href="https://go.java/twitter.html">Java + Twitter</a></li>
+  <li><a href="https://go.java/netflix.html">Java + Netflix</a></li>
+  <li><a href="https://eng.uber.com/tech-stack-part-one-foundation/">Java + Uber</a></li>
+</ol>
+
+<p><strong>in 2017</strong>,</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Java SE 9</code> is released with key features of Project Jigsaw (Java Platform Module System), jshell, ahead-of-time compilation, jlink, and compact strings. Learn more.</li>
+  <li>Java is ranked the #1 programming language.</li>
+  <li>12 million developers run Java worldwide.</li>
+</ol>
+
+<p><strong>in 2018</strong>,</p>
+
+<ol>
+  <li>Java is ranked the #1 language used by developers for the cloud.</li>
+  <li><code class="language-plaintext highlighter-rouge">Java SE 10</code> is the first release in the six-month release cadence. New features include local variable type inference, application class-data sharing, time-based release versioning, the fully parallel G1 garbage collector, root certificates, and thread-local handshakes. Learn more.</li>
+  <li><code class="language-plaintext highlighter-rouge">Java SE 11</code> is released; new features include an HTTP client, Oracle Java Flight Recorder, launch single-file source-code programs, Transport Layer Security (TLS) 1.3, and ZGC—a scalable and experimental low-latency garbage collector. Learn more</li>
+</ol>
+
+<p><strong>in 2019 s/d 2022</strong>,</p>
+
+<ol>
+  <li>Java is once again ranked the #1 language used by developers for the cloud.</li>
+  <li><code class="language-plaintext highlighter-rouge">Java SE 12</code> is released with key features of switch expressions (first preview), JVM Constants API, and default class data sharing (CDS) archives. Learn more.</li>
+  <li><code class="language-plaintext highlighter-rouge">Java SE 13</code> is released with key features of dynamic CDS archives, the ability to uncommit unused memory, switch expressions (second preview), and text blocks (first preview). Learn more.</li>
+  <li><a href="https://www.oracle.com/corporate/pressrelease/java-se-power-spotify-031919.html">Java + Spotify</a></li>
+  <li><code class="language-plaintext highlighter-rouge">Java SE 14</code> is released with the key features of pattern matching for instanceof (preview), JDK Flight Recorder event streaming, nonvolatile mapped byte buffers, helpful null pointer exceptions, records (preview), switch expressions, text blocks (second preview), ZGC for macOS and Windows, foreign-memory access API (incubator), and a packaging tool (incubator). Learn more.</li>
+  <li><code class="language-plaintext highlighter-rouge">Java SE 15</code> is released with the key features of sealed classes (preview), hidden classes, pattern matching for instanceof (second preview), text blocks, and records (second preview). Learn more.</li>
+  <li><a href="https://codakid.com/minecraft-coding/">Java + Minecraft</a></li>
+  <li><a href="https://www.mathworks.com/help/matlab/using-java-libraries-in-matlab.html">Java + MATLAB</a></li>
+</ol>
+
+<h2 id="what-java-programming-can-do">What Java Programming can Do?</h2>
+
+<p>Thanks to its excellent features, Java has become a popular and useful programming language. Sun characterized it as being:</p>
+
+<ol>
+  <li><strong>Compiled and Interpreted</strong>, Java combines the power of compiled languages with the flexibility of interpreted languages. The compiler (<code class="language-plaintext highlighter-rouge">javac</code>) compiles the source code into bytecode, then the Virtual Machine (JVM) executes this bytecode by transforming it into machine-readable code.</li>
+  <li><strong>Platform Independent and Portable</strong>, The two-step compilation process is what lies behind Java’s most significant feature:
+    <ol>
+      <li>Platform independence, which allows for portability. Being platform-independent means a program compiled on <strong>one machine can be executed on any other machine</strong>, regardless of the OS, as long as there is a JVM installed.</li>
+      <li>The portability feature refers to the ability to run a program on different machines. In fact, the <strong>same code will run identically on different platforms</strong>, regardless of hardware compatibility or operating systems, with no changes such as recompilation or tweaks to the source code.</li>
+    </ol>
+  </li>
+  <li><strong>Object-Oriented</strong>, Java strongly supports Object-Oriented Programming concepts such as encapsulation, abstraction, and inheritance. All the instructions and data in a Java program have to be added inside a class or object.</li>
+  <li><strong>Robust and Secure</strong>, Java includes several useful features that help us write robust and secure applications.
+    <ol>
+      <li>One of the most important ones is the memory management system, along with <strong>automatic garbage collection</strong>. Compared to languages like C/C++, Java avoids the concept of explicit pointers, and doesn’t require programmers to manually manage the allocated memory.</li>
+      <li>Instead, the GC will <strong>take care of deleting unused objects</strong> to free up memory.</li>
+      <li>In addition, Java is a strongly-typed language, which is a feature that can help lower the number of bugs in an application, and provides error handling mechanisms.</li>
+    </ol>
+  </li>
+  <li><strong>Distributed</strong>, This feature is helpful when we develop large projects. We can split a program into many parts and store these parts on different computers. As a result, we can <strong>easily create distributed and scalable applications that run on multiple nodes</strong>. We can achieve this using the concept of RMI (Remote Method Invocation) and EJB (Enterprise JavaBeans).</li>
+  <li><strong>Familiar, Simple and Small</strong>, Java is simple thanks to its coding style, which is very clean and easy to understand. Also, it doesn’t use complex and difficult features of other languages, such as the concept of explicit pointers.</li>
+  <li><strong>Multi-threaded and Interactive</strong>, Also known as Thread-based Multitasking, multithreading is a feature that allows executing multiple threads simultaneously.</li>
+  <li><strong>High Performance</strong>, Bytecodes that the compiler generates are highly optimized, so the Virtual Machine can execute them much faster. This is why <strong>Java is faster than other traditional interpreted programming languages</strong>.</li>
+</ol>
+
+<h2 id="berapa-sih-gaji-jadi-seorang-java-programmer-di-indonesia">Berapa sih gaji jadi seorang Java Programmer di Indonesia?</h2>
+
+<p>Kalo kita ngomongin soal pekerjaan sebagai Java Programmer, mungkin dari temen-temen ada yang bertanya bagaimana dengan Gajinya jika menjadi Java Programmer dan bagaimana dengan prospek kedepannya?</p>
+
+<p>Ok ini mungkin bisa di bilang pembahasan yang sedikit sensitif ya karena berkaitan dengan gaji seseorang, klo saya menjawab sih memang tidak ada yang pasti soal gaji ini balik lagi tergantu dari beberapa faktor</p>
+
+<ol>
+  <li>Lokasi bekerja, (perusahaan kecil atau besar)?</li>
+  <li>Sudah berapa lama berkerja?</li>
+  <li>Pernah mengerjakaan apa saja?</li>
+  <li>Jabatan / Posisi pernah dilalui seperti apa dan bagaimana jobdesk nya?</li>
+  <li>Dan seterusnya</li>
+</ol>
+
+<p>Khususnya di Indonesia, Java Programming banyak sekali digunakan beberapa perusahaan besar seperti</p>
+
+<ol>
+  <li>Banking, contohnya Bank Mandiri, Bank BNI, BPD DKI Jakarta, BPD SUMUT, DAPEN BI dan lain-lain</li>
+  <li>E-Commerse, contohnya Blibli, Lazada, Bukalapak</li>
+  <li>Information Technology, contohnya PT. Multipolar technology, PT. Tabeldata Informatika dan lain-lain.</li>
+  <li>dan lain-lain.</li>
+</ol>
+
+<p>Untuk range gaji rata2 untuk junior programmer, jika kita lihat di beberapa situ lowongan pekerjaan seperti LinkedIn, JobStreet, dan lain-lain ada di kisaran <code class="language-plaintext highlighter-rouge">4jt s/d 6jt per bulan</code> pada saat ini (May-2022). Nah lumayan bukan? ya klo menurut saya sih itu sudah lumayan besar dibandingkan jaman dulu saya bekerja memulai karir menjadi Junior Programmer. klo boleh saya cerita sedikit, dulu saya hanya di bayar 2jt/bulan (part time) karena dulu saya masih Kuliah. Seiring dengan berjalannya waktu skill dan pengalaman meningkat, semakin lama gaji pun akan meningkat bahkan sayapun gak mengira bisa mendapatkan dengan loncatan cukup besar sampai menuju sekarang.</p>
+
+<p>Mungkin kesimpulannya, buat temen-temen yang masih pemula saat ini Fokus saja dulu dengan apa yang ingin dipelajari karena klo soal gaji semakin lama (semakin berpengalan) maka akan gaji/income pun semakin besar kok!</p>
+
+            </div>
+        </div>
+    </section>   
+</article>
+
+            </div>
+            
+        </div>
+        <div>
+            
+                <div>
+                    <ul class="collection with-header">
+                        <li class="collection-header">
+                            <h2>Referensi</h2>
+                        </li>
+                                               
+                            <a class="collection-item" href="https://www.java.com/en/download/help/whatis_java.html" target="_blank">https://www.java.com/en/download/help/whatis_java.html</a>
+                                               
+                            <a class="collection-item" href="https://www.oracle.com/java/moved-by-java/timeline/" target="_blank">https://www.oracle.com/java/moved-by-java/timeline/</a>
+                        
+                    </ul>                    
+                </div>
+            
+        </div>
+        <div id="paginate" class="center">
+            <ul class="pagination hide-on-small-only">
+                <!-- goto first page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/language/java/01-silabus" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman 1...">
+                        <i class="material-icons">fast_rewind</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto before page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/language/java/01a-programming-language-overview" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke artikel sebelumnya...">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+                                
+                
+                <!-- current page info -->
+                <li class="active">
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        3 to 3
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+                   
+                <!-- goto next page -->
+                
+                <li class="disabled">
+                    <a href="#!">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto last page -->
+                
+                <li>
+                    <a href="#!" class="disabled">
+                        <i class="material-icons">fast_forward</i>
+                    </a>
+                </li>
+                
+            </ul>
+            <br>
+        </div>
+        <div>
+            
+            <div id="disqus_thread"></div>
+            <script>
+
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                
+                var disqus_config = function () {
+                    this.page.url = 'https://youtube.dimas-maryanto.com/posts/language/java/01b-java-programming-overview';
+                    this.page.identifier = '/posts/language/java/01b-java-programming-overview';
+                    console.debug(this.page);
+                };
+                
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://materi-bootcamp.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            
+        </div>
+    </div>
+    <div id="floating-button-menu" class="fixed-action-btn click-to-toggle horizontal hide-on-large-only">
+        <a href="#" class="btn-floating btn-large waves-effect waves-light">
+            <i class="large material-icons">playlist_play</i>
+        </a>
+        <ul>
+            <!-- goto first page -->
+            
+            <li>
+                <a href="/posts/language/java/01-silabus" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman 1...">
+                    <i class="material-icons">fast_rewind</i>
+                </a>
+            </li>
+            
+            <!-- goto before page -->
+            
+            <li>
+                <a href="/posts/language/java/01a-programming-language-overview" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman sebelumnya">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+             
+
+            <!-- goto next page -->
+            
+            <li>
+                <a href="#!" class="tooltipped btn-floating yellow darken-1 waves-effect disabled">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+            
+
+            <!-- goto last page -->
+            
+            <li>
+                <a href="#!" class="tooltipped btn-floating yellow darken-1 waves-effect disabled">
+                    <i class="material-icons">fast_forward</i>
+                </a>
+            </li>
+               
+
+            <li>
+                <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                    <i class="large material-icons">toc</i>
+                </a>
+            </li>
+          </ul>
+    </div>
+</div>
+
+<ul id="slide-out-materi" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li> 
+    <li>
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collapsible with-header" data-collapsible="accordion">
+                <li class="collection-header">
+                    <div class="collapsible-header subheader">
+                        Daftar Materi
+                    </div>                    
+                </li>
+
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Pengenalan Java language
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            3
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/language/java/01-silabus">
+                                        <span class="truncate">
+                                            1. Silabus - Java: Pemula sampai Mahir
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/language/java/01a-programming-language-overview">
+                                        <span class="truncate">
+                                            2. Overview of Programming Languages
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/language/java/01b-java-programming-overview">
+                                        <span class="truncate">
+                                            3. Overview of Java Programming
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Getting started
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Variables, Data Types and Methods
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Build-in Functions & Operators
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Classes and Packages
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Structure Control
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Array, Collections & Generics
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Object Oriented Programming (OOP)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Exceptions Handling
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Lamda Expressions
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Aggregate Operations
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Thread and Concurrency
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Graphical User Interface - Swing
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Database Access (JDBC)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Client / Server - JNDI
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Client / Server - RMI
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Study Kasus: Membuat aplikasi
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Java Web (Servlet)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Java Server Pages (JSP)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                               
+            </ul>
+        </div>
+    </li>
+    
+
+    
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</section>
+
+<section>
+    
+<footer class="page-footer blue lighten-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Tentang website</h5>
+                <div class="grey-text text-lighten-4">
+                    <p>Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.</p>
+                    <p>
+                        Donasi via:
+                        <ul>
+                            
+                            <ol>
+                                <a class="white-text" href="https://saweria.co/DimasMaryanto">
+                                    <i class="material-icons">star</i>
+                                    Saweria a/n Dimas Maryanto
+                                </a>
+                            </ol>
+                            
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <ul class="collection with-header">
+                    <li class="collection-header blue lighten-1">
+                        <i class="material-icons">account_box</i>
+                        <span class="white-text">Jangan Lupa follow aku ya guys!</span>
+                    </li>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://github.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-github"></i> Github
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.facebook.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.instagram.com/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue darken-3">
+        <div class="container">
+            Dimas Maryanto © 2023
+            <a class="grey-text text-lighten-4 right" href="https://pages.github.com/">
+                powered by Github Pages & Jekyll
+            </a>
+        </div>
+    </div>
+</footer>
+</section>
+
+</body>
+</html>

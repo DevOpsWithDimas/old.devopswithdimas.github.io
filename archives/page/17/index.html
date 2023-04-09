@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> DevOps with Dimas Maryanto - Archives - page 17 </title>
+    <meta name="description" content="Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevOps with Dimas Maryanto" />
+    <meta property="og:description" content="Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS."
+/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/node_modules/materialize-css/dist/css/materialize.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/devicons/css/devicons.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/sintax.css" />
+
+<script src="/assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/assets/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="/assets/responsive-content.js"></script>
+<script src="/assets/list.min.js"></script>
+<script src="/assets/sintax.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $('.button-collapse').sideNav({
+            menuWidth: 370
+        });
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+    })
+</script>
+
+
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82058496-1');
+</script>
+
+<!-- Global - Google Adsense -->
+<script data-ad-client="ca-pub-3067429629551793" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82058496-1', 'auto');
+	ga('send', 'pageview', { 'page': location.pathname + location.search + location.hash});
+	ga('set', 'anonymizeIp', false);
+    </script>
+    <!-- End Google Analytics -->
+    </head>
+<body>
+<header>
+    
+
+<div class="navbar-fixed hide-on-med-and-down">
+    <nav class="blue darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons right">home</i>&nbsp;
+                <span>Materi Bootcamp</span>
+            </a>
+            <a href="#" data-activates="slide-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/archives/">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/courses.html">
+                        <i class="material-icons left">library_books</i> 
+                        <span>Cources</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/news.html">
+                        <i class="material-icons left">announcement</i> 
+                        <span>News</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/promo.html">
+                        <i class="material-icons left">grade</i> 
+                        <span>Promo</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/roadmap.html">
+                        <i class="material-icons left">assessment</i> 
+                        <span>ROADMAP</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="fixed-action-btn click-to-toggle hide-on-large-only">
+    <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+        <i class="large material-icons">menu</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    <li><a class="subheader">Daftar Kategori</a></li>
+<li class="no-padding">
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Java
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/core/001-silabus-java">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">42</span>
+                                Java Basic
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                JDBC with Postgresql
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/web/war/001-silabus-java-web">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">32</span>
+                                Java Web (Servlet & JSP)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">57</span>
+                                ORM dengan Hibernate
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/language/java/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">3</span>
+                                Java
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                JavaScript
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/web/js/001-silabus-js">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                Javascript
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Database
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">116</span>
+                                Oracle Database
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">39</span>
+                                PostgreSQL
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                DevOps
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">36</span>
+                                Kubernetes (k8s)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">7</span>
+                                Gitlab
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">2</span>
+                                Nutanix AHV
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/docker/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">113</span>
+                                Docker
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+</li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</header>
+
+<section>
+    <div class="parallax-container">
+    <div class="parallax"><img src="/resources/pictures/big-art.png">
+    </div>
+</div>
+
+<div class="section white">
+    <div class="row container">
+        <h2 class="header">
+            Articles
+            <span class="new badge" data-badge-caption="Articles">474</span>
+            <span class="new badge" data-badge-caption="Pages">19</span>
+        </h2>
+        <p class="grey-text text-darken-3 lighten-3"></p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div id="archive-body" class="container">
+        <div class="col m12">
+            <!-- Pagination links -->
+            <div class="pagination right-align">
+                
+                <a href="/archives/page/16/" class="previous">Latest</a>
+                
+                <span class="page_number ">
+                    Page: 17 of 19
+                </span>
+                
+                <a href="/archives/page/18/" class="next">Previous</a>
+                
+            </div>
+
+            <ul class="collection">
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-web.png"
+                        alt="java-web" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Saturday,
+                        29/Aug/2020</span>
+                    <a href="/posts/java/web/war/009-structure-project-maven-archetype-webapp">
+                        <span class="title">Memahami Struktur Project dengan maven-archetype-webapp</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#war</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Setelah kita membuat project dengan maven menggunakan template <code class="language-plaintext highlighter-rouge">maven-archetype-webapp</code> berikut adalah struktur directory yang kita harus ketahui, berikut adalah folder dan file configurasinya:</p>
+
+<br>
+                        <a href="/posts/java/web/war/009-structure-project-maven-archetype-webapp">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-web.png"
+                        alt="java-web" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        27/Aug/2020</span>
+                    <a href="/posts/java/web/war/008-create-project-java-web">
+                        <span class="title">Membuat project Java Web dengan Apache Maven</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#war</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>kali ini saya akan membuat project Java Web dengan menggunakan Apache Maven dengan template project <code class="language-plaintext highlighter-rouge">maven-archetype-webapp</code>. berikut adalah langkah-langkahnya:</p>
+
+<br>
+                        <a href="/posts/java/web/war/008-create-project-java-web">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-web.png"
+                        alt="java-web" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        27/Aug/2020</span>
+                    <a href="/posts/java/web/war/005-pengenalan-js">
+                        <span class="title">Pengenalan Pemograman Client Side dengan JS</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#war</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Client side programming dalam 1 decade terakhir memang sedang jadi perbincangan, lantas apakah kita harus menggunakan?</p>
+
+<br>
+                        <a href="/posts/java/web/war/005-pengenalan-js">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-web.png"
+                        alt="java-web" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Wednesday,
+                        26/Aug/2020</span>
+                    <a href="/posts/java/web/war/004-pengenalan-css">
+                        <span class="title">Pengenalan Styling dengan CSS</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#war</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Untuk memberikan warna berbeda pada halaman HTML kita bisa melakukan styling menggunakan CSS atau <strong>Cascade Style Sheets</strong>. Dalam menggunakan CSS harus tau dulu apa itu <strong>selector</strong> dan jenis dari <strong>selector</strong></p>
+
+<br>
+                        <a href="/posts/java/web/war/004-pengenalan-css">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-web.png"
+                        alt="java-web" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Sunday,
+                        23/Aug/2020</span>
+                    <a href="/posts/java/web/war/003-pengenalan-html">
+                        <span class="title">Pengenalan Scripting language dengan HTML</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#war</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Internet yang kita akses itu berisi document media type <code class="language-plaintext highlighter-rouge">application/html</code>, HTML (Hypertext Markup Language) yaitu dokument web yang static yang berisi text, image, video dan media lain-nya.</p>
+
+<br>
+                        <a href="/posts/java/web/war/003-pengenalan-html">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-web.png"
+                        alt="java-web" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Sunday,
+                        23/Aug/2020</span>
+                    <a href="/posts/java/web/war/002-pengenalan-java-web">
+                        <span class="title">Technology Java Enterprice Edition</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#war</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Platform Java Enterpice Edition, menyediakan API dan lingkungan runtime untuk mengembangkan dan menjalankan aplikasi Enterpice grade, multi-tier, scalable, aplikasi jaringan yang handal.</p>
+
+<br>
+                        <a href="/posts/java/web/war/002-pengenalan-java-web">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-jdbc-psql.png"
+                        alt="java-jdbc-psql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Saturday,
+                        22/Aug/2020</span>
+                    <a href="/posts/java/jdbc/postgresql/014-quis-section-1">
+                        <span class="title">Time is your to practice</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#jdbc</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <ol>
+  <li>Buatlah aplikasi untuk, untuk menyimpan data nasabah baru dengan model seperti berikut:</li>
+</ol>
+
+<br>
+                        <a href="/posts/java/jdbc/postgresql/014-quis-section-1">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/orm-hibernate.png"
+                        alt="orm-hibernate" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Friday,
+                        21/Aug/2020</span>
+                    <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                        <span class="title">Silabus Belajar JPA Hibernate</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#orm</div>
+                        
+                        <div class="chip small">#hibernate</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hi, in this section ‘ORM Hibernate’ ini temen-temen akan belajar dan memahami konsep JPA dengan menggunakan framework Hibernate. Scope yang akan kita bahas diantaranya:</p>
+
+<br>
+                        <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/js.png"
+                        alt="js" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        20/Aug/2020</span>
+                    <a href="/posts/web/js/013-nexted-object-js">
+                        <span class="title">Nested Object in Javascript</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#js</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Kita sekarang akan membahas object dalam object kemudian mengaksesnya contohnya seperti berikut:</p>
+
+<br>
+                        <a href="/posts/web/js/013-nexted-object-js">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/js.png"
+                        alt="js" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        20/Aug/2020</span>
+                    <a href="/posts/web/js/012-object-js">
+                        <span class="title">Object Oriented Programming dengan Javascript</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#js</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>JavaScript is Object Oriented Programming. Untuk menulis object di JavaScript ada banyak cara yaitu cara paling sederhana adalah seperti berikut:</p>
+
+<br>
+                        <a href="/posts/web/js/012-object-js">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/js.png"
+                        alt="js" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        20/Aug/2020</span>
+                    <a href="/posts/web/js/010-array-js">
+                        <span class="title">Array di JavaScript</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#js</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Tipe <strong>data array</strong> seperti yang anda ketahui kalo array ini pada dasarnya adalah sebuah variable yang bisa menampung data lebih dari satu.</p>
+
+<br>
+                        <a href="/posts/web/js/010-array-js">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/js.png"
+                        alt="js" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        20/Aug/2020</span>
+                    <a href="/posts/web/js/009-function-js">
+                        <span class="title">Function di JavaScript</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#js</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>seperti yang ketahui JavaScript ini tidak mengenal yang namanya <code class="language-plaintext highlighter-rouge">Class</code> sebagai gantinya kita bisa menggunakan function sebagai pembungkusnya.</p>
+
+<br>
+                        <a href="/posts/web/js/009-function-js">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/js.png"
+                        alt="js" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        20/Aug/2020</span>
+                    <a href="/posts/web/js/008-loop-js">
+                        <span class="title">Perulangan atau Looping dengan JavaScript</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#js</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>perulangan sebenarnya juga gak ada yang aneh kurang lebih sama seperti bahasa pemograman yang lain contohnya perulangan menggunakan <code class="language-plaintext highlighter-rouge">for</code>, <code class="language-plaintext highlighter-rouge">do-while</code>, <code class="language-plaintext highlighter-rouge">while</code> dan <code class="language-plaintext highlighter-rouge">for-in</code>.</p>
+
+<br>
+                        <a href="/posts/web/js/008-loop-js">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/js.png"
+                        alt="js" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        20/Aug/2020</span>
+                    <a href="/posts/web/js/007-selection-js">
+                        <span class="title">Percabagan atau Selection di JavaScript</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#js</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Percabangan sendiri dari dulu ada 3 yaitu <code class="language-plaintext highlighter-rouge">?</code> ,<code class="language-plaintext highlighter-rouge">if</code> dan <code class="language-plaintext highlighter-rouge">switch</code>. Ok sekarang kita akan lihat 1 per 1 bagaimana sifat atau prilaku dari ketiga percabangan tersebut. yang pertama kita akan bahas dulu selection yang paling sedarhana yaitu dengan menggunakan <code class="language-plaintext highlighter-rouge">?</code>. seperti berikut:</p>
+
+<br>
+                        <a href="/posts/web/js/007-selection-js">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/js.png"
+                        alt="js" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        20/Aug/2020</span>
+                    <a href="/posts/web/js/006-math-operation-js">
+                        <span class="title">Operator Matematika di JavaScript</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#js</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Operator pada dasarnya dibagi 3 yaitu</p>
+<ol>
+  <li>Aritmatika,</li>
+  <li>Assignment dan</li>
+  <li>Bitwise.</li>
+</ol>
+
+<br>
+                        <a href="/posts/web/js/006-math-operation-js">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/js.png"
+                        alt="js" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        20/Aug/2020</span>
+                    <a href="/posts/web/js/005-variables-js">
+                        <span class="title">Variable di JavaScript</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#js</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Kali ini saya mau membahas tentang variable di JavaScript diantaranya pembahasanya local &amp; global variable, dan inisialisasi variable.</p>
+
+<p><br>
+                        <a href="/posts/web/js/005-variables-js">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/js.png"
+                        alt="js" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        20/Aug/2020</span>
+                    <a href="/posts/web/js/004-data-type-js">
+                        <span class="title">Data Type di JavaScript</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#js</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>pada dasarnya tipe data di JavaScript terdiri dari:</p>
+
+<br>
+                        <a href="/posts/web/js/004-data-type-js">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/js.png"
+                        alt="js" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        20/Aug/2020</span>
+                    <a href="/posts/web/js/003-setup-env-development">
+                        <span class="title">Setup Develoment environment untuk Javascript</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#js</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Untuk memulai belajar Javascript, kita perlu setup development environment. Tidak seperti Java, C++, Python. JavaScript tidak perlu menginstall software SDK karena <strong>by default sudah tertanam di Browser</strong> seperti (Internet Expoler, Mozilla Firefox, Google Chrome dll). yang perlu di install adalah <strong>Text Editor</strong>. Ada banyak text editor untuk JavaScript dari yang paling cangih seperti IDE <a href="https://netbeans.org/">Netbeans</a>, <a href="https://www.jetbrains.com/idea/">InteliJIDE</a>, <a href="https://www.eclipse.org/">Eclipse</a> sampe ke text editor biasa seperti Nodepad, Gedit dll selain itu juga ada banyak pilihan lain diantaranya:</p>
+
+<br>
+                        <a href="/posts/web/js/003-setup-env-development">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/js.png"
+                        alt="js" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        20/Aug/2020</span>
+                    <a href="/posts/web/js/002-pengenalan-js">
+                        <span class="title">Pengenalan scripting language dengan Javascript</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#js</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <h2 id="apa-itu-javascript">Apa itu Javascript?</h2>
+
+<blockquote>
+  <p>Menurut MDN (Mozilla Developer Network) JavaScript (JS) is a lightweight, interpreted, programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js and Apache CouchDB. JS is a prototype-based, multi-paradigm, dynamic scripting language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles.</p>
+</blockquote>
+
+<br>
+                        <a href="/posts/web/js/002-pengenalan-js">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/js.png"
+                        alt="js" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        20/Aug/2020</span>
+                    <a href="/posts/web/js/001-silabus-js">
+                        <span class="title">Silabus Belajar Javascript</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#js</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hi, di materi kali ini ‘JavaScript’ membahas bahasa pemograman yang bersifat scriptiong language / bahasa pemograman yang berjalan di sisi client side, yang biasanya digunakan untuk menjadikan HTML dynamic atau kita bisa rubah DOM nya menggunakan bahasa pemograman Javascript.</p>
+
+<br>
+                        <a href="/posts/web/js/001-silabus-js">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-web.png"
+                        alt="java-web" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Wednesday,
+                        19/Aug/2020</span>
+                    <a href="/posts/java/web/war/001-silabus-java-web">
+                        <span class="title">Silabus belajar Java WEB</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#web</div>
+                        
+                        <div class="chip small">#war</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hi, di materi kali ini ‘Java Web’ temen temen akan belajar tentang konsep dan implementasi Pemogranan Web menggunakan Teknology Java. Didalam materi ini membutuhkan pengentahuan tentang Java basic seperti variable, tipe data, class, looping, selection, OOP seperti materi yang pernah saya tulis <a href="/posts/java/core/001-silabus-java">disini</a>.</p>
+
+<br>
+                        <a href="/posts/java/web/war/001-silabus-java-web">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-jdbc-psql.png"
+                        alt="java-jdbc-psql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Friday,
+                        29/May/2020</span>
+                    <a href="/posts/java/jdbc/postgresql/011-batch">
+                        <span class="title">Batch processing dengan JDBC</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#jdbc</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai <a href="">sebelumnya</a> kita udah membahas tentang transactional di JDBC. nah sekarang kita akan melanjutkan pembahasan tentang batch proccessing atau orang-orang lebih sering menyebutnya bulk query. batch processing biasanya penerapannya untuk melakukan insert secara berulang seperti berikut contoh penerapan dalam sql:</p>
+
+<br>
+                        <a href="/posts/java/jdbc/postgresql/011-batch">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-jdbc-psql.png"
+                        alt="java-jdbc-psql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Friday,
+                        29/May/2020</span>
+                    <a href="/posts/java/jdbc/postgresql/010-transactional">
+                        <span class="title">Mengenal Transactional dengan JDBC</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#jdbc</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai pada pembahasan kali ini kita akan mempelajari tentang transactional di JDBC. seperti yang kita tau klo untuk mengaktifkan transaksi dengan cara sebagai berikut:</p>
+
+<br>
+                        <a href="/posts/java/jdbc/postgresql/010-transactional">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-jdbc-psql.png"
+                        alt="java-jdbc-psql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Sunday,
+                        24/May/2020</span>
+                    <a href="/posts/java/jdbc/postgresql/009-resultset">
+                        <span class="title">Mengenal class ResultSet</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#jdbc</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai pada pembahasan kali ini, kita akan berkenalan lebih dalam dengan class <a href="https://docs.oracle.com/javase/7/docs/api/java/sql/ResultSet.html">ResultSet</a>. ResultSet berfungsi me-maintainance cursor untuk pointing ke setiap nodes. Setiap nodes merepresentasikan baris pada sebuah table. Seperti pada gambar berikut:</p>
+
+<br>
+                        <a href="/posts/java/jdbc/postgresql/009-resultset">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-jdbc-psql.png"
+                        alt="java-jdbc-psql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Friday,
+                        22/May/2020</span>
+                    <a href="/posts/java/jdbc/postgresql/008-execute-query-and-update">
+                        <span class="title">Perbedaan method executeQuery() dan executeUpdate()</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#jdbc</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai, <a href="">Pada post sebelumnya</a> kita udah belajar tentang Class API <a href="https://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html">Statement</a> dan <a href="https://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html">PreparedStatement</a>. Pembahasan kali ini kita akan lihat perbedaan antara method <code class="language-plaintext highlighter-rouge">executeUpdate()</code> dan <code class="language-plaintext highlighter-rouge">executeQuery()</code>. Ok yang pertama kita bahas dulu method <code class="language-plaintext highlighter-rouge">executeUpdate()</code></p>
+
+<br>
+                        <a href="/posts/java/jdbc/postgresql/008-execute-query-and-update">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+            </ul>
+
+            <!-- Pagination links -->
+            <div class="pagination center">
+                <ul class="pagination">
+
+                    <li class="waves-effect">
+                        <a href="/archives/" class="first">
+                            First
+                        </a>
+                    </li>
+
+                    
+                        <li class="waves-effect">
+                            <a href="/archives/page/16/" class="previous">
+                                Previous
+                            </a>
+                        </li>
+                    
+
+                    
+                    
+                    <li >
+                        <a href="/archives/page/15/index.html" title="Archives - page 15">15</a>
+                    </li>
+                    
+                    <li >
+                        <a href="/archives/page/16/index.html" title="Archives - page 16">16</a>
+                    </li>
+                    
+                    <li class="active waves-effect" >
+                        <a href="/archives/page/17/index.html" title="Archives - page 17">17</a>
+                    </li>
+                    
+                    <li >
+                        <a href="/archives/page/18/index.html" title="Archives - page 18">18</a>
+                    </li>
+                    
+                    <li >
+                        <a href="/archives/page/19/index.html" title="Archives - page 19">19</a>
+                    </li>
+                    
+                    
+
+                    
+                    <li>
+                        <a href="/archives/page/18/" class="next">Next</a>
+                    </li>
+                    
+
+                    <li class="waves-effect">
+                        <a href="/archives/page/19/" class="last">
+                            Last
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section>
+    
+<footer class="page-footer blue lighten-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Tentang website</h5>
+                <div class="grey-text text-lighten-4">
+                    <p>Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.</p>
+                    <p>
+                        Donasi via:
+                        <ul>
+                            
+                            <ol>
+                                <a class="white-text" href="https://saweria.co/DimasMaryanto">
+                                    <i class="material-icons">star</i>
+                                    Saweria a/n Dimas Maryanto
+                                </a>
+                            </ol>
+                            
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <ul class="collection with-header">
+                    <li class="collection-header blue lighten-1">
+                        <i class="material-icons">account_box</i>
+                        <span class="white-text">Jangan Lupa follow aku ya guys!</span>
+                    </li>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://github.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-github"></i> Github
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.facebook.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.instagram.com/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue darken-3">
+        <div class="container">
+            Dimas Maryanto © 2023
+            <a class="grey-text text-lighten-4 right" href="https://pages.github.com/">
+                powered by Github Pages & Jekyll
+            </a>
+        </div>
+    </div>
+</footer>
+</section>
+
+</body>
+</html>

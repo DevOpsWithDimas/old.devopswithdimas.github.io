@@ -1,0 +1,3025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> DevOps with Dimas Maryanto - Configure Request and Limit of Resources (CPUs &amp; Memory) </title>
+    <meta name="description" content="Hai semuanya, di materi kali ini kita membahas tentang Resources Limit and Request pada suatu containers dalam Pod. Diantaranya:">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevOps with Dimas Maryanto" />
+    <meta property="og:description" content="Hai semuanya, di materi kali ini kita membahas tentang Resources Limit and Request pada suatu containers dalam Pod. Diantaranya:"
+/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/node_modules/materialize-css/dist/css/materialize.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/devicons/css/devicons.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/sintax.css" />
+
+<script src="/assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/assets/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="/assets/responsive-content.js"></script>
+<script src="/assets/list.min.js"></script>
+<script src="/assets/sintax.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $('.button-collapse').sideNav({
+            menuWidth: 370
+        });
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+    })
+</script>
+
+
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82058496-1');
+</script>
+
+<!-- Global - Google Adsense -->
+<script data-ad-client="ca-pub-3067429629551793" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82058496-1', 'auto');
+	ga('send', 'pageview', { 'page': location.pathname + location.search + location.hash});
+	ga('set', 'anonymizeIp', false);
+    </script>
+    <!-- End Google Analytics -->
+    </head>
+<body>
+<header>
+    
+
+<div class="navbar-fixed hide-on-med-and-down">
+    <nav class="blue darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons right">home</i>&nbsp;
+                <span>Materi Bootcamp</span>
+            </a>
+            <a href="#" data-activates="slide-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/archives/">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/courses.html">
+                        <i class="material-icons left">library_books</i> 
+                        <span>Cources</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/news.html">
+                        <i class="material-icons left">announcement</i> 
+                        <span>News</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/promo.html">
+                        <i class="material-icons left">grade</i> 
+                        <span>Promo</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/roadmap.html">
+                        <i class="material-icons left">assessment</i> 
+                        <span>ROADMAP</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="fixed-action-btn click-to-toggle hide-on-large-only">
+    <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+        <i class="large material-icons">menu</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    <li><a class="subheader">Daftar Kategori</a></li>
+<li class="no-padding">
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Java
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/core/001-silabus-java">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">42</span>
+                                Java Basic
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                JDBC with Postgresql
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/web/war/001-silabus-java-web">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">32</span>
+                                Java Web (Servlet & JSP)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">57</span>
+                                ORM dengan Hibernate
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/language/java/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">3</span>
+                                Java
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                JavaScript
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/web/js/001-silabus-js">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                Javascript
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Database
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">116</span>
+                                Oracle Database
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">39</span>
+                                PostgreSQL
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                DevOps
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">36</span>
+                                Kubernetes (k8s)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">7</span>
+                                Gitlab
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">2</span>
+                                Nutanix AHV
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/docker/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">113</span>
+                                Docker
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+</li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</header>
+
+<section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="postBody" class="row container post-body">
+    <div class="col s12 m12 l4 hide-on-med-and-down">
+        <div class="row">
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons blue-text">person</i> Penulis:
+                        <span>
+                            <span class="badge new" data-badge-caption="">
+                                <time datetime="2022-06-11T06:04:45+00:00" itemscope="datePublished">
+                                    11 June 2022
+                                </time>
+                            </span>
+                        </span>
+                    </li>
+                    
+                    
+                    
+                    <li class="collection-item avatar">
+                        <img src="/resources/avatars/dimasm93.png" alt="Dimas Maryanto" class="circle">
+                        <span class="title">Dimas Maryanto</span>
+                        <p>PT. Tabeldata Informatika</p>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">account_balance_wallet</i>
+                        Donasi via:
+                    </li>
+                          
+                    <li class="collection-item">
+                        <a href="https://saweria.co/DimasMaryanto" target="_blank">
+                            Saweria a/n Dimas Maryanto
+                        </a>
+                    </li>              
+                    
+                </ul>
+            </div>
+            <!-- edit this for multiple premium members -->
+            
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">lock_open</i>
+                        Join Premium Members:
+                    </li>
+                    
+                    <li class="collection-item">
+                        <a href="https://www.udemy.com/course/devops-kubernetes-pemula-sampai-mahir/?referralCode=58BDCE6103ADC4C9C11D">
+                            Udemy.com
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            
+        </div>
+        <!-- 
+        
+        
+        <div class="row">
+            <ul class="collection with-header">
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <span>Daftar materi
+                        <span class="badge new blue" data-badge-caption="materi">36</span>
+                    </span>
+                    
+                    <p class="title">
+                        KUBERNETES (K8S)
+                    </p>
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                        1. Silabus - DevOps Kubernetes: Pem...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01a-what-is-kubernetes">
+                        2. What is Kubernetes (k8s) ?
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01b-k8s-components">
+                        3. Kubernetes Components
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01c-k8s-api">
+                        4. The Kubernetes API
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01d-k8s-objects">
+                        5. What is Kubernetes Objects?
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01e-k8s-object-management">
+                        6. Managing Kubernetes Object
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01f-k8s-object-names-and-uids">
+                        7. Kubernetes Object Names and IDs
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01g-k8s-namespaces">
+                        8. What is Kubernetes Namespaces?
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01h-kubernetes-environtments">
+                        9. Kubernetes cluster environtments
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02-overview-learn-env">
+                        10. Overview learning environment wi...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-macos">
+                        11. Install minikube on Mac (Intel C...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02a-install-for-mac-apple-silicon">
+                        12. Install minikube on Mac (Apple s...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-windows">
+                        13. Install minikube for Windows 11/...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-linux">
+                        14. Install minikube for Linux users
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02b-deploy-application">
+                        15. Deploying an apps/services into ...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02c-minikube-basic-control">
+                        16. Minikube basic control
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02d-minikube-use-your-own-images">
+                        17. Using your own image into Miniku...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02f-minikube-addons">
+                        18. Minikube addons features
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02g-minikube-access-apps">
+                        19. Access your apps/service in mini...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02h-minikube-mount">
+                        20. Mounting filesystems to minikube...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03-overview-pod-containers">
+                        21. Overview Pod and Container in Ku...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03a-workload-pods">
+                        22. Kubernetes Workloads with Pods
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03b-working-with-pods">
+                        23. Working with Pods
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03c-basic-pod-and-containers-config">
+                        24. Basic Pods and Containers Configs
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03d-pod-lifecycle">
+                        25. Pod & Container Lifecycle
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03e-init-containers">
+                        26. Initialization of Containers
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03f-pod-env-config">
+                        27. Configure env (Environment Varia...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <div>
+                        <span class="badge" data-badge-caption="">
+                            <i class="material-icons">turned_in</i>
+                        </span>
+                        28. Configure Request and Limit of R...
+                    </div>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03h-pod-container-probe-config">
+                        29. Configure liveness, readiness, a...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03i-distruptions">
+                        30. Pod Disruptions
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04-overview-study-cases">
+                        31. Overview Study Cases: Pod and Co...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04a-study-cases-monolith-apps">
+                        32. Study Cases: Monolith apps (Lara...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                        33. Overview Kubernetes Workloads re...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                        34. What is Workload Resources?
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                        35. Study cases: Microservice apps (...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                        36. Working with Deployment object
+                    </a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+         -->
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collapsible with-header" data-collapsible="accordion">
+                <li class="collection-header">
+                    <div class="collapsible-header">
+                        Daftar Materi
+                    </div>                    
+                </li>
+
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            1. Pengenalan Kubernetes
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            9
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                            <span class="truncate">1. Silabus - DevOps Kubernetes: Pemula sampai Mahir</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01a-what-is-kubernetes">
+                                            <span class="truncate">2. What is Kubernetes (k8s) ?</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01b-k8s-components">
+                                            <span class="truncate">3. Kubernetes Components</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01c-k8s-api">
+                                            <span class="truncate">4. The Kubernetes API</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01d-k8s-objects">
+                                            <span class="truncate">5. What is Kubernetes Objects?</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01e-k8s-object-management">
+                                            <span class="truncate">6. Managing Kubernetes Object</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01f-k8s-object-names-and-uids">
+                                            <span class="truncate">7. Kubernetes Object Names and IDs</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01g-k8s-namespaces">
+                                            <span class="truncate">8. What is Kubernetes Namespaces?</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01h-kubernetes-environtments">
+                                            <span class="truncate">9. Kubernetes cluster environtments</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            2. Getting started with minikube
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            11
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02-overview-learn-env">
+                                            <span class="truncate">1. Overview learning environment with Minikube</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-macos">
+                                            <span class="truncate">2. Install minikube on Mac (Intel Chip)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-for-mac-apple-silicon">
+                                            <span class="truncate">3. Install minikube on Mac (Apple silicon Chip)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-windows">
+                                            <span class="truncate">4. Install minikube for Windows 11/10 Users</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-linux">
+                                            <span class="truncate">5. Install minikube for Linux users</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02b-deploy-application">
+                                            <span class="truncate">6. Deploying an apps/services into Kubernetes</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02c-minikube-basic-control">
+                                            <span class="truncate">7. Minikube basic control</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02d-minikube-use-your-own-images">
+                                            <span class="truncate">8. Using your own image into Minikube cluster</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02f-minikube-addons">
+                                            <span class="truncate">9. Minikube addons features</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02g-minikube-access-apps">
+                                            <span class="truncate">10. Access your apps/service in minikube</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02h-minikube-mount">
+                                            <span class="truncate">11. Mounting filesystems to minikube cluster</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            3. Pods and Containers
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            13
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03-overview-pod-containers">
+                                            <span class="truncate">1. Overview Pod and Container in Kubernetes</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03a-workload-pods">
+                                            <span class="truncate">2. Kubernetes Workloads with Pods</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03b-working-with-pods">
+                                            <span class="truncate">3. Working with Pods</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03c-basic-pod-and-containers-config">
+                                            <span class="truncate">4. Basic Pods and Containers Configs</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03d-pod-lifecycle">
+                                            <span class="truncate">5. Pod & Container Lifecycle</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03e-init-containers">
+                                            <span class="truncate">6. Initialization of Containers</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03f-pod-env-config">
+                                            <span class="truncate">7. Configure env (Environment Variables) in a Pods</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03g-pod-resource-request-and-limit">
+                                            <span class="truncate">8. Configure Request and Limit of Resources (CPUs & Memory)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03h-pod-container-probe-config">
+                                            <span class="truncate">9. Configure liveness, readiness, and startup probes</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03i-distruptions">
+                                            <span class="truncate">10. Pod Disruptions</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/04-overview-study-cases">
+                                            <span class="truncate">11. Overview Study Cases: Pod and Containers</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/04a-study-cases-monolith-apps">
+                                            <span class="truncate">12. Study Cases: Monolith apps (Laravel Web MVC)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                                            <span class="truncate">13. Study cases: Microservice apps (Springboot Rest API)</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            4. Workload resources
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            3
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                                            <span class="truncate">1. Overview Kubernetes Workloads resources</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                                            <span class="truncate">2. What is Workload Resources?</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                                            <span class="truncate">3. Working with Deployment object</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            5. Networking (service)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            6. Store data using Volumes
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            7. Kubernetes Client
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            8. Security RBAC
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            9. Kubernetes Package manager
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            10. Kubernetes cluster for Production grade
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            11. Service mesh with istio
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            12. Kubernetes on Cloud provider
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                               
+            </ul>
+        </div>
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collection with-header">
+                <li class="collapsible-header">
+                    Lastest Posts
+                </li>
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                        <span class="badge">09 Apr 23</span>
+                        Working with Deployment object
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                        <span class="badge">26 Feb 23</span>
+                        Study cases: Microservice apps (...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/01-welcome-nutanix-class">
+                        <span class="badge">05 Feb 23</span>
+                        Welcome to the Nutanix HCF (Hybr...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                        <span class="badge">04 Feb 23</span>
+                        Silabus SRE - Nutanix AHV: Pemul...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                        <span class="badge">17 Jan 23</span>
+                        What is Workload Resources?
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                        <span class="badge">17 Jan 23</span>
+                        Overview Kubernetes Workloads re...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl">
+                        <span class="badge">15 Jan 23</span>
+                        Getting started with Transaction...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06-overview-concurrent-control">
+                        <span class="badge">14 Jan 23</span>
+                        Overview of Concurrency Control
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05g-quis-section-1">
+                        <span class="badge">14 Jan 23</span>
+                        Time your practice (part 3)
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05f-dml-cleanup">
+                        <span class="badge">08 Jan 23</span>
+                        Cleanup Data from Table
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    <div class="col s12 m12 l8">
+        <div id="paginate-top" class="right">
+            <ul class="pagination hide-on-small-only">
+                <!-- current page info -->
+                <li>
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        28 to 36
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+            </ul>
+            <br>
+        </div>
+        <div>            
+            <div>
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <section id="article-body">
+        <div class="center">
+            <h1>
+                Configure Request and Limit of Resources (CPUs & Memory)
+            </h1>
+        </div>
+        <div>
+            <div class="post-content"
+                 style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: large">
+                <p>Hai semuanya, di materi kali ini kita membahas tentang Resources Limit and Request pada suatu containers dalam Pod. Diantaranya:</p>
+
+<ol>
+  <li>What is Resource Request and Limit?</li>
+  <li>What is Resource types?</li>
+  <li>What is Resource units?</li>
+  <li>How Kubernetes applies resource requests and limits?</li>
+  <li>Install prerequisite, Before you begin</li>
+  <li>Specify a memory request and a memory limit</li>
+  <li>Exceed a Container’s memory limit</li>
+  <li>Specify a memory request that is too big for your Nodes</li>
+  <li>If you do not specify a memory limit?</li>
+  <li>Specify a CPU request and a CPU limit</li>
+  <li>Specify a CPU request that is too big for your Nodes</li>
+  <li>If you do not specify a CPU limit?</li>
+  <li>Motivation for requests and limits</li>
+</ol>
+
+<p>Ok langsung aja kita bahas materi yang pertama</p>
+
+<!--more-->
+
+<h2 id="what-is-resource-request-and-limit">What is Resource Request and Limit?</h2>
+
+<p>When you specify a Pod, you can optionally specify how much of each resource a container needs. The most common resources to specify are CPU and memory (RAM); there are others.</p>
+
+<p>When you specify the resource request for containers in a Pod, the kube-scheduler uses this information to decide which node to place the Pod on. When you specify a resource limit for a container, the kubelet enforces those limits so that the running container is not allowed to use more of that resource than the limit you set. The kubelet also reserves at least the request amount of that system resource specifically for that container to use.</p>
+
+<p>If the node where a Pod is running has enough of a resource available, it’s possible (and allowed) for a container to use more resource than its <code class="language-plaintext highlighter-rouge">request</code> for that resource specifies. However, a container is not allowed to use more than its resource <code class="language-plaintext highlighter-rouge">limit</code>.</p>
+
+<p>For example, if you set a memory request of <code class="language-plaintext highlighter-rouge">256 MiB</code> for a container, and that container is in a Pod scheduled to a Node with <code class="language-plaintext highlighter-rouge">8GiB</code> of memory and no other Pods, then the container can try to use more RAM.</p>
+
+<p>If you set a memory limit of <code class="language-plaintext highlighter-rouge">4GiB</code> for that container, the kubelet (and container runtime) enforce the limit. The runtime prevents the container from using more than the configured resource limit. For example: when a process in the container tries to consume more than the allowed amount of memory, the system kernel terminates the process that attempted the allocation, with an out of memory (OOM) error.</p>
+
+<p>Limits can be implemented either reactively (the system intervenes once it sees a violation) or by enforcement (the system prevents the container from ever exceeding the limit). Different runtimes can have different ways to implement the same restrictions.</p>
+
+<h2 id="what-is-resource-types">What is Resource types?</h2>
+
+<p>CPU and memory are each a resource type. A resource type has a base unit. CPU represents compute processing and is specified in units of Kubernetes CPUs. Memory is specified in units of bytes. For Linux workloads, you can specify huge page resources. Huge pages are a Linux-specific feature where the node kernel allocates blocks of memory that are much larger than the default page size.</p>
+
+<p>For example, on a system where the default page size is <code class="language-plaintext highlighter-rouge">4KiB</code>, you could specify a limit, <code class="language-plaintext highlighter-rouge">hugepages-2Mi: 80Mi</code>. If the container tries allocating over 40 <code class="language-plaintext highlighter-rouge">2MiB</code> huge pages (a total of 80 MiB), that allocation fails.</p>
+
+<p>CPU and memory are collectively referred to as compute resources, or resources. Compute resources are measurable quantities that can be requested, allocated, and consumed. They are distinct from API resources. API resources, such as Pods and Services are objects that can be read and modified through the Kubernetes API server.</p>
+
+<p>For each container, you can specify resource limits and requests, including the following:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">spec</span><span class="pi">:</span>
+  <span class="na">containers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">resources</span><span class="pi">:</span>
+        <span class="na">requests</span><span class="pi">:</span>
+          <span class="na">memory</span><span class="pi">:</span> <span class="s2">"</span><span class="s">&lt;memory-unit&gt;"</span>
+          <span class="na">cpu</span><span class="pi">:</span> <span class="s2">"</span><span class="s">&lt;cpu-unit&gt;"</span>
+        <span class="na">limits</span><span class="pi">:</span>
+          <span class="na">memory</span><span class="pi">:</span> <span class="s2">"</span><span class="s">&lt;memory-unit&gt;"</span>
+          <span class="na">cpu</span><span class="pi">:</span> <span class="s2">"</span><span class="s">&lt;cpu-unit&gt;"</span></code></pre></figure>
+
+<p>Although you can only specify requests and limits for individual containers, it is also useful to think about the overall resource requests and limits for a Pod. For a particular resource, a Pod resource request/limit is the sum of the resource requests/limits of that type for each container in the Pod.</p>
+
+<h2 id="what-is-resource-units">What is Resource units?</h2>
+
+<p>Limits and requests for CPU resources are measured in cpu units. In Kubernetes, 1 CPU unit is equivalent to <strong>1 physical CPU core</strong>, or <strong>1 virtual core</strong>, depending on whether the node is a physical host or a virtual machine running inside a physical machine.</p>
+
+<p>Fractional requests are allowed. When you define a container with <code class="language-plaintext highlighter-rouge">spec.containers[].resources.requests.cpu</code> set to <code class="language-plaintext highlighter-rouge">0.5</code>, you are requesting half as much CPU time compared to if you asked for <code class="language-plaintext highlighter-rouge">1.0</code> CPU. For CPU resource units, the quantity expression <code class="language-plaintext highlighter-rouge">0.1</code> is equivalent to the expression <code class="language-plaintext highlighter-rouge">100m</code>, which can be read as “one hundred millicpu”. Some people say “one hundred millicores”, and this is understood to mean the same thing.</p>
+
+<p>CPU resource is always specified as an absolute amount of resource, never as a relative amount. For example, <code class="language-plaintext highlighter-rouge">500m</code> CPU represents the roughly same amount of computing power whether that container runs on a single-core, dual-core, or 48-core machine.</p>
+
+<p>Limits and requests for <code class="language-plaintext highlighter-rouge">memory</code> are measured in bytes. You can express memory as a plain integer or as a fixed-point number using one of these quantity suffixes: <code class="language-plaintext highlighter-rouge">E</code>, <code class="language-plaintext highlighter-rouge">P</code>, <code class="language-plaintext highlighter-rouge">T</code>, <code class="language-plaintext highlighter-rouge">G</code>, <code class="language-plaintext highlighter-rouge">M</code>, <code class="language-plaintext highlighter-rouge">k</code>. You can also use the power-of-two equivalents: <code class="language-plaintext highlighter-rouge">Ei</code>, <code class="language-plaintext highlighter-rouge">Pi</code>, <code class="language-plaintext highlighter-rouge">Ti</code>, <code class="language-plaintext highlighter-rouge">Gi</code>, <code class="language-plaintext highlighter-rouge">Mi</code>, <code class="language-plaintext highlighter-rouge">Ki</code>. For example, the following represent roughly the same value:</p>
+
+<figure class="highlight"><pre><code class="language-csv" data-lang="csv">128974848, 129e6, 129M,  128974848000m, 123Mi</code></pre></figure>
+
+<p>Pay attention to the case of the suffixes. If you request <code class="language-plaintext highlighter-rouge">400m</code> of memory, this is a request for <code class="language-plaintext highlighter-rouge">0.4 bytes</code>. Someone who types that probably meant to ask for <code class="language-plaintext highlighter-rouge">400 mebibytes (400Mi)</code> or <code class="language-plaintext highlighter-rouge">400 megabytes (400M)</code>.</p>
+
+<h2 id="how-kubernetes-applies-resource-requests-and-limits">How Kubernetes applies resource requests and limits?</h2>
+
+<p>When the kubelet starts a container as part of a Pod, the kubelet passes that container’s requests and limits for memory and CPU to the container runtime.</p>
+
+<p>On Linux, the container runtime typically configures kernel cgroups that apply and enforce the limits you defined.</p>
+
+<ol>
+  <li>The CPU limit defines a hard ceiling on how much CPU time that the container can use. During each scheduling interval (time slice), the Linux kernel checks to see if this limit is exceeded; if so, the kernel waits before allowing that cgroup to resume execution.</li>
+  <li>The CPU request typically defines a weighting. If several different containers (cgroups) want to run on a contended system, workloads with larger CPU requests are allocated more CPU time than workloads with small requests.</li>
+  <li>The memory request is mainly used during (Kubernetes) Pod scheduling. On a node that uses <code class="language-plaintext highlighter-rouge">cgroups</code> v2, the container runtime might use the memory request as a hint to set <code class="language-plaintext highlighter-rouge">memory.min</code> and <code class="language-plaintext highlighter-rouge">memory.low</code>.</li>
+  <li>The memory limit defines a memory limit for that cgroup. If the container tries to allocate more memory than this limit, the Linux kernel out-of-memory subsystem activates and, typically, intervenes by stopping one of the processes in the container that tried to allocate memory. If that process is the container’s PID 1, and the container is marked as restartable, Kubernetes restarts the container.</li>
+  <li>The memory limit for the Pod or container can also apply to pages in memory backed volumes, such as an <code class="language-plaintext highlighter-rouge">emptyDir</code>. The kubelet tracks tmpfs <code class="language-plaintext highlighter-rouge">emptyDir</code> volumes as container memory use, rather than as local ephemeral storage.</li>
+</ol>
+
+<p>If a container exceeds its memory request and the node that it runs on becomes short of memory overall, it is likely that the Pod the container belongs to will be evicted.</p>
+
+<p>A container might or might not be allowed to exceed its CPU limit for extended periods of time. However, container runtimes don’t terminate Pods or containers for excessive CPU usage.</p>
+
+<p>The kubelet reports the resource usage of a Pod as part of the Pod <code class="language-plaintext highlighter-rouge">status</code>.</p>
+
+<h2 id="install-prerequisite-before-you-begin">Install prerequisite, Before you begin</h2>
+
+<p>You need to have a Kubernetes cluster, and the kubectl command-line tool must be configured to communicate with your cluster. If you do not already have a cluster, you can create one by using minikube or you can use one of these Kubernetes playgrounds.</p>
+
+<p>Each node in your cluster must have at least <code class="language-plaintext highlighter-rouge">300 MiB</code> of memory. A few of the steps on this page require you to run the metrics-server service in your cluster. If you have the metrics-server running, you can skip those steps.</p>
+
+<p>If you are running Minikube, run the following command to enable the metrics-server:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">minikube start <span class="se">\</span>
+<span class="nt">--driver</span><span class="o">=</span>docker <span class="se">\</span>
+<span class="nt">--memory</span><span class="o">=</span>2G <span class="se">\</span>
+<span class="nt">--nodes</span><span class="o">=</span>2 <span class="se">\</span>
+<span class="nt">--extra-config</span><span class="o">=</span>kubelet.housekeeping-interval<span class="o">=</span>10s <span class="se">\</span>
+<span class="nt">--addons</span><span class="o">=</span>metrics-server</code></pre></figure>
+
+<p>To see whether the metrics-server is running, or another provider of the resource metrics API (<code class="language-plaintext highlighter-rouge">metrics.k8s.io</code>), run the following command:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">kubectl get apiservices</code></pre></figure>
+
+<p>If the resource metrics API is available, the output includes a reference to <code class="language-plaintext highlighter-rouge">metrics.k8s.io</code>.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">NAME
+v1beta1.metrics.k8s.io</code></pre></figure>
+
+<p>And make sure, you have to access <code class="language-plaintext highlighter-rouge">kubectl top node</code> and <code class="language-plaintext highlighter-rouge">kubectl top pod</code>:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">top</span><span class="w"> </span><span class="nx">node</span><span class="w">
+</span><span class="n">NAME</span><span class="w">           </span><span class="nx">CPU</span><span class="p">(</span><span class="n">cores</span><span class="p">)</span><span class="w">   </span><span class="n">CPU</span><span class="o">%</span><span class="w">   </span><span class="nx">MEMORY</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w">   </span><span class="n">MEMORY</span><span class="o">%</span><span class="w">
+</span><span class="n">minikube</span><span class="w">       </span><span class="nx">213m</span><span class="w">         </span><span class="nx">10</span><span class="o">%</span><span class="w">    </span><span class="nx">694Mi</span><span class="w">           </span><span class="nx">17</span><span class="o">%</span><span class="w">
+</span><span class="n">minikube-m02</span><span class="w">   </span><span class="nx">51m</span><span class="w">          </span><span class="nx">2</span><span class="o">%</span><span class="w">     </span><span class="nx">169Mi</span><span class="w">           </span><span class="nx">4</span><span class="o">%</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">run</span><span class="w"> </span><span class="nx">webapp</span><span class="w"> </span><span class="nt">--image</span><span class="w"> </span><span class="nx">nginx</span><span class="w"> </span><span class="nt">--port</span><span class="w"> </span><span class="nx">80</span><span class="w">
+</span><span class="n">pod/webapp</span><span class="w"> </span><span class="nx">created</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">pod</span><span class="w">
+</span><span class="n">NAME</span><span class="w">     </span><span class="nx">READY</span><span class="w">   </span><span class="nx">STATUS</span><span class="w">    </span><span class="nx">RESTARTS</span><span class="w">   </span><span class="nx">AGE</span><span class="w">
+</span><span class="n">webapp</span><span class="w">   </span><span class="nx">1/1</span><span class="w">     </span><span class="nx">Running</span><span class="w">   </span><span class="nx">0</span><span class="w">          </span><span class="nx">9s</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">top</span><span class="w"> </span><span class="nx">pod</span><span class="w"> </span><span class="nx">webapp</span><span class="w">
+</span><span class="n">NAME</span><span class="w">     </span><span class="nx">CPU</span><span class="p">(</span><span class="n">cores</span><span class="p">)</span><span class="w">   </span><span class="n">MEMORY</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w">
+</span><span class="n">webapp</span><span class="w">   </span><span class="nx">0m</span><span class="w">           </span><span class="nx">0Mi</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="specify-a-memory-request-and-a-memory-limit">Specify a memory request and a memory limit</h2>
+
+<p>To specify a memory request for a Container, include the <code class="language-plaintext highlighter-rouge">resources:requests</code> field in the Container’s resource manifest. To specify a memory limit, include <code class="language-plaintext highlighter-rouge">resources:limits</code>. For example, you create a Pod that has one Container. The Container has a memory request of <code class="language-plaintext highlighter-rouge">100 MiB</code> and a memory limit of <code class="language-plaintext highlighter-rouge">200 MiB</code>. Here’s the configuration file for the Pod:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/a3a01b83910cf07914935a25a62d30ce.js?file=03g-pod-resource-memory.yaml"> </script>
+
+<p>Jika dijalankan hasilnya seperti berikut:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">apply</span><span class="w"> </span><span class="nt">-f</span><span class="w"> </span><span class="o">.</span><span class="nx">\02-workloads\01-pod\pod-resource-memory.yaml</span><span class="w">
+</span><span class="n">pod/pod-resource-memory</span><span class="w"> </span><span class="nx">created</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">pod</span><span class="w">
+</span><span class="n">NAME</span><span class="w">                  </span><span class="nx">READY</span><span class="w">   </span><span class="nx">STATUS</span><span class="w">    </span><span class="nx">RESTARTS</span><span class="w">   </span><span class="nx">AGE</span><span class="w">
+</span><span class="n">pod-resource-memory</span><span class="w">   </span><span class="nx">1/1</span><span class="w">     </span><span class="nx">Running</span><span class="w">   </span><span class="nx">0</span><span class="w">          </span><span class="nx">90s</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">describe</span><span class="w"> </span><span class="nx">pod</span><span class="w"> </span><span class="nx">pod-resource-memory</span><span class="w">
+</span><span class="n">Name:</span><span class="w">         </span><span class="nx">pod-resource-memory</span><span class="w">
+</span><span class="kr">Namespace</span><span class="p">:</span><span class="w">    </span><span class="n">default</span><span class="w">
+</span><span class="nx">Priority:</span><span class="w">     </span><span class="nx">0</span><span class="w">
+</span><span class="n">Node:</span><span class="w">         </span><span class="nx">minikube-m02/192.168.49.3</span><span class="w">
+</span><span class="n">Start</span><span class="w"> </span><span class="nx">Time:</span><span class="w">   </span><span class="nx">Tue</span><span class="p">,</span><span class="w"> </span><span class="nx">07</span><span class="w"> </span><span class="nx">Jun</span><span class="w"> </span><span class="nx">2022</span><span class="w"> </span><span class="nx">05:43:20</span><span class="w"> </span><span class="o">+</span><span class="nx">0700</span><span class="w">
+</span><span class="n">Labels:</span><span class="w">       </span><span class="nx">app</span><span class="o">=</span><span class="n">pod-resource-memory</span><span class="w">
+</span><span class="nx">Annotations:</span><span class="w">  </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+</span><span class="n">Status:</span><span class="w">       </span><span class="nx">Running</span><span class="w">
+</span><span class="n">IP:</span><span class="w">           </span><span class="nx">10.244.1.2</span><span class="w">
+</span><span class="n">IPs:</span><span class="w">
+  </span><span class="nx">IP:</span><span class="w">  </span><span class="nx">10.244.1.2</span><span class="w">
+</span><span class="n">Containers:</span><span class="w">
+  </span><span class="nx">pod-resource-memory:</span><span class="w">
+    </span><span class="n">Image:</span><span class="w">         </span><span class="nx">polinux/stress</span><span class="w">
+    </span><span class="n">Port:</span><span class="w">          </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+    </span><span class="n">Host</span><span class="w"> </span><span class="nx">Port:</span><span class="w">     </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+    </span><span class="kr">Command</span><span class="p">:</span><span class="w">
+      </span><span class="n">stress</span><span class="w">
+    </span><span class="nx">Args:</span><span class="w">
+      </span><span class="nt">--vm</span><span class="w">
+      </span><span class="mi">1</span><span class="w">
+      </span><span class="nt">--vm-bytes</span><span class="w">
+      </span><span class="mi">150</span><span class="n">M</span><span class="w">
+      </span><span class="nt">--vm-hang</span><span class="w">
+      </span><span class="mi">1</span><span class="w">
+    </span><span class="n">State:</span><span class="w">          </span><span class="nx">Running</span><span class="w">
+      </span><span class="n">Started:</span><span class="w">      </span><span class="nx">Tue</span><span class="p">,</span><span class="w"> </span><span class="nx">07</span><span class="w"> </span><span class="nx">Jun</span><span class="w"> </span><span class="nx">2022</span><span class="w"> </span><span class="nx">05:43:28</span><span class="w"> </span><span class="o">+</span><span class="nx">0700</span><span class="w">
+    </span><span class="n">Ready:</span><span class="w">          </span><span class="nx">True</span><span class="w">
+    </span><span class="n">Restart</span><span class="w"> </span><span class="nx">Count:</span><span class="w">  </span><span class="nx">0</span><span class="w">
+    </span><span class="n">Limits:</span><span class="w">
+      </span><span class="nx">memory:</span><span class="w">  </span><span class="nx">200Mi</span><span class="w">
+    </span><span class="n">Requests:</span><span class="w">
+      </span><span class="nx">memory:</span><span class="w">     </span><span class="nx">100Mi</span><span class="w">
+    </span><span class="n">Environment:</span><span class="w">  </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+    </span><span class="n">Mounts:</span><span class="w">
+      </span><span class="nx">/var/run/secrets/kubernetes.io/serviceaccount</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">kube-api-access-dlp2d</span><span class="w"> </span><span class="p">(</span><span class="n">ro</span><span class="p">)</span><span class="w">
+</span><span class="n">Conditions:</span><span class="w">
+  </span><span class="nx">Type</span><span class="w">              </span><span class="nx">Status</span><span class="w">
+  </span><span class="n">Initialized</span><span class="w">       </span><span class="nx">True</span><span class="w">
+  </span><span class="n">Ready</span><span class="w">             </span><span class="nx">True</span><span class="w">
+  </span><span class="n">ContainersReady</span><span class="w">   </span><span class="nx">True</span><span class="w">
+  </span><span class="n">PodScheduled</span><span class="w">      </span><span class="nx">True</span><span class="w">
+</span><span class="n">Events:</span><span class="w">
+  </span><span class="nx">Type</span><span class="w">    </span><span class="nx">Reason</span><span class="w">     </span><span class="nx">Age</span><span class="w">   </span><span class="nx">From</span><span class="w">               </span><span class="nx">Message</span><span class="w">
+  </span><span class="o">----</span><span class="w">    </span><span class="o">------</span><span class="w">     </span><span class="o">----</span><span class="w">  </span><span class="o">----</span><span class="w">               </span><span class="o">-------</span><span class="w">
+  </span><span class="n">Normal</span><span class="w">  </span><span class="nx">Scheduled</span><span class="w">  </span><span class="nx">2m4s</span><span class="w">  </span><span class="nx">default-scheduler</span><span class="w">  </span><span class="nx">Successfully</span><span class="w"> </span><span class="nx">assigned</span><span class="w"> </span><span class="nx">default/pod-resource-memory</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">minikube-m02</span><span class="w">
+  </span><span class="n">Normal</span><span class="w">  </span><span class="nx">Pulling</span><span class="w">    </span><span class="nx">2m4s</span><span class="w">  </span><span class="nx">kubelet</span><span class="w">            </span><span class="nx">Pulling</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="s2">"polinux/stress"</span><span class="w">
+  </span><span class="n">Normal</span><span class="w">  </span><span class="nx">Pulled</span><span class="w">     </span><span class="nx">117s</span><span class="w">  </span><span class="nx">kubelet</span><span class="w">            </span><span class="nx">Successfully</span><span class="w"> </span><span class="nx">pulled</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="s2">"polinux/stress"</span><span class="w"> </span><span class="nx">in</span><span class="w"> </span><span class="nx">6.9189638s</span><span class="w">
+  </span><span class="n">Normal</span><span class="w">  </span><span class="nx">Created</span><span class="w">    </span><span class="nx">117s</span><span class="w">  </span><span class="nx">kubelet</span><span class="w">            </span><span class="nx">Created</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="nx">pod-resource-memory</span><span class="w">
+  </span><span class="n">Normal</span><span class="w">  </span><span class="nx">Started</span><span class="w">    </span><span class="nx">117s</span><span class="w">  </span><span class="nx">kubelet</span><span class="w">            </span><span class="nx">Started</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="nx">pod-resource-memory</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">top</span><span class="w"> </span><span class="nx">node</span><span class="w">
+</span><span class="n">NAME</span><span class="w">           </span><span class="nx">CPU</span><span class="p">(</span><span class="n">cores</span><span class="p">)</span><span class="w">   </span><span class="n">CPU</span><span class="o">%</span><span class="w">   </span><span class="nx">MEMORY</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w">   </span><span class="n">MEMORY</span><span class="o">%</span><span class="w">
+</span><span class="n">minikube</span><span class="w">       </span><span class="nx">98m</span><span class="w">          </span><span class="nx">4</span><span class="o">%</span><span class="w">     </span><span class="nx">1285Mi</span><span class="w">          </span><span class="nx">32</span><span class="o">%</span><span class="w">
+</span><span class="n">minikube-m02</span><span class="w">   </span><span class="nx">28m</span><span class="w">          </span><span class="nx">1</span><span class="o">%</span><span class="w">     </span><span class="nx">435Mi</span><span class="w">           </span><span class="nx">11</span><span class="o">%</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">top</span><span class="w"> </span><span class="nx">pod</span><span class="w"> </span><span class="nx">pod-resource-memory</span><span class="w">
+</span><span class="n">NAME</span><span class="w">                  </span><span class="nx">CPU</span><span class="p">(</span><span class="n">cores</span><span class="p">)</span><span class="w">   </span><span class="n">MEMORY</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w">
+</span><span class="n">pod-resource-memory</span><span class="w">   </span><span class="nx">16m</span><span class="w">          </span><span class="nx">150Mi</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The output shows that the Pod is using about <code class="language-plaintext highlighter-rouge">150 MiB</code>. This is greater than the Pod’s <code class="language-plaintext highlighter-rouge">100 MiB</code> request, but within the Pod’s <code class="language-plaintext highlighter-rouge">200 MiB</code> limit.</p>
+
+<h2 id="exceed-a-containers-memory-limit">Exceed a Container’s memory limit</h2>
+
+<p>A Container can exceed its memory <code class="language-plaintext highlighter-rouge">request</code> if the Node has memory available. But a Container is not allowed to use more than its memory <code class="language-plaintext highlighter-rouge">limit</code>. If a Container allocates more memory than its limit, the Container becomes a candidate for termination. If the Container continues to consume memory beyond its limit, the Container is terminated. If a terminated Container can be restarted, the kubelet restarts it, as with any other type of runtime failure.</p>
+
+<p>In this exercise, you create a Pod that attempts to allocate more memory than its limit. Here is the configuration file for a Pod that has one Container with a memory request of <code class="language-plaintext highlighter-rouge">50 MiB</code> and a memory limit of <code class="language-plaintext highlighter-rouge">100 MiB</code>:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/a3a01b83910cf07914935a25a62d30ce.js?file=03g-pod-resource-memory-more-limit.yaml"> </script>
+
+<p>In the args section of the configuration file, you can see that the Container will attempt to allocate <code class="language-plaintext highlighter-rouge">250 MiB</code> of memory, which is well above the <code class="language-plaintext highlighter-rouge">100 MiB</code> limit.</p>
+
+<p>Jika kita coba jalankan hasilnya seperti berikut:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">apply</span><span class="w"> </span><span class="nt">-f</span><span class="w"> </span><span class="nx">02-workloads/01-pod/pod-resource-memory-more-limit.yaml</span><span class="w"> 
+</span><span class="n">pod/pod-resource-memory-more-limit</span><span class="w"> </span><span class="nx">created</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">pod</span><span class="w">
+</span><span class="n">NAME</span><span class="w">                             </span><span class="nx">READY</span><span class="w">   </span><span class="nx">STATUS</span><span class="w">             </span><span class="nx">RESTARTS</span><span class="w">      </span><span class="nx">AGE</span><span class="w">
+</span><span class="n">pod-resource-memory-more-limit</span><span class="w">   </span><span class="nx">0/1</span><span class="w">     </span><span class="nx">CrashLoopBackOff</span><span class="w">   </span><span class="nx">5</span><span class="w"> </span><span class="p">(</span><span class="mi">19</span><span class="n">s</span><span class="w"> </span><span class="nx">ago</span><span class="p">)</span><span class="w">   </span><span class="mi">3</span><span class="n">m43s</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">describe</span><span class="w"> </span><span class="nx">pod</span><span class="w">
+</span><span class="n">Name:</span><span class="w">         </span><span class="nx">pod-resource-memory-more-limit</span><span class="w">
+</span><span class="kr">Namespace</span><span class="p">:</span><span class="w">    </span><span class="n">default</span><span class="w">
+</span><span class="nx">Priority:</span><span class="w">     </span><span class="nx">0</span><span class="w">
+</span><span class="n">Node:</span><span class="w">         </span><span class="nx">minikube/192.168.59.101</span><span class="w">
+</span><span class="n">Start</span><span class="w"> </span><span class="nx">Time:</span><span class="w">   </span><span class="nx">Sat</span><span class="p">,</span><span class="w"> </span><span class="nx">11</span><span class="w"> </span><span class="nx">Jun</span><span class="w"> </span><span class="nx">2022</span><span class="w"> </span><span class="nx">09:59:23</span><span class="w"> </span><span class="o">+</span><span class="nx">0700</span><span class="w">
+</span><span class="n">Labels:</span><span class="w">       </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+</span><span class="n">Annotations:</span><span class="w">  </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+</span><span class="n">Status:</span><span class="w">       </span><span class="nx">Running</span><span class="w">
+</span><span class="n">IP:</span><span class="w">           </span><span class="nx">172.17.0.4</span><span class="w">
+</span><span class="n">IPs:</span><span class="w">
+  </span><span class="nx">IP:</span><span class="w">  </span><span class="nx">172.17.0.4</span><span class="w">
+</span><span class="n">Containers:</span><span class="w">
+  </span><span class="nx">pod-resource-memory-more-limit:</span><span class="w">
+    </span><span class="n">Image:</span><span class="w">         </span><span class="nx">polinux/stress</span><span class="w">
+    </span><span class="n">Port:</span><span class="w">          </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+    </span><span class="n">Host</span><span class="w"> </span><span class="nx">Port:</span><span class="w">     </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+    </span><span class="kr">Command</span><span class="p">:</span><span class="w">
+      </span><span class="n">stress</span><span class="w">
+    </span><span class="nx">Args:</span><span class="w">
+      </span><span class="nt">--vm</span><span class="w">
+      </span><span class="mi">1</span><span class="w">
+      </span><span class="nt">--vm-bytes</span><span class="w">
+      </span><span class="mi">250</span><span class="n">M</span><span class="w">
+      </span><span class="nt">--vm-hang</span><span class="w">
+      </span><span class="mi">1</span><span class="w">
+    </span><span class="n">State:</span><span class="w">          </span><span class="nx">Waiting</span><span class="w">
+      </span><span class="n">Reason:</span><span class="w">       </span><span class="nx">CrashLoopBackOff</span><span class="w">
+    </span><span class="n">Last</span><span class="w"> </span><span class="nx">State:</span><span class="w">     </span><span class="nx">Terminated</span><span class="w">
+      </span><span class="n">Reason:</span><span class="w">       </span><span class="nx">OOMKilled</span><span class="w">
+      </span><span class="kr">Exit</span><span class="w"> </span><span class="n">Code:</span><span class="w">    </span><span class="nx">1</span><span class="w">
+      </span><span class="n">Started:</span><span class="w">      </span><span class="nx">Sat</span><span class="p">,</span><span class="w"> </span><span class="nx">11</span><span class="w"> </span><span class="nx">Jun</span><span class="w"> </span><span class="nx">2022</span><span class="w"> </span><span class="nx">10:02:47</span><span class="w"> </span><span class="o">+</span><span class="nx">0700</span><span class="w">
+      </span><span class="n">Finished:</span><span class="w">     </span><span class="nx">Sat</span><span class="p">,</span><span class="w"> </span><span class="nx">11</span><span class="w"> </span><span class="nx">Jun</span><span class="w"> </span><span class="nx">2022</span><span class="w"> </span><span class="nx">10:02:47</span><span class="w"> </span><span class="o">+</span><span class="nx">0700</span><span class="w">
+    </span><span class="n">Ready:</span><span class="w">          </span><span class="nx">False</span><span class="w">
+    </span><span class="n">Restart</span><span class="w"> </span><span class="nx">Count:</span><span class="w">  </span><span class="nx">5</span><span class="w">
+    </span><span class="n">Limits:</span><span class="w">
+      </span><span class="nx">memory:</span><span class="w">  </span><span class="nx">100Mi</span><span class="w">
+    </span><span class="n">Requests:</span><span class="w">
+      </span><span class="nx">memory:</span><span class="w">     </span><span class="nx">50Mi</span><span class="w">
+    </span><span class="n">Environment:</span><span class="w">  </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+    </span><span class="n">Mounts:</span><span class="w">
+      </span><span class="nx">/var/run/secrets/kubernetes.io/serviceaccount</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">kube-api-access-cg4sj</span><span class="w"> </span><span class="p">(</span><span class="n">ro</span><span class="p">)</span><span class="w">
+</span><span class="n">Conditions:</span><span class="w">
+  </span><span class="nx">Type</span><span class="w">              </span><span class="nx">Status</span><span class="w">
+  </span><span class="n">Initialized</span><span class="w">       </span><span class="nx">True</span><span class="w"> 
+  </span><span class="n">Ready</span><span class="w">             </span><span class="nx">False</span><span class="w"> 
+  </span><span class="n">ContainersReady</span><span class="w">   </span><span class="nx">False</span><span class="w"> 
+  </span><span class="n">PodScheduled</span><span class="w">      </span><span class="nx">True</span><span class="w"> 
+</span><span class="n">Volumes:</span><span class="w">
+  </span><span class="nx">kube-api-access-cg4sj:</span><span class="w">
+    </span><span class="kr">Type</span><span class="p">:</span><span class="w">                    </span><span class="n">Projected</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="nx">volume</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="nx">contains</span><span class="w"> </span><span class="nx">injected</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">multiple</span><span class="w"> </span><span class="nx">sources</span><span class="p">)</span><span class="w">
+    </span><span class="n">TokenExpirationSeconds:</span><span class="w">  </span><span class="nx">3607</span><span class="w">
+    </span><span class="n">ConfigMapName:</span><span class="w">           </span><span class="nx">kube-root-ca.crt</span><span class="w">
+    </span><span class="n">ConfigMapOptional:</span><span class="w">       </span><span class="err">&lt;</span><span class="nx">nil</span><span class="err">&gt;</span><span class="w">
+    </span><span class="n">DownwardAPI:</span><span class="w">             </span><span class="nx">true</span><span class="w">
+</span><span class="n">Events:</span><span class="w">
+  </span><span class="nx">Type</span><span class="w">     </span><span class="nx">Reason</span><span class="w">     </span><span class="nx">Age</span><span class="w">                    </span><span class="nx">From</span><span class="w">               </span><span class="nx">Message</span><span class="w">
+  </span><span class="o">----</span><span class="w">     </span><span class="o">------</span><span class="w">     </span><span class="o">----</span><span class="w">                   </span><span class="o">----</span><span class="w">               </span><span class="o">-------</span><span class="w">
+  </span><span class="n">Normal</span><span class="w">   </span><span class="nx">Scheduled</span><span class="w">  </span><span class="nx">4m6s</span><span class="w">                   </span><span class="nx">default-scheduler</span><span class="w">  </span><span class="nx">Successfully</span><span class="w"> </span><span class="nx">assigned</span><span class="w"> </span><span class="nx">default/pod-resource-memory-more-limit</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">minikube</span><span class="w">
+  </span><span class="n">Normal</span><span class="w">   </span><span class="nx">Pulled</span><span class="w">     </span><span class="nx">3m57s</span><span class="w">                  </span><span class="nx">kubelet</span><span class="w">            </span><span class="nx">Successfully</span><span class="w"> </span><span class="nx">pulled</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="s2">"polinux/stress"</span><span class="w"> </span><span class="nx">in</span><span class="w"> </span><span class="nx">7.376668096s</span><span class="w">
+  </span><span class="n">Normal</span><span class="w">   </span><span class="nx">Pulled</span><span class="w">     </span><span class="nx">3m53s</span><span class="w">                  </span><span class="nx">kubelet</span><span class="w">            </span><span class="nx">Successfully</span><span class="w"> </span><span class="nx">pulled</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="s2">"polinux/stress"</span><span class="w"> </span><span class="nx">in</span><span class="w"> </span><span class="nx">3.19955887s</span><span class="w">
+  </span><span class="n">Normal</span><span class="w">   </span><span class="nx">Pulled</span><span class="w">     </span><span class="nx">3m36s</span><span class="w">                  </span><span class="nx">kubelet</span><span class="w">            </span><span class="nx">Successfully</span><span class="w"> </span><span class="nx">pulled</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="s2">"polinux/stress"</span><span class="w"> </span><span class="nx">in</span><span class="w"> </span><span class="nx">3.142850674s</span><span class="w">
+  </span><span class="n">Normal</span><span class="w">   </span><span class="nx">Created</span><span class="w">    </span><span class="nx">3m10s</span><span class="w"> </span><span class="p">(</span><span class="n">x4</span><span class="w"> </span><span class="nx">over</span><span class="w"> </span><span class="nx">3m57s</span><span class="p">)</span><span class="w">  </span><span class="n">kubelet</span><span class="w">            </span><span class="nx">Created</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="nx">pod-resource-memory-more-limit</span><span class="w">
+  </span><span class="n">Normal</span><span class="w">   </span><span class="nx">Started</span><span class="w">    </span><span class="nx">3m10s</span><span class="w"> </span><span class="p">(</span><span class="n">x4</span><span class="w"> </span><span class="nx">over</span><span class="w"> </span><span class="nx">3m57s</span><span class="p">)</span><span class="w">  </span><span class="n">kubelet</span><span class="w">            </span><span class="nx">Started</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="nx">pod-resource-memory-more-limit</span><span class="w">
+  </span><span class="n">Normal</span><span class="w">   </span><span class="nx">Pulled</span><span class="w">     </span><span class="nx">3m10s</span><span class="w">                  </span><span class="nx">kubelet</span><span class="w">            </span><span class="nx">Successfully</span><span class="w"> </span><span class="nx">pulled</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="s2">"polinux/stress"</span><span class="w"> </span><span class="nx">in</span><span class="w"> </span><span class="nx">3.17531734s</span><span class="w">
+  </span><span class="n">Warning</span><span class="w">  </span><span class="nx">BackOff</span><span class="w">    </span><span class="nx">2m34s</span><span class="w"> </span><span class="p">(</span><span class="n">x8</span><span class="w"> </span><span class="nx">over</span><span class="w"> </span><span class="nx">3m52s</span><span class="p">)</span><span class="w">  </span><span class="n">kubelet</span><span class="w">            </span><span class="nx">Back-off</span><span class="w"> </span><span class="nx">restarting</span><span class="w"> </span><span class="nx">failed</span><span class="w"> </span><span class="nx">container</span><span class="w">
+  </span><span class="n">Normal</span><span class="w">   </span><span class="nx">Pulling</span><span class="w">    </span><span class="nx">2m19s</span><span class="w"> </span><span class="p">(</span><span class="n">x5</span><span class="w"> </span><span class="nx">over</span><span class="w"> </span><span class="nx">4m5s</span><span class="p">)</span><span class="w">   </span><span class="n">kubelet</span><span class="w">            </span><span class="nx">Pulling</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="s2">"polinux/stress"</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The output shows that the Container was killed because it is out of memory (OOM):</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Last</span><span class="w"> </span><span class="nx">State:</span><span class="w">     </span><span class="nx">Terminated</span><span class="w">
+  </span><span class="n">Reason:</span><span class="w">       </span><span class="nx">OOMKilled</span><span class="w">
+  </span><span class="kr">Exit</span><span class="w"> </span><span class="n">Code:</span><span class="w">    </span><span class="nx">1</span><span class="w">
+  </span><span class="n">Started:</span><span class="w">      </span><span class="nx">Sat</span><span class="p">,</span><span class="w"> </span><span class="nx">11</span><span class="w"> </span><span class="nx">Jun</span><span class="w"> </span><span class="nx">2022</span><span class="w"> </span><span class="nx">10:02:47</span><span class="w"> </span><span class="o">+</span><span class="nx">0700</span><span class="w">
+  </span><span class="n">Finished:</span><span class="w">     </span><span class="nx">Sat</span><span class="p">,</span><span class="w"> </span><span class="nx">11</span><span class="w"> </span><span class="nx">Jun</span><span class="w"> </span><span class="nx">2022</span><span class="w"> </span><span class="nx">10:02:47</span><span class="w"> </span><span class="o">+</span><span class="nx">0700</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The output shows that the Container is killed, restarted, killed again, restarted again, and so on:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">pod</span><span class="w"> </span><span class="nt">-w</span><span class="w">
+</span><span class="n">NAME</span><span class="w">                             </span><span class="nx">READY</span><span class="w">   </span><span class="nx">STATUS</span><span class="w">             </span><span class="nx">RESTARTS</span><span class="w">      </span><span class="nx">AGE</span><span class="w">
+</span><span class="n">pod-resource-memory-more-limit</span><span class="w">   </span><span class="nx">0/1</span><span class="w">     </span><span class="nx">CrashLoopBackOff</span><span class="w">   </span><span class="nx">1</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="n">s</span><span class="w"> </span><span class="nx">ago</span><span class="p">)</span><span class="w">   </span><span class="mi">24</span><span class="n">s</span><span class="w">
+</span><span class="nx">pod-resource-memory-more-limit</span><span class="w">   </span><span class="nx">0/1</span><span class="w">     </span><span class="nx">OOMKilled</span><span class="w">          </span><span class="nx">2</span><span class="w"> </span><span class="p">(</span><span class="mi">20</span><span class="n">s</span><span class="w"> </span><span class="nx">ago</span><span class="p">)</span><span class="w">   </span><span class="mi">34</span><span class="n">s</span><span class="w">
+</span><span class="nx">pod-resource-memory-more-limit</span><span class="w">   </span><span class="nx">0/1</span><span class="w">     </span><span class="nx">CrashLoopBackOff</span><span class="w">   </span><span class="nx">2</span><span class="w"> </span><span class="p">(</span><span class="mi">11</span><span class="n">s</span><span class="w"> </span><span class="nx">ago</span><span class="p">)</span><span class="w">   </span><span class="mi">45</span><span class="n">s</span><span class="w">
+</span><span class="nx">pod-resource-memory-more-limit</span><span class="w">   </span><span class="nx">0/1</span><span class="w">     </span><span class="nx">OOMKilled</span><span class="w">          </span><span class="nx">3</span><span class="w"> </span><span class="p">(</span><span class="mi">30</span><span class="n">s</span><span class="w"> </span><span class="nx">ago</span><span class="p">)</span><span class="w">   </span><span class="mi">64</span><span class="n">s</span><span class="w">
+</span><span class="nx">pod-resource-memory-more-limit</span><span class="w">   </span><span class="nx">0/1</span><span class="w">     </span><span class="nx">CrashLoopBackOff</span><span class="w">   </span><span class="nx">3</span><span class="w"> </span><span class="p">(</span><span class="mi">14</span><span class="n">s</span><span class="w"> </span><span class="nx">ago</span><span class="p">)</span><span class="w">   </span><span class="mi">78</span><span class="n">s</span><span class="w">
+</span></code></pre></div></div>
+
+<p>cleanup:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kubectl</span><span class="w"> </span><span class="nx">delete</span><span class="w"> </span><span class="nx">pod</span><span class="w"> </span><span class="nt">--all</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="specify-a-memory-request-that-is-too-big-for-your-nodes">Specify a memory request that is too big for your Nodes</h2>
+
+<p>Memory requests and limits are associated with Containers, but it is useful to think of a Pod as having a memory request and limit. The memory request for the Pod is the sum of the memory requests for all the Containers in the Pod. Likewise, the memory limit for the Pod is the sum of the limits of all the Containers in the Pod.</p>
+
+<p>Pod scheduling is based on requests. A Pod is scheduled to run on a Node only if the Node has enough available memory to satisfy the Pod’s memory request.</p>
+
+<p>In this exercise, you create a Pod that has a memory request so big that it exceeds the capacity of any Node in your cluster. Here is the configuration file for a Pod that has one Container with a request for <code class="language-plaintext highlighter-rouge">2 GiB</code> of memory, which likely exceeds the capacity of any Node in your cluster:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/a3a01b83910cf07914935a25a62d30ce.js?file=03g-pod-resource-memory-request-big-then-node.yaml"> </script>
+
+<p>Jika dijalankan seperti berikut:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">apply</span><span class="w"> </span><span class="nt">-f</span><span class="w"> </span><span class="nx">02-workloads/01-pod/pod-resource-memory-request-big-then-node.yaml</span><span class="w">
+</span><span class="n">pod/pod-resource-memory-more-limit</span><span class="w"> </span><span class="nx">created</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">pod</span><span class="w">
+</span><span class="n">NAME</span><span class="w">                             </span><span class="nx">READY</span><span class="w">   </span><span class="nx">STATUS</span><span class="w">    </span><span class="nx">RESTARTS</span><span class="w">   </span><span class="nx">AGE</span><span class="w">
+</span><span class="n">pod-resource-memory-more-limit</span><span class="w">   </span><span class="nx">0/1</span><span class="w">     </span><span class="nx">Pending</span><span class="w">   </span><span class="nx">0</span><span class="w">          </span><span class="nx">15s</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">pod</span><span class="w">
+</span><span class="n">NAME</span><span class="w">                             </span><span class="nx">READY</span><span class="w">   </span><span class="nx">STATUS</span><span class="w">    </span><span class="nx">RESTARTS</span><span class="w">   </span><span class="nx">AGE</span><span class="w">
+</span><span class="n">pod-resource-memory-more-limit</span><span class="w">   </span><span class="nx">0/1</span><span class="w">     </span><span class="nx">Pending</span><span class="w">   </span><span class="nx">0</span><span class="w">          </span><span class="nx">15s</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">describe</span><span class="w"> </span><span class="nx">pod</span><span class="w"> </span><span class="nx">pod-resource-memory-more-limit</span><span class="w">
+</span><span class="n">Name:</span><span class="w">         </span><span class="nx">pod-resource-memory-more-limit</span><span class="w">
+</span><span class="kr">Namespace</span><span class="p">:</span><span class="w">    </span><span class="n">default</span><span class="w">
+</span><span class="nx">Priority:</span><span class="w">     </span><span class="nx">0</span><span class="w">
+</span><span class="n">Node:</span><span class="w">         </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+</span><span class="n">Labels:</span><span class="w">       </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+</span><span class="n">Annotations:</span><span class="w">  </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+</span><span class="n">Status:</span><span class="w">       </span><span class="nx">Pending</span><span class="w">
+</span><span class="n">IP:</span><span class="w">           
+</span><span class="n">IPs:</span><span class="w">          </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+</span><span class="n">Containers:</span><span class="w">
+  </span><span class="nx">pod-resource-memory-more-limit:</span><span class="w">
+    </span><span class="n">Image:</span><span class="w">      </span><span class="nx">polinux/stress</span><span class="w">
+    </span><span class="n">Port:</span><span class="w">       </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+    </span><span class="n">Host</span><span class="w"> </span><span class="nx">Port:</span><span class="w">  </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+    </span><span class="kr">Command</span><span class="p">:</span><span class="w">
+      </span><span class="n">stress</span><span class="w">
+    </span><span class="nx">Args:</span><span class="w">
+      </span><span class="nt">--vm</span><span class="w">
+      </span><span class="mi">1</span><span class="w">
+      </span><span class="nt">--vm-bytes</span><span class="w">
+      </span><span class="mi">250</span><span class="n">M</span><span class="w">
+      </span><span class="nt">--vm-hang</span><span class="w">
+      </span><span class="mi">1</span><span class="w">
+    </span><span class="n">Requests:</span><span class="w">
+      </span><span class="nx">memory:</span><span class="w">     </span><span class="nx">2Gi</span><span class="w">
+    </span><span class="n">Environment:</span><span class="w">  </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+    </span><span class="n">Mounts:</span><span class="w">
+      </span><span class="nx">/var/run/secrets/kubernetes.io/serviceaccount</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">kube-api-access-9wpjn</span><span class="w"> </span><span class="p">(</span><span class="n">ro</span><span class="p">)</span><span class="w">
+</span><span class="n">Conditions:</span><span class="w">
+  </span><span class="nx">Type</span><span class="w">           </span><span class="nx">Status</span><span class="w">
+  </span><span class="n">PodScheduled</span><span class="w">   </span><span class="nx">False</span><span class="w"> 
+</span><span class="n">QoS</span><span class="w"> </span><span class="nx">Class:</span><span class="w">                   </span><span class="nx">Burstable</span><span class="w">
+</span><span class="n">Node-Selectors:</span><span class="w">              </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+</span><span class="n">Tolerations:</span><span class="w">                 </span><span class="nx">node.kubernetes.io/not-ready:NoExecute</span><span class="w"> </span><span class="nx">op</span><span class="o">=</span><span class="n">Exists</span><span class="w"> </span><span class="nx">for</span><span class="w"> </span><span class="nx">300s</span><span class="w">
+                             </span><span class="n">node.kubernetes.io/unreachable:NoExecute</span><span class="w"> </span><span class="nx">op</span><span class="o">=</span><span class="n">Exists</span><span class="w"> </span><span class="nx">for</span><span class="w"> </span><span class="nx">300s</span><span class="w">
+</span><span class="n">Events:</span><span class="w">
+  </span><span class="nx">Type</span><span class="w">     </span><span class="nx">Reason</span><span class="w">            </span><span class="nx">Age</span><span class="w">   </span><span class="nx">From</span><span class="w">               </span><span class="nx">Message</span><span class="w">
+  </span><span class="o">----</span><span class="w">     </span><span class="o">------</span><span class="w">            </span><span class="o">----</span><span class="w">  </span><span class="o">----</span><span class="w">               </span><span class="o">-------</span><span class="w">
+  </span><span class="n">Warning</span><span class="w">  </span><span class="nx">FailedScheduling</span><span class="w">  </span><span class="nx">34s</span><span class="w">   </span><span class="nx">default-scheduler</span><span class="w">  </span><span class="nx">0/1</span><span class="w"> </span><span class="nx">nodes</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">available:</span><span class="w"> </span><span class="nx">1</span><span class="w"> </span><span class="nx">Insufficient</span><span class="w"> </span><span class="nx">memory</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The output shows that the Pod status is PENDING. That is, the Pod is not scheduled to run on any Node, and it will remain in the PENDING state indefinitely</p>
+
+<h2 id="if-you-do-not-specify-a-memory-limit">If you do not specify a memory limit?</h2>
+
+<p>If you do not specify a memory limit for a Container, one of the following situations applies:</p>
+
+<ol>
+  <li>The Container has no upper bound on the amount of memory it uses. The Container could use all of the memory available on the Node where it is running which in turn could invoke the OOM Killer. Further, in case of an OOM Kill, a container with no resource limits will have a greater chance of being killed.</li>
+  <li>The Container is running in a namespace that has a default memory limit, and the Container is automatically assigned the default limit. Cluster administrators can use a LimitRange to specify a default value for the memory limit.</li>
+</ol>
+
+<script src="https://gist.github.com/dimMaryanto93/a3a01b83910cf07914935a25a62d30ce.js?file=03g-pod-resource-memory-no-limit.yaml"> </script>
+
+<p>Jika dijalankan seperti berikut:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">apply</span><span class="w"> </span><span class="nt">-f</span><span class="w"> </span><span class="nx">02-workloads/01-pod/pod-resource-memory-no-limit.yaml</span><span class="w">
+</span><span class="n">pod/pod-resource-memory-no-limit</span><span class="w"> </span><span class="nx">created</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">pod</span><span class="w">
+</span><span class="n">NAME</span><span class="w">                           </span><span class="nx">READY</span><span class="w">   </span><span class="nx">STATUS</span><span class="w">    </span><span class="nx">RESTARTS</span><span class="w">   </span><span class="nx">AGE</span><span class="w">
+</span><span class="n">pod-resource-memory-no-limit</span><span class="w">   </span><span class="nx">1/1</span><span class="w">     </span><span class="nx">Running</span><span class="w">   </span><span class="nx">0</span><span class="w">          </span><span class="nx">15s</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">top</span><span class="w"> </span><span class="nx">node</span><span class="w"> 
+</span><span class="n">NAME</span><span class="w">      </span><span class="nx">CPU</span><span class="p">(</span><span class="n">cores</span><span class="p">)</span><span class="w">   </span><span class="n">CPU</span><span class="o">%</span><span class="w">   </span><span class="nx">MEMORY</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w">   </span><span class="n">MEMORY</span><span class="o">%</span><span class="w">   
+</span><span class="n">latihan</span><span class="w">   </span><span class="nx">281m</span><span class="w">         </span><span class="nx">14</span><span class="o">%</span><span class="w">    </span><span class="nx">1593Mi</span><span class="w">          </span><span class="nx">80</span><span class="o">%</span><span class="w"> 
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">top</span><span class="w"> </span><span class="nx">pod</span><span class="w"> </span><span class="nx">pod-resource-memory-no-limit</span><span class="w">
+</span><span class="n">NAME</span><span class="w">                           </span><span class="nx">CPU</span><span class="p">(</span><span class="n">cores</span><span class="p">)</span><span class="w">   </span><span class="n">MEMORY</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w">   
+</span><span class="n">pod-resource-memory-no-limit</span><span class="w">   </span><span class="nx">106m</span><span class="w">         </span><span class="nx">251Mi</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="specify-a-cpu-request-and-a-cpu-limit">Specify a CPU request and a CPU limit</h2>
+
+<p>This page shows how to assign a CPU request and a CPU limit to a container. Containers cannot use more CPU than the configured limit. Provided the system has CPU time free, a container is guaranteed to be allocated as much CPU as it requests.</p>
+
+<p>Your cluster must have at least 1 CPU available for use to run the task examples:</p>
+
+<p>In this exercise, you create a Pod that has one container. The container has a request of <code class="language-plaintext highlighter-rouge">0.5 CPU</code> and a <code class="language-plaintext highlighter-rouge">limit of 1 CPU</code>. Here is the configuration file for the Pod:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/a3a01b83910cf07914935a25a62d30ce.js?file=03g-pod-resource-cpu-unit.yaml"> </script>
+
+<p>The args section of the configuration file provides arguments for the container when it starts. The <code class="language-plaintext highlighter-rouge">-cpus "2"</code> argument tells the Container to attempt to use <code class="language-plaintext highlighter-rouge">2 CPUs</code>.</p>
+
+<p>Jika dijalankan hasilnya seperti berikut:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">apply</span><span class="w"> </span><span class="nt">-f</span><span class="w"> </span><span class="nx">02-workloads/01-pod/pod-resource-cpu-unit.yaml</span><span class="w"> 
+</span><span class="n">pod/pod-resource-cpu</span><span class="w"> </span><span class="nx">created</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">pod</span><span class="w">
+</span><span class="n">NAME</span><span class="w">               </span><span class="nx">READY</span><span class="w">   </span><span class="nx">STATUS</span><span class="w">    </span><span class="nx">RESTARTS</span><span class="w">   </span><span class="nx">AGE</span><span class="w">
+</span><span class="n">pod-resource-cpu</span><span class="w">   </span><span class="nx">1/1</span><span class="w">     </span><span class="nx">Running</span><span class="w">   </span><span class="nx">0</span><span class="w">          </span><span class="nx">9s</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">top</span><span class="w"> </span><span class="nx">node</span><span class="w">
+</span><span class="n">NAME</span><span class="w">      </span><span class="nx">CPU</span><span class="p">(</span><span class="n">cores</span><span class="p">)</span><span class="w">   </span><span class="n">CPU</span><span class="o">%</span><span class="w">   </span><span class="nx">MEMORY</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w">   </span><span class="n">MEMORY</span><span class="o">%</span><span class="w">   
+</span><span class="n">latihan</span><span class="w">   </span><span class="nx">1156m</span><span class="w">        </span><span class="nx">57</span><span class="o">%</span><span class="w">    </span><span class="nx">1350Mi</span><span class="w">          </span><span class="nx">68</span><span class="o">%</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">top</span><span class="w"> </span><span class="nx">pod</span><span class="w"> </span><span class="nx">pod-resource-cpu</span><span class="w">
+</span><span class="n">NAME</span><span class="w">               </span><span class="nx">CPU</span><span class="p">(</span><span class="n">cores</span><span class="p">)</span><span class="w">   </span><span class="n">MEMORY</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="w">   
+</span><span class="n">pod-resource-cpu</span><span class="w">   </span><span class="nx">999m</span><span class="w">         </span><span class="nx">1Mi</span><span class="w"> 
+</span></code></pre></div></div>
+
+<p>Recall that by setting <code class="language-plaintext highlighter-rouge">-cpu "2"</code>, you configured the Container to attempt to use 2 CPUs, but the Container is only being allowed to use about <code class="language-plaintext highlighter-rouge">1 CPU</code>. The container’s CPU use is being throttled, because the container is attempting to use more CPU resources than its limit.</p>
+
+<h2 id="specify-a-cpu-request-that-is-too-big-for-your-nodes">Specify a CPU request that is too big for your Nodes</h2>
+
+<p>CPU requests and limits are associated with Containers, but it is useful to think of a Pod as having a CPU request and limit. The CPU request for a Pod is the sum of the CPU requests for all the Containers in the Pod. Likewise, the CPU limit for a Pod is the sum of the CPU limits for all the Containers in the Pod.</p>
+
+<p>Pod scheduling is based on requests. A Pod is scheduled to run on a Node only if the Node has enough CPU resources available to satisfy the Pod CPU request.</p>
+
+<p>In this exercise, you create a Pod that has a CPU request so big that it exceeds the capacity of any Node in your cluster. Here is the configuration file for a Pod that has one Container.</p>
+
+<script src="https://gist.github.com/dimMaryanto93/a3a01b83910cf07914935a25a62d30ce.js?file=03g-pod-resource-cpus-more-than-node.yaml"> </script>
+
+<p>Jika dijalankan seperti berikut:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">apply</span><span class="w"> </span><span class="nt">-f</span><span class="w"> </span><span class="nx">02-workloads/01-pod/pod-resource-cpu-more-than-nodes.yaml</span><span class="w">
+</span><span class="n">pod/pod-resource-cpu-more-than-node</span><span class="w"> </span><span class="nx">created</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">pod</span><span class="w">
+</span><span class="n">NAME</span><span class="w">                              </span><span class="nx">READY</span><span class="w">   </span><span class="nx">STATUS</span><span class="w">    </span><span class="nx">RESTARTS</span><span class="w">   </span><span class="nx">AGE</span><span class="w">
+</span><span class="n">pod-resource-cpu-more-than-node</span><span class="w">   </span><span class="nx">0/1</span><span class="w">     </span><span class="nx">Pending</span><span class="w">   </span><span class="nx">0</span><span class="w">          </span><span class="nx">9s</span><span class="w">
+
+</span><span class="err">➜</span><span class="w"> </span><span class="n">kubectl</span><span class="w"> </span><span class="nx">describe</span><span class="w"> </span><span class="nx">pod</span><span class="w"> </span><span class="nx">pod-resource-cpu-more-than-node</span><span class="w">
+</span><span class="n">Name:</span><span class="w">         </span><span class="nx">pod-resource-cpu-more-than-node</span><span class="w">
+</span><span class="kr">Namespace</span><span class="p">:</span><span class="w">    </span><span class="n">default</span><span class="w">
+</span><span class="nx">Priority:</span><span class="w">     </span><span class="nx">0</span><span class="w">
+</span><span class="n">Node:</span><span class="w">         </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+</span><span class="n">Labels:</span><span class="w">       </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+</span><span class="n">Annotations:</span><span class="w">  </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+</span><span class="n">Status:</span><span class="w">       </span><span class="nx">Pending</span><span class="w">
+</span><span class="n">IP:</span><span class="w">           
+</span><span class="n">IPs:</span><span class="w">          </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+</span><span class="n">Containers:</span><span class="w">
+  </span><span class="nx">pod-1:</span><span class="w">
+    </span><span class="n">Image:</span><span class="w">      </span><span class="nx">vish/stress</span><span class="w">
+    </span><span class="n">Port:</span><span class="w">       </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+    </span><span class="n">Host</span><span class="w"> </span><span class="nx">Port:</span><span class="w">  </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+    </span><span class="n">Args:</span><span class="w">
+      </span><span class="nt">-cpus</span><span class="o">=</span><span class="mi">2</span><span class="w">
+    </span><span class="n">Limits:</span><span class="w">
+      </span><span class="nx">cpu:</span><span class="w">  </span><span class="nx">5</span><span class="w">
+    </span><span class="n">Requests:</span><span class="w">
+      </span><span class="nx">cpu:</span><span class="w">        </span><span class="nx">3</span><span class="w">
+    </span><span class="n">Environment:</span><span class="w">  </span><span class="err">&lt;</span><span class="nx">none</span><span class="err">&gt;</span><span class="w">
+    </span><span class="n">Mounts:</span><span class="w">
+      </span><span class="nx">/var/run/secrets/kubernetes.io/serviceaccount</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">kube-api-access-rz4cm</span><span class="w"> </span><span class="p">(</span><span class="n">ro</span><span class="p">)</span><span class="w">
+</span><span class="n">Conditions:</span><span class="w">
+  </span><span class="nx">Type</span><span class="w">           </span><span class="nx">Status</span><span class="w">
+  </span><span class="n">PodScheduled</span><span class="w">   </span><span class="nx">False</span><span class="w"> 
+</span><span class="n">Events:</span><span class="w">
+  </span><span class="nx">Type</span><span class="w">     </span><span class="nx">Reason</span><span class="w">            </span><span class="nx">Age</span><span class="w">   </span><span class="nx">From</span><span class="w">               </span><span class="nx">Message</span><span class="w">
+  </span><span class="o">----</span><span class="w">     </span><span class="o">------</span><span class="w">            </span><span class="o">----</span><span class="w">  </span><span class="o">----</span><span class="w">               </span><span class="o">-------</span><span class="w">
+  </span><span class="n">Warning</span><span class="w">  </span><span class="nx">FailedScheduling</span><span class="w">  </span><span class="nx">30s</span><span class="w">   </span><span class="nx">default-scheduler</span><span class="w">  </span><span class="nx">0/1</span><span class="w"> </span><span class="nx">nodes</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">available:</span><span class="w"> </span><span class="nx">1</span><span class="w"> </span><span class="nx">Insufficient</span><span class="w"> </span><span class="nx">cpu.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The output shows that the Pod status is Pending. That is, the Pod has not been scheduled to run on any Node, and it will remain in the Pending state indefinitely</p>
+
+<h2 id="if-you-do-not-specify-a-cpu-limit-or-limit">If you do not specify a CPU limit or limit?</h2>
+
+<p>If you do not specify a CPU limit for a Container, then one of these situations applies:</p>
+
+<ol>
+  <li>The Container has no upper bound on the CPU resources it can use. The Container could use all of the CPU resources available on the Node where it is running.</li>
+  <li>The Container is running in a namespace that has a default CPU limit, and the Container is automatically assigned the default limit. Cluster administrators can use a LimitRange to specify a default value for the CPU limit.</li>
+</ol>
+
+<p>If you specify a CPU limit for a Container but do not specify a CPU request, Kubernetes automatically assigns a CPU request that matches the limit. Similarly, if a Container specifies its own memory limit, but does not specify a memory request, Kubernetes automatically assigns a memory request that matches the limit.</p>
+
+<h2 id="motivation-for-requests-and-limits">Motivation for requests and limits</h2>
+
+<p>By configuring the CPU &amp; Memory requests and limits of the Containers that run in your cluster, you can make efficient use of the resources available on your cluster Nodes. By keeping a Pod CPU &amp; Memory request low, you give the Pod a good chance of being scheduled. By having a CPU &amp; Memory limit that is greater than the CPU &amp; Memory request, you accomplish two things:</p>
+
+<ol>
+  <li>The Pod can have bursts of activity where it makes use of CPU and memory resources that happen to be available.</li>
+  <li>The amount of CPU &amp; memory resources a Pod can use during a burst is limited to some reasonable amount.</li>
+</ol>
+
+            </div>
+        </div>
+    </section>   
+</article>
+
+            </div>
+            
+        </div>
+        <div>
+            
+                <div>
+                    <ul class="collection with-header">
+                        <li class="collection-header">
+                            <h2>Referensi</h2>
+                        </li>
+                                               
+                            <a class="collection-item" href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/" target="_blank">https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/</a>
+                                               
+                            <a class="collection-item" href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/" target="_blank">https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/</a>
+                                               
+                            <a class="collection-item" href="https://github.com/kubernetes/minikube/issues/13969#issuecomment-1101588469" target="_blank">https://github.com/kubernetes/minikube/issues/13969#issuecomment-1101588469</a>
+                        
+                    </ul>                    
+                </div>
+            
+        </div>
+        <div id="paginate" class="center">
+            <ul class="pagination hide-on-small-only">
+                <!-- goto first page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/devops/orchestration/kubernetes/01-silabus" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman 1...">
+                        <i class="material-icons">fast_rewind</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto before page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03f-pod-env-config" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke artikel sebelumnya...">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+                                
+                
+                <!-- current page info -->
+                <li class="active">
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        28 to 36
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+                   
+                <!-- goto next page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03h-pod-container-probe-config" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Yuk lanjutin bacaanya...">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto last page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman terakhir...">
+                        <i class="material-icons">fast_forward</i>
+                    </a>
+                </li>
+                
+            </ul>
+            <br>
+        </div>
+        <div>
+            
+            <div id="disqus_thread"></div>
+            <script>
+
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                
+                var disqus_config = function () {
+                    this.page.url = 'https://youtube.dimas-maryanto.com/posts/devops/orchestration/kubernetes/pods/03g-pod-resource-request-and-limit';
+                    this.page.identifier = '/posts/devops/orchestration/kubernetes/pods/03g-pod-resource-request-and-limit';
+                    console.debug(this.page);
+                };
+                
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://materi-bootcamp.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            
+        </div>
+    </div>
+    <div id="floating-button-menu" class="fixed-action-btn click-to-toggle horizontal hide-on-large-only">
+        <a href="#" class="btn-floating btn-large waves-effect waves-light">
+            <i class="large material-icons">playlist_play</i>
+        </a>
+        <ul>
+            <!-- goto first page -->
+            
+            <li>
+                <a href="/posts/devops/orchestration/kubernetes/01-silabus" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman 1...">
+                    <i class="material-icons">fast_rewind</i>
+                </a>
+            </li>
+            
+            <!-- goto before page -->
+            
+            <li>
+                <a href="/posts/devops/orchestration/kubernetes/pods/03f-pod-env-config" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman sebelumnya">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+             
+
+            <!-- goto next page -->
+            
+            <li>
+                <a href="/posts/devops/orchestration/kubernetes/pods/03h-pod-container-probe-config" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman selanjutnya">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+            
+
+            <!-- goto last page -->
+            
+            <li>
+                <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman terakhir">
+                    <i class="material-icons">fast_forward</i>
+                </a>
+            </li>
+               
+
+            <li>
+                <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                    <i class="large material-icons">toc</i>
+                </a>
+            </li>
+          </ul>
+    </div>
+</div>
+
+<ul id="slide-out-materi" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li> 
+    <li>
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collapsible with-header" data-collapsible="accordion">
+                <li class="collection-header">
+                    <div class="collapsible-header subheader">
+                        Daftar Materi
+                    </div>                    
+                </li>
+
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Pengenalan Kubernetes
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            9
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                        <span class="truncate">
+                                            1. Silabus - DevOps Kubernetes: Pemula sampai Mahir
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01a-what-is-kubernetes">
+                                        <span class="truncate">
+                                            2. What is Kubernetes (k8s) ?
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01b-k8s-components">
+                                        <span class="truncate">
+                                            3. Kubernetes Components
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01c-k8s-api">
+                                        <span class="truncate">
+                                            4. The Kubernetes API
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01d-k8s-objects">
+                                        <span class="truncate">
+                                            5. What is Kubernetes Objects?
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01e-k8s-object-management">
+                                        <span class="truncate">
+                                            6. Managing Kubernetes Object
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01f-k8s-object-names-and-uids">
+                                        <span class="truncate">
+                                            7. Kubernetes Object Names and IDs
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01g-k8s-namespaces">
+                                        <span class="truncate">
+                                            8. What is Kubernetes Namespaces?
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01h-kubernetes-environtments">
+                                        <span class="truncate">
+                                            9. Kubernetes cluster environtments
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Getting started with minikube
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            11
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02-overview-learn-env">
+                                        <span class="truncate">
+                                            1. Overview learning environment with Minikube
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-macos">
+                                        <span class="truncate">
+                                            2. Install minikube on Mac (Intel Chip)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-for-mac-apple-silicon">
+                                        <span class="truncate">
+                                            3. Install minikube on Mac (Apple silicon Chip)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-windows">
+                                        <span class="truncate">
+                                            4. Install minikube for Windows 11/10 Users
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-linux">
+                                        <span class="truncate">
+                                            5. Install minikube for Linux users
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02b-deploy-application">
+                                        <span class="truncate">
+                                            6. Deploying an apps/services into Kubernetes
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02c-minikube-basic-control">
+                                        <span class="truncate">
+                                            7. Minikube basic control
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02d-minikube-use-your-own-images">
+                                        <span class="truncate">
+                                            8. Using your own image into Minikube cluster
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02f-minikube-addons">
+                                        <span class="truncate">
+                                            9. Minikube addons features
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02g-minikube-access-apps">
+                                        <span class="truncate">
+                                            10. Access your apps/service in minikube
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02h-minikube-mount">
+                                        <span class="truncate">
+                                            11. Mounting filesystems to minikube cluster
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Pods and Containers
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            13
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03-overview-pod-containers">
+                                        <span class="truncate">
+                                            1. Overview Pod and Container in Kubernetes
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03a-workload-pods">
+                                        <span class="truncate">
+                                            2. Kubernetes Workloads with Pods
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03b-working-with-pods">
+                                        <span class="truncate">
+                                            3. Working with Pods
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03c-basic-pod-and-containers-config">
+                                        <span class="truncate">
+                                            4. Basic Pods and Containers Configs
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03d-pod-lifecycle">
+                                        <span class="truncate">
+                                            5. Pod & Container Lifecycle
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03e-init-containers">
+                                        <span class="truncate">
+                                            6. Initialization of Containers
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03f-pod-env-config">
+                                        <span class="truncate">
+                                            7. Configure env (Environment Variables) in a Pods
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03g-pod-resource-request-and-limit">
+                                        <span class="truncate">
+                                            8. Configure Request and Limit of Resources (CPUs & Memory)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03h-pod-container-probe-config">
+                                        <span class="truncate">
+                                            9. Configure liveness, readiness, and startup probes
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03i-distruptions">
+                                        <span class="truncate">
+                                            10. Pod Disruptions
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/04-overview-study-cases">
+                                        <span class="truncate">
+                                            11. Overview Study Cases: Pod and Containers
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/04a-study-cases-monolith-apps">
+                                        <span class="truncate">
+                                            12. Study Cases: Monolith apps (Laravel Web MVC)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                                        <span class="truncate">
+                                            13. Study cases: Microservice apps (Springboot Rest API)
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Workload resources
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            3
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                                        <span class="truncate">
+                                            1. Overview Kubernetes Workloads resources
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                                        <span class="truncate">
+                                            2. What is Workload Resources?
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                                        <span class="truncate">
+                                            3. Working with Deployment object
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Networking (service)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Store data using Volumes
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Kubernetes Client
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Security RBAC
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Kubernetes Package manager
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Kubernetes cluster for Production grade
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Service mesh with istio
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Kubernetes on Cloud provider
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                               
+            </ul>
+        </div>
+    </li>
+    
+
+    
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</section>
+
+<section>
+    
+<footer class="page-footer blue lighten-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Tentang website</h5>
+                <div class="grey-text text-lighten-4">
+                    <p>Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.</p>
+                    <p>
+                        Donasi via:
+                        <ul>
+                            
+                            <ol>
+                                <a class="white-text" href="https://saweria.co/DimasMaryanto">
+                                    <i class="material-icons">star</i>
+                                    Saweria a/n Dimas Maryanto
+                                </a>
+                            </ol>
+                            
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <ul class="collection with-header">
+                    <li class="collection-header blue lighten-1">
+                        <i class="material-icons">account_box</i>
+                        <span class="white-text">Jangan Lupa follow aku ya guys!</span>
+                    </li>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://github.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-github"></i> Github
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.facebook.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.instagram.com/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue darken-3">
+        <div class="container">
+            Dimas Maryanto © 2023
+            <a class="grey-text text-lighten-4 right" href="https://pages.github.com/">
+                powered by Github Pages & Jekyll
+            </a>
+        </div>
+    </div>
+</footer>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,2520 @@
+
+
+{
+    "size": "22",
+    "cources": [
+        
+        {
+            "courceName": "Java Basic",
+            
+
+            
+            "postSize": "42",
+            
+            "posts": {
+                
+                { "title": "Silabus Belajar Pemograman Java" },
+                
+                { "title": "Bahasa Pemograman berorientasi objek dengan Java" },
+                
+                { "title": "Software Development for Java Users" },
+                
+                { "title": "Install Java Development Kit di Windows 10" },
+                
+                { "title": "Install Oracle JDK 8 di Linux Debian Based (UBuntu 16.04 dan 17.04)" },
+                
+                { "title": "Install Oracle JDK 8 di RedHad based (Fedora 25)" },
+                
+                { "title": "Perbedaan Java Development Kit dan Java Runtime Environment" },
+                
+                { "title": "Standarisasi penulisan coding di Java" },
+                
+                { "title": "Variabel dan Tipe Data" },
+                
+                { "title": "Tipe data yang bernilai Number" },
+                
+                { "title": "Tipe data logika (true of false)" },
+                
+                { "title": "Tipe data untuk bernilai Karakter" },
+                
+                { "title": "Tipe data untuk menyimpan Tanggal" },
+                
+                { "title": "Macam macam Operator di Java" },
+                
+                { "title": "Konversi tipe data otomatis di Java" },
+                
+                { "title": "Time is your practice" },
+                
+                { "title": "Flow control in Java" },
+                
+                { "title": "Making decision menggunakan IF statement" },
+                
+                { "title": "Making decision menggunakan SWITCH-CASE statement" },
+                
+                { "title": "Looping menggunakan For statement" },
+                
+                { "title": "Looping menggunakan For statement part 2" },
+                
+                { "title": "Looping menggunakan WHILE dan DO-WHILE statement" },
+                
+                { "title": "Break dan Continue statement dalam perulangan" },
+                
+                { "title": "Time is your for practice part 2" },
+                
+                { "title": "Modularisasi menggunakan method atau function" },
+                
+                { "title": "Menerima data dari paramenter ke dalam function" },
+                
+                { "title": "Grouping source code dengan class" },
+                
+                { "title": "Organisasi class file dengan package" },
+                
+                { "title": "Time is your for practice part 3" },
+                
+                { "title": "Object oriented dengan Java class" },
+                
+                { "title": "Object Oriented Approach di Java8" },
+                
+                { "title": "Mengenal lebih jauh tentang inheritance" },
+                
+                { "title": "Mengenal lebih jauh tentang polymorpism" },
+                
+                { "title": "Mengenal keyword super dan this" },
+                
+                { "title": "Contructor adalah method" },
+                
+                { "title": "Time is your practice part 4" },
+                
+                { "title": "Menyimpan multiple value dalam sebuah variable" },
+                
+                { "title": "Array 2 dimensi" },
+                
+                { "title": "Element Collection" },
+                
+                { "title": "Perulangan for untuk Array, List, Set dan Map" },
+                
+                { "title": "Why Use Generics?" },
+                
+                { "title": "Time to your practice part 5" }
+                
+            }
+            
+        },
+        
+        {
+            "courceName": "JDBC with Postgresql",
+            
+
+            
+            "postSize": "12",
+            
+            "posts": {
+                
+                { "title": "Silabus Belajar JDBC dengan PostgreSQL Database" },
+                
+                { "title": "What is Java Database Connectivity" },
+                
+                { "title": "Setup Project JDBC dengan Apache Maven" },
+                
+                { "title": "Membuat connection ke Database PostgreSQL via JDBC" },
+                
+                { "title": "Using Database Versioning with flyway" },
+                
+                { "title": "Mengenal class java.sql.Statement" },
+                
+                { "title": "Mengenal class java.sql.PreparedStatement" },
+                
+                { "title": "Perbedaan method executeQuery() dan executeUpdate()" },
+                
+                { "title": "Mengenal class ResultSet" },
+                
+                { "title": "Mengenal Transactional dengan JDBC" },
+                
+                { "title": "Batch processing dengan JDBC" },
+                
+                { "title": "Time is your to practice" }
+                
+            }
+            
+        },
+        
+        {
+            "courceName": "Javascript",
+            
+
+            
+            "postSize": "12",
+            
+            "posts": {
+                
+                { "title": "Silabus Belajar Javascript" },
+                
+                { "title": "Pengenalan scripting language dengan Javascript" },
+                
+                { "title": "Setup Develoment environment untuk Javascript" },
+                
+                { "title": "Data Type di JavaScript" },
+                
+                { "title": "Variable di JavaScript" },
+                
+                { "title": "Operator Matematika di JavaScript" },
+                
+                { "title": "Percabagan atau Selection di JavaScript" },
+                
+                { "title": "Perulangan atau Looping dengan JavaScript" },
+                
+                { "title": "Function di JavaScript" },
+                
+                { "title": "Array di JavaScript" },
+                
+                { "title": "Object Oriented Programming dengan Javascript" },
+                
+                { "title": "Nested Object in Javascript" }
+                
+            }
+            
+        },
+        
+        {
+            "courceName": "Java Web (Servlet & JSP)",
+            
+
+            
+            "postSize": "32",
+            
+            "posts": {
+                
+                { "title": "Silabus belajar Java WEB" },
+                
+                { "title": "Technology Java Enterprice Edition" },
+                
+                { "title": "Pengenalan Scripting language dengan HTML" },
+                
+                { "title": "Pengenalan Styling dengan CSS" },
+                
+                { "title": "Pengenalan Pemograman Client Side dengan JS" },
+                
+                { "title": "Membuat project Java Web dengan Apache Maven" },
+                
+                { "title": "Memahami Struktur Project dengan maven-archetype-webapp" },
+                
+                { "title": "Konsep Hypertext Transper Protocol (HTTP)" },
+                
+                { "title": "Pengenalan Pemograman Servlet" },
+                
+                { "title": "Pemograman Servlet dengan Annotation" },
+                
+                { "title": "Submit value dengan Servlet menggunakan Http GET Method" },
+                
+                { "title": "Submit value dengan Servlet menggunakan Http POST Method" },
+                
+                { "title": "Submit Array value menggunakan Servlet" },
+                
+                { "title": "Submit file menggunakan Servlet" },
+                
+                { "title": "Logging incomming request dengan Servlet Filter" },
+                
+                { "title": "Event Listeners using Servlet Context Level" },
+                
+                { "title": "Event Listeners using Session Level" },
+                
+                { "title": "Pengenalan JavaServer Page (JSP)" },
+                
+                { "title": "JSP Architecture" },
+                
+                { "title": "Using JSP and Element of JSP" },
+                
+                { "title": "JSP Scriptlet" },
+                
+                { "title": "JSP Directive" },
+                
+                { "title": "JSP Taglib Directive (JSTL)" },
+                
+                { "title": "JSP Action Element" },
+                
+                { "title": "JSP Implicit Object" },
+                
+                { "title": "Static Resources with WebJars" },
+                
+                { "title": "Konsep Model View Controller (MVC) design pattern" },
+                
+                { "title": "Implementasi MVC menggunakan JSP dan Servlet" },
+                
+                { "title": "Persiapan untuk Deploy Java Webapp" },
+                
+                { "title": "Deployment Java Webapp dengan Tomcat Web Server" },
+                
+                { "title": "Automated deploy with gitlab CI/CD" },
+                
+                { "title": "Time is your to practice" }
+                
+            }
+            
+        },
+        
+        {
+            "courceName": "ORM dengan Hibernate",
+            
+            "courceUrl": "https://www.udemy.com/course/hibernate-orm-bahasa-indonesia/",
+            
+
+            
+            "postSize": "57",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan ORM Hibernate",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                        { "title": "Silabus Belajar JPA Hibernate" },
+                        
+                        { "title": "Pengenalan ORM dengan Hibernate Framework" },
+                        
+                        { "title": "Setup Development Environment" },
+                        
+                        { "title": "Membuat project Hibernate ORM dengan Apache Maven" },
+                        
+                        { "title": "Build Hibernate Session Factory" },
+                        
+                        { "title": "Memahami fungsi hibernate.cfg.xml" },
+                        
+                        { "title": "Membuat Simple Entity di Hibernate" },
+                        
+                        { "title": "Basic Annotation pada Hibernate" },
+                        
+                        { "title": "CRUD menggunakan Hibernate" },
+                        
+                        { "title": "Macam-Macam Constraint di Hibernate" },
+                        
+                        { "title": "Macam Macam Generator Value di Hibernate" },
+                        
+                        { "title": "Composite Primary Key" },
+                        
+                        { "title": "Time is your practice" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "ORM Mappings",
+                    "subjectKey": "orm-mapping",
+                    
+                    "posts": [
+                        
+                        { "title": "Hibernate ORM Relationship Mapping" },
+                        
+                        { "title": "Mapping Enum Ordinal & String" },
+                        
+                        { "title": "Embbeded Mapping" },
+                        
+                        { "title": "Embbeded Mapping dengan Override Attributes" },
+                        
+                        { "title": "OneToOne Mapping" },
+                        
+                        { "title": "OneToMany Mapping" },
+                        
+                        { "title": "ManyToOne Mapping" },
+                        
+                        { "title": "ManyToMany Mapping" },
+                        
+                        { "title": "Macam-Macam Inherintance Mapping" },
+                        
+                        { "title": "Inherintance Mapping metode MappedSuperclass" },
+                        
+                        { "title": "Inherintance Mapping methode Single Table" },
+                        
+                        { "title": "Inherintance Mapping metode Single Table menggunakan Descriminator column dan value" },
+                        
+                        { "title": "Inherintance Mapping metode Join Table" },
+                        
+                        { "title": "Inherintance Mapping metode Table Per Class" },
+                        
+                        { "title": "Parent-Child Mapping" },
+                        
+                        { "title": "Collections Mapping" },
+                        
+                        { "title": "Collections Mapping as a Value" },
+                        
+                        { "title": "Collections Mapping as a Value Types" },
+                        
+                        { "title": "Time is your Practice" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Hibernete Query Language (HQL)",
+                    "subjectKey": "hql",
+                    
+                    "posts": [
+                        
+                        { "title": "Hibernate Query Language (HQL-JPQL)" },
+                        
+                        { "title": "Select Statement dengan HQL" },
+                        
+                        { "title": "Insert, Update dan Delete Statement dengan HQL" },
+                        
+                        { "title": "Join Entity dengan Hibernate Query Language (HQL)" },
+                        
+                        { "title": "Distinct dengan HQL" },
+                        
+                        { "title": "Aritmatic dengan HQL" },
+                        
+                        { "title": "Concatnation dengan HQL" },
+                        
+                        { "title": "Aggregation Function dengan HQL" },
+                        
+                        { "title": "Case When dengan HQL" },
+                        
+                        { "title": "Coalesce & NullIF menggunakan HQL" },
+                        
+                        { "title": "Predicates / Conditional Expressions dengan HQL" },
+                        
+                        { "title": "Relational Comparison Predicate dengan HQL" },
+                        
+                        { "title": "Nullness Predicate dengan HQL" },
+                        
+                        { "title": "Predicate LIKE dengan HQL" },
+                        
+                        { "title": "Predicate BETWEEN dengan HQL" },
+                        
+                        { "title": "Predicate IN dengan HQL" },
+                        
+                        { "title": "Empty Collections Predicate dengan HQL" },
+                        
+                        { "title": "SubQuery Qualifiers dengan HQL" },
+                        
+                        { "title": "Not Predicate dengan HQL" },
+                        
+                        { "title": "Combine Predicate dengan HQL" },
+                        
+                        { "title": "Group By dengan HQL" },
+                        
+                        { "title": "Order By dengan HQL" },
+                        
+                        { "title": "LIMIT & OFFSET dengan HQL" },
+                        
+                        { "title": "Read Only Entity dengan HQL" },
+                        
+                        { "title": "Time is your Practice" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Hibernete Criteria API",
+                    "subjectKey": "criteria-api",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Java Persistence Query Language (JPQL)",
+                    "subjectKey": "jpql",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Audit with Hibernete Envers",
+                    "subjectKey": "hibernate-envers",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Caching",
+                    "subjectKey": "hibernate-cache",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Oracle Database",
+            
+            "courceUrl": "https://www.udemy.com/course/rdbms-oracle-18c-indonesia/",
+            
+
+            
+            "postSize": "116",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan Oracle Database",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                        { "title": "Silabus Belajar RDBMS Oracle 18c" },
+                        
+                        { "title": "Pengenalan Oracle Database 18c" },
+                        
+                        { "title": "Konsep User dan Schema di Oracle Database 18c" },
+                        
+                        { "title": "Interface untuk Oracle Database" },
+                        
+                        { "title": "Database Interaction dengan SQL" },
+                        
+                        { "title": "Persiapan install Oracle Database 18c" },
+                        
+                        { "title": "Install Oracle 18c XE untuk Windows 10" },
+                        
+                        { "title": "Install Oracle 18c XE untuk Linux" },
+                        
+                        { "title": "Install Oracle 18c XE dengan Docker" },
+                        
+                        { "title": "Install Database Editor untuk Oracle 18c" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "SQL - Select Statement",
+                    "subjectKey": "sql-select",
+                    
+                    "posts": [
+                        
+                        { "title": "Persiapan Sebelum mulai belajar" },
+                        
+                        { "title": "Aturan Penulisan SQL pada Oracle Database" },
+                        
+                        { "title": "Data Types di Oracle Database" },
+                        
+                        { "title": "Select Statement dalam SQL" },
+                        
+                        { "title": "Pemberian alias pada column dan table" },
+                        
+                        { "title": "Operation Arithmetic di Oracle" },
+                        
+                        { "title": "Menggabungkan column dengan concatnation" },
+                        
+                        { "title": "Handle Null value dengan Coalesce" },
+                        
+                        { "title": "Menghilangkan nilai redundansi dengan klausa Distinct" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "SQL - Select with where clause",
+                    "subjectKey": "sql-where-clause",
+                    
+                    "posts": [
+                        
+                        { "title": "Klausa where untuk filter data di Oracle" },
+                        
+                        { "title": "Comparison Predicate pada klausa where di Oracle" },
+                        
+                        { "title": "Like Predicate pada klausa where di Oracle" },
+                        
+                        { "title": "Between Predicate pada klausa where di Oracle" },
+                        
+                        { "title": "Null Conditions pada klausa where di Oracle" },
+                        
+                        { "title": "In Predicates pada klausa where di Oracle" },
+                        
+                        { "title": "Exists Condition pada klausa where di Oracle" },
+                        
+                        { "title": "Not Predicate pada klausa where di Oracle" },
+                        
+                        { "title": "Combine Logical pada klausa where di Oracle" },
+                        
+                        { "title": "Mengurutkan data dengan klausa ORDER BY di Oracle" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "SQL - Functions",
+                    "subjectKey": "sql-functions",
+                    
+                    "posts": [
+                        
+                        { "title": "Single Row Function di Oracle" },
+                        
+                        { "title": "Character Single Row Function di Oracle" },
+                        
+                        { "title": "Number Single Row Function di Oracle" },
+                        
+                        { "title": "Date & Time Single Row Function di Oracle" },
+                        
+                        { "title": "Conversion Single Row Function di Oracle" },
+                        
+                        { "title": "Casting Build-In Data Type di Oracle" },
+                        
+                        { "title": "Null-Related Single Row Function" },
+                        
+                        { "title": "Aggregate Functions" },
+                        
+                        { "title": "Klausa Group By di Oracle" },
+                        
+                        { "title": "Where clause dengan Group By Function" },
+                        
+                        { "title": "Having clause dengan Group By Function" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "SQL - Join Tables",
+                    "subjectKey": "sql-join-tables",
+                    
+                    "posts": [
+                        
+                        { "title": "Join clause di Oracle" },
+                        
+                        { "title": "Natural Join di Oracle" },
+                        
+                        { "title": "Please be carefull using natural join di Oracle" },
+                        
+                        { "title": "Inner Join di Oracle" },
+                        
+                        { "title": "Outer Join di Oracle" },
+                        
+                        { "title": "Self Join di Oracle" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "SQL - Sub Queries",
+                    "subjectKey": "sql-subquery",
+                    
+                    "posts": [
+                        
+                        { "title": "Sub Query di Oracle" },
+                        
+                        { "title": "Sub Query single row result dengan where clause" },
+                        
+                        { "title": "Handle Sub Query Multiple rows Result dengan where operator" },
+                        
+                        { "title": "In Predicates dengan Sub Query di Oracle" },
+                        
+                        { "title": "ANY & SOME dengan Sub Query di Oracle" },
+                        
+                        { "title": "ALL Operator dengan Sub Query di Oracle" },
+                        
+                        { "title": "Sub Query Correlate di Oracle" },
+                        
+                        { "title": "Sub Query EXIST Predicates di Oracle" },
+                        
+                        { "title": "Pairwise Sub Query di Oracle" },
+                        
+                        { "title": "Sub Query Inline View di Oracle" },
+                        
+                        { "title": "Paginate dengan Sub Query di Oracle versi lama" },
+                        
+                        { "title": "Pagination dengan fetch dan offset" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "SQL - Expressions",
+                    "subjectKey": "sql-expression",
+                    
+                    "posts": [
+                        
+                        { "title": "Expressions di Oracle" },
+                        
+                        { "title": "Conditional Expression dengan Case When di Oracle" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "SQL - Data Manipulation Language",
+                    "subjectKey": "sql-dml",
+                    
+                    "posts": [
+                        
+                        { "title": "Data Manipulation Language (DML)" },
+                        
+                        { "title": "DML - Insert Statement di Oracle" },
+                        
+                        { "title": "DML - Update Statement di Oracle" },
+                        
+                        { "title": "DML - Delete Statement di Oracle" },
+                        
+                        { "title": "DML - Merge Statement di Oracle" },
+                        
+                        { "title": "Transaction Control Language (TCL)" },
+                        
+                        { "title": "TCL - Commit Transaction di Oracle" },
+                        
+                        { "title": "TCL - Rollback Transaction di Oracle" },
+                        
+                        { "title": "TCL - Savepoint di Oracle" },
+                        
+                        { "title": "TCL - Concurrent Transaction" },
+                        
+                        { "title": "TCL - Locking Transaction di Oracle" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "SQL - Data Definition Language",
+                    "subjectKey": "sql-ddl",
+                    
+                    "posts": [
+                        
+                        { "title": "Data Definition Language (DDL) di Oracle" },
+                        
+                        { "title": "DDL - Static Data Dictionary View" },
+                        
+                        { "title": "DDL - Membuat Tabel di Oracle" },
+                        
+                        { "title": "DDL - Merubah struktur table" },
+                        
+                        { "title": "DDL - Menghapus table dengan DROP" },
+                        
+                        { "title": "DDL - Truncate Table" },
+                        
+                        { "title": "DDL - Purge Table & Recyclebin" },
+                        
+                        { "title": "DDL - Macam-macam Constraint di Oracle" },
+                        
+                        { "title": "DDL - Not Null Constraint" },
+                        
+                        { "title": "DDL - Unqiue Constraint" },
+                        
+                        { "title": "DDL - Check Constraint" },
+                        
+                        { "title": "DDL - Primary Key Constraint" },
+                        
+                        { "title": "DDL - Foreign Key Constraint" },
+                        
+                        { "title": "DDL - Foreign Key Constraint dengan Options" },
+                        
+                        { "title": "DDL - Enabled, Disabled & Drop Constraints" },
+                        
+                        { "title": "DDL - Deferring Constraint Checks" },
+                        
+                        { "title": "DDL - View di Oracle" },
+                        
+                        { "title": "DDL - Sequences di Oracle" },
+                        
+                        { "title": "Default value untuk Primary Key di Oracle" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Indexing",
+                    "subjectKey": "index-table",
+                    
+                    "posts": [
+                        
+                        { "title": "Pengenalan Index di Oracle" },
+                        
+                        { "title": "Index - Balanced Tree (B-Tree)" },
+                        
+                        { "title": "Index - Bitmap" },
+                        
+                        { "title": "Index - Function-Based" },
+                        
+                        { "title": "DDL - Menghapus Index" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "DDL - User Management",
+                    "subjectKey": "ddl-user-management",
+                    
+                    "posts": [
+                        
+                        { "title": "Managing Users and Resource di Oracle" },
+                        
+                        { "title": "DDL - Create User Account" },
+                        
+                        { "title": "DDL - Altering User Accounts" },
+                        
+                        { "title": "DDL - Dropping User Account" },
+                        
+                        { "title": "DDL - System Privileges" },
+                        
+                        { "title": "DDL - Object Privileges" },
+                        
+                        { "title": "DDL - Grouping Privileges dengan Roles" },
+                        
+                        { "title": "DDL - Managing Resource & Password dengan Profiles" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Monitor database activity",
+                    "subjectKey": "monitor-audit-trail",
+                    
+                    "posts": [
+                        
+                        { "title": "Monitoring Database Activity dengan Audit" },
+                        
+                        { "title": "Auditing Activities with Unified Audit Policies" },
+                        
+                        { "title": "Predefined Unified Audit Policies" },
+                        
+                        { "title": "Administering the Audit Trail" },
+                        
+                        { "title": "Auditing Specific Activities with Fine-Grained Auditing" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Database Design",
+                    "subjectKey": "design-db",
+                    
+                    "posts": [
+                        
+                        { "title": "Perancangan / Design Table (Relationship)" },
+                        
+                        { "title": "One To One Relationship Tables" },
+                        
+                        { "title": "One To Many Relationship Tables" },
+                        
+                        { "title": "Many To Many Relationship Tables" },
+                        
+                        { "title": "Parent Childs Relationship" },
+                        
+                        { "title": "Inherintance Mapping (OODMBS)" },
+                        
+                        { "title": "Partitioning Table (Very Large Databases)" },
+                        
+                        { "title": "JSON Data in Oracle Database" }
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Kubernetes (k8s)",
+            
+            "courceUrl": "https://www.udemy.com/course/devops-kubernetes-pemula-sampai-mahir/",
+            
+
+            
+            "postSize": "36",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan Kubernetes",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                        { "title": "Silabus - DevOps Kubernetes: Pemula sampai Mahir" },
+                        
+                        { "title": "What is Kubernetes (k8s) ?" },
+                        
+                        { "title": "Kubernetes Components" },
+                        
+                        { "title": "The Kubernetes API" },
+                        
+                        { "title": "What is Kubernetes Objects?" },
+                        
+                        { "title": "Managing Kubernetes Object" },
+                        
+                        { "title": "Kubernetes Object Names and IDs" },
+                        
+                        { "title": "What is Kubernetes Namespaces?" },
+                        
+                        { "title": "Kubernetes cluster environtments" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Getting started with minikube",
+                    "subjectKey": "minikube",
+                    
+                    "posts": [
+                        
+                        { "title": "Overview learning environment with Minikube" },
+                        
+                        { "title": "Install minikube on Mac (Intel Chip)" },
+                        
+                        { "title": "Install minikube on Mac (Apple silicon Chip)" },
+                        
+                        { "title": "Install minikube for Windows 11/10 Users" },
+                        
+                        { "title": "Install minikube for Linux users" },
+                        
+                        { "title": "Deploying an apps/services into Kubernetes" },
+                        
+                        { "title": "Minikube basic control" },
+                        
+                        { "title": "Using your own image into Minikube cluster" },
+                        
+                        { "title": "Minikube addons features" },
+                        
+                        { "title": "Access your apps/service in minikube" },
+                        
+                        { "title": "Mounting filesystems to minikube cluster" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Pods and Containers",
+                    "subjectKey": "pod-container",
+                    
+                    "posts": [
+                        
+                        { "title": "Overview Pod and Container in Kubernetes" },
+                        
+                        { "title": "Kubernetes Workloads with Pods" },
+                        
+                        { "title": "Working with Pods" },
+                        
+                        { "title": "Basic Pods and Containers Configs" },
+                        
+                        { "title": "Pod & Container Lifecycle" },
+                        
+                        { "title": "Initialization of Containers" },
+                        
+                        { "title": "Configure env (Environment Variables) in a Pods" },
+                        
+                        { "title": "Configure Request and Limit of Resources (CPUs & Memory)" },
+                        
+                        { "title": "Configure liveness, readiness, and startup probes" },
+                        
+                        { "title": "Pod Disruptions" },
+                        
+                        { "title": "Overview Study Cases: Pod and Containers" },
+                        
+                        { "title": "Study Cases: Monolith apps (Laravel Web MVC)" },
+                        
+                        { "title": "Study cases: Microservice apps (Springboot Rest API)" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Workload resources",
+                    "subjectKey": "workloads",
+                    
+                    "posts": [
+                        
+                        { "title": "Overview Kubernetes Workloads resources" },
+                        
+                        { "title": "What is Workload Resources?" },
+                        
+                        { "title": "Working with Deployment object" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Networking (service)",
+                    "subjectKey": "networking",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Store data using Volumes",
+                    "subjectKey": "volumes",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Kubernetes Client",
+                    "subjectKey": "kubernetes-client",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Security RBAC",
+                    "subjectKey": "security-rbac",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Kubernetes Package manager",
+                    "subjectKey": "helm",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Kubernetes cluster for Production grade",
+                    "subjectKey": "admin-cluster",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Service mesh with istio",
+                    "subjectKey": "istio",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Kubernetes on Cloud provider",
+                    "subjectKey": "k8s-cloud",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "PostgreSQL",
+            
+            "courceUrl": "https://www.udemy.com/course/dba-postgresql-pemula-sampai-mahir/",
+            
+
+            
+            "postSize": "39",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan PostgreSQL",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                        { "title": "Silabus - PostgreSQL: Pemula sampai Mahir" },
+                        
+                        { "title": "Overview of PostgreSQL Database" },
+                        
+                        { "title": "Architecture of PostgreSQL Database" },
+                        
+                        { "title": "Overview of Object Relational Database Management System (ORDBMS)" },
+                        
+                        { "title": "Accessing a Database" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Getting started",
+                    "subjectKey": "getting-started",
+                    
+                    "posts": [
+                        
+                        { "title": "Overview Installing PostgreSQL" },
+                        
+                        { "title": "Install PostgreSQL for Windows users" },
+                        
+                        { "title": "Install PostgreSQL for Mac users" },
+                        
+                        { "title": "Install PostgreSQL for Linux Ubuntu users" },
+                        
+                        { "title": "Install PostgreSQL using Docker" },
+                        
+                        { "title": "Using psql as PostgreSQL editor" },
+                        
+                        { "title": "Using pgAdmin4 as PostgreSQL editor" },
+                        
+                        { "title": "Using thirdparty Editor untuk PostgreSQL Server" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "SQL - Select Statement",
+                    "subjectKey": "select-statement",
+                    
+                    "posts": [
+                        
+                        { "title": "Overview SQL Select statements" },
+                        
+                        { "title": "Basic SQL Select statements" },
+                        
+                        { "title": "Build-in Operators" },
+                        
+                        { "title": "Build-in Functions" },
+                        
+                        { "title": "Filtering data with WHERE clause" },
+                        
+                        { "title": "Sorting rows using ORDER BY clause" },
+                        
+                        { "title": "Limit dan Offset rows" },
+                        
+                        { "title": "Time your practice (part 1)" },
+                        
+                        { "title": "Deep dive into Select Statements" },
+                        
+                        { "title": "Single Row / Group functions" },
+                        
+                        { "title": "Joined Tables" },
+                        
+                        { "title": "Queries inside a query (subquery)" },
+                        
+                        { "title": "Conditional Expressions" },
+                        
+                        { "title": "Combining Queries (UNION, INTERSECT, EXCEPT)" },
+                        
+                        { "title": "WITH Queries (Common Table Expressions)" },
+                        
+                        { "title": "Time your practice (part 2)" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "SQL - Data manipulation",
+                    "subjectKey": "dml-statement",
+                    
+                    "posts": [
+                        
+                        { "title": "Overview of Data Manipulation Language (DML)" },
+                        
+                        { "title": "Basic Create, Update, Delete statement" },
+                        
+                        { "title": "Deep dive into INSERT Statement" },
+                        
+                        { "title": "Deep dive into UPDATE Statement" },
+                        
+                        { "title": "Deep dive into DELETE statement" },
+                        
+                        { "title": "Prepared Statement in SQL" },
+                        
+                        { "title": "Cleanup Data from Table" },
+                        
+                        { "title": "Time your practice (part 3)" },
+                        
+                        { "title": "Overview of Concurrency Control" },
+                        
+                        { "title": "Getting started with Transaction Control (TCL)" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "SQL - Data definition (Tables)",
+                    "subjectKey": "ddl-statement-table",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Study Kasus: Database design (Mapping)",
+                    "subjectKey": "study-cases-database-design",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "SQL - Indexes",
+                    "subjectKey": "indexes",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "SQL - Users Management",
+                    "subjectKey": "user-management",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Type Conversion",
+                    "subjectKey": "type-conversion",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Query Performance Tips",
+                    "subjectKey": "query-tunning-tips",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Study Kasus: Tokopedia clone",
+                    "subjectKey": "study-cases-tokopedia-clone",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Server Administration",
+                    "subjectKey": "server-administration",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Pg/PL SQL",
+                    "subjectKey": "pg-plsql",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Study Kasus: Backend engine",
+                    "subjectKey": "study-cases-backend-engine",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Apache JMeter",
+            
+
+            
+            "postSize": "0",
+            
+            "courceSubjects": [
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Openshift",
+            
+
+            
+            "postSize": "0",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan RedHat Openshift",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Getting started with minishift",
+                    "subjectKey": "getting-started",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Spring Framework",
+            
+            "courceUrl": "https://www.udemy.com/course/spring-framework-pemula-sampai-mahir/",
+            
+
+            
+            "postSize": "1",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan Spring Framework",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                        { "title": "Silabus - Spring Framework: Pemula sampai Mahir" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Dependency Injection",
+                    "subjectKey": "dep-injection",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Handles Resources",
+                    "subjectKey": "resources",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Validation, Data Binding, and Type Conversion",
+                    "subjectKey": "validation",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Spring Boot",
+            
+            "courceUrl": "https://www.udemy.com/course/spring-boot-pemula-sampai-mahir/",
+            
+
+            
+            "postSize": "0",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan Spring Boot",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Getting started with Spring Boot",
+                    "subjectKey": "getting-started",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Spring applications as stand-alone",
+                    "subjectKey": "stand-alone",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Spring Web MVC",
+                    "subjectKey": "spring-mvc",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Spring Rest API",
+                    "subjectKey": "spring-rest",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Spring Data JDBC",
+                    "subjectKey": "spring-data-jdbc",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Spring Data JPA",
+                    "subjectKey": "spring-data-jpa",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Java",
+            
+            "courceUrl": "https://www.udemy.com/course/pemograman-java-pemula-sampai-mahir/",
+            
+
+            
+            "postSize": "3",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan Java language",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                        { "title": "Silabus - Java: Pemula sampai Mahir" },
+                        
+                        { "title": "Overview of Programming Languages" },
+                        
+                        { "title": "Overview of Java Programming" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Getting started",
+                    "subjectKey": "getting-started",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Variables, Data Types and Methods",
+                    "subjectKey": "basic",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Build-in Functions & Operators",
+                    "subjectKey": "function-and-operators",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Classes and Packages",
+                    "subjectKey": "class-package",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Structure Control",
+                    "subjectKey": "structure-control",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Array, Collections & Generics",
+                    "subjectKey": "collections-generics",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Object Oriented Programming (OOP)",
+                    "subjectKey": "oop",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Exceptions Handling",
+                    "subjectKey": "exceptions",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Lamda Expressions",
+                    "subjectKey": "lamda",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Aggregate Operations",
+                    "subjectKey": "aggregate",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Thread and Concurrency",
+                    "subjectKey": "thread",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Graphical User Interface - Swing",
+                    "subjectKey": "gui-swing",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Database Access (JDBC)",
+                    "subjectKey": "jdbc",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Client / Server - JNDI",
+                    "subjectKey": "jndi",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Client / Server - RMI",
+                    "subjectKey": "rmi",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Study Kasus: Membuat aplikasi",
+                    "subjectKey": "study-cases",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Java Web (Servlet)",
+                    "subjectKey": "servlet",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Java Server Pages (JSP)",
+                    "subjectKey": "jsp",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Typescript Essentials",
+            
+
+            
+            "postSize": "0",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan Typescript",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Angular Framework",
+            
+
+            
+            "postSize": "0",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan Angular Framework",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "React Library",
+            
+
+            
+            "postSize": "0",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan React Library",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Google Cloud Platform (GCP)",
+            
+
+            
+            "postSize": "0",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan Cloud Computing",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Getting Started with Google Cloud Platform",
+                    "subjectKey": "getting-started",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Regions and Zones",
+                    "subjectKey": "regions-and-zones",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Compute Engine",
+                    "subjectKey": "compute-engine",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Managed Services - IaaS, PaaS, and SAAS",
+                    "subjectKey": "cloud-services",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Block, File and Object Storage as a Services",
+                    "subjectKey": "object-storage",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Database as a Services",
+                    "subjectKey": "database-sql",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Cloud IAM",
+                    "subjectKey": "iam",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Gitlab",
+            
+            "courceUrl": "https://www.udemy.com/course/gitops-gitlab-pemula-sampai-mahir/",
+            
+
+            
+            "postSize": "7",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan Git",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                        { "title": "Silabus GitOps - Gitlab: Pemula sampai Mahir" },
+                        
+                        { "title": "Pengenalan Version Control" },
+                        
+                        { "title": "What is Git SCM" },
+                        
+                        { "title": "How to Install git on MacOS" },
+                        
+                        { "title": "How to Install git on Windows" },
+                        
+                        { "title": "How to Install git on Linux" },
+                        
+                        { "title": "Getting started with git" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Gitlab SaaS",
+                    "subjectKey": "gitlab-saas",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Gitlab self-managed service",
+                    "subjectKey": "gitlab-self-managed",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Issues Tracker",
+                    "subjectKey": "issues-tracker",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Release Management",
+                    "subjectKey": "release-management",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Gitlab CI/CD",
+                    "subjectKey": "gitlab-cicd",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Gitlab Integration",
+                    "subjectKey": "gitlab-integration",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Gitlab Monitoring",
+                    "subjectKey": "gitlab-monitor",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Gitlab Migration",
+                    "subjectKey": "gitlab-migration",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Ansible",
+            
+
+            
+            "postSize": "1",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan Ansible",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                        { "title": "Silabus IaC - Ansible: Pemula sampai Mahir" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Writing task, plays, and playbooks",
+                    "subjectKey": "task",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Working with inventory",
+                    "subjectKey": "inventory",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Interacting with data",
+                    "subjectKey": "data",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Structure control",
+                    "subjectKey": "statement",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Including & Importing",
+                    "subjectKey": "include",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Testing",
+                    "subjectKey": "test",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Ansible Collection",
+                    "subjectKey": "collection",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Ansible Galaxy",
+                    "subjectKey": "galaxy",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Nutanix AHV",
+            
+            "courceUrl": "https://www.udemy.com/course/nutanix-ahv-pemula-sampai-mahir/",
+            
+
+            
+            "postSize": "2",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan Nutanix AHV",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                        { "title": "Silabus SRE - Nutanix AHV: Pemula sampai Mahir" },
+                        
+                        { "title": "Welcome to the Nutanix HCF (Hybrid Cloud Fundamental)" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "PRISM Element",
+                    "subjectKey": "prism-element",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "PRISM Central",
+                    "subjectKey": "prism-central",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Compute VM",
+                    "subjectKey": "compute-vm",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Networking",
+                    "subjectKey": "networking",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Unified Storage",
+                    "subjectKey": "storage",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "IAM (Identity and Access Management)",
+                    "subjectKey": "iam",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Cluster Administration",
+                    "subjectKey": "cluster",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Nutanix products",
+                    "subjectKey": "ntnx-products",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Nutanix Cloud Native",
+            
+
+            
+            "postSize": "0",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan Cloud native with Nutanix",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Containers",
+                    "subjectKey": "container",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Kubernetes",
+                    "subjectKey": "ntnx-karbon",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Nutanix Files",
+                    "subjectKey": "ntnx-files",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Nutanix Objects",
+                    "subjectKey": "ntnx-files",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Nutanix Database (ERA)",
+                    "subjectKey": "ntnx-era",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Nutanix CALM",
+                    "subjectKey": "ntnx-calm",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Nutanix Runbook",
+                    "subjectKey": "ntnx-runbook",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        },
+        
+        {
+            "courceName": "Docker",
+            
+            "courceUrl": "https://www.udemy.com/course/docker-pemula-sampai-mahir/",
+            
+
+            
+            "postSize": "113",
+            
+            "courceSubjects": [
+                
+                {
+                    "subjectName": "Pengenalan Docker",
+                    "subjectKey": "introduction",
+                    
+                    "posts": [
+                        
+                        { "title": "Silabus Belajar Docker: Pemula sampai Mahir" },
+                        
+                        { "title": "Docker Overview" },
+                        
+                        { "title": "What is Container" },
+                        
+                        { "title": "What to know before you install Docker" },
+                        
+                        { "title": "How to install Docker on Windows 10 with WSL" },
+                        
+                        { "title": "How to install Docker on Linux CentOS" },
+                        
+                        { "title": "How to install Docker on Mac OS" },
+                        
+                        { "title": "Getting Started with Docker" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Docker Registry",
+                    "subjectKey": "docker-registry",
+                    
+                    "posts": [
+                        
+                        { "title": "Docker Registry (Docker HUB)" },
+                        
+                        { "title": "Insecure Registry" },
+                        
+                        { "title": "Installing Nexus OSS" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Docker Container CLI",
+                    "subjectKey": "docker-container",
+                    
+                    "posts": [
+                        
+                        { "title": "Docker CLI (Command Line Interface)" },
+                        
+                        { "title": "Management Docker Container" },
+                        
+                        { "title": "Management Docker Images" },
+                        
+                        { "title": "Run a command in a running container" },
+                        
+                        { "title": "Expose services to outside using ports" },
+                        
+                        { "title": "Copying files/content between container and filesystem" },
+                        
+                        { "title": "Logging, Inspect, & Resource Usage Statistics Containers" },
+                        
+                        { "title": "Run a Container using Environtment File" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Docker Networks",
+                    "subjectKey": "docker-network",
+                    
+                    "posts": [
+                        
+                        { "title": "Networking overview" },
+                        
+                        { "title": "Legacy feature of Docker Network - Container Links" },
+                        
+                        { "title": "Use default bridge networks" },
+                        
+                        { "title": "Use user-defined bridge networks" },
+                        
+                        { "title": "Advanced user-defined bridge network" },
+                        
+                        { "title": "Use host networking" },
+                        
+                        { "title": "Disable networking for a container" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Docker Volumes",
+                    "subjectKey": "docker-volume",
+                    
+                    "posts": [
+                        
+                        { "title": "Docker Volume Overview" },
+                        
+                        { "title": "Management Volume" },
+                        
+                        { "title": "Use Bind Mounts" },
+                        
+                        { "title": "Share data among containers" },
+                        
+                        { "title": "Share data among machines" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Dockerfile",
+                    "subjectKey": "dockerfile",
+                    
+                    "posts": [
+                        
+                        { "title": "Build Docker Image Overview" },
+                        
+                        { "title": "Usage docker build" },
+                        
+                        { "title": "FROM Instruction" },
+                        
+                        { "title": "Environtment Replacement" },
+                        
+                        { "title": "Copying Resources" },
+                        
+                        { "title": "Excluding files/directories" },
+                        
+                        { "title": "Label Instruction" },
+                        
+                        { "title": "Execution Instruction" },
+                        
+                        { "title": "CMD vs ENTRYPOINT?" },
+                        
+                        { "title": "Exposing Ports" },
+                        
+                        { "title": "User, Volumes and Working Directory" },
+                        
+                        { "title": "Health Check Instruction" },
+                        
+                        { "title": "Multiple Stage Builds" },
+                        
+                        { "title": "Best practices for writing Dockerfiles" },
+                        
+                        { "title": "Best practices for scanning images" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Study Kasus: Build docker image",
+                    "subjectKey": "study-cases-dockerfile",
+                    
+                    "posts": [
+                        
+                        { "title": "Build specific docker image by programming languages" },
+                        
+                        { "title": "Build Docker Image for Java Webapp" },
+                        
+                        { "title": "Build Java Web using maven-docker-plugin" },
+                        
+                        { "title": "Build docker image for spring-boot" },
+                        
+                        { "title": "Springboot - using Environtment" },
+                        
+                        { "title": "Springboot - where data such as files/images we stored?" },
+                        
+                        { "title": "Springboot - Using Database" },
+                        
+                        { "title": "Build docker image for Angular Project" },
+                        
+                        { "title": "Angular - Access Rest API" },
+                        
+                        { "title": "Angular - Proxy to backend" },
+                        
+                        { "title": "Build docker image for PHP" },
+                        
+                        { "title": "Build Docker image for Laravel Framework" },
+                        
+                        { "title": "Laravel - Using Frontend & Rest API" },
+                        
+                        { "title": "Laravel - Using Database" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Docker Compose",
+                    "subjectKey": "docker-compose",
+                    
+                    "posts": [
+                        
+                        { "title": "Overview of Docker Compose" },
+                        
+                        { "title": "Get started with Docker Compose" },
+                        
+                        { "title": "Overview of docker-compose CLI" },
+                        
+                        { "title": "Compose file specification and syntax" },
+                        
+                        { "title": "Environment variables in Compose" },
+                        
+                        { "title": "Volume in Compose" },
+                        
+                        { "title": "Share data between Containers in Compose" },
+                        
+                        { "title": "Using sshfs for share data in Compose" },
+                        
+                        { "title": "Using NFS for share data in Compose" },
+                        
+                        { "title": "Networking Overview in Compose file" },
+                        
+                        { "title": "Network links in Compose file" },
+                        
+                        { "title": "Specify custom networks in Compose file" },
+                        
+                        { "title": "Dependency between services in Compose file" },
+                        
+                        { "title": "Build docker image using Compose file" },
+                        
+                        { "title": "Using profiles with Compose file" },
+                        
+                        { "title": "Multiple Compose files to Add & Override attribute" },
+                        
+                        { "title": "Example use case of multiple compose files" },
+                        
+                        { "title": "Scale services using compose command" },
+                        
+                        { "title": "Use Compose in production" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Study Kasus: Docker Compose",
+                    "subjectKey": "study-cases-compose-files",
+                    
+                    "posts": [
+                        
+                        { "title": "Overview of Study Cases using Docker Compose" },
+                        
+                        { "title": "PHP deployment using compose file" },
+                        
+                        { "title": "Laravel deployment using compose file" },
+                        
+                        { "title": "Springboot deployment using compose file" },
+                        
+                        { "title": "Angular deployment using compose file" },
+                        
+                        { "title": "Deploy httpd with ssl/https on docker" },
+                        
+                        { "title": "Compose file for multiple git projects" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Docker Context",
+                    "subjectKey": "docker-context",
+                    
+                    "posts": [
+                        
+                        { "title": "Overview of Docker Context" },
+                        
+                        { "title": "Usage & Managing Docker Context" },
+                        
+                        { "title": "Remote deployment using docker-compose" },
+                        
+                        { "title": "Docker Inside Docker (DinD)" },
+                        
+                        { "title": "Dashboard using Docker Desktop" },
+                        
+                        { "title": "Using Docker on Jetbraint IDE" },
+                        
+                        { "title": "Using docker on portainer.io" },
+                        
+                        { "title": "Deprecated Engine Features" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Study Kasus: Docker for CI",
+                    "subjectKey": "study-cases-docker-ci",
+                    
+                    "posts": [
+                        
+                        { "title": "Overview of Study Cases using docker for CI" },
+                        
+                        { "title": "Setup environment for CI using Gitlab & Nexus OSS" },
+                        
+                        { "title": "The `.gitlab-ci.yml` file" },
+                        
+                        { "title": "Pipeline: PHP deployment using Gitlab CI" },
+                        
+                        { "title": "Pipeline: Java Web deployment using Gitlab CI" },
+                        
+                        { "title": "Pipeline: spring-boot deploy with Gitlab CI" },
+                        
+                        { "title": "Pipeline: Angular deploy with Gitlab CI" },
+                        
+                        { "title": "Pipeline: Laravel deploy with Gitlab CI" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Docker Machine",
+                    "subjectKey": "docker-machine",
+                    
+                    "posts": [
+                        
+                        { "title": "Overview of Docker machines" },
+                        
+                        { "title": "Install docker-machine on Windows" },
+                        
+                        { "title": "Install docker-machine on Linux" },
+                        
+                        { "title": "Install docker-machine on MacOS" },
+                        
+                        { "title": "Getting started with docker-machine" },
+                        
+                        { "title": "Managing a machines in docker-machine" },
+                        
+                        { "title": "Example Use Cases of docker-machine" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Study Kasus: Ansible for Docker",
+                    "subjectKey": "study-cases-ansible",
+                    
+                    "posts": [
+                        
+                        { "title": "Overview Study cases: IT Automation Platform for Docker Operations" },
+                        
+                        { "title": "IT Automation Platform for Docker Operations" },
+                        
+                        { "title": "Setup Ansible Control and Managed Nodes" },
+                        
+                        { "title": "Getting started with Ansible role, tasks for docker" }
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Docker Swarm",
+                    "subjectKey": "docker-swarm",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Study Kasus: Docker Swarm",
+                    "subjectKey": "study-cases-docker-swarm",
+                    
+                    "posts": [
+                        
+                    ]
+                },
+                
+                {
+                    "subjectName": "Docker on Cloud using GCP",
+                    "subjectKey": "docker-cloud",
+                    
+                    "posts": [
+                        
+                    ]
+                }
+                
+            ]
+            
+        }
+        
+    ]
+}

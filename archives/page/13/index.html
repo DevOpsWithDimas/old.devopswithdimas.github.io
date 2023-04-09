@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> DevOps with Dimas Maryanto - Archives - page 13 </title>
+    <meta name="description" content="Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevOps with Dimas Maryanto" />
+    <meta property="og:description" content="Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS."
+/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/node_modules/materialize-css/dist/css/materialize.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/devicons/css/devicons.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/sintax.css" />
+
+<script src="/assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/assets/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="/assets/responsive-content.js"></script>
+<script src="/assets/list.min.js"></script>
+<script src="/assets/sintax.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $('.button-collapse').sideNav({
+            menuWidth: 370
+        });
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+    })
+</script>
+
+
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82058496-1');
+</script>
+
+<!-- Global - Google Adsense -->
+<script data-ad-client="ca-pub-3067429629551793" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82058496-1', 'auto');
+	ga('send', 'pageview', { 'page': location.pathname + location.search + location.hash});
+	ga('set', 'anonymizeIp', false);
+    </script>
+    <!-- End Google Analytics -->
+    </head>
+<body>
+<header>
+    
+
+<div class="navbar-fixed hide-on-med-and-down">
+    <nav class="blue darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons right">home</i>&nbsp;
+                <span>Materi Bootcamp</span>
+            </a>
+            <a href="#" data-activates="slide-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/archives/">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/courses.html">
+                        <i class="material-icons left">library_books</i> 
+                        <span>Cources</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/news.html">
+                        <i class="material-icons left">announcement</i> 
+                        <span>News</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/promo.html">
+                        <i class="material-icons left">grade</i> 
+                        <span>Promo</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/roadmap.html">
+                        <i class="material-icons left">assessment</i> 
+                        <span>ROADMAP</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="fixed-action-btn click-to-toggle hide-on-large-only">
+    <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+        <i class="large material-icons">menu</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    <li><a class="subheader">Daftar Kategori</a></li>
+<li class="no-padding">
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Java
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/core/001-silabus-java">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">42</span>
+                                Java Basic
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                JDBC with Postgresql
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/web/war/001-silabus-java-web">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">32</span>
+                                Java Web (Servlet & JSP)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">57</span>
+                                ORM dengan Hibernate
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/language/java/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">3</span>
+                                Java
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                JavaScript
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/web/js/001-silabus-js">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                Javascript
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Database
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">116</span>
+                                Oracle Database
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">39</span>
+                                PostgreSQL
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                DevOps
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">36</span>
+                                Kubernetes (k8s)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">7</span>
+                                Gitlab
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">2</span>
+                                Nutanix AHV
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/docker/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">113</span>
+                                Docker
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+</li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</header>
+
+<section>
+    <div class="parallax-container">
+    <div class="parallax"><img src="/resources/pictures/big-art.png">
+    </div>
+</div>
+
+<div class="section white">
+    <div class="row container">
+        <h2 class="header">
+            Articles
+            <span class="new badge" data-badge-caption="Articles">474</span>
+            <span class="new badge" data-badge-caption="Pages">19</span>
+        </h2>
+        <p class="grey-text text-darken-3 lighten-3"></p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div id="archive-body" class="container">
+        <div class="col m12">
+            <!-- Pagination links -->
+            <div class="pagination right-align">
+                
+                <a href="/archives/page/12/" class="previous">Latest</a>
+                
+                <span class="page_number ">
+                    Page: 13 of 19
+                </span>
+                
+                <a href="/archives/page/14/" class="next">Previous</a>
+                
+            </div>
+
+            <ul class="collection">
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        11/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/005d-handle-null-value">
+                        <span class="title">Handle Null value dengan Coalesce</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Nilai <code class="language-plaintext highlighter-rouge">NULL</code> bukan berarti tanpa karater, begitu pula sebaliknya. Kenapa saya bilang gitu karena berikut dari data hasil query ini:</p>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/005d-handle-null-value">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        11/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/005c-select-concatnation">
+                        <span class="title">Menggabungkan column dengan concatnation</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Apa itu concatenation?, Concatenation biasanya digunakan untuk mengkombinasikan, menyambungkan beberapa kolom dalam suatu query menjadi satu.</p>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/005c-select-concatnation">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        11/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/005b-select-arithmetic">
+                        <span class="title">Operation Arithmetic di Oracle</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Dalam SQL, kita juga bisa melakukan operasi matematika seperti pertambahan, pengurangan, pembagian, dan perkalian. Operasi tersebut dibagi-bagi lagi menjadi beberapa tipe yaitu</p>
+
+<ol>
+  <li>Operasi yang bernilai bilangan,</li>
+  <li>Operasi yang bernilai Date</li>
+</ol>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/005b-select-arithmetic">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        11/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/005a-select-alias-column-table">
+                        <span class="title">Pemberian alias pada column dan table</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Secara <em>default</em> kalau kita melakukan perintah <code class="language-plaintext highlighter-rouge">select</code> terhadap suatu <em>table</em> contohnya misalnya <code class="language-plaintext highlighter-rouge">departments</code>, di <em>table</em> <code class="language-plaintext highlighter-rouge">departments</code> ada <em>columns</em> diataranya <code class="language-plaintext highlighter-rouge">department_id, department_name, manager_id, location_id</code> jika saya melakukan perintah <code class="language-plaintext highlighter-rouge">select</code> seperti berikut:</p>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/005a-select-alias-column-table">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        11/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/005-select-statement">
+                        <span class="title">Select Statement dalam SQL</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Perintah / klausa <code class="language-plaintext highlighter-rouge">select</code> pada dasarnya adalah perintah yang dilakukan <em>query</em> terhadap <em>database</em> untuk mengambil atau mendapatkan data berupa baris (<em>rows</em>) dan kolom (<em>columns</em>) dalam sebuah <em>table</em> seperti berikut:</p>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/005-select-statement">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        11/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/004b-tipe-data">
+                        <span class="title">Data Types di Oracle Database</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Setiap database management system memiliki spesifikasi tipe data tersendiri, ada beberapa tipe data di oracle database diantaranya</p>
+
+<ol>
+  <li>Build-in Oracle Data Types</li>
+  <li>ANSI, SQL Data Type</li>
+  <li>User-Defined Type</li>
+</ol>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/004b-tipe-data">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        11/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/004a-aturan-pada-oracle-database">
+                        <span class="title">Aturan Penulisan SQL pada Oracle Database</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Dalam Database Management System biasanya memiliki ketentuan tertentu yang biasanya terkait dengan system security, performance, optimization dan lain-lain, Khususnya di Oracle Database berikut adalah beberapa ketentuan dalam penulisan query, query performance, dan definisi sebuah object dalam Database Oracle:</p>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/004a-aturan-pada-oracle-database">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Wednesday,
+                        10/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/004-preparation-before-start">
+                        <span class="title">Persiapan Sebelum mulai belajar</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Ok sebelum kita mulai, jadi di Oracle Database 18c XE ini secara default gak ada schema HR seperti pendahulunya yaitu Oracle Database 11g XE. jadi kita perlu execute query sendiri.</p>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/004-preparation-before-start">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Wednesday,
+                        10/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/003d-install-database-editor">
+                        <span class="title">Install Database Editor untuk Oracle 18c</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Untuk Text editor, kita akan menggunakan Oracle SQL Developer. jadi langsung aja kita install ya. Ok pertama download dulu dari website resminya <a href="https://www.oracle.com/tools/downloads/sqldev-downloads.html">disini</a></p>
+
+<p>Setelah di download, kemudian extract dan jalankan</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sqldeveloper.exe</code> untuk Windows</li>
+  <li><code class="language-plaintext highlighter-rouge">./sqldeveloper.sh</code> untuk linux</li>
+  <li><code class="language-plaintext highlighter-rouge">sqldeveloper.app</code> untuk Mac</li>
+</ul>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/003d-install-database-editor">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Wednesday,
+                        10/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/003c-install-oracledb-docker-images">
+                        <span class="title">Install Oracle 18c XE dengan Docker</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <h2 id="preparation">Preparation</h2>
+
+<p>Sekarang kita download docker image buildenya <a href="https://github.com/oracle/docker-images/archive/main.zip">disini</a> kemudian buka Command Promnt atau Terminal kemudian arahkan ke folder <code class="language-plaintext highlighter-rouge">OracleDatabase/SingleInstance/dockerfiles</code>.</p>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/003c-install-oracledb-docker-images">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        9/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/003b-install-oracledb-linux-rpm">
+                        <span class="title">Install Oracle 18c XE untuk Linux</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai pada kesempatan kali ini saya mau membahas cara install Oracle Database 18c Express Edition pada sistem operasi Linux Centos / Fedora / RedHat / Oracle Solari</p>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/003b-install-oracledb-linux-rpm">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        9/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/003a-install-oracledb-win">
+                        <span class="title">Install Oracle 18c XE untuk Windows 10</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai pada kesempatan kali ini saya mau membahas cara install Oracle Database 18c Express Edition pada sistem operasi Windows 10</p>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/003a-install-oracledb-win">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        9/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/003-pre-install-oracledb">
+                        <span class="title">Persiapan install Oracle Database 18c</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Untuk keberhasilan belajar, jadi temen-temen diharapkan untuk install Oracle Database 18c di komputer juga ya. Nah jadi ada beberapa yang harus di siapkan, jadi berikut adalah spesifikasi yang di perlukan untuk melakukan installasi Oracle Database 18c Express Edition.</p>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/003-pre-install-oracledb">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        9/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/002c-interaction-oracle-database-sql">
+                        <span class="title">Database Interaction dengan SQL</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Untuk berinteraksi dengan Database Management System khususnya pada Relational Database Management System (RDBMS) di Oracle Database kita bisa menggunakan SQL (Structural Query Language)</p>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/002c-interaction-oracle-database-sql">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        9/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/002b-interface-for-oracle-database">
+                        <span class="title">Interface untuk Oracle Database</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Untuk menggunakan / mengakses object dalam database kita membutuhkan tools atau biasanya disebut interface. Interface yang kita bisa gunakan ada beberapa diantaranya software bawaan install yaitu <code class="language-plaintext highlighter-rouge">SQL*Plus</code> atau kita bisa install software seperti</p>
+
+<ol>
+  <li><a href="https://www.jetbrains.com/datagrip/">DataGrip</a></li>
+  <li><a href="https://dbeaver.io/">DBeaver</a></li>
+  <li><a href="https://www.oracle.com/database/technologies/appdev/sqldeveloper-landing.html">SQL Developer</a></li>
+  <li><a href="https://www.sequelpro.com/">sequelPro</a> for mac only</li>
+</ol>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/002b-interface-for-oracle-database">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        9/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/002a-consept-user-schema">
+                        <span class="title">Konsep User dan Schema di Oracle Database 18c</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Database yaitu tempat untuk menyimpan data dan untuk memudahkan, membaca data, mengubah data, menghapus data secara logical berbentuk table 2D (dimensi). Object-object database terdiri</p>
+
+<ol>
+  <li>table</li>
+  <li>sequence</li>
+  <li>view</li>
+  <li>index</li>
+  <li>constraint</li>
+  <li>synonym</li>
+  <li>PL/SQL</li>
+</ol>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/002a-consept-user-schema">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        9/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/002-pengenalan-oracledb">
+                        <span class="title">Pengenalan Oracle Database 18c</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Pada materi kali ini, kita akan berkenalan dengan database management system (DBMS) yaitu Oracle Database. Oracle adalah database ranking #1 berdasarkan <a href="https://db-engines.com/en/ranking">db-engines.com</a> saat ini (February 2021) secara beberapa tahun berturut-turut, dan juga beberapa survey engine lainnya.</p>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/002-pengenalan-oracledb">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/oracle18c.png"
+                        alt="oracle18c" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Sunday,
+                        7/Feb/2021</span>
+                    <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                        <span class="title">Silabus Belajar RDBMS Oracle 18c</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#oracle18c</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai di materi kali ini saya mau membahas ‘Oracle 18c’, temen-temen akan belajar menggunakan Relational Database Management Sistem dengan menggunakan Database Oracle 18c untuk BigData.</p>
+
+<p>Materi yang akan dibahas pada modul ini diantarnya sebagai berikut:</p>
+
+<br>
+                        <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/orm-hibernate.png"
+                        alt="orm-hibernate" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Wednesday,
+                        3/Feb/2021</span>
+                    <a href="/posts/java/orm/hibernate/postgresql/035-quis-3">
+                        <span class="title">Time is your Practice</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#orm</div>
+                        
+                        <div class="chip small">#hibernate</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Setelah temen-temen mempelajari materi Hibernate Query Language (HQL) dan supaya lebih memahami materinya jadi kita langsung ja ke studi kasusnya ya.</p>
+
+<br>
+                        <a href="/posts/java/orm/hibernate/postgresql/035-quis-3">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/orm-hibernate.png"
+                        alt="orm-hibernate" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Wednesday,
+                        3/Feb/2021</span>
+                    <a href="/posts/java/orm/hibernate/postgresql/034-read-only-entity">
+                        <span class="title">Read Only Entity dengan HQL</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#orm</div>
+                        
+                        <div class="chip small">#hibernate</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai pada kesempatan kali ini saya mau membahas tentang <code class="language-plaintext highlighter-rouge">Read Only Entity</code>, nah jadi klo kita misalnya pake query kemudian kita set nilai yang baru masih dalam session maka biasanya akan automatic update, contohnya berikut implementasi DAO:</p>
+
+<br>
+                        <a href="/posts/java/orm/hibernate/postgresql/034-read-only-entity">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/orm-hibernate.png"
+                        alt="orm-hibernate" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        2/Feb/2021</span>
+                    <a href="/posts/java/orm/hibernate/postgresql/033-hql-limit-offset">
+                        <span class="title">LIMIT & OFFSET dengan HQL</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#orm</div>
+                        
+                        <div class="chip small">#hibernate</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai pada kesempatan kali ini saya mau membahas tentang <code class="language-plaintext highlighter-rouge">limit</code> dan <code class="language-plaintext highlighter-rouge">offset</code> dengan menggunakan Hibernate Query Language (HQL). ok langsung ja berikut adalah implementasi DAO:</p>
+
+<br>
+                        <a href="/posts/java/orm/hibernate/postgresql/033-hql-limit-offset">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/orm-hibernate.png"
+                        alt="orm-hibernate" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        2/Feb/2021</span>
+                    <a href="/posts/java/orm/hibernate/postgresql/032-hql-order-by">
+                        <span class="title">Order By dengan HQL</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#orm</div>
+                        
+                        <div class="chip small">#hibernate</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai di kesempatan kali ini saya mau membahas tentang Ordering dengan HQL, ok sekarang langsung ja berikut adalah implementasi DAO:</p>
+
+<br>
+                        <a href="/posts/java/orm/hibernate/postgresql/032-hql-order-by">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/orm-hibernate.png"
+                        alt="orm-hibernate" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        2/Feb/2021</span>
+                    <a href="/posts/java/orm/hibernate/postgresql/031-hql-group-by">
+                        <span class="title">Group By dengan HQL</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#orm</div>
+                        
+                        <div class="chip small">#hibernate</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai di kesempatan kali ini saya mau membahas tentang <code class="language-plaintext highlighter-rouge">Group By</code> dan clausa <code class="language-plaintext highlighter-rouge">Having</code> dengan menggunakan Hibernate Query Language (HQL).</p>
+
+<br>
+                        <a href="/posts/java/orm/hibernate/postgresql/031-hql-group-by">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/orm-hibernate.png"
+                        alt="orm-hibernate" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        2/Feb/2021</span>
+                    <a href="/posts/java/orm/hibernate/postgresql/030i-hql-combine-predicate">
+                        <span class="title">Combine Predicate dengan HQL</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#orm</div>
+                        
+                        <div class="chip small">#hibernate</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai kesempatan kali ini saya mau membahas tentang Combine Predicate dengan menggunakan Hibernate Query Language (HQL). Combine predicate terdiri dari</p>
+
+<ol>
+  <li>OR Predicate</li>
+  <li>And Predicate</li>
+  <li>gabungan</li>
+</ol>
+
+<br>
+                        <a href="/posts/java/orm/hibernate/postgresql/030i-hql-combine-predicate">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/orm-hibernate.png"
+                        alt="orm-hibernate" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        2/Feb/2021</span>
+                    <a href="/posts/java/orm/hibernate/postgresql/030h-hql-not-predicate">
+                        <span class="title">Not Predicate dengan HQL</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#orm</div>
+                        
+                        <div class="chip small">#hibernate</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai di materi kali ini saya mau ngebahas tentang not predicate dengan Hibernate Query Language (HQL), ok langsung aja jadi berikut adalah implementasi DAO Not Predicate:</p>
+
+<br>
+                        <a href="/posts/java/orm/hibernate/postgresql/030h-hql-not-predicate">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+            </ul>
+
+            <!-- Pagination links -->
+            <div class="pagination center">
+                <ul class="pagination">
+
+                    <li class="waves-effect">
+                        <a href="/archives/" class="first">
+                            First
+                        </a>
+                    </li>
+
+                    
+                        <li class="waves-effect">
+                            <a href="/archives/page/12/" class="previous">
+                                Previous
+                            </a>
+                        </li>
+                    
+
+                    
+                    
+                    <li >
+                        <a href="/archives/page/11/index.html" title="Archives - page 11">11</a>
+                    </li>
+                    
+                    <li >
+                        <a href="/archives/page/12/index.html" title="Archives - page 12">12</a>
+                    </li>
+                    
+                    <li class="active waves-effect" >
+                        <a href="/archives/page/13/index.html" title="Archives - page 13">13</a>
+                    </li>
+                    
+                    <li >
+                        <a href="/archives/page/14/index.html" title="Archives - page 14">14</a>
+                    </li>
+                    
+                    <li >
+                        <a href="/archives/page/15/index.html" title="Archives - page 15">15</a>
+                    </li>
+                    
+                    
+
+                    
+                    <li>
+                        <a href="/archives/page/14/" class="next">Next</a>
+                    </li>
+                    
+
+                    <li class="waves-effect">
+                        <a href="/archives/page/19/" class="last">
+                            Last
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section>
+    
+<footer class="page-footer blue lighten-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Tentang website</h5>
+                <div class="grey-text text-lighten-4">
+                    <p>Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.</p>
+                    <p>
+                        Donasi via:
+                        <ul>
+                            
+                            <ol>
+                                <a class="white-text" href="https://saweria.co/DimasMaryanto">
+                                    <i class="material-icons">star</i>
+                                    Saweria a/n Dimas Maryanto
+                                </a>
+                            </ol>
+                            
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <ul class="collection with-header">
+                    <li class="collection-header blue lighten-1">
+                        <i class="material-icons">account_box</i>
+                        <span class="white-text">Jangan Lupa follow aku ya guys!</span>
+                    </li>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://github.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-github"></i> Github
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.facebook.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.instagram.com/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue darken-3">
+        <div class="container">
+            Dimas Maryanto © 2023
+            <a class="grey-text text-lighten-4 right" href="https://pages.github.com/">
+                powered by Github Pages & Jekyll
+            </a>
+        </div>
+    </div>
+</footer>
+</section>
+
+</body>
+</html>

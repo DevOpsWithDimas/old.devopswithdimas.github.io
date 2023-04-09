@@ -1,0 +1,2820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> DevOps with Dimas Maryanto - Configure liveness, readiness, and startup probes </title>
+    <meta name="description" content="Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Container probe diantaranya Liveness, Readiness and Startup Probes dalam suatu Pod S...">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevOps with Dimas Maryanto" />
+    <meta property="og:description" content="Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Container probe diantaranya Liveness, Readiness and Startup Probes dalam suatu Pod S..."
+/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/node_modules/materialize-css/dist/css/materialize.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/devicons/css/devicons.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/sintax.css" />
+
+<script src="/assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/assets/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="/assets/responsive-content.js"></script>
+<script src="/assets/list.min.js"></script>
+<script src="/assets/sintax.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $('.button-collapse').sideNav({
+            menuWidth: 370
+        });
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+    })
+</script>
+
+
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82058496-1');
+</script>
+
+<!-- Global - Google Adsense -->
+<script data-ad-client="ca-pub-3067429629551793" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82058496-1', 'auto');
+	ga('send', 'pageview', { 'page': location.pathname + location.search + location.hash});
+	ga('set', 'anonymizeIp', false);
+    </script>
+    <!-- End Google Analytics -->
+    </head>
+<body>
+<header>
+    
+
+<div class="navbar-fixed hide-on-med-and-down">
+    <nav class="blue darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons right">home</i>&nbsp;
+                <span>Materi Bootcamp</span>
+            </a>
+            <a href="#" data-activates="slide-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/archives/">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/courses.html">
+                        <i class="material-icons left">library_books</i> 
+                        <span>Cources</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/news.html">
+                        <i class="material-icons left">announcement</i> 
+                        <span>News</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/promo.html">
+                        <i class="material-icons left">grade</i> 
+                        <span>Promo</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/roadmap.html">
+                        <i class="material-icons left">assessment</i> 
+                        <span>ROADMAP</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="fixed-action-btn click-to-toggle hide-on-large-only">
+    <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+        <i class="large material-icons">menu</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    <li><a class="subheader">Daftar Kategori</a></li>
+<li class="no-padding">
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Java
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/core/001-silabus-java">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">42</span>
+                                Java Basic
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                JDBC with Postgresql
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/web/war/001-silabus-java-web">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">32</span>
+                                Java Web (Servlet & JSP)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">57</span>
+                                ORM dengan Hibernate
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/language/java/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">3</span>
+                                Java
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                JavaScript
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/web/js/001-silabus-js">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                Javascript
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Database
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">116</span>
+                                Oracle Database
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">39</span>
+                                PostgreSQL
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                DevOps
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">36</span>
+                                Kubernetes (k8s)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">7</span>
+                                Gitlab
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">2</span>
+                                Nutanix AHV
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/docker/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">113</span>
+                                Docker
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+</li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</header>
+
+<section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="postBody" class="row container post-body">
+    <div class="col s12 m12 l4 hide-on-med-and-down">
+        <div class="row">
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons blue-text">person</i> Penulis:
+                        <span>
+                            <span class="badge new" data-badge-caption="">
+                                <time datetime="2022-06-19T09:26:26+00:00" itemscope="datePublished">
+                                    19 June 2022
+                                </time>
+                            </span>
+                        </span>
+                    </li>
+                    
+                    
+                    
+                    <li class="collection-item avatar">
+                        <img src="/resources/avatars/dimasm93.png" alt="Dimas Maryanto" class="circle">
+                        <span class="title">Dimas Maryanto</span>
+                        <p>PT. Tabeldata Informatika</p>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">account_balance_wallet</i>
+                        Donasi via:
+                    </li>
+                          
+                    <li class="collection-item">
+                        <a href="https://saweria.co/DimasMaryanto" target="_blank">
+                            Saweria a/n Dimas Maryanto
+                        </a>
+                    </li>              
+                    
+                </ul>
+            </div>
+            <!-- edit this for multiple premium members -->
+            
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">lock_open</i>
+                        Join Premium Members:
+                    </li>
+                    
+                    <li class="collection-item">
+                        <a href="https://www.udemy.com/course/devops-kubernetes-pemula-sampai-mahir/?referralCode=58BDCE6103ADC4C9C11D">
+                            Udemy.com
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            
+        </div>
+        <!-- 
+        
+        
+        <div class="row">
+            <ul class="collection with-header">
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <span>Daftar materi
+                        <span class="badge new blue" data-badge-caption="materi">36</span>
+                    </span>
+                    
+                    <p class="title">
+                        KUBERNETES (K8S)
+                    </p>
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                        1. Silabus - DevOps Kubernetes: Pem...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01a-what-is-kubernetes">
+                        2. What is Kubernetes (k8s) ?
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01b-k8s-components">
+                        3. Kubernetes Components
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01c-k8s-api">
+                        4. The Kubernetes API
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01d-k8s-objects">
+                        5. What is Kubernetes Objects?
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01e-k8s-object-management">
+                        6. Managing Kubernetes Object
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01f-k8s-object-names-and-uids">
+                        7. Kubernetes Object Names and IDs
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01g-k8s-namespaces">
+                        8. What is Kubernetes Namespaces?
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/01h-kubernetes-environtments">
+                        9. Kubernetes cluster environtments
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02-overview-learn-env">
+                        10. Overview learning environment wi...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-macos">
+                        11. Install minikube on Mac (Intel C...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02a-install-for-mac-apple-silicon">
+                        12. Install minikube on Mac (Apple s...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-windows">
+                        13. Install minikube for Windows 11/...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-linux">
+                        14. Install minikube for Linux users
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02b-deploy-application">
+                        15. Deploying an apps/services into ...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02c-minikube-basic-control">
+                        16. Minikube basic control
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02d-minikube-use-your-own-images">
+                        17. Using your own image into Miniku...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02f-minikube-addons">
+                        18. Minikube addons features
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02g-minikube-access-apps">
+                        19. Access your apps/service in mini...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/02h-minikube-mount">
+                        20. Mounting filesystems to minikube...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03-overview-pod-containers">
+                        21. Overview Pod and Container in Ku...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03a-workload-pods">
+                        22. Kubernetes Workloads with Pods
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03b-working-with-pods">
+                        23. Working with Pods
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03c-basic-pod-and-containers-config">
+                        24. Basic Pods and Containers Configs
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03d-pod-lifecycle">
+                        25. Pod & Container Lifecycle
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03e-init-containers">
+                        26. Initialization of Containers
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03f-pod-env-config">
+                        27. Configure env (Environment Varia...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03g-pod-resource-request-and-limit">
+                        28. Configure Request and Limit of R...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <div>
+                        <span class="badge" data-badge-caption="">
+                            <i class="material-icons">turned_in</i>
+                        </span>
+                        29. Configure liveness, readiness, a...
+                    </div>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03i-distruptions">
+                        30. Pod Disruptions
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04-overview-study-cases">
+                        31. Overview Study Cases: Pod and Co...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04a-study-cases-monolith-apps">
+                        32. Study Cases: Monolith apps (Lara...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                        33. Overview Kubernetes Workloads re...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                        34. What is Workload Resources?
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                        35. Study cases: Microservice apps (...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                        36. Working with Deployment object
+                    </a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+         -->
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collapsible with-header" data-collapsible="accordion">
+                <li class="collection-header">
+                    <div class="collapsible-header">
+                        Daftar Materi
+                    </div>                    
+                </li>
+
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            1. Pengenalan Kubernetes
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            9
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                            <span class="truncate">1. Silabus - DevOps Kubernetes: Pemula sampai Mahir</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01a-what-is-kubernetes">
+                                            <span class="truncate">2. What is Kubernetes (k8s) ?</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01b-k8s-components">
+                                            <span class="truncate">3. Kubernetes Components</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01c-k8s-api">
+                                            <span class="truncate">4. The Kubernetes API</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01d-k8s-objects">
+                                            <span class="truncate">5. What is Kubernetes Objects?</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01e-k8s-object-management">
+                                            <span class="truncate">6. Managing Kubernetes Object</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01f-k8s-object-names-and-uids">
+                                            <span class="truncate">7. Kubernetes Object Names and IDs</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01g-k8s-namespaces">
+                                            <span class="truncate">8. What is Kubernetes Namespaces?</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01h-kubernetes-environtments">
+                                            <span class="truncate">9. Kubernetes cluster environtments</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            2. Getting started with minikube
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            11
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02-overview-learn-env">
+                                            <span class="truncate">1. Overview learning environment with Minikube</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-macos">
+                                            <span class="truncate">2. Install minikube on Mac (Intel Chip)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-for-mac-apple-silicon">
+                                            <span class="truncate">3. Install minikube on Mac (Apple silicon Chip)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-windows">
+                                            <span class="truncate">4. Install minikube for Windows 11/10 Users</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-linux">
+                                            <span class="truncate">5. Install minikube for Linux users</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02b-deploy-application">
+                                            <span class="truncate">6. Deploying an apps/services into Kubernetes</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02c-minikube-basic-control">
+                                            <span class="truncate">7. Minikube basic control</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02d-minikube-use-your-own-images">
+                                            <span class="truncate">8. Using your own image into Minikube cluster</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02f-minikube-addons">
+                                            <span class="truncate">9. Minikube addons features</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02g-minikube-access-apps">
+                                            <span class="truncate">10. Access your apps/service in minikube</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02h-minikube-mount">
+                                            <span class="truncate">11. Mounting filesystems to minikube cluster</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            3. Pods and Containers
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            13
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03-overview-pod-containers">
+                                            <span class="truncate">1. Overview Pod and Container in Kubernetes</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03a-workload-pods">
+                                            <span class="truncate">2. Kubernetes Workloads with Pods</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03b-working-with-pods">
+                                            <span class="truncate">3. Working with Pods</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03c-basic-pod-and-containers-config">
+                                            <span class="truncate">4. Basic Pods and Containers Configs</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03d-pod-lifecycle">
+                                            <span class="truncate">5. Pod & Container Lifecycle</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03e-init-containers">
+                                            <span class="truncate">6. Initialization of Containers</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03f-pod-env-config">
+                                            <span class="truncate">7. Configure env (Environment Variables) in a Pods</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03g-pod-resource-request-and-limit">
+                                            <span class="truncate">8. Configure Request and Limit of Resources (CPUs & Memory)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03h-pod-container-probe-config">
+                                            <span class="truncate">9. Configure liveness, readiness, and startup probes</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03i-distruptions">
+                                            <span class="truncate">10. Pod Disruptions</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/04-overview-study-cases">
+                                            <span class="truncate">11. Overview Study Cases: Pod and Containers</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/04a-study-cases-monolith-apps">
+                                            <span class="truncate">12. Study Cases: Monolith apps (Laravel Web MVC)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                                            <span class="truncate">13. Study cases: Microservice apps (Springboot Rest API)</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            4. Workload resources
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            3
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                                            <span class="truncate">1. Overview Kubernetes Workloads resources</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                                            <span class="truncate">2. What is Workload Resources?</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                                            <span class="truncate">3. Working with Deployment object</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            5. Networking (service)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            6. Store data using Volumes
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            7. Kubernetes Client
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            8. Security RBAC
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            9. Kubernetes Package manager
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            10. Kubernetes cluster for Production grade
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            11. Service mesh with istio
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            12. Kubernetes on Cloud provider
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                               
+            </ul>
+        </div>
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collection with-header">
+                <li class="collapsible-header">
+                    Lastest Posts
+                </li>
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                        <span class="badge">09 Apr 23</span>
+                        Working with Deployment object
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                        <span class="badge">26 Feb 23</span>
+                        Study cases: Microservice apps (...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/01-welcome-nutanix-class">
+                        <span class="badge">05 Feb 23</span>
+                        Welcome to the Nutanix HCF (Hybr...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                        <span class="badge">04 Feb 23</span>
+                        Silabus SRE - Nutanix AHV: Pemul...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                        <span class="badge">17 Jan 23</span>
+                        What is Workload Resources?
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                        <span class="badge">17 Jan 23</span>
+                        Overview Kubernetes Workloads re...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl">
+                        <span class="badge">15 Jan 23</span>
+                        Getting started with Transaction...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06-overview-concurrent-control">
+                        <span class="badge">14 Jan 23</span>
+                        Overview of Concurrency Control
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05g-quis-section-1">
+                        <span class="badge">14 Jan 23</span>
+                        Time your practice (part 3)
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05f-dml-cleanup">
+                        <span class="badge">08 Jan 23</span>
+                        Cleanup Data from Table
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    <div class="col s12 m12 l8">
+        <div id="paginate-top" class="right">
+            <ul class="pagination hide-on-small-only">
+                <!-- current page info -->
+                <li>
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        29 to 36
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+            </ul>
+            <br>
+        </div>
+        <div>            
+            <div>
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <section id="article-body">
+        <div class="center">
+            <h1>
+                Configure liveness, readiness, and startup probes
+            </h1>
+        </div>
+        <div>
+            <div class="post-content"
+                 style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: large">
+                <p>Hai semuanya, di materi kali ini kita akan membahas lebih detail tentang Container probe diantaranya Liveness, Readiness and Startup Probes dalam suatu Pod Specification. Diantaranya:</p>
+
+<ol>
+  <li>What the different between liveness, readiness and startup probe?</li>
+  <li>When should you use container probe?</li>
+  <li>Container probes of fields</li>
+  <li>Configure liveness probe in a Pod</li>
+  <li>Configure readiness probe in a Pod</li>
+  <li>Configure startup probe in a Pod</li>
+</ol>
+
+<p>Ok langsung aja kita bahas materi yang pertama</p>
+
+<!--more-->
+
+<h2 id="what-the-different-between-liveness-readiness-and-startup-probe">What the different between liveness, readiness and startup probe?</h2>
+
+<p>Sebelum kita menggunakan atau men-configure container probe untuk liveness, readiness dan startup kita bahas dulu perbedaannya ya. Ok kita mulai bahas satu-per-satu mulai dari yang paling umum digunakan yaitu liveness probe.</p>
+
+<p>The kubelet uses liveness probes to know when to restart a container. For example, liveness probes could catch a deadlock, where an application is running, but unable to make progress. Restarting a container in such a state can help to make the application more available despite bugs.</p>
+
+<p>The kubelet uses readiness probes to know when a container is ready to start accepting traffic. A Pod is considered ready when all of its containers are ready. One use of this signal is to control which Pods are used as backends for Services. When a Pod is not ready, it is removed from Service load balancers.</p>
+
+<p>The kubelet uses startup probes to know when a container application has started. If such a probe is configured, it disables liveness and readiness checks until it succeeds, making sure those probes don’t interfere with the application startup. This can be used to adopt liveness checks on slow starting containers, avoiding them getting killed by the kubelet before they are up and running.</p>
+
+<p>Untuk lebih memahami berikut adalah diagram timeline state managementnya:</p>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<div class="mermaid">
+gantt
+    title Container Probe state managements
+    dateFormat HH:mm
+    axisFormat %H:%m
+    section Startup Probe
+    Container creating          :active,    containerCreate,    12:00,                      1s
+    Container starting          :           containerStart,     after containerCreate,      2s
+    Startup probe               :           startupTry1,        after containerStart,       10s
+    Container started           :done,      containerStarted,   after startupTry1,          3s
+    section Readiness Probe
+    Check container is ready?   :           checkReady,         after containerStarted,     2s
+    Container Ready             :done,      containerReady,     after checkReady,           10s
+    section Liveness Probe
+    Check container is live?    :           checkLive,          after containerReady,       2s
+    Container Running           :           containerRun,       after checkLive,            10s
+    Container Healty            :done,      containerHealty,    after containerRun,         2s
+</div>
+
+<h2 id="when-should-you-use-container-probe">When should you use container probe?</h2>
+
+<p>Nah ini juga bagian penting dari section sebelumnya, kapansih kita harus menggunakan container probes khususnya untuk Liveness, Readiness dan Startup Probe. Yukk kita bahas satu-per-satu, mulai dari <strong>Liveness Probe</strong>:</p>
+
+<p>If the process in your container is able to crash on its own whenever it encounters an issue or becomes unhealthy, you do not necessarily need a liveness probe; the kubelet will automatically perform the correct action in accordance with the Pod’s <code class="language-plaintext highlighter-rouge">restartPolicy</code>.</p>
+
+<p>If you’d like your container to be killed and restarted if a probe fails, then specify a liveness probe, and specify a <code class="language-plaintext highlighter-rouge">restartPolicy</code> of <code class="language-plaintext highlighter-rouge">Always</code> or <code class="language-plaintext highlighter-rouge">OnFailure</code>.</p>
+
+<p>Kemudian kita bahas <strong>Readiness Probe</strong>:</p>
+
+<p>If you’d like to start sending traffic to a Pod only when a probe succeeds, specify a readiness probe. In this case, the readiness probe might be the same as the liveness probe, but the existence of the readiness probe in the spec means that the Pod will start without receiving any traffic and only start receiving traffic after the probe starts succeeding.</p>
+
+<p>If you want your container to be able to take itself down for maintenance, you can specify a readiness probe that checks an endpoint specific to readiness that is different from the liveness probe.</p>
+
+<p>If your app has a strict dependency on back-end services, you can implement both a liveness and a readiness probe. The liveness probe passes when the app itself is healthy, but the readiness probe additionally checks that each required back-end service is available. This helps you avoid directing traffic to Pods that can only respond with error messages.</p>
+
+<p>Dan finally yang terakhir yaitu <strong>Startup Probe</strong>:</p>
+
+<p>Startup probes are useful for Pods that have containers that take a long time to come into service. Rather than set a long liveness interval, you can configure a separate configuration for probing the container as it starts up, allowing a time longer than the liveness interval would allow.</p>
+
+<p>If your container usually starts in more than <code class="language-plaintext highlighter-rouge">initialDelaySeconds + failureThreshold × periodSeconds</code>, you should specify a startup probe that checks the same endpoint as the liveness probe. The default for <code class="language-plaintext highlighter-rouge">periodSeconds</code> is <code class="language-plaintext highlighter-rouge">10s</code>. You should then set its <code class="language-plaintext highlighter-rouge">failureThreshold</code> high enough to allow the container to start, without changing the default values of the liveness probe. This helps to protect against deadlocks.</p>
+
+<h2 id="container-probes-of-fields">Container probes of fields</h2>
+
+<p><strong>Probes</strong> have a number of fields that you can use to more precisely control the behavior of liveness and readiness checks:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">initialDelaySeconds</code>: Number of seconds after the container has started before liveness or readiness probes are initiated. Defaults to <code class="language-plaintext highlighter-rouge">0 seconds</code>. Minimum value is <code class="language-plaintext highlighter-rouge">0</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">periodSeconds</code>: How often (in seconds) to perform the probe. Default to <code class="language-plaintext highlighter-rouge">10 seconds</code>. Minimum value is <code class="language-plaintext highlighter-rouge">1</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">timeoutSeconds</code>: Number of seconds after which the probe times out. Defaults to <code class="language-plaintext highlighter-rouge">1 second</code>. Minimum value is <code class="language-plaintext highlighter-rouge">1</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">successThreshold</code>: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to <code class="language-plaintext highlighter-rouge">1</code>. Must be <code class="language-plaintext highlighter-rouge">1</code> for liveness and startup Probes. Minimum value is <code class="language-plaintext highlighter-rouge">1</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">failureThreshold</code>: When a probe fails, Kubernetes will try failureThreshold times before giving up. Giving up in case of liveness probe means restarting the container. In case of readiness probe the Pod will be marked Unready. Defaults to <code class="language-plaintext highlighter-rouge">3</code>. Minimum value is <code class="language-plaintext highlighter-rouge">1</code>.</li>
+</ol>
+
+<p><strong>HTTP probes</strong> have additional fields that can be set on <code class="language-plaintext highlighter-rouge">httpGet</code>:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">host</code>: Host name to connect to, defaults to the pod IP. You probably want to set “Host” in httpHeaders instead.</li>
+  <li><code class="language-plaintext highlighter-rouge">scheme</code>: Scheme to use for connecting to the host (HTTP or HTTPS). Defaults to HTTP.</li>
+  <li><code class="language-plaintext highlighter-rouge">path</code>: Path to access on the HTTP server. Defaults to <code class="language-plaintext highlighter-rouge">/</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">httpHeaders</code>: Custom headers to set in the request. HTTP allows repeated headers.</li>
+  <li><code class="language-plaintext highlighter-rouge">port</code>: Name or number of the port to access on the container. Number must be in the range <code class="language-plaintext highlighter-rouge">1 to 65535</code>.</li>
+</ol>
+
+<p>For a <strong>TCP probe</strong>, the kubelet makes the probe connection at the node, not in the pod, which means that you can not use a service name in the host parameter since the kubelet is unable to resolve it.</p>
+
+<h2 id="configure-liveness-command-in-a-pod">Configure liveness command in a Pod</h2>
+
+<p>Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations.</p>
+
+<p>Contoh sederhannya seperti, misalnya kita menjalankan program yang sifatnya running di background / service. Untuk mendeteksi program tersebut tetap berjalan kita bisa check menggunakan output yang di keluarkan oleh program tersebut seperti log file dan lain-lain. Jadi klo kita coba buat configurasinya seperti berikut:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/a3a01b83910cf07914935a25a62d30ce.js?file=03h-pod-probe-liveness-command.yaml"> </script>
+
+<p>In the configuration file, you can see that the Pod has a single Container. The <code class="language-plaintext highlighter-rouge">periodSeconds</code> field specifies that the kubelet should perform a liveness probe every <code class="language-plaintext highlighter-rouge">5 seconds</code>. The <code class="language-plaintext highlighter-rouge">initialDelaySeconds</code> field tells the kubelet that it should wait <code class="language-plaintext highlighter-rouge">5 seconds</code> before performing the first probe. To perform a probe, the kubelet executes the command cat <code class="language-plaintext highlighter-rouge">/tmp/healthy</code> in the target container. If the command succeeds, it <code class="language-plaintext highlighter-rouge">returns 0</code>, and the kubelet considers the container to be alive and healthy. If the command returns a <code class="language-plaintext highlighter-rouge">non-zero value</code>, the kubelet kills the container and restarts it.</p>
+
+<p>When the container starts, it executes this command:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/bin/sh <span class="nt">-c</span> <span class="s2">"touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600"</span></code></pre></figure>
+
+<p>Jika di jalankan hasilnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>» kubectl apply <span class="nt">-f</span> 02-workloads/01-pod/pod-probe-liveness-command.yaml 
+pod/pod-probe-liveness-command created
+
+» kubectl get pod
+NAME                         READY   STATUS    RESTARTS   AGE
+pod-probe-liveness-command   1/1     Running   0          19s
+
+» kubectl describe pod pod-probe-liveness-command                     
+Events:
+  Type    Reason     Age   From               Message
+  <span class="nt">----</span>    <span class="nt">------</span>     <span class="nt">----</span>  <span class="nt">----</span>               <span class="nt">-------</span>
+  Normal  Scheduled  12s   default-scheduler  Successfully assigned default/pod-probe-liveness-command to latihan
+  Normal  Pulling    12s   kubelet            Pulling image <span class="s2">"k8s.gcr.io/busybox"</span>
+  Normal  Pulled     11s   kubelet            Successfully pulled image <span class="s2">"k8s.gcr.io/busybox"</span> <span class="k">in </span>986.394876ms
+  Normal  Created    10s   kubelet            Created container pod-probe-liveness-command
+  Normal  Started    10s   kubelet            Started container pod-probe-liveness-command
+
+<span class="c">## wait 30s then exeucute again, then see the container restated because failed container probe</span>
+» kubectl describe pod pod-probe-liveness-command
+Events:
+  Type     Reason     Age                From               Message
+  <span class="nt">----</span>     <span class="nt">------</span>     <span class="nt">----</span>               <span class="nt">----</span>               <span class="nt">-------</span>
+  Normal   Scheduled  74s                default-scheduler  Successfully assigned default/pod-probe-liveness-command to latihan
+  Normal   Pulling    74s                kubelet            Pulling image <span class="s2">"k8s.gcr.io/busybox"</span>
+  Normal   Pulled     73s                kubelet            Successfully pulled image <span class="s2">"k8s.gcr.io/busybox"</span> <span class="k">in </span>986.394876ms
+  Normal   Created    72s                kubelet            Created container pod-probe-liveness-command
+  Normal   Started    72s                kubelet            Started container pod-probe-liveness-command
+  Warning  Unhealthy  29s <span class="o">(</span>x3 over 39s<span class="o">)</span>  kubelet            Liveness probe failed: <span class="nb">cat</span>: cant open <span class="s1">'/tmp/healthy'</span>: No such file or directory
+  Normal   Killing    29s                kubelet            Container pod-probe-liveness-command failed liveness probe, will be restarted
+
+» kubectl get pod
+NAME                         READY   STATUS    RESTARTS   AGE
+pod-probe-liveness-command   1/1     Running   1          30s
+</code></pre></div></div>
+
+<h2 id="configure-liveness-http-in-a-pod">Configure liveness HTTP in a Pod</h2>
+
+<p>Another kind of liveness probe uses an HTTP GET request. Untuk menggunakan liveness probe HTTP GET request ini bisa menggunakan 2 cara yaitu number of port and named port. Karena pembahasan menggunakan number of port sudah kita bahas di materi sebelumnya jadi kita bahas menggunakan Named Port ya. Berikut adalah sample configurationnya:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/a3a01b83910cf07914935a25a62d30ce.js?file=03h-pod-probe-liveness-http-named-port.yaml"> </script>
+
+<p>In the configuration file, you can see that the Pod has a single container. The <code class="language-plaintext highlighter-rouge">periodSeconds</code> field specifies that the kubelet should perform a liveness probe every <code class="language-plaintext highlighter-rouge">5 seconds</code>. The <code class="language-plaintext highlighter-rouge">initialDelaySeconds</code> field tells the kubelet that it should wait <code class="language-plaintext highlighter-rouge">5 seconds</code> before performing the first probe. To perform a probe, the kubelet sends an HTTP GET request to the server that is running in the container and listening on <code class="language-plaintext highlighter-rouge">port 80</code>. If the handler for the server’s <code class="language-plaintext highlighter-rouge">/status</code> path returns a success code, the kubelet considers the container to be alive and healthy. If the handler returns a failure code, the kubelet kills the container and restarts it.</p>
+
+<p>Any code greater than or equal to <code class="language-plaintext highlighter-rouge">200</code> and less than <code class="language-plaintext highlighter-rouge">400</code> indicates success. Any other code indicates failure.</p>
+
+<p>Jika dijalankan hasilnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>» kubectl apply <span class="nt">-f</span> 02-workloads/01-pod/pod-probe-liveness-http-named-port.yaml 
+pod/pod-probe-liveness-http-named-port created
+
+» kubectl get pod
+NAME                                 READY   STATUS    RESTARTS   AGE
+pod-probe-liveness-http-named-port   1/1     Running   0          6s
+
+» kubectl describe pod pod-probe-liveness-http-named-port
+Events:
+  Type     Reason     Age               From               Message
+  <span class="nt">----</span>     <span class="nt">------</span>     <span class="nt">----</span>              <span class="nt">----</span>               <span class="nt">-------</span>
+  Normal   Scheduled  22s               default-scheduler  Successfully assigned default/pod-probe-liveness-http-named-port to latihan
+  Normal   Pulled     17s               kubelet            Successfully pulled image <span class="s2">"nginx"</span> <span class="k">in </span>3.177382341s
+  Normal   Created    17s               kubelet            Created container pod-probe-liveness-http-named-port
+  Normal   Started    17s               kubelet            Started container pod-probe-liveness-http-named-port
+  Normal   Pulling    2s <span class="o">(</span>x2 over 21s<span class="o">)</span>  kubelet            Pulling image <span class="s2">"nginx"</span>
+  Warning  Unhealthy  2s <span class="o">(</span>x3 over 12s<span class="o">)</span>  kubelet            Liveness probe failed: HTTP probe failed with statuscode: 404
+  Normal   Killing    2s                kubelet            Container pod-probe-liveness-http-named-port failed liveness probe, will be restarted
+
+» kubectl get pod
+NAME                                 READY   STATUS    RESTARTS   AGE
+pod-probe-liveness-http-named-port   1/1     Running   1          25s
+</code></pre></div></div>
+
+<h2 id="configure-tcp-liveness-in-a-pod">Configure TCP liveness in a Pod</h2>
+
+<p>A third type of liveness probe uses a TCP socket. With this configuration, the kubelet will attempt to open a socket to your container on the specified port. If it can establish a connection, the container is considered healthy, if it can’t it is considered a failure.</p>
+
+<p>Berikut adalah sample configurationnya:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/a3a01b83910cf07914935a25a62d30ce.js?file=03h-pod-probe-liveness-tcp.yaml"> </script>
+
+<p>As you can see, configuration for a TCP check is quite similar to an HTTP check. The kubelet will send the first readiness probe <code class="language-plaintext highlighter-rouge">5 seconds</code> after the container starts. This will attempt to connect to the nginx container on port <code class="language-plaintext highlighter-rouge">8080</code>. If the probe succeeds, the Pod will be marked as ready. The kubelet will continue to run this check every <code class="language-plaintext highlighter-rouge">10 seconds</code>.</p>
+
+<p>Jika kita coba jalankan hasilnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>» kubectl apply <span class="nt">-f</span> 02-workloads/01-pod/pod-probe-liveness-tcp.yaml 
+pod/pod-probe-liveness-tcp created
+
+» kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+pod-probe-liveness-tcp   1/1     Running   0          7s
+
+» kubectl describe pod pod pod-probe-liveness-tcp
+Events:
+  Type     Reason     Age   From               Message
+  <span class="nt">----</span>     <span class="nt">------</span>     <span class="nt">----</span>  <span class="nt">----</span>               <span class="nt">-------</span>
+  Normal   Scheduled  22s   default-scheduler  Successfully assigned default/pod-probe-liveness-tcp to latihan
+  Normal   Pulling    21s   kubelet            Pulling image <span class="s2">"nginx"</span>
+  Normal   Pulled     17s   kubelet            Successfully pulled image <span class="s2">"nginx"</span> <span class="k">in </span>3.868622684s
+  Normal   Created    17s   kubelet            Created container pod-probe-liveness-tcp
+  Normal   Started    17s   kubelet            Started container pod-probe-liveness-tcp
+  Warning  Unhealthy  2s    kubelet            Liveness probe failed: dial tcp 172.17.0.3:8080: connect: connection refused
+Error from server <span class="o">(</span>NotFound<span class="o">)</span>: pods <span class="s2">"pod"</span> not found
+
+» kubectl get pod
+NAME                     READY   STATUS    RESTARTS      AGE
+pod-probe-liveness-tcp   1/1     Running   1 <span class="o">(</span>40s ago<span class="o">)</span>   80s
+</code></pre></div></div>
+
+<h2 id="configure-grpc-liveness-in-a-pod">Configure grpc liveness in a Pod</h2>
+
+<p>If your application implements <a href="https://github.com/grpc/grpc/blob/master/doc/health-checking.md">gRPC Health Checking Protocol</a>, kubelet can be configured to use it for application liveness checks. You must enable the <code class="language-plaintext highlighter-rouge">GRPCContainerProbe</code> <a href="https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/">feature gate</a> in order to configure checks that rely on gRPC.</p>
+
+<p>Karena kami belum punya workload untuk menggunakan gRPC ini, jika menggunakan temen-temen boleh checkout di <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-grpc-liveness-probe">dokumentasi resminya</a> ya</p>
+
+<p>Jadi kita skip aja ya untuk liveness menggunakan gRPC ini.</p>
+
+<h2 id="configure-readiness-probes">Configure readiness probes</h2>
+
+<p>Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don’t want to kill the application, but you don’t want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.</p>
+
+<p>Readiness probes are configured similarly to liveness probes. The only difference is that you use the <code class="language-plaintext highlighter-rouge">readinessProbe</code> field instead of the <code class="language-plaintext highlighter-rouge">livenessProbe</code> field.</p>
+
+<p><strong>Caution:</strong> Liveness probes do not wait for readiness probes to succeed. If you want to wait before executing a liveness probe you should use <code class="language-plaintext highlighter-rouge">initialDelaySeconds</code> or a <code class="language-plaintext highlighter-rouge">startupProbe</code>.</p>
+
+<p>Berikut contoh implementasinya:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/a3a01b83910cf07914935a25a62d30ce.js?file=03h-pod-probe-readiness-http.yaml"> </script>
+
+<p>This example uses both readiness and liveness probes. The kubelet will send the first readiness probe <code class="language-plaintext highlighter-rouge">5 seconds</code> after the container starts. This will attempt to connect to the nginx container on port 80. If the probe succeeds, the Pod will be marked as ready. The kubelet will continue to run this check every <code class="language-plaintext highlighter-rouge">10 seconds</code>.</p>
+
+<p>Readiness and liveness probes can be used in parallel for the same container. Using both can ensure that traffic does not reach a container that is not ready for it, and that containers are restarted when they fail.</p>
+
+<p>Jika kita jalankan hasilnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>» kubectl apply <span class="nt">-f</span> 02-workloads/01-pod/pod-probe-readiness-http.yaml  
+pod/pod-probe-readiness-http created
+
+» kubectl get pod
+NAME                       READY   STATUS    RESTARTS   AGE
+pod-probe-readiness-http   0/1     Running   0          6s
+
+» kubectl describe pod pod-probe-readiness-http
+Events:
+  Type     Reason     Age   From               Message
+  <span class="nt">----</span>     <span class="nt">------</span>     <span class="nt">----</span>  <span class="nt">----</span>               <span class="nt">-------</span>
+  Normal   Scheduled  17s   default-scheduler  Successfully assigned default/pod-probe-readiness-http to latihan
+  Normal   Pulling    16s   kubelet            Pulling image <span class="s2">"nginx"</span>
+  Normal   Pulled     12s   kubelet            Successfully pulled image <span class="s2">"nginx"</span> <span class="k">in </span>3.272050844s
+  Normal   Created    12s   kubelet            Created container pod-probe-readiness-http
+  Normal   Started    12s   kubelet            Started container pod-probe-readiness-http
+  Warning  Unhealthy  2s    kubelet            Liveness probe failed: HTTP probe failed with statuscode: 404
+
+<span class="c"># wait 15s, then execute again</span>
+» kubectl describe pod pod-probe-readiness-http
+Events:
+  Type     Reason     Age               From               Message
+  <span class="nt">----</span>     <span class="nt">------</span>     <span class="nt">----</span>              <span class="nt">----</span>               <span class="nt">-------</span>
+  Normal   Scheduled  99s               default-scheduler  Successfully assigned default/pod-probe-readiness-http to latihan
+  Normal   Pulled     94s               kubelet            Successfully pulled image <span class="s2">"nginx"</span> <span class="k">in </span>3.272050844s
+  Normal   Pulled     50s               kubelet            Successfully pulled image <span class="s2">"nginx"</span> <span class="k">in </span>3.156701616s
+  Warning  Unhealthy  9s <span class="o">(</span>x6 over 84s<span class="o">)</span>  kubelet            Liveness probe failed: HTTP probe failed with statuscode: 404
+  Normal   Killing    9s <span class="o">(</span>x2 over 54s<span class="o">)</span>  kubelet            Container pod-probe-readiness-http failed liveness probe, will be restarted
+  Normal   Pulling    9s <span class="o">(</span>x3 over 98s<span class="o">)</span>  kubelet            Pulling image <span class="s2">"nginx"</span>
+  Normal   Created    5s <span class="o">(</span>x3 over 94s<span class="o">)</span>  kubelet            Created container pod-probe-readiness-http
+  Normal   Started    5s <span class="o">(</span>x3 over 94s<span class="o">)</span>  kubelet            Started container pod-probe-readiness-http
+  Normal   Pulled     5s                kubelet            Successfully pulled image <span class="s2">"nginx"</span> <span class="k">in </span>3.490931597s
+
+» kubectl get pod
+NAME                       READY   STATUS    RESTARTS      AGE
+pod-probe-readiness-http   1/1     Running   1 <span class="o">(</span>31s ago<span class="o">)</span>   2m1s
+</code></pre></div></div>
+
+<h2 id="protect-slow-starting-container-with-startup-probe">Protect slow starting container with startup probe</h2>
+
+<p>Sometimes, you have to deal with legacy applications that might require an additional startup time on their first initialization. In such cases, it can be tricky to set up liveness probe parameters without compromising the fast response to deadlocks that motivated such a probe. The trick is to set up a startup probe with the same command, HTTP or TCP check, with a <code class="language-plaintext highlighter-rouge">failureThreshold * periodSeconds</code> long enough to cover the worse case startup time.</p>
+
+<p>So, the example would become:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/a3a01b83910cf07914935a25a62d30ce.js?file=03h-pod-probe-startup-http.yaml"> </script>
+
+<p>Thanks to the startup probe, the application will have a maximum of 5 minutes (<code class="language-plaintext highlighter-rouge">30 * 10 = 300s</code>) to finish its startup. Once the startup probe has succeeded once, the liveness probe takes over to provide a fast response to container deadlocks. If the startup probe never succeeds, the container is killed after <code class="language-plaintext highlighter-rouge">300s</code> and subject to the pod’s <code class="language-plaintext highlighter-rouge">restartPolicy</code>.</p>
+
+<p>Jika dijalankan hasilnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>» kubectl apply <span class="nt">-f</span> 02-workloads/01-pod/pod-probe-startup-http.yaml 
+pod/pod-probe-startup-http created
+
+» kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+pod-probe-startup-http   0/1     Running   0          7s
+
+» kubectl describe pod pod-probe-startup-http
+Events:
+  Type    Reason     Age   From               Message
+  <span class="nt">----</span>    <span class="nt">------</span>     <span class="nt">----</span>  <span class="nt">----</span>               <span class="nt">-------</span>
+  Normal  Scheduled  22s   default-scheduler  Successfully assigned default/pod-probe-startup-http to latihan
+  Normal  Pulling    21s   kubelet            Pulling image <span class="s2">"nginx"</span>
+  Normal  Pulled     18s   kubelet            Successfully pulled image <span class="s2">"nginx"</span> <span class="k">in </span>3.397200655s
+  Normal  Created    18s   kubelet            Created container pod-probe-startup-http
+  Normal  Started    18s   kubelet            Started container pod-probe-startup-http
+
+<span class="c">## wait 30s, then execute again and see the result</span>
+» kubectl describe pod pod-probe-startup-http
+Events:
+  Type     Reason     Age                 From               Message
+  <span class="nt">----</span>     <span class="nt">------</span>     <span class="nt">----</span>                <span class="nt">----</span>               <span class="nt">-------</span>
+  Normal   Scheduled  113s                default-scheduler  Successfully assigned default/pod-probe-startup-http to latihan
+  Normal   Pulled     109s                kubelet            Successfully pulled image <span class="s2">"nginx"</span> <span class="k">in </span>3.397200655s
+  Normal   Pulling    53s <span class="o">(</span>x2 over 112s<span class="o">)</span>  kubelet            Pulling image <span class="s2">"nginx"</span>
+  Normal   Killing    53s                 kubelet            Container pod-probe-startup-http failed liveness probe, will be restarted
+  Normal   Created    50s <span class="o">(</span>x2 over 109s<span class="o">)</span>  kubelet            Created container pod-probe-startup-http
+  Normal   Pulled     50s                 kubelet            Successfully pulled image <span class="s2">"nginx"</span> <span class="k">in </span>3.373582023s
+  Normal   Started    49s <span class="o">(</span>x2 over 109s<span class="o">)</span>  kubelet            Started container pod-probe-startup-http
+  Warning  Unhealthy  8s <span class="o">(</span>x5 over 83s<span class="o">)</span>    kubelet            Liveness probe failed: HTTP probe failed with statuscode: 404
+
+» kubectl get pod
+NAME                     READY   STATUS    RESTARTS      AGE
+pod-probe-startup-http   1/1     Running   2 <span class="o">(</span>23s ago<span class="o">)</span>   2m23s
+</code></pre></div></div>
+
+            </div>
+        </div>
+    </section>   
+</article>
+
+            </div>
+            
+        </div>
+        <div>
+            
+                <div>
+                    <ul class="collection with-header">
+                        <li class="collection-header">
+                            <h2>Referensi</h2>
+                        </li>
+                                               
+                            <a class="collection-item" href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/" target="_blank">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/</a>
+                        
+                    </ul>                    
+                </div>
+            
+        </div>
+        <div id="paginate" class="center">
+            <ul class="pagination hide-on-small-only">
+                <!-- goto first page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/devops/orchestration/kubernetes/01-silabus" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman 1...">
+                        <i class="material-icons">fast_rewind</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto before page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03g-pod-resource-request-and-limit" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke artikel sebelumnya...">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+                                
+                
+                <!-- current page info -->
+                <li class="active">
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        29 to 36
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+                   
+                <!-- goto next page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03i-distruptions" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Yuk lanjutin bacaanya...">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto last page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman terakhir...">
+                        <i class="material-icons">fast_forward</i>
+                    </a>
+                </li>
+                
+            </ul>
+            <br>
+        </div>
+        <div>
+            
+            <div id="disqus_thread"></div>
+            <script>
+
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                
+                var disqus_config = function () {
+                    this.page.url = 'https://youtube.dimas-maryanto.com/posts/devops/orchestration/kubernetes/pods/03h-pod-container-probe-config';
+                    this.page.identifier = '/posts/devops/orchestration/kubernetes/pods/03h-pod-container-probe-config';
+                    console.debug(this.page);
+                };
+                
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://materi-bootcamp.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            
+        </div>
+    </div>
+    <div id="floating-button-menu" class="fixed-action-btn click-to-toggle horizontal hide-on-large-only">
+        <a href="#" class="btn-floating btn-large waves-effect waves-light">
+            <i class="large material-icons">playlist_play</i>
+        </a>
+        <ul>
+            <!-- goto first page -->
+            
+            <li>
+                <a href="/posts/devops/orchestration/kubernetes/01-silabus" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman 1...">
+                    <i class="material-icons">fast_rewind</i>
+                </a>
+            </li>
+            
+            <!-- goto before page -->
+            
+            <li>
+                <a href="/posts/devops/orchestration/kubernetes/pods/03g-pod-resource-request-and-limit" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman sebelumnya">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+             
+
+            <!-- goto next page -->
+            
+            <li>
+                <a href="/posts/devops/orchestration/kubernetes/pods/03i-distruptions" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman selanjutnya">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+            
+
+            <!-- goto last page -->
+            
+            <li>
+                <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman terakhir">
+                    <i class="material-icons">fast_forward</i>
+                </a>
+            </li>
+               
+
+            <li>
+                <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                    <i class="large material-icons">toc</i>
+                </a>
+            </li>
+          </ul>
+    </div>
+</div>
+
+<ul id="slide-out-materi" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li> 
+    <li>
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collapsible with-header" data-collapsible="accordion">
+                <li class="collection-header">
+                    <div class="collapsible-header subheader">
+                        Daftar Materi
+                    </div>                    
+                </li>
+
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Pengenalan Kubernetes
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            9
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                        <span class="truncate">
+                                            1. Silabus - DevOps Kubernetes: Pemula sampai Mahir
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01a-what-is-kubernetes">
+                                        <span class="truncate">
+                                            2. What is Kubernetes (k8s) ?
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01b-k8s-components">
+                                        <span class="truncate">
+                                            3. Kubernetes Components
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01c-k8s-api">
+                                        <span class="truncate">
+                                            4. The Kubernetes API
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01d-k8s-objects">
+                                        <span class="truncate">
+                                            5. What is Kubernetes Objects?
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01e-k8s-object-management">
+                                        <span class="truncate">
+                                            6. Managing Kubernetes Object
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01f-k8s-object-names-and-uids">
+                                        <span class="truncate">
+                                            7. Kubernetes Object Names and IDs
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01g-k8s-namespaces">
+                                        <span class="truncate">
+                                            8. What is Kubernetes Namespaces?
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/01h-kubernetes-environtments">
+                                        <span class="truncate">
+                                            9. Kubernetes cluster environtments
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Getting started with minikube
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            11
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02-overview-learn-env">
+                                        <span class="truncate">
+                                            1. Overview learning environment with Minikube
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-macos">
+                                        <span class="truncate">
+                                            2. Install minikube on Mac (Intel Chip)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-for-mac-apple-silicon">
+                                        <span class="truncate">
+                                            3. Install minikube on Mac (Apple silicon Chip)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-windows">
+                                        <span class="truncate">
+                                            4. Install minikube for Windows 11/10 Users
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02a-install-tools-for-linux">
+                                        <span class="truncate">
+                                            5. Install minikube for Linux users
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02b-deploy-application">
+                                        <span class="truncate">
+                                            6. Deploying an apps/services into Kubernetes
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02c-minikube-basic-control">
+                                        <span class="truncate">
+                                            7. Minikube basic control
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02d-minikube-use-your-own-images">
+                                        <span class="truncate">
+                                            8. Using your own image into Minikube cluster
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02f-minikube-addons">
+                                        <span class="truncate">
+                                            9. Minikube addons features
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02g-minikube-access-apps">
+                                        <span class="truncate">
+                                            10. Access your apps/service in minikube
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/02h-minikube-mount">
+                                        <span class="truncate">
+                                            11. Mounting filesystems to minikube cluster
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Pods and Containers
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            13
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03-overview-pod-containers">
+                                        <span class="truncate">
+                                            1. Overview Pod and Container in Kubernetes
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03a-workload-pods">
+                                        <span class="truncate">
+                                            2. Kubernetes Workloads with Pods
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03b-working-with-pods">
+                                        <span class="truncate">
+                                            3. Working with Pods
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03c-basic-pod-and-containers-config">
+                                        <span class="truncate">
+                                            4. Basic Pods and Containers Configs
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03d-pod-lifecycle">
+                                        <span class="truncate">
+                                            5. Pod & Container Lifecycle
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03e-init-containers">
+                                        <span class="truncate">
+                                            6. Initialization of Containers
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03f-pod-env-config">
+                                        <span class="truncate">
+                                            7. Configure env (Environment Variables) in a Pods
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03g-pod-resource-request-and-limit">
+                                        <span class="truncate">
+                                            8. Configure Request and Limit of Resources (CPUs & Memory)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03h-pod-container-probe-config">
+                                        <span class="truncate">
+                                            9. Configure liveness, readiness, and startup probes
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/03i-distruptions">
+                                        <span class="truncate">
+                                            10. Pod Disruptions
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/04-overview-study-cases">
+                                        <span class="truncate">
+                                            11. Overview Study Cases: Pod and Containers
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/04a-study-cases-monolith-apps">
+                                        <span class="truncate">
+                                            12. Study Cases: Monolith apps (Laravel Web MVC)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                                        <span class="truncate">
+                                            13. Study cases: Microservice apps (Springboot Rest API)
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Workload resources
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            3
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                                        <span class="truncate">
+                                            1. Overview Kubernetes Workloads resources
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                                        <span class="truncate">
+                                            2. What is Workload Resources?
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                                        <span class="truncate">
+                                            3. Working with Deployment object
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Networking (service)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Store data using Volumes
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Kubernetes Client
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Security RBAC
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Kubernetes Package manager
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Kubernetes cluster for Production grade
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Service mesh with istio
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Kubernetes on Cloud provider
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                               
+            </ul>
+        </div>
+    </li>
+    
+
+    
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</section>
+
+<section>
+    
+<footer class="page-footer blue lighten-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Tentang website</h5>
+                <div class="grey-text text-lighten-4">
+                    <p>Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.</p>
+                    <p>
+                        Donasi via:
+                        <ul>
+                            
+                            <ol>
+                                <a class="white-text" href="https://saweria.co/DimasMaryanto">
+                                    <i class="material-icons">star</i>
+                                    Saweria a/n Dimas Maryanto
+                                </a>
+                            </ol>
+                            
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <ul class="collection with-header">
+                    <li class="collection-header blue lighten-1">
+                        <i class="material-icons">account_box</i>
+                        <span class="white-text">Jangan Lupa follow aku ya guys!</span>
+                    </li>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://github.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-github"></i> Github
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.facebook.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.instagram.com/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue darken-3">
+        <div class="container">
+            Dimas Maryanto © 2023
+            <a class="grey-text text-lighten-4 right" href="https://pages.github.com/">
+                powered by Github Pages & Jekyll
+            </a>
+        </div>
+    </div>
+</footer>
+</section>
+
+</body>
+</html>

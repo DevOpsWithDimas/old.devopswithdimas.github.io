@@ -1,0 +1,2182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> DevOps with Dimas Maryanto - Getting started with git </title>
+    <meta name="description" content="Hai semuanya, setelah kita menyiapkan environment untuk belajar Git Version Control sekarang kita mulai Hand-on untuk Dasar perintah Git diantaranya:">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevOps with Dimas Maryanto" />
+    <meta property="og:description" content="Hai semuanya, setelah kita menyiapkan environment untuk belajar Git Version Control sekarang kita mulai Hand-on untuk Dasar perintah Git diantaranya:"
+/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/node_modules/materialize-css/dist/css/materialize.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/devicons/css/devicons.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/sintax.css" />
+
+<script src="/assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/assets/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="/assets/responsive-content.js"></script>
+<script src="/assets/list.min.js"></script>
+<script src="/assets/sintax.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $('.button-collapse').sideNav({
+            menuWidth: 370
+        });
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+    })
+</script>
+
+
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82058496-1');
+</script>
+
+<!-- Global - Google Adsense -->
+<script data-ad-client="ca-pub-3067429629551793" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82058496-1', 'auto');
+	ga('send', 'pageview', { 'page': location.pathname + location.search + location.hash});
+	ga('set', 'anonymizeIp', false);
+    </script>
+    <!-- End Google Analytics -->
+    </head>
+<body>
+<header>
+    
+
+<div class="navbar-fixed hide-on-med-and-down">
+    <nav class="blue darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons right">home</i>&nbsp;
+                <span>Materi Bootcamp</span>
+            </a>
+            <a href="#" data-activates="slide-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/archives/">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/courses.html">
+                        <i class="material-icons left">library_books</i> 
+                        <span>Cources</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/news.html">
+                        <i class="material-icons left">announcement</i> 
+                        <span>News</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/promo.html">
+                        <i class="material-icons left">grade</i> 
+                        <span>Promo</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/roadmap.html">
+                        <i class="material-icons left">assessment</i> 
+                        <span>ROADMAP</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="fixed-action-btn click-to-toggle hide-on-large-only">
+    <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+        <i class="large material-icons">menu</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    <li><a class="subheader">Daftar Kategori</a></li>
+<li class="no-padding">
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Java
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/core/001-silabus-java">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">42</span>
+                                Java Basic
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                JDBC with Postgresql
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/web/war/001-silabus-java-web">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">32</span>
+                                Java Web (Servlet & JSP)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">57</span>
+                                ORM dengan Hibernate
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/language/java/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">3</span>
+                                Java
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                JavaScript
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/web/js/001-silabus-js">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                Javascript
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Database
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">116</span>
+                                Oracle Database
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">39</span>
+                                PostgreSQL
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                DevOps
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">36</span>
+                                Kubernetes (k8s)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">7</span>
+                                Gitlab
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">2</span>
+                                Nutanix AHV
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/docker/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">113</span>
+                                Docker
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+</li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</header>
+
+<section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="postBody" class="row container post-body">
+    <div class="col s12 m12 l4 hide-on-med-and-down">
+        <div class="row">
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons blue-text">person</i> Penulis:
+                        <span>
+                            <span class="badge new" data-badge-caption="">
+                                <time datetime="2022-07-23T05:41:05+00:00" itemscope="datePublished">
+                                    23 July 2022
+                                </time>
+                            </span>
+                        </span>
+                    </li>
+                    
+                    
+                    
+                    <li class="collection-item avatar">
+                        <img src="/resources/avatars/dimasm93.png" alt="Dimas Maryanto" class="circle">
+                        <span class="title">Dimas Maryanto</span>
+                        <p>PT. Tabeldata Informatika</p>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">account_balance_wallet</i>
+                        Donasi via:
+                    </li>
+                          
+                    <li class="collection-item">
+                        <a href="https://saweria.co/DimasMaryanto" target="_blank">
+                            Saweria a/n Dimas Maryanto
+                        </a>
+                    </li>              
+                    
+                </ul>
+            </div>
+            <!-- edit this for multiple premium members -->
+            
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">lock_open</i>
+                        Join Premium Members:
+                    </li>
+                    
+                    <li class="collection-item">
+                        <a href="https://www.udemy.com/course/gitops-gitlab-pemula-sampai-mahir/?referralCode=8D13D85D4D34027B76BE">
+                            Udemy.com
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            
+        </div>
+        <!-- 
+        
+        
+        <div class="row">
+            <ul class="collection with-header">
+                <li class="collection-item avatar">
+                    <img src="/resources/images/gitlab.png" alt="" class="circle responsive-img">
+                    <span>Daftar materi
+                        <span class="badge new blue" data-badge-caption="materi">7</span>
+                    </span>
+                    
+                    <p class="title">
+                        GITLAB
+                    </p>
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                        1. Silabus GitOps - Gitlab: Pemula ...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/git/gitops/gitlab/01-introduction-version-control">
+                        2. Pengenalan Version Control
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/git/gitops/gitlab/01a-what-is-git">
+                        3. What is Git SCM
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/git/gitops/gitlab/01b-install-git-mac">
+                        4. How to Install git on MacOS
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/git/gitops/gitlab/01b-install-git-windows">
+                        5. How to Install git on Windows
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/git/gitops/gitlab/01b-install-git-linux">
+                        6. How to Install git on Linux
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <div>
+                        <span class="badge" data-badge-caption="">
+                            <i class="material-icons">turned_in</i>
+                        </span>
+                        7. Getting started with git
+                    </div>
+                    
+                </li>
+                
+            </ul>
+        </div>
+         -->
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collapsible with-header" data-collapsible="accordion">
+                <li class="collection-header">
+                    <div class="collapsible-header">
+                        Daftar Materi
+                    </div>                    
+                </li>
+
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            1. Pengenalan Git
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            7
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                            <span class="truncate">1. Silabus GitOps - Gitlab: Pemula sampai Mahir</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/01-introduction-version-control">
+                                            <span class="truncate">2. Pengenalan Version Control</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/01a-what-is-git">
+                                            <span class="truncate">3. What is Git SCM</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/01b-install-git-mac">
+                                            <span class="truncate">4. How to Install git on MacOS</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/01b-install-git-windows">
+                                            <span class="truncate">5. How to Install git on Windows</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/01b-install-git-linux">
+                                            <span class="truncate">6. How to Install git on Linux</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/01c-basic-git-command">
+                                            <span class="truncate">7. Getting started with git</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            2. Gitlab SaaS
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            3. Gitlab self-managed service
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            4. Issues Tracker
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            5. Release Management
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            6. Gitlab CI/CD
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            7. Gitlab Integration
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            8. Gitlab Monitoring
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            9. Gitlab Migration
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                               
+            </ul>
+        </div>
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collection with-header">
+                <li class="collapsible-header">
+                    Lastest Posts
+                </li>
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                        <span class="badge">09 Apr 23</span>
+                        Working with Deployment object
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                        <span class="badge">26 Feb 23</span>
+                        Study cases: Microservice apps (...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/01-welcome-nutanix-class">
+                        <span class="badge">05 Feb 23</span>
+                        Welcome to the Nutanix HCF (Hybr...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                        <span class="badge">04 Feb 23</span>
+                        Silabus SRE - Nutanix AHV: Pemul...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                        <span class="badge">17 Jan 23</span>
+                        What is Workload Resources?
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                        <span class="badge">17 Jan 23</span>
+                        Overview Kubernetes Workloads re...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl">
+                        <span class="badge">15 Jan 23</span>
+                        Getting started with Transaction...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06-overview-concurrent-control">
+                        <span class="badge">14 Jan 23</span>
+                        Overview of Concurrency Control
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05g-quis-section-1">
+                        <span class="badge">14 Jan 23</span>
+                        Time your practice (part 3)
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05f-dml-cleanup">
+                        <span class="badge">08 Jan 23</span>
+                        Cleanup Data from Table
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    <div class="col s12 m12 l8">
+        <div id="paginate-top" class="right">
+            <ul class="pagination hide-on-small-only">
+                <!-- current page info -->
+                <li>
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        7 to 7
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+            </ul>
+            <br>
+        </div>
+        <div>            
+            <div>
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <section id="article-body">
+        <div class="center">
+            <h1>
+                Getting started with git
+            </h1>
+        </div>
+        <div>
+            <div class="post-content"
+                 style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: large">
+                <p>Hai semuanya, setelah kita menyiapkan environment untuk belajar Git Version Control sekarang kita mulai Hand-on untuk Dasar perintah Git diantaranya:</p>
+
+<ol>
+  <li>Getting a Git Repository
+    <ol>
+      <li>Create new Git Repository</li>
+      <li>Cloning an Existing Repository</li>
+    </ol>
+  </li>
+  <li>Recording Changes to the Repository
+    <ol>
+      <li>Checking the Status of Your Files</li>
+      <li>Tracking New Files</li>
+      <li>Staging Modified Files</li>
+    </ol>
+  </li>
+  <li>Ignoring Files</li>
+  <li>Viewing Your Staged and Unstaged Changes</li>
+  <li>Committing Your Changes</li>
+  <li>Removing/Moving Files</li>
+  <li>Viewing the Commit History</li>
+</ol>
+
+<p>Ok yukk langsung aja kita bahas materi yang pertama:</p>
+
+<!--more-->
+
+<h2 id="getting-a-git-repository">Getting a Git Repository</h2>
+
+<p>This chapter covers every basic command you need to do the vast majority of the things you’ll eventually spend your time doing with Git. By the end of the chapter, you should be able to configure and initialize a repository, begin and stop tracking files, and stage and commit changes. We’ll also show you how to set up Git to ignore certain files and file patterns, how to undo mistakes quickly and easily, how to browse the history of your project and view changes between commits, and how to push and pull from remote repositories.</p>
+
+<p>You typically obtain a Git repository in one of two ways:</p>
+
+<ol>
+  <li>You can take a local directory that is currently not under version control, and turn it into a Git repository</li>
+  <li>You can clone an existing Git repository from elsewhere.</li>
+</ol>
+
+<p>In either case, you end up with a Git repository on your local machine, ready for work.</p>
+
+<p>If you have a project directory that is currently not under version control and you want to start controlling it with Git, you first need to go to that project’s directory. Than type:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git init</code></pre></figure>
+
+<p>This creates a new subdirectory named <code class="language-plaintext highlighter-rouge">.git</code> that contains all of your necessary repository files — a Git repository skeleton. At this point, nothing in your project is tracked yet. If you want to start version-controlling existing files (as opposed to an empty directory), you should probably begin tracking those files and do an initial commit. You can accomplish that with a few <code class="language-plaintext highlighter-rouge">git add</code> commands that specify the files you want to track, followed by a <code class="language-plaintext highlighter-rouge">git commit</code>:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">## create files &amp; write some text</span>
+<span class="nb">touch </span>README.md <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">echo</span> <span class="s2">"Halo saya sedang belajar git! "</span> <span class="o">&gt;</span> README.md
+
+<span class="c">## tracking your files</span>
+git add README.md
+
+<span class="c">## commit state</span>
+git commit <span class="nt">-m</span> <span class="s1">'Initial project'</span></code></pre></figure>
+
+<p>We’ll go over what these commands do in just a minute. At this point, you have a Git repository with tracked files and an initial commit.</p>
+
+<p>If you want to get a copy of an existing Git repository — for example, a project you’d like to contribute to — the command you need is <code class="language-plaintext highlighter-rouge">git clone</code>. You clone a repository with <code class="language-plaintext highlighter-rouge">git clone &lt;url&gt;</code>. For example, if you want to clone the repository called <a href="https://github.com/dimMaryanto93/ansible-role-nginx">ansible-role-nginx</a>, you can do so like this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/dimMaryanto93/ansible-role-nginx.git</code></pre></figure>
+
+<p>If you want to clone the repository into a directory named something other than <code class="language-plaintext highlighter-rouge">ansible-role-nginx</code>, you can specify the new directory name as an additional argument:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/dimMaryanto93/ansible-role-nginx.git role-nginx</code></pre></figure>
+
+<p>Git has a number of different transfer protocols you can use. The previous example uses the <code class="language-plaintext highlighter-rouge">https://</code> protocol, but you may also see <code class="language-plaintext highlighter-rouge">git://</code> or <code class="language-plaintext highlighter-rouge">user@server:path/to/repo.git</code>, which uses the SSH transfer protocol.</p>
+
+<h2 id="recording-changes-to-the-repository">Recording Changes to the Repository</h2>
+
+<p>At this point, you should have a <strong>bona fide</strong> Git repository on your local machine, and a checkout or working copy of all of its files in front of you. Typically, you’ll want to start making changes and committing snapshots of those changes into your repository each time the project reaches a state you want to record.</p>
+
+<p>Remember that each file in your working directory can be in one of two states: <code class="language-plaintext highlighter-rouge">tracked</code> or <code class="language-plaintext highlighter-rouge">untracked</code>:</p>
+
+<ol>
+  <li>Tracked files are files that were in the last snapshot, as well as any newly staged files; they can be unmodified, modified, or staged. In short, tracked files are files that Git knows about.</li>
+  <li>Untracked files are everything else — any files in your working directory that were not in your last snapshot and are not in your staging area.</li>
+</ol>
+
+<p>When you first clone a repository, all of your files will be tracked and unmodified because Git just checked them out and you haven’t edited anything. As you edit files, Git sees them as modified, because you’ve changed them since your last commit. As you work, you selectively stage these modified files and then commit all those staged changes, and the cycle repeats.</p>
+
+<p>The lifecycle of the status of your files:</p>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<div class="mermaid">
+sequenceDiagram
+    participant untrack as Untracked
+    participant unmodif as Unmodified
+    participant modif as Modified
+    participant stage as Staged
+
+    untrack-&gt;&gt;stage: Add the file
+    unmodif-&gt;&gt;modif: Edit the file
+    modif-&gt;&gt;stage: Stage the file
+    unmodif-&gt;&gt;untrack: Remove the file
+    stage-&gt;&gt;unmodif: Commit
+</div>
+
+<h2 id="checking-the-status-of-your-files">Checking the Status of Your Files</h2>
+
+<p>The main tool you use to determine which files are in which state is the <code class="language-plaintext highlighter-rouge">git status</code> command. If you run this command directly after a clone:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git status</code></pre></figure>
+
+<p>Jika dijalankan hasilnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
+On branch main
+Your branch is up-to-date with <span class="s1">'origin/main'</span><span class="nb">.</span>
+nothing to commit, working tree clean
+</code></pre></div></div>
+
+<p>This means you have a clean working directory; in other words, none of your tracked files are modified. Git also doesn’t see any untracked files, or they would be listed here. Finally, the command tells you which branch you’re on and informs you that it has not diverged from the same branch on the server. For now, that branch is always <code class="language-plaintext highlighter-rouge">main</code>, which is the default; you won’t worry about it here. Git Branching will go over branches and references in detail.</p>
+
+<p>Let’s say you add a new file to your project, a simple README file. If the file didn’t exist before, and you run git status, you see your untracked file like so:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Sekarang saya sudah mulai paham dengan Git command"</span> <span class="o">&gt;&gt;</span> README.md
+git status</code></pre></figure>
+
+<p>Jika dijalankan hasilnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
+On branch main
+Changes not staged <span class="k">for </span>commit:
+  <span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to update what will be committed<span class="o">)</span>
+  <span class="o">(</span>use <span class="s2">"git restore &lt;file&gt;..."</span> to discard changes <span class="k">in </span>working directory<span class="o">)</span>
+	modified:   README.md
+
+nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">"git add"</span> to track<span class="o">)</span>
+</code></pre></div></div>
+
+<p>You can see that your new <code class="language-plaintext highlighter-rouge">README.md</code> file is untracked, because it’s under the “Untracked files” heading in your status output. Untracked basically means that Git sees a file you didn’t have in the previous snapshot (commit), and which hasn’t yet been staged; Git won’t start including it in your commit snapshots until you explicitly tell it to do so. It does this so you don’t accidentally begin including generated binary files or other files that you did not mean to include. You do want to start including <code class="language-plaintext highlighter-rouge">README.md</code>, so let’s start tracking the file.</p>
+
+<h2 id="tracking-new-files">Tracking New Files</h2>
+
+<p>In order to begin tracking a new file, you use the command git add. To begin tracking the <code class="language-plaintext highlighter-rouge">README.md</code> file, you can run this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git add README.md</code></pre></figure>
+
+<p>If you run your status command again, you can see that your <code class="language-plaintext highlighter-rouge">README.md</code> file is now tracked and staged to be committed:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
+On branch main
+Your branch is up-to-date with <span class="s1">'origin/main'</span><span class="nb">.</span>
+Changes to be committed:
+  <span class="o">(</span>use <span class="s2">"git restore --staged &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+
+    new file:   README.md
+</code></pre></div></div>
+
+<p>You can tell that it’s staged because it’s under the “Changes to be committed” heading. If you commit at this point, the version of the file at the time you ran <code class="language-plaintext highlighter-rouge">git add</code> is what will be in the subsequent historical snapshot. You may recall that when you ran git init earlier, you then ran <code class="language-plaintext highlighter-rouge">git add &lt;files&gt;</code> — that was to begin tracking files in your directory. The <code class="language-plaintext highlighter-rouge">git add</code> command takes a path name for either a file or a directory; if it’s a directory, the command adds all the files in that directory recursively.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># for tracking file</span>
+git add file
+
+<span class="c"># for tracking directory or subdirectory</span>
+git add directory-path/files
+
+<span class="c"># for tracking with pattern regex</span>
+git add <span class="k">*</span> <span class="c">## mean tracking all file or directory inside git project</span></code></pre></figure>
+
+<h2 id="committing-your-changes">Committing Your Changes</h2>
+
+<p>Now that your staging area is set up the way you want it, you can commit your changes. Remember that anything that is still unstaged — any files you have created or modified that you haven’t run <code class="language-plaintext highlighter-rouge">git add</code> on since you edited them — won’t go into this commit. They will stay as modified files on your disk. In this case, let’s say that the last time you ran git status, you saw that everything was staged, so you’re ready to commit your changes. The simplest way to commit is to type <code class="language-plaintext highlighter-rouge">git commit</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git commit
+</code></pre></div></div>
+
+<p>Doing so launches your editor of choice. The editor displays the following text (this example is a <code class="language-plaintext highlighter-rouge">Vim</code> screen):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Please enter the commit message for your changes. Lines starting</span>
+<span class="c"># with '#' will be ignored, and an empty message aborts the commit.</span>
+<span class="c"># On branch master</span>
+<span class="c"># Your branch is up-to-date with 'origin/master'.</span>
+<span class="c">#</span>
+<span class="c"># Changes to be committed:</span>
+<span class="c">#	new file:   README</span>
+<span class="c">#</span>
+~
+<span class="s2">".git/COMMIT_EDITMSG"</span> 9L, 283C
+</code></pre></div></div>
+
+<p>You can see that the default commit message contains the latest output of the git status command commented out and one empty line on top. You can remove these comments and type your commit message, or you can leave them there to help you remember what you’re committing.</p>
+
+<p>When you exit the editor, Git creates your commit with that commit message (with the comments and diff stripped out).</p>
+
+<p>Alternatively, you can type your commit message inline with the commit command by specifying it after a <code class="language-plaintext highlighter-rouge">-m</code> flag, like this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git commit <span class="nt">-m</span> <span class="s2">"Adding a description to README.md"</span></code></pre></figure>
+
+<p>Jika dijalankan hasilnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"Adding a description to README.md"</span>
+<span class="o">[</span>main 463dc4f] Adding a description to README.md
+ 1 files changed, 1 insertions<span class="o">(</span>+<span class="o">)</span>
+ create mode 100644 README.md
+</code></pre></div></div>
+
+<p>Now you’ve created your first commit! You can see that the commit has given you some output about itself: which branch you committed to (master), what <code class="language-plaintext highlighter-rouge">SHA-1</code> checksum the commit has (<code class="language-plaintext highlighter-rouge">463dc4f</code>), how many files were changed, and statistics about lines added and removed in the commit.</p>
+
+<p>Remember that the commit records the snapshot you set up in your staging area. Anything you didn’t stage is still sitting there modified; you can do another commit to add it to your history. Every time you perform a commit, you’re recording a snapshot of your project that you can revert to or compare to later.</p>
+
+<h2 id="staging-modified-files">Staging Modified Files</h2>
+
+<p>Let’s change a file that was already tracked. If you change a previously tracked file called <code class="language-plaintext highlighter-rouge">README.md</code> and then run your <code class="language-plaintext highlighter-rouge">git status</code> command again, you get something that looks like this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># create new file</span>
+<span class="nb">touch </span>CONTRIBUTING.md
+
+<span class="c"># update file readme</span>
+<span class="nb">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Saya sudah berhasil meng-commit file"</span> <span class="o">&gt;&gt;</span> README.md
+
+<span class="c"># see the status now</span>
+git status</code></pre></figure>
+
+<p>Jika dijalankan maka hasilnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
+On branch main
+Your branch is up-to-date with <span class="s1">'origin/main'</span><span class="nb">.</span>
+Changes to be committed:
+  <span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+
+    new file:   CONTRIBUTING.md
+
+Changes not staged <span class="k">for </span>commit:
+  <span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to update what will be committed<span class="o">)</span>
+  <span class="o">(</span>use <span class="s2">"git checkout -- &lt;file&gt;..."</span> to discard changes <span class="k">in </span>working directory<span class="o">)</span>
+
+    modified:   README.md
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">README.md</code> file appears under a section named “Changes not staged for commit” — which means that a file that is tracked has been modified in the working directory but not yet staged. To stage it, you run the <code class="language-plaintext highlighter-rouge">git add</code> command. <code class="language-plaintext highlighter-rouge">git add</code> is a multipurpose command — you use it to begin tracking new files, to stage files, and to do other things like marking merge-conflicted files as resolved. It may be helpful to think of it more as “add precisely this content to the next commit” rather than “add this file to the project”. Let’s run <code class="language-plaintext highlighter-rouge">git add</code> now to stage the <code class="language-plaintext highlighter-rouge">README.md</code> file, and then run <code class="language-plaintext highlighter-rouge">git status</code> again:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add CONTRIBUTING.md
+<span class="nv">$ </span>git status
+On branch main
+Your branch is up-to-date with <span class="s1">'origin/main'</span><span class="nb">.</span>
+Changes to be committed:
+  <span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+
+    new file:   CONTRIBUTING.md
+    modified:   README.md
+</code></pre></div></div>
+
+<p>Both files are staged and will go into your next commit. At this point, suppose you remember one little change that you want to make in <code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code> before you commit it. You open it again and make that change, and you’re ready to commit. However, let’s run git status one more time:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># update again file CONTRIBUTING.md</span>
+<span class="nb">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Saya sudah berhasil meng-commit file"</span> <span class="o">&gt;&gt;</span> CONTRIBUTING.md
+
+<span class="c"># see the status again</span>
+git status</code></pre></figure>
+
+<p>Jika dijalankan hasilnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
+On branch main
+Your branch is up-to-date with <span class="s1">'origin/main'</span><span class="nb">.</span>
+Changes to be committed:
+  <span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+
+    new file:   CONTRIBUTING.md
+    modified:   README.md
+
+Changes not staged <span class="k">for </span>commit:
+  <span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to update what will be committed<span class="o">)</span>
+  <span class="o">(</span>use <span class="s2">"git checkout -- &lt;file&gt;..."</span> to discard changes <span class="k">in </span>working directory<span class="o">)</span>
+
+    modified:   CONTRIBUTING.md
+</code></pre></div></div>
+
+<p>What the heck? Now <code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code> is listed as both staged and unstaged. How is that possible? It turns out that Git stages a file exactly as it is when you run the <code class="language-plaintext highlighter-rouge">git add</code> command. If you commit now, the version of <code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code> as it was when you last ran the <code class="language-plaintext highlighter-rouge">git add</code> command is how it will go into the commit, not the version of the file as it looks in your working directory when you run <code class="language-plaintext highlighter-rouge">git commit</code>. If you modify a file after you run <code class="language-plaintext highlighter-rouge">git add</code>, you have to run <code class="language-plaintext highlighter-rouge">git add</code> again to stage the latest version of the file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add CONTRIBUTING.md
+<span class="nv">$ </span>git status
+On branch main
+Your branch is up-to-date with <span class="s1">'origin/main'</span><span class="nb">.</span>
+Changes to be committed:
+  <span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+
+    new file:   README
+    modified:   CONTRIBUTING.md
+</code></pre></div></div>
+
+<h2 id="ignoring-files">Ignoring Files</h2>
+
+<p>Often, you’ll have a class of files that you don’t want Git to automatically add or even show you as being untracked. These are generally automatically generated files such as log files or files produced by your build system. In such cases, you can create a file listing patterns to match them named <code class="language-plaintext highlighter-rouge">.gitignore</code>.</p>
+
+<p>Here is an example .gitignore file:</p>
+
+<div class="language-config highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*.<span class="n">class</span>
+<span class="n">target</span>/
+*~
+</code></pre></div></div>
+
+<p>The first line tells Git to ignore any files ending in “.class” — object and archive files that may be the product of building your code. The second line tells Git to ignore all file inside directory called <code class="language-plaintext highlighter-rouge">target</code>. The third line tells Git to ignore all files whose names end with a tilde (<code class="language-plaintext highlighter-rouge">~</code>), which is used by many text editors such as <code class="language-plaintext highlighter-rouge">Emacs</code>, <code class="language-plaintext highlighter-rouge">vim</code> or <code class="language-plaintext highlighter-rouge">nano</code> to mark temporary files.</p>
+
+<p>Setting up a <code class="language-plaintext highlighter-rouge">.gitignore</code> file for your new repository before you get going is generally a good idea so you don’t accidentally commit files that you really don’t want in your Git repository. The rules for the patterns you can put in the <code class="language-plaintext highlighter-rouge">.gitignore</code> file are as follows:</p>
+
+<ol>
+  <li>Blank lines or lines starting with # are ignored.</li>
+  <li>Standard glob patterns work, and will be applied recursively throughout the entire working tree.</li>
+  <li>You can start patterns with a forward slash (<code class="language-plaintext highlighter-rouge">/</code>) to avoid recursivity.</li>
+  <li>You can end patterns with a forward slash (<code class="language-plaintext highlighter-rouge">/</code>) to specify a directory.</li>
+  <li>You can negate a pattern by starting it with an exclamation point (<code class="language-plaintext highlighter-rouge">!</code>).</li>
+</ol>
+
+<p>Glob patterns are like simplified regular expressions that shells use. An asterisk (<code class="language-plaintext highlighter-rouge">*</code>) matches zero or more characters; [<code class="language-plaintext highlighter-rouge">abc</code>] matches any character inside the brackets (in this case <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">b</code>, or <code class="language-plaintext highlighter-rouge">c</code>); a question mark (<code class="language-plaintext highlighter-rouge">?</code>) matches a single character; and brackets enclosing characters separated by a hyphen (<code class="language-plaintext highlighter-rouge">[0-9]</code>) matches any character between them (in this case <code class="language-plaintext highlighter-rouge">0</code> through <code class="language-plaintext highlighter-rouge">9</code>). You can also use two asterisks to match nested directories;<code class="language-plaintext highlighter-rouge"> a/**/z</code> would match <code class="language-plaintext highlighter-rouge">a/z</code>, <code class="language-plaintext highlighter-rouge">a/b/z</code>, <code class="language-plaintext highlighter-rouge">a/b/c/z</code>, and so on.</p>
+
+<p>Here is another example .gitignore file:</p>
+
+<div class="language-config highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ignore all .a files
+</span>*.<span class="n">a</span>
+
+<span class="c"># but do track lib.a, even though you're ignoring .a files above
+</span>!<span class="n">lib</span>.<span class="n">a</span>
+
+<span class="c"># only ignore the TODO file in the current directory, not subdir/TODO
+</span>/<span class="n">TODO</span>
+
+<span class="c"># ignore all files in any directory named build
+</span><span class="n">build</span>/
+
+<span class="c"># ignore doc/notes.txt, but not doc/server/arch.txt
+</span><span class="n">doc</span>/*.<span class="n">txt</span>
+
+<span class="c"># ignore all .pdf files in the doc/ directory and any of its subdirectories
+</span><span class="n">doc</span>/**/*.<span class="n">pdf</span>
+</code></pre></div></div>
+
+<h2 id="removingmoving-files">Removing/Moving Files</h2>
+
+<p>To remove a file from Git, you have to remove it from your tracked files (more accurately, remove it from your staging area) and then commit. The <code class="language-plaintext highlighter-rouge">git rm</code> command does that, and also removes the file from your working directory so you don’t see it as an untracked file the next time around.</p>
+
+<p>If you simply remove the file from your working directory, it shows up under the “Changes not staged for commit” (that is, unstaged) area of your git status output:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">rm </span>PROJECTS.md
+<span class="nv">$ </span>git status
+On branch main
+Your branch is up-to-date with <span class="s1">'origin/main'</span><span class="nb">.</span>
+Changes not staged <span class="k">for </span>commit:
+  <span class="o">(</span>use <span class="s2">"git add/rm &lt;file&gt;..."</span> to update what will be committed<span class="o">)</span>
+  <span class="o">(</span>use <span class="s2">"git checkout -- &lt;file&gt;..."</span> to discard changes <span class="k">in </span>working directory<span class="o">)</span>
+
+        deleted:    PROJECTS.md
+
+no changes added to commit <span class="o">(</span>use <span class="s2">"git add"</span> and/or <span class="s2">"git commit -a"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Then, if you run <code class="language-plaintext highlighter-rouge">git rm</code>, it stages the file’s removal:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git <span class="nb">rm </span>PROJECTS.md
+<span class="nb">rm</span> <span class="s1">'PROJECTS.md'</span>
+<span class="nv">$ </span>git status
+On branch main
+Your branch is up-to-date with <span class="s1">'origin/main'</span><span class="nb">.</span>
+Changes to be committed:
+  <span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+
+    deleted:    PROJECTS.md
+</code></pre></div></div>
+
+<p>The next time you commit, the file will be gone and no longer tracked. If you modified the file or had already added it to the staging area, you must force the removal with the -f option. This is a safety feature to prevent accidental removal of data that hasn’t yet been recorded in a snapshot and that can’t be recovered from Git.</p>
+
+<p>Unlike many other VCSs, Git doesn’t explicitly track file movement. If you rename a file in Git, no metadata is stored in Git that tells it you renamed the file. However, Git is pretty smart about figuring that out after the fact — we’ll deal with detecting file movement a bit later.</p>
+
+<p>Thus it’s a bit confusing that Git has a mv command. If you want to rename a file in Git, you can run something like:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git <span class="nb">mv </span>file_from file_to</code></pre></figure>
+
+<p>and it works fine. In fact, if you run something like this and look at the status, you’ll see that Git considers it a renamed file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git <span class="nb">mv </span>README.md README
+<span class="nv">$ </span>git status
+On branch main
+Your branch is up-to-date with <span class="s1">'origin/main'</span><span class="nb">.</span>
+Changes to be committed:
+  <span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+
+    renamed:    README.md -&gt; README
+</code></pre></div></div>
+
+<p>However, this is equivalent to running something like this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">mv </span>README.md README
+git <span class="nb">rm </span>README.md
+git add README</code></pre></figure>
+
+<p>Git figures out that it’s a rename implicitly, so it doesn’t matter if you rename a file that way or with the mv command. The only real difference is that <code class="language-plaintext highlighter-rouge">git mv</code> is one command instead of three — it’s a convenience function. More importantly, you can use any tool you like to rename a file, and address the add/rm later, before you commit.</p>
+
+<h2 id="viewing-the-commit-history">Viewing the Commit History</h2>
+
+<p>After you have created several commits, or if you have cloned a repository with an existing commit history, you’ll probably want to look back to see what has happened.</p>
+
+<p>The most basic and powerful tool to do this is the <code class="language-plaintext highlighter-rouge">git log</code> command:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git log</code></pre></figure>
+
+<p>When you run <code class="language-plaintext highlighter-rouge">git log</code> in this project, you should get output that looks something like this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>commit cd08659e7891816b875a0996a0be3e66a7ad2e4f <span class="o">(</span>HEAD -&gt; main<span class="o">)</span>
+Author: dimasm93 &lt;software.dimas_m@icloud.com&gt;
+Date:   Sat Jul 23 14:04:58 2022 +0700
+
+    delete everything inside
+
+commit ee8c88cc1f8dcc092e1f39efb2a1af0419f850a4
+Author: dimasm93 &lt;software.dimas_m@icloud.com&gt;
+Date:   Sat Jul 23 14:04:02 2022 +0700
+
+    tracking new files
+
+commit c99c4562f072a6bc680e6300894206252ae4617d
+Author: dimasm93 &lt;software.dimas_m@icloud.com&gt;
+Date:   Sat Jul 23 13:59:32 2022 +0700
+
+    init project
+</code></pre></div></div>
+
+<p>By default, with no arguments, <code class="language-plaintext highlighter-rouge">git log</code> lists the commits made in that repository in reverse chronological order; that is, the most recent commits show up first. As you can see, this command lists each commit with its <code class="language-plaintext highlighter-rouge">SHA-1</code> checksum, the author’s name and email, the date written, and the commit message.</p>
+
+<p>A huge number and variety of options to the git log command are available to show you exactly what you’re looking for. Here, we’ll show you some of the most popular.</p>
+
+<p>One of the more helpful options is <code class="language-plaintext highlighter-rouge">-p</code> or <code class="language-plaintext highlighter-rouge">--patch</code>, which shows the difference (the patch output) introduced in each commit. You can also limit the number of log entries displayed, such as using <code class="language-plaintext highlighter-rouge">-2</code> to show only the last two entries.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git log <span class="nt">-p</span> <span class="nt">-2</span></code></pre></figure>
+
+<p>Jika di jalankan outputnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>commit cd08659e7891816b875a0996a0be3e66a7ad2e4f <span class="o">(</span>HEAD -&gt; main<span class="o">)</span>
+Author: dimasm93 &lt;software.dimas_m@icloud.com&gt;
+Date:   Sat Jul 23 14:04:58 2022 +0700
+
+    delete everything inside
+
+diff <span class="nt">--git</span> a/README.md b/README.md
+index c8df977..8b13789 100644
+<span class="nt">---</span> a/README.md
++++ b/README.md
+@@ <span class="nt">-1</span>,3 +1 @@
+<span class="nt">-Halo</span> saya sedang belajar git!
+
+<span class="nt">-Sekarang</span> saya sudah mulai paham dengan git <span class="nb">command
+
+</span>commit ee8c88cc1f8dcc092e1f39efb2a1af0419f850a4
+Author: dimasm93 &lt;software.dimas_m@icloud.com&gt;
+Date:   Sat Jul 23 14:04:02 2022 +0700
+
+    tracking new files
+
+diff <span class="nt">--git</span> a/README.md b/README.md
+index 4a622a3..c8df977 100644
+<span class="nt">---</span> a/README.md
++++ b/README.md
+@@ <span class="nt">-1</span> +1,3 @@
+ Halo saya sedang belajar git!
++
++Sekarang saya sudah mulai paham dengan git <span class="nb">command</span>
+</code></pre></div></div>
+
+<p>Another really useful option is <code class="language-plaintext highlighter-rouge">--oneline</code>. The oneline value for this option prints each commit on a single line, which is useful if you’re looking at a lot of commits. In addition, the short, full, and fuller values show the output in roughly the same format but with less or more information, respectively:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git log <span class="nt">--oneline</span></code></pre></figure>
+
+<p>Jika dijalankan hasilnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd08659 <span class="o">(</span>HEAD -&gt; main<span class="o">)</span> delete everything inside
+ee8c88c tracking new files
+c99c456 init project
+</code></pre></div></div>
+
+            </div>
+        </div>
+    </section>   
+</article>
+
+            </div>
+            
+        </div>
+        <div>
+            
+                <div>
+                    <ul class="collection with-header">
+                        <li class="collection-header">
+                            <h2>Referensi</h2>
+                        </li>
+                                               
+                            <a class="collection-item" href="https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository" target="_blank">https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository</a>
+                                               
+                            <a class="collection-item" href="https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository" target="_blank">https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository</a>
+                                               
+                            <a class="collection-item" href="https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History" target="_blank">https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History</a>
+                                               
+                            <a class="collection-item" href="https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things" target="_blank">https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things</a>
+                        
+                    </ul>                    
+                </div>
+            
+        </div>
+        <div id="paginate" class="center">
+            <ul class="pagination hide-on-small-only">
+                <!-- goto first page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/git/gitops/gitlab/00-silabus-gitlab" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman 1...">
+                        <i class="material-icons">fast_rewind</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto before page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/git/gitops/gitlab/01b-install-git-linux" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke artikel sebelumnya...">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+                                
+                
+                <!-- current page info -->
+                <li class="active">
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        7 to 7
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+                   
+                <!-- goto next page -->
+                
+                <li class="disabled">
+                    <a href="#!">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto last page -->
+                
+                <li>
+                    <a href="#!" class="disabled">
+                        <i class="material-icons">fast_forward</i>
+                    </a>
+                </li>
+                
+            </ul>
+            <br>
+        </div>
+        <div>
+            
+            <div id="disqus_thread"></div>
+            <script>
+
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                
+                var disqus_config = function () {
+                    this.page.url = 'https://youtube.dimas-maryanto.com/posts/git/gitops/gitlab/01c-basic-git-command';
+                    this.page.identifier = '/posts/git/gitops/gitlab/01c-basic-git-command';
+                    console.debug(this.page);
+                };
+                
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://materi-bootcamp.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            
+        </div>
+    </div>
+    <div id="floating-button-menu" class="fixed-action-btn click-to-toggle horizontal hide-on-large-only">
+        <a href="#" class="btn-floating btn-large waves-effect waves-light">
+            <i class="large material-icons">playlist_play</i>
+        </a>
+        <ul>
+            <!-- goto first page -->
+            
+            <li>
+                <a href="/posts/git/gitops/gitlab/00-silabus-gitlab" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman 1...">
+                    <i class="material-icons">fast_rewind</i>
+                </a>
+            </li>
+            
+            <!-- goto before page -->
+            
+            <li>
+                <a href="/posts/git/gitops/gitlab/01b-install-git-linux" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman sebelumnya">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+             
+
+            <!-- goto next page -->
+            
+            <li>
+                <a href="#!" class="tooltipped btn-floating yellow darken-1 waves-effect disabled">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+            
+
+            <!-- goto last page -->
+            
+            <li>
+                <a href="#!" class="tooltipped btn-floating yellow darken-1 waves-effect disabled">
+                    <i class="material-icons">fast_forward</i>
+                </a>
+            </li>
+               
+
+            <li>
+                <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                    <i class="large material-icons">toc</i>
+                </a>
+            </li>
+          </ul>
+    </div>
+</div>
+
+<ul id="slide-out-materi" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li> 
+    <li>
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collapsible with-header" data-collapsible="accordion">
+                <li class="collection-header">
+                    <div class="collapsible-header subheader">
+                        Daftar Materi
+                    </div>                    
+                </li>
+
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Pengenalan Git
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            7
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                        <span class="truncate">
+                                            1. Silabus GitOps - Gitlab: Pemula sampai Mahir
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/01-introduction-version-control">
+                                        <span class="truncate">
+                                            2. Pengenalan Version Control
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/01a-what-is-git">
+                                        <span class="truncate">
+                                            3. What is Git SCM
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/01b-install-git-mac">
+                                        <span class="truncate">
+                                            4. How to Install git on MacOS
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/01b-install-git-windows">
+                                        <span class="truncate">
+                                            5. How to Install git on Windows
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/01b-install-git-linux">
+                                        <span class="truncate">
+                                            6. How to Install git on Linux
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/git/gitops/gitlab/01c-basic-git-command">
+                                        <span class="truncate">
+                                            7. Getting started with git
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Gitlab SaaS
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Gitlab self-managed service
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Issues Tracker
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Release Management
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Gitlab CI/CD
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Gitlab Integration
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Gitlab Monitoring
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Gitlab Migration
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                               
+            </ul>
+        </div>
+    </li>
+    
+
+    
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</section>
+
+<section>
+    
+<footer class="page-footer blue lighten-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Tentang website</h5>
+                <div class="grey-text text-lighten-4">
+                    <p>Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.</p>
+                    <p>
+                        Donasi via:
+                        <ul>
+                            
+                            <ol>
+                                <a class="white-text" href="https://saweria.co/DimasMaryanto">
+                                    <i class="material-icons">star</i>
+                                    Saweria a/n Dimas Maryanto
+                                </a>
+                            </ol>
+                            
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <ul class="collection with-header">
+                    <li class="collection-header blue lighten-1">
+                        <i class="material-icons">account_box</i>
+                        <span class="white-text">Jangan Lupa follow aku ya guys!</span>
+                    </li>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://github.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-github"></i> Github
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.facebook.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.instagram.com/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue darken-3">
+        <div class="container">
+            Dimas Maryanto © 2023
+            <a class="grey-text text-lighten-4 right" href="https://pages.github.com/">
+                powered by Github Pages & Jekyll
+            </a>
+        </div>
+    </div>
+</footer>
+</section>
+
+</body>
+</html>

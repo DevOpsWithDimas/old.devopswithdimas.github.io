@@ -1,0 +1,2888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> DevOps with Dimas Maryanto - Distinct dengan HQL </title>
+    <meta name="description" content="Hai, di materi kali ini saya mau membahas tentang clause DISTINCT. clausa distinct sendiri pada dasarnya untuk meng-eliminasi nilai yang redudant. Nah jadi c...">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevOps with Dimas Maryanto" />
+    <meta property="og:description" content="Hai, di materi kali ini saya mau membahas tentang clause DISTINCT. clausa distinct sendiri pada dasarnya untuk meng-eliminasi nilai yang redudant. Nah jadi c..."
+/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/node_modules/materialize-css/dist/css/materialize.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/devicons/css/devicons.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/sintax.css" />
+
+<script src="/assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/assets/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="/assets/responsive-content.js"></script>
+<script src="/assets/list.min.js"></script>
+<script src="/assets/sintax.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $('.button-collapse').sideNav({
+            menuWidth: 370
+        });
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+    })
+</script>
+
+
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82058496-1');
+</script>
+
+<!-- Global - Google Adsense -->
+<script data-ad-client="ca-pub-3067429629551793" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82058496-1', 'auto');
+	ga('send', 'pageview', { 'page': location.pathname + location.search + location.hash});
+	ga('set', 'anonymizeIp', false);
+    </script>
+    <!-- End Google Analytics -->
+    </head>
+<body>
+<header>
+    
+
+<div class="navbar-fixed hide-on-med-and-down">
+    <nav class="blue darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons right">home</i>&nbsp;
+                <span>Materi Bootcamp</span>
+            </a>
+            <a href="#" data-activates="slide-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/archives/">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/courses.html">
+                        <i class="material-icons left">library_books</i> 
+                        <span>Cources</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/news.html">
+                        <i class="material-icons left">announcement</i> 
+                        <span>News</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/promo.html">
+                        <i class="material-icons left">grade</i> 
+                        <span>Promo</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/roadmap.html">
+                        <i class="material-icons left">assessment</i> 
+                        <span>ROADMAP</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="fixed-action-btn click-to-toggle hide-on-large-only">
+    <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+        <i class="large material-icons">menu</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    <li><a class="subheader">Daftar Kategori</a></li>
+<li class="no-padding">
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Java
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/core/001-silabus-java">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">42</span>
+                                Java Basic
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                JDBC with Postgresql
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/web/war/001-silabus-java-web">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">32</span>
+                                Java Web (Servlet & JSP)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">57</span>
+                                ORM dengan Hibernate
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/language/java/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">3</span>
+                                Java
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                JavaScript
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/web/js/001-silabus-js">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                Javascript
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Database
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">116</span>
+                                Oracle Database
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">39</span>
+                                PostgreSQL
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                DevOps
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">36</span>
+                                Kubernetes (k8s)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">7</span>
+                                Gitlab
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">2</span>
+                                Nutanix AHV
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/docker/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">113</span>
+                                Docker
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+</li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</header>
+
+<section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="postBody" class="row container post-body">
+    <div class="col s12 m12 l4 hide-on-med-and-down">
+        <div class="row">
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons blue-text">person</i> Penulis:
+                        <span>
+                            <span class="badge new" data-badge-caption="">
+                                <time datetime="2021-01-21T11:15:14+00:00" itemscope="datePublished">
+                                    21 January 2021
+                                </time>
+                            </span>
+                        </span>
+                    </li>
+                    
+                    
+                    
+                    <li class="collection-item avatar">
+                        <img src="/resources/avatars/dimasm93.png" alt="Dimas Maryanto" class="circle">
+                        <span class="title">Dimas Maryanto</span>
+                        <p>PT. Tabeldata Informatika</p>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">account_balance_wallet</i>
+                        Donasi via:
+                    </li>
+                          
+                    <li class="collection-item">
+                        <a href="https://saweria.co/DimasMaryanto" target="_blank">
+                            Saweria a/n Dimas Maryanto
+                        </a>
+                    </li>              
+                    
+                </ul>
+            </div>
+            <!-- edit this for multiple premium members -->
+            
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">lock_open</i>
+                        Join Premium Members:
+                    </li>
+                    
+                    <li class="collection-item">
+                        <a href="https://www.udemy.com/course/hibernate-orm-bahasa-indonesia/?referralCode=8DA27E06BF0BA6935CCC">
+                            Udemy.com
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            
+        </div>
+        <!-- 
+        
+        
+        <div class="row">
+            <ul class="collection with-header">
+                <li class="collection-item avatar">
+                    <img src="/resources/images/orm-hibernate.png" alt="" class="circle responsive-img">
+                    <span>Daftar materi
+                        <span class="badge new blue" data-badge-caption="materi">57</span>
+                    </span>
+                    
+                    <p class="title">
+                        ORM DENGAN HIBERNATE
+                    </p>
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                        1. Silabus Belajar JPA Hibernate
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/002-pengenalan-jpa-with-hibernate">
+                        2. Pengenalan ORM dengan Hibernate ...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/003-setup-development-environtment">
+                        3. Setup Development Environment
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/004-create-project-java-maven">
+                        4. Membuat project Hibernate ORM de...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/005-create-connection">
+                        5. Build Hibernate Session Factory
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/006-memahami-hibernate-cfg">
+                        6. Memahami fungsi hibernate.cfg.xml
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/007-membuat-simple-entity">
+                        7. Membuat Simple Entity di Hibernate
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/008-hibernate-annotation-basic">
+                        8. Basic Annotation pada Hibernate
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/009-crud-jpa-hibernate">
+                        9. CRUD menggunakan Hibernate
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/010-constraints">
+                        10. Macam-Macam Constraint di Hibernate
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/011-generator-value">
+                        11. Macam Macam Generator Value di H...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/012-composite-primary-key">
+                        12. Composite Primary Key
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/013-quis-1">
+                        13. Time is your practice
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/014-hibernate-mapping">
+                        14. Hibernate ORM Relationship Mapping
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/015-mapping-enumeration">
+                        15. Mapping Enum Ordinal & String
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/016-mapping-embedded">
+                        16. Embbeded Mapping
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/017-mapping-embedded-attribute-overrides">
+                        17. Embbeded Mapping dengan Override...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/021-mapping-one-to-one">
+                        18. OneToOne Mapping
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/022-mapping-one-to-many">
+                        19. OneToMany Mapping
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/023-mapping-many-to-one">
+                        20. ManyToOne Mapping
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/024-mapping-many-to-many">
+                        21. ManyToMany Mapping
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/025-inherintance-mapping">
+                        22. Macam-Macam Inherintance Mapping
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/025a-inherintace-mapped-superclass-mapping">
+                        23. Inherintance Mapping metode Mapp...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/025b-inherintace-single-table">
+                        24. Inherintance Mapping methode Sin...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/025c-inherintace-single-table-discriminator">
+                        25. Inherintance Mapping metode Sing...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/025d-inherintace-join-table">
+                        26. Inherintance Mapping metode Join...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/025e-inherintace-table-perclass">
+                        27. Inherintance Mapping metode Tabl...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/026-parent-child-mapping">
+                        28. Parent-Child Mapping
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/027-collections-mapping">
+                        29. Collections Mapping
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/027a-collections-as-a-value">
+                        30. Collections Mapping as a Value
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/027b-collections-as-a-value-types">
+                        31. Collections Mapping as a Value T...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/028-quis-2">
+                        32. Time is your Practice
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/029-hibernate-queries">
+                        33. Hibernate Query Language (HQL-JPQL)
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/029a-hql-select-statement">
+                        34. Select Statement dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/029b-hql-insert-update-delete-statement">
+                        35. Insert, Update dan Delete Statem...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/029c-hql-joins">
+                        36. Join Entity dengan Hibernate Que...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <div>
+                        <span class="badge" data-badge-caption="">
+                            <i class="material-icons">turned_in</i>
+                        </span>
+                        37. Distinct dengan HQL
+                    </div>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/029e-hql-aritmetic">
+                        38. Aritmatic dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/029f-hql-concatenation">
+                        39. Concatnation dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/029g-hql-aggregate-function">
+                        40. Aggregation Function dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/029h-hql-case-when-expresion">
+                        41. Case When dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/029i-hql-nullif-coalesce">
+                        42. Coalesce & NullIF menggunakan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/030-hql-predicates">
+                        43. Predicates / Conditional Express...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/030a-hql-predicate-relational-comparison">
+                        44. Relational Comparison Predicate ...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/030b-hql-predicate-nullness">
+                        45. Nullness Predicate dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/030c-hql-predicate-like">
+                        46. Predicate LIKE dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/030d-hql-predicate-between">
+                        47. Predicate BETWEEN dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/030e-hql-predicate-in">
+                        48. Predicate IN dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/030f-hql-predicate-empty-collections">
+                        49. Empty Collections Predicate deng...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/030g-hql-subquery-qualifiers">
+                        50. SubQuery Qualifiers dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/030h-hql-not-predicate">
+                        51. Not Predicate dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/030i-hql-combine-predicate">
+                        52. Combine Predicate dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/031-hql-group-by">
+                        53. Group By dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/032-hql-order-by">
+                        54. Order By dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/033-hql-limit-offset">
+                        55. LIMIT & OFFSET dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/034-read-only-entity">
+                        56. Read Only Entity dengan HQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/orm/hibernate/postgresql/035-quis-3">
+                        57. Time is your Practice
+                    </a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+         -->
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collapsible with-header" data-collapsible="accordion">
+                <li class="collection-header">
+                    <div class="collapsible-header">
+                        Daftar Materi
+                    </div>                    
+                </li>
+
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            1. Pengenalan ORM Hibernate
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            13
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                            <span class="truncate">1. Silabus Belajar JPA Hibernate</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/002-pengenalan-jpa-with-hibernate">
+                                            <span class="truncate">2. Pengenalan ORM dengan Hibernate Framework</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/003-setup-development-environtment">
+                                            <span class="truncate">3. Setup Development Environment</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/004-create-project-java-maven">
+                                            <span class="truncate">4. Membuat project Hibernate ORM dengan Apache Maven</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/005-create-connection">
+                                            <span class="truncate">5. Build Hibernate Session Factory</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/006-memahami-hibernate-cfg">
+                                            <span class="truncate">6. Memahami fungsi hibernate.cfg.xml</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/007-membuat-simple-entity">
+                                            <span class="truncate">7. Membuat Simple Entity di Hibernate</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/008-hibernate-annotation-basic">
+                                            <span class="truncate">8. Basic Annotation pada Hibernate</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/009-crud-jpa-hibernate">
+                                            <span class="truncate">9. CRUD menggunakan Hibernate</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/010-constraints">
+                                            <span class="truncate">10. Macam-Macam Constraint di Hibernate</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/011-generator-value">
+                                            <span class="truncate">11. Macam Macam Generator Value di Hibernate</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/012-composite-primary-key">
+                                            <span class="truncate">12. Composite Primary Key</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/013-quis-1">
+                                            <span class="truncate">13. Time is your practice</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            2. ORM Mappings
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            19
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/014-hibernate-mapping">
+                                            <span class="truncate">1. Hibernate ORM Relationship Mapping</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/015-mapping-enumeration">
+                                            <span class="truncate">2. Mapping Enum Ordinal & String</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/016-mapping-embedded">
+                                            <span class="truncate">3. Embbeded Mapping</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/017-mapping-embedded-attribute-overrides">
+                                            <span class="truncate">4. Embbeded Mapping dengan Override Attributes</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/021-mapping-one-to-one">
+                                            <span class="truncate">5. OneToOne Mapping</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/022-mapping-one-to-many">
+                                            <span class="truncate">6. OneToMany Mapping</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/023-mapping-many-to-one">
+                                            <span class="truncate">7. ManyToOne Mapping</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/024-mapping-many-to-many">
+                                            <span class="truncate">8. ManyToMany Mapping</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/025-inherintance-mapping">
+                                            <span class="truncate">9. Macam-Macam Inherintance Mapping</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/025a-inherintace-mapped-superclass-mapping">
+                                            <span class="truncate">10. Inherintance Mapping metode MappedSuperclass</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/025b-inherintace-single-table">
+                                            <span class="truncate">11. Inherintance Mapping methode Single Table</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/025c-inherintace-single-table-discriminator">
+                                            <span class="truncate">12. Inherintance Mapping metode Single Table menggunakan Descriminator column dan value</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/025d-inherintace-join-table">
+                                            <span class="truncate">13. Inherintance Mapping metode Join Table</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/025e-inherintace-table-perclass">
+                                            <span class="truncate">14. Inherintance Mapping metode Table Per Class</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/026-parent-child-mapping">
+                                            <span class="truncate">15. Parent-Child Mapping</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/027-collections-mapping">
+                                            <span class="truncate">16. Collections Mapping</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/027a-collections-as-a-value">
+                                            <span class="truncate">17. Collections Mapping as a Value</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/027b-collections-as-a-value-types">
+                                            <span class="truncate">18. Collections Mapping as a Value Types</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/028-quis-2">
+                                            <span class="truncate">19. Time is your Practice</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            3. Hibernete Query Language (HQL)
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            25
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029-hibernate-queries">
+                                            <span class="truncate">1. Hibernate Query Language (HQL-JPQL)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029a-hql-select-statement">
+                                            <span class="truncate">2. Select Statement dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029b-hql-insert-update-delete-statement">
+                                            <span class="truncate">3. Insert, Update dan Delete Statement dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029c-hql-joins">
+                                            <span class="truncate">4. Join Entity dengan Hibernate Query Language (HQL)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029d-hql-distinct">
+                                            <span class="truncate">5. Distinct dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029e-hql-aritmetic">
+                                            <span class="truncate">6. Aritmatic dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029f-hql-concatenation">
+                                            <span class="truncate">7. Concatnation dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029g-hql-aggregate-function">
+                                            <span class="truncate">8. Aggregation Function dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029h-hql-case-when-expresion">
+                                            <span class="truncate">9. Case When dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029i-hql-nullif-coalesce">
+                                            <span class="truncate">10. Coalesce & NullIF menggunakan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030-hql-predicates">
+                                            <span class="truncate">11. Predicates / Conditional Expressions dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030a-hql-predicate-relational-comparison">
+                                            <span class="truncate">12. Relational Comparison Predicate dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030b-hql-predicate-nullness">
+                                            <span class="truncate">13. Nullness Predicate dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030c-hql-predicate-like">
+                                            <span class="truncate">14. Predicate LIKE dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030d-hql-predicate-between">
+                                            <span class="truncate">15. Predicate BETWEEN dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030e-hql-predicate-in">
+                                            <span class="truncate">16. Predicate IN dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030f-hql-predicate-empty-collections">
+                                            <span class="truncate">17. Empty Collections Predicate dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030g-hql-subquery-qualifiers">
+                                            <span class="truncate">18. SubQuery Qualifiers dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030h-hql-not-predicate">
+                                            <span class="truncate">19. Not Predicate dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030i-hql-combine-predicate">
+                                            <span class="truncate">20. Combine Predicate dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/031-hql-group-by">
+                                            <span class="truncate">21. Group By dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/032-hql-order-by">
+                                            <span class="truncate">22. Order By dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/033-hql-limit-offset">
+                                            <span class="truncate">23. LIMIT & OFFSET dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/034-read-only-entity">
+                                            <span class="truncate">24. Read Only Entity dengan HQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/035-quis-3">
+                                            <span class="truncate">25. Time is your Practice</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            4. Hibernete Criteria API
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            5. Java Persistence Query Language (JPQL)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            6. Audit with Hibernete Envers
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            7. Caching
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                               
+            </ul>
+        </div>
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collection with-header">
+                <li class="collapsible-header">
+                    Lastest Posts
+                </li>
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                        <span class="badge">09 Apr 23</span>
+                        Working with Deployment object
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                        <span class="badge">26 Feb 23</span>
+                        Study cases: Microservice apps (...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/01-welcome-nutanix-class">
+                        <span class="badge">05 Feb 23</span>
+                        Welcome to the Nutanix HCF (Hybr...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                        <span class="badge">04 Feb 23</span>
+                        Silabus SRE - Nutanix AHV: Pemul...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                        <span class="badge">17 Jan 23</span>
+                        What is Workload Resources?
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                        <span class="badge">17 Jan 23</span>
+                        Overview Kubernetes Workloads re...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl">
+                        <span class="badge">15 Jan 23</span>
+                        Getting started with Transaction...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06-overview-concurrent-control">
+                        <span class="badge">14 Jan 23</span>
+                        Overview of Concurrency Control
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05g-quis-section-1">
+                        <span class="badge">14 Jan 23</span>
+                        Time your practice (part 3)
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05f-dml-cleanup">
+                        <span class="badge">08 Jan 23</span>
+                        Cleanup Data from Table
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    <div class="col s12 m12 l8">
+        <div id="paginate-top" class="right">
+            <ul class="pagination hide-on-small-only">
+                <!-- current page info -->
+                <li>
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        37 to 57
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+            </ul>
+            <br>
+        </div>
+        <div>            
+            <div>
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <section id="article-body">
+        <div class="center">
+            <h1>
+                Distinct dengan HQL
+            </h1>
+        </div>
+        <div>
+            <div class="post-content"
+                 style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: large">
+                <p>Hai, di materi kali ini saya mau membahas tentang clause <code class="language-plaintext highlighter-rouge">DISTINCT</code>. clausa distinct sendiri pada dasarnya untuk meng-eliminasi nilai yang redudant. Nah jadi clausa distinct ini di ORM Hibernate terdiri dari</p>
+
+<ol>
+  <li>Distinct with SQL Projections</li>
+  <li>Distinct with Entity queries</li>
+</ol>
+
+<!--more-->
+
+<h2 id="distinct-with-sql-projection">Distinct with SQL Projection</h2>
+
+<p>Untuk menggunakan perintah distinct dengan projection kita perlu menambahkan data dulu ke table <code class="language-plaintext highlighter-rouge">enumeration.employee_string</code> untuk melakukan pengecheckannya seperti berikut:</p>
+
+<p><img src="/resources/posts/orm-hibernate/orm-hibernate-29d/select-tables-projections.png" alt="select-table-distinct-projections" /></p>
+
+<p>Dan berikut adalah implementasi DAO untuk select distinct dengan projections query:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/e8d2abb5361e811860d6a462270f119b.js?file=HQLDistinctAsProjectionsDao.java"> </script>
+
+<p>Implementasi Unit Testing distinct dengan projections:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/e8d2abb5361e811860d6a462270f119b.js?file=TestHQLDistinctAsProjection.java"> </script>
+
+<p>Jika di running unit testingnya, maka hasilnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Jan 21, 2021 5:49:09 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+INFO: HHH000490: Using JtaPlatform implementation: <span class="o">[</span>org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Hibernate: 
+    <span class="k">select
+        </span>distinct employeeen0_.employee_status as col_0_0_ 
+    from
+        enumeration.employee_string employeeen0_
+<span class="o">[</span>main] INFO com.maryanto.dimas.bootcamp.test.query.hql.TestHQLDistinctAsProjection - data: <span class="o">[</span>ACTIVE, RESIGN, LEAVE]
+<span class="o">[</span>main] INFO com.maryanto.dimas.bootcamp.test.query.hql.TestHQLDistinctAsProjection - destroy hibernate session!
+</code></pre></div></div>
+
+<h2 id="distinct-with-entity-queries">Distinct with entity queries</h2>
+
+<p>Untuk menggunakan perintah distinct dengan entity queries, kita perlu menambahkan data dulu di table <code class="language-plaintext highlighter-rouge">mapping.kelas</code> dan <code class="language-plaintext highlighter-rouge">mapping.mahasiswa_manytoone</code> seperti berikut:</p>
+
+<p><img src="/resources/posts/orm-hibernate/orm-hibernate-29d/select-tables-entity.png" alt="select-table-distinct-entity" /></p>
+
+<p>Dan berikut adalah implementasi DAO distinct with entity queries:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/e8d2abb5361e811860d6a462270f119b.js?file=HQLDistinctAsEntityDao.java"> </script>
+
+<p>Implementasi Unit Testing distinct dengan entity queries:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/e8d2abb5361e811860d6a462270f119b.js?file=TestHQLDistinctAsEntity.java"> </script>
+
+<p>Jika di running unit testingnya, maka hasilnya seperti berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INFO: HHH000490: Using JtaPlatform implementation: <span class="o">[</span>org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Hibernate: 
+    <span class="k">select
+        </span>distinct kelasentit1_.id as id1_25_,
+        kelasentit1_.tahun_angkatan as tahun_an2_25_,
+        kelasentit1_.nama_kelas as nama_kel3_25_,
+        kelasentit1_.program_studi as program_4_25_ 
+    from
+        mapping.mahasiswa_manytoone mahasiswam0_ 
+    inner <span class="nb">join
+        </span>mapping.kelas kelasentit1_ 
+            on mahasiswam0_.kelas_id<span class="o">=</span>kelasentit1_.id
+<span class="o">[</span>main] INFO com.maryanto.dimas.bootcamp.test.query.hql.TestHQLDistinctAsEntity - data: <span class="o">[</span>KelasEntity<span class="o">(</span><span class="nb">id</span><span class="o">=</span>1, <span class="nv">nama</span><span class="o">=</span>SI-01, <span class="nv">angkatan</span><span class="o">=</span>2011, <span class="nv">programStudi</span><span class="o">=</span>IF<span class="o">)</span>, KelasEntity<span class="o">(</span><span class="nb">id</span><span class="o">=</span>3, <span class="nv">nama</span><span class="o">=</span>IF-01, <span class="nv">angkatan</span><span class="o">=</span>2011, <span class="nv">programStudi</span><span class="o">=</span>IF<span class="o">)</span>, KelasEntity<span class="o">(</span><span class="nb">id</span><span class="o">=</span>4, <span class="nv">nama</span><span class="o">=</span>IF-02, <span class="nv">angkatan</span><span class="o">=</span>2011, <span class="nv">programStudi</span><span class="o">=</span>IF<span class="o">)]</span>
+<span class="o">[</span>main] INFO com.maryanto.dimas.bootcamp.test.query.hql.TestHQLDistinctAsEntity - destroy hibernate session!
+</code></pre></div></div>
+
+            </div>
+        </div>
+    </section>   
+</article>
+
+            </div>
+            
+            <div>
+                <h3>
+                    Yuk simak juga videonya,
+                </h3>
+                <div class="video-container">
+    <iframe
+        src="https://www.youtube.com/embed/_hIkSJ2Z5C8"
+        width="700"
+        height="480"
+        frameborder="1"
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+    </iframe>
+</div>
+                <p>
+                    Dan jika temen-temen belajar hal baru kali ini jangan lupa buat <b>Like, Subcribe, dan Share ke temen kalian</b>. Terimakasih!!!
+
+                    <div class="g-ytsubscribe gray" data-channelid="UCNTS3BwsqzKwaOA0mOPLCgw" data-layout="full" data-theme="dark" data-count="default"></div>
+                </p>
+            </div>
+            
+        </div>
+        <div>
+            
+                <div>
+                    <ul class="collection with-header">
+                        <li class="collection-header">
+                            <h2>Referensi</h2>
+                        </li>
+                                               
+                            <a class="collection-item" href="https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html#hql" target="_blank">https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html#hql</a>
+                        
+                    </ul>                    
+                </div>
+            
+        </div>
+        <div id="paginate" class="center">
+            <ul class="pagination hide-on-small-only">
+                <!-- goto first page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman 1...">
+                        <i class="material-icons">fast_rewind</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto before page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/java/orm/hibernate/postgresql/029c-hql-joins" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke artikel sebelumnya...">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+                                
+                
+                <!-- current page info -->
+                <li class="active">
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        37 to 57
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+                   
+                <!-- goto next page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/java/orm/hibernate/postgresql/029e-hql-aritmetic" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Yuk lanjutin bacaanya...">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto last page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/java/orm/hibernate/postgresql/035-quis-3" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman terakhir...">
+                        <i class="material-icons">fast_forward</i>
+                    </a>
+                </li>
+                
+            </ul>
+            <br>
+        </div>
+        <div>
+            
+            <div id="disqus_thread"></div>
+            <script>
+
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                
+                var disqus_config = function () {
+                    this.page.url = 'https://youtube.dimas-maryanto.com/posts/java/orm/hibernate/postgresql/029d-hql-distinct';
+                    this.page.identifier = '/posts/java/orm/hibernate/postgresql/029d-hql-distinct';
+                    console.debug(this.page);
+                };
+                
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://materi-bootcamp.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            
+        </div>
+    </div>
+    <div id="floating-button-menu" class="fixed-action-btn click-to-toggle horizontal hide-on-large-only">
+        <a href="#" class="btn-floating btn-large waves-effect waves-light">
+            <i class="large material-icons">playlist_play</i>
+        </a>
+        <ul>
+            <!-- goto first page -->
+            
+            <li>
+                <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman 1...">
+                    <i class="material-icons">fast_rewind</i>
+                </a>
+            </li>
+            
+            <!-- goto before page -->
+            
+            <li>
+                <a href="/posts/java/orm/hibernate/postgresql/029c-hql-joins" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman sebelumnya">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+             
+
+            <!-- goto next page -->
+            
+            <li>
+                <a href="/posts/java/orm/hibernate/postgresql/029e-hql-aritmetic" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman selanjutnya">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+            
+
+            <!-- goto last page -->
+            
+            <li>
+                <a href="/posts/java/orm/hibernate/postgresql/035-quis-3" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman terakhir">
+                    <i class="material-icons">fast_forward</i>
+                </a>
+            </li>
+               
+
+            <li>
+                <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                    <i class="large material-icons">toc</i>
+                </a>
+            </li>
+          </ul>
+    </div>
+</div>
+
+<ul id="slide-out-materi" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li> 
+    <li>
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collapsible with-header" data-collapsible="accordion">
+                <li class="collection-header">
+                    <div class="collapsible-header subheader">
+                        Daftar Materi
+                    </div>                    
+                </li>
+
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Pengenalan ORM Hibernate
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            13
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                        <span class="truncate">
+                                            1. Silabus Belajar JPA Hibernate
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/002-pengenalan-jpa-with-hibernate">
+                                        <span class="truncate">
+                                            2. Pengenalan ORM dengan Hibernate Framework
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/003-setup-development-environtment">
+                                        <span class="truncate">
+                                            3. Setup Development Environment
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/004-create-project-java-maven">
+                                        <span class="truncate">
+                                            4. Membuat project Hibernate ORM dengan Apache Maven
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/005-create-connection">
+                                        <span class="truncate">
+                                            5. Build Hibernate Session Factory
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/006-memahami-hibernate-cfg">
+                                        <span class="truncate">
+                                            6. Memahami fungsi hibernate.cfg.xml
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/007-membuat-simple-entity">
+                                        <span class="truncate">
+                                            7. Membuat Simple Entity di Hibernate
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/008-hibernate-annotation-basic">
+                                        <span class="truncate">
+                                            8. Basic Annotation pada Hibernate
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/009-crud-jpa-hibernate">
+                                        <span class="truncate">
+                                            9. CRUD menggunakan Hibernate
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/010-constraints">
+                                        <span class="truncate">
+                                            10. Macam-Macam Constraint di Hibernate
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/011-generator-value">
+                                        <span class="truncate">
+                                            11. Macam Macam Generator Value di Hibernate
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/012-composite-primary-key">
+                                        <span class="truncate">
+                                            12. Composite Primary Key
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/013-quis-1">
+                                        <span class="truncate">
+                                            13. Time is your practice
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            ORM Mappings
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            19
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/014-hibernate-mapping">
+                                        <span class="truncate">
+                                            1. Hibernate ORM Relationship Mapping
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/015-mapping-enumeration">
+                                        <span class="truncate">
+                                            2. Mapping Enum Ordinal & String
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/016-mapping-embedded">
+                                        <span class="truncate">
+                                            3. Embbeded Mapping
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/017-mapping-embedded-attribute-overrides">
+                                        <span class="truncate">
+                                            4. Embbeded Mapping dengan Override Attributes
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/021-mapping-one-to-one">
+                                        <span class="truncate">
+                                            5. OneToOne Mapping
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/022-mapping-one-to-many">
+                                        <span class="truncate">
+                                            6. OneToMany Mapping
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/023-mapping-many-to-one">
+                                        <span class="truncate">
+                                            7. ManyToOne Mapping
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/024-mapping-many-to-many">
+                                        <span class="truncate">
+                                            8. ManyToMany Mapping
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/025-inherintance-mapping">
+                                        <span class="truncate">
+                                            9. Macam-Macam Inherintance Mapping
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/025a-inherintace-mapped-superclass-mapping">
+                                        <span class="truncate">
+                                            10. Inherintance Mapping metode MappedSuperclass
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/025b-inherintace-single-table">
+                                        <span class="truncate">
+                                            11. Inherintance Mapping methode Single Table
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/025c-inherintace-single-table-discriminator">
+                                        <span class="truncate">
+                                            12. Inherintance Mapping metode Single Table menggunakan Descriminator column dan value
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/025d-inherintace-join-table">
+                                        <span class="truncate">
+                                            13. Inherintance Mapping metode Join Table
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/025e-inherintace-table-perclass">
+                                        <span class="truncate">
+                                            14. Inherintance Mapping metode Table Per Class
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/026-parent-child-mapping">
+                                        <span class="truncate">
+                                            15. Parent-Child Mapping
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/027-collections-mapping">
+                                        <span class="truncate">
+                                            16. Collections Mapping
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/027a-collections-as-a-value">
+                                        <span class="truncate">
+                                            17. Collections Mapping as a Value
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/027b-collections-as-a-value-types">
+                                        <span class="truncate">
+                                            18. Collections Mapping as a Value Types
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/028-quis-2">
+                                        <span class="truncate">
+                                            19. Time is your Practice
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Hibernete Query Language (HQL)
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            25
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029-hibernate-queries">
+                                        <span class="truncate">
+                                            1. Hibernate Query Language (HQL-JPQL)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029a-hql-select-statement">
+                                        <span class="truncate">
+                                            2. Select Statement dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029b-hql-insert-update-delete-statement">
+                                        <span class="truncate">
+                                            3. Insert, Update dan Delete Statement dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029c-hql-joins">
+                                        <span class="truncate">
+                                            4. Join Entity dengan Hibernate Query Language (HQL)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029d-hql-distinct">
+                                        <span class="truncate">
+                                            5. Distinct dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029e-hql-aritmetic">
+                                        <span class="truncate">
+                                            6. Aritmatic dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029f-hql-concatenation">
+                                        <span class="truncate">
+                                            7. Concatnation dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029g-hql-aggregate-function">
+                                        <span class="truncate">
+                                            8. Aggregation Function dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029h-hql-case-when-expresion">
+                                        <span class="truncate">
+                                            9. Case When dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/029i-hql-nullif-coalesce">
+                                        <span class="truncate">
+                                            10. Coalesce & NullIF menggunakan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030-hql-predicates">
+                                        <span class="truncate">
+                                            11. Predicates / Conditional Expressions dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030a-hql-predicate-relational-comparison">
+                                        <span class="truncate">
+                                            12. Relational Comparison Predicate dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030b-hql-predicate-nullness">
+                                        <span class="truncate">
+                                            13. Nullness Predicate dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030c-hql-predicate-like">
+                                        <span class="truncate">
+                                            14. Predicate LIKE dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030d-hql-predicate-between">
+                                        <span class="truncate">
+                                            15. Predicate BETWEEN dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030e-hql-predicate-in">
+                                        <span class="truncate">
+                                            16. Predicate IN dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030f-hql-predicate-empty-collections">
+                                        <span class="truncate">
+                                            17. Empty Collections Predicate dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030g-hql-subquery-qualifiers">
+                                        <span class="truncate">
+                                            18. SubQuery Qualifiers dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030h-hql-not-predicate">
+                                        <span class="truncate">
+                                            19. Not Predicate dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/030i-hql-combine-predicate">
+                                        <span class="truncate">
+                                            20. Combine Predicate dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/031-hql-group-by">
+                                        <span class="truncate">
+                                            21. Group By dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/032-hql-order-by">
+                                        <span class="truncate">
+                                            22. Order By dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/033-hql-limit-offset">
+                                        <span class="truncate">
+                                            23. LIMIT & OFFSET dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/034-read-only-entity">
+                                        <span class="truncate">
+                                            24. Read Only Entity dengan HQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/java/orm/hibernate/postgresql/035-quis-3">
+                                        <span class="truncate">
+                                            25. Time is your Practice
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Hibernete Criteria API
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Java Persistence Query Language (JPQL)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Audit with Hibernete Envers
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Caching
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                               
+            </ul>
+        </div>
+    </li>
+    
+
+    
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</section>
+
+<section>
+    
+<footer class="page-footer blue lighten-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Tentang website</h5>
+                <div class="grey-text text-lighten-4">
+                    <p>Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.</p>
+                    <p>
+                        Donasi via:
+                        <ul>
+                            
+                            <ol>
+                                <a class="white-text" href="https://saweria.co/DimasMaryanto">
+                                    <i class="material-icons">star</i>
+                                    Saweria a/n Dimas Maryanto
+                                </a>
+                            </ol>
+                            
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <ul class="collection with-header">
+                    <li class="collection-header blue lighten-1">
+                        <i class="material-icons">account_box</i>
+                        <span class="white-text">Jangan Lupa follow aku ya guys!</span>
+                    </li>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://github.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-github"></i> Github
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.facebook.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.instagram.com/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue darken-3">
+        <div class="container">
+            Dimas Maryanto © 2023
+            <a class="grey-text text-lighten-4 right" href="https://pages.github.com/">
+                powered by Github Pages & Jekyll
+            </a>
+        </div>
+    </div>
+</footer>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> DevOps with Dimas Maryanto - Mengenal class java.sql.PreparedStatement </title>
+    <meta name="description" content="Hai, sebelumnya kita udah bisa mengambil data dengan menggunakan API class Statement sekarang kita bahas kaka-nya yaitu API class java.sql.PreparedStatement....">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevOps with Dimas Maryanto" />
+    <meta property="og:description" content="Hai, sebelumnya kita udah bisa mengambil data dengan menggunakan API class Statement sekarang kita bahas kaka-nya yaitu API class java.sql.PreparedStatement...."
+/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/node_modules/materialize-css/dist/css/materialize.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/devicons/css/devicons.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/sintax.css" />
+
+<script src="/assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/assets/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="/assets/responsive-content.js"></script>
+<script src="/assets/list.min.js"></script>
+<script src="/assets/sintax.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $('.button-collapse').sideNav({
+            menuWidth: 370
+        });
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+    })
+</script>
+
+
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82058496-1');
+</script>
+
+<!-- Global - Google Adsense -->
+<script data-ad-client="ca-pub-3067429629551793" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82058496-1', 'auto');
+	ga('send', 'pageview', { 'page': location.pathname + location.search + location.hash});
+	ga('set', 'anonymizeIp', false);
+    </script>
+    <!-- End Google Analytics -->
+    </head>
+<body>
+<header>
+    
+
+<div class="navbar-fixed hide-on-med-and-down">
+    <nav class="blue darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons right">home</i>&nbsp;
+                <span>Materi Bootcamp</span>
+            </a>
+            <a href="#" data-activates="slide-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/archives/">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/courses.html">
+                        <i class="material-icons left">library_books</i> 
+                        <span>Cources</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/news.html">
+                        <i class="material-icons left">announcement</i> 
+                        <span>News</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/promo.html">
+                        <i class="material-icons left">grade</i> 
+                        <span>Promo</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/roadmap.html">
+                        <i class="material-icons left">assessment</i> 
+                        <span>ROADMAP</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="fixed-action-btn click-to-toggle hide-on-large-only">
+    <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+        <i class="large material-icons">menu</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    <li><a class="subheader">Daftar Kategori</a></li>
+<li class="no-padding">
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Java
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/core/001-silabus-java">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">42</span>
+                                Java Basic
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                JDBC with Postgresql
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/web/war/001-silabus-java-web">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">32</span>
+                                Java Web (Servlet & JSP)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">57</span>
+                                ORM dengan Hibernate
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/language/java/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">3</span>
+                                Java
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                JavaScript
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/web/js/001-silabus-js">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                Javascript
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Database
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">116</span>
+                                Oracle Database
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">39</span>
+                                PostgreSQL
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                DevOps
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">36</span>
+                                Kubernetes (k8s)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">7</span>
+                                Gitlab
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">2</span>
+                                Nutanix AHV
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/docker/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">113</span>
+                                Docker
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+</li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</header>
+
+<section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="postBody" class="row container post-body">
+    <div class="col s12 m12 l4 hide-on-med-and-down">
+        <div class="row">
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons blue-text">person</i> Penulis:
+                        <span>
+                            <span class="badge new" data-badge-caption="">
+                                <time datetime="2020-04-20T12:56:20+00:00" itemscope="datePublished">
+                                    20 April 2020
+                                </time>
+                            </span>
+                        </span>
+                    </li>
+                    
+                    
+                    
+                    <li class="collection-item avatar">
+                        <img src="/resources/avatars/dimasm93.png" alt="Dimas Maryanto" class="circle">
+                        <span class="title">Dimas Maryanto</span>
+                        <p>PT. Tabeldata Informatika</p>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">account_balance_wallet</i>
+                        Donasi via:
+                    </li>
+                          
+                    <li class="collection-item">
+                        <a href="https://saweria.co/DimasMaryanto" target="_blank">
+                            Saweria a/n Dimas Maryanto
+                        </a>
+                    </li>              
+                    
+                </ul>
+            </div>
+            <!-- edit this for multiple premium members -->
+            
+            
+            
+        </div>
+        <!-- 
+        
+        
+        <div class="row">
+            <ul class="collection with-header">
+                <li class="collection-item avatar">
+                    <img src="/resources/images/java-jdbc-psql.png" alt="" class="circle responsive-img">
+                    <span>Daftar materi
+                        <span class="badge new blue" data-badge-caption="materi">12</span>
+                    </span>
+                    
+                    <p class="title">
+                        JDBC WITH POSTGRESQL
+                    </p>
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                        1. Silabus Belajar JDBC dengan Post...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/jdbc/postgresql/002-what-is-jdbc">
+                        2. What is Java Database Connectivity
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/jdbc/postgresql/003-setup-project-maven">
+                        3. Setup Project JDBC dengan Apache...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/jdbc/postgresql/004-create-connection">
+                        4. Membuat connection ke Database P...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/jdbc/postgresql/005-using-flyway">
+                        5. Using Database Versioning with f...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/jdbc/postgresql/006-statement">
+                        6. Mengenal class java.sql.Statement
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <div>
+                        <span class="badge" data-badge-caption="">
+                            <i class="material-icons">turned_in</i>
+                        </span>
+                        7. Mengenal class java.sql.Prepared...
+                    </div>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/jdbc/postgresql/008-execute-query-and-update">
+                        8. Perbedaan method executeQuery() ...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/jdbc/postgresql/009-resultset">
+                        9. Mengenal class ResultSet
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/jdbc/postgresql/010-transactional">
+                        10. Mengenal Transactional dengan JDBC
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/jdbc/postgresql/011-batch">
+                        11. Batch processing dengan JDBC
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/jdbc/postgresql/014-quis-section-1">
+                        12. Time is your to practice
+                    </a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+         -->
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collection with-header">
+                <li class="collapsible-header">
+                    Lastest Posts
+                </li>
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                        <span class="badge">09 Apr 23</span>
+                        Working with Deployment object
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                        <span class="badge">26 Feb 23</span>
+                        Study cases: Microservice apps (...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/01-welcome-nutanix-class">
+                        <span class="badge">05 Feb 23</span>
+                        Welcome to the Nutanix HCF (Hybr...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                        <span class="badge">04 Feb 23</span>
+                        Silabus SRE - Nutanix AHV: Pemul...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                        <span class="badge">17 Jan 23</span>
+                        What is Workload Resources?
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                        <span class="badge">17 Jan 23</span>
+                        Overview Kubernetes Workloads re...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl">
+                        <span class="badge">15 Jan 23</span>
+                        Getting started with Transaction...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06-overview-concurrent-control">
+                        <span class="badge">14 Jan 23</span>
+                        Overview of Concurrency Control
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05g-quis-section-1">
+                        <span class="badge">14 Jan 23</span>
+                        Time your practice (part 3)
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05f-dml-cleanup">
+                        <span class="badge">08 Jan 23</span>
+                        Cleanup Data from Table
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    <div class="col s12 m12 l8">
+        <div id="paginate-top" class="right">
+            <ul class="pagination hide-on-small-only">
+                <!-- current page info -->
+                <li>
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        7 to 12
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+            </ul>
+            <br>
+        </div>
+        <div>            
+            <div>
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <section id="article-body">
+        <div class="center">
+            <h1>
+                Mengenal class java.sql.PreparedStatement
+            </h1>
+        </div>
+        <div>
+            <div class="post-content"
+                 style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: large">
+                <p>Hai, <a href="">sebelumnya</a> kita udah bisa mengambil data dengan menggunakan API class <code class="language-plaintext highlighter-rouge">Statement</code> sekarang kita bahas kaka-nya yaitu API class <code class="language-plaintext highlighter-rouge">java.sql.PreparedStatement</code>. Penggunaan API <code class="language-plaintext highlighter-rouge">PreparedStatement</code> biasanya digunakan untuk melakukan Insert, Update, Delete, Find By id, atau query yang membutuhkan parameter.</p>
+
+<!--more-->
+
+<p>Ok sekarang kita lanjutkan membuat Data Access Object-nya dengan menggunakan API class <code class="language-plaintext highlighter-rouge">PreparedStatement</code>. Masih ingetkann kemarin kita udah membuat interface <code class="language-plaintext highlighter-rouge">CrudRepository</code> nah sekarang kita implement semua methodnya di class <code class="language-plaintext highlighter-rouge">ExampleTableDao</code> sebagai berikut:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+</pre></td><td class="code"><pre><span class="kn">package</span> <span class="nn">com.maryanto.dimas.bootcamp.dao</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.maryanto.dimas.bootcamp.entity.ExampleTable</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.sql.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Optional</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExampleTableDao</span> <span class="kd">implements</span> <span class="nc">CrudRepository</span><span class="o">&lt;</span><span class="nc">ExampleTable</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">Connection</span> <span class="n">connection</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">ExampleTableDao</span><span class="o">(</span><span class="nc">Connection</span> <span class="n">connection</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">connection</span> <span class="o">=</span> <span class="n">connection</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ExampleTable</span> <span class="nf">save</span><span class="o">(</span><span class="nc">ExampleTable</span> <span class="n">value</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="c1">//language=PostgreSQL</span>
+        <span class="nc">String</span> <span class="n">query</span> <span class="o">=</span> <span class="s">"insert into example_table (name, created_date, created_time, is_active, counter, currency, description, floating)\n"</span> <span class="o">+</span>
+                <span class="s">"values (?, ?, ?, ?, ?, ?, ?, ?)"</span><span class="o">;</span>
+        <span class="nc">PreparedStatement</span> <span class="n">preparedStatement</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">query</span><span class="o">,</span> <span class="nc">Statement</span><span class="o">.</span><span class="na">RETURN_GENERATED_KEYS</span><span class="o">);</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getCreatedDate</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setTimestamp</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getCreatedTime</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setBoolean</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getActive</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setLong</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getCounter</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setBigDecimal</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getCurrency</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getDescription</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setFloat</span><span class="o">(</span><span class="mi">8</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getFloating</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+        <span class="nc">ResultSet</span> <span class="n">generatedKeys</span> <span class="o">=</span> <span class="n">preparedStatement</span><span class="o">.</span><span class="na">getGeneratedKeys</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">generatedKeys</span><span class="o">.</span><span class="na">next</span><span class="o">())</span>
+            <span class="n">value</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">generatedKeys</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">ExampleTable</span> <span class="nf">update</span><span class="o">(</span><span class="nc">ExampleTable</span> <span class="n">value</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="c1">//language=PostgreSQL</span>
+        <span class="nc">String</span> <span class="n">query</span> <span class="o">=</span> <span class="s">"update example_table\n"</span> <span class="o">+</span>
+                <span class="s">"set name        = ?,\n"</span> <span class="o">+</span>
+                <span class="s">"    is_active   = ?,\n"</span> <span class="o">+</span>
+                <span class="s">"    counter     = ?,\n"</span> <span class="o">+</span>
+                <span class="s">"    currency    = ?,\n"</span> <span class="o">+</span>
+                <span class="s">"    description = ?,\n"</span> <span class="o">+</span>
+                <span class="s">"    floating    = ?\n"</span> <span class="o">+</span>
+                <span class="s">"where id = ?"</span><span class="o">;</span>
+        <span class="nc">PreparedStatement</span> <span class="n">preparedStatement</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">query</span><span class="o">);</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setBoolean</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getActive</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setLong</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getCounter</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setBigDecimal</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getCurrency</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getDescription</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setFloat</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getFloating</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">value</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Boolean</span> <span class="nf">removeById</span><span class="o">(</span><span class="nc">String</span> <span class="n">value</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="c1">//language=PostgreSQL</span>
+        <span class="nc">String</span> <span class="n">query</span> <span class="o">=</span> <span class="s">"delete from example_table where id = ?"</span><span class="o">;</span>
+        <span class="nc">PreparedStatement</span> <span class="n">preparedStatement</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">query</span><span class="o">);</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">ExampleTable</span><span class="o">&gt;</span> <span class="nf">findById</span><span class="o">(</span><span class="nc">String</span> <span class="n">value</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="c1">//language=PostgreSQL</span>
+        <span class="nc">String</span> <span class="n">query</span> <span class="o">=</span> <span class="s">"select id           as id,\n"</span> <span class="o">+</span>
+                <span class="s">"       name         as name,\n"</span> <span class="o">+</span>
+                <span class="s">"       created_date as createdDate,\n"</span> <span class="o">+</span>
+                <span class="s">"       created_time as createdTime,\n"</span> <span class="o">+</span>
+                <span class="s">"       is_active    as active,\n"</span> <span class="o">+</span>
+                <span class="s">"       counter      as counter,\n"</span> <span class="o">+</span>
+                <span class="s">"       currency     as currency,\n"</span> <span class="o">+</span>
+                <span class="s">"       description  as description,\n"</span> <span class="o">+</span>
+                <span class="s">"       floating     as floating\n"</span> <span class="o">+</span>
+                <span class="s">"from example_table\n"</span> <span class="o">+</span>
+                <span class="s">"where id = ?"</span><span class="o">;</span>
+        <span class="nc">PreparedStatement</span> <span class="n">preparedStatement</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">query</span><span class="o">);</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+        <span class="nc">ResultSet</span> <span class="n">resultSet</span> <span class="o">=</span> <span class="n">preparedStatement</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">resultSet</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">preparedStatement</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+            <span class="k">return</span> <span class="nc">Optional</span><span class="o">.</span><span class="na">empty</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="nc">ExampleTable</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ExampleTable</span><span class="o">(</span>
+                <span class="n">resultSet</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"id"</span><span class="o">),</span>
+                <span class="n">resultSet</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"name"</span><span class="o">),</span>
+                <span class="n">resultSet</span><span class="o">.</span><span class="na">getDate</span><span class="o">(</span><span class="s">"createdDate"</span><span class="o">),</span>
+                <span class="n">resultSet</span><span class="o">.</span><span class="na">getTimestamp</span><span class="o">(</span><span class="s">"createdTime"</span><span class="o">),</span>
+                <span class="n">resultSet</span><span class="o">.</span><span class="na">getObject</span><span class="o">(</span><span class="s">"active"</span><span class="o">,</span> <span class="nc">Boolean</span><span class="o">.</span><span class="na">class</span><span class="o">),</span>
+                <span class="n">resultSet</span><span class="o">.</span><span class="na">getLong</span><span class="o">(</span><span class="s">"counter"</span><span class="o">),</span>
+                <span class="n">resultSet</span><span class="o">.</span><span class="na">getBigDecimal</span><span class="o">(</span><span class="s">"currency"</span><span class="o">),</span>
+                <span class="n">resultSet</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"description"</span><span class="o">),</span>
+                <span class="n">resultSet</span><span class="o">.</span><span class="na">getFloat</span><span class="o">(</span><span class="s">"floating"</span><span class="o">)</span>
+        <span class="o">);</span>
+        <span class="n">resultSet</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="k">return</span> <span class="nc">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ExampleTable</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="c1">// method Statement sebelumnya</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ExampleTable</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">(</span><span class="nc">Long</span> <span class="n">start</span><span class="o">,</span> <span class="nc">Long</span> <span class="n">limit</span><span class="o">,</span> <span class="nc">Long</span> <span class="n">orderIndex</span><span class="o">,</span> <span class="nc">String</span> <span class="n">orderDirection</span><span class="o">,</span> <span class="nc">ExampleTable</span> <span class="n">param</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ExampleTable</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="c1">//language=PostgreSQL</span>
+        <span class="nc">String</span> <span class="n">baseQuery</span> <span class="o">=</span> <span class="s">"select id           as id,\n"</span> <span class="o">+</span>
+                <span class="s">"       name         as name,\n"</span> <span class="o">+</span>
+                <span class="s">"       created_date as createdDate,\n"</span> <span class="o">+</span>
+                <span class="s">"       created_time as createdTime,\n"</span> <span class="o">+</span>
+                <span class="s">"       is_active    as active,\n"</span> <span class="o">+</span>
+                <span class="s">"       counter      as counter,\n"</span> <span class="o">+</span>
+                <span class="s">"       currency     as currency,\n"</span> <span class="o">+</span>
+                <span class="s">"       description  as description,\n"</span> <span class="o">+</span>
+                <span class="s">"       floating     as floating\n"</span> <span class="o">+</span>
+                <span class="s">"from example_table\n"</span> <span class="o">+</span>
+                <span class="s">"where 1 = 1 \n"</span> <span class="o">+</span>
+                <span class="s">"limit ? offset ?"</span><span class="o">;</span>
+
+        <span class="nc">PreparedStatement</span> <span class="n">preparedStatement</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">baseQuery</span><span class="o">);</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setLong</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">limit</span><span class="o">);</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">setLong</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">start</span><span class="o">);</span>
+
+        <span class="nc">ResultSet</span> <span class="n">resultSet</span> <span class="o">=</span> <span class="n">preparedStatement</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">resultSet</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">ExampleTable</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ExampleTable</span><span class="o">(</span>
+                    <span class="n">resultSet</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"id"</span><span class="o">),</span>
+                    <span class="n">resultSet</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"name"</span><span class="o">),</span>
+                    <span class="n">resultSet</span><span class="o">.</span><span class="na">getDate</span><span class="o">(</span><span class="s">"createdDate"</span><span class="o">),</span>
+                    <span class="n">resultSet</span><span class="o">.</span><span class="na">getTimestamp</span><span class="o">(</span><span class="s">"createdTime"</span><span class="o">),</span>
+                    <span class="n">resultSet</span><span class="o">.</span><span class="na">getObject</span><span class="o">(</span><span class="s">"active"</span><span class="o">,</span> <span class="nc">Boolean</span><span class="o">.</span><span class="na">class</span><span class="o">),</span>
+                    <span class="n">resultSet</span><span class="o">.</span><span class="na">getLong</span><span class="o">(</span><span class="s">"counter"</span><span class="o">),</span>
+                    <span class="n">resultSet</span><span class="o">.</span><span class="na">getBigDecimal</span><span class="o">(</span><span class="s">"currency"</span><span class="o">),</span>
+                    <span class="n">resultSet</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"description"</span><span class="o">),</span>
+                    <span class="n">resultSet</span><span class="o">.</span><span class="na">getFloat</span><span class="o">(</span><span class="s">"floating"</span><span class="o">)</span>
+            <span class="o">);</span>
+            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">resultSet</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">preparedStatement</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Ok setelah itu kita tambahkan unit test case untuk melakukan test terhadap method yang telah kita buat diatas, seperti berikut:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+</pre></td><td class="code"><pre><span class="kn">package</span> <span class="nn">com.maryanto.dimas.bootcamp</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.maryanto.dimas.bootcamp.config.DatasourceConfig</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.maryanto.dimas.bootcamp.dao.ExampleTableDao</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.maryanto.dimas.bootcamp.entity.ExampleTable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">junit.framework.TestCase</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.extern.slf4j.Slf4j</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.sql.DataSource</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.math.BigDecimal</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.Date</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.Timestamp</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.time.LocalDate</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.time.LocalDateTime</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Optional</span><span class="o">;</span>
+
+<span class="nd">@Slf4j</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestIntegrationExampleTable</span> <span class="kd">extends</span> <span class="nc">TestCase</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">DataSource</span> <span class="n">dataSource</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">ExampleTableDao</span> <span class="n">dao</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">dataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DatasourceConfig</span><span class="o">().</span><span class="na">getDataSource</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testFindById</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">(</span><span class="nc">Connection</span> <span class="n">connection</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">dataSource</span><span class="o">.</span><span class="na">getConnection</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ExampleTableDao</span><span class="o">(</span><span class="n">connection</span><span class="o">);</span>
+
+            <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">ExampleTable</span><span class="o">&gt;</span> <span class="n">existId</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">dao</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="s">"001"</span><span class="o">);</span>
+            <span class="n">assertTrue</span><span class="o">(</span><span class="s">"find by id 001 data exist"</span><span class="o">,</span> <span class="n">existId</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+            <span class="nc">ExampleTable</span> <span class="n">id001</span> <span class="o">=</span> <span class="n">existId</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+            <span class="n">assertEquals</span><span class="o">(</span><span class="s">"name with id 001 is Dimas Maryanto actualy"</span><span class="o">,</span>
+                    <span class="n">id001</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span>
+                    <span class="s">"Dimas Maryanto"</span><span class="o">);</span>
+
+            <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">ExampleTable</span><span class="o">&gt;</span> <span class="n">notExistId</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">dao</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="s">"006"</span><span class="o">);</span>
+            <span class="n">assertFalse</span><span class="o">(</span><span class="s">"find by id 006 data not exist actualy"</span><span class="o">,</span> <span class="n">notExistId</span><span class="o">.</span><span class="na">isPresent</span><span class="o">());</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"can't fetch data"</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testPagingList</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">(</span><span class="nc">Connection</span> <span class="n">connection</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">dataSource</span><span class="o">.</span><span class="na">getConnection</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ExampleTableDao</span><span class="o">(</span><span class="n">connection</span><span class="o">);</span>
+
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ExampleTable</span><span class="o">&gt;</span> <span class="n">showMoreThanStored</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">dao</span><span class="o">.</span><span class="na">findAll</span><span class="o">(</span><span class="mi">0</span><span class="n">l</span><span class="o">,</span> <span class="mi">10</span><span class="n">l</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+            <span class="n">assertEquals</span><span class="o">(</span><span class="s">"jumlah data example table when limit 10 and offset 0"</span><span class="o">,</span> <span class="n">showMoreThanStored</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">5</span><span class="o">);</span>
+
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ExampleTable</span><span class="o">&gt;</span> <span class="n">showOnly3</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">dao</span><span class="o">.</span><span class="na">findAll</span><span class="o">(</span><span class="mi">0</span><span class="n">l</span><span class="o">,</span> <span class="mi">3</span><span class="n">l</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+            <span class="n">assertEquals</span><span class="o">(</span><span class="s">"jumlah data example table when limit 3 and offset 0"</span><span class="o">,</span> <span class="n">showOnly3</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">3</span><span class="o">);</span>
+
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ExampleTable</span><span class="o">&gt;</span> <span class="n">showOnly2</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">dao</span><span class="o">.</span><span class="na">findAll</span><span class="o">(</span><span class="mi">3</span><span class="n">l</span><span class="o">,</span> <span class="mi">3</span><span class="n">l</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+            <span class="n">assertEquals</span><span class="o">(</span><span class="s">"jumlah data example table when limit 3 and offset 3"</span><span class="o">,</span> <span class="n">showOnly2</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"can't fetch data"</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSavingData</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">(</span><span class="nc">Connection</span> <span class="n">connection</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">dataSource</span><span class="o">.</span><span class="na">getConnection</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ExampleTableDao</span><span class="o">(</span><span class="n">connection</span><span class="o">);</span>
+            <span class="nc">ExampleTable</span> <span class="n">returnValue</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">dao</span><span class="o">.</span><span class="na">save</span><span class="o">(</span>
+                    <span class="k">new</span> <span class="nf">ExampleTable</span><span class="o">(</span>
+                            <span class="kc">null</span><span class="o">,</span>
+                            <span class="s">"Muhamad Purwadi"</span><span class="o">,</span>
+                            <span class="nc">Date</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="nc">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">()),</span>
+                            <span class="nc">Timestamp</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="nc">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">()),</span>
+                            <span class="kc">true</span><span class="o">,</span>
+                            <span class="mi">0</span><span class="n">l</span><span class="o">,</span> <span class="k">new</span>
+                            <span class="nc">BigDecimal</span><span class="o">(</span><span class="mi">100000</span><span class="o">),</span>
+                            <span class="s">"test data"</span><span class="o">,</span>
+                            <span class="mi">0</span><span class="n">f</span><span class="o">)</span>
+            <span class="o">);</span>
+            <span class="n">assertNotNull</span><span class="o">(</span><span class="s">"employee id not null"</span><span class="o">,</span> <span class="n">returnValue</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"employee: {}"</span><span class="o">,</span> <span class="n">returnValue</span><span class="o">);</span>
+
+            <span class="k">this</span><span class="o">.</span><span class="na">dao</span><span class="o">.</span><span class="na">removeById</span><span class="o">(</span><span class="n">returnValue</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ExampleTable</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">dao</span><span class="o">.</span><span class="na">findAll</span><span class="o">();</span>
+            <span class="n">assertEquals</span><span class="o">(</span><span class="s">"jumlah data example table"</span><span class="o">,</span> <span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">5</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"can't fetch data"</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Kemudian kita jalankan kembali unit testnya dengan perintah berikut:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn clean compile <span class="nb">test</span>
+</code></pre></div></div>
+
+<p>berikut hasilnya:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-------------------------------------------------------</span>
+ T E S T S
+<span class="nt">-------------------------------------------------------</span>
+Running com.maryanto.dimas.bootcamp.TestConnection
+<span class="o">[</span>main] INFO com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+<span class="o">[</span>main] INFO com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+<span class="o">[</span>main] INFO com.maryanto.dimas.bootcamp.TestConnection - status connected
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.375 sec
+Running com.maryanto.dimas.bootcamp.TestIntegrationExampleTable
+<span class="o">[</span>main] INFO com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+<span class="o">[</span>main] INFO com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+<span class="o">[</span>main] INFO com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+<span class="o">[</span>main] INFO com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+<span class="o">[</span>main] INFO com.maryanto.dimas.bootcamp.TestIntegrationExampleTable - employee: ExampleTable<span class="o">(</span><span class="nb">id</span><span class="o">=</span>97aadfe6-dac1-4084-9128-785e02177669, <span class="nv">name</span><span class="o">=</span>Muhamad Purwadi, <span class="nv">createdDate</span><span class="o">=</span>2020-04-20, <span class="nv">createdTime</span><span class="o">=</span>2020-04-20 19:54:31.349, <span class="nv">active</span><span class="o">=</span><span class="nb">true</span>, <span class="nv">counter</span><span class="o">=</span>0, <span class="nv">currency</span><span class="o">=</span>100000, <span class="nv">description</span><span class="o">=</span><span class="nb">test </span>data, <span class="nv">floating</span><span class="o">=</span>0.0<span class="o">)</span>
+<span class="o">[</span>main] INFO com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+<span class="o">[</span>main] INFO com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.289 sec
+
+Results :
+
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+
+<span class="o">[</span>INFO] <span class="nt">------------------------------------------------------------------------</span>
+<span class="o">[</span>INFO] BUILD SUCCESS
+<span class="o">[</span>INFO] <span class="nt">------------------------------------------------------------------------</span>
+<span class="o">[</span>INFO] Total <span class="nb">time</span>:  5.429 s
+<span class="o">[</span>INFO] Finished at: 2020-04-20T19:54:31+07:00
+<span class="o">[</span>INFO] <span class="nt">------------------------------------------------------------------------</span>
+</code></pre></div></div>
+
+<p>Jika temen-temen perhatikan API class <code class="language-plaintext highlighter-rouge">PreparedStatement</code> apa perbedaanya dengan API class <code class="language-plaintext highlighter-rouge">Statement</code>?…. ya berikut jawabannya:</p>
+
+<ol>
+  <li>PreparedStatement menunjukan bahwa value yang kita inject tidak di hardcode dalam query</li>
+  <li>PreparedStatement perlu di compile dulu oleh JDBC sehingga terhindar dari serangan SQL Injection.</li>
+  <li>PreparedStatement lebih mudah di maintanance, karena lebih mudah di baca</li>
+  <li>Dan masih ada beberapa kelebihan lain.</li>
+</ol>
+
+<p>Summary</p>
+
+<p>Munkin temen-temen yang pemula / awam bingung, pertanyaan-nya kapan kita menggunakan <code class="language-plaintext highlighter-rouge">PreparedStatement</code> atau <code class="language-plaintext highlighter-rouge">Statement</code> jawabanya <code class="language-plaintext highlighter-rouge">Depands on problem you want to solve</code> mau pake API Statement silahkan mau pake API PreparedStatement silahkan.</p>
+
+            </div>
+        </div>
+    </section>   
+</article>
+
+            </div>
+            
+            <div>
+                <h3>
+                    Yuk simak juga videonya,
+                </h3>
+                <div class="video-container">
+    <iframe
+        src="https://www.youtube.com/embed/QPo5D_XaK5Y"
+        width="700"
+        height="480"
+        frameborder="1"
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+    </iframe>
+</div>
+                <p>
+                    Dan jika temen-temen belajar hal baru kali ini jangan lupa buat <b>Like, Subcribe, dan Share ke temen kalian</b>. Terimakasih!!!
+
+                    <div class="g-ytsubscribe gray" data-channelid="UCNTS3BwsqzKwaOA0mOPLCgw" data-layout="full" data-theme="dark" data-count="default"></div>
+                </p>
+            </div>
+            
+        </div>
+        <div>
+            
+                <div>
+                    <ul class="collection with-header">
+                        <li class="collection-header">
+                            <h2>Referensi</h2>
+                        </li>
+                                               
+                            <a class="collection-item" href="https://github.com/dimMaryanto93/jdbc-psql-example" target="_blank">https://github.com/dimMaryanto93/jdbc-psql-example</a>
+                                               
+                            <a class="collection-item" href="https://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html" target="_blank">https://docs.oracle.com/javase/7/docs/api/java/sql/PreparedStatement.html</a>
+                        
+                    </ul>                    
+                </div>
+            
+        </div>
+        <div id="paginate" class="center">
+            <ul class="pagination hide-on-small-only">
+                <!-- goto first page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman 1...">
+                        <i class="material-icons">fast_rewind</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto before page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/java/jdbc/postgresql/006-statement" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke artikel sebelumnya...">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+                                
+                
+                <!-- current page info -->
+                <li class="active">
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        7 to 12
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+                   
+                <!-- goto next page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/java/jdbc/postgresql/008-execute-query-and-update" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Yuk lanjutin bacaanya...">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto last page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/java/jdbc/postgresql/014-quis-section-1" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman terakhir...">
+                        <i class="material-icons">fast_forward</i>
+                    </a>
+                </li>
+                
+            </ul>
+            <br>
+        </div>
+        <div>
+            
+            <div id="disqus_thread"></div>
+            <script>
+
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                
+                var disqus_config = function () {
+                    this.page.url = 'https://youtube.dimas-maryanto.com/posts/java/jdbc/postgresql/007-prepared-statement';
+                    this.page.identifier = '/posts/java/jdbc/postgresql/007-prepared-statement';
+                    console.debug(this.page);
+                };
+                
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://materi-bootcamp.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            
+        </div>
+    </div>
+    <div id="floating-button-menu" class="fixed-action-btn click-to-toggle horizontal hide-on-large-only">
+        <a href="#" class="btn-floating btn-large waves-effect waves-light">
+            <i class="large material-icons">playlist_play</i>
+        </a>
+        <ul>
+            <!-- goto first page -->
+            
+            <li>
+                <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman 1...">
+                    <i class="material-icons">fast_rewind</i>
+                </a>
+            </li>
+            
+            <!-- goto before page -->
+            
+            <li>
+                <a href="/posts/java/jdbc/postgresql/006-statement" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman sebelumnya">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+             
+
+            <!-- goto next page -->
+            
+            <li>
+                <a href="/posts/java/jdbc/postgresql/008-execute-query-and-update" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman selanjutnya">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+            
+
+            <!-- goto last page -->
+            
+            <li>
+                <a href="/posts/java/jdbc/postgresql/014-quis-section-1" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman terakhir">
+                    <i class="material-icons">fast_forward</i>
+                </a>
+            </li>
+               
+
+            <li>
+                <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                    <i class="large material-icons">toc</i>
+                </a>
+            </li>
+          </ul>
+    </div>
+</div>
+
+<ul id="slide-out-materi" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    
+            
+        
+            <li>
+                <div class="divider"></div>
+            </li>        
+            <li>
+                <a class="subheader">Daftar Materi</a>
+            </li>
+
+            
+            <li>
+                    
+                
+                <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                    <span class="truncate">
+                        1. Silabus Belajar JDBC dengan PostgreSQL Database
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/jdbc/postgresql/002-what-is-jdbc">
+                    <span class="truncate">
+                        2. What is Java Database Connectivity
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/jdbc/postgresql/003-setup-project-maven">
+                    <span class="truncate">
+                        3. Setup Project JDBC dengan Apache Maven
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/jdbc/postgresql/004-create-connection">
+                    <span class="truncate">
+                        4. Membuat connection ke Database PostgreSQL via JDBC
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/jdbc/postgresql/005-using-flyway">
+                    <span class="truncate">
+                        5. Using Database Versioning with flyway
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/jdbc/postgresql/006-statement">
+                    <span class="truncate">
+                        6. Mengenal class java.sql.Statement
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                      
+                <a class="subheader">
+                    <span class="badge" data-badge-caption="">
+                        <i class="material-icons">turned_in</i>
+                    </span>    
+                    <span class="truncate">
+                        7. Mengenal class java.sql.PreparedStatement
+                    </span>            
+                </a>            
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/jdbc/postgresql/008-execute-query-and-update">
+                    <span class="truncate">
+                        8. Perbedaan method executeQuery() dan executeUpdate()
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/jdbc/postgresql/009-resultset">
+                    <span class="truncate">
+                        9. Mengenal class ResultSet
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/jdbc/postgresql/010-transactional">
+                    <span class="truncate">
+                        10. Mengenal Transactional dengan JDBC
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/jdbc/postgresql/011-batch">
+                    <span class="truncate">
+                        11. Batch processing dengan JDBC
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/jdbc/postgresql/014-quis-section-1">
+                    <span class="truncate">
+                        12. Time is your to practice
+                    </span>
+                </a>
+                
+            </li>
+            
+           
+    
+
+    
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</section>
+
+<section>
+    
+<footer class="page-footer blue lighten-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Tentang website</h5>
+                <div class="grey-text text-lighten-4">
+                    <p>Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.</p>
+                    <p>
+                        Donasi via:
+                        <ul>
+                            
+                            <ol>
+                                <a class="white-text" href="https://saweria.co/DimasMaryanto">
+                                    <i class="material-icons">star</i>
+                                    Saweria a/n Dimas Maryanto
+                                </a>
+                            </ol>
+                            
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <ul class="collection with-header">
+                    <li class="collection-header blue lighten-1">
+                        <i class="material-icons">account_box</i>
+                        <span class="white-text">Jangan Lupa follow aku ya guys!</span>
+                    </li>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://github.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-github"></i> Github
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.facebook.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.instagram.com/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue darken-3">
+        <div class="container">
+            Dimas Maryanto © 2023
+            <a class="grey-text text-lighten-4 right" href="https://pages.github.com/">
+                powered by Github Pages & Jekyll
+            </a>
+        </div>
+    </div>
+</footer>
+</section>
+
+</body>
+</html>

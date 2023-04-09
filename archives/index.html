@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> DevOps with Dimas Maryanto - Archives </title>
+    <meta name="description" content="Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevOps with Dimas Maryanto" />
+    <meta property="og:description" content="Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS."
+/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/node_modules/materialize-css/dist/css/materialize.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/devicons/css/devicons.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/sintax.css" />
+
+<script src="/assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/assets/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="/assets/responsive-content.js"></script>
+<script src="/assets/list.min.js"></script>
+<script src="/assets/sintax.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $('.button-collapse').sideNav({
+            menuWidth: 370
+        });
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+    })
+</script>
+
+
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82058496-1');
+</script>
+
+<!-- Global - Google Adsense -->
+<script data-ad-client="ca-pub-3067429629551793" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82058496-1', 'auto');
+	ga('send', 'pageview', { 'page': location.pathname + location.search + location.hash});
+	ga('set', 'anonymizeIp', false);
+    </script>
+    <!-- End Google Analytics -->
+    </head>
+<body>
+<header>
+    
+
+<div class="navbar-fixed hide-on-med-and-down">
+    <nav class="blue darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons right">home</i>&nbsp;
+                <span>Materi Bootcamp</span>
+            </a>
+            <a href="#" data-activates="slide-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/archives/">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/courses.html">
+                        <i class="material-icons left">library_books</i> 
+                        <span>Cources</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/news.html">
+                        <i class="material-icons left">announcement</i> 
+                        <span>News</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/promo.html">
+                        <i class="material-icons left">grade</i> 
+                        <span>Promo</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/roadmap.html">
+                        <i class="material-icons left">assessment</i> 
+                        <span>ROADMAP</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="fixed-action-btn click-to-toggle hide-on-large-only">
+    <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+        <i class="large material-icons">menu</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    <li><a class="subheader">Daftar Kategori</a></li>
+<li class="no-padding">
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Java
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/core/001-silabus-java">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">42</span>
+                                Java Basic
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                JDBC with Postgresql
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/web/war/001-silabus-java-web">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">32</span>
+                                Java Web (Servlet & JSP)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">57</span>
+                                ORM dengan Hibernate
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/language/java/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">3</span>
+                                Java
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                JavaScript
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/web/js/001-silabus-js">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                Javascript
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Database
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">116</span>
+                                Oracle Database
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">39</span>
+                                PostgreSQL
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                DevOps
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">36</span>
+                                Kubernetes (k8s)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">7</span>
+                                Gitlab
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">2</span>
+                                Nutanix AHV
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/docker/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">113</span>
+                                Docker
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+</li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</header>
+
+<section>
+    <div class="parallax-container">
+    <div class="parallax"><img src="/resources/pictures/big-art.png">
+    </div>
+</div>
+
+<div class="section white">
+    <div class="row container">
+        <h2 class="header">
+            Articles
+            <span class="new badge" data-badge-caption="Articles">474</span>
+            <span class="new badge" data-badge-caption="Pages">19</span>
+        </h2>
+        <p class="grey-text text-darken-3 lighten-3"></p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div id="archive-body" class="container">
+        <div class="col m12">
+            <!-- Pagination links -->
+            <div class="pagination right-align">
+                
+                <span class="previous">Latest</span>
+                
+                <span class="page_number ">
+                    Page: 1 of 19
+                </span>
+                
+                <a href="/archives/page/2/" class="next">Previous</a>
+                
+            </div>
+
+            <ul class="collection">
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/k8s.png"
+                        alt="k8s" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Sunday,
+                        9/Apr/2023</span>
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                        <span class="title">Working with Deployment object</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#devops</div>
+                        
+                        <div class="chip small">#orchestration</div>
+                        
+                        <div class="chip small">#kubernetes</div>
+                        
+                        <div class="chip small">#workloads</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, materi sebelumnya kita sudah mencoba menggunakan Kubernetes workload resources dengan Object Deployment yang paling simple. Sekarang kita akan membahas yang lebih detail tentang Object Deployment. Karena pembahasan kali ini lumayan panjang jadi kita bagi2 jadi beberapa bagian diantaranya:</p>
+
+<ol>
+  <li>What is Deployment Object?</li>
+  <li>Create a Deployment</li>
+  <li>Interaction with Deployment object</li>
+</ol>
+
+<p>Okay tanpa berlama-lama yuk langsung aja kita bahas materi yang pertama:</p>
+
+<br>
+                        <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/k8s.png"
+                        alt="k8s" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Sunday,
+                        26/Feb/2023</span>
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                        <span class="title">Study cases: Microservice apps (Springboot Rest API)</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#devops</div>
+                        
+                        <div class="chip small">#orchestration</div>
+                        
+                        <div class="chip small">#kubernetes</div>
+                        
+                        <div class="chip small">#pods</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, di materi study cases untuk Pod and Container specification kali ini adalah lanjutan dari sebelumnya yang lebih advanced lagi yaitu Create and build microservices dengan framework Springboot Rest API dengan architecture seperti berikut:</p>
+
+<p><img src="/resources/posts/kubernetes/04b-study-cases-microservice-apps/microservice-architecture.png" alt="architecture-deploy" /></p>
+
+<p>Okay nah terlihat sedikit berbeda dengan application monolith sebelumnya, disini setiap service akan saling berkomunikasi dengan menggunakan protocol yang lightweight (ringan) seperti Rest API, grpc, messaging bus, database shared dan lain-lain. Pada study kasus kali ini terlihat pada diagram tersebut masih menggunakan physical / virtual-machine deployement kita akan migrasikan menggunakan orchestration container system dengan Kubernetes. Adapun tahap-tahap yang perlu kita lakukan yaitu</p>
+
+<ol>
+  <li>Develop aplikasi</li>
+  <li>How code works (Code Review)</li>
+  <li>The new architecture for orchestration container system</li>
+  <li>Containerize apps</li>
+  <li>Deploy to Kubernetes
+    <ol>
+      <li>Running as a Pod with namespace</li>
+      <li>Connecting other service from the another namespace</li>
+      <li>Specify container probes (health check)</li>
+      <li>Specify resource request and limit</li>
+    </ol>
+  </li>
+  <li>Implement API Gateway using nginx reverse proxy</li>
+</ol>
+
+<p>Ok tanpa berlama-lama yuk langsung aja kita bahas materi yang pertama:</p>
+
+<br>
+                        <a href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/nutanix-ahv.png"
+                        alt="nutanix-ahv" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Sunday,
+                        5/Feb/2023</span>
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/01-welcome-nutanix-class">
+                        <span class="title">Welcome to the Nutanix HCF (Hybrid Cloud Fundamental)</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#cloud-computing</div>
+                        
+                        <div class="chip small">#hyper-converged-infrastructure</div>
+                        
+                        <div class="chip small">#nutanix</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, selamat datang di kelas ‘SRE - Nutanix AHV untuk Pemula sampai Mahir’ di section pertama kali ini kita akan membahas technology yang biasanya digunakan oleh team Infra/Operation yaitu Hyperconverged Infrastructure.</p>
+
+<p>Nah dengan kecanggihan teknology jaman sekarang, technologies dapat membantu mendorong kemajuan suatu perusahan dalam meningkatan performa dalam menentukan goals. Selain itu juga dengan technology perusahaan dapat menentukan flexibility, choice, agility, and cost efficiency supaya memastikan bahwa perusahaan tersebut bisa competitive in the marketplace and innovate, bringing new services and products to their customers faster than ever.</p>
+
+<p>Okay untuk memenuhi semua tantangan tersebut, jadi kita akan membahas dari yang funamental yaitu The Nutanix Cloud Fundamental cource, it designed for familiarize the features, components and capabilities of Nutanix cluster as if this was your first week on the job with a freshly installed Nutanix cluster. Sebelum kita mulai practice lab dengan Nutanix cluster kita akan bahas dulu</p>
+
+<ol>
+  <li>What is Nutanix?</li>
+  <li>What we can do with Nutanix?</li>
+  <li>Why Nutanix?</li>
+</ol>
+
+<p>Okay tanpa berlama-lama yuk langsung aja kita bahas materi yang pertama:</p>
+
+<br>
+                        <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/01-welcome-nutanix-class">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/nutanix-ahv.png"
+                        alt="nutanix-ahv" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Saturday,
+                        4/Feb/2023</span>
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                        <span class="title">Silabus SRE - Nutanix AHV: Pemula sampai Mahir</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#cloud-computing</div>
+                        
+                        <div class="chip small">#hyper-converged-infrastructure</div>
+                        
+                        <div class="chip small">#nutanix</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, di cource ini kita akan membahas salah satu Profesi IT yaitu <strong>Site Reliability Engineering</strong> atau yang biasa kita kenal dengan <strong>SRE Engineer</strong> terkait dengan <strong>Nutanix HCI (Hyper-Converged Infrastructure)</strong>.</p>
+
+<p>Mungkin dari temen-temen masih asing atau mungkin sudah pernah mendengar istilah SRE Engineer tetapi gak teralu mengerti seperti apa profesi tersebut, Di instrustri IT khususnya tech company banyak sekali loh profesi-profesi selain programmer yang relate dengan IT salah satunya adalah Site Reliability Engineering. Nah terus apasih Site Reliability Engineering?</p>
+
+<blockquote>
+  <p>Site Reliability Engineering atau singkatan dari SRE adalah salah satu pekerjaan di bidang IT yang specialis menangani reliabilitas suatu aplikasi atau software agar bisa berjalan dengan baik pada suatu infrastruktur yang sesuai.</p>
+</blockquote>
+
+<br>
+                        <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/k8s.png"
+                        alt="k8s" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        17/Jan/2023</span>
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                        <span class="title">What is Workload Resources?</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#devops</div>
+                        
+                        <div class="chip small">#orchestration</div>
+                        
+                        <div class="chip small">#kubernetes</div>
+                        
+                        <div class="chip small">#workloads</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, sebelum kita mulai menggunakan Workload Resources ada baiknya kita lihat dulu apa sih itu Workload Resources secara definisi dan pemahaman. Karena kebanyak orang tidak memahami  dan juga salah menggunakan/menentukan object workload resource yang tepat maka akan menyebabkan problem di kemudian hari. Maka dari itu disini kita bahas</p>
+
+<ol>
+  <li>What is Kubernetes Workloads?</li>
+  <li>Types of workloads</li>
+  <li>How to working with Workload resources?</li>
+  <li>Getting started with Workload Resources</li>
+</ol>
+
+<p>Ok langsung aja kita bahas materi yang pertama</p>
+
+<br>
+                        <a href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/k8s.png"
+                        alt="k8s" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        17/Jan/2023</span>
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                        <span class="title">Overview Kubernetes Workloads resources</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#devops</div>
+                        
+                        <div class="chip small">#orchestration</div>
+                        
+                        <div class="chip small">#kubernetes</div>
+                        
+                        <div class="chip small">#workloads</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, setelah kita membahas tentang Pod and Container specification, dan juga study cases selanjutnya kita akan bahas Kubernetes Workload Resources atau kebanyakan orang menggunakan istilah Kubernetes Resource Controller API.</p>
+
+<p>Pada Kubernetes Workload Resources ini, sangat berguna sekali untuk memange object pod dalam suatu kubernetes cluster seperti Update pod specification, handle replications (scaling up &amp; down), Stateless &amp; Stateful workload, Handle cronjob dan lain-lain.</p>
+
+<p>Adapun yang kita akan bahas terkait Workload Resources diantaranya:</p>
+
+<br>
+                        <a href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/postgresql.png"
+                        alt="postgresql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Sunday,
+                        15/Jan/2023</span>
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl">
+                        <span class="title">Getting started with Transaction Control (TCL)</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                        <div class="chip small">#sql</div>
+                        
+                        <div class="chip small">#tcl</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, sekarang kita akan membahas tentang Transaction Language Control atau singkatanya TCL, dimana transaction control ini adalah salah satu feature di Relational Database Management System (RDBMS) yang secara umum digunakan untuk mengelompokan sekumpulan query yang akan dikirimkan ke database server secara atomic, consistent, isolated dan durable.</p>
+
+<p>Untuk lebih jelasnya, yuk kita bahas secara lebih detail. Adapun materi yang akan kita bahas kali ini adalah</p>
+
+<ol>
+  <li>Default Transaction Control behavior</li>
+  <li>Using Commit clause</li>
+  <li>Using Rollback clause</li>
+  <li>Using Savepoint clause</li>
+</ol>
+
+<p>Ok tanpa berlama-lama yuk langsung aja kita bahas materi yang pertama:</p>
+
+<br>
+                        <a href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/postgresql.png"
+                        alt="postgresql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Saturday,
+                        14/Jan/2023</span>
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06-overview-concurrent-control">
+                        <span class="title">Overview of Concurrency Control</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                        <div class="chip small">#sql</div>
+                        
+                        <div class="chip small">#tcl</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, setelah kita mempelajari perintah Select statement, dan Data Manipulation language ada satuhal lagi yang kita perlu kita pelajari yaitu Concurrent Control. Conncurrent control ini berfungsi untuk Mengatur behavior dari Database Server terkait multiple access seperti multiple query, transaction, multiple session execute at the same time on same database.</p>
+
+<p>Jika pada materi sebelumnya kita hanya menggunakan simple query dan di execute secara singleton. Bagaimana jika saya memiliki contoh ilustrasi seperti berikut:</p>
+
+<p><img src="/resources/posts/postgresql/06-overview-concurrent-control/bisnis-logic-transfer.png" alt="flow-bisnis-transaction" /></p>
+
+<p>Jadi pada contoh kasus tersebut, kita memiliki system untuk transfer saldo dari rekening A ke rekening B. Jika kita gambarkan yang pasti kita harus melakukan beberapa query dan harus memiliki suatu mekanisme jika suatu proses tersebut gagal. Dimana query kita execute minimal adalah</p>
+
+<ol>
+  <li>Inquery rekening tujuan</li>
+  <li>Inquery saldo rekening sumber</li>
+  <li>Update saldo rekening A dengan menggurangi sejumlah yang di transfer</li>
+  <li>Update saldo rekening B dengan menambah sejumlah yang di transfer</li>
+  <li>Insert Data transaksi ke tabel journal</li>
+</ol>
+
+<p>Jika pada saat proses no 4 gagal, bisa di banyangkan apa yang terjadi???</p>
+
+<p>Yup betul saldo rekening A kok berkurang tapi saldo di rekening tujuan tidak bertambah trus kemana uangnya?. maka dari itu proses tersebut harus dihandle dengan system transaction seperti <code class="language-plaintext highlighter-rouge">commit</code>, <code class="language-plaintext highlighter-rouge">rollback</code> dan lain-lain.</p>
+
+<p>Nah system transaction tersebut adalah bagian dari Concurrent Control, Jadi kita akan bahas lebih detail seperti berikut:</p>
+
+<br>
+                        <a href="/posts/rdbms/postgresql/sql/tcl/06-overview-concurrent-control">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/postgresql.png"
+                        alt="postgresql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Saturday,
+                        14/Jan/2023</span>
+                    <a href="/posts/rdbms/postgresql/sql/dml/05g-quis-section-1">
+                        <span class="title">Time your practice (part 3)</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                        <div class="chip small">#sql</div>
+                        
+                        <div class="chip small">#dml</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya di materi sebelumnya kita sudah membahas perintah Data manipulation language sepertin <code class="language-plaintext highlighter-rouge">INSERT</code>, <code class="language-plaintext highlighter-rouge">UPDATE</code>, <code class="language-plaintext highlighter-rouge">DELETE</code> beserta combinasi antara <code class="language-plaintext highlighter-rouge">SELECT</code> dan DML tersebut, nah supaya temen-temen memahami materi yang telah saya sampaikan saatnya temen-temen untuk latihan / mengerjakan soal yang saya berikan seperti berikut:</p>
+
+<br>
+                        <a href="/posts/rdbms/postgresql/sql/dml/05g-quis-section-1">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/postgresql.png"
+                        alt="postgresql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Sunday,
+                        8/Jan/2023</span>
+                    <a href="/posts/rdbms/postgresql/sql/dml/05f-dml-cleanup">
+                        <span class="title">Cleanup Data from Table</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                        <div class="chip small">#sql</div>
+                        
+                        <div class="chip small">#dml</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, Selain <code class="language-plaintext highlighter-rouge">INSERT</code>, <code class="language-plaintext highlighter-rouge">UPDATE</code> dan <code class="language-plaintext highlighter-rouge">DELETE</code> statement ada juga beberapa task seperti cleanup data/storage pada database PostgreSQL dengan menggunakan perintah <code class="language-plaintext highlighter-rouge">TRUNCATE</code> dan <code class="language-plaintext highlighter-rouge">VACUUM</code>.</p>
+
+<p>Ok jadi langsung aja kita bahas materi yang pertama:</p>
+
+<br>
+                        <a href="/posts/rdbms/postgresql/sql/dml/05f-dml-cleanup">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/k8s.png"
+                        alt="k8s" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Monday,
+                        19/Dec/2022</span>
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04a-study-cases-monolith-apps">
+                        <span class="title">Study Cases: Monolith apps (Laravel Web MVC)</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#devops</div>
+                        
+                        <div class="chip small">#orchestration</div>
+                        
+                        <div class="chip small">#kubernetes</div>
+                        
+                        <div class="chip small">#pods</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, di materi study cases untuk Pod dan Container specification kita coba create, and build  aplikasi monolith dengan framework Laravel Web MVC (Model View Controller) dengan architecture seperti berikut:</p>
+
+<p><img src="/resources/posts/kubernetes/04a-study-cases-monolith-apps/monolith-architecture.png" alt="architecture mvc" /></p>
+
+<p>Mengapa kita membahas ini, seperti yang temen-temen ketahui hampir <code class="language-plaintext highlighter-rouge">85%</code> aplikasi yang ada masih menggunakan architecture tersebut, mungkin dari beberapa temen-temen pernah mengalami begitu aplikasi tersebut diakses secara public atau banyak orang mengakases aplikasi terasa lambat dalam mereseponse atau tiba-tiba mati (downtime) hal ini penyebabnya bisa macam-macam tapi salah satu penyebabnya adalah server tidak mampu menghandle request yang masuk sehingga menyebabkan performa dari aplikasi menurun.</p>
+
+<p>Sebetulnya ada banyak solusi dari masalah tersebut, misalnya</p>
+
+<ol>
+  <li>Replikasi aplikasi</li>
+  <li>Cloning server (node) baik berbentuk virtual maupun physical</li>
+</ol>
+
+<p>Kubernetes memprovide solusi terserbut dengan High Availablity, Self Healing, Auto scaling dan lain-lain. So jadi kita akan migrasikan aplikasi terserbut supaya bisa jalan di atas kubernetes dengan tujuan untuk memudahkan di maintanance secara operational, mudah di scale up and down serta meningkatkan zero down time. Adapun step by step yang akan kita lakukan adalah</p>
+
+<ol>
+  <li>Develop aplikasi</li>
+  <li>Containerize apps</li>
+  <li>Deploy to Kubernetes
+    <ol>
+      <li>Running as a Pod</li>
+      <li>Specify resource request and limit</li>
+      <li>Using configmap and secret for connect to a database</li>
+      <li>Using initContainer to migrate db</li>
+      <li>Specify container probes (health check)</li>
+    </ol>
+  </li>
+</ol>
+
+<p>Ok tanpa berlama-lama yuk langsung aja ke pembahasan yang pertama.</p>
+
+<br>
+                        <a href="/posts/devops/orchestration/kubernetes/pods/04a-study-cases-monolith-apps">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/k8s.png"
+                        alt="k8s" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Monday,
+                        28/Nov/2022</span>
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04-overview-study-cases">
+                        <span class="title">Overview Study Cases: Pod and Containers</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#devops</div>
+                        
+                        <div class="chip small">#orchestration</div>
+                        
+                        <div class="chip small">#kubernetes</div>
+                        
+                        <div class="chip small">#pods</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, Setelah kita membahas secara mendetail terkait Pod and Container specification di Kubernetes sekarang saatnya kita lansung mencoba study cases dengan beberapa skenario yang sudah saya rangkum dari beberapa pengalaman saya dan juga beberapa referensi sertifikasi yang mengacu ke CKAD (Certified Kubernetes Application Developer) yaitu</p>
+
+<br>
+                        <a href="/posts/devops/orchestration/kubernetes/pods/04-overview-study-cases">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/k8s.png"
+                        alt="k8s" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Saturday,
+                        19/Nov/2022</span>
+                    <a href="/posts/devops/orchestration/kubernetes/pods/03i-distruptions">
+                        <span class="title">Pod Disruptions</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#devops</div>
+                        
+                        <div class="chip small">#orchestration</div>
+                        
+                        <div class="chip small">#kubernetes</div>
+                        
+                        <div class="chip small">#pods</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, sebelumnya kita sudah membahas secara detail tentang Pod Specification selanjutnya jika kita mau membuat aplikasi yang support dengan Highly Available containers pada kubernetes kita harus memahami System yang namanya Distruption dan juga beberapa cluster administration upgrading and autoscaling clusters.</p>
+
+<p>So karena pembahasannya ini akan lumayan panjang jadi kita akan bagi-bagi menjadi beberapa bagian diantaranya:</p>
+
+<ol>
+  <li>Voluntary and involuntary disruptions</li>
+  <li>Pod disruption budgets</li>
+  <li>Pod disruption conditions</li>
+</ol>
+
+<p>Ok tanpa berlama-lama yuk lansung aja kita bahas materi yang pertama:</p>
+
+<br>
+                        <a href="/posts/devops/orchestration/kubernetes/pods/03i-distruptions">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/postgresql.png"
+                        alt="postgresql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Monday,
+                        10/Oct/2022</span>
+                    <a href="/posts/rdbms/postgresql/sql/dml/05e-dml-prepared-statement">
+                        <span class="title">Prepared Statement in SQL</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                        <div class="chip small">#sql</div>
+                        
+                        <div class="chip small">#dml</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, di materi kali ini kita akan membahas tentang Prepared Statement pada SQL, feature ini biasanya hanya bisa digunakan pada Bahasa Pemograman yang menggunakan API seperti <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.sql/java/sql/PreparedStatement.html">JDBC</a> di Java, <a href="https://www.php.net/manual/en/pdo.prepared-statements.php">pdo</a> di PHP dan lain-lain, Nah tetapi di PostgreSQL Database kita bisa terapkan secara directly pada query SQL baik untuk select, insert, update dan delete. Perintah sqlnya seperti berikut:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">PREPARE</span> <span class="n">name</span> <span class="p">[</span> <span class="p">(</span> <span class="n">data_type</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">)</span> <span class="p">]</span> <span class="k">AS</span> <span class="k">statement</span></code></pre></figure>
+
+<p>Dan untuk menjalankan perintanya kita bisa menggunakan perintah seperti berikut:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">EXPLAIN</span> <span class="k">EXECUTE</span> <span class="n">name</span><span class="p">(</span><span class="n">parameter_values</span><span class="p">);</span></code></pre></figure>
+
+<p>Jadi dengan kita mendefined prepared query tersebut, kita bisa meng-execute multiple times dengan parameter yang berbeda. Pada implemetasinya kita bisa gunakan untuk:</p>
+
+<ol>
+  <li>Create a Prepared statement for INSERT, UPDATE, DELETE</li>
+  <li>Show all prepared statement</li>
+  <li>Remove prepared statement from a session.</li>
+  <li>Create input parameterized with text editor (Jetbraints Database)</li>
+</ol>
+
+<p>Ok tanpa berlama-lama kita bahas kemateri yang pertama:</p>
+
+<br>
+                        <a href="/posts/rdbms/postgresql/sql/dml/05e-dml-prepared-statement">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/postgresql.png"
+                        alt="postgresql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Saturday,
+                        8/Oct/2022</span>
+                    <a href="/posts/rdbms/postgresql/sql/dml/05d-dml-delete">
+                        <span class="title">Deep dive into DELETE statement</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                        <div class="chip small">#sql</div>
+                        
+                        <div class="chip small">#dml</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, Setelah kita membahas tentang Update statement perintah selanjutnya yang kita perlu perlajari untuk menghapus data pada suatu tabel yaitu <code class="language-plaintext highlighter-rouge">DELETE</code> statement. Terkiat perintah delete yang temen-temen telah pelajari sebelumnya hanya sekilas saja sebetulnya secara mendetail perintah delete seperti berikut:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="p">[</span> <span class="k">WITH</span> <span class="p">[</span> <span class="k">RECURSIVE</span> <span class="p">]</span> <span class="n">with_query</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">]</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="p">[</span> <span class="k">ONLY</span> <span class="p">]</span> <span class="k">table_name</span> <span class="p">[</span> <span class="o">*</span> <span class="p">]</span> <span class="p">[</span> <span class="p">[</span> <span class="k">AS</span> <span class="p">]</span> <span class="k">alias</span> <span class="p">]</span>
+    <span class="p">[</span> <span class="k">USING</span> <span class="n">from_item</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">]</span>
+    <span class="p">[</span> <span class="k">WHERE</span> <span class="n">condition</span> <span class="o">|</span> <span class="k">WHERE</span> <span class="k">CURRENT</span> <span class="k">OF</span> <span class="k">cursor_name</span> <span class="p">]</span>
+    <span class="p">[</span> <span class="n">RETURNING</span> <span class="o">*</span> <span class="o">|</span> <span class="n">output_expression</span> <span class="p">[</span> <span class="p">[</span> <span class="k">AS</span> <span class="p">]</span> <span class="n">output_name</span> <span class="p">]</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">]</span></code></pre></figure>
+
+<p>Jika temen-temen perhatikan ada beberapa feature dan yang kita bisa gunakan seperti:</p>
+
+<ol>
+  <li>Delete with <code class="language-plaintext highlighter-rouge">USING from_item</code> clause</li>
+  <li>Delete using <code class="language-plaintext highlighter-rouge">RETURNING</code></li>
+  <li>Delete using WITH queries</li>
+</ol>
+
+<p>Ok tanpa berlama-lama jadi lansung aja bahas materi yang pertama:</p>
+
+<br>
+                        <a href="/posts/rdbms/postgresql/sql/dml/05d-dml-delete">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/postgresql.png"
+                        alt="postgresql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Monday,
+                        3/Oct/2022</span>
+                    <a href="/posts/rdbms/postgresql/sql/dml/05c-dml-update">
+                        <span class="title">Deep dive into UPDATE Statement</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                        <div class="chip small">#sql</div>
+                        
+                        <div class="chip small">#dml</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, setelah kita membahas Insert Statement perintah selanjutnya yang kita perlu perlajari adalah merubah data pada suatu tabel dengan menggunakan perintah <code class="language-plaintext highlighter-rouge">UPDATE</code> statement. Seperti yang temen-temen telah pelajari Perintah <code class="language-plaintext highlighter-rouge">UPDATE</code> statement yang telah bahas sebelumnya masih hal yang simple, sebetulnya secara syntax perintahnya seperti berikut:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="p">[</span> <span class="k">WITH</span> <span class="p">[</span> <span class="k">RECURSIVE</span> <span class="p">]</span> <span class="n">with_query</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">]</span>
+<span class="k">UPDATE</span> <span class="p">[</span> <span class="k">ONLY</span> <span class="p">]</span> <span class="k">table_name</span> <span class="p">[</span> <span class="o">*</span> <span class="p">]</span> <span class="p">[</span> <span class="p">[</span> <span class="k">AS</span> <span class="p">]</span> <span class="k">alias</span> <span class="p">]</span>
+    <span class="k">SET</span> <span class="p">{</span> <span class="k">column_name</span> <span class="o">=</span> <span class="p">{</span> <span class="n">expression</span> <span class="o">|</span> <span class="k">DEFAULT</span> <span class="p">}</span> <span class="o">|</span>
+          <span class="p">(</span> <span class="k">column_name</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">)</span> <span class="o">=</span> <span class="p">[</span> <span class="k">ROW</span> <span class="p">]</span> <span class="p">(</span> <span class="p">{</span> <span class="n">expression</span> <span class="o">|</span> <span class="k">DEFAULT</span> <span class="p">}</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">)</span> <span class="o">|</span>
+          <span class="p">(</span> <span class="k">column_name</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">)</span> <span class="o">=</span> <span class="p">(</span> <span class="n">sub</span><span class="o">-</span><span class="k">SELECT</span> <span class="p">)</span>
+        <span class="p">}</span> <span class="p">[,</span> <span class="p">...]</span>
+    <span class="p">[</span> <span class="k">FROM</span> <span class="n">from_item</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">]</span>
+    <span class="p">[</span> <span class="k">WHERE</span> <span class="n">condition</span> <span class="o">|</span> <span class="k">WHERE</span> <span class="k">CURRENT</span> <span class="k">OF</span> <span class="k">cursor_name</span> <span class="p">]</span>
+    <span class="p">[</span> <span class="n">RETURNING</span> <span class="o">*</span> <span class="o">|</span> <span class="n">output_expression</span> <span class="p">[</span> <span class="p">[</span> <span class="k">AS</span> <span class="p">]</span> <span class="n">output_name</span> <span class="p">]</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">]</span></code></pre></figure>
+
+<p>Nah jadi jika kita perhatikan ada beberapa clause yang kita bisa digunakan diantaranya:</p>
+
+<ol>
+  <li>UPDATE using <code class="language-plaintext highlighter-rouge">DEFAULT</code> value clause</li>
+  <li>UPDATE using sub-SELECT clause</li>
+  <li>UPDATE using column-list syntax</li>
+  <li>UPDATE using <code class="language-plaintext highlighter-rouge">WITH</code> clause</li>
+  <li>UPDATE using <code class="language-plaintext highlighter-rouge">FROM</code> clause</li>
+  <li>UPDATE using <code class="language-plaintext highlighter-rouge">RETURNING</code> clause</li>
+</ol>
+
+<p>Nah jadi akan lebih enak jika kita break-down untuk pembahasanya masing-masing feature tersebut.</p>
+
+<br>
+                        <a href="/posts/rdbms/postgresql/sql/dml/05c-dml-update">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/docker.png"
+                        alt="docker" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Sunday,
+                        11/Sep/2022</span>
+                    <a href="/posts/devops/docker/14c-ansible-for-docker-operations">
+                        <span class="title">Getting started with Ansible role, tasks for docker</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#devops</div>
+                        
+                        <div class="chip small">#docker</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, setelah sebelumnya kita menyiapkan environment seperti Ansible Controller node dan Managed node dengan Virtual Machine sekarang kita akan membahas beberapa IT Automation dengan meggunakan Ansible khususnya terkait dengan Docker operation yaitu</p>
+
+<ol>
+  <li>Install Docker engine with ansible role <a href="https://galaxy.ansible.com/dimmaryanto93/docker">dimmaryanto93.docker</a></li>
+  <li>Manage docker image using ansible <a href="https://docs.ansible.com/ansible/latest/collections/community/docker/docker_image_module.html#ansible-collections-community-docker-docker-image-module">docker_image</a> module</li>
+  <li>Running a container using ansible <a href="https://docs.ansible.com/ansible/latest/collections/community/docker/docker_container_module.html#ansible-collections-community-docker-docker-container-module">docker_container</a> module</li>
+  <li>Execute a container using ansible <a href="https://docs.ansible.com/ansible/latest/collections/community/docker/docker_container_exec_module.html#ansible-collections-community-docker-docker-container-exec-module">docker_container_exec</a> module</li>
+  <li>Manage multi-container Docker applications with Docker Compose using ansible <a href="https://docs.ansible.com/ansible/latest/collections/community/docker/docker_compose_module.html#ansible-collections-community-docker-docker-compose-module">docker_compose</a> module</li>
+</ol>
+
+<p>Ok tanpa berlama-lama yuk lansung aja kita bahas materi yang pertama</p>
+
+<br>
+                        <a href="/posts/devops/docker/14c-ansible-for-docker-operations">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/docker.png"
+                        alt="docker" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Sunday,
+                        11/Sep/2022</span>
+                    <a href="/posts/devops/docker/ansible/study-cases/14b-setup-ansible-environment">
+                        <span class="title">Setup Ansible Control and Managed Nodes</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#devops</div>
+                        
+                        <div class="chip small">#docker</div>
+                        
+                        <div class="chip small">#ansible</div>
+                        
+                        <div class="chip small">#study-cases</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, sebelum kita mulai ada beberapa hal yang perlu kita siapkan yaitu Ansible CLI dan Text editor seperti VS Code, Vim dan Terminal. Adapun materi yang akan dibahas kali ini yaitu</p>
+
+<ol>
+  <li>Install Ansible CLI for MacOs users</li>
+  <li>Install Ansible CLI for Linux users</li>
+  <li>Install Ansible CLI for Windows users</li>
+  <li>Create Virtual machine for Managed node</li>
+  <li>Create ansible inventory and testing using ad-hoc commanline</li>
+</ol>
+
+<p>Ok tanpa berlama-lama yukk langsung aja kita bahas materi yang pertama:</p>
+
+<br>
+                        <a href="/posts/devops/docker/ansible/study-cases/14b-setup-ansible-environment">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/docker.png"
+                        alt="docker" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Saturday,
+                        10/Sep/2022</span>
+                    <a href="/posts/devops/docker/14a-it-automation-platform">
+                        <span class="title">IT Automation Platform for Docker Operations</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#devops</div>
+                        
+                        <div class="chip small">#docker</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya di materi kali ini kita akan membahas salah satu topic yang lumayan menarik dikalangan DevOps yaitu IT Automation khususnya untuk Docker Operation diantaranya:</p>
+
+<ol>
+  <li>What is IT Automation?</li>
+  <li>What IT automation is used for?</li>
+  <li>What kind a tools for IT automation?</li>
+  <li>What is RedHat Ansible?</li>
+</ol>
+
+<p>Ok langsung aja kita bahas materi yang pertama:</p>
+
+<br>
+                        <a href="/posts/devops/docker/14a-it-automation-platform">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/docker.png"
+                        alt="docker" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Saturday,
+                        10/Sep/2022</span>
+                    <a href="/posts/devops/docker/ansible/study-cases/14-overview-ansible-for-docker">
+                        <span class="title">Overview Study cases: IT Automation Platform for Docker Operations</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#devops</div>
+                        
+                        <div class="chip small">#docker</div>
+                        
+                        <div class="chip small">#ansible</div>
+                        
+                        <div class="chip small">#study-cases</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, sebelumnya kita udah membahas tentang Multiple docker host di local menggunakan docker-machine. Seperti yang temen-temen ketahui docker-machine yang sudah deprecated dan juga biasanya hanya digunakan untuk Local Development. Sekarang kita akan meng-automate deployment Docker host di physical machine atau virtual machine menggunakan IT Automation Platform yaitu Red Hat Ansible.</p>
+
+<p>Ok materi yang akan kita bahas di section kali ini tidak akan terlalu men-detail mengenai RedHat Ansible melainkan penggunaannya terkait Docker operation ya, jika temen-temen tertarik lebih detail mengenai IT Automation dengan RedHat Ansible nanti saya akan buatkan kelas tersendiri :)</p>
+
+<p>Jadi materinya yang akan kita bahas yaitu</p>
+
+<br>
+                        <a href="/posts/devops/docker/ansible/study-cases/14-overview-ansible-for-docker">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/postgresql.png"
+                        alt="postgresql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Sunday,
+                        4/Sep/2022</span>
+                    <a href="/posts/rdbms/postgresql/sql/dml/05b-dml-insert">
+                        <span class="title">Deep dive into INSERT Statement</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                        <div class="chip small">#sql</div>
+                        
+                        <div class="chip small">#dml</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, pada materi sebelumnya kita sudah membahas sedikit tentang Data Manipulation language atau di singkat DML. Nah sekarang kita akan bahas lebih detail khususnya untuk perintah <code class="language-plaintext highlighter-rouge">INSERT</code> yang telah kita pelajari di materi sebelumnya hanyalah simple sebetulnya secara syntax perintahnya seperti berikut:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="p">[</span> <span class="k">WITH</span> <span class="p">[</span> <span class="k">RECURSIVE</span> <span class="p">]</span> <span class="n">with_query</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">]</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table_name</span> <span class="p">[</span> <span class="k">AS</span> <span class="k">alias</span> <span class="p">]</span> <span class="p">[</span> <span class="p">(</span> <span class="k">column_name</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">)</span> <span class="p">]</span>
+    <span class="p">[</span> <span class="k">OVERRIDING</span> <span class="p">{</span> <span class="k">SYSTEM</span> <span class="o">|</span> <span class="k">USER</span> <span class="p">}</span> <span class="n">VALUE</span> <span class="p">]</span>
+    <span class="p">{</span> <span class="k">DEFAULT</span> <span class="k">VALUES</span> <span class="o">|</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="p">{</span> <span class="n">expression</span> <span class="o">|</span> <span class="k">DEFAULT</span> <span class="p">}</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">)</span> <span class="p">[,</span> <span class="p">...]</span> <span class="o">|</span> <span class="n">query</span> <span class="p">}</span>
+    <span class="p">[</span> <span class="k">ON</span> <span class="n">CONFLICT</span> <span class="p">[</span> <span class="n">conflict_target</span> <span class="p">]</span> <span class="n">conflict_action</span> <span class="p">]</span>
+    <span class="p">[</span> <span class="n">RETURNING</span> <span class="o">*</span> <span class="o">|</span> <span class="n">output_expression</span> <span class="p">[</span> <span class="p">[</span> <span class="k">AS</span> <span class="p">]</span> <span class="n">output_name</span> <span class="p">]</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">]</span>
+
+<span class="k">where</span> <span class="n">conflict_target</span> <span class="n">can</span> <span class="n">be</span> <span class="n">one</span> <span class="k">of</span><span class="p">:</span>
+
+    <span class="p">(</span> <span class="p">{</span> <span class="n">index_column_name</span> <span class="o">|</span> <span class="p">(</span> <span class="n">index_expression</span> <span class="p">)</span> <span class="p">}</span> <span class="p">[</span> <span class="k">COLLATE</span> <span class="k">collation</span> <span class="p">]</span> <span class="p">[</span> <span class="n">opclass</span> <span class="p">]</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">)</span> <span class="p">[</span> <span class="k">WHERE</span> <span class="n">index_predicate</span> <span class="p">]</span>
+    <span class="k">ON</span> <span class="k">CONSTRAINT</span> <span class="k">constraint_name</span>
+
+<span class="k">and</span> <span class="n">conflict_action</span> <span class="k">is</span> <span class="n">one</span> <span class="k">of</span><span class="p">:</span>
+
+    <span class="k">DO</span> <span class="k">NOTHING</span>
+    <span class="k">DO</span> <span class="k">UPDATE</span> <span class="k">SET</span> <span class="p">{</span> <span class="k">column_name</span> <span class="o">=</span> <span class="p">{</span> <span class="n">expression</span> <span class="o">|</span> <span class="k">DEFAULT</span> <span class="p">}</span> <span class="o">|</span>
+                    <span class="p">(</span> <span class="k">column_name</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">)</span> <span class="o">=</span> <span class="p">[</span> <span class="k">ROW</span> <span class="p">]</span> <span class="p">(</span> <span class="p">{</span> <span class="n">expression</span> <span class="o">|</span> <span class="k">DEFAULT</span> <span class="p">}</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">)</span> <span class="o">|</span>
+                    <span class="p">(</span> <span class="k">column_name</span> <span class="p">[,</span> <span class="p">...]</span> <span class="p">)</span> <span class="o">=</span> <span class="p">(</span> <span class="n">sub</span><span class="o">-</span><span class="k">SELECT</span> <span class="p">)</span>
+                  <span class="p">}</span> <span class="p">[,</span> <span class="p">...]</span>
+              <span class="p">[</span> <span class="k">WHERE</span> <span class="n">condition</span> <span class="p">]</span></code></pre></figure>
+
+<p>Nah jadi jika kita perhatikan ada beberapa clause yang kita bisa gunakan diantaranya:</p>
+
+<ol>
+  <li>Insert with specific columns and data type</li>
+  <li>Insert with <code class="language-plaintext highlighter-rouge">DEFAULT VALUE</code></li>
+  <li>Insert single and multiple rows</li>
+  <li>Insert with <code class="language-plaintext highlighter-rouge">ON CONFLICT</code></li>
+  <li>Insert with <code class="language-plaintext highlighter-rouge">OVERRIDING</code> keyword</li>
+  <li>Using with query in INSERT statement</li>
+  <li>Error message on insert statement</li>
+</ol>
+
+<p>Nah lumayan banyak dan panjang juga ya ternyata untuk perintah insert yang kita bisa gunakan, jadi kita akan coba break-down aja ya masing-masing feature:</p>
+
+<br>
+                        <a href="/posts/rdbms/postgresql/sql/dml/05b-dml-insert">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/postgresql.png"
+                        alt="postgresql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Monday,
+                        15/Aug/2022</span>
+                    <a href="/posts/rdbms/postgresql/sql/dml/05a-cud-statement">
+                        <span class="title">Basic Create, Update, Delete statement</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                        <div class="chip small">#sql</div>
+                        
+                        <div class="chip small">#dml</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya di materi kali ini kita akan membahas basic dari Create, Update dan Delete statement di PostgreSQL. Adapun pembahasanya diantaranya:</p>
+
+<ol>
+  <li>Insert statement</li>
+  <li>Update statement</li>
+  <li>Delete statement</li>
+  <li>Returning data from modified rows</li>
+</ol>
+
+<p>Ok tanpa bercerita panjang lebar, lansung aja kita bahas materi yang pertama:</p>
+
+<br>
+                        <a href="/posts/rdbms/postgresql/sql/dml/05a-cud-statement">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/postgresql.png"
+                        alt="postgresql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Monday,
+                        8/Aug/2022</span>
+                    <a href="/posts/rdbms/postgresql/sql/dml/05-overview-dml">
+                        <span class="title">Overview of Data Manipulation Language (DML)</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                        <div class="chip small">#sql</div>
+                        
+                        <div class="chip small">#dml</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, di materi kali ini kita akan membahas tentang Data Manipulation Language atau singkatannya DML. Untuk pembahasanya sendiri pada section ini diantaranya:</p>
+
+<ol>
+  <li>Insert Data</li>
+  <li>Update Data</li>
+  <li>Delete Data</li>
+  <li>Returning Data from modified Rows</li>
+</ol>
+
+<br>
+                        <a href="/posts/rdbms/postgresql/sql/dml/05-overview-dml">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/postgresql.png"
+                        alt="postgresql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Monday,
+                        8/Aug/2022</span>
+                    <a href="/posts/rdbms/postgresql/sql/select/04g-quis-section-2">
+                        <span class="title">Time your practice (part 2)</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                        <div class="chip small">#sql</div>
+                        
+                        <div class="chip small">#select</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya di materi sebelumnya kita sudah membahas beberapa hal basic sepert SQL Select statement, build-in Functions and Operators, WHERE clause, dan limit serta offset. Untuk memahami materi sebelumnya saatnya temen-temen untuk mencoba dengan mengerjakan soal seperti berikut:</p>
+
+<br>
+                        <a href="/posts/rdbms/postgresql/sql/select/04g-quis-section-2">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/postgresql.png"
+                        alt="postgresql" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Monday,
+                        8/Aug/2022</span>
+                    <a href="/posts/rdbms/postgresql/sql/select/04f-with-queries">
+                        <span class="title">WITH Queries (Common Table Expressions)</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#rdbms</div>
+                        
+                        <div class="chip small">#postgresql</div>
+                        
+                        <div class="chip small">#sql</div>
+                        
+                        <div class="chip small">#select</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hai semuanya, di materi kali ini kita akan membahas tentang Common Table Expression yaitu menggunakan <code class="language-plaintext highlighter-rouge">WITH</code> Queries pada PostgreSQL. Karena pembahasan kali ini akan lumayan panjang jadi kita akan bagi-bagi menjadi beberapa bagian diataranya:</p>
+
+<ol>
+  <li>Select in WITH</li>
+  <li>More details using Select in WITH</li>
+  <li>Recursive Queries</li>
+  <li>Search order</li>
+  <li>Cycle Detection</li>
+</ol>
+
+<p>Ok langsung aja kita bahas materi yang pertama</p>
+
+<br>
+                        <a href="/posts/rdbms/postgresql/sql/select/04f-with-queries">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+            </ul>
+
+            <!-- Pagination links -->
+            <div class="pagination center">
+                <ul class="pagination">
+
+                    <li class="waves-effect">
+                        <a href="/archives/" class="first">
+                            First
+                        </a>
+                    </li>
+
+                    
+                        <li class="disabled">
+                            <a href="#!"><span class="previous">Previous</span></a>
+                        </li>
+                    
+
+                    
+                    
+                    <li class="active waves-effect" >
+                        <a href="/archives/index.html" title="Archives">1</a>
+                    </li>
+                    
+                    <li >
+                        <a href="/archives/page/2/index.html" title="Archives - page 2">2</a>
+                    </li>
+                    
+                    <li >
+                        <a href="/archives/page/3/index.html" title="Archives - page 3">3</a>
+                    </li>
+                    
+                    <li >
+                        <a href="/archives/page/4/index.html" title="Archives - page 4">4</a>
+                    </li>
+                    
+                    <li >
+                        <a href="/archives/page/5/index.html" title="Archives - page 5">5</a>
+                    </li>
+                    
+                    
+
+                    
+                    <li>
+                        <a href="/archives/page/2/" class="next">Next</a>
+                    </li>
+                    
+
+                    <li class="waves-effect">
+                        <a href="/archives/page/19/" class="last">
+                            Last
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section>
+    
+<footer class="page-footer blue lighten-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Tentang website</h5>
+                <div class="grey-text text-lighten-4">
+                    <p>Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.</p>
+                    <p>
+                        Donasi via:
+                        <ul>
+                            
+                            <ol>
+                                <a class="white-text" href="https://saweria.co/DimasMaryanto">
+                                    <i class="material-icons">star</i>
+                                    Saweria a/n Dimas Maryanto
+                                </a>
+                            </ol>
+                            
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <ul class="collection with-header">
+                    <li class="collection-header blue lighten-1">
+                        <i class="material-icons">account_box</i>
+                        <span class="white-text">Jangan Lupa follow aku ya guys!</span>
+                    </li>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://github.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-github"></i> Github
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.facebook.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.instagram.com/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue darken-3">
+        <div class="container">
+            Dimas Maryanto © 2023
+            <a class="grey-text text-lighten-4 right" href="https://pages.github.com/">
+                powered by Github Pages & Jekyll
+            </a>
+        </div>
+    </div>
+</footer>
+</section>
+
+</body>
+</html>

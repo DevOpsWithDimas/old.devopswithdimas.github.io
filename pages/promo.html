@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> DevOps with Dimas Maryanto - Promo </title>
+    <meta name="description" content="Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevOps with Dimas Maryanto" />
+    <meta property="og:description" content="Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS."
+/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/node_modules/materialize-css/dist/css/materialize.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/devicons/css/devicons.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/sintax.css" />
+
+<script src="/assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/assets/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="/assets/responsive-content.js"></script>
+<script src="/assets/list.min.js"></script>
+<script src="/assets/sintax.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $('.button-collapse').sideNav({
+            menuWidth: 370
+        });
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+    })
+</script>
+
+
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82058496-1');
+</script>
+
+<!-- Global - Google Adsense -->
+<script data-ad-client="ca-pub-3067429629551793" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82058496-1', 'auto');
+	ga('send', 'pageview', { 'page': location.pathname + location.search + location.hash});
+	ga('set', 'anonymizeIp', false);
+    </script>
+    <!-- End Google Analytics -->
+    </head>
+<body>
+<header>
+    
+
+<div class="navbar-fixed hide-on-med-and-down">
+    <nav class="blue darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons right">home</i>&nbsp;
+                <span>Materi Bootcamp</span>
+            </a>
+            <a href="#" data-activates="slide-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/archives/">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/courses.html">
+                        <i class="material-icons left">library_books</i> 
+                        <span>Cources</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/news.html">
+                        <i class="material-icons left">announcement</i> 
+                        <span>News</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/promo.html">
+                        <i class="material-icons left">grade</i> 
+                        <span>Promo</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/roadmap.html">
+                        <i class="material-icons left">assessment</i> 
+                        <span>ROADMAP</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="fixed-action-btn click-to-toggle hide-on-large-only">
+    <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+        <i class="large material-icons">menu</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    <li><a class="subheader">Daftar Kategori</a></li>
+<li class="no-padding">
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Java
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/core/001-silabus-java">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">42</span>
+                                Java Basic
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                JDBC with Postgresql
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/web/war/001-silabus-java-web">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">32</span>
+                                Java Web (Servlet & JSP)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">57</span>
+                                ORM dengan Hibernate
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/language/java/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">3</span>
+                                Java
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                JavaScript
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/web/js/001-silabus-js">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                Javascript
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Database
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">116</span>
+                                Oracle Database
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">39</span>
+                                PostgreSQL
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                DevOps
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">36</span>
+                                Kubernetes (k8s)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">7</span>
+                                Gitlab
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">2</span>
+                                Nutanix AHV
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/docker/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">113</span>
+                                Docker
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+</li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</header>
+
+<section>
+    <div class="parallax-container">
+    <div class="parallax"><img src="/resources/pictures/big-art.png">
+    </div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="/assets/timeline.css" />
+
+<div class="section white">
+    <div class="row container">
+      <h2 class="header">Promo</h2>
+      <p class="grey-text text-darken-3 lighten-3">Learn through online classes and guided learning maps. Level up your skills and jumpstart your career</p>
+    </div>
+</div>
+
+
+
+<div id="cources" class="section white">
+  <div class="row container">
+      <div class="row">
+          <ul class="list">
+              
+              
+              <li data-topic="Docker">
+                  
+                  
+                  <div class="col l12">
+                      <div class="card small horizontal hoverable">
+                          <div class="card-image">
+                              <img class="activator responsive-img" 
+                                  src="/resources/cources/banners/docker.png">
+                          </div>
+                          
+                          <a target="_blank" 
+                              href="https://www.udemy.com/course/docker-pemula-sampai-mahir/?referralCode=8D13D85D4D34027B76BE&couponCode=BUKBER.2023.10"
+                              class="btn-floating halfway-fab btn-large waves-effect tooltipped waves-light red accent-1"
+                              data-position="bottom"                            
+                              data-delay="50" 
+                              data-tooltip="Become a Premium Members">
+                              <i class="material-icons white-text">shopping_cart</i>
+                          </a>
+                          
+                          <div class="card-stacked">
+                              <div class="card-content activator">
+                                  <div class="row">
+                                    <span class="field-name flow-text">
+                                        Docker
+                                    </span>
+                                  </div>
+
+                                  <div class="row hide-on-small-only">
+                                      <p>
+                                          Temen-teman akan belajar Containerization dengan Docker untuk Pemula sampai Mahir.
+                                      </p>
+                                  </div>                                  
+                              </div>
+                              <div class="card-action">
+                                <div class="row">
+                                  <div class="col s12 m8">
+                                    <div class="row">
+                                      
+                                      <div class="col s12 m8">
+                                        CouponCode: <br>
+                                        <code><mark>BUKBER.2023.10</mark></code>
+                                      </div>
+                                      
+                                      
+                                      <div class="col s12 m4">
+                                        Expired: <br>
+                                        <code><mark>15/04/2023</mark></code>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+                                  <div class="col s12 m4">
+                                    <div class="right-align">
+                                      
+                                      <del class="gray-text">Rp560.000,-</del>
+                                      <span class="flow-text">Rp99.000,-</span>
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="card-reveal">
+                              <!-- title of card reveal -->
+                              <span class="card-title grey-text text-darken-4">
+                                   DevOps - Docker: Pemula sampai Mahir 
+                                  <i class="material-icons right">close</i>
+                              </span>
+                              <div class="row">
+                                  <!-- message card revel -->
+                                  
+                                  <p>Temen-teman akan belajar Containerization dengan Docker untuk Pemula sampai Mahir.</p>
+                                  
+                              </div>
+                              <div class="row">
+                                  
+                                  Last updated: 
+                                  <code>11 September 2022</code>
+                                  
+                              </div>
+                              <div class="row">
+                                  
+                                  <br>
+                                  Total Materi: <code>113</code>
+                                  <br>
+                                  <ul class="collection  with-header">
+                                      <li class="collection-header">
+                                          <span class="badge blue new">16</span>
+                                          <h5>Kurikulum:</h5>
+                                      </li>
+                                      
+                                      
+                                      <li class="collection-item">1. Pengenalan Docker</li>
+                                      
+                                      
+                                      <li class="collection-item">2. Docker Registry</li>
+                                      
+                                      
+                                      <li class="collection-item">3. Docker Container CLI</li>
+                                      
+                                      
+                                      <li class="collection-item">4. Docker Networks</li>
+                                      
+                                      
+                                      <li class="collection-item">5. Docker Volumes</li>
+                                      
+                                      
+                                      <li class="collection-item">6. Dockerfile</li>
+                                      
+                                      
+                                      <li class="collection-item">7. Study Kasus: Build docker image</li>
+                                      
+                                      
+                                      <li class="collection-item">8. Docker Compose</li>
+                                      
+                                      
+                                      <li class="collection-item">9. Study Kasus: Docker Compose</li>
+                                      
+                                      
+                                      <li class="collection-item">10. Docker Context</li>
+                                      
+                                      
+                                      <li class="collection-item">11. Study Kasus: Docker for CI</li>
+                                      
+                                      
+                                      <li class="collection-item">12. Docker Machine</li>
+                                      
+                                      
+                                      <li class="collection-item">13. Study Kasus: Ansible for Docker</li>
+                                      
+                                      
+                                      <li class="collection-item">14. Docker Swarm</li>
+                                      
+                                      
+                                      <li class="collection-item">15. Study Kasus: Docker Swarm</li>
+                                      
+                                      
+                                      <li class="collection-item">16. Docker on Cloud using GCP</li>
+                                      
+                                  </ul>
+                                  
+                              </div>
+                              <div class="row">
+                                  <!-- tags -->
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">DevOps</span>
+                                  </div>
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">Docker</span>
+                                  </div>
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">Container</span>
+                                  </div>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+              
+              <li data-topic="Gitlab">
+                  
+                  
+                  <div class="col l12">
+                      <div class="card small horizontal hoverable">
+                          <div class="card-image">
+                              <img class="activator responsive-img" 
+                                  src="/resources/cources/banners/gitlab.png">
+                          </div>
+                          
+                          <a target="_blank" 
+                              href="https://www.udemy.com/course/gitops-gitlab-pemula-sampai-mahir/?referralCode=8D13D85D4D34027B76BE&couponCode=BUKBER.2023.10"
+                              class="btn-floating halfway-fab btn-large waves-effect tooltipped waves-light red accent-1"
+                              data-position="bottom"                            
+                              data-delay="50" 
+                              data-tooltip="Become a Premium Members">
+                              <i class="material-icons white-text">shopping_cart</i>
+                          </a>
+                          
+                          <div class="card-stacked">
+                              <div class="card-content activator">
+                                  <div class="row">
+                                    <span class="field-name flow-text">
+                                        Gitlab
+                                    </span>
+                                  </div>
+
+                                  <div class="row hide-on-small-only">
+                                      <p>
+                                          Temen-teman akan belajar GitOps dengan menggunakan Gitlab Stack terkait Automation Deployment, Monitoring, Issues Tracking, dan lain-lain.
+                                      </p>
+                                  </div>                                  
+                              </div>
+                              <div class="card-action">
+                                <div class="row">
+                                  <div class="col s12 m8">
+                                    <div class="row">
+                                      
+                                      <div class="col s12 m8">
+                                        CouponCode: <br>
+                                        <code><mark>BUKBER.2023.10</mark></code>
+                                      </div>
+                                      
+                                      
+                                      <div class="col s12 m4">
+                                        Expired: <br>
+                                        <code><mark>15/04/2023</mark></code>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+                                  <div class="col s12 m4">
+                                    <div class="right-align">
+                                      
+                                      <del class="gray-text">Rp250.000,-</del>
+                                      <span class="flow-text">Rp99.000,-</span>
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="card-reveal">
+                              <!-- title of card reveal -->
+                              <span class="card-title grey-text text-darken-4">
+                                   GitOps - Gitlab: Pemula sampai Mahir 
+                                  <i class="material-icons right">close</i>
+                              </span>
+                              <div class="row">
+                                  <!-- message card revel -->
+                                  
+                                  <p>Temen-teman akan belajar GitOps dengan menggunakan Gitlab Stack terkait Automation Deployment, Monitoring, Issues Tracking, dan lain-lain.</p>
+                                  
+                              </div>
+                              <div class="row">
+                                  
+                                  Last updated: 
+                                  <code>23 July 2022</code>
+                                  
+                              </div>
+                              <div class="row">
+                                  
+                                  <br>
+                                  Total Materi: <code>7</code>
+                                  <br>
+                                  <ul class="collection  with-header">
+                                      <li class="collection-header">
+                                          <span class="badge blue new">9</span>
+                                          <h5>Kurikulum:</h5>
+                                      </li>
+                                      
+                                      
+                                      <li class="collection-item">1. Pengenalan Git</li>
+                                      
+                                      
+                                      <li class="collection-item">2. Gitlab SaaS</li>
+                                      
+                                      
+                                      <li class="collection-item">3. Gitlab self-managed service</li>
+                                      
+                                      
+                                      <li class="collection-item">4. Issues Tracker</li>
+                                      
+                                      
+                                      <li class="collection-item">5. Release Management</li>
+                                      
+                                      
+                                      <li class="collection-item">6. Gitlab CI/CD</li>
+                                      
+                                      
+                                      <li class="collection-item">7. Gitlab Integration</li>
+                                      
+                                      
+                                      <li class="collection-item">8. Gitlab Monitoring</li>
+                                      
+                                      
+                                      <li class="collection-item">9. Gitlab Migration</li>
+                                      
+                                  </ul>
+                                  
+                              </div>
+                              <div class="row">
+                                  <!-- tags -->
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">DevOps</span>
+                                  </div>
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">GitOps</span>
+                                  </div>
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">Gitlab</span>
+                                  </div>
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">Docker</span>
+                                  </div>
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">Kubernetes</span>
+                                  </div>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+              
+              <li data-topic="PostgreSQL">
+                  
+                  
+                  <div class="col l12">
+                      <div class="card small horizontal hoverable">
+                          <div class="card-image">
+                              <img class="activator responsive-img" 
+                                  src="/resources/cources/banners/postgresql.png">
+                          </div>
+                          
+                          <a target="_blank" 
+                              href="https://www.udemy.com/course/dba-postgresql-pemula-sampai-mahir/?referralCode=8080BE598C39D7652D33&couponCode=BUKBER.2023.10"
+                              class="btn-floating halfway-fab btn-large waves-effect tooltipped waves-light red accent-1"
+                              data-position="bottom"                            
+                              data-delay="50" 
+                              data-tooltip="Become a Premium Members">
+                              <i class="material-icons white-text">shopping_cart</i>
+                          </a>
+                          
+                          <div class="card-stacked">
+                              <div class="card-content activator">
+                                  <div class="row">
+                                    <span class="field-name flow-text">
+                                        PostgreSQL
+                                    </span>
+                                  </div>
+
+                                  <div class="row hide-on-small-only">
+                                      <p>
+                                          Temen-temen akan belajar Relational Database Management System (RDBMS) dengan menggunakan PostgreSQL untuk Pemula sampai Mahir.
+                                      </p>
+                                  </div>                                  
+                              </div>
+                              <div class="card-action">
+                                <div class="row">
+                                  <div class="col s12 m8">
+                                    <div class="row">
+                                      
+                                      <div class="col s12 m8">
+                                        CouponCode: <br>
+                                        <code><mark>BUKBER.2023.10</mark></code>
+                                      </div>
+                                      
+                                      
+                                      <div class="col s12 m4">
+                                        Expired: <br>
+                                        <code><mark>15/04/2023</mark></code>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+                                  <div class="col s12 m4">
+                                    <div class="right-align">
+                                      
+                                      <del class="gray-text">Rp.280.000,-</del>
+                                      <span class="flow-text">Rp.99.000,-</span>
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="card-reveal">
+                              <!-- title of card reveal -->
+                              <span class="card-title grey-text text-darken-4">
+                                   DBA - PostgreSQL: Pemula sampai Mahir 
+                                  <i class="material-icons right">close</i>
+                              </span>
+                              <div class="row">
+                                  <!-- message card revel -->
+                                  
+                                  <p>Temen-temen akan di pandu untuk menguasai perintah SQL dengan salah satu Relational Database Management System (RDBMS) yaitu dengan PostgreSQL. Dengan menggunakan Relational Database Management Sistem kita dengan mudah dapat melakukan baca-tulis data dengan mudah dan cepat tidak seperti menggunakan baca-tulis di file.</p>
+                                  
+                              </div>
+                              <div class="row">
+                                  
+                                  Last updated: 
+                                  <code>15 January 2023</code>
+                                  
+                              </div>
+                              <div class="row">
+                                  
+                                  <br>
+                                  Total Materi: <code>39</code>
+                                  <br>
+                                  <ul class="collection  with-header">
+                                      <li class="collection-header">
+                                          <span class="badge blue new">14</span>
+                                          <h5>Kurikulum:</h5>
+                                      </li>
+                                      
+                                      
+                                      <li class="collection-item">1. Pengenalan PostgreSQL</li>
+                                      
+                                      
+                                      <li class="collection-item">2. Getting started</li>
+                                      
+                                      
+                                      <li class="collection-item">3. SQL - Select Statement</li>
+                                      
+                                      
+                                      <li class="collection-item">4. SQL - Data manipulation</li>
+                                      
+                                      
+                                      <li class="collection-item">5. SQL - Data definition (Tables)</li>
+                                      
+                                      
+                                      <li class="collection-item">6. Study Kasus: Database design (Mapping)</li>
+                                      
+                                      
+                                      <li class="collection-item">7. SQL - Indexes</li>
+                                      
+                                      
+                                      <li class="collection-item">8. SQL - Users Management</li>
+                                      
+                                      
+                                      <li class="collection-item">9. Type Conversion</li>
+                                      
+                                      
+                                      <li class="collection-item">10. Query Performance Tips</li>
+                                      
+                                      
+                                      <li class="collection-item">11. Study Kasus: Tokopedia clone</li>
+                                      
+                                      
+                                      <li class="collection-item">12. Server Administration</li>
+                                      
+                                      
+                                      <li class="collection-item">13. Pg/PL SQL</li>
+                                      
+                                      
+                                      <li class="collection-item">14. Study Kasus: Backend engine</li>
+                                      
+                                  </ul>
+                                  
+                              </div>
+                              <div class="row">
+                                  <!-- tags -->
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">Database</span>
+                                  </div>
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">PostgreSQL</span>
+                                  </div>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+              
+              <li data-topic="Kubernetes (k8s)">
+                  
+                  
+                  <div class="col l12">
+                      <div class="card small horizontal hoverable">
+                          <div class="card-image">
+                              <img class="activator responsive-img" 
+                                  src="/resources/cources/banners/k8s.png">
+                          </div>
+                          
+                          <a target="_blank" 
+                              href="https://www.udemy.com/course/devops-kubernetes-pemula-sampai-mahir/?referralCode=58BDCE6103ADC4C9C11D&couponCode=BUKBER.2023.10"
+                              class="btn-floating halfway-fab btn-large waves-effect tooltipped waves-light red accent-1"
+                              data-position="bottom"                            
+                              data-delay="50" 
+                              data-tooltip="Become a Premium Members">
+                              <i class="material-icons white-text">shopping_cart</i>
+                          </a>
+                          
+                          <div class="card-stacked">
+                              <div class="card-content activator">
+                                  <div class="row">
+                                    <span class="field-name flow-text">
+                                        Kubernetes (k8s)
+                                    </span>
+                                  </div>
+
+                                  <div class="row hide-on-small-only">
+                                      <p>
+                                          Temen-teman akan belajar Managing Orchestration dengan menggunakan Kubernetes (k8s) untuk Pemula sampai Mahir.
+                                      </p>
+                                  </div>                                  
+                              </div>
+                              <div class="card-action">
+                                <div class="row">
+                                  <div class="col s12 m8">
+                                    <div class="row">
+                                      
+                                      <div class="col s12 m8">
+                                        CouponCode: <br>
+                                        <code><mark>BUKBER.2023.10</mark></code>
+                                      </div>
+                                      
+                                      
+                                      <div class="col s12 m4">
+                                        Expired: <br>
+                                        <code><mark>15/04/2023</mark></code>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+                                  <div class="col s12 m4">
+                                    <div class="right-align">
+                                      
+                                      <del class="gray-text">Rp350.000,-</del>
+                                      <span class="flow-text">Rp99.000,-</span>
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="card-reveal">
+                              <!-- title of card reveal -->
+                              <span class="card-title grey-text text-darken-4">
+                                   DevOps - Kubernetes: Pemula sampai Mahir 
+                                  <i class="material-icons right">close</i>
+                              </span>
+                              <div class="row">
+                                  <!-- message card revel -->
+                                  
+                                  <p>Temen-teman akan belajar Managing Orchestration dengan menggunakan Kubernetes (k8s) untuk Pemula sampai Mahir.</p>
+                                  
+                              </div>
+                              <div class="row">
+                                  
+                                  Last updated: 
+                                  <code>9 April 2023</code>
+                                  
+                              </div>
+                              <div class="row">
+                                  
+                                  <br>
+                                  Total Materi: <code>36</code>
+                                  <br>
+                                  <ul class="collection  with-header">
+                                      <li class="collection-header">
+                                          <span class="badge blue new">12</span>
+                                          <h5>Kurikulum:</h5>
+                                      </li>
+                                      
+                                      
+                                      <li class="collection-item">1. Pengenalan Kubernetes</li>
+                                      
+                                      
+                                      <li class="collection-item">2. Getting started with minikube</li>
+                                      
+                                      
+                                      <li class="collection-item">3. Pods and Containers</li>
+                                      
+                                      
+                                      <li class="collection-item">4. Workload resources</li>
+                                      
+                                      
+                                      <li class="collection-item">5. Networking (service)</li>
+                                      
+                                      
+                                      <li class="collection-item">6. Store data using Volumes</li>
+                                      
+                                      
+                                      <li class="collection-item">7. Kubernetes Client</li>
+                                      
+                                      
+                                      <li class="collection-item">8. Security RBAC</li>
+                                      
+                                      
+                                      <li class="collection-item">9. Kubernetes Package manager</li>
+                                      
+                                      
+                                      <li class="collection-item">10. Kubernetes cluster for Production grade</li>
+                                      
+                                      
+                                      <li class="collection-item">11. Service mesh with istio</li>
+                                      
+                                      
+                                      <li class="collection-item">12. Kubernetes on Cloud provider</li>
+                                      
+                                  </ul>
+                                  
+                              </div>
+                              <div class="row">
+                                  <!-- tags -->
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">DevOps</span>
+                                  </div>
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">Kubernetes</span>
+                                  </div>
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">Orchestration</span>
+                                  </div>
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">Docker</span>
+                                  </div>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+              
+              <li data-topic="Oracle Database">
+                  
+                  
+                  <div class="col l12">
+                      <div class="card small horizontal hoverable">
+                          <div class="card-image">
+                              <img class="activator responsive-img" 
+                                  src="/resources/cources/banners/oracle18c.png">
+                          </div>
+                          
+                          <a target="_blank" 
+                              href="https://www.udemy.com/course/rdbms-oracle-18c-indonesia/?referralCode=D1F375D96C53FC20DB42&couponCode=BUKBER.2023.10"
+                              class="btn-floating halfway-fab btn-large waves-effect tooltipped waves-light red accent-1"
+                              data-position="bottom"                            
+                              data-delay="50" 
+                              data-tooltip="Become a Premium Members">
+                              <i class="material-icons white-text">shopping_cart</i>
+                          </a>
+                          
+                          <div class="card-stacked">
+                              <div class="card-content activator">
+                                  <div class="row">
+                                    <span class="field-name flow-text">
+                                        Oracle Database
+                                    </span>
+                                  </div>
+
+                                  <div class="row hide-on-small-only">
+                                      <p>
+                                          Temen-teman akan belajar Relational Database Management System (RDBMS) dengan Oracle yang sifatnya Big Data.
+                                      </p>
+                                  </div>                                  
+                              </div>
+                              <div class="card-action">
+                                <div class="row">
+                                  <div class="col s12 m8">
+                                    <div class="row">
+                                      
+                                      <div class="col s12 m8">
+                                        CouponCode: <br>
+                                        <code><mark>BUKBER.2023.10</mark></code>
+                                      </div>
+                                      
+                                      
+                                      <div class="col s12 m4">
+                                        Expired: <br>
+                                        <code><mark>15/04/2023</mark></code>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+                                  <div class="col s12 m4">
+                                    <div class="right-align">
+                                      
+                                      <del class="gray-text">Rp350.000,-</del>
+                                      <span class="flow-text">Rp99.000,-</span>
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="card-reveal">
+                              <!-- title of card reveal -->
+                              <span class="card-title grey-text text-darken-4">
+                                   DBA - Oracle Database: Pemula sampai Mahir 
+                                  <i class="material-icons right">close</i>
+                              </span>
+                              <div class="row">
+                                  <!-- message card revel -->
+                                  
+                                  <p>Temen-teman akan belajar Relational Database Management System (RDBMS) dengan Oracle yang sifatnya Big Data.</p>
+                                  
+                              </div>
+                              <div class="row">
+                                  
+                                  Last updated: 
+                                  <code>3 April 2021</code>
+                                  
+                              </div>
+                              <div class="row">
+                                  
+                                  <br>
+                                  Total Materi: <code>116</code>
+                                  <br>
+                                  <ul class="collection  with-header">
+                                      <li class="collection-header">
+                                          <span class="badge blue new">13</span>
+                                          <h5>Kurikulum:</h5>
+                                      </li>
+                                      
+                                      
+                                      <li class="collection-item">1. Pengenalan Oracle Database</li>
+                                      
+                                      
+                                      <li class="collection-item">2. SQL - Select Statement</li>
+                                      
+                                      
+                                      <li class="collection-item">3. SQL - Select with where clause</li>
+                                      
+                                      
+                                      <li class="collection-item">4. SQL - Functions</li>
+                                      
+                                      
+                                      <li class="collection-item">5. SQL - Join Tables</li>
+                                      
+                                      
+                                      <li class="collection-item">6. SQL - Sub Queries</li>
+                                      
+                                      
+                                      <li class="collection-item">7. SQL - Expressions</li>
+                                      
+                                      
+                                      <li class="collection-item">8. SQL - Data Manipulation Language</li>
+                                      
+                                      
+                                      <li class="collection-item">9. SQL - Data Definition Language</li>
+                                      
+                                      
+                                      <li class="collection-item">10. Indexing</li>
+                                      
+                                      
+                                      <li class="collection-item">11. DDL - User Management</li>
+                                      
+                                      
+                                      <li class="collection-item">12. Monitor database activity</li>
+                                      
+                                      
+                                      <li class="collection-item">13. Database Design</li>
+                                      
+                                  </ul>
+                                  
+                              </div>
+                              <div class="row">
+                                  <!-- tags -->
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">Oracle</span>
+                                  </div>
+                                  
+                                  <div class="chip"><i class="fa fa-tag"></i> 
+                                      <span class="field-tag">Database</span>
+                                  </div>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+              
+          </ul>
+      </div>
+      <div class="row">
+          <ul class="pagination"></ul>
+      </div>
+  </div>
+</div>
+
+
+</section>
+
+<section>
+    
+<footer class="page-footer blue lighten-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Tentang website</h5>
+                <div class="grey-text text-lighten-4">
+                    <p>Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.</p>
+                    <p>
+                        Donasi via:
+                        <ul>
+                            
+                            <ol>
+                                <a class="white-text" href="https://saweria.co/DimasMaryanto">
+                                    <i class="material-icons">star</i>
+                                    Saweria a/n Dimas Maryanto
+                                </a>
+                            </ol>
+                            
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <ul class="collection with-header">
+                    <li class="collection-header blue lighten-1">
+                        <i class="material-icons">account_box</i>
+                        <span class="white-text">Jangan Lupa follow aku ya guys!</span>
+                    </li>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://github.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-github"></i> Github
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.facebook.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.instagram.com/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue darken-3">
+        <div class="container">
+            Dimas Maryanto © 2023
+            <a class="grey-text text-lighten-4 right" href="https://pages.github.com/">
+                powered by Github Pages & Jekyll
+            </a>
+        </div>
+    </div>
+</footer>
+</section>
+
+</body>
+</html>

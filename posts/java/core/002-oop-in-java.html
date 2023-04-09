@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> DevOps with Dimas Maryanto - Bahasa Pemograman berorientasi objek dengan Java </title>
+    <meta name="description" content="Hi, welcome back into this lecture ‘Java Core’. Nah ini saya gak tau harus ngomong apa ya karena biasanya klo saya gak terlalu banyak ngomongnya just do it #...">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevOps with Dimas Maryanto" />
+    <meta property="og:description" content="Hi, welcome back into this lecture ‘Java Core’. Nah ini saya gak tau harus ngomong apa ya karena biasanya klo saya gak terlalu banyak ngomongnya just do it #..."
+/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/node_modules/materialize-css/dist/css/materialize.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/devicons/css/devicons.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/sintax.css" />
+
+<script src="/assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/assets/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="/assets/responsive-content.js"></script>
+<script src="/assets/list.min.js"></script>
+<script src="/assets/sintax.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $('.button-collapse').sideNav({
+            menuWidth: 370
+        });
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+    })
+</script>
+
+
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82058496-1');
+</script>
+
+<!-- Global - Google Adsense -->
+<script data-ad-client="ca-pub-3067429629551793" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82058496-1', 'auto');
+	ga('send', 'pageview', { 'page': location.pathname + location.search + location.hash});
+	ga('set', 'anonymizeIp', false);
+    </script>
+    <!-- End Google Analytics -->
+    </head>
+<body>
+<header>
+    
+
+<div class="navbar-fixed hide-on-med-and-down">
+    <nav class="blue darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons right">home</i>&nbsp;
+                <span>Materi Bootcamp</span>
+            </a>
+            <a href="#" data-activates="slide-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/archives/">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/courses.html">
+                        <i class="material-icons left">library_books</i> 
+                        <span>Cources</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/news.html">
+                        <i class="material-icons left">announcement</i> 
+                        <span>News</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/promo.html">
+                        <i class="material-icons left">grade</i> 
+                        <span>Promo</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/roadmap.html">
+                        <i class="material-icons left">assessment</i> 
+                        <span>ROADMAP</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="fixed-action-btn click-to-toggle hide-on-large-only">
+    <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+        <i class="large material-icons">menu</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    <li><a class="subheader">Daftar Kategori</a></li>
+<li class="no-padding">
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Java
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/core/001-silabus-java">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">42</span>
+                                Java Basic
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                JDBC with Postgresql
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/web/war/001-silabus-java-web">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">32</span>
+                                Java Web (Servlet & JSP)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">57</span>
+                                ORM dengan Hibernate
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/language/java/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">3</span>
+                                Java
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                JavaScript
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/web/js/001-silabus-js">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                Javascript
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Database
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">116</span>
+                                Oracle Database
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">39</span>
+                                PostgreSQL
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                DevOps
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">36</span>
+                                Kubernetes (k8s)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">7</span>
+                                Gitlab
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">2</span>
+                                Nutanix AHV
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/docker/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">113</span>
+                                Docker
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+</li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</header>
+
+<section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="postBody" class="row container post-body">
+    <div class="col s12 m12 l4 hide-on-med-and-down">
+        <div class="row">
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons blue-text">person</i> Penulis:
+                        <span>
+                            <span class="badge new" data-badge-caption="">
+                                <time datetime="2017-10-16T17:40:09+00:00" itemscope="datePublished">
+                                    16 October 2017
+                                </time>
+                            </span>
+                        </span>
+                    </li>
+                    
+                    
+                    
+                    <li class="collection-item avatar">
+                        <img src="/resources/avatars/dimasm93.png" alt="Dimas Maryanto" class="circle">
+                        <span class="title">Dimas Maryanto</span>
+                        <p>PT. Tabeldata Informatika</p>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">account_balance_wallet</i>
+                        Donasi via:
+                    </li>
+                          
+                    <li class="collection-item">
+                        <a href="https://saweria.co/DimasMaryanto" target="_blank">
+                            Saweria a/n Dimas Maryanto
+                        </a>
+                    </li>              
+                    
+                </ul>
+            </div>
+            <!-- edit this for multiple premium members -->
+            
+            
+            
+        </div>
+        <!-- 
+        
+        
+        <div class="row">
+            <ul class="collection with-header">
+                <li class="collection-item avatar">
+                    <img src="/resources/images/java-core.png" alt="" class="circle responsive-img">
+                    <span>Daftar materi
+                        <span class="badge new blue" data-badge-caption="materi">42</span>
+                    </span>
+                    
+                    <p class="title">
+                        JAVA BASIC
+                    </p>
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/001-silabus-java">
+                        1. Silabus Belajar Pemograman Java
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <div>
+                        <span class="badge" data-badge-caption="">
+                            <i class="material-icons">turned_in</i>
+                        </span>
+                        2. Bahasa Pemograman berorientasi o...
+                    </div>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/003-java-dev">
+                        3. Software Development for Java Users
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/004-jdk-install-win10">
+                        4. Install Java Development Kit di ...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/004-jdk-install-deb">
+                        5. Install Oracle JDK 8 di Linux De...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/004-jdk-install-rpm">
+                        6. Install Oracle JDK 8 di RedHad b...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/005-jdk-vs-jre">
+                        7. Perbedaan Java Development Kit d...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/007-role-java">
+                        8. Standarisasi penulisan coding di...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/006-data-type-and-variables">
+                        9. Variabel dan Tipe Data
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/008-tipe-data-number">
+                        10. Tipe data yang bernilai Number
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/009-tipe-data-logika">
+                        11. Tipe data logika (true of false)
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/010-tipe-data-string">
+                        12. Tipe data untuk bernilai Karakter
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/011-tipe-data-tanggal">
+                        13. Tipe data untuk menyimpan Tanggal
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/012-operator">
+                        14. Macam macam Operator di Java
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/013-conversi-tipe-data">
+                        15. Konversi tipe data otomatis di Java
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/014-quis-section-1">
+                        16. Time is your practice
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/015-control-flow">
+                        17. Flow control in Java
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/016-if-statement">
+                        18. Making decision menggunakan IF s...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/017-swith-statement">
+                        19. Making decision menggunakan SWIT...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/018-for-statement">
+                        20. Looping menggunakan For statement
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/019-for-statement-2">
+                        21. Looping menggunakan For statemen...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/020-while-statement">
+                        22. Looping menggunakan WHILE dan DO...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/021-break-or-continue">
+                        23. Break dan Continue statement dal...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/022-quis-section-2">
+                        24. Time is your for practice part 2
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/023-function">
+                        25. Modularisasi menggunakan method ...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/024-params-at-method">
+                        26. Menerima data dari paramenter ke...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/025-class-java">
+                        27. Grouping source code dengan class
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/026-package-import">
+                        28. Organisasi class file dengan pac...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/027-quis-section-3">
+                        29. Time is your for practice part 3
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/028-class-oop">
+                        30. Object oriented dengan Java class
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/029-konsep-oop">
+                        31. Object Oriented Approach di Java8
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/030-inheritance-java">
+                        32. Mengenal lebih jauh tentang inhe...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/031-polymorpism-java">
+                        33. Mengenal lebih jauh tentang poly...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/032-keyword-super-this">
+                        34. Mengenal keyword super dan this
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/033-contructor-java">
+                        35. Contructor adalah method
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/034-quis-section-4">
+                        36. Time is your practice part 4
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/035-array">
+                        37. Menyimpan multiple value dalam s...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/036-array-2-dimension">
+                        38. Array 2 dimensi
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/037-element-collections">
+                        39. Element Collection
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/038-foreach">
+                        40. Perulangan for untuk Array, List...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/039-generics">
+                        41. Why Use Generics?
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/java/core/040-quis-section-5">
+                        42. Time to your practice part 5
+                    </a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+         -->
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collection with-header">
+                <li class="collapsible-header">
+                    Lastest Posts
+                </li>
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                        <span class="badge">09 Apr 23</span>
+                        Working with Deployment object
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                        <span class="badge">26 Feb 23</span>
+                        Study cases: Microservice apps (...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/01-welcome-nutanix-class">
+                        <span class="badge">05 Feb 23</span>
+                        Welcome to the Nutanix HCF (Hybr...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                        <span class="badge">04 Feb 23</span>
+                        Silabus SRE - Nutanix AHV: Pemul...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                        <span class="badge">17 Jan 23</span>
+                        What is Workload Resources?
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                        <span class="badge">17 Jan 23</span>
+                        Overview Kubernetes Workloads re...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl">
+                        <span class="badge">15 Jan 23</span>
+                        Getting started with Transaction...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06-overview-concurrent-control">
+                        <span class="badge">14 Jan 23</span>
+                        Overview of Concurrency Control
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05g-quis-section-1">
+                        <span class="badge">14 Jan 23</span>
+                        Time your practice (part 3)
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05f-dml-cleanup">
+                        <span class="badge">08 Jan 23</span>
+                        Cleanup Data from Table
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    <div class="col s12 m12 l8">
+        <div id="paginate-top" class="right">
+            <ul class="pagination hide-on-small-only">
+                <!-- current page info -->
+                <li>
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        2 to 42
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+            </ul>
+            <br>
+        </div>
+        <div>            
+            <div>
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <section id="article-body">
+        <div class="center">
+            <h1>
+                Bahasa Pemograman berorientasi objek dengan Java
+            </h1>
+        </div>
+        <div>
+            <div class="post-content"
+                 style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: large">
+                <p>Hi, welcome back into this lecture ‘Java Core’. Nah ini saya gak tau harus ngomong apa ya karena biasanya klo saya gak terlalu banyak ngomongnya <code class="language-plaintext highlighter-rouge">just do it #coding</code>. Tapi sekarang saya mau mencoba untuk menjelaskan ke temen-temen klo jadi programmer itu komunikasi, penting ya~. jadi gimana mau jadi programmer yang bisa <strong>kerja sama team</strong> kalo gak bisa komunikasi dengan programmer lain ya #ehMalahCurhat</p>
+
+<!--more-->
+
+<p>Ok, nah jadi Pemograman berorientasi objek itu initnya adalah bahasa pemograman yang dibungkus oleh kelas atau <em>class</em> supaya bisa lebih modular atau menjadi bagian-bagian kecil dalam menyelesaikan suatu masalah. selain itu juga metodelogi ini (OOP) bisa merepresetnasikan kehidupan kita sehari-hari seperti objek (benda, alat, kehidupan dan lain-lain) mungkin perumpamaan ini <strong>agak ambigu</strong> dan pertanyaannya pasti <code class="language-plaintext highlighter-rouge">Object itu seperti apa?</code> nah jawabanya sederhana pada dasarnya kehidupan ini khan berupa object-object contohnya seorang manusia adalah sebuah object nah object manusia ini punya sifat dan cirinya masing-masing itulah kenapa dia disebut object</p>
+
+<p>Gak lengkap kalo bahas Pemograman berorientasi object tapi gak tau apa itu <code class="language-plaintext highlighter-rouge">class</code>, jadi <code class="language-plaintext highlighter-rouge">class</code> itu istilahnya bisa dikatakan sebagai tempat atau wadah yang berisi data (bahasa teknisnya), atau gampangnya bisa dibilang sekumpulan sifat dan prilaku yang dikumpulin di satu tempat yaitu <code class="language-plaintext highlighter-rouge">class</code> tersebut. Initnya adalah <code class="language-plaintext highlighter-rouge">class</code> itu Tipe data yang kita buat sendiri.</p>
+
+<p>Nah setelah bahas Object dan Kelas, ada beberapa bahasa pemograman yang berorentasi object yang kita bisa implementasi selain <code class="language-plaintext highlighter-rouge">Java</code>, contohnya <code class="language-plaintext highlighter-rouge">C#</code>, <code class="language-plaintext highlighter-rouge">Objective C</code>, <code class="language-plaintext highlighter-rouge">.NET</code>, <code class="language-plaintext highlighter-rouge">PHP</code>, <code class="language-plaintext highlighter-rouge">JavaScript</code>, <code class="language-plaintext highlighter-rouge">Python</code>, <code class="language-plaintext highlighter-rouge">Ruby</code>, <code class="language-plaintext highlighter-rouge">Action Script 3.0</code> dan lain-lain. Selain itu juga di bahasa pemogramannya ini dibagi lagi ada yang full object oriented dan ada yang semi, nah apa magsudnya full object oriented sama semi? jadi klo full itu bahasanya tidak bisa di run dan compile jika tidak dibungkin dengan <code class="language-plaintext highlighter-rouge">class</code> contohnya di <code class="language-plaintext highlighter-rouge">Java</code>, <code class="language-plaintext highlighter-rouge">Objective C</code> dan <code class="language-plaintext highlighter-rouge">C#</code> itu harus dibungkus di dalam <code class="language-plaintext highlighter-rouge">class</code> kemudian dibungkul lagi dengan method utamanya disebut <code class="language-plaintext highlighter-rouge">main()</code> sedangkan yang semi itu meskipun tidak dibungkus di dalam kelas akan tetap bisa berjalan contohnya <code class="language-plaintext highlighter-rouge">PHP</code>, <code class="language-plaintext highlighter-rouge">Ruby</code> dan <code class="language-plaintext highlighter-rouge">JavaScript</code> oh ia <code class="language-plaintext highlighter-rouge">Java != JavaScript</code> berbeda teknologi dan pembuatnya juga beda ya…</p>
+
+            </div>
+        </div>
+    </section>   
+</article>
+
+            </div>
+            
+            <div>
+                <h3>
+                    Yuk simak juga videonya,
+                </h3>
+                <div class="video-container">
+    <iframe
+        src="https://www.youtube.com/embed/jeHhUtOmVt8"
+        width="700"
+        height="480"
+        frameborder="1"
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+    </iframe>
+</div>
+                <p>
+                    Dan jika temen-temen belajar hal baru kali ini jangan lupa buat <b>Like, Subcribe, dan Share ke temen kalian</b>. Terimakasih!!!
+
+                    <div class="g-ytsubscribe gray" data-channelid="UCNTS3BwsqzKwaOA0mOPLCgw" data-layout="full" data-theme="dark" data-count="default"></div>
+                </p>
+            </div>
+            
+        </div>
+        <div>
+            
+        </div>
+        <div id="paginate" class="center">
+            <ul class="pagination hide-on-small-only">
+                <!-- goto first page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/java/core/001-silabus-java" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman 1...">
+                        <i class="material-icons">fast_rewind</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto before page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/java/core/001-silabus-java" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke artikel sebelumnya...">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+                                
+                
+                <!-- current page info -->
+                <li class="active">
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        2 to 42
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+                   
+                <!-- goto next page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/java/core/003-java-dev" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Yuk lanjutin bacaanya...">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto last page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/java/core/040-quis-section-5" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman terakhir...">
+                        <i class="material-icons">fast_forward</i>
+                    </a>
+                </li>
+                
+            </ul>
+            <br>
+        </div>
+        <div>
+            
+            <div id="disqus_thread"></div>
+            <script>
+
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                
+                var disqus_config = function () {
+                    this.page.url = 'https://youtube.dimas-maryanto.com/posts/java/core/002-oop-in-java';
+                    this.page.identifier = '/posts/java/core/002-oop-in-java';
+                    console.debug(this.page);
+                };
+                
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://materi-bootcamp.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            
+        </div>
+    </div>
+    <div id="floating-button-menu" class="fixed-action-btn click-to-toggle horizontal hide-on-large-only">
+        <a href="#" class="btn-floating btn-large waves-effect waves-light">
+            <i class="large material-icons">playlist_play</i>
+        </a>
+        <ul>
+            <!-- goto first page -->
+            
+            <li>
+                <a href="/posts/java/core/001-silabus-java" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman 1...">
+                    <i class="material-icons">fast_rewind</i>
+                </a>
+            </li>
+            
+            <!-- goto before page -->
+            
+            <li>
+                <a href="/posts/java/core/001-silabus-java" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman sebelumnya">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+             
+
+            <!-- goto next page -->
+            
+            <li>
+                <a href="/posts/java/core/003-java-dev" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman selanjutnya">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+            
+
+            <!-- goto last page -->
+            
+            <li>
+                <a href="/posts/java/core/040-quis-section-5" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman terakhir">
+                    <i class="material-icons">fast_forward</i>
+                </a>
+            </li>
+               
+
+            <li>
+                <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                    <i class="large material-icons">toc</i>
+                </a>
+            </li>
+          </ul>
+    </div>
+</div>
+
+<ul id="slide-out-materi" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    
+            
+        
+            <li>
+                <div class="divider"></div>
+            </li>        
+            <li>
+                <a class="subheader">Daftar Materi</a>
+            </li>
+
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/001-silabus-java">
+                    <span class="truncate">
+                        1. Silabus Belajar Pemograman Java
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                      
+                <a class="subheader">
+                    <span class="badge" data-badge-caption="">
+                        <i class="material-icons">turned_in</i>
+                    </span>    
+                    <span class="truncate">
+                        2. Bahasa Pemograman berorientasi objek dengan Java
+                    </span>            
+                </a>            
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/003-java-dev">
+                    <span class="truncate">
+                        3. Software Development for Java Users
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/004-jdk-install-win10">
+                    <span class="truncate">
+                        4. Install Java Development Kit di Windows 10
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/004-jdk-install-deb">
+                    <span class="truncate">
+                        5. Install Oracle JDK 8 di Linux Debian Based (UBuntu 16.04 dan 17.04)
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/004-jdk-install-rpm">
+                    <span class="truncate">
+                        6. Install Oracle JDK 8 di RedHad based (Fedora 25)
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/005-jdk-vs-jre">
+                    <span class="truncate">
+                        7. Perbedaan Java Development Kit dan Java Runtime Environment
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/007-role-java">
+                    <span class="truncate">
+                        8. Standarisasi penulisan coding di Java
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/006-data-type-and-variables">
+                    <span class="truncate">
+                        9. Variabel dan Tipe Data
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/008-tipe-data-number">
+                    <span class="truncate">
+                        10. Tipe data yang bernilai Number
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/009-tipe-data-logika">
+                    <span class="truncate">
+                        11. Tipe data logika (true of false)
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/010-tipe-data-string">
+                    <span class="truncate">
+                        12. Tipe data untuk bernilai Karakter
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/011-tipe-data-tanggal">
+                    <span class="truncate">
+                        13. Tipe data untuk menyimpan Tanggal
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/012-operator">
+                    <span class="truncate">
+                        14. Macam macam Operator di Java
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/013-conversi-tipe-data">
+                    <span class="truncate">
+                        15. Konversi tipe data otomatis di Java
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/014-quis-section-1">
+                    <span class="truncate">
+                        16. Time is your practice
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/015-control-flow">
+                    <span class="truncate">
+                        17. Flow control in Java
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/016-if-statement">
+                    <span class="truncate">
+                        18. Making decision menggunakan IF statement
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/017-swith-statement">
+                    <span class="truncate">
+                        19. Making decision menggunakan SWITCH-CASE statement
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/018-for-statement">
+                    <span class="truncate">
+                        20. Looping menggunakan For statement
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/019-for-statement-2">
+                    <span class="truncate">
+                        21. Looping menggunakan For statement part 2
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/020-while-statement">
+                    <span class="truncate">
+                        22. Looping menggunakan WHILE dan DO-WHILE statement
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/021-break-or-continue">
+                    <span class="truncate">
+                        23. Break dan Continue statement dalam perulangan
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/022-quis-section-2">
+                    <span class="truncate">
+                        24. Time is your for practice part 2
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/023-function">
+                    <span class="truncate">
+                        25. Modularisasi menggunakan method atau function
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/024-params-at-method">
+                    <span class="truncate">
+                        26. Menerima data dari paramenter ke dalam function
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/025-class-java">
+                    <span class="truncate">
+                        27. Grouping source code dengan class
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/026-package-import">
+                    <span class="truncate">
+                        28. Organisasi class file dengan package
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/027-quis-section-3">
+                    <span class="truncate">
+                        29. Time is your for practice part 3
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/028-class-oop">
+                    <span class="truncate">
+                        30. Object oriented dengan Java class
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/029-konsep-oop">
+                    <span class="truncate">
+                        31. Object Oriented Approach di Java8
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/030-inheritance-java">
+                    <span class="truncate">
+                        32. Mengenal lebih jauh tentang inheritance
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/031-polymorpism-java">
+                    <span class="truncate">
+                        33. Mengenal lebih jauh tentang polymorpism
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/032-keyword-super-this">
+                    <span class="truncate">
+                        34. Mengenal keyword super dan this
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/033-contructor-java">
+                    <span class="truncate">
+                        35. Contructor adalah method
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/034-quis-section-4">
+                    <span class="truncate">
+                        36. Time is your practice part 4
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/035-array">
+                    <span class="truncate">
+                        37. Menyimpan multiple value dalam sebuah variable
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/036-array-2-dimension">
+                    <span class="truncate">
+                        38. Array 2 dimensi
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/037-element-collections">
+                    <span class="truncate">
+                        39. Element Collection
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/038-foreach">
+                    <span class="truncate">
+                        40. Perulangan for untuk Array, List, Set dan Map
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/039-generics">
+                    <span class="truncate">
+                        41. Why Use Generics?
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li>
+                    
+                
+                <a href="/posts/java/core/040-quis-section-5">
+                    <span class="truncate">
+                        42. Time to your practice part 5
+                    </span>
+                </a>
+                
+            </li>
+            
+           
+    
+
+    
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</section>
+
+<section>
+    
+<footer class="page-footer blue lighten-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Tentang website</h5>
+                <div class="grey-text text-lighten-4">
+                    <p>Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.</p>
+                    <p>
+                        Donasi via:
+                        <ul>
+                            
+                            <ol>
+                                <a class="white-text" href="https://saweria.co/DimasMaryanto">
+                                    <i class="material-icons">star</i>
+                                    Saweria a/n Dimas Maryanto
+                                </a>
+                            </ol>
+                            
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <ul class="collection with-header">
+                    <li class="collection-header blue lighten-1">
+                        <i class="material-icons">account_box</i>
+                        <span class="white-text">Jangan Lupa follow aku ya guys!</span>
+                    </li>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://github.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-github"></i> Github
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.facebook.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.instagram.com/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue darken-3">
+        <div class="container">
+            Dimas Maryanto © 2023
+            <a class="grey-text text-lighten-4 right" href="https://pages.github.com/">
+                powered by Github Pages & Jekyll
+            </a>
+        </div>
+    </div>
+</footer>
+</section>
+
+</body>
+</html>

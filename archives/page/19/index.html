@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> DevOps with Dimas Maryanto - Archives - page 19 </title>
+    <meta name="description" content="Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevOps with Dimas Maryanto" />
+    <meta property="og:description" content="Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS."
+/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/node_modules/materialize-css/dist/css/materialize.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/devicons/css/devicons.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/sintax.css" />
+
+<script src="/assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/assets/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="/assets/responsive-content.js"></script>
+<script src="/assets/list.min.js"></script>
+<script src="/assets/sintax.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $('.button-collapse').sideNav({
+            menuWidth: 370
+        });
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+    })
+</script>
+
+
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82058496-1');
+</script>
+
+<!-- Global - Google Adsense -->
+<script data-ad-client="ca-pub-3067429629551793" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82058496-1', 'auto');
+	ga('send', 'pageview', { 'page': location.pathname + location.search + location.hash});
+	ga('set', 'anonymizeIp', false);
+    </script>
+    <!-- End Google Analytics -->
+    </head>
+<body>
+<header>
+    
+
+<div class="navbar-fixed hide-on-med-and-down">
+    <nav class="blue darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons right">home</i>&nbsp;
+                <span>Materi Bootcamp</span>
+            </a>
+            <a href="#" data-activates="slide-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/archives/">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/courses.html">
+                        <i class="material-icons left">library_books</i> 
+                        <span>Cources</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/news.html">
+                        <i class="material-icons left">announcement</i> 
+                        <span>News</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/promo.html">
+                        <i class="material-icons left">grade</i> 
+                        <span>Promo</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/roadmap.html">
+                        <i class="material-icons left">assessment</i> 
+                        <span>ROADMAP</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="fixed-action-btn click-to-toggle hide-on-large-only">
+    <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+        <i class="large material-icons">menu</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    <li><a class="subheader">Daftar Kategori</a></li>
+<li class="no-padding">
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Java
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/core/001-silabus-java">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">42</span>
+                                Java Basic
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                JDBC with Postgresql
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/web/war/001-silabus-java-web">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">32</span>
+                                Java Web (Servlet & JSP)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">57</span>
+                                ORM dengan Hibernate
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/language/java/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">3</span>
+                                Java
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                JavaScript
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/web/js/001-silabus-js">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                Javascript
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Database
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">116</span>
+                                Oracle Database
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">39</span>
+                                PostgreSQL
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                DevOps
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">36</span>
+                                Kubernetes (k8s)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">7</span>
+                                Gitlab
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">2</span>
+                                Nutanix AHV
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/docker/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">113</span>
+                                Docker
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+</li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</header>
+
+<section>
+    <div class="parallax-container">
+    <div class="parallax"><img src="/resources/pictures/big-art.png">
+    </div>
+</div>
+
+<div class="section white">
+    <div class="row container">
+        <h2 class="header">
+            Articles
+            <span class="new badge" data-badge-caption="Articles">474</span>
+            <span class="new badge" data-badge-caption="Pages">19</span>
+        </h2>
+        <p class="grey-text text-darken-3 lighten-3"></p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div id="archive-body" class="container">
+        <div class="col m12">
+            <!-- Pagination links -->
+            <div class="pagination right-align">
+                
+                <a href="/archives/page/18/" class="previous">Latest</a>
+                
+                <span class="page_number ">
+                    Page: 19 of 19
+                </span>
+                
+                <span class="next ">Previous</span>
+                
+            </div>
+
+            <ul class="collection">
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        14/Nov/2017</span>
+                    <a href="/posts/java/core/022-quis-section-2">
+                        <span class="title">Time is your for practice part 2</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Buatlah tampilan seperti berikut menggunakan perintah perulangan atau percabangan:</p>
+
+<br>
+                        <a href="/posts/java/core/022-quis-section-2">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        14/Nov/2017</span>
+                    <a href="/posts/java/core/021-break-or-continue">
+                        <span class="title">Break dan Continue statement dalam perulangan</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Statement <code class="language-plaintext highlighter-rouge">break</code> dan <code class="language-plaintext highlighter-rouge">continue</code> mungkin dari temen-temen udah agak familiar, mungkin jika temen-temen masih ingat di materi seleksi menggunakan <code class="language-plaintext highlighter-rouge">switch-case</code> pasti ada statement <code class="language-plaintext highlighter-rouge">break;</code> nah jadi selain di seleksi di perulangan pun bisa diterapkan untuk statement <code class="language-plaintext highlighter-rouge">break</code> dan <code class="language-plaintext highlighter-rouge">continue</code>, jadi tujuannya adalah untuk menghentikan atau skip suatu iterasi pada perlulangan contohnya seperti berikut:</p>
+
+<br>
+                        <a href="/posts/java/core/021-break-or-continue">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        14/Nov/2017</span>
+                    <a href="/posts/java/core/020-while-statement">
+                        <span class="title">Looping menggunakan WHILE dan DO-WHILE statement</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Tidak jauh berbeda dengan perulangan dengan <code class="language-plaintext highlighter-rouge">for</code> statement di materi sebelumnya. Sekarang kita lihat cara bekerja untuk perulangan menggunakan <code class="language-plaintext highlighter-rouge">do-while</code> terlebih dahulu. berikut contohnya:</p>
+
+<br>
+                        <a href="/posts/java/core/020-while-statement">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        14/Nov/2017</span>
+                    <a href="/posts/java/core/019-for-statement-2">
+                        <span class="title">Looping menggunakan For statement part 2</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Di materi sebelumnya kita udah mengetahui bagaimana perulangan dengan perintah <code class="language-plaintext highlighter-rouge">for</code> statement. Sekarang kita, akan coba membuat satu kasus yaitu <code class="language-plaintext highlighter-rouge">for</code> dalam <code class="language-plaintext highlighter-rouge">for</code> atau didalam perulangan ada perlulangan contohnya seperti berikut:</p>
+
+<br>
+                        <a href="/posts/java/core/019-for-statement-2">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Sunday,
+                        12/Nov/2017</span>
+                    <a href="/posts/java/core/018-for-statement">
+                        <span class="title">Looping menggunakan For statement</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Mungkin temen-temen dulu pernah mengalami kejadian dihukum sama guru atau dosen kita harus menulis di papan tulis atau di kertas selembar</p>
+
+<br>
+                        <a href="/posts/java/core/018-for-statement">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Saturday,
+                        11/Nov/2017</span>
+                    <a href="/posts/java/core/017-swith-statement">
+                        <span class="title">Making decision menggunakan SWITCH-CASE statement</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Percabagan <code class="language-plaintext highlighter-rouge">switch-case</code> sebenarnya tidak jauh berbeda tpi disini kita akan lihat bagaimana cara kerja dari percabagan ini, berikut adalah contoh kasus sederhaan dari kodingnya sering kita jumpai yaitu seperti berikut:</p>
+
+<br>
+                        <a href="/posts/java/core/017-swith-statement">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Saturday,
+                        11/Nov/2017</span>
+                    <a href="/posts/java/core/016-if-statement">
+                        <span class="title">Making decision menggunakan IF statement</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Dimateri sebelumnya saya udah singung tentang penggunaan <code class="language-plaintext highlighter-rouge">if</code> statement, di section ini kita akan belajar lebih dalam lagi tentang <code class="language-plaintext highlighter-rouge">if</code> statement supaya lebih paham lagi tentang konsep dan cara penggunaanya. Nah jadi sebelumnya kita hanya punya <strong>satu kondisi</strong> saja bagaimana jika punya <strong>dua kondisi</strong>. Tentunya bahasa Java telah menyediakannya ya, yaitu dengan menggunakan <code class="language-plaintext highlighter-rouge">if-else</code> berikut contoh penggunaanya</p>
+
+<br>
+                        <a href="/posts/java/core/016-if-statement">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Saturday,
+                        11/Nov/2017</span>
+                    <a href="/posts/java/core/015-control-flow">
+                        <span class="title">Flow control in Java</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Setelah mengelesaikan latihan pertama, materi selajutnya adalah tentang flow atau alur control. Flow Control ini pada dasarnya ada 2 macem yaitu</p>
+
+<ol>
+  <li>Decision making (Percabangan) statement</li>
+  <li>Looping (Perulangan) statement</li>
+</ol>
+
+<p>Dengan flow control kita bisa ngatur aplikasi yang kita develop atau buat melakukan sesuatu dengan ketentuan tertentu dan melakukannya beberapa kali tanpa menulis ulang perintahnya.</p>
+
+<br>
+                        <a href="/posts/java/core/015-control-flow">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Friday,
+                        10/Nov/2017</span>
+                    <a href="/posts/java/core/014-quis-section-1">
+                        <span class="title">Time is your practice</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        9/Nov/2017</span>
+                    <a href="/posts/java/core/013-conversi-tipe-data">
+                        <span class="title">Konversi tipe data otomatis di Java</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Untuk konversi tipe data di Java, pada dasarnya otomatis tpi ada beberapa syarat seperti berikut:</p>
+
+<ol>
+  <li>Sesuai dengan hirarki tipe data tersebut</li>
+  <li>Sesuai dengan tipe data, contohnya jika tipe data <code class="language-plaintext highlighter-rouge">Byte</code> tidak bisa di konversi ke <code class="language-plaintext highlighter-rouge">boolean</code> jadi harus ke tipe data yang sifatnya number dan hirarcki yang lebih tinggi seperti gambar berikut:</li>
+</ol>
+
+<br>
+                        <a href="/posts/java/core/013-conversi-tipe-data">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Wednesday,
+                        8/Nov/2017</span>
+                    <a href="/posts/java/core/012-operator">
+                        <span class="title">Macam macam Operator di Java</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Operator pada dasarnya perintah untuk melakukan proses komputasi seperti pengelolaan data aritmatika, Operator terdiri dari</p>
+<ol>
+  <li>Penugasan (assignment)</li>
+  <li>Operasi matematika</li>
+  <li>Operator Perbandingan</li>
+  <li>Konversi tipe data (casting)</li>
+</ol>
+
+<br>
+                        <a href="/posts/java/core/012-operator">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        7/Nov/2017</span>
+                    <a href="/posts/java/core/011-tipe-data-tanggal">
+                        <span class="title">Tipe data untuk menyimpan Tanggal</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Tipe data yang tidak terlupakan adalah untuk mengimpan tanggal dan waktu, di Java tipe data Tanggal ini ada beberapa macem mulai dari bawaan JDK Java bahkan library atau dependency.</p>
+
+<br>
+                        <a href="/posts/java/core/011-tipe-data-tanggal">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        7/Nov/2017</span>
+                    <a href="/posts/java/core/010-tipe-data-string">
+                        <span class="title">Tipe data untuk bernilai Karakter</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Tipe data untuk karakter diaktegorikan ada 2 jenis yaitu single karakter dan multiple karakter (String).</p>
+
+<br>
+                        <a href="/posts/java/core/010-tipe-data-string">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        7/Nov/2017</span>
+                    <a href="/posts/java/core/009-tipe-data-logika">
+                        <span class="title">Tipe data logika (true of false)</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Tipe data logika ini pada dasarnya adalah yang mengembalikan nilai boolean. Boolean hanya bernilai <code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code>.</p>
+
+<br>
+                        <a href="/posts/java/core/009-tipe-data-logika">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        7/Nov/2017</span>
+                    <a href="/posts/java/core/008-tipe-data-number">
+                        <span class="title">Tipe data yang bernilai Number</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Tipe data untuk yang bernilai number di bahasa pemograman Java pada dasarnya dibagi jadi 2 kategori yitu bilangan bulat dan bilangan pecahan baik positif dan negatif. Bilangan bulat dibagi lagi menjadi beberapa range yaitu kecil, sedang dan besar.</p>
+
+<br>
+                        <a href="/posts/java/core/008-tipe-data-number">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        7/Nov/2017</span>
+                    <a href="/posts/java/core/006-data-type-and-variables">
+                        <span class="title">Variabel dan Tipe Data</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Ok pembahasan selanjutnya adalah variable dan tipe data di bahasa pemograman Java. Pembahasan pertama yaitu variable.</p>
+
+<br>
+                        <a href="/posts/java/core/006-data-type-and-variables">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Tuesday,
+                        7/Nov/2017</span>
+                    <a href="/posts/java/core/007-role-java">
+                        <span class="title">Standarisasi penulisan coding di Java</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Mungkin dari sebagian dari temen-temen tanya kenapa sih di bahasa pemograman Java ada aturannya segala? gak seperti basaha pemograman yang lain <code class="language-plaintext highlighter-rouge">feel free</code>. Sebenanya klo temen-temen baca dokumentasi dari setiap bahasa pemograman yang temen-temen pelajari, semuanya punya aturan main (bagaimana coding seharunya ditulis, bagaimana best practicenya, dll). Nah di bahasa pemograman Java juga sama, ada aturan mainnya yang mengacu ke JSR (Java Spesification Request) di <a href="https://jcp.org/en/jsr/overview">link berikut</a>.</p>
+
+<p>Nah langsung ada saya sebutin ya yang harus di perhatikan dalam penulisan koding di Java diatarnya sebagai berikut:</p>
+
+<br>
+                        <a href="/posts/java/core/007-role-java">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        19/Oct/2017</span>
+                    <a href="/posts/java/core/005-jdk-vs-jre">
+                        <span class="title">Perbedaan Java Development Kit dan Java Runtime Environment</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Mungkin dari temen-temen masih belum paham apa bedanya antara</p>
+
+<ol>
+  <li>JVM (Java Virtual Machine),</li>
+  <li>JDK (Java Development Kit) dan</li>
+  <li>JRE (Java Runtime Environment)</li>
+</ol>
+
+<br>
+                        <a href="/posts/java/core/005-jdk-vs-jre">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Thursday,
+                        19/Oct/2017</span>
+                    <a href="/posts/java/core/004-jdk-install-rpm">
+                        <span class="title">Install Oracle JDK 8 di RedHad based (Fedora 25)</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Untuk install Oracle JDK di Fedora 25 sebenarnya ada banyak cara, salah satunya menggunakan software <code class="language-plaintext highlighter-rouge">Fedy</code>, <code class="language-plaintext highlighter-rouge">Fedy</code> adalah penyedia software-software yang digunakan untuk mempermudah proses installasi sama halnya seperti via <code class="language-plaintext highlighter-rouge">ppa:repository</code> klo di Ubuntu. tpi disini saya tidak akan menggunakan <code class="language-plaintext highlighter-rouge">Fedy</code> tapi menggunakan cara manual saja supaya apa? supaya anda tau proses mengginstallnya menggunakan package management fedora yaitu <code class="language-plaintext highlighter-rouge">rpm</code>. OK sekarang kita download dulu file installernya sama seperti di Windows masuk ke <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">website oracle</a> kemudian pilih sesuai platform, karena saya pake Fedora version 64bit jadi saya pilih yang <code class="language-plaintext highlighter-rouge">linux-x64.rpm</code> pilih yang extensionnya <code class="language-plaintext highlighter-rouge">.rpm</code> ya!.</p>
+
+<br>
+                        <a href="/posts/java/core/004-jdk-install-rpm">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Wednesday,
+                        18/Oct/2017</span>
+                    <a href="/posts/java/core/004-jdk-install-deb">
+                        <span class="title">Install Oracle JDK 8 di Linux Debian Based (UBuntu 16.04 dan 17.04)</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Setelah install di Windows 10, sekarang saya mau install di Sistem Operation Linux Debian based dengan distro <code class="language-plaintext highlighter-rouge">Ubuntu 16.04</code> . Kalo di ubuntu sih sebenernya gampang kita bisa install via ppa dengan menambahkan <code class="language-plaintext highlighter-rouge">ppa:webupd8team/java</code> berikut perintahnya</p>
+
+<br>
+                        <a href="/posts/java/core/004-jdk-install-deb">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Wednesday,
+                        18/Oct/2017</span>
+                    <a href="/posts/java/core/004-jdk-install-win10">
+                        <span class="title">Install Java Development Kit di Windows 10</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Sekarang kita akan menginstall JDK atau Java Development Kit versi Oracle, nah sebenarnya JDK itu tidak hanya punya Oracle tapi ada komunitas juga ya yang megembangin JDK juga yaitu OpenJDK yang dulunya di buat oleh IBM sekarang lisencenya dikasihin ke Eclipse Fundation, nah sekarang (Oktober 2017) kebetulan <code class="language-plaintext highlighter-rouge">Oracle JDK 9</code> udah releash ya. tapi di artikel ini masih pake <code class="language-plaintext highlighter-rouge">JDK 8u101</code> ini tidak masalah ya. karena dalam materi ini kita masih mempelajari fundamental artinya core dari Java belum sampai fitur seperti <code class="language-plaintext highlighter-rouge">Lamda Expresion</code>, <code class="language-plaintext highlighter-rouge">Stream API</code>, <code class="language-plaintext highlighter-rouge">Modules</code> dan lain-lain. Nantinya akan saya buat kan materinya secara terpisah.</p>
+
+<br>
+                        <a href="/posts/java/core/004-jdk-install-win10">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Wednesday,
+                        18/Oct/2017</span>
+                    <a href="/posts/java/core/003-java-dev">
+                        <span class="title">Software Development for Java Users</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Sebelum kita koding dengan bahasa pemograman berorientasi object ini (Java), kita harus install dulu Software Development Kit atau SDK yaitu JDK kependekan dari <em>Java Development Kit</em>. JDK bertujuan untuk menyediakan sekumpulan tools handal yang disediakan oleh para insyinyur Java (gelar) contoh diantarnya sebagai berikut</p>
+
+<p><img src="/resources/posts/java-core/java-intro/java-arc.png" alt="JDK vs JRE" /></p>
+
+<br>
+                        <a href="/posts/java/core/003-java-dev">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Monday,
+                        16/Oct/2017</span>
+                    <a href="/posts/java/core/002-oop-in-java">
+                        <span class="title">Bahasa Pemograman berorientasi objek dengan Java</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hi, welcome back into this lecture ‘Java Core’. Nah ini saya gak tau harus ngomong apa ya karena biasanya klo saya gak terlalu banyak ngomongnya <code class="language-plaintext highlighter-rouge">just do it #coding</code>. Tapi sekarang saya mau mencoba untuk menjelaskan ke temen-temen klo jadi programmer itu komunikasi, penting ya~. jadi gimana mau jadi programmer yang bisa <strong>kerja sama team</strong> kalo gak bisa komunikasi dengan programmer lain ya #ehMalahCurhat</p>
+
+<br>
+                        <a href="/posts/java/core/002-oop-in-java">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+                <li class="collection-item avatar">
+                    <img src=" /resources/images/java-core.png"
+                        alt="java-core" class="circle">
+                    <span class="new badge yellow black-text" data-badge-caption="">Monday,
+                        16/Oct/2017</span>
+                    <a href="/posts/java/core/001-silabus-java">
+                        <span class="title">Silabus Belajar Pemograman Java</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div>
+                        
+                        <div class="chip small">#java</div>
+                        
+                        <div class="chip small">#core</div>
+                        
+                    </div>
+                    <div style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: small">
+                         
+                        <hr>
+                        <p>Hi, in this section ‘Java Core’ ini temen-temen akan berkenalan dengan salah satu Bahasa Pemograman yang sedang Hits saat ini <code class="language-plaintext highlighter-rouge">(Oktober/2017)</code> Nah langsung aja jadi di BAB ini kita belajar tentang:</p>
+
+<br>
+                        <a href="/posts/java/core/001-silabus-java">
+                            <span>Lanjut membaca...</span>
+                        </a>
+                        
+                    </div>
+                </li>
+                
+            </ul>
+
+            <!-- Pagination links -->
+            <div class="pagination center">
+                <ul class="pagination">
+
+                    <li class="waves-effect">
+                        <a href="/archives/" class="first">
+                            First
+                        </a>
+                    </li>
+
+                    
+                        <li class="waves-effect">
+                            <a href="/archives/page/18/" class="previous">
+                                Previous
+                            </a>
+                        </li>
+                    
+
+                    
+                    
+                    <li >
+                        <a href="/archives/page/15/index.html" title="Archives - page 15">15</a>
+                    </li>
+                    
+                    <li >
+                        <a href="/archives/page/16/index.html" title="Archives - page 16">16</a>
+                    </li>
+                    
+                    <li >
+                        <a href="/archives/page/17/index.html" title="Archives - page 17">17</a>
+                    </li>
+                    
+                    <li >
+                        <a href="/archives/page/18/index.html" title="Archives - page 18">18</a>
+                    </li>
+                    
+                    <li class="active waves-effect" >
+                        <a href="/archives/page/19/index.html" title="Archives - page 19">19</a>
+                    </li>
+                    
+                    
+
+                    
+                    <li class="disabled">
+                        <a href="#!"><span class="next">Next</span></a>
+                    </li>
+                    
+
+                    <li class="waves-effect">
+                        <a href="/archives/page/19/" class="last">
+                            Last
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section>
+    
+<footer class="page-footer blue lighten-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Tentang website</h5>
+                <div class="grey-text text-lighten-4">
+                    <p>Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.</p>
+                    <p>
+                        Donasi via:
+                        <ul>
+                            
+                            <ol>
+                                <a class="white-text" href="https://saweria.co/DimasMaryanto">
+                                    <i class="material-icons">star</i>
+                                    Saweria a/n Dimas Maryanto
+                                </a>
+                            </ol>
+                            
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <ul class="collection with-header">
+                    <li class="collection-header blue lighten-1">
+                        <i class="material-icons">account_box</i>
+                        <span class="white-text">Jangan Lupa follow aku ya guys!</span>
+                    </li>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://github.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-github"></i> Github
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.facebook.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.instagram.com/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue darken-3">
+        <div class="container">
+            Dimas Maryanto © 2023
+            <a class="grey-text text-lighten-4 right" href="https://pages.github.com/">
+                powered by Github Pages & Jekyll
+            </a>
+        </div>
+    </div>
+</footer>
+</section>
+
+</body>
+</html>

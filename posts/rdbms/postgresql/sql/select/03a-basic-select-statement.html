@@ -1,0 +1,3054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title> DevOps with Dimas Maryanto - Basic SQL Select statements </title>
+    <meta name="description" content="Hai semuanya, di materi kali ini kita akan membahas tentang Basic penggunaan SQL untuk Select statement pada PostgreSQL. Diantaranya yang akan kita bahas yaitu">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DevOps with Dimas Maryanto" />
+    <meta property="og:description" content="Hai semuanya, di materi kali ini kita akan membahas tentang Basic penggunaan SQL untuk Select statement pada PostgreSQL. Diantaranya yang akan kita bahas yaitu"
+/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/assets/node_modules/materialize-css/dist/css/materialize.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/devicons/css/devicons.min.css" />
+<link rel="stylesheet" type="text/css"  href="/assets/node_modules/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/assets/sintax.css" />
+
+<script src="/assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/assets/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script src="/assets/responsive-content.js"></script>
+<script src="/assets/list.min.js"></script>
+<script src="/assets/sintax.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.materialboxed').materialbox();
+        $('.dropdown-button').dropdown();
+        $('.scrollspy').scrollSpy();
+        $('.button-collapse').sideNav({
+            menuWidth: 370
+        });
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+        $('.modal').modal({
+            dismissible: false
+        });
+        $('.tooltipped').tooltip({ delay: 50 });
+        $('.scrollspy').scrollSpy();
+        $('ul.tabs').tabs();
+    })
+</script>
+
+
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82058496-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82058496-1');
+</script>
+
+<!-- Global - Google Adsense -->
+<script data-ad-client="ca-pub-3067429629551793" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82058496-1', 'auto');
+	ga('send', 'pageview', { 'page': location.pathname + location.search + location.hash});
+	ga('set', 'anonymizeIp', false);
+    </script>
+    <!-- End Google Analytics -->
+    </head>
+<body>
+<header>
+    
+
+<div class="navbar-fixed hide-on-med-and-down">
+    <nav class="blue darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">
+                <i class="material-icons right">home</i>&nbsp;
+                <span>Materi Bootcamp</span>
+            </a>
+            <a href="#" data-activates="slide-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/archives/">
+                        <i class="material-icons left">archive</i>
+                        <span>Archives</span>
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/courses.html">
+                        <i class="material-icons left">library_books</i> 
+                        <span>Cources</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                <li>
+                    <a href="/pages/news.html">
+                        <i class="material-icons left">announcement</i> 
+                        <span>News</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/promo.html">
+                        <i class="material-icons left">grade</i> 
+                        <span>Promo</span>            
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/pages/roadmap.html">
+                        <i class="material-icons left">assessment</i> 
+                        <span>ROADMAP</span>            
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="fixed-action-btn click-to-toggle hide-on-large-only">
+    <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light red button-collapse">
+        <i class="large material-icons">menu</i>
+    </a>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    <li><a class="subheader">Daftar Kategori</a></li>
+<li class="no-padding">
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Java
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/core/001-silabus-java">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">42</span>
+                                Java Basic
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/jdbc/postgresql/001-silabus-jdbc">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                JDBC with Postgresql
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/web/war/001-silabus-java-web">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">32</span>
+                                Java Web (Servlet & JSP)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/java/orm/hibernate/postgresql/001-silabus-orm-hibernate">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">57</span>
+                                ORM dengan Hibernate
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/language/java/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">3</span>
+                                Java
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                JavaScript
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/web/js/001-silabus-js">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">12</span>
+                                Javascript
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                Database
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/oracle18c/001-silabus-oracle-18c">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">116</span>
+                                Oracle Database
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">39</span>
+                                PostgreSQL
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="collapsible collapsible-accordion">
+        <li>
+            <a class="collapsible-header">
+                DevOps
+                <i class="material-icons">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+                
+                <ul>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/orchestration/kubernetes/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">36</span>
+                                Kubernetes (k8s)
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/git/gitops/gitlab/00-silabus-gitlab">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">7</span>
+                                Gitlab
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">2</span>
+                                Nutanix AHV
+                            </a>
+                        
+                    </li>
+                
+                    <li>
+                        
+                        
+                        
+                        
+                            <a href="/posts/devops/docker/01-silabus">
+                                <i class="material-icons">pageview</i>
+                                <span class="new badge" data-badge-caption="Pages">113</span>
+                                Docker
+                            </a>
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+</li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</header>
+
+<section>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="postBody" class="row container post-body">
+    <div class="col s12 m12 l4 hide-on-med-and-down">
+        <div class="row">
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons blue-text">person</i> Penulis:
+                        <span>
+                            <span class="badge new" data-badge-caption="">
+                                <time datetime="2022-02-23T23:05:06+00:00" itemscope="datePublished">
+                                    23 February 2022
+                                </time>
+                            </span>
+                        </span>
+                    </li>
+                    
+                    
+                    
+                    <li class="collection-item avatar">
+                        <img src="/resources/avatars/dimasm93.png" alt="Dimas Maryanto" class="circle">
+                        <span class="title">Dimas Maryanto</span>
+                        <p>PT. Tabeldata Informatika</p>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">account_balance_wallet</i>
+                        Donasi via:
+                    </li>
+                          
+                    <li class="collection-item">
+                        <a href="https://saweria.co/DimasMaryanto" target="_blank">
+                            Saweria a/n Dimas Maryanto
+                        </a>
+                    </li>              
+                    
+                </ul>
+            </div>
+            <!-- edit this for multiple premium members -->
+            
+            <div>
+                <ul class='collection with-header'>
+                    <li class="collection-header">
+                        <i class="material-icons teal-text">lock_open</i>
+                        Join Premium Members:
+                    </li>
+                    
+                    <li class="collection-item">
+                        <a href="https://www.udemy.com/course/dba-postgresql-pemula-sampai-mahir/?referralCode=8080BE598C39D7652D33">
+                            Udemy.com
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            
+        </div>
+        <!-- 
+        
+        
+        <div class="row">
+            <ul class="collection with-header">
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <span>Daftar materi
+                        <span class="badge new blue" data-badge-caption="materi">39</span>
+                    </span>
+                    
+                    <p class="title">
+                        POSTGRESQL
+                    </p>
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/01-silabus-psql">
+                        1. Silabus - PostgreSQL: Pemula sam...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/01a-what-is-postgresql">
+                        2. Overview of PostgreSQL Database
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/01b-postgresql-architecture">
+                        3. Architecture of PostgreSQL Database
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/01c-postgresql-database">
+                        4. Overview of Object Relational Da...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/01d-accessing-database">
+                        5. Accessing a Database
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/getting-started/02-overview-install-postgres">
+                        6. Overview Installing PostgreSQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/getting-started/02a-install-postgresql-windows">
+                        7. Install PostgreSQL for Windows u...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/getting-started/02a-install-postgresql-mac">
+                        8. Install PostgreSQL for Mac users
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/getting-started/02a-install-postgresql-linux-ubuntu">
+                        9. Install PostgreSQL for Linux Ubu...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/getting-started/02a-install-postgresql-docker">
+                        10. Install PostgreSQL using Docker
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/getting-started/02b-use-psql">
+                        11. Using psql as PostgreSQL editor
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/getting-started/02c-use-pgadmin">
+                        12. Using pgAdmin4 as PostgreSQL editor
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/getting-started/02d-use-third-party-editors">
+                        13. Using thirdparty Editor untuk Po...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/03-overview-sql">
+                        14. Overview SQL Select statements
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <div>
+                        <span class="badge" data-badge-caption="">
+                            <i class="material-icons">turned_in</i>
+                        </span>
+                        15. Basic SQL Select statements
+                    </div>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/03b-sql-operators">
+                        16. Build-in Operators
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/03c-sql-functions">
+                        17. Build-in Functions
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/03d-where-clause">
+                        18. Filtering data with WHERE clause
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/03e-order-by-clause">
+                        19. Sorting rows using ORDER BY clause
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/03f-limit-offset-clause">
+                        20. Limit dan Offset rows
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/03g-quis-section-1">
+                        21. Time your practice (part 1)
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/04-overview-more-select-statements">
+                        22. Deep dive into Select Statements
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/04a-single-group-function">
+                        23. Single Row / Group functions
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/04b-join-tables">
+                        24. Joined Tables
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/04c-subquery">
+                        25. Queries inside a query (subquery)
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/04d-conditional-expression">
+                        26. Conditional Expressions
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/04e-combining-queries">
+                        27. Combining Queries (UNION, INTERS...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/04f-with-queries">
+                        28. WITH Queries (Common Table Expre...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/select/04g-quis-section-2">
+                        29. Time your practice (part 2)
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/dml/05-overview-dml">
+                        30. Overview of Data Manipulation La...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/dml/05a-cud-statement">
+                        31. Basic Create, Update, Delete sta...
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/dml/05b-dml-insert">
+                        32. Deep dive into INSERT Statement
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/dml/05c-dml-update">
+                        33. Deep dive into UPDATE Statement
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/dml/05d-dml-delete">
+                        34. Deep dive into DELETE statement
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/dml/05e-dml-prepared-statement">
+                        35. Prepared Statement in SQL
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/dml/05f-dml-cleanup">
+                        36. Cleanup Data from Table
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/dml/05g-quis-section-1">
+                        37. Time your practice (part 3)
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06-overview-concurrent-control">
+                        38. Overview of Concurrency Control
+                    </a>
+                    
+                </li>
+                
+                
+                <li class="collection-item">
+                    
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl">
+                        39. Getting started with Transaction...
+                    </a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+         -->
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collapsible with-header" data-collapsible="accordion">
+                <li class="collection-header">
+                    <div class="collapsible-header">
+                        Daftar Materi
+                    </div>                    
+                </li>
+
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            1. Pengenalan PostgreSQL
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            5
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/01-silabus-psql">
+                                            <span class="truncate">1. Silabus - PostgreSQL: Pemula sampai Mahir</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/01a-what-is-postgresql">
+                                            <span class="truncate">2. Overview of PostgreSQL Database</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/01b-postgresql-architecture">
+                                            <span class="truncate">3. Architecture of PostgreSQL Database</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/01c-postgresql-database">
+                                            <span class="truncate">4. Overview of Object Relational Database Management System (ORDBMS)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/01d-accessing-database">
+                                            <span class="truncate">5. Accessing a Database</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            2. Getting started
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            8
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02-overview-install-postgres">
+                                            <span class="truncate">1. Overview Installing PostgreSQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02a-install-postgresql-windows">
+                                            <span class="truncate">2. Install PostgreSQL for Windows users</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02a-install-postgresql-mac">
+                                            <span class="truncate">3. Install PostgreSQL for Mac users</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02a-install-postgresql-linux-ubuntu">
+                                            <span class="truncate">4. Install PostgreSQL for Linux Ubuntu users</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02a-install-postgresql-docker">
+                                            <span class="truncate">5. Install PostgreSQL using Docker</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02b-use-psql">
+                                            <span class="truncate">6. Using psql as PostgreSQL editor</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02c-use-pgadmin">
+                                            <span class="truncate">7. Using pgAdmin4 as PostgreSQL editor</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02d-use-third-party-editors">
+                                            <span class="truncate">8. Using thirdparty Editor untuk PostgreSQL Server</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            3. SQL - Select Statement
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            16
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03-overview-sql">
+                                            <span class="truncate">1. Overview SQL Select statements</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03a-basic-select-statement">
+                                            <span class="truncate">2. Basic SQL Select statements</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03b-sql-operators">
+                                            <span class="truncate">3. Build-in Operators</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03c-sql-functions">
+                                            <span class="truncate">4. Build-in Functions</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03d-where-clause">
+                                            <span class="truncate">5. Filtering data with WHERE clause</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03e-order-by-clause">
+                                            <span class="truncate">6. Sorting rows using ORDER BY clause</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03f-limit-offset-clause">
+                                            <span class="truncate">7. Limit dan Offset rows</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03g-quis-section-1">
+                                            <span class="truncate">8. Time your practice (part 1)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04-overview-more-select-statements">
+                                            <span class="truncate">9. Deep dive into Select Statements</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04a-single-group-function">
+                                            <span class="truncate">10. Single Row / Group functions</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04b-join-tables">
+                                            <span class="truncate">11. Joined Tables</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04c-subquery">
+                                            <span class="truncate">12. Queries inside a query (subquery)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04d-conditional-expression">
+                                            <span class="truncate">13. Conditional Expressions</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04e-combining-queries">
+                                            <span class="truncate">14. Combining Queries (UNION, INTERSECT, EXCEPT)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04f-with-queries">
+                                            <span class="truncate">15. WITH Queries (Common Table Expressions)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04g-quis-section-2">
+                                            <span class="truncate">16. Time your practice (part 2)</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            4. SQL - Data manipulation
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            10
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05-overview-dml">
+                                            <span class="truncate">1. Overview of Data Manipulation Language (DML)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05a-cud-statement">
+                                            <span class="truncate">2. Basic Create, Update, Delete statement</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05b-dml-insert">
+                                            <span class="truncate">3. Deep dive into INSERT Statement</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05c-dml-update">
+                                            <span class="truncate">4. Deep dive into UPDATE Statement</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05d-dml-delete">
+                                            <span class="truncate">5. Deep dive into DELETE statement</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05e-dml-prepared-statement">
+                                            <span class="truncate">6. Prepared Statement in SQL</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05f-dml-cleanup">
+                                            <span class="truncate">7. Cleanup Data from Table</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05g-quis-section-1">
+                                            <span class="truncate">8. Time your practice (part 3)</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/tcl/06-overview-concurrent-control">
+                                            <span class="truncate">9. Overview of Concurrency Control</span>
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl">
+                                            <span class="truncate">10. Getting started with Transaction Control (TCL)</span>
+                                    </a>                                
+                                                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            5. SQL - Data definition (Tables)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            6. Study Kasus: Database design (Mapping)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            7. SQL - Indexes
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            8. SQL - Users Management
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            9. Type Conversion
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            10. Query Performance Tips
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            11. Study Kasus: Tokopedia clone
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            12. Server Administration
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            13. Pg/PL SQL
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            14. Study Kasus: Backend engine
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            <li class="collection-item">Materi: belum tersedia...</li>
+                        
+                    </ul>
+                </li>
+                               
+            </ul>
+        </div>
+        
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collection with-header">
+                <li class="collapsible-header">
+                    Lastest Posts
+                </li>
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05b-working-with-deployment">
+                        <span class="badge">09 Apr 23</span>
+                        Working with Deployment object
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/pods/04b-study-cases-microservice-backend-apps">
+                        <span class="badge">26 Feb 23</span>
+                        Study cases: Microservice apps (...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/01-welcome-nutanix-class">
+                        <span class="badge">05 Feb 23</span>
+                        Welcome to the Nutanix HCF (Hybr...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/nutanix-ahv.png" alt="" class="circle responsive-img">
+                    <a href="/posts/cloud-computing/hyper-converged-infrastructure/nutanix/00-silabus-nutanix-ahv">
+                        <span class="badge">04 Feb 23</span>
+                        Silabus SRE - Nutanix AHV: Pemul...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05a-what-is-workload">
+                        <span class="badge">17 Jan 23</span>
+                        What is Workload Resources?
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/k8s.png" alt="" class="circle responsive-img">
+                    <a href="/posts/devops/orchestration/kubernetes/workloads/05-overview-workload-resources">
+                        <span class="badge">17 Jan 23</span>
+                        Overview Kubernetes Workloads re...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl">
+                        <span class="badge">15 Jan 23</span>
+                        Getting started with Transaction...
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06-overview-concurrent-control">
+                        <span class="badge">14 Jan 23</span>
+                        Overview of Concurrency Control
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05g-quis-section-1">
+                        <span class="badge">14 Jan 23</span>
+                        Time your practice (part 3)
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="collection-item avatar">
+                    <img src="/resources/images/postgresql.png" alt="" class="circle responsive-img">
+                    <a href="/posts/rdbms/postgresql/sql/dml/05f-dml-cleanup">
+                        <span class="badge">08 Jan 23</span>
+                        Cleanup Data from Table
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    <div class="col s12 m12 l8">
+        <div id="paginate-top" class="right">
+            <ul class="pagination hide-on-small-only">
+                <!-- current page info -->
+                <li>
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        15 to 39
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+            </ul>
+            <br>
+        </div>
+        <div>            
+            <div>
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+    <section id="article-body">
+        <div class="center">
+            <h1>
+                Basic SQL Select statements
+            </h1>
+        </div>
+        <div>
+            <div class="post-content"
+                 style="font-family: 'Source Code Pro', 'Times New Roman', 'Arial'; text-align: justify; font-size: large">
+                <p>Hai semuanya, di materi kali ini kita akan membahas tentang Basic penggunaan SQL untuk Select statement pada PostgreSQL. Diantaranya yang akan kita bahas yaitu</p>
+
+<ol>
+  <li>Format penulisan Select statement</li>
+  <li>Menampilkan semua data dalam sebuah <em>table</em></li>
+  <li>Menampilkan hanya beberapa <em>columns</em> pada sebuah <em>table</em></li>
+  <li>Memberikan alias pada suatu <em>column</em></li>
+  <li>Menggunakan Special Characters / Escape Characters</li>
+  <li>Menggunakan Comments</li>
+  <li>Elimination of duplicate rows.</li>
+</ol>
+
+<p>Ok langsung saja kita bahas materi yang pertama</p>
+
+<!--more-->
+
+<h2 id="format-penulisan-select-statement">Format penulisan Select statement</h2>
+
+<p>To retrieve data from a table, the table is queried. An SQL <code class="language-plaintext highlighter-rouge">SELECT</code> statement is used to do this. The statement is divided into a select list (the part that lists the columns to be returned), a table list (the part that lists the tables from which to retrieve the data), and an optional qualification (the part that specifies any restrictions).</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="k">select</span> 
+     <span class="o">*</span> <span class="o">|</span> <span class="n">columns</span><span class="p">...</span>  
+<span class="k">from</span> 
+    <span class="k">table_name</span> <span class="o">|</span> <span class="n">tables</span><span class="p">...</span> <span class="p">(</span><span class="n">separated</span> <span class="k">by</span> <span class="n">comma</span><span class="p">)</span>
+<span class="p">[</span><span class="k">where</span> <span class="n">condition</span><span class="p">]</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Contohnya di <em>database</em> <code class="language-plaintext highlighter-rouge">hr</code> sekarang saya punya daftar <em>tables</em> seperti berikut:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">hr</span><span class="o">=</span><span class="c"># \dt</span>
+ public | countries    | table | hr
+ public | departments  | table | hr
+ public | employees    | table | hr
+ public | job_history  | table | hr
+ public | <span class="nb">jobs</span>         | table | hr
+ public | locations    | table | hr
+ public | regions      | table | hr</code></pre></figure>
+
+<p>Jadi kita bisa pilih salah satu tabelnya contohnya <code class="language-plaintext highlighter-rouge">departments</code> maka SQL Query select statemenya seperti berikut:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">departments</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<h2 id="menampilkan-semua-data-dalam-sebuah-table">Menampilkan semua data dalam sebuah <em>table</em></h2>
+
+<p>Untuk menampilkan semua data untuk semua column yang dipilih dalam sebuah tabel kita bisa menggunakan spesial karakter <code class="language-plaintext highlighter-rouge">*</code> (asteric / bintang) dalam perintah <em>select</em> seperti berikut:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/7ae7632f9418feb724bc431eff412a3f.js?file=03a-select-all-departments.sql"> </script>
+
+<p>Maka akan tampil datanya seperti berikut:</p>
+
+<table class="table striped bordered">
+  <thead>
+    <tr>
+      <th style="text-align: left">dep_id</th>
+      <th style="text-align: left">department_name</th>
+      <th style="text-align: left">manager_id</th>
+      <th style="text-align: left">location_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left">Administration</td>
+      <td style="text-align: left">200</td>
+      <td style="text-align: left">1700</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">40</td>
+      <td style="text-align: left">Human Resources</td>
+      <td style="text-align: left">203</td>
+      <td style="text-align: left">2400</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">50</td>
+      <td style="text-align: left">Shipping</td>
+      <td style="text-align: left">121</td>
+      <td style="text-align: left">1500</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">60</td>
+      <td style="text-align: left">IT</td>
+      <td style="text-align: left">103</td>
+      <td style="text-align: left">1400</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">90</td>
+      <td style="text-align: left">Executive</td>
+      <td style="text-align: left">100</td>
+      <td style="text-align: left">1700</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="menampilkan-semua-data-pada-beberapa-columns-pada-sebuah-table">Menampilkan semua data pada beberapa <em>columns</em> pada sebuah <em>table</em></h2>
+
+<p>Selain menggunakan <code class="language-plaintext highlighter-rouge">*</code> untuk menampikan semua kolom pada tabel tersebut, kita juga bisa sebutkan nama kolomnya. Tapi yang harus kita ketahui dulu adalah nama kolomnya pada table tersebut. kita bisa menggunakan perintah seperti berikut:</p>
+
+<pre><code class="language-postgresql">hr=# \dt departments
+ department_id   | integer               | not null default nextval('departments_department_id_seq'::regclass)
+ department_name | character varying(30) | 
+ manager_id      | integer               | 
+ location_id     | integer               | 
+</code></pre>
+
+<p>Nah jadi kita punya column <code class="language-plaintext highlighter-rouge">department_id</code>, <code class="language-plaintext highlighter-rouge">department_name</code>, <code class="language-plaintext highlighter-rouge">manager_id</code>, dan <code class="language-plaintext highlighter-rouge">location_id</code> jadi kita bisa pilih atau semuanya seperti berikut:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/7ae7632f9418feb724bc431eff412a3f.js?file=03a-select-all-columns-departments.sql"> </script>
+
+<p>Atau</p>
+
+<script src="https://gist.github.com/dimMaryanto93/7ae7632f9418feb724bc431eff412a3f.js?file=03a-select-only-selected-columns-departments.sql"> </script>
+
+<p>Jika dijalankan maka hasilnya seperti berikut:</p>
+
+<table class="table striped bordered">
+  <thead>
+    <tr>
+      <th style="text-align: left">department_id</th>
+      <th style="text-align: left">department_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left">Administration</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">40</td>
+      <td style="text-align: left">Human Resources</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">50</td>
+      <td style="text-align: left">Shipping</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">60</td>
+      <td style="text-align: left">IT</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">90</td>
+      <td style="text-align: left">Executive</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="memberikan-alias-pada-suatu-column">Memberikan alias pada suatu <em>column</em></h2>
+
+<p>Secara <em>default</em> kalau kita melakukan perintah <code class="language-plaintext highlighter-rouge">select</code> terhadap suatu <em>table</em> contohnya misalnya <code class="language-plaintext highlighter-rouge">departments</code>, di <em>table</em> <code class="language-plaintext highlighter-rouge">departments</code> terdiri dari <em>columns</em> <code class="language-plaintext highlighter-rouge">department_id, department_name, manager_id, location_id</code> jika saya melakukan perintah <code class="language-plaintext highlighter-rouge">select</code> seperti berikut hasilnya:</p>
+
+<table class="table striped bordered">
+  <thead>
+    <tr>
+      <th style="text-align: left">dep_id</th>
+      <th style="text-align: left">department_name</th>
+      <th style="text-align: left">manager_id</th>
+      <th style="text-align: left">location_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left">Administration</td>
+      <td style="text-align: left">200</td>
+      <td style="text-align: left">1700</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">40</td>
+      <td style="text-align: left">Human Resources</td>
+      <td style="text-align: left">203</td>
+      <td style="text-align: left">2400</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">50</td>
+      <td style="text-align: left">Shipping</td>
+      <td style="text-align: left">121</td>
+      <td style="text-align: left">1500</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">60</td>
+      <td style="text-align: left">IT</td>
+      <td style="text-align: left">103</td>
+      <td style="text-align: left">1400</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">90</td>
+      <td style="text-align: left">Executive</td>
+      <td style="text-align: left">100</td>
+      <td style="text-align: left">1700</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Dengan menggunakan <em>column alias</em> kita bisa memberikan nama kolomnya sesuai yang kita inginkan, Aturan penamaan variable atau kolom alias, diantaranya:</p>
+
+<ol>
+  <li>Menggunakan keyword <code class="language-plaintext highlighter-rouge">as</code> dan tanpa <code class="language-plaintext highlighter-rouge">as</code>, tidak boleh menggunakan charakter khusus seperti <strong>SPACE</strong>, <strong>HashTag</strong>, <strong>Dolar</strong> dan lain-lain, karakter yang <strong>diperbolehkan</strong> yaitu <strong>huruf, angka, dan underscore</strong>. Ini karena dengan menggunakan <em>column alias</em> tersebut nantinya bisa digunakan sebagai variable untuk melakukan <em>ordering</em>.</li>
+  <li>Diapit menggunakan double quote <code class="language-plaintext highlighter-rouge">"</code>, Diperbolehkan bebas karena hanya akan di jadikan sebagai label saja.</li>
+</ol>
+
+<p>Seperti berikut contohnya:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/7ae7632f9418feb724bc431eff412a3f.js?file=03a-select-alias-column-department.sql"> </script>
+
+<p>Jika dijalankan hasilnya seperti berikut:</p>
+
+<pre><code class="language-postgresql">hr=# select  department_id as kode_divisi,
+hr-#         department_name nama_department,
+hr-#         manager_id as "Kode Manager"
+hr-# from departments;
+ kode_divisi |   nama_department    | Kode Manager
+-------------+----------------------+--------------
+         300 | System Analis        |
+          10 | Administration       |          200
+          20 | Marketing            |          201
+          30 | Purchasing           |          114
+          40 | Human Resources      |          203
+          50 | Shipping             |          121
+          60 | IT                   |          103
+          70 | Public Relations     |          204
+          80 | Sales                |          145
+          90 | Executive            |          100
+         100 | Finance              |          108
+         110 | Accounting           |          205
+         120 | Treasury             |
+
+(28 rows)
+</code></pre>
+
+<h2 id="menggunakan-special-characters--escape-characters">Menggunakan Special Characters / Escape Characters</h2>
+
+<p>Some characters that are not alphanumeric have a special meaning that is different from being an operator. Details on the usage can be found at the location where the respective syntax element is described. This section only exists to advise the existence and summarize the purposes of these characters.</p>
+
+<ol>
+  <li>A dollar sign (<code class="language-plaintext highlighter-rouge">$</code>) followed by digits is used to represent a positional parameter in the body of a function definition or a prepared statement. In other contexts the dollar sign can be part of an identifier or a dollar-quoted string constant.</li>
+  <li>Parentheses (<code class="language-plaintext highlighter-rouge">()</code>) have their usual meaning to group expressions and enforce precedence. In some cases parentheses are required as part of the fixed syntax of a particular SQL command.</li>
+  <li>Brackets (<code class="language-plaintext highlighter-rouge">[]</code>) are used to select the elements of an array. See Section 8.15 for more information on arrays.</li>
+  <li>Commas (<code class="language-plaintext highlighter-rouge">,</code>) are used in some syntactical constructs to separate the elements of a list.</li>
+  <li>The semicolon (<code class="language-plaintext highlighter-rouge">;</code>) terminates an SQL command. It cannot appear anywhere within a command, except within a string constant or quoted identifier.</li>
+  <li>The colon (<code class="language-plaintext highlighter-rouge">:</code>) is used to select “slices” from arrays. (See Section 8.15.) In certain SQL dialects (such as Embedded SQL), the colon is used to prefix variable names.</li>
+  <li>The asterisk (<code class="language-plaintext highlighter-rouge">*</code>) is used in some contexts to denote all the fields of a table row or composite value. It also has a special meaning when used as the argument of an aggregate function, namely that the aggregate does not require any explicit parameter.</li>
+  <li>The period (<code class="language-plaintext highlighter-rouge">.</code>) is used in numeric constants, and to separate schema, table, and column names.</li>
+</ol>
+
+<p>PostgreSQL also accepts “escape” string constants, which are an extension to the SQL standard. An escape string constant is specified by writing the letter E (upper or lower case) just before the opening single quote. Within an escape string, a backslash character () begins a C-like backslash escape sequence, in which the combination of backslash and following character(s) represent a special byte value</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Backslash Escape</th>
+      <th style="text-align: left">Interpretation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">\b</code></td>
+      <td style="text-align: left">backspace</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">\f</code></td>
+      <td style="text-align: left">form feed</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">\n</code></td>
+      <td style="text-align: left">newline</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">\r</code></td>
+      <td style="text-align: left">carriage return</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">\t</code></td>
+      <td style="text-align: left">tab</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For example:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/7ae7632f9418feb724bc431eff412a3f.js?file=03a-select-special-characters.sql"> </script>
+
+<p>Jika di jalankan hasilnya seperti berikut:</p>
+
+<pre><code class="language-postgresql">hr=# select '*' bintang,
+hr-#         E'()' kurung,
+hr-#         E'\\' slash,
+hr-#         E'baris pertama \n baris kedua' newline,
+hr-#         E'awal\t setelah' tabspace;
+ bintang | kurung | slash |    newline     |     tabspace
+---------+--------+-------+----------------+------------------
+ *       | ()     | \     | baris pertama +| awal     setelah
+         |        |       |  baris kedua   |
+(1 row)
+</code></pre>
+
+<h2 id="menggunakan-comments">Menggunakan Comments</h2>
+
+<p>A comment is a sequence of characters beginning with double dashes and extending to the end of the line, e.g.:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="c1">-- This is a standard SQL comment</span></code></pre></figure>
+
+<p>Alternatively, C-style block comments can be used:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="code"><pre><span class="cm">/* multiline comment
+ * with nesting: /* nested block comment */
+ */</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>where the comment begins with <code class="language-plaintext highlighter-rouge">/*</code> and extends to the matching occurrence of <code class="language-plaintext highlighter-rouge">*/</code>. These block comments nest, as specified in the SQL standard but unlike C, so that one can comment out larger blocks of code that might contain existing block comments.</p>
+
+<p>A comment is removed from the input stream before further syntax analysis and is effectively replaced by whitespace.</p>
+
+<p>For example:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/7ae7632f9418feb724bc431eff412a3f.js?file=03a-select-with-comments.sql"> </script>
+
+<h2 id="elimination-of-duplicate-rows">Elimination of duplicate rows</h2>
+
+<p>After the select list has been processed, the result table can optionally be subject to the elimination of duplicate rows. The <code class="language-plaintext highlighter-rouge">DISTINCT</code> keyword is written directly after <code class="language-plaintext highlighter-rouge">SELECT</code> to specify this:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">select_list</span> <span class="p">...</span></code></pre></figure>
+
+<p>Alternatively, an arbitrary expression can determine what rows are to be considered distinct:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="k">ON</span> <span class="p">(</span><span class="n">expression</span> <span class="p">[,</span> <span class="n">expression</span> <span class="p">...])</span> <span class="n">select_list</span> <span class="p">...</span></code></pre></figure>
+
+<p>Here expression is an arbitrary value expression that is evaluated for all rows. A set of rows for which all the expressions are equal are considered duplicates, and only the first row of the set is kept in the output. Note that the “first row” of a set is unpredictable unless the query is sorted on enough columns to guarantee a unique ordering of the rows arriving at the <code class="language-plaintext highlighter-rouge">DISTINCT</code> filter. (<code class="language-plaintext highlighter-rouge">DISTINCT ON</code> processing occurs after <code class="language-plaintext highlighter-rouge">ORDER BY</code> sorting.)</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">DISTINCT ON</code> clause is not part of the SQL standard and is sometimes considered bad style because of the potentially indeterminate nature of its results. With judicious use of <code class="language-plaintext highlighter-rouge">GROUP BY</code> and subqueries in <code class="language-plaintext highlighter-rouge">FROM</code>, this construct can be avoided, but it is often the most convenient alternative.</p>
+
+<p>For examples,Saya mau memangil data dari table <code class="language-plaintext highlighter-rouge">employees</code> untuk menampilkan kolom <code class="language-plaintext highlighter-rouge">employee_id</code> dan <code class="language-plaintext highlighter-rouge">job_id</code> berikut querynya:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="n">job_id</span> <span class="k">from</span> <span class="n">employees</span><span class="p">;</span></code></pre></figure>
+
+<p>Jika saya jalankan maka hasilnya seperti berikut:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hr</span><span class="o">=#</span> <span class="k">select</span> <span class="n">job_id</span> <span class="k">from</span> <span class="n">employees</span><span class="p">;</span>
+
+   <span class="n">job_id</span>   
+<span class="c1">------------</span>
+ <span class="n">AD_PRES</span>
+ <span class="n">AD_VP</span>
+ <span class="n">AD_VP</span>
+ <span class="n">IT_PROG</span>
+ <span class="n">IT_PROG</span>
+ <span class="n">IT_PROG</span>
+ <span class="n">FI_MGR</span>
+ <span class="n">FI_ACCOUNT</span>
+ <span class="n">FI_ACCOUNT</span>
+ <span class="n">PU_CLERK</span>
+<span class="p">...</span>
+<span class="p">(</span><span class="mi">107</span> <span class="k">rows</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Jika kita mau meng-eliminasi nilai redudansi atau supaya unique datanya kita bisa menggunakan query seperti berikut:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/7ae7632f9418feb724bc431eff412a3f.js?file=03a-select-distinct.sql"> </script>
+
+<p>Jika saya jalankan maka hasilnya seperti berikut:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hr</span><span class="o">=#</span> <span class="k">select</span> <span class="k">distinct</span> <span class="n">job_id</span> <span class="k">from</span> <span class="n">employees</span><span class="p">;</span>
+   <span class="n">job_id</span>
+<span class="c1">------------</span>
+ <span class="n">SH_CLERK</span>
+ <span class="n">AD_VP</span>
+ <span class="n">SA_MAN</span>
+ <span class="n">PU_MAN</span>
+ <span class="n">IT_PROG</span>
+ <span class="n">ST_CLERK</span>
+ <span class="n">FI_MGR</span>
+ <span class="n">PU_CLERK</span>
+ <span class="n">HR_REP</span>
+ <span class="n">ST_MAN</span>
+ <span class="n">MK_MAN</span>
+ <span class="n">AC_MGR</span>
+ <span class="n">SA_REP</span>
+ <span class="n">AD_ASST</span>
+ <span class="n">PR_REP</span>
+ <span class="n">MK_REP</span>
+ <span class="n">AD_PRES</span>
+ <span class="n">FI_ACCOUNT</span>
+ <span class="n">AC_ACCOUNT</span>
+<span class="p">(</span><span class="mi">19</span> <span class="k">rows</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Selain itu juga kita bisa gunakan multiple column selection untuk Distinct ini, contohnya seperti berikut:</p>
+
+<script src="https://gist.github.com/dimMaryanto93/7ae7632f9418feb724bc431eff412a3f.js?file=03a-select-distinct-multiple-columns.sql"> </script>
+
+<p>Jika dijalankan hasilnya seperti berikut:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hr</span><span class="o">=#</span> <span class="k">select</span> <span class="k">distinct</span> <span class="p">(</span><span class="n">job_id</span><span class="p">,</span> <span class="n">manager_id</span><span class="p">),</span>
+<span class="n">hr</span><span class="o">-#</span>        <span class="n">job_id</span><span class="p">,</span>
+<span class="n">hr</span><span class="o">-#</span>        <span class="n">manager_id</span>
+<span class="n">hr</span><span class="o">-#</span> <span class="k">from</span> <span class="n">employees</span><span class="p">;</span>
+       <span class="k">row</span>        <span class="o">|</span>   <span class="n">job_id</span>   <span class="o">|</span> <span class="n">manager_id</span>
+<span class="c1">------------------+------------+------------</span>
+ <span class="p">(</span><span class="n">AC_ACCOUNT</span><span class="p">,</span><span class="mi">205</span><span class="p">)</span> <span class="o">|</span> <span class="n">AC_ACCOUNT</span> <span class="o">|</span>        <span class="mi">205</span>
+ <span class="p">(</span><span class="n">AC_MGR</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>     <span class="o">|</span> <span class="n">AC_MGR</span>     <span class="o">|</span>        <span class="mi">101</span>
+ <span class="p">(</span><span class="n">AD_ASST</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>    <span class="o">|</span> <span class="n">AD_ASST</span>    <span class="o">|</span>        <span class="mi">101</span>
+ <span class="p">(</span><span class="n">AD_PRES</span><span class="p">,)</span>       <span class="o">|</span> <span class="n">AD_PRES</span>    <span class="o">|</span>
+ <span class="p">(</span><span class="n">AD_VP</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>      <span class="o">|</span> <span class="n">AD_VP</span>      <span class="o">|</span>        <span class="mi">100</span>
+ <span class="p">(</span><span class="n">FI_ACCOUNT</span><span class="p">,</span><span class="mi">108</span><span class="p">)</span> <span class="o">|</span> <span class="n">FI_ACCOUNT</span> <span class="o">|</span>        <span class="mi">108</span>
+ <span class="p">(</span><span class="n">FI_MGR</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>     <span class="o">|</span> <span class="n">FI_MGR</span>     <span class="o">|</span>        <span class="mi">101</span>
+ <span class="p">(</span><span class="n">HR_REP</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>     <span class="o">|</span> <span class="n">HR_REP</span>     <span class="o">|</span>        <span class="mi">101</span>
+ <span class="p">(</span><span class="n">IT_PROG</span><span class="p">,</span><span class="mi">102</span><span class="p">)</span>    <span class="o">|</span> <span class="n">IT_PROG</span>    <span class="o">|</span>        <span class="mi">102</span>
+ <span class="p">(</span><span class="n">IT_PROG</span><span class="p">,</span><span class="mi">103</span><span class="p">)</span>    <span class="o">|</span> <span class="n">IT_PROG</span>    <span class="o">|</span>        <span class="mi">103</span>
+ <span class="p">(</span><span class="n">MK_MAN</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>     <span class="o">|</span> <span class="n">MK_MAN</span>     <span class="o">|</span>        <span class="mi">100</span>
+ <span class="p">(</span><span class="n">MK_REP</span><span class="p">,</span><span class="mi">201</span><span class="p">)</span>     <span class="o">|</span> <span class="n">MK_REP</span>     <span class="o">|</span>        <span class="mi">201</span>
+ <span class="p">(</span><span class="n">PR_REP</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>     <span class="o">|</span> <span class="n">PR_REP</span>     <span class="o">|</span>        <span class="mi">101</span>
+ <span class="p">(</span><span class="n">PU_CLERK</span><span class="p">,</span><span class="mi">114</span><span class="p">)</span>   <span class="o">|</span> <span class="n">PU_CLERK</span>   <span class="o">|</span>        <span class="mi">114</span>
+ <span class="p">(</span><span class="n">PU_MAN</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>     <span class="o">|</span> <span class="n">PU_MAN</span>     <span class="o">|</span>        <span class="mi">100</span>
+ <span class="p">(</span><span class="n">SA_MAN</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>     <span class="o">|</span> <span class="n">SA_MAN</span>     <span class="o">|</span>        <span class="mi">100</span>
+<span class="p">(</span><span class="mi">32</span> <span class="k">rows</span><span class="p">)</span>
+</code></pre></div></div>
+
+            </div>
+        </div>
+    </section>   
+</article>
+
+            </div>
+            
+        </div>
+        <div>
+            
+                <div>
+                    <ul class="collection with-header">
+                        <li class="collection-header">
+                            <h2>Referensi</h2>
+                        </li>
+                                               
+                            <a class="collection-item" href="https://www.postgresql.org/docs/14/" target="_blank">https://www.postgresql.org/docs/14/</a>
+                        
+                    </ul>                    
+                </div>
+            
+        </div>
+        <div id="paginate" class="center">
+            <ul class="pagination hide-on-small-only">
+                <!-- goto first page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/rdbms/postgresql/01-silabus-psql" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman 1...">
+                        <i class="material-icons">fast_rewind</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto before page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/rdbms/postgresql/sql/select/03-overview-sql" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke artikel sebelumnya...">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+                                
+                
+                <!-- current page info -->
+                <li class="active">
+                    <a href="#!" data-activates="slide-out-materi" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                        15 to 39
+                        <span class="badge new blue" data-badge-caption="pages"></span>
+                    </a>
+                </li>
+                   
+                <!-- goto next page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/rdbms/postgresql/sql/select/03b-sql-operators" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Yuk lanjutin bacaanya...">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+                
+
+                <!-- goto last page -->
+                
+                <li class="waves-effect">
+                    <a href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ke halaman terakhir...">
+                        <i class="material-icons">fast_forward</i>
+                    </a>
+                </li>
+                
+            </ul>
+            <br>
+        </div>
+        <div>
+            
+            <div id="disqus_thread"></div>
+            <script>
+
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                
+                var disqus_config = function () {
+                    this.page.url = 'https://youtube.dimas-maryanto.com/posts/rdbms/postgresql/sql/select/03a-basic-select-statement';
+                    this.page.identifier = '/posts/rdbms/postgresql/sql/select/03a-basic-select-statement';
+                    console.debug(this.page);
+                };
+                
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://materi-bootcamp.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            
+        </div>
+    </div>
+    <div id="floating-button-menu" class="fixed-action-btn click-to-toggle horizontal hide-on-large-only">
+        <a href="#" class="btn-floating btn-large waves-effect waves-light">
+            <i class="large material-icons">playlist_play</i>
+        </a>
+        <ul>
+            <!-- goto first page -->
+            
+            <li>
+                <a href="/posts/rdbms/postgresql/01-silabus-psql" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman 1...">
+                    <i class="material-icons">fast_rewind</i>
+                </a>
+            </li>
+            
+            <!-- goto before page -->
+            
+            <li>
+                <a href="/posts/rdbms/postgresql/sql/select/03-overview-sql" class="tooltipped btn-floating yellow darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman sebelumnya">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+             
+
+            <!-- goto next page -->
+            
+            <li>
+                <a href="/posts/rdbms/postgresql/sql/select/03b-sql-operators" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman selanjutnya">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+            
+
+            <!-- goto last page -->
+            
+            <li>
+                <a href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl" class="tooltipped btn-floating green darken-1 waves-effect" data-position="top" data-delay="50" data-tooltip="Ke halaman terakhir">
+                    <i class="material-icons">fast_forward</i>
+                </a>
+            </li>
+               
+
+            <li>
+                <a href="#" data-activates="slide-out-materi" class="btn-floating red button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Daftar Materi">
+                    <i class="large material-icons">toc</i>
+                </a>
+            </li>
+          </ul>
+    </div>
+</div>
+
+<ul id="slide-out-materi" class="side-nav">
+    <li>
+        <div class="user-view">
+    <div class="background">
+        <img src="/resources/pictures/art.png" width="100%" height="100%">
+    </div>
+    <br>
+    <a href="#!">
+        <img class="circle" src="/resources/pictures/profile.jpeg">
+    </a>
+    <a href="#!name"><span class="white-text name">Dimas Maryanto</span></a>
+    <a href="mailto:software.dimas_m@icloud.com"><span class="white-text email">software.dimas_m@icloud.com</span></a>
+</div>
+    </li>
+    <li>
+        <a href="/">
+            <i class="material-icons left">home</i> DevOps with Dimas Maryanto
+        </a>
+    </li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li> 
+    <li>
+        <div class="row show-on-medium-and-down">
+            
+            <ul class="collapsible with-header" data-collapsible="accordion">
+                <li class="collection-header">
+                    <div class="collapsible-header subheader">
+                        Daftar Materi
+                    </div>                    
+                </li>
+
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Pengenalan PostgreSQL
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            5
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/01-silabus-psql">
+                                        <span class="truncate">
+                                            1. Silabus - PostgreSQL: Pemula sampai Mahir
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/01a-what-is-postgresql">
+                                        <span class="truncate">
+                                            2. Overview of PostgreSQL Database
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/01b-postgresql-architecture">
+                                        <span class="truncate">
+                                            3. Architecture of PostgreSQL Database
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/01c-postgresql-database">
+                                        <span class="truncate">
+                                            4. Overview of Object Relational Database Management System (ORDBMS)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/01d-accessing-database">
+                                        <span class="truncate">
+                                            5. Accessing a Database
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Getting started
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            8
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02-overview-install-postgres">
+                                        <span class="truncate">
+                                            1. Overview Installing PostgreSQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02a-install-postgresql-windows">
+                                        <span class="truncate">
+                                            2. Install PostgreSQL for Windows users
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02a-install-postgresql-mac">
+                                        <span class="truncate">
+                                            3. Install PostgreSQL for Mac users
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02a-install-postgresql-linux-ubuntu">
+                                        <span class="truncate">
+                                            4. Install PostgreSQL for Linux Ubuntu users
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02a-install-postgresql-docker">
+                                        <span class="truncate">
+                                            5. Install PostgreSQL using Docker
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02b-use-psql">
+                                        <span class="truncate">
+                                            6. Using psql as PostgreSQL editor
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02c-use-pgadmin">
+                                        <span class="truncate">
+                                            7. Using pgAdmin4 as PostgreSQL editor
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/getting-started/02d-use-third-party-editors">
+                                        <span class="truncate">
+                                            8. Using thirdparty Editor untuk PostgreSQL Server
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            SQL - Select Statement
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            16
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03-overview-sql">
+                                        <span class="truncate">
+                                            1. Overview SQL Select statements
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03a-basic-select-statement">
+                                        <span class="truncate">
+                                            2. Basic SQL Select statements
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03b-sql-operators">
+                                        <span class="truncate">
+                                            3. Build-in Operators
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03c-sql-functions">
+                                        <span class="truncate">
+                                            4. Build-in Functions
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03d-where-clause">
+                                        <span class="truncate">
+                                            5. Filtering data with WHERE clause
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03e-order-by-clause">
+                                        <span class="truncate">
+                                            6. Sorting rows using ORDER BY clause
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03f-limit-offset-clause">
+                                        <span class="truncate">
+                                            7. Limit dan Offset rows
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/03g-quis-section-1">
+                                        <span class="truncate">
+                                            8. Time your practice (part 1)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04-overview-more-select-statements">
+                                        <span class="truncate">
+                                            9. Deep dive into Select Statements
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04a-single-group-function">
+                                        <span class="truncate">
+                                            10. Single Row / Group functions
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04b-join-tables">
+                                        <span class="truncate">
+                                            11. Joined Tables
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04c-subquery">
+                                        <span class="truncate">
+                                            12. Queries inside a query (subquery)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04d-conditional-expression">
+                                        <span class="truncate">
+                                            13. Conditional Expressions
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04e-combining-queries">
+                                        <span class="truncate">
+                                            14. Combining Queries (UNION, INTERSECT, EXCEPT)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04f-with-queries">
+                                        <span class="truncate">
+                                            15. WITH Queries (Common Table Expressions)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/select/04g-quis-section-2">
+                                        <span class="truncate">
+                                            16. Time your practice (part 2)
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            SQL - Data manipulation
+                        </span>
+                        
+                        <span class="badge new blue" data-badge-caption="Pelajaran">
+                            10
+                        </span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05-overview-dml">
+                                        <span class="truncate">
+                                            1. Overview of Data Manipulation Language (DML)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05a-cud-statement">
+                                        <span class="truncate">
+                                            2. Basic Create, Update, Delete statement
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05b-dml-insert">
+                                        <span class="truncate">
+                                            3. Deep dive into INSERT Statement
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05c-dml-update">
+                                        <span class="truncate">
+                                            4. Deep dive into UPDATE Statement
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05d-dml-delete">
+                                        <span class="truncate">
+                                            5. Deep dive into DELETE statement
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05e-dml-prepared-statement">
+                                        <span class="truncate">
+                                            6. Prepared Statement in SQL
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05f-dml-cleanup">
+                                        <span class="truncate">
+                                            7. Cleanup Data from Table
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/dml/05g-quis-section-1">
+                                        <span class="truncate">
+                                            8. Time your practice (part 3)
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/tcl/06-overview-concurrent-control">
+                                        <span class="truncate">
+                                            9. Overview of Concurrency Control
+                                        </span>    
+                                    </a>                                
+                            
+                                                                
+                                    <a class="collection-item" 
+                                        href="/posts/rdbms/postgresql/sql/tcl/06a-basic-tcl">
+                                        <span class="truncate">
+                                            10. Getting started with Transaction Control (TCL)
+                                        </span>    
+                                    </a>                                
+                            
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            SQL - Data definition (Tables)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Study Kasus: Database design (Mapping)
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            SQL - Indexes
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            SQL - Users Management
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Type Conversion
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Query Performance Tips
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Study Kasus: Tokopedia clone
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Server Administration
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Pg/PL SQL
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                
+                
+                <li>
+                    <div class="collapsible-header">
+                        
+                        <span class="truncate">
+                            Study Kasus: Backend engine
+                        </span>
+                        
+                        <span class="badge new yellow" data-badge-caption="Coming soon"></span>
+                        
+                    </div>
+                    <ul class="collapsible-body collection">
+                        
+                    </ul>
+                </li>
+                               
+            </ul>
+        </div>
+    </li>
+    
+
+    
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Pages</a></li>
+<li>
+    <a href="/archives/">
+        <i class="material-icons">archive</i>
+        Archives
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="/pages/courses.html">
+        <i class="material-icons">library_books</i>
+        Cources
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+    <a href="/pages/news.html">
+        <i class="material-icons">announcement</i>
+        News
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/promo.html">
+        <i class="material-icons">grade</i>
+        Promo
+    </a>
+</li>
+
+
+
+<li>
+    <a href="/pages/roadmap.html">
+        <i class="material-icons">assessment</i>
+        ROADMAP
+    </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    
+    <li><a class="subheader">Social Media</a></li>
+
+<li>
+    <a href="https://github.com/dimMaryanto93" target="_blank"><i class="fa fa-github"></i> Github</a>
+</li>
+
+<li>
+    <a href="https://www.facebook.com/dimMaryanto93" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+</li>
+
+<li>
+    <a href="https://www.instagram.com/dimmaryanto93/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a>
+</li>
+
+<li>
+    <a href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+</li>
+
+<li>
+    <a href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+</li>
+
+    
+    <li>
+        <div class="divider"></div>
+    </li>
+
+    <li><a class="subheader">Lainnya...</a></li>
+<li>
+    
+    <a href="https://www.dimas-maryanto.com" target="_blank">
+        <i class="material-icons left">dashboard</i> Blog
+    </a>
+    
+</li>
+</ul>
+</section>
+
+<section>
+    
+<footer class="page-footer blue lighten-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Tentang website</h5>
+                <div class="grey-text text-lighten-4">
+                    <p>Website ini bertujuan untuk memudahkan temen-temen untuk mempelajari  suatu teknologi yang berkaitan dengan Profesi IT, Programming, Tips and Trick, System Design dan lain-lain, Khususnya dalam Bahasa Pemogramana Java, JavaScript, TypeScript, Angular, ReactJS.</p>
+                    <p>
+                        Donasi via:
+                        <ul>
+                            
+                            <ol>
+                                <a class="white-text" href="https://saweria.co/DimasMaryanto">
+                                    <i class="material-icons">star</i>
+                                    Saweria a/n Dimas Maryanto
+                                </a>
+                            </ol>
+                            
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <ul class="collection with-header">
+                    <li class="collection-header blue lighten-1">
+                        <i class="material-icons">account_box</i>
+                        <span class="white-text">Jangan Lupa follow aku ya guys!</span>
+                    </li>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://github.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-github"></i> Github
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.facebook.com/dimMaryanto93" target="_blank">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.instagram.com/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-instagram"></i> Instagram
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="http://www.youtube.com/channel/UCNTS3BwsqzKwaOA0mOPLCgw?view_as=subscriber&sub_confirmation=1" target="_blank">
+                            <i class="fa fa-youtube"></i> Youtube
+                        </a>
+                    
+                        <a class="collection-item blue lighten-2 black-text text-lighten-3" href="https://www.linkedin.com/in/dimmaryanto93/" target="_blank">
+                            <i class="fa fa-linkedin"></i> LinkedIn
+                        </a>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright blue darken-3">
+        <div class="container">
+            Dimas Maryanto © 2023
+            <a class="grey-text text-lighten-4 right" href="https://pages.github.com/">
+                powered by Github Pages & Jekyll
+            </a>
+        </div>
+    </div>
+</footer>
+</section>
+
+</body>
+</html>
