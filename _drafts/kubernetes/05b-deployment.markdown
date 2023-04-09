@@ -73,15 +73,15 @@ Jika kita lihat hasilnya seperti berikut:
 ➡ kubectl apply -f 03-workloads/01-basic-deploy/basic-deployment.yaml
 deployment.apps/nginx-deploy created
 
-➜ kubernetes git:(main) ✗ kubectl get deploy
+➜ kubectl get deploy
 NAME           READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-deploy   3/3     3            3           3m21s
 
-➜ kubernetes git:(main) ✗ kubectl get rs
+➜ kubectl get rs
 NAME                     DESIRED   CURRENT   READY   AGE
 nginx-deploy-c9bcb48d4   3         3         3       3m39s
 
-➜ kubernetes git:(main) ✗ kubectl get pod
+➜ kubectl get pod
 NAME                           READY   STATUS    RESTARTS   AGE
 nginx-deploy-c9bcb48d4-5s7zs   1/1     Running   0          82s
 nginx-deploy-c9bcb48d4-nrsr7   1/1     Running   0          3m54s
@@ -218,7 +218,7 @@ nginx-deploy-c9bcb48d4-dzg7p   1/1     Terminating         0          14m
 nginx-deploy-c9bcb48d4-dzg7p   0/1     Terminating         0          14m
 ```
 
-Okay nah itu adalah salah satu integraction yang paling simple, selanjutnya untuk update deployment spec, rolling back to previews version akan di bahas terpisah ya supaya tidak terlalu panjang.
+Okay nah itu adalah salah satu interacation yang paling simple pada object deployment, Untuk update deployment spec, rolling back to previews version akan di bahas pada section selanjutnya ya supaya tidak terlalu panjang.
 
 ## Updating a Deployment
 
@@ -761,3 +761,5 @@ Conditions:
   Progressing    True    NewReplicaSetAvailable
 NewReplicaSet:   rollingupdate-nginx-deploy-679cf9c85d (10/10 replicas created)
 ```
+
+## Deployment status
