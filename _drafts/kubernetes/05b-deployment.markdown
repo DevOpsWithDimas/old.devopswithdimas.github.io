@@ -104,6 +104,19 @@ In this example:
     2. The Pod template's specification, or `.template.spec` field, indicates that the Pods run one container, `nginx`, which runs the `nginx` Docker [Hub image](https://hub.docker.com/_/nginx) at version [mainline].
     3. Create one container and name it `nginx` using the `.spec.template.spec.containers[0].name` field.
 
+## Interaction with Development object
+
+Untuk berinteraksi dengan object deployment ada beberapa function/command yang kita bisa gunakan seperti 
+
+1. Melihat log pada suatu pod, 
+2. Meng-execute command pada suatu pod dari sekumpulan pod,
+3. Merestart seluruh pod dalam deployment, 
+4. Updating a deployment spec,
+5. Rolling back to previews history version,
+6. Scalling deployment
+7. Proportional scalling deployment (autoscalling)
+
+
 ## Updating a Deployment
 
 Ada beberapa cara melakukan update suatu Deployment object pada kubernetes
