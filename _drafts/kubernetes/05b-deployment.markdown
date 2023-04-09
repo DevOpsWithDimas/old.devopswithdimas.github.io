@@ -24,12 +24,10 @@ Hai semuanya, materi sebelumnya kita sudah mencoba menggunakan Kubernetes worklo
 
 1. What is Deployment Object?
 2. Create a Deployment
-3. Updating a Deployment
-4. Rolling back a Deployment
-5. Scalling a Deployment
-6. Deployment status
-7. Writing a Deployment Spec
-8. Clean up policy
+3. Interaction with Deployment object
+4. Deployment status
+5. Writing a Deployment Spec
+6. Clean up policy
 
 Okay tanpa berlama-lama yuk langsung aja kita bahas materi yang pertama:
 
@@ -116,6 +114,111 @@ Untuk berinteraksi dengan object deployment ada beberapa function/command yang k
 6. Scalling deployment
 7. Proportional scalling deployment (autoscalling)
 
+Okay sekarang kita coba satu-per-satu yuk, Untuk melihat logs pada suatu pod yang ada pada suatu deployment kita bisa menggunakan perintah `kubectl logs deploy/<deploy-name>` contohnya seperti berikut:
+
+{% highlight bash %}
+kubectl logs deploy/nginx-deploy
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```bash
+➜ kubectl get deploy
+NAME           READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deploy   3/3     3            3           111s
+
+➜ kubectl get pod
+NAME                           READY   STATUS    RESTARTS   AGE
+nginx-deploy-c9bcb48d4-dzg7p   1/1     Running   0          7m41s
+nginx-deploy-c9bcb48d4-nrq4k   1/1     Running   0          7m41s
+nginx-deploy-c9bcb48d4-qgf9d   1/1     Running   0          7m41s
+
+➜ kubectl logs deploy/nginx-deploy
+Found 3 pods, using pod/nginx-deploy-c9bcb48d4-dzg7p
+/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+/docker-entrypoint.sh: Configuration complete; ready for start up
+2023/04/09 02:31:40 [notice] 1#1: using the "epoll" event method
+2023/04/09 02:31:40 [notice] 1#1: nginx/1.23.4
+2023/04/09 02:31:40 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6)
+2023/04/09 02:31:40 [notice] 1#1: OS: Linux 5.10.57
+2023/04/09 02:31:40 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/04/09 02:31:40 [notice] 1#1: start worker processes
+2023/04/09 02:31:40 [notice] 1#1: start worker process 29
+2023/04/09 02:31:40 [notice] 1#1: start worker process 30
+```
+
+Nah jika temen-temen perhatikan, pada deployment `nginx-deploy` memiliki lebih dari 1 pod tetapi yang ditampilkan adalah pod yang pertama by default yaitu `pod/nginx-deploy-c9bcb48d4-dzg7p`
+
+Selanjutnya, jika kita mau meng-execute command dalam container dari object deployment bisa menggunakan perintah `kubectl exec deploy/<deploy-name> -- <command>` seperti berikut contohnya:
+
+{% highlight bash %}
+kubectl exec deploy/nginx-deploy -- curl https://jsonplaceholder.typicode.com/todos/1 -v
+{% endhighlight %}
+
+Maka hasilnya seperti berikut:
+
+```bash
+➜ kubectl exec deploy/nginx-deploy -- curl https://jsonplaceholder.typicode.com/todos/1 -v
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 104.21.54.83:443...
+> GET /todos/1 HTTP/2
+> Host: jsonplaceholder.typicode.com
+> user-agent: curl/7.74.0
+> accept: */*
+>
+< report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=vGRPnjpH6UP1fT0COF95QYK5RIuA2jrZPx1H6jsOVkWrVhLGjRAZYkd1izYBf04YbE4JXWKihCdw1YLrZJZBxAIMLCCW7ViJ6QUbOx%2F06hsARokb7XjEJ%2FUoacL9So%2BACJ%2BGsdUqgOuXf9w5HYUp"}],"group":"cf-nel","max_age":604800}
+< nel: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+< server: cloudflare
+< cf-ray: 7b4f65c4a8254b80-SIN
+< alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+<
+{ [83 bytes data]
+{
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+100    83  100    83    0     0   1136      0 --:--:-- --:--:-- --:--:--  1136
+* Connection #0 to host jsonplaceholder.typicode.com left intact
+```
+
+Kemudian jika kita mau me-restart semua pod sekaligus dalam object deployment kita bisa menggunakan perintah `kubectl rollout restart deploy/<deploy-name>` seperti berikut contohnya:
+
+{% highlight bash %}
+kubectl rollout restart deploy/nginx-deploy
+{% endhighlight %}
+
+Jika dijalankan maka hasilnya seperti berikut:
+
+```bash
+➜ kubectl rollout restart deploy/nginx-deploy && \
+cmdand> kubectl get pod -w
+deployment.apps/nginx-deploy restarted
+NAME                           READY   STATUS              RESTARTS   AGE
+nginx-deploy-c9bcb48d4-dzg7p   1/1     Running             0          14m
+nginx-deploy-c9bcb48d4-nrq4k   1/1     Running             0          14m
+nginx-deploy-c9bcb48d4-qgf9d   1/1     Running             0          14m
+nginx-deploy-fdd7c9d69-zw8xn   0/1     ContainerCreating   0          0s
+nginx-deploy-fdd7c9d69-zw8xn   1/1     Running             0          16s
+nginx-deploy-c9bcb48d4-nrq4k   1/1     Terminating         0          14m
+nginx-deploy-fdd7c9d69-28pm7   0/1     ContainerCreating   0          0s
+nginx-deploy-c9bcb48d4-nrq4k   0/1     Terminating         0          14m
+nginx-deploy-fdd7c9d69-28pm7   1/1     Running             0          16s
+nginx-deploy-c9bcb48d4-qgf9d   1/1     Terminating         0          14m
+nginx-deploy-fdd7c9d69-jh872   0/1     ContainerCreating   0          0s
+nginx-deploy-fdd7c9d69-jh872   1/1     Running             0          1s
+nginx-deploy-c9bcb48d4-dzg7p   1/1     Terminating         0          14m
+nginx-deploy-c9bcb48d4-dzg7p   0/1     Terminating         0          14m
+```
+
+Okay nah itu adalah salah satu integraction yang paling simple, selanjutnya untuk update deployment spec, rolling back to previews version akan di bahas terpisah ya supaya tidak terlalu panjang.
 
 ## Updating a Deployment
 
