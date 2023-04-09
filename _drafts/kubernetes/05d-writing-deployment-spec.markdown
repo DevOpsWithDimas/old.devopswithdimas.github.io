@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "05j-cannary-deployment"
+title: "05d-writing-deployment-spec"
 lang: k8s
 authors:
 - dimasm93
@@ -16,7 +16,7 @@ refs:
 youtube: 
 comments: true
 catalog_key: workloads
-image_path: /resources/posts/kubernetes/05j-cannary-deployment
+image_path: /resources/posts/kubernetes/05d-writing-deployment-spec
 gist: dimMaryanto93/96f6954c9a27a6b1934113b10223196a
 downloads: []
 ---
