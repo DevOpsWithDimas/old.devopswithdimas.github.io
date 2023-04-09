@@ -255,7 +255,7 @@ nginx-deploy-5c7b8c97f6-jgt2p   1/1     Running   0          2m54s
 nginx-deploy-5c7b8c97f6-k7jnf   1/1     Running   0          3m4s
 nginx-deploy-5c7b8c97f6-mzg4m   1/1     Running   0          3m16s
 
-➜  kubernetes git:(main) kubectl describe pod/nginx-deploy-5c7b8c97f6-jgt2p
+➜ kubectl describe pod/nginx-deploy-5c7b8c97f6-jgt2p
 Name:             nginx-deploy-5c7b8c97f6-jgt2p
 Namespace:        default
 Node:             minikube/192.168.105.9
@@ -555,15 +555,15 @@ Jika kita coba jalankan maka seperti berikut:
 ➡ kubectl scale deploy/nginx-deploy --replicas=5
 deployment.apps/nginx-deploy scaled
 
-➜  kubernetes git:(main) kubectl get deploy
+➜ kubectl get deploy
 NAME           READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-deploy   5/5     5            5           3m20s
 
-➜  kubernetes git:(main) kubectl get rs
+➜ kubectl get rs
 NAME                     DESIRED   CURRENT   READY   AGE
 nginx-deploy-c9bcb48d4   5         5         5       3m34s
 
-➜  kubernetes git:(main) kubectl get pod
+➜ kubectl get pod
 NAME                           READY   STATUS    RESTARTS   AGE
 nginx-deploy-c9bcb48d4-blnpp   1/1     Running   0          69s
 nginx-deploy-c9bcb48d4-bsgsr   1/1     Running   0          3m46s
@@ -599,7 +599,7 @@ rollingupdate-nginx-deploy   10/10   10           10          2m25s
 NAME                                   DESIRED   CURRENT   READY   AGE
 rollingupdate-nginx-deploy-cd8ddf7d8   10        10        10      9s
 
-➜  kubernetes git:(main) ✗ kubectl get pod
+➜ kubectl get pod
 NAME                                         READY   STATUS    RESTARTS   AGE
 rollingupdate-nginx-deploy-cd8ddf7d8-7ffkl   1/1     Running   0          30s
 rollingupdate-nginx-deploy-cd8ddf7d8-7p5x2   1/1     Running   0          30s
@@ -684,7 +684,7 @@ REVISION  CHANGE-CAUSE
 ➜ kubectl rollout status deploy/rollingupdate-nginx-deploy
 Waiting for deployment "rollingupdate-nginx-deploy" rollout to finish: 0 out of 10 new replicas have been updated...
 
-➜  kubernetes git:(main) kubectl describe deploy rollingupdate-nginx-deploy
+➜ kubectl describe deploy rollingupdate-nginx-deploy
 Name:                   rollingupdate-nginx-deploy
 Namespace:              default
 CreationTimestamp:      Sat, 08 Apr 2023 15:52:55 +0700
