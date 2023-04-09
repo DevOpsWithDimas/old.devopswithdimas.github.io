@@ -1,6 +1,6 @@
 ---
-layout: {{ layout }}
-title: "{{ title }}"
+layout: post
+title: "05c-deployment-status"
 lang: k8s
 authors:
 - dimasm93
@@ -13,13 +13,14 @@ refs:
 - https://docs.docker.com/
 - https://kubernetes.io/docs/home/
 - https://minikube.sigs.k8s.io/docs/
-youtube: {{ youtube }}
+youtube: 
 comments: true
 catalog_key: workloads
-image_path: /resources/posts/kubernetes/{{ title }}
+image_path: /resources/posts/kubernetes/05c-deployment-status
 gist: dimMaryanto93/96f6954c9a27a6b1934113b10223196a
 downloads: []
 ---
+
 
 description...
 

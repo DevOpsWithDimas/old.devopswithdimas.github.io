@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Workload with Deployment"
+title: "Working with Deployment object"
 lang: k8s
 authors:
 - dimasm93
@@ -25,9 +25,6 @@ Hai semuanya, materi sebelumnya kita sudah mencoba menggunakan Kubernetes worklo
 1. What is Deployment Object?
 2. Create a Deployment
 3. Interaction with Deployment object
-4. Deployment status
-5. Writing a Deployment Spec
-6. Clean up policy
 
 Okay tanpa berlama-lama yuk langsung aja kita bahas materi yang pertama:
 
@@ -761,5 +758,3 @@ Conditions:
   Progressing    True    NewReplicaSetAvailable
 NewReplicaSet:   rollingupdate-nginx-deploy-679cf9c85d (10/10 replicas created)
 ```
-
-## Deployment status
