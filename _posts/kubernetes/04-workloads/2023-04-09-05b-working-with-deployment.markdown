@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Working with Deployment object"
+date: 2023-04-09T10:26:37+07:00
 lang: k8s
 authors:
 - dimasm93
